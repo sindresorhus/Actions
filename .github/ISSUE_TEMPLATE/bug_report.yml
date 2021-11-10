@@ -1,0 +1,20 @@
+name: Bug report
+description: Encountered an issue?
+labels:
+  - bug
+body:
+  - type: textarea
+    validations:
+      required: true
+    attributes:
+      label: Description
+      description: Describe the bug and how to reproduce it.
+  - type: input
+    validations:
+      required: true
+    attributes:
+      label: macOS/iOS version
+  - type: input
+    attributes:
+      label: Shortcut URL
+      description: Optionally provide a URL to a public shortcut that reproduces the bug.
