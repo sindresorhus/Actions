@@ -1,0 +1,77 @@
+import Intents
+
+@MainActor
+final class IntentHandler: INExtension {
+	override init() {
+		super.init()
+		setUpSentry()
+	}
+
+	override func handler(for intent: INIntent) -> Any? {
+		switch intent {
+		case is TransformTextIntent:
+			return TransformTextIntentHandler()
+		case is GenerateUUIDIntent:
+			return GenerateUUIDIntentHandler()
+		case is RandomEmojiIntent:
+			return RandomEmojiIntentHandler()
+		case is RandomBooleanIntent:
+			return RandomBooleanIntentHandler()
+		case is RemoveEmojiIntent:
+			return RemoveEmojiIntentHandler()
+		case is TrimWhitespaceIntent:
+			return TrimWhitespaceIntentHandler()
+		case is RandomDateTimeIntent:
+			return RandomDateTimeIntentHandler()
+		case is RandomFloatingPointNumberIntent:
+			return RandomFloatingPointNumberIntentHandler()
+		case is SortListIntent:
+			return SortListIntentHandler()
+		case is ShuffleListIntent:
+			return ShuffleListIntentHandler()
+		case is RemoveDuplicatesFromListIntent:
+			return RemoveDuplicatesFromListIntentHandler()
+		case is ReverseListIntent:
+			return ReverseListIntentHandler()
+		case is ClampNumberIntent:
+			return ClampNumberIntentHandler()
+		case is RemoveEmptyLinesIntent:
+			return RemoveEmptyLinesIntentHandler()
+		case is TransformTextWithJavaScriptIntent:
+			return TransformTextWithJavaScriptIntentHandler()
+		case is RandomColorIntent:
+			return RandomColorIntentHandler()
+		#if canImport(AppKit)
+		case is SampleColorIntent:
+			return SampleColorIntentHandler()
+		#endif
+		case is GetUniformTypeIdentifierIntent:
+			return GetUniformTypeIdentifierIntentHandler()
+		case is FormatDateDifferenceIntent:
+			return FormatDateDifferenceIntentHandler()
+		case is GetFilePathIntent:
+			return GetFilePathIntentHandler()
+		case is DateToUnixTimeIntent:
+			return DateToUnixTimeIntentHandler()
+		case is UnixTimeToDateIntent:
+			return UnixTimeToDateIntentHandler()
+		case is CreateURLIntent:
+			return CreateURLIntentHandler()
+		case is RemoveDuplicateLinesIntent:
+			return RemoveDuplicateLinesIntentHandler()
+		case is AddToListIntent:
+			return AddToListIntentHandler()
+		case is RandomTextIntent:
+			return RandomTextIntentHandler()
+		case is RemoveFromListIntent:
+			return RemoveFromListIntentHandler()
+		case is ApplyCaptureDateIntent:
+			return ApplyCaptureDateIntentHandler()
+		case is SetFileCreationModificationDateIntent:
+			return SetFileCreationModificationDateIntentHandler()
+		default:
+			assertionFailure("No handler for this intent")
+			return nil
+		}
+	}
+}

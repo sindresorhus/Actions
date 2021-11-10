@@ -1,0 +1,19 @@
+name: Action proposal
+description: Have an idea for a new action?
+title: 'Action proposal: '
+labels:
+  - new action
+  - evaluating
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before opening a new issue:
+        - Make sure the Shortcuts app doesn't already provide it
+        - Look for existing [open or closed rule proposals](https://github.com/sindresorhus/Actions/issues?q=is%3Aissue+label%3A%22new+action%22)
+  - type: textarea
+    validations:
+      required: true
+    attributes:
+      label: Description
+      description: Describe the action and what problems it solves.

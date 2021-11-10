@@ -1,0 +1,48 @@
+Supercharge your shortcuts with lots of useful actions.
+
+It provides additional actions for the Shortcuts app.
+
+The app is free without ads because I love making apps. Consider leaving a nice review.
+
+
+■ Actions
+
+- Add to List
+- Apply Capture Date
+- Clamp Number
+- Create URL
+- Date to Unix Time
+- Format Date Difference
+- Generate UUID
+- Get File Path
+- Get Uniform Type Identifier
+- Random Boolean
+- Random Color
+- Random Date and Time
+- Random Emoticon
+- Random Floating-Point Number
+- Random Text
+- Remove Duplicate Lines
+- Remove Duplicates from List
+- Remove Emoji
+- Remove Empty Lines
+- Remove from List
+- Reverse List
+- Sample Color from Screen (macOS-only)
+- Set Creation and Modification Date of File
+- Shuffle List
+- Sort List
+- Transform Text
+- Transform Text with JavaScript
+- Trim Whitespace
+- Unix Time to Date
+
+
+■ Support
+
+I'm open to suggestions for more actions. Submit ideas and other requests through the feedback button in the main app or to sindresorhus@gmail.com
+
+
+■ Open-source
+
+The app is open-source on GitHub (see the website).

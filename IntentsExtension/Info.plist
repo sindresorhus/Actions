@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSExtension</key>
+	<dict>
+		<key>NSExtensionAttributes</key>
+		<dict>
+			<key>IntentsRestrictedWhileLocked</key>
+			<array/>
+			<key>IntentsRestrictedWhileProtectedDataUnavailable</key>
+			<array/>
+			<key>IntentsSupported</key>
+			<array>
+				<string>AddToListIntent</string>
+				<string>ApplyCaptureDateIntent</string>
+				<string>ClampNumberIntent</string>
+				<string>CreateURLIntent</string>
+				<string>DateToUnixTimeIntent</string>
+				<string>FormatDateDifferenceIntent</string>
+				<string>GenerateUUIDIntent</string>
+				<string>GetFilePathIntent</string>
+				<string>GetUniformTypeIdentifierIntent</string>
+				<string>RandomBooleanIntent</string>
+				<string>RandomColorIntent</string>
+				<string>RandomDateTimeIntent</string>
+				<string>RandomEmojiIntent</string>
+				<string>RandomFloatingPointNumberIntent</string>
+				<string>RandomTextIntent</string>
+				<string>RemoveDuplicateLinesIntent</string>
+				<string>RemoveDuplicatesFromListIntent</string>
+				<string>RemoveEmojiIntent</string>
+				<string>RemoveEmptyLinesIntent</string>
+				<string>RemoveFromListIntent</string>
+				<string>ReverseListIntent</string>
+				<string>SampleColorIntent</string>
+				<string>SetFileCreationModificationDateIntent</string>
+				<string>ShuffleListIntent</string>
+				<string>SortListIntent</string>
+				<string>TransformTextIntent</string>
+				<string>TransformTextWithJavaScriptIntent</string>
+				<string>TrimWhitespaceIntent</string>
+				<string>UnixTimeToDateIntent</string>
+			</array>
+		</dict>
+		<key>NSExtensionPointIdentifier</key>
+		<string>com.apple.intents-service</string>
+		<key>NSExtensionPrincipalClass</key>
+		<string>$(PRODUCT_MODULE_NAME).IntentHandler</string>
+	</dict>
+</dict>
+</plist>
