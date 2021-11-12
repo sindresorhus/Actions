@@ -34,6 +34,7 @@ Requires macOS 12 or iOS 15 and later.
 - Format Date Difference
 - Generate UUID
 - Get File Path
+- Get Music Playlists <sup>(iOS-only)</sup>
 - Get Uniform Type Identifier
 - Random Boolean
 - Random Color

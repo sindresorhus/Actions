@@ -40,5 +40,5 @@
 
 ### Pull request
 
-- The pull request should be titled `Add FooBar action` where `FooBar` is the name of the action.
+- The pull request should be titled ``Add `Get Foo` action`` where `Get Foo` is the name of the action.
 - Include a `Fixes #12` notation in the pull request description referencing the related issue.

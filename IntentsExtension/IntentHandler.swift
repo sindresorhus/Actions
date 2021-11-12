@@ -71,6 +71,10 @@ final class IntentHandler: INExtension {
 			return SetFileCreationModificationDateIntentHandler()
 		case is CombineListsIntent:
 			return CombineListsIntentHandler()
+		#if canImport(UIKit)
+		case is GetMusicPlaylistsIntent:
+			return GetMusicPlaylistsIntentHandler()
+		#endif
 		default:
 			assertionFailure("No handler for this intent")
 			return nil

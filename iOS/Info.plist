@@ -15,6 +15,7 @@
 		<string>FormatDateDifferenceIntent</string>
 		<string>GenerateUUIDIntent</string>
 		<string>GetFilePathIntent</string>
+		<string>GetMusicPlaylistsIntent</string>
 		<string>GetUniformTypeIdentifierIntent</string>
 		<string>RandomBooleanIntent</string>
 		<string>RandomColorIntent</string>
