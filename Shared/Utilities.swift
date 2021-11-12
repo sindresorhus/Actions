@@ -1790,3 +1790,19 @@ extension URL {
 		)
 	}
 }
+
+
+extension Sequence {
+	func compact<T>() -> [T] where Element == T? {
+		// TODO: Make this `compactMap(\.self)` when https://bugs.swift.org/browse/SR-12897 is fixed.
+		compactMap { $0 }
+	}
+}
+
+
+extension Sequence where Element: Sequence {
+	func flatten() -> [Element.Element] {
+		// TODO: Make this `flatMap(\.self)` when https://bugs.swift.org/browse/SR-12897 is fixed.
+		flatMap { $0 }
+	}
+}

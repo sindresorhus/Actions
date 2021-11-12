@@ -45,7 +45,9 @@ struct ContentView: View {
 				#if canImport(AppKit)
 				.buttonStyle(.link)
 				#endif
-				.controlSize(.small)
+				// TODO: Make it small again when the app is more mature.
+//				.controlSize(.small)
+				.controlSize(.large)
 		}
 			.padding()
 			#if canImport(AppKit)

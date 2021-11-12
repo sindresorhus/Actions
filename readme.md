@@ -1,4 +1,5 @@
 <div align="center">
+	<br>
 	<a href="https://sindresorhus.com/actions">
 		<img src="Stuff/AppIcon-readme.png" width="200" height="200">
 	</a>
@@ -27,6 +28,7 @@ Requires macOS 12 or iOS 15 and later.
 - Add to List
 - Apply Capture Date
 - Clamp Number
+- Combine Lists
 - Create URL
 - Date to Unix Time
 - Format Date Difference

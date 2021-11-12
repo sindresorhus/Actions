@@ -40,6 +40,8 @@
 		E38EAAF42729CBDB0055451B /* GetFilePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38EAAF32729CBDB0055451B /* GetFilePath.swift */; };
 		E38EAAF82729D6DC0055451B /* DateToUnixTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38EAAF72729D6DC0055451B /* DateToUnixTime.swift */; };
 		E38EAAFA2729DD890055451B /* UnixTimeToDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38EAAF92729DD890055451B /* UnixTimeToDate.swift */; };
+		E38FB4E2273E8D6700FF3C9A /* CombineLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38FB4E1273E8D6700FF3C9A /* CombineLists.swift */; };
+		E38FB4E3273E8D6700FF3C9A /* CombineLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38FB4E1273E8D6700FF3C9A /* CombineLists.swift */; };
 		E39F4749272D3DDE00B99CB0 /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E324CA13271E98F300E7CA9B /* Intents.framework */; platformFilter = maccatalyst; };
 		E39F4750272D3DDE00B99CB0 /* IntentsExtension-iOS.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E39F4748272D3DDE00B99CB0 /* IntentsExtension-iOS.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E39F4755272D3DED00B99CB0 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E324CA16271E98F300E7CA9B /* IntentHandler.swift */; };
@@ -165,6 +167,7 @@
 		E38EAAF32729CBDB0055451B /* GetFilePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFilePath.swift; sourceTree = "<group>"; };
 		E38EAAF72729D6DC0055451B /* DateToUnixTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateToUnixTime.swift; sourceTree = "<group>"; };
 		E38EAAF92729DD890055451B /* UnixTimeToDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnixTimeToDate.swift; sourceTree = "<group>"; };
+		E38FB4E1273E8D6700FF3C9A /* CombineLists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineLists.swift; sourceTree = "<group>"; };
 		E39F4748272D3DDE00B99CB0 /* IntentsExtension-iOS.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "IntentsExtension-iOS.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E39F4774272D42E000B99CB0 /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/System/Library/Frameworks/IntentsUI.framework; sourceTree = DEVELOPER_DIR; };
 		E39F4776272D516E00B99CB0 /* iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOS.entitlements; sourceTree = "<group>"; };
@@ -329,6 +332,7 @@
 				E3C6C1A327366A4D0003F56E /* RemoveFromList.swift */,
 				E3EE403F273802FB009B3FED /* ApplyCaptureDate.swift */,
 				E371D5852739794400156765 /* SetFileCreationModificationDate.swift */,
+				E38FB4E1273E8D6700FF3C9A /* CombineLists.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -546,6 +550,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3F4F95E272C0C030008B54A /* CreateURL.swift in Sources */,
+				E38FB4E2273E8D6700FF3C9A /* CombineLists.swift in Sources */,
 				E3F1EE442726E2AF00091C44 /* ShuffleList.swift in Sources */,
 				E3C6C1A427366A4D0003F56E /* RemoveFromList.swift in Sources */,
 				E34D03762725BCD10065FC3B /* RandomBoolean.swift in Sources */,
@@ -600,6 +605,7 @@
 				E39F476B272D3DF600B99CB0 /* TrimWhitespace.swift in Sources */,
 				E39F4770272D3E0000B99CB0 /* Intents.intentdefinition in Sources */,
 				E39F475D272D3DF600B99CB0 /* FormatDateDifference.swift in Sources */,
+				E38FB4E3273E8D6700FF3C9A /* CombineLists.swift in Sources */,
 				E39F4773272D3EAE00B99CB0 /* Utilities.swift in Sources */,
 				E39F4756272D3DF000B99CB0 /* IntentUtilities.swift in Sources */,
 				E39F475C272D3DF600B99CB0 /* RandomColor.swift in Sources */,

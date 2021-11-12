@@ -69,6 +69,8 @@ final class IntentHandler: INExtension {
 			return ApplyCaptureDateIntentHandler()
 		case is SetFileCreationModificationDateIntent:
 			return SetFileCreationModificationDateIntentHandler()
+		case is CombineListsIntent:
+			return CombineListsIntentHandler()
 		default:
 			assertionFailure("No handler for this intent")
 			return nil

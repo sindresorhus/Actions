@@ -10,6 +10,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Add to List
 - Apply Capture Date
 - Clamp Number
+- Combine Lists
 - Create URL
 - Date to Unix Time
 - Format Date Difference
