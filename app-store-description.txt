@@ -13,6 +13,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Combine Lists
 - Create URL
 - Date to Unix Time
+- Filter List
 - Format Date Difference
 - Generate UUID
 - Get File Path

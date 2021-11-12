@@ -75,6 +75,8 @@ final class IntentHandler: INExtension {
 		case is GetMusicPlaylistsIntent:
 			return GetMusicPlaylistsIntentHandler()
 		#endif
+		case is FilterListIntent:
+			return FilterListIntentHandler()
 		default:
 			assertionFailure("No handler for this intent")
 			return nil

@@ -18,6 +18,7 @@
 				<string>CombineListsIntent</string>
 				<string>CreateURLIntent</string>
 				<string>DateToUnixTimeIntent</string>
+				<string>FilterListIntent</string>
 				<string>FormatDateDifferenceIntent</string>
 				<string>GenerateUUIDIntent</string>
 				<string>GetFilePathIntent</string>
