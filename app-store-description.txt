@@ -16,6 +16,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Filter List
 - Format Date Difference
 - Generate UUID
+- Get Emojis
 - Get File Path
 - Get Music Playlists (iOS-only)
 - Get Uniform Type Identifier
@@ -27,7 +28,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Random Text
 - Remove Duplicate Lines
 - Remove Duplicates from List
-- Remove Emoji
+- Remove Emojis
 - Remove Empty Lines
 - Remove from List
 - Reverse List

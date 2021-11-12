@@ -26,7 +26,7 @@
 		E3327E9B272D22DC00AD5CC7 /* AddToList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3327E9A272D22DC00AD5CC7 /* AddToList.swift */; };
 		E34D03742725BB1A0065FC3B /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FC71DC271EBE5B00C9D255 /* Utilities.swift */; };
 		E34D03762725BCD10065FC3B /* RandomBoolean.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34D03752725BCD10065FC3B /* RandomBoolean.swift */; };
-		E34D03782725C1340065FC3B /* RemoveEmoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34D03772725C1340065FC3B /* RemoveEmoji.swift */; };
+		E34D03782725C1340065FC3B /* RemoveEmojis.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34D03772725C1340065FC3B /* RemoveEmojis.swift */; };
 		E34D037A2725C2D30065FC3B /* TrimWhitespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34D03792725C2D30065FC3B /* TrimWhitespace.swift */; };
 		E3660AF12727F51300C038AF /* ClampNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3660AF02727F51300C038AF /* ClampNumber.swift */; };
 		E3660AF32728017600C038AF /* RemoveEmptyLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3660AF22728017600C038AF /* RemoveEmptyLines.swift */; };
@@ -47,6 +47,8 @@
 		E38FB4E9273EB47B00FF3C9A /* FilterList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38FB4E7273EB47B00FF3C9A /* FilterList.swift */; };
 		E38FB4EB273EDCD600FF3C9A /* TruncateList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38FB4EA273EDCD600FF3C9A /* TruncateList.swift */; };
 		E38FB4EC273EDCD600FF3C9A /* TruncateList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38FB4EA273EDCD600FF3C9A /* TruncateList.swift */; };
+		E38FB4EE273EE68C00FF3C9A /* GetEmojis.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38FB4ED273EE68C00FF3C9A /* GetEmojis.swift */; };
+		E38FB4EF273EE68C00FF3C9A /* GetEmojis.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38FB4ED273EE68C00FF3C9A /* GetEmojis.swift */; };
 		E39F4749272D3DDE00B99CB0 /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E324CA13271E98F300E7CA9B /* Intents.framework */; platformFilter = maccatalyst; };
 		E39F4750272D3DDE00B99CB0 /* IntentsExtension-iOS.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E39F4748272D3DDE00B99CB0 /* IntentsExtension-iOS.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E39F4755272D3DED00B99CB0 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E324CA16271E98F300E7CA9B /* IntentHandler.swift */; };
@@ -71,7 +73,7 @@
 		E39F4769272D3DF600B99CB0 /* RandomFloatingPointNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F421132726958100080453 /* RandomFloatingPointNumber.swift */; };
 		E39F476A272D3DF600B99CB0 /* TransformText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38715872725A6F4003155B0 /* TransformText.swift */; };
 		E39F476B272D3DF600B99CB0 /* TrimWhitespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34D03792725C2D30065FC3B /* TrimWhitespace.swift */; };
-		E39F476C272D3DF600B99CB0 /* RemoveEmoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34D03772725C1340065FC3B /* RemoveEmoji.swift */; };
+		E39F476C272D3DF600B99CB0 /* RemoveEmojis.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34D03772725C1340065FC3B /* RemoveEmojis.swift */; };
 		E39F476D272D3DF600B99CB0 /* GetFilePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38EAAF32729CBDB0055451B /* GetFilePath.swift */; };
 		E39F476E272D3DF600B99CB0 /* RandomBoolean.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34D03752725BCD10065FC3B /* RandomBoolean.swift */; };
 		E39F476F272D3DF600B99CB0 /* GetUniformTypeIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38EAAEF2729B58F0055451B /* GetUniformTypeIdentifier.swift */; };
@@ -159,7 +161,7 @@
 		E3327E98272C79F900AD5CC7 /* RemoveDuplicateLines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveDuplicateLines.swift; sourceTree = "<group>"; };
 		E3327E9A272D22DC00AD5CC7 /* AddToList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToList.swift; sourceTree = "<group>"; };
 		E34D03752725BCD10065FC3B /* RandomBoolean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomBoolean.swift; sourceTree = "<group>"; };
-		E34D03772725C1340065FC3B /* RemoveEmoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveEmoji.swift; sourceTree = "<group>"; };
+		E34D03772725C1340065FC3B /* RemoveEmojis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveEmojis.swift; sourceTree = "<group>"; };
 		E34D03792725C2D30065FC3B /* TrimWhitespace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrimWhitespace.swift; sourceTree = "<group>"; };
 		E3660AF02727F51300C038AF /* ClampNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClampNumber.swift; sourceTree = "<group>"; };
 		E3660AF22728017600C038AF /* RemoveEmptyLines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveEmptyLines.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 		E38FB4E4273E963300FF3C9A /* GetMusicPlaylists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMusicPlaylists.swift; sourceTree = "<group>"; };
 		E38FB4E7273EB47B00FF3C9A /* FilterList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterList.swift; sourceTree = "<group>"; };
 		E38FB4EA273EDCD600FF3C9A /* TruncateList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TruncateList.swift; sourceTree = "<group>"; };
+		E38FB4ED273EE68C00FF3C9A /* GetEmojis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GetEmojis.swift; path = IntentsExtension/Actions/GetEmojis.swift; sourceTree = SOURCE_ROOT; };
 		E39F4748272D3DDE00B99CB0 /* IntentsExtension-iOS.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "IntentsExtension-iOS.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E39F4774272D42E000B99CB0 /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/System/Library/Frameworks/IntentsUI.framework; sourceTree = DEVELOPER_DIR; };
 		E39F4776272D516E00B99CB0 /* iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOS.entitlements; sourceTree = "<group>"; };
@@ -315,7 +318,7 @@
 				E38715832725A303003155B0 /* GenerateUUID.swift */,
 				E38715892725A7C6003155B0 /* RandomEmoji.swift */,
 				E34D03752725BCD10065FC3B /* RandomBoolean.swift */,
-				E34D03772725C1340065FC3B /* RemoveEmoji.swift */,
+				E34D03772725C1340065FC3B /* RemoveEmojis.swift */,
 				E34D03792725C2D30065FC3B /* TrimWhitespace.swift */,
 				E3F4211127268FE700080453 /* RandomDateTime.swift */,
 				E3F421132726958100080453 /* RandomFloatingPointNumber.swift */,
@@ -344,6 +347,7 @@
 				E38FB4E4273E963300FF3C9A /* GetMusicPlaylists.swift */,
 				E38FB4E7273EB47B00FF3C9A /* FilterList.swift */,
 				E38FB4EA273EDCD600FF3C9A /* TruncateList.swift */,
+				E38FB4ED273EE68C00FF3C9A /* GetEmojis.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -579,12 +583,13 @@
 				E34D037A2725C2D30065FC3B /* TrimWhitespace.swift in Sources */,
 				E38EAAF22729C66B0055451B /* FormatDateDifference.swift in Sources */,
 				E324CA17271E98F300E7CA9B /* IntentHandler.swift in Sources */,
+				E38FB4EE273EE68C00FF3C9A /* GetEmojis.swift in Sources */,
 				E3F421142726958100080453 /* RandomFloatingPointNumber.swift in Sources */,
 				E3DF2EBB27287405009127CA /* TransformTextWithJavaScript.swift in Sources */,
 				E3327E9B272D22DC00AD5CC7 /* AddToList.swift in Sources */,
 				E30F466E272FA446009A358B /* RandomText.swift in Sources */,
 				E38715882725A6F4003155B0 /* TransformText.swift in Sources */,
-				E34D03782725C1340065FC3B /* RemoveEmoji.swift in Sources */,
+				E34D03782725C1340065FC3B /* RemoveEmojis.swift in Sources */,
 				E3F1EE422726E0CE00091C44 /* SortList.swift in Sources */,
 				E38EAAFA2729DD890055451B /* UnixTimeToDate.swift in Sources */,
 				E3F1EE482727074B00091C44 /* ReverseList.swift in Sources */,
@@ -622,6 +627,7 @@
 				E39F4773272D3EAE00B99CB0 /* Utilities.swift in Sources */,
 				E39F4756272D3DF000B99CB0 /* IntentUtilities.swift in Sources */,
 				E39F475C272D3DF600B99CB0 /* RandomColor.swift in Sources */,
+				E38FB4EF273EE68C00FF3C9A /* GetEmojis.swift in Sources */,
 				E39F4766272D3DF600B99CB0 /* ClampNumber.swift in Sources */,
 				E39F4761272D3DF600B99CB0 /* UnixTimeToDate.swift in Sources */,
 				E39F475E272D3DF600B99CB0 /* ShuffleList.swift in Sources */,
@@ -637,7 +643,7 @@
 				E38FB4E9273EB47B00FF3C9A /* FilterList.swift in Sources */,
 				E39F4757272D3DF600B99CB0 /* AddToList.swift in Sources */,
 				E38FB4EC273EDCD600FF3C9A /* TruncateList.swift in Sources */,
-				E39F476C272D3DF600B99CB0 /* RemoveEmoji.swift in Sources */,
+				E39F476C272D3DF600B99CB0 /* RemoveEmojis.swift in Sources */,
 				E39F4763272D3DF600B99CB0 /* GenerateUUID.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

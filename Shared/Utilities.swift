@@ -657,17 +657,47 @@ extension String {
 }
 
 
+extension Character {
+	var isSimpleEmoji: Bool {
+		guard let firstScalar = unicodeScalars.first else {
+			return false
+		}
+
+		return firstScalar.properties.isEmoji && firstScalar.value > 0x238C
+	}
+
+	var isCombinedIntoEmoji: Bool {
+		unicodeScalars.count > 1 && unicodeScalars.first?.properties.isEmoji ?? false
+	}
+
+	var isEmoji: Bool { isSimpleEmoji || isCombinedIntoEmoji }
+}
+
+
 extension String {
 	/**
-	Returns a version of the string without emoji.
+	Get all the emojis in the string.
 
 	```
-	"foo🦄bar🌈👩‍👩‍👦‍👦".removingEmoji()
+	"foo🦄bar🌈👩‍👩‍👦‍👦".emojis
+	//=> ["🦄", "🌈", "👩‍👩‍👦‍👦"]
+	```
+	*/
+	var emojis: [Character] { filter(\.isEmoji) }
+}
+
+
+extension String {
+	/**
+	Returns a version of the string without emojis.
+
+	```
+	"foo🦄✈️bar🌈👩‍👩‍👦‍👦".removingEmojis()
 	//=> "foobar"
 	```
 	*/
-	func removingEmoji() -> Self {
-		Self(unicodeScalars.filter { !$0.properties.isEmojiPresentation })
+	func removingEmojis() -> Self {
+		Self(filter { !$0.isEmoji })
 	}
 }
 

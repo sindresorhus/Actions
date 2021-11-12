@@ -34,6 +34,7 @@ Requires macOS 12 or iOS 15 and later.
 - Filter List
 - Format Date Difference
 - Generate UUID
+- Get Emojis
 - Get File Path
 - Get Music Playlists <sup>(iOS-only)</sup>
 - Get Uniform Type Identifier
@@ -45,7 +46,7 @@ Requires macOS 12 or iOS 15 and later.
 - Random Text
 - Remove Duplicate Lines
 - Remove Duplicates from List
-- Remove Emoji
+- Remove Emojis
 - Remove Empty Lines
 - Remove from List
 - Reverse List

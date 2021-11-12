@@ -784,7 +784,7 @@
 			<key>INIntentConfigurable</key>
 			<true/>
 			<key>INIntentDescription</key>
-			<string>Removes all emoji in the input text.</string>
+			<string>Removes all emojis in the input text.</string>
 			<key>INIntentDescriptionID</key>
 			<string>4vTirq</string>
 			<key>INIntentIneligibleForSuggestions</key>
@@ -890,7 +890,7 @@
 				</array>
 			</dict>
 			<key>INIntentTitle</key>
-			<string>Remove Emoji</string>
+			<string>Remove Emojis</string>
 			<key>INIntentTitleID</key>
 			<string>O9kvt3</string>
 			<key>INIntentType</key>
@@ -7083,6 +7083,130 @@
 			<string>Truncate List</string>
 			<key>INIntentTitleID</key>
 			<string>iEDtdF</string>
+			<key>INIntentType</key>
+			<string>Custom</string>
+			<key>INIntentVerb</key>
+			<string>Do</string>
+		</dict>
+		<dict>
+			<key>INIntentCategory</key>
+			<string>generic</string>
+			<key>INIntentConfigurable</key>
+			<true/>
+			<key>INIntentDescription</key>
+			<string>Gets all emojis in the input text.</string>
+			<key>INIntentDescriptionID</key>
+			<string>rAk4qi</string>
+			<key>INIntentIneligibleForSuggestions</key>
+			<true/>
+			<key>INIntentInput</key>
+			<string>text</string>
+			<key>INIntentKeyParameter</key>
+			<string>text</string>
+			<key>INIntentLastParameterTag</key>
+			<integer>1</integer>
+			<key>INIntentManagedParameterCombinations</key>
+			<dict>
+				<key>text</key>
+				<dict>
+					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
+					<true/>
+					<key>INIntentParameterCombinationUpdatesLinked</key>
+					<true/>
+				</dict>
+			</dict>
+			<key>INIntentName</key>
+			<string>GetEmojis</string>
+			<key>INIntentParameters</key>
+			<array>
+				<dict>
+					<key>INIntentParameterConfigurable</key>
+					<true/>
+					<key>INIntentParameterDisplayName</key>
+					<string>Text</string>
+					<key>INIntentParameterDisplayNameID</key>
+					<string>hyIwYQ</string>
+					<key>INIntentParameterDisplayPriority</key>
+					<integer>1</integer>
+					<key>INIntentParameterMetadata</key>
+					<dict>
+						<key>INIntentParameterMetadataCapitalization</key>
+						<string>None</string>
+						<key>INIntentParameterMetadataDefaultValueID</key>
+						<string>Yaj4HX</string>
+						<key>INIntentParameterMetadataDisableAutocorrect</key>
+						<true/>
+						<key>INIntentParameterMetadataDisableSmartDashes</key>
+						<true/>
+						<key>INIntentParameterMetadataDisableSmartQuotes</key>
+						<true/>
+					</dict>
+					<key>INIntentParameterName</key>
+					<string>text</string>
+					<key>INIntentParameterPromptDialogs</key>
+					<array>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>Configuration</string>
+						</dict>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>Primary</string>
+						</dict>
+					</array>
+					<key>INIntentParameterTag</key>
+					<integer>1</integer>
+					<key>INIntentParameterType</key>
+					<string>String</string>
+				</dict>
+			</array>
+			<key>INIntentResponse</key>
+			<dict>
+				<key>INIntentResponseCodes</key>
+				<array>
+					<dict>
+						<key>INIntentResponseCodeName</key>
+						<string>success</string>
+						<key>INIntentResponseCodeSuccess</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>INIntentResponseCodeName</key>
+						<string>failure</string>
+					</dict>
+				</array>
+				<key>INIntentResponseLastParameterTag</key>
+				<integer>2</integer>
+				<key>INIntentResponseOutput</key>
+				<string>result</string>
+				<key>INIntentResponseParameters</key>
+				<array>
+					<dict>
+						<key>INIntentResponseParameterDisplayName</key>
+						<string>Emojis</string>
+						<key>INIntentResponseParameterDisplayNameID</key>
+						<string>ohAWFw</string>
+						<key>INIntentResponseParameterDisplayPriority</key>
+						<integer>1</integer>
+						<key>INIntentResponseParameterName</key>
+						<string>result</string>
+						<key>INIntentResponseParameterSupportsMultipleValues</key>
+						<true/>
+						<key>INIntentResponseParameterTag</key>
+						<integer>2</integer>
+						<key>INIntentResponseParameterType</key>
+						<string>String</string>
+					</dict>
+				</array>
+			</dict>
+			<key>INIntentTitle</key>
+			<string>Get Emojis</string>
+			<key>INIntentTitleID</key>
+			<string>VrqkFO</string>
 			<key>INIntentType</key>
 			<string>Custom</string>
 			<key>INIntentVerb</key>
