@@ -77,6 +77,8 @@ final class IntentHandler: INExtension {
 		#endif
 		case is FilterListIntent:
 			return FilterListIntentHandler()
+		case is TruncateListIntent:
+			return TruncateListIntentHandler()
 		default:
 			assertionFailure("No handler for this intent")
 			return nil

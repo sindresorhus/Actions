@@ -37,6 +37,7 @@
 		<string>TransformTextIntent</string>
 		<string>TransformTextWithJavaScriptIntent</string>
 		<string>TrimWhitespaceIntent</string>
+		<string>TruncateListIntent</string>
 		<string>UnixTimeToDateIntent</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>

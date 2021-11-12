@@ -45,6 +45,8 @@
 		E38FB4E6273E963300FF3C9A /* GetMusicPlaylists.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38FB4E4273E963300FF3C9A /* GetMusicPlaylists.swift */; };
 		E38FB4E8273EB47B00FF3C9A /* FilterList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38FB4E7273EB47B00FF3C9A /* FilterList.swift */; };
 		E38FB4E9273EB47B00FF3C9A /* FilterList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38FB4E7273EB47B00FF3C9A /* FilterList.swift */; };
+		E38FB4EB273EDCD600FF3C9A /* TruncateList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38FB4EA273EDCD600FF3C9A /* TruncateList.swift */; };
+		E38FB4EC273EDCD600FF3C9A /* TruncateList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38FB4EA273EDCD600FF3C9A /* TruncateList.swift */; };
 		E39F4749272D3DDE00B99CB0 /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E324CA13271E98F300E7CA9B /* Intents.framework */; platformFilter = maccatalyst; };
 		E39F4750272D3DDE00B99CB0 /* IntentsExtension-iOS.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E39F4748272D3DDE00B99CB0 /* IntentsExtension-iOS.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E39F4755272D3DED00B99CB0 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E324CA16271E98F300E7CA9B /* IntentHandler.swift */; };
@@ -173,6 +175,7 @@
 		E38FB4E1273E8D6700FF3C9A /* CombineLists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineLists.swift; sourceTree = "<group>"; };
 		E38FB4E4273E963300FF3C9A /* GetMusicPlaylists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMusicPlaylists.swift; sourceTree = "<group>"; };
 		E38FB4E7273EB47B00FF3C9A /* FilterList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterList.swift; sourceTree = "<group>"; };
+		E38FB4EA273EDCD600FF3C9A /* TruncateList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TruncateList.swift; sourceTree = "<group>"; };
 		E39F4748272D3DDE00B99CB0 /* IntentsExtension-iOS.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "IntentsExtension-iOS.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E39F4774272D42E000B99CB0 /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/System/Library/Frameworks/IntentsUI.framework; sourceTree = DEVELOPER_DIR; };
 		E39F4776272D516E00B99CB0 /* iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOS.entitlements; sourceTree = "<group>"; };
@@ -340,6 +343,7 @@
 				E38FB4E1273E8D6700FF3C9A /* CombineLists.swift */,
 				E38FB4E4273E963300FF3C9A /* GetMusicPlaylists.swift */,
 				E38FB4E7273EB47B00FF3C9A /* FilterList.swift */,
+				E38FB4EA273EDCD600FF3C9A /* TruncateList.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -589,6 +593,7 @@
 				E371D5862739794400156765 /* SetFileCreationModificationDate.swift in Sources */,
 				E38FB4E8273EB47B00FF3C9A /* FilterList.swift in Sources */,
 				E3DF2EBF27293225009127CA /* SampleColor.swift in Sources */,
+				E38FB4EB273EDCD600FF3C9A /* TruncateList.swift in Sources */,
 				E3DF2EBD272931C3009127CA /* RandomColor.swift in Sources */,
 				E3F4211227268FE700080453 /* RandomDateTime.swift in Sources */,
 			);
@@ -631,6 +636,7 @@
 				E39F4762272D3DF600B99CB0 /* RandomEmoji.swift in Sources */,
 				E38FB4E9273EB47B00FF3C9A /* FilterList.swift in Sources */,
 				E39F4757272D3DF600B99CB0 /* AddToList.swift in Sources */,
+				E38FB4EC273EDCD600FF3C9A /* TruncateList.swift in Sources */,
 				E39F476C272D3DF600B99CB0 /* RemoveEmoji.swift in Sources */,
 				E39F4763272D3DF600B99CB0 /* GenerateUUID.swift in Sources */,
 			);

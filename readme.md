@@ -56,6 +56,7 @@ Requires macOS 12 or iOS 15 and later.
 - Transform Text
 - Transform Text with JavaScript
 - Trim Whitespace
+- Truncate List
 - Unix Time to Date
 
 *(And many more planned!)*
