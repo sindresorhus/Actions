@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		E30F466E272FA446009A358B /* RandomText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30F466D272FA446009A358B /* RandomText.swift */; };
 		E30F466F272FA446009A358B /* RandomText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30F466D272FA446009A358B /* RandomText.swift */; };
+		E324536E273FB40600B07EBF /* SendFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = E324536D273FB40600B07EBF /* SendFeedback.swift */; };
+		E324536F273FB40600B07EBF /* SendFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = E324536D273FB40600B07EBF /* SendFeedback.swift */; };
 		E324C9FF271E972300E7CA9B /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = E324C9EF271E972200E7CA9B /* App.swift */; };
 		E324CA00271E972300E7CA9B /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = E324C9EF271E972200E7CA9B /* App.swift */; };
 		E324CA01271E972300E7CA9B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E324C9F0271E972200E7CA9B /* ContentView.swift */; };
@@ -144,6 +146,7 @@
 
 /* Begin PBXFileReference section */
 		E30F466D272FA446009A358B /* RandomText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomText.swift; sourceTree = "<group>"; };
+		E324536D273FB40600B07EBF /* SendFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SendFeedback.swift; path = IntentsExtension/Actions/SendFeedback.swift; sourceTree = SOURCE_ROOT; };
 		E324C9EF271E972200E7CA9B /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		E324C9F0271E972200E7CA9B /* ContentView.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; tabWidth = 4; };
 		E324C9F1271E972300E7CA9B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -348,6 +351,7 @@
 				E38FB4E7273EB47B00FF3C9A /* FilterList.swift */,
 				E38FB4EA273EDCD600FF3C9A /* TruncateList.swift */,
 				E38FB4ED273EE68C00FF3C9A /* GetEmojis.swift */,
+				E324536D273FB40600B07EBF /* SendFeedback.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -594,6 +598,7 @@
 				E38EAAFA2729DD890055451B /* UnixTimeToDate.swift in Sources */,
 				E3F1EE482727074B00091C44 /* ReverseList.swift in Sources */,
 				E387158A2725A7C6003155B0 /* RandomEmoji.swift in Sources */,
+				E324536E273FB40600B07EBF /* SendFeedback.swift in Sources */,
 				E3660AF32728017600C038AF /* RemoveEmptyLines.swift in Sources */,
 				E371D5862739794400156765 /* SetFileCreationModificationDate.swift in Sources */,
 				E38FB4E8273EB47B00FF3C9A /* FilterList.swift in Sources */,
@@ -638,6 +643,7 @@
 				E39F475A272D3DF600B99CB0 /* RandomDateTime.swift in Sources */,
 				E39F476D272D3DF600B99CB0 /* GetFilePath.swift in Sources */,
 				E39F475F272D3DF600B99CB0 /* SortList.swift in Sources */,
+				E324536F273FB40600B07EBF /* SendFeedback.swift in Sources */,
 				E39F476A272D3DF600B99CB0 /* TransformText.swift in Sources */,
 				E39F4762272D3DF600B99CB0 /* RandomEmoji.swift in Sources */,
 				E38FB4E9273EB47B00FF3C9A /* FilterList.swift in Sources */,

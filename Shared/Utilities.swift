@@ -42,20 +42,40 @@ enum SSApp {
 		}
 	}()
 
-	static func openSendFeedbackPage() {
-		let metadata =
-			"""
-			\(SSApp.name) \(SSApp.versionWithBuild) - \(SSApp.id)
-			macOS \(Device.osVersion)
-			\(Device.modelIdentifier)
-			"""
+	private static func getFeedbackMetadata() -> String {
+		"""
+		\(SSApp.name) \(SSApp.versionWithBuild) - \(SSApp.id)
+		macOS \(Device.osVersion)
+		\(Device.modelIdentifier)
+		"""
+	}
 
+	static func openSendFeedbackPage() {
 		let query: [String: String] = [
 			"product": SSApp.name,
-			"metadata": metadata
+			"metadata": getFeedbackMetadata()
 		]
 
-		URL("https://sindresorhus.com/feedback/").addingDictionaryAsQuery(query).open()
+		URL("https://sindresorhus.com/feedback/")
+			.addingDictionaryAsQuery(query)
+			.open()
+	}
+
+	static func sendFeedback(
+		email: String,
+		message: String
+	) async throws {
+		let endpoint = URL(string: "https://formcarry.com/s/UBfgr97yfY")!
+
+		let parameters = [
+			"_gotcha": nil, // Spam prevention.
+			"product": SSApp.name,
+			"metadata": getFeedbackMetadata(),
+			"email": email,
+			"message": message
+		]
+
+		_ = try await URLSession.shared.json(.post, url: endpoint, parameters: parameters as [String: Any])
 	}
 }
 
@@ -1842,5 +1862,136 @@ extension NSRegularExpression {
 	func matches(_ string: String) -> Bool {
 		let range = NSRange(location: 0, length: string.utf16.count)
 		return firstMatch(in: string, options: [], range: range) != nil
+	}
+}
+
+
+extension URLResponse {
+	/**
+	Get the `HTTPURLResponse`.
+	*/
+	var http: HTTPURLResponse? { self as? HTTPURLResponse }
+
+	func throwIfHTTPResponseButNotSuccessStatusCode() throws {
+		guard let httpURLResponse = http else {
+			return
+		}
+
+		try httpURLResponse.throwIfNotSuccessStatusCode()
+	}
+}
+
+
+extension HTTPURLResponse {
+	struct StatusCodeError: LocalizedError {
+		let statusCode: Int
+
+		var errorDescription: String {
+			HTTPURLResponse.localizedString(forStatusCode: statusCode)
+		}
+	}
+
+	/**
+	`true` if the status code is in `200...299` range.
+	*/
+	var hasSuccessStatusCode: Bool { (200...299).contains(statusCode) }
+
+	func throwIfNotSuccessStatusCode() throws {
+		guard !hasSuccessStatusCode else {
+			return
+		}
+
+		throw StatusCodeError(statusCode: statusCode)
+	}
+}
+
+
+extension URLRequest {
+	enum Method: String {
+		case get
+		case post
+		case delete
+		case put
+		case head
+	}
+
+	enum ContentType {
+		static let json = "application/json"
+	}
+
+	static func json(
+		_ method: Method,
+		url: URL,
+		data: Data? = nil
+	) -> Self {
+		var request = self.init(url: url)
+		request.method = method
+		request.addValue(ContentType.json, forHTTPHeaderField: "Accept")
+		request.addValue(ContentType.json, forHTTPHeaderField: "Content-Type")
+
+		if let data = data {
+			request.httpBody = data
+		}
+
+		return request
+	}
+
+	static func json(
+		_ method: Method,
+		url: URL,
+		parameters: [String: Any]
+	) throws -> Self {
+		json(
+			method,
+			url: url,
+			data: try JSONSerialization.data(withJSONObject: parameters, options: [])
+		)
+	}
+
+	/**
+	Strongly-typed version of `httpMethod`.
+	*/
+	var method: Method {
+		get {
+			guard let httpMethod = httpMethod else {
+				return .get
+			}
+
+			return Method(rawValue: httpMethod.lowercased())!
+		}
+		set {
+			httpMethod = newValue.rawValue
+		}
+	}
+}
+
+
+extension URLSession {
+	enum JSONRequestError: Error {
+		case nonObject
+	}
+
+	/**
+	Send a JSON request.
+
+	- Note: This method assumes the response is a JSON object.
+	*/
+	func json(
+		_ method: URLRequest.Method,
+		url: URL,
+		parameters: [String: Any]
+	) async throws -> ([String: Any], URLResponse) {
+		let request = try URLRequest.json(method, url: url, parameters: parameters)
+		let (data, response) = try await data(for: request)
+
+		try response.throwIfHTTPResponseButNotSuccessStatusCode()
+
+		let json = try JSONSerialization.jsonObject(with: data, options: [])
+
+		guard let dictionary = json as? [String: Any] else {
+			throw JSONRequestError.nonObject
+		}
+
+		return (dictionary, response)
 	}
 }

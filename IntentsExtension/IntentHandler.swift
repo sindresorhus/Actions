@@ -81,6 +81,8 @@ final class IntentHandler: INExtension {
 			return TruncateListIntentHandler()
 		case is GetEmojisIntent:
 			return GetEmojisIntentHandler()
+		case is SendFeedbackIntent:
+			return SendFeedbackIntentHandler()
 		default:
 			assertionFailure("No handler for this intent")
 			return nil

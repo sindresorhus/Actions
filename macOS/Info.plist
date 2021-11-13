@@ -34,6 +34,7 @@
 		<string>RemoveFromListIntent</string>
 		<string>ReverseListIntent</string>
 		<string>SampleColorIntent</string>
+		<string>SendFeedbackIntent</string>
 		<string>SetFileCreationModificationDateIntent</string>
 		<string>ShuffleListIntent</string>
 		<string>SortListIntent</string>
