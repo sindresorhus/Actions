@@ -7111,6 +7111,10 @@
 				<dict>
 					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
 					<true/>
+					<key>INIntentParameterCombinationTitle</key>
+					<string>Get emojis in ${text}</string>
+					<key>INIntentParameterCombinationTitleID</key>
+					<string>a0UFSU</string>
 					<key>INIntentParameterCombinationUpdatesLinked</key>
 					<true/>
 				</dict>
