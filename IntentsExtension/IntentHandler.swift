@@ -83,6 +83,10 @@ final class IntentHandler: INExtension {
 			return GetEmojisIntentHandler()
 		case is SendFeedbackIntent:
 			return SendFeedbackIntentHandler()
+		#if canImport(UIKit)
+		case is IsAudioPlayingIntent:
+			return IsAudioPlayingIntentHandler()
+		#endif
 		default:
 			assertionFailure("No handler for this intent")
 			return nil

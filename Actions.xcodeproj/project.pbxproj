@@ -30,6 +30,7 @@
 		E34D03762725BCD10065FC3B /* RandomBoolean.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34D03752725BCD10065FC3B /* RandomBoolean.swift */; };
 		E34D03782725C1340065FC3B /* RemoveEmojis.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34D03772725C1340065FC3B /* RemoveEmojis.swift */; };
 		E34D037A2725C2D30065FC3B /* TrimWhitespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34D03792725C2D30065FC3B /* TrimWhitespace.swift */; };
+		E357226A273FE6BF0069070A /* IsAudioPlaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3572269273FE6BF0069070A /* IsAudioPlaying.swift */; };
 		E3660AF12727F51300C038AF /* ClampNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3660AF02727F51300C038AF /* ClampNumber.swift */; };
 		E3660AF32728017600C038AF /* RemoveEmptyLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3660AF22728017600C038AF /* RemoveEmptyLines.swift */; };
 		E371D5862739794400156765 /* SetFileCreationModificationDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E371D5852739794400156765 /* SetFileCreationModificationDate.swift */; };
@@ -166,6 +167,7 @@
 		E34D03752725BCD10065FC3B /* RandomBoolean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomBoolean.swift; sourceTree = "<group>"; };
 		E34D03772725C1340065FC3B /* RemoveEmojis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveEmojis.swift; sourceTree = "<group>"; };
 		E34D03792725C2D30065FC3B /* TrimWhitespace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrimWhitespace.swift; sourceTree = "<group>"; };
+		E3572269273FE6BF0069070A /* IsAudioPlaying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsAudioPlaying.swift; sourceTree = "<group>"; };
 		E3660AF02727F51300C038AF /* ClampNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClampNumber.swift; sourceTree = "<group>"; };
 		E3660AF22728017600C038AF /* RemoveEmptyLines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveEmptyLines.swift; sourceTree = "<group>"; };
 		E371D5852739794400156765 /* SetFileCreationModificationDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetFileCreationModificationDate.swift; sourceTree = "<group>"; };
@@ -352,6 +354,7 @@
 				E38FB4EA273EDCD600FF3C9A /* TruncateList.swift */,
 				E38FB4ED273EE68C00FF3C9A /* GetEmojis.swift */,
 				E324536D273FB40600B07EBF /* SendFeedback.swift */,
+				E3572269273FE6BF0069070A /* IsAudioPlaying.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -637,6 +640,7 @@
 				E39F4761272D3DF600B99CB0 /* UnixTimeToDate.swift in Sources */,
 				E39F475E272D3DF600B99CB0 /* ShuffleList.swift in Sources */,
 				E371D5872739794400156765 /* SetFileCreationModificationDate.swift in Sources */,
+				E357226A273FE6BF0069070A /* IsAudioPlaying.swift in Sources */,
 				E39F4758272D3DF600B99CB0 /* RemoveDuplicatesFromList.swift in Sources */,
 				E38FB4E6273E963300FF3C9A /* GetMusicPlaylists.swift in Sources */,
 				E30F466F272FA446009A358B /* RandomText.swift in Sources */,
