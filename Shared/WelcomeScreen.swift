@@ -1,17 +1,13 @@
 import SwiftUI
 
-struct ContentView: View {
+struct WelcomeScreen: View {
 	@Environment(\.dynamicTypeSize) private var dynamicTypeSize
-	@State private var writeTextData: WriteTextScreen.Data?
-	@EnvironmentObject private var appState: AppState
 
 	var body: some View {
 		VStack(spacing: 16) {
 			Spacer()
 			VStack(spacing: 0) {
-				Image("AppIconForView")
-					.resizable()
-					.aspectRatio(contentMode: .fit)
+				AppIcon()
 					.frame(height: 200)
 				Text(SSApp.name)
 					.font(.system(size: 40, weight: .heavy))
@@ -48,41 +44,16 @@ struct ContentView: View {
 				// TODO: Make it small again when the app is more mature.
 //				.controlSize(.small)
 				.controlSize(.large)
+				.padding(.bottom, 10) // TODO: Remove this at some point.
 		}
 			.padding()
 			#if canImport(AppKit)
 			.padding()
 			.padding(.vertical)
-			.frame(width: 440)
-			.windowLevel(.floating)
-			.sheet(item: $writeTextData) {
-				WriteTextScreen(data: $0)
-			}
-			.onChange(of: appState.userActivity) {
-				guard
-					let intent = $0?.interaction?.intent as? WriteTextIntent
-				else {
-					return // swiftlint:disable:this implicit_return
-				}
-
-				writeTextData = .init(
-					title: intent.editorTitle,
-					text: intent.text?.nilIfEmptyOrWhitespace ?? ""
-				)
-			}
 			#elseif canImport(UIKit)
 			.frame(maxWidth: dynamicTypeSize.isAccessibilitySize ? .infinity : 540)
 			.embedInScrollViewIfAccessibilitySize()
-			.fullScreenCover(item: $writeTextData) {
-				WriteTextScreen(data: $0)
-			}
 			#endif
-			.onContinueIntent(WriteTextIntent.self) { intent, _ in
-				writeTextData = .init(
-					title: intent.editorTitle,
-					text: intent.text?.nilIfEmptyOrWhitespace ?? ""
-				)
-			}
 			.task {
 				#if DEBUG
 				openShortcutsApp()
@@ -90,6 +61,7 @@ struct ContentView: View {
 			}
 	}
 
+	@MainActor
 	private func openShortcutsApp() {
 		#if DEBUG
 		ShortcutsApp.open()
@@ -103,8 +75,8 @@ struct ContentView: View {
 	}
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct WelcomeScreen_Previews: PreviewProvider {
 	static var previews: some View {
-		ContentView()
+		WelcomeScreen()
 	}
 }

@@ -17,7 +17,7 @@ struct ActionsApp: App {
 
 	var body: some Scene {
 		WindowGroup {
-			ContentView()
+			MainScreen()
 				.environmentObject(appState)
 		}
 			#if canImport(AppKit)

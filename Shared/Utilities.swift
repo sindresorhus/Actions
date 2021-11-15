@@ -2274,3 +2274,21 @@ extension View {
 		}
 	}
 }
+
+
+extension View {
+	/**
+	Present a fullscreen cover on iOS and a sheet on macOS.
+	*/
+	func fullScreenCoverOrSheetIfMacOS<Item, Content>(
+		item: Binding<Item?>,
+		onDismiss: (() -> Void)? = nil,
+		@ViewBuilder content: @escaping (Item) -> Content
+	) -> some View where Item: Identifiable, Content: View {
+		#if canImport(AppKit)
+		return sheet(item: item, onDismiss: onDismiss, content: content)
+		#elseif canImport(UIKit)
+		return fullScreenCover(item: item, onDismiss: onDismiss, content: content)
+		#endif
+	}
+}
