@@ -2,6 +2,8 @@ import SwiftUI
 
 struct ContentView: View {
 	@Environment(\.dynamicTypeSize) private var dynamicTypeSize
+	@State private var writeTextData: WriteTextScreen.Data?
+	@EnvironmentObject private var appState: AppState
 
 	var body: some View {
 		VStack(spacing: 16) {
@@ -30,9 +32,7 @@ struct ContentView: View {
 				.multilineTextAlignment(.center)
 				.padding(.top, -8)
 			Button(dynamicTypeSize.isAccessibilitySize ? "Shortcuts" : "Open Shortcuts") {
-				Task {
-					await openShortcutsApp()
-				}
+				openShortcutsApp()
 			}
 				.buttonStyle(.borderedProminent)
 				.controlSize(.large)
@@ -55,26 +55,50 @@ struct ContentView: View {
 			.padding(.vertical)
 			.frame(width: 440)
 			.windowLevel(.floating)
+			.sheet(item: $writeTextData) {
+				WriteTextScreen(data: $0)
+			}
+			.onChange(of: appState.userActivity) {
+				guard
+					let intent = $0?.interaction?.intent as? WriteTextIntent
+				else {
+					return // swiftlint:disable:this implicit_return
+				}
+
+				writeTextData = .init(
+					title: intent.editorTitle,
+					text: intent.text?.nilIfEmptyOrWhitespace ?? ""
+				)
+			}
 			#elseif canImport(UIKit)
 			.frame(maxWidth: dynamicTypeSize.isAccessibilitySize ? .infinity : 540)
 			.embedInScrollViewIfAccessibilitySize()
+			.fullScreenCover(item: $writeTextData) {
+				WriteTextScreen(data: $0)
+			}
 			#endif
+			.onContinueIntent(WriteTextIntent.self) { intent, _ in
+				writeTextData = .init(
+					title: intent.editorTitle,
+					text: intent.text?.nilIfEmptyOrWhitespace ?? ""
+				)
+			}
 			.task {
 				#if DEBUG
-				await openShortcutsApp()
+				openShortcutsApp()
 				#endif
 			}
 	}
 
-	private func openShortcutsApp() async {
+	private func openShortcutsApp() {
 		#if DEBUG
-		await ShortcutsApp.open()
+		ShortcutsApp.open()
 		#else
-		await ShortcutsApp.createShortcut()
+		ShortcutsApp.createShortcut()
 		#endif
 
 		#if canImport(AppKit)
-		await SSApp.quit()
+		SSApp.quit()
 		#endif
 	}
 }

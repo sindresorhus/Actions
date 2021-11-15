@@ -50,6 +50,7 @@
 				<string>TrimWhitespaceIntent</string>
 				<string>TruncateListIntent</string>
 				<string>UnixTimeToDateIntent</string>
+				<string>WriteTextIntent</string>
 			</array>
 		</dict>
 		<key>NSExtensionPointIdentifier</key>

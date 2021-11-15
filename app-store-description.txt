@@ -44,6 +44,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Trim Whitespace
 - Truncate List
 - Unix Time to Date
+- Write or Edit Text
 
 
 ■ Support

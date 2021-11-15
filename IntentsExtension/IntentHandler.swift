@@ -91,6 +91,8 @@ final class IntentHandler: INExtension {
 			return IsBluetoothOnIntentHandler()
 		case is IsDarkModeIntent:
 			return IsDarkModeIntentHandler()
+		case is WriteTextIntent:
+			return WriteTextIntentHandler()
 		default:
 			assertionFailure("No handler for this intent")
 			return nil

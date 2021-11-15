@@ -44,6 +44,7 @@
 		<string>TrimWhitespaceIntent</string>
 		<string>TruncateListIntent</string>
 		<string>UnixTimeToDateIntent</string>
+		<string>WriteTextIntent</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

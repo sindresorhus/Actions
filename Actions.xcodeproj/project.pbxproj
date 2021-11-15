@@ -88,6 +88,10 @@
 		E39F4775272D42E000B99CB0 /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E39F4774272D42E000B99CB0 /* IntentsUI.framework */; };
 		E3BFF7AB27422F6700B830DE /* IsDarkMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BFF7AA27422F6700B830DE /* IsDarkMode.swift */; };
 		E3BFF7AC27422F6700B830DE /* IsDarkMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BFF7AA27422F6700B830DE /* IsDarkMode.swift */; };
+		E3BFF7AE2742456E00B830DE /* WriteText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BFF7AD2742456E00B830DE /* WriteText.swift */; };
+		E3BFF7AF2742456E00B830DE /* WriteText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BFF7AD2742456E00B830DE /* WriteText.swift */; };
+		E3BFF7B12742616400B830DE /* WriteTextScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BFF7B02742616400B830DE /* WriteTextScreen.swift */; };
+		E3BFF7B22742616400B830DE /* WriteTextScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BFF7B02742616400B830DE /* WriteTextScreen.swift */; };
 		E3C6C1A427366A4D0003F56E /* RemoveFromList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C6C1A327366A4D0003F56E /* RemoveFromList.swift */; };
 		E3C6C1A527366A4D0003F56E /* RemoveFromList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C6C1A327366A4D0003F56E /* RemoveFromList.swift */; };
 		E3DF2EBB27287405009127CA /* TransformTextWithJavaScript.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DF2EBA27287405009127CA /* TransformTextWithJavaScript.swift */; };
@@ -193,6 +197,8 @@
 		E39F4774272D42E000B99CB0 /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/System/Library/Frameworks/IntentsUI.framework; sourceTree = DEVELOPER_DIR; };
 		E39F4776272D516E00B99CB0 /* iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOS.entitlements; sourceTree = "<group>"; };
 		E3BFF7AA27422F6700B830DE /* IsDarkMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsDarkMode.swift; sourceTree = "<group>"; };
+		E3BFF7AD2742456E00B830DE /* WriteText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteText.swift; sourceTree = "<group>"; };
+		E3BFF7B02742616400B830DE /* WriteTextScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteTextScreen.swift; sourceTree = "<group>"; };
 		E3C6C1A327366A4D0003F56E /* RemoveFromList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveFromList.swift; sourceTree = "<group>"; };
 		E3DF2EBA27287405009127CA /* TransformTextWithJavaScript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformTextWithJavaScript.swift; sourceTree = "<group>"; };
 		E3DF2EBC272931C3009127CA /* RandomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomColor.swift; sourceTree = "<group>"; };
@@ -274,6 +280,7 @@
 			children = (
 				E324C9EF271E972200E7CA9B /* App.swift */,
 				E324C9F0271E972200E7CA9B /* ContentView.swift */,
+				E3BFF7B02742616400B830DE /* WriteTextScreen.swift */,
 				E3FC71DC271EBE5B00C9D255 /* Utilities.swift */,
 				E324C9F1271E972300E7CA9B /* Assets.xcassets */,
 			);
@@ -363,6 +370,7 @@
 				E3572269273FE6BF0069070A /* IsAudioPlaying.swift */,
 				E380C8A427422549002AEA4F /* IsBluetoothOn.swift */,
 				E3BFF7AA27422F6700B830DE /* IsDarkMode.swift */,
+				E3BFF7AD2742456E00B830DE /* WriteText.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -559,6 +567,7 @@
 			files = (
 				E324CA23271E993F00E7CA9B /* Intents.intentdefinition in Sources */,
 				E324CA01271E972300E7CA9B /* ContentView.swift in Sources */,
+				E3BFF7B22742616400B830DE /* WriteTextScreen.swift in Sources */,
 				E3FC71DD271EBE5C00C9D255 /* Utilities.swift in Sources */,
 				E324C9FF271E972300E7CA9B /* App.swift in Sources */,
 			);
@@ -570,6 +579,7 @@
 			files = (
 				E324CA2B271EAAAC00E7CA9B /* Intents.intentdefinition in Sources */,
 				E324CA02271E972300E7CA9B /* ContentView.swift in Sources */,
+				E3BFF7B12742616400B830DE /* WriteTextScreen.swift in Sources */,
 				E3FC71DE271EBE5C00C9D255 /* Utilities.swift in Sources */,
 				E324CA00271E972300E7CA9B /* App.swift in Sources */,
 			);
@@ -589,6 +599,7 @@
 				E3327E99272C79F900AD5CC7 /* RemoveDuplicateLines.swift in Sources */,
 				E38EAAF82729D6DC0055451B /* DateToUnixTime.swift in Sources */,
 				E38EAAF02729B58F0055451B /* GetUniformTypeIdentifier.swift in Sources */,
+				E3BFF7AE2742456E00B830DE /* WriteText.swift in Sources */,
 				E3EE4040273802FB009B3FED /* ApplyCaptureDate.swift in Sources */,
 				E380C8A527422549002AEA4F /* IsBluetoothOn.swift in Sources */,
 				E3F1EE462726F25400091C44 /* RemoveDuplicatesFromList.swift in Sources */,
@@ -666,6 +677,7 @@
 				E39F4757272D3DF600B99CB0 /* AddToList.swift in Sources */,
 				E38FB4EC273EDCD600FF3C9A /* TruncateList.swift in Sources */,
 				E39F476C272D3DF600B99CB0 /* RemoveEmojis.swift in Sources */,
+				E3BFF7AF2742456E00B830DE /* WriteText.swift in Sources */,
 				E39F4763272D3DF600B99CB0 /* GenerateUUID.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,11 +10,19 @@ import CoreBluetooth
 typealias XColor = NSColor
 typealias XFont = NSFont
 typealias XImage = NSImage
+typealias XPasteboard = NSPasteboard
 #elseif canImport(UIKit)
 typealias XColor = UIColor
 typealias XFont = UIFont
 typealias XImage = UIImage
+typealias XPasteboard = UIPasteboard
 #endif
+
+
+// TODO: Remove this when everything is converted to async/await.
+func delay(seconds: TimeInterval, closure: @escaping () -> Void) {
+	DispatchQueue.main.asyncAfter(deadline: .now() + seconds, execute: closure)
+}
 
 
 enum SSApp {
@@ -39,9 +47,13 @@ enum SSApp {
 	}
 
 	#if canImport(AppKit)
-	@MainActor
+	/**
+	Can be called from any thread.
+	*/
 	static func quit() {
-		NSApp.terminate(nil)
+		Task { @MainActor in
+			NSApp.terminate(nil)
+		}
 	}
 	#endif
 
@@ -90,6 +102,21 @@ enum SSApp {
 		]
 
 		_ = try await URLSession.shared.json(.post, url: endpoint, parameters: parameters as [String: Any])
+	}
+}
+
+
+extension DispatchQueue {
+	/**
+	Performs the `execute` closure immediately if we're on the main thread or synchronously puts it on the main thread otherwise.
+	*/
+	@discardableResult
+	static func mainSafeSync<T>(execute work: () throws -> T) rethrows -> T {
+		if Thread.isMainThread {
+			return try work()
+		} else {
+			return try main.sync(execute: work)
+		}
 	}
 }
 
@@ -2130,5 +2157,120 @@ extension Error {
 		}
 
 		return "\(description.ensureSuffix(".")) \(recoverySuggestion.ensureSuffix("."))"
+	}
+}
+
+
+extension String {
+	func copyToPasteboard() {
+		#if canImport(AppKit)
+		NSPasteboard.general.clearContents()
+		NSPasteboard.general.setString(self, forType: .string)
+		#elseif canImport(UIKit)
+		UIPasteboard.general.string = self
+		#endif
+	}
+}
+
+
+#if canImport(UIKit)
+extension UIPasteboard {
+	/**
+	AppKit polyfill.
+	*/
+	func clearContents() {
+		string = ""
+	}
+}
+#endif
+
+
+extension View {
+	/**
+	Embed the view in a `NavigationView`.
+
+	- Note: Modifiers before this apply to the contents and modifiers after apply to the `NavigationView`.
+	*/
+	@ViewBuilder
+	func embedInNavigationView(shouldEmbed: Bool = true) -> some View {
+		if shouldEmbed {
+			NavigationView {
+				self
+			}
+		} else {
+			self
+		}
+	}
+
+	/**
+	Embed the view in a `NavigationView` if the current platform is **not** macOS.
+
+	This can be useful when you want a navigation view in a sheet, as macOS would try to add a sidebar then, which you probably don't want.
+
+	- Note: Modifiers before this apply to the contents and modifiers after apply to the `NavigationView`.
+	*/
+	@ViewBuilder
+	func embedInNavigationViewIfNotMacOS() -> some View {
+		#if canImport(AppKit)
+		self
+		#elseif canImport(UIKit)
+		embedInNavigationView()
+		#endif
+	}
+}
+
+
+extension INIntent {
+	/**
+	The name of the intent, which is the same as its identifier. For example, `WriteTextIntent`.
+	*/
+	static var typeName: String {
+		// This is safe as the intent identifier is stable.
+		String(describing: self)
+	}
+
+	/**
+	Create a `NSUserActivity` instance based on the name of the intent.
+
+	This can be useful for intent handlers that needs to continue in the main app.
+
+	```
+	@MainActor
+	final class WriteTextIntentHandler: NSObject, WriteTextIntentHandling {
+		func handle(intent: WriteTextIntent) async -> WriteTextIntentResponse {
+			.init(code: .continueInApp, userActivity: WriteTextIntent.nsUserActivity)
+		}
+	}
+	```
+	*/
+	static var nsUserActivity: NSUserActivity {
+		// This is safe as the intent identifier is stable.
+		.init(activityType: typeName)
+	}
+}
+
+
+extension View {
+	/**
+	Type-safe alternative to `.onContinueUserActivity()` specifically for intents.
+
+	```
+	.onContinueIntent(WriteTextIntent.self) { intent, _ in
+		text = intent.text
+	}
+	```
+	*/
+	func onContinueIntent<T: INIntent>(
+		_ intentType: T.Type,
+		perform action: @escaping (T, NSUserActivity) -> Void
+	) -> some View {
+		onContinueUserActivity(intentType.typeName) {
+			guard let intent = $0.interaction?.intent as? T else {
+				assertionFailure()
+				return
+			}
+
+			action(intent, $0)
+		}
 	}
 }

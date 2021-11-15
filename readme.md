@@ -62,6 +62,7 @@ Requires macOS 12 or iOS 15 and later.
 - Trim Whitespace
 - Truncate List
 - Unix Time to Date
+- Write or Edit Text
 
 *(And many more planned!)*
 
