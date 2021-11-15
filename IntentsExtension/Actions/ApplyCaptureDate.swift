@@ -25,7 +25,7 @@ final class ApplyCaptureDateIntentHandler: NSObject, ApplyCaptureDateIntentHandl
 				}
 			}
 		} catch {
-			return .failure(failure: error.localizedDescription)
+			return .failure(failure: error.presentableMessage)
 		}
 
 		return response

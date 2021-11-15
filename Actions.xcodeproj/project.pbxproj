@@ -35,6 +35,8 @@
 		E3660AF32728017600C038AF /* RemoveEmptyLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3660AF22728017600C038AF /* RemoveEmptyLines.swift */; };
 		E371D5862739794400156765 /* SetFileCreationModificationDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E371D5852739794400156765 /* SetFileCreationModificationDate.swift */; };
 		E371D5872739794400156765 /* SetFileCreationModificationDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E371D5852739794400156765 /* SetFileCreationModificationDate.swift */; };
+		E380C8A527422549002AEA4F /* IsBluetoothOn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E380C8A427422549002AEA4F /* IsBluetoothOn.swift */; };
+		E380C8A627422549002AEA4F /* IsBluetoothOn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E380C8A427422549002AEA4F /* IsBluetoothOn.swift */; };
 		E38715842725A303003155B0 /* GenerateUUID.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38715832725A303003155B0 /* GenerateUUID.swift */; };
 		E38715882725A6F4003155B0 /* TransformText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38715872725A6F4003155B0 /* TransformText.swift */; };
 		E387158A2725A7C6003155B0 /* RandomEmoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38715892725A7C6003155B0 /* RandomEmoji.swift */; };
@@ -171,6 +173,7 @@
 		E3660AF02727F51300C038AF /* ClampNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClampNumber.swift; sourceTree = "<group>"; };
 		E3660AF22728017600C038AF /* RemoveEmptyLines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveEmptyLines.swift; sourceTree = "<group>"; };
 		E371D5852739794400156765 /* SetFileCreationModificationDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetFileCreationModificationDate.swift; sourceTree = "<group>"; };
+		E380C8A427422549002AEA4F /* IsBluetoothOn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsBluetoothOn.swift; sourceTree = "<group>"; };
 		E38715832725A303003155B0 /* GenerateUUID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateUUID.swift; sourceTree = "<group>"; };
 		E38715872725A6F4003155B0 /* TransformText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformText.swift; sourceTree = "<group>"; };
 		E38715892725A7C6003155B0 /* RandomEmoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomEmoji.swift; sourceTree = "<group>"; };
@@ -355,6 +358,7 @@
 				E38FB4ED273EE68C00FF3C9A /* GetEmojis.swift */,
 				E324536D273FB40600B07EBF /* SendFeedback.swift */,
 				E3572269273FE6BF0069070A /* IsAudioPlaying.swift */,
+				E380C8A427422549002AEA4F /* IsBluetoothOn.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -582,6 +586,7 @@
 				E38EAAF82729D6DC0055451B /* DateToUnixTime.swift in Sources */,
 				E38EAAF02729B58F0055451B /* GetUniformTypeIdentifier.swift in Sources */,
 				E3EE4040273802FB009B3FED /* ApplyCaptureDate.swift in Sources */,
+				E380C8A527422549002AEA4F /* IsBluetoothOn.swift in Sources */,
 				E3F1EE462726F25400091C44 /* RemoveDuplicatesFromList.swift in Sources */,
 				E38EAAF42729CBDB0055451B /* GetFilePath.swift in Sources */,
 				E324CA21271E990D00E7CA9B /* Intents.intentdefinition in Sources */,
@@ -637,6 +642,7 @@
 				E39F475C272D3DF600B99CB0 /* RandomColor.swift in Sources */,
 				E38FB4EF273EE68C00FF3C9A /* GetEmojis.swift in Sources */,
 				E39F4766272D3DF600B99CB0 /* ClampNumber.swift in Sources */,
+				E380C8A627422549002AEA4F /* IsBluetoothOn.swift in Sources */,
 				E39F4761272D3DF600B99CB0 /* UnixTimeToDate.swift in Sources */,
 				E39F475E272D3DF600B99CB0 /* ShuffleList.swift in Sources */,
 				E371D5872739794400156765 /* SetFileCreationModificationDate.swift in Sources */,
@@ -808,6 +814,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
 				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Required to use the “Get Music Playlists” action.";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Required to use the “Is Bluetooth On” action.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
@@ -840,6 +847,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
 				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Required to use the “Get Music Playlists” action.";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Required to use the “Is Bluetooth On” action.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
@@ -873,7 +881,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = macOS/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Required to use the “Is Bluetooth On” action.";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Sindre Sorhus";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -900,7 +909,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = macOS/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Required to use the “Is Bluetooth On” action.";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Sindre Sorhus";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",

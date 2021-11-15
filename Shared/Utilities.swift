@@ -4,6 +4,7 @@ import StoreKit
 import GameplayKit
 import UniformTypeIdentifiers
 import Intents
+import CoreBluetooth
 
 #if canImport(AppKit)
 typealias XColor = NSColor
@@ -1993,5 +1994,121 @@ extension URLSession {
 		}
 
 		return (dictionary, response)
+	}
+}
+
+
+extension NSError {
+	/**
+	Use this for generic app errors.
+
+	- Note: Prefer using a specific enum-type error whenever possible.
+
+	- Parameter description: The description of the error. This is shown as the first line in error dialogs.
+	- Parameter recoverySuggestion: Explain how the user how they can recover from the error. For example, "Try choosing a different directory". This is usually shown as the second line in error dialogs.
+	- Parameter userInfo: Metadata to add to the error. Can be a custom key or any of the `NSLocalizedDescriptionKey` keys except `NSLocalizedDescriptionKey` and `NSLocalizedRecoverySuggestionErrorKey`.
+	- Parameter domainPostfix: String to append to the `domain` to make it easier to identify the error. The domain is the app's bundle identifier.
+	*/
+	static func appError(
+		_ description: String,
+		recoverySuggestion: String? = nil,
+		userInfo: [String: Any] = [:],
+		domainPostfix: String? = nil
+	) -> Self {
+		var userInfo = userInfo
+		userInfo[NSLocalizedDescriptionKey] = description
+
+		if let recoverySuggestion = recoverySuggestion {
+			userInfo[NSLocalizedRecoverySuggestionErrorKey] = recoverySuggestion
+		}
+
+		return .init(
+			domain: domainPostfix.map { "\(SSApp.id) - \($0)" } ?? SSApp.id,
+			code: 1, // This is what Swift errors end up as.
+			userInfo: userInfo
+		)
+	}
+}
+
+
+enum Bluetooth {
+	private final class BluetoothManager: NSObject, CBCentralManagerDelegate {
+		private let continuation: CheckedContinuation<Bool, Error>
+		private var manager: CBCentralManager?
+		private var hasCalled = false
+
+		init(continuation: CheckedContinuation<Bool, Error>) {
+			self.continuation = continuation
+			super.init()
+			self.manager = CBCentralManager(delegate: self, queue: nil, options: [CBCentralManagerOptionShowPowerAlertKey: false])
+		}
+
+		private func checkAccess() {
+			guard CBCentralManager.authorization != .allowedAlways else {
+				return
+			}
+
+			let recoverySuggestion = OS.current == .macOS
+				? "You can grant access in “System Preferences › Security & Privacy › Bluetooth”."
+				: "You can grant access in “Settings › \(SSApp.name)”."
+
+			let error = NSError.appError("No access to Bluetooth.", recoverySuggestion: recoverySuggestion)
+			continuation.resume(throwing: error)
+			hasCalled = true
+		}
+
+		func centralManagerDidUpdateState(_ central: CBCentralManager) {
+			defer {
+				hasCalled = true
+			}
+
+			checkAccess()
+
+			guard !hasCalled else {
+				return
+			}
+
+			continuation.resume(returning: central.state == .poweredOn)
+		}
+	}
+
+	/**
+	Check whether Bluetooth is turned on.
+
+	- Note: You need to have `NSBluetoothAlwaysUsageDescription` in Info.plist. On macOS, you also need `com.apple.security.device.bluetooth` in your entitlements file.
+
+	- Throws: An error if the app has no access to Bluetooth with a message on how to grant it.
+	*/
+	static func isOn() async throws -> Bool {
+		// Required as otherwise `BluetoothManager` will not be retained long enough.
+		var manager: BluetoothManager?
+
+		// Silence Swift compiler warning.
+		withExtendedLifetime(manager) {}
+
+		return try await withCheckedThrowingContinuation { continuation in
+			manager = BluetoothManager(continuation: continuation)
+		}
+	}
+}
+
+
+extension Error {
+	/**
+	The `.localizedDescription` property does not include `.localizedRecoverySuggestion`, so you might miss out on important information. This property includes both.
+
+	Use this property when you have to pass the error to something that will present the error to the user, but only accepts a string. For example, the returned error message in an Siri intent handler.
+	*/
+	var presentableMessage: String {
+		let nsError = self as NSError
+		let description = localizedDescription.trimmingCharacters(in: .whitespacesAndNewlines)
+
+		guard
+			let recoverySuggestion = nsError.localizedRecoverySuggestion?.trimmingCharacters(in: .whitespacesAndNewlines)
+		else {
+			return description
+		}
+
+		return "\(description.ensureSuffix(".")) \(recoverySuggestion.ensureSuffix("."))"
 	}
 }

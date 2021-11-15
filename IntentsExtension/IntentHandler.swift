@@ -87,6 +87,8 @@ final class IntentHandler: INExtension {
 		case is IsAudioPlayingIntent:
 			return IsAudioPlayingIntentHandler()
 		#endif
+		case is IsBluetoothOnIntent:
+			return IsBluetoothOnIntentHandler()
 		default:
 			assertionFailure("No handler for this intent")
 			return nil

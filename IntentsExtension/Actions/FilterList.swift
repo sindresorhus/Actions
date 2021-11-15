@@ -42,7 +42,7 @@ final class FilterListIntentHandler: NSObject, FilterListIntentHandling {
 		do {
 			list = try list.filter { shouldKeep ? try isMatch($0) : try !isMatch($0) }
 		} catch {
-			return .failure(failure: error.localizedDescription)
+			return .failure(failure: error.presentableMessage)
 		}
 
 		if

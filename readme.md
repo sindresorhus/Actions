@@ -39,6 +39,7 @@ Requires macOS 12 or iOS 15 and later.
 - Get Music Playlists <sup>(iOS-only)</sup>
 - Get Uniform Type Identifier
 - Is Audio Playing <sup>(iOS-only)</sup>
+- Is Bluetooth On
 - Random Boolean
 - Random Color
 - Random Date and Time

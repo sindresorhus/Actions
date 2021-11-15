@@ -34,7 +34,7 @@ final class SendFeedbackIntentHandler: NSObject, SendFeedbackIntentHandling {
 		do {
 			try await SSApp.sendFeedback(email: email, message: message)
 		} catch {
-			return .failure(failure: error.localizedDescription)
+			return .failure(failure: error.presentableMessage)
 		}
 
 		let response = SendFeedbackIntentResponse(code: .success, userActivity: nil)
