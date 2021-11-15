@@ -40,6 +40,7 @@ Requires macOS 12 or iOS 15 and later.
 - Get Uniform Type Identifier
 - Is Audio Playing <sup>(iOS-only)</sup>
 - Is Bluetooth On
+- Is Dark Mode
 - Random Boolean
 - Random Color
 - Random Date and Time

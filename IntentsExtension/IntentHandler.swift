@@ -89,6 +89,8 @@ final class IntentHandler: INExtension {
 		#endif
 		case is IsBluetoothOnIntent:
 			return IsBluetoothOnIntentHandler()
+		case is IsDarkModeIntent:
+			return IsDarkModeIntentHandler()
 		default:
 			assertionFailure("No handler for this intent")
 			return nil

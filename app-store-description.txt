@@ -22,6 +22,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Get Uniform Type Identifier
 - Is Audio Playing (iOS-only)
 - Is Bluetooth On
+- Is Dark Mode
 - Random Boolean
 - Random Color
 - Random Date and Time

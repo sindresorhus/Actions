@@ -25,6 +25,19 @@ enum SSApp {
 	static let versionWithBuild = "\(version) (\(build))"
 	static let url = Bundle.main.bundleURL
 
+	static var isDarkMode: Bool {
+		#if canImport(AppKit)
+			// The `effectiveAppearance` check does not detect dark mode in an intent handler extension.
+			#if APP_EXTENSION
+			return UserDefaults.standard.string(forKey: "AppleInterfaceStyle") == "Dark"
+			#else
+			return NSApp?.effectiveAppearance.isDarkMode ?? false
+			#endif
+		#elseif canImport(UIKit)
+		return UIScreen.main.traitCollection.userInterfaceStyle == .dark
+		#endif
+	}
+
 	#if canImport(AppKit)
 	@MainActor
 	static func quit() {
@@ -79,6 +92,13 @@ enum SSApp {
 		_ = try await URLSession.shared.json(.post, url: endpoint, parameters: parameters as [String: Any])
 	}
 }
+
+
+#if canImport(AppKit)
+extension NSAppearance {
+	var isDarkMode: Bool { bestMatch(from: [.darkAqua, .aqua]) == .darkAqua }
+}
+#endif
 
 
 extension Data {

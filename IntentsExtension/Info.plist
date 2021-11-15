@@ -27,6 +27,7 @@
 				<string>GetUniformTypeIdentifierIntent</string>
 				<string>IsAudioPlayingIntent</string>
 				<string>IsBluetoothOnIntent</string>
+				<string>IsDarkModeIntent</string>
 				<string>RandomBooleanIntent</string>
 				<string>RandomColorIntent</string>
 				<string>RandomDateTimeIntent</string>
