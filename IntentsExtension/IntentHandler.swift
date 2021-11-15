@@ -93,6 +93,8 @@ final class IntentHandler: INExtension {
 			return IsDarkModeIntentHandler()
 		case is WriteTextIntent:
 			return WriteTextIntentHandler()
+		case is GetUserDetailsIntent:
+			return GetUserDetailsIntentHandler()
 		default:
 			assertionFailure("No handler for this intent")
 			return nil

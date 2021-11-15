@@ -38,6 +38,7 @@ Requires macOS 12 or iOS 15 and later.
 - Get File Path
 - Get Music Playlists <sup>(iOS-only)</sup>
 - Get Uniform Type Identifier
+- Get User Details
 - Is Audio Playing <sup>(iOS-only)</sup>
 - Is Bluetooth On
 - Is Dark Mode

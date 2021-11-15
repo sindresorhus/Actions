@@ -5,6 +5,7 @@ import GameplayKit
 import UniformTypeIdentifiers
 import Intents
 import CoreBluetooth
+import Contacts
 
 #if canImport(AppKit)
 typealias XColor = NSColor
@@ -2290,5 +2291,190 @@ extension View {
 		#elseif canImport(UIKit)
 		return fullScreenCover(item: item, onDismiss: onDismiss, content: content)
 		#endif
+	}
+}
+
+
+#if canImport(AppKit)
+extension CGEventType {
+	/**
+	Any event.
+
+	This case is missing from Swift and `kCGAnyInputEventType` is not available in Swift either.
+	*/
+	static let any = Self(rawValue: ~0)!
+}
+#endif
+
+
+enum User {
+	#if canImport(AppKit)
+	/**
+	Th current user's username.
+
+	For example: `sindresorhus`
+	*/
+	static let username = ProcessInfo.processInfo.userName
+	#endif
+
+	#if canImport(AppKit)
+	/**
+	The current user's name.
+
+	For example: `Sindre Sorhus`
+	*/
+	static let nameString = ProcessInfo.processInfo.fullUserName
+	#elseif canImport(UIKit)
+	/**
+	The current user's name.
+
+	For example: `Sindre Sorhus`
+
+	- Note: The name may not be available, it may only be the given name, or it may be empty.
+	*/
+	static let nameString: String = {
+		let name = UIDevice.current.name
+
+		if name.hasSuffix("’s iPhone") {
+			return name.replacingSuffix("’s iPhone", with: "")
+		}
+
+		if name.hasSuffix("’s iPad") {
+			return name.replacingSuffix("’s iPad", with: "")
+		}
+
+		if name.hasSuffix("’s Apple Watch") {
+			return name.replacingSuffix("’s Apple Watch", with: "")
+		}
+
+		return ""
+	}()
+	#endif
+
+	/**
+	The current user's name.
+
+	- Note: The name might not be available on iOS.
+	*/
+	static let name = try? PersonNameComponents(nameString)
+
+	/**
+	The current user's language code.
+
+	For example: `en`
+	*/
+	static var languageCode: String { Locale.current.languageCode ?? "en" }
+
+	/**
+	The current user's shell.
+	*/
+	static let shell: String = {
+		guard
+			let shell = getpwuid(getuid())?.pointee.pw_shell
+		else {
+			return "/bin/zsh"
+		}
+
+		return String(cString: shell)
+	}()
+
+	#if canImport(AppKit)
+	/**
+	The duration since the user was last active on the computer.
+	*/
+	static var idleTime: TimeInterval {
+		CGEventSource.secondsSinceLastEventType(.hidSystemState, eventType: .any)
+	}
+	#endif
+}
+
+
+extension CNContact {
+	static var personNameComponentsFetchKeys = [
+		CNContactNamePrefixKey,
+		CNContactGivenNameKey,
+		CNContactMiddleNameKey,
+		CNContactFamilyNameKey,
+		CNContactNameSuffixKey,
+		CNContactNicknameKey,
+		CNContactPhoneticGivenNameKey,
+		CNContactPhoneticMiddleNameKey,
+		CNContactPhoneticFamilyNameKey
+	] as [CNKeyDescriptor]
+
+	/**
+	Convert a `CNContact` to a `PersonNameComponents`.
+
+	- Important: Ensure you have fetched the needed keys. You can use `CNContact.personNameComponentsFetchKeys` to get the keys.
+	*/
+	var toPersonNameComponents: PersonNameComponents {
+		.init(
+			namePrefix: isKeyAvailable(CNContactNamePrefixKey) ? namePrefix : nil,
+			givenName: isKeyAvailable(CNContactGivenNameKey) ? givenName : nil,
+			middleName: isKeyAvailable(CNContactMiddleNameKey) ? middleName : nil,
+			familyName: isKeyAvailable(CNContactFamilyNameKey) ? familyName : nil,
+			nameSuffix: isKeyAvailable(CNContactNameSuffixKey) ? nameSuffix : nil,
+			nickname: isKeyAvailable(CNContactNicknameKey) ? nickname : nil,
+			phoneticRepresentation: .init(
+				givenName: isKeyAvailable(CNContactPhoneticGivenNameKey) ? phoneticGivenName : nil,
+				middleName: isKeyAvailable(CNContactPhoneticMiddleNameKey) ? phoneticMiddleName : nil,
+				familyName: isKeyAvailable(CNContactPhoneticFamilyNameKey) ? phoneticFamilyName : nil
+			)
+		)
+	}
+}
+
+
+extension CNContactStore {
+	private var legacyMeIdentifier: Int? {
+		guard let containers = try? containers(matching: nil) else {
+			return nil
+		}
+
+		return containers
+			.lazy
+			.compactMap {
+				guard let identifier = $0.value(forKey: "meIdentifier") as? String else {
+					return nil
+				}
+
+				return Int(identifier)
+			}
+			.first
+	}
+
+	/**
+	The “me” contact identifier, if any.
+	*/
+	func meContactIdentifier() -> String? {
+		let legacyMeIdentifier = legacyMeIdentifier
+		var meIdentifier: String?
+
+		try? enumerateContacts(with: .init(keysToFetch: [])) { contact, stop in
+			guard let legacyIdentifier = contact.value(forKey: "iOSLegacyIdentifier") as? Int else {
+				return
+			}
+
+			if legacyIdentifier == legacyMeIdentifier {
+				meIdentifier = contact.identifier
+				stop.pointee = true
+			}
+		}
+
+		return meIdentifier
+	}
+
+	/**
+	The “me” contact, if any, as person name components.
+	*/
+	func meContactPerson() -> PersonNameComponents? {
+		guard
+			let identifier = meContactIdentifier(),
+			let contact = try? unifiedContact(withIdentifier: identifier, keysToFetch: CNContact.personNameComponentsFetchKeys)
+		else {
+			return nil
+		}
+
+		return contact.toPersonNameComponents
 	}
 }

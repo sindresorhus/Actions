@@ -20,6 +20,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Get File Path
 - Get Music Playlists (iOS-only)
 - Get Uniform Type Identifier
+- Get User Details
 - Is Audio Playing (iOS-only)
 - Is Bluetooth On
 - Is Dark Mode

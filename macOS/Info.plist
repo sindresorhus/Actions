@@ -21,6 +21,7 @@
 		<string>GetFilePathIntent</string>
 		<string>GetMusicPlaylistsIntent</string>
 		<string>GetUniformTypeIdentifierIntent</string>
+		<string>GetUserDetailsIntent</string>
 		<string>IsAudioPlayingIntent</string>
 		<string>IsBluetoothOnIntent</string>
 		<string>IsDarkModeIntent</string>

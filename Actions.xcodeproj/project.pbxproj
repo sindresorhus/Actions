@@ -96,6 +96,8 @@
 		E3BFF7B527428F5200B830DE /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BFF7B327428F5200B830DE /* WelcomeScreen.swift */; };
 		E3BFF7B72742A79100B830DE /* AppIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BFF7B62742A79100B830DE /* AppIcon.swift */; };
 		E3BFF7B82742A79100B830DE /* AppIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BFF7B62742A79100B830DE /* AppIcon.swift */; };
+		E3BFF7BA2742C7BD00B830DE /* GetUserDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BFF7B92742C7BD00B830DE /* GetUserDetails.swift */; };
+		E3BFF7BB2742C7BD00B830DE /* GetUserDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BFF7B92742C7BD00B830DE /* GetUserDetails.swift */; };
 		E3C6C1A427366A4D0003F56E /* RemoveFromList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C6C1A327366A4D0003F56E /* RemoveFromList.swift */; };
 		E3C6C1A527366A4D0003F56E /* RemoveFromList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C6C1A327366A4D0003F56E /* RemoveFromList.swift */; };
 		E3DF2EBB27287405009127CA /* TransformTextWithJavaScript.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DF2EBA27287405009127CA /* TransformTextWithJavaScript.swift */; };
@@ -205,6 +207,7 @@
 		E3BFF7B02742616400B830DE /* WriteTextScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteTextScreen.swift; sourceTree = "<group>"; };
 		E3BFF7B327428F5200B830DE /* WelcomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreen.swift; sourceTree = "<group>"; };
 		E3BFF7B62742A79100B830DE /* AppIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIcon.swift; sourceTree = "<group>"; };
+		E3BFF7B92742C7BD00B830DE /* GetUserDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserDetails.swift; sourceTree = "<group>"; };
 		E3C6C1A327366A4D0003F56E /* RemoveFromList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveFromList.swift; sourceTree = "<group>"; };
 		E3DF2EBA27287405009127CA /* TransformTextWithJavaScript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformTextWithJavaScript.swift; sourceTree = "<group>"; };
 		E3DF2EBC272931C3009127CA /* RandomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomColor.swift; sourceTree = "<group>"; };
@@ -379,6 +382,7 @@
 				E380C8A427422549002AEA4F /* IsBluetoothOn.swift */,
 				E3BFF7AA27422F6700B830DE /* IsDarkMode.swift */,
 				E3BFF7AD2742456E00B830DE /* WriteText.swift */,
+				E3BFF7B92742C7BD00B830DE /* GetUserDetails.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -639,6 +643,7 @@
 				E38FB4E8273EB47B00FF3C9A /* FilterList.swift in Sources */,
 				E3DF2EBF27293225009127CA /* SampleColor.swift in Sources */,
 				E38FB4EB273EDCD600FF3C9A /* TruncateList.swift in Sources */,
+				E3BFF7BA2742C7BD00B830DE /* GetUserDetails.swift in Sources */,
 				E3DF2EBD272931C3009127CA /* RandomColor.swift in Sources */,
 				E3BFF7AB27422F6700B830DE /* IsDarkMode.swift in Sources */,
 				E3F4211227268FE700080453 /* RandomDateTime.swift in Sources */,
@@ -663,6 +668,7 @@
 				E39F4768272D3DF600B99CB0 /* CreateURL.swift in Sources */,
 				E39F476B272D3DF600B99CB0 /* TrimWhitespace.swift in Sources */,
 				E39F4770272D3E0000B99CB0 /* Intents.intentdefinition in Sources */,
+				E3BFF7BB2742C7BD00B830DE /* GetUserDetails.swift in Sources */,
 				E39F475D272D3DF600B99CB0 /* FormatDateDifference.swift in Sources */,
 				E38FB4E3273E8D6700FF3C9A /* CombineLists.swift in Sources */,
 				E39F4773272D3EAE00B99CB0 /* Utilities.swift in Sources */,
@@ -845,6 +851,7 @@
 				INFOPLIST_FILE = iOS/Info.plist;
 				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Required to use the “Get Music Playlists” action.";
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Required to use the “Is Bluetooth On” action.";
+				INFOPLIST_KEY_NSContactsUsageDescription = "Required to get the user's name in the “Get User Details” action.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
@@ -878,6 +885,7 @@
 				INFOPLIST_FILE = iOS/Info.plist;
 				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Required to use the “Get Music Playlists” action.";
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Required to use the “Is Bluetooth On” action.";
+				INFOPLIST_KEY_NSContactsUsageDescription = "Required to get the user's name in the “Get User Details” action.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";

@@ -362,6 +362,109 @@
 				</dict>
 			</array>
 		</dict>
+		<dict>
+			<key>INEnumDisplayName</key>
+			<string>User Details Type</string>
+			<key>INEnumDisplayNameID</key>
+			<string>KDCZCd</string>
+			<key>INEnumGeneratesHeader</key>
+			<true/>
+			<key>INEnumName</key>
+			<string>UserDetailsType</string>
+			<key>INEnumType</key>
+			<string>Regular</string>
+			<key>INEnumValues</key>
+			<array>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>Unknown</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>1If2tA</string>
+					<key>INEnumValueName</key>
+					<string>unknown</string>
+				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>Username (macOS-only)</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>vEP2ik</string>
+					<key>INEnumValueIndex</key>
+					<integer>1</integer>
+					<key>INEnumValueName</key>
+					<string>username</string>
+				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>Name</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>9i5dFf</string>
+					<key>INEnumValueIndex</key>
+					<integer>2</integer>
+					<key>INEnumValueName</key>
+					<string>name</string>
+				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>Given Name</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>5OhS1Q</string>
+					<key>INEnumValueIndex</key>
+					<integer>3</integer>
+					<key>INEnumValueName</key>
+					<string>givenName</string>
+				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>Family Name</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>i1oyIt</string>
+					<key>INEnumValueIndex</key>
+					<integer>4</integer>
+					<key>INEnumValueName</key>
+					<string>familyName</string>
+				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>Initials</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>OuguHp</string>
+					<key>INEnumValueIndex</key>
+					<integer>5</integer>
+					<key>INEnumValueName</key>
+					<string>initials</string>
+				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>Shell</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>Vx5LyQ</string>
+					<key>INEnumValueIndex</key>
+					<integer>7</integer>
+					<key>INEnumValueName</key>
+					<string>shell</string>
+				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>Language Code</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>KhuPbB</string>
+					<key>INEnumValueIndex</key>
+					<integer>8</integer>
+					<key>INEnumValueName</key>
+					<string>languageCode</string>
+				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>Idle Time in Seconds (macOS-only)</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>BScW8I</string>
+					<key>INEnumValueIndex</key>
+					<integer>9</integer>
+					<key>INEnumValueName</key>
+					<string>idleTime</string>
+				</dict>
+			</array>
+		</dict>
 	</array>
 	<key>INIntentDefinitionModelVersion</key>
 	<string>1.2</string>
@@ -7906,6 +8009,148 @@
 			<string>Custom</string>
 			<key>INIntentVerb</key>
 			<string>Do</string>
+		</dict>
+		<dict>
+			<key>INIntentCategory</key>
+			<string>information</string>
+			<key>INIntentConfigurable</key>
+			<true/>
+			<key>INIntentDescription</key>
+			<string>Gets details about the current user. For example, username, name, language, idle time, etc.</string>
+			<key>INIntentDescriptionID</key>
+			<string>FfhaCV</string>
+			<key>INIntentIneligibleForSuggestions</key>
+			<true/>
+			<key>INIntentInput</key>
+			<string>type</string>
+			<key>INIntentKeyParameter</key>
+			<string>type</string>
+			<key>INIntentLastParameterTag</key>
+			<integer>2</integer>
+			<key>INIntentManagedParameterCombinations</key>
+			<dict>
+				<key>type</key>
+				<dict>
+					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
+					<true/>
+					<key>INIntentParameterCombinationTitle</key>
+					<string>Get the current user's ${type}</string>
+					<key>INIntentParameterCombinationTitleID</key>
+					<string>GESf6H</string>
+					<key>INIntentParameterCombinationUpdatesLinked</key>
+					<true/>
+				</dict>
+			</dict>
+			<key>INIntentName</key>
+			<string>GetUserDetails</string>
+			<key>INIntentParameters</key>
+			<array>
+				<dict>
+					<key>INIntentParameterConfigurable</key>
+					<true/>
+					<key>INIntentParameterDisplayName</key>
+					<string>Type</string>
+					<key>INIntentParameterDisplayNameID</key>
+					<string>wOZ0wP</string>
+					<key>INIntentParameterDisplayPriority</key>
+					<integer>1</integer>
+					<key>INIntentParameterEnumType</key>
+					<string>UserDetailsType</string>
+					<key>INIntentParameterEnumTypeNamespace</key>
+					<string>dQRoIy</string>
+					<key>INIntentParameterMetadata</key>
+					<dict>
+						<key>INIntentParameterMetadataDefaultValue</key>
+						<string>name</string>
+					</dict>
+					<key>INIntentParameterName</key>
+					<string>type</string>
+					<key>INIntentParameterPromptDialogs</key>
+					<array>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>Configuration</string>
+						</dict>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>Primary</string>
+						</dict>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogFormatString</key>
+							<string>There are ${count} options matching ‘${type}’.</string>
+							<key>INIntentParameterPromptDialogFormatStringID</key>
+							<string>Ag5iCp</string>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>DisambiguationIntroduction</string>
+						</dict>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogFormatString</key>
+							<string>Just to confirm, you wanted ‘${type}’?</string>
+							<key>INIntentParameterPromptDialogFormatStringID</key>
+							<string>3Evo2c</string>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>Confirmation</string>
+						</dict>
+					</array>
+					<key>INIntentParameterTag</key>
+					<integer>2</integer>
+					<key>INIntentParameterType</key>
+					<string>Integer</string>
+				</dict>
+			</array>
+			<key>INIntentResponse</key>
+			<dict>
+				<key>INIntentResponseCodes</key>
+				<array>
+					<dict>
+						<key>INIntentResponseCodeName</key>
+						<string>success</string>
+						<key>INIntentResponseCodeSuccess</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>INIntentResponseCodeName</key>
+						<string>failure</string>
+					</dict>
+				</array>
+				<key>INIntentResponseLastParameterTag</key>
+				<integer>1</integer>
+				<key>INIntentResponseOutput</key>
+				<string>result</string>
+				<key>INIntentResponseParameters</key>
+				<array>
+					<dict>
+						<key>INIntentResponseParameterDisplayName</key>
+						<string>User Detail</string>
+						<key>INIntentResponseParameterDisplayNameID</key>
+						<string>pIptVI</string>
+						<key>INIntentResponseParameterDisplayPriority</key>
+						<integer>1</integer>
+						<key>INIntentResponseParameterName</key>
+						<string>result</string>
+						<key>INIntentResponseParameterTag</key>
+						<integer>1</integer>
+						<key>INIntentResponseParameterType</key>
+						<string>String</string>
+					</dict>
+				</array>
+			</dict>
+			<key>INIntentTitle</key>
+			<string>Get User Details</string>
+			<key>INIntentTitleID</key>
+			<string>7nA7ks</string>
+			<key>INIntentType</key>
+			<string>Custom</string>
+			<key>INIntentVerb</key>
+			<string>View</string>
 		</dict>
 	</array>
 	<key>INTypes</key>
