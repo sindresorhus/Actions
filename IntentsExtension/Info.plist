@@ -28,6 +28,7 @@
 				<string>GetUserDetailsIntent</string>
 				<string>IsAudioPlayingIntent</string>
 				<string>IsBluetoothOnIntent</string>
+				<string>IsConnectedToVPNIntent</string>
 				<string>IsDarkModeIntent</string>
 				<string>RandomBooleanIntent</string>
 				<string>RandomColorIntent</string>

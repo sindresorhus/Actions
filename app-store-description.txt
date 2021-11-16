@@ -23,6 +23,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Get User Details
 - Is Audio Playing (iOS-only)
 - Is Bluetooth On
+- Is Connected to VPN (iOS-only)
 - Is Dark Mode
 - Random Boolean
 - Random Color

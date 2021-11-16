@@ -95,6 +95,10 @@ final class IntentHandler: INExtension {
 			return WriteTextIntentHandler()
 		case is GetUserDetailsIntent:
 			return GetUserDetailsIntentHandler()
+		#if canImport(UIKit)
+		case is IsConnectedToVPNIntent:
+			return IsConnectedToVPNIntentHandler()
+		#endif
 		default:
 			assertionFailure("No handler for this intent")
 			return nil

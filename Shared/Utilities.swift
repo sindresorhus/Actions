@@ -225,6 +225,31 @@ enum Device {
 		}
 		#endif
 	}()
+
+	/**
+	Check if the device is connected to a VPN.
+	*/
+	@available(macOS, unavailable)
+	static var isConnectedToVPN: Bool {
+		guard
+			let proxySettings = CFNetworkCopySystemProxySettings()?.takeRetainedValue() as NSDictionary? as? [String: Any],
+			let scoped = proxySettings["__SCOPED__"] as? [String: Any]
+		else {
+			return false
+		}
+
+		let vpnKeys = [
+			"tap",
+			"tun",
+			"ppp",
+			"ipsec",
+			"utun"
+		]
+
+		return scoped.keys.contains { key in
+			vpnKeys.contains { key.hasPrefix($0) }
+		}
+	}
 }
 
 

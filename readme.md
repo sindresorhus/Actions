@@ -41,6 +41,7 @@ Requires macOS 12 or iOS 15 and later.
 - Get User Details
 - Is Audio Playing <sup>(iOS-only)</sup>
 - Is Bluetooth On
+- Is Connected to VPN <sup>(iOS-only)</sup>
 - Is Dark Mode
 - Random Boolean
 - Random Color

@@ -100,6 +100,7 @@
 		E3BFF7BB2742C7BD00B830DE /* GetUserDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BFF7B92742C7BD00B830DE /* GetUserDetails.swift */; };
 		E3C6C1A427366A4D0003F56E /* RemoveFromList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C6C1A327366A4D0003F56E /* RemoveFromList.swift */; };
 		E3C6C1A527366A4D0003F56E /* RemoveFromList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C6C1A327366A4D0003F56E /* RemoveFromList.swift */; };
+		E3D3BDC9274367BC00417A63 /* IsConnectedToVPN.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D3BDC7274367BC00417A63 /* IsConnectedToVPN.swift */; };
 		E3DF2EBB27287405009127CA /* TransformTextWithJavaScript.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DF2EBA27287405009127CA /* TransformTextWithJavaScript.swift */; };
 		E3DF2EBD272931C3009127CA /* RandomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DF2EBC272931C3009127CA /* RandomColor.swift */; };
 		E3DF2EBF27293225009127CA /* SampleColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DF2EBE27293225009127CA /* SampleColor.swift */; };
@@ -209,6 +210,7 @@
 		E3BFF7B62742A79100B830DE /* AppIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIcon.swift; sourceTree = "<group>"; };
 		E3BFF7B92742C7BD00B830DE /* GetUserDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserDetails.swift; sourceTree = "<group>"; };
 		E3C6C1A327366A4D0003F56E /* RemoveFromList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveFromList.swift; sourceTree = "<group>"; };
+		E3D3BDC7274367BC00417A63 /* IsConnectedToVPN.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IsConnectedToVPN.swift; path = IntentsExtension/Actions/IsConnectedToVPN.swift; sourceTree = SOURCE_ROOT; };
 		E3DF2EBA27287405009127CA /* TransformTextWithJavaScript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformTextWithJavaScript.swift; sourceTree = "<group>"; };
 		E3DF2EBC272931C3009127CA /* RandomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomColor.swift; sourceTree = "<group>"; };
 		E3DF2EBE27293225009127CA /* SampleColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleColor.swift; sourceTree = "<group>"; };
@@ -383,6 +385,7 @@
 				E3BFF7AA27422F6700B830DE /* IsDarkMode.swift */,
 				E3BFF7AD2742456E00B830DE /* WriteText.swift */,
 				E3BFF7B92742C7BD00B830DE /* GetUserDetails.swift */,
+				E3D3BDC7274367BC00417A63 /* IsConnectedToVPN.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -681,6 +684,7 @@
 				E39F475E272D3DF600B99CB0 /* ShuffleList.swift in Sources */,
 				E371D5872739794400156765 /* SetFileCreationModificationDate.swift in Sources */,
 				E357226A273FE6BF0069070A /* IsAudioPlaying.swift in Sources */,
+				E3D3BDC9274367BC00417A63 /* IsConnectedToVPN.swift in Sources */,
 				E39F4758272D3DF600B99CB0 /* RemoveDuplicatesFromList.swift in Sources */,
 				E38FB4E6273E963300FF3C9A /* GetMusicPlaylists.swift in Sources */,
 				E30F466F272FA446009A358B /* RandomText.swift in Sources */,
