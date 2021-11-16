@@ -74,8 +74,8 @@ struct WriteTextScreen: View {
 
 	@MainActor
 	private func openShortcuts() {
-		dismiss()
 		ShortcutsApp.open()
+		dismiss()
 
 		#if canImport(AppKit)
 		DispatchQueue.main.async {

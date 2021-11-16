@@ -12,11 +12,17 @@ typealias XColor = NSColor
 typealias XFont = NSFont
 typealias XImage = NSImage
 typealias XPasteboard = NSPasteboard
+typealias XApplication = NSApplication
+typealias XApplicationDelegate = NSApplicationDelegate
+typealias XApplicationDelegateAdaptor = NSApplicationDelegateAdaptor
 #elseif canImport(UIKit)
 typealias XColor = UIColor
 typealias XFont = UIFont
 typealias XImage = UIImage
 typealias XPasteboard = UIPasteboard
+typealias XApplication = UIApplication
+typealias XApplicationDelegate = UIApplicationDelegate
+typealias XApplicationDelegateAdaptor = UIApplicationDelegateAdaptor
 #endif
 
 
@@ -33,6 +39,12 @@ enum SSApp {
 	static let build = Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as! String
 	static let versionWithBuild = "\(version) (\(build))"
 	static let url = Bundle.main.bundleURL
+
+	#if DEBUG
+	static let isDebug = true
+	#else
+	static let isDebug = false
+	#endif
 
 	static var isDarkMode: Bool {
 		#if canImport(AppKit)
@@ -72,7 +84,7 @@ enum SSApp {
 	private static func getFeedbackMetadata() -> String {
 		"""
 		\(SSApp.name) \(SSApp.versionWithBuild) - \(SSApp.id)
-		macOS \(Device.osVersion)
+		\(Device.operatingSystemString)
 		\(Device.modelIdentifier)
 		"""
 	}
@@ -164,19 +176,38 @@ enum Device {
 	#endif
 
 	/**
-	The current version of the operating system.
+	The name of the operating system running on the device.
+
+	```
+	Device.operatingSystemName
+	//=> "macOS"
+
+	Device.operatingSystemName
+	//=> "iOS"
+	```
+	*/
+	static let operatingSystemName: String = {
+		#if canImport(AppKit)
+		return "macOS"
+		#elseif canImport(UIKit)
+		return UIDevice.current.systemName
+		#endif
+	}()
+
+	/**
+	The version of the operating system running on the device.
 
 	```
 	// macOS
-	Device.osVersion
+	Device.operatingSystemVersion
 	//=> "10.14.2"
 
 	// iOS
-	Device.osVersion
+	Device.operatingSystemVersion
 	//=> "13.5.1"
 	```
 	*/
-	static let osVersion: String = {
+	static let operatingSystemVersion: String = {
 		#if canImport(AppKit)
 		let os = ProcessInfo.processInfo.operatingSystemVersion
 		return "\(os.majorVersion).\(os.minorVersion).\(os.patchVersion)"
@@ -184,6 +215,21 @@ enum Device {
 		return UIDevice.current.systemVersion
 		#endif
 	}()
+
+	/**
+	The name and version of the operating system running on the device.
+
+	```
+	// macOS
+	Device.operatingSystemString
+	//=> "macOS 10.14.2"
+
+	// iOS
+	Device.operatingSystemString
+	//=> "iOS 13.5.1"
+	```
+	*/
+	static let operatingSystemString = "\(operatingSystemName) \(operatingSystemVersion)"
 
 	/**
 	```
@@ -250,6 +296,21 @@ enum Device {
 			vpnKeys.contains { key.hasPrefix($0) }
 		}
 	}
+
+	/**
+	Whether the device has a small screen.
+
+	This is useful for detecting iPhone SE and iPhone 6S, which has a very small screen and are still supported.
+
+	On macOS, it always returns false.
+	*/
+	static let hasSmallScreen: Bool = {
+		#if canImport(AppKit)
+		return false
+		#elseif canImport(UIKit)
+		return UIScreen.main.bounds.height < 700
+		#endif
+	}()
 }
 
 
@@ -2501,5 +2562,113 @@ extension CNContactStore {
 		}
 
 		return contact.toPersonNameComponents
+	}
+}
+
+
+extension View {
+	/**
+	Conditionally modify the view. For example, apply modifiers, wrap the view, etc.
+
+	```
+	Text("Foo")
+		.padding()
+		.if(someCondition) {
+			$0.foregroundColor(.pink)
+		}
+	```
+
+	```
+	VStack() {
+		Text("Line 1")
+		Text("Line 2")
+	}
+		.if(someCondition) { content in
+			ScrollView(.vertical) { content }
+		}
+	```
+	*/
+	@ViewBuilder
+	func `if`<Content: View>(
+		_ condition: @autoclosure () -> Bool,
+		modify: (Self) -> Content
+	) -> some View {
+		if condition() {
+			modify(self)
+		} else {
+			self
+		}
+	}
+
+	/**
+	This overload makes it possible to preserve the type. For example, doing an `if` in a chain of `Text`-only modifiers.
+
+	```
+	Text("🦄")
+		.if(isOn) {
+			$0.fontWeight(.bold)
+		}
+		.kerning(10)
+	```
+	*/
+	func `if`(
+		_ condition: @autoclosure () -> Bool,
+		modify: (Self) -> Self
+	) -> Self {
+		condition() ? modify(self) : self
+	}
+}
+
+
+extension View {
+	/**
+	Conditionally modify the view. For example, apply modifiers, wrap the view, etc.
+	*/
+	@ViewBuilder
+	func `if`<IfContent: View, ElseContent: View>(
+		_ condition: @autoclosure () -> Bool,
+		if modifyIf: (Self) -> IfContent,
+		else modifyElse: (Self) -> ElseContent
+	) -> some View {
+		if condition() {
+			modifyIf(self)
+		} else {
+			modifyElse(self)
+		}
+	}
+
+	/**
+	Conditionally modify the view. For example, apply modifiers, wrap the view, etc.
+
+	This overload makes it possible to preserve the type. For example, doing an `if` in a chain of `Text`-only modifiers.
+	*/
+	func `if`(
+		_ condition: @autoclosure () -> Bool,
+		if modifyIf: (Self) -> Self,
+		else modifyElse: (Self) -> Self
+	) -> Self {
+		condition() ? modifyIf(self) : modifyElse(self)
+	}
+}
+
+extension Font {
+	/**
+	Conditionally modify the font. For example, apply modifiers.
+
+	```
+	Text("Foo")
+		.font(
+			Font.system(size: 10, weight: .regular)
+				.if(someBool) {
+					$0.monospacedDigit()
+				}
+		)
+	```
+	*/
+	func `if`(
+		_ condition: @autoclosure () -> Bool,
+		modify: (Self) -> Self
+	) -> Self {
+		condition() ? modify(self) : self
 	}
 }

@@ -1,18 +1,8 @@
 import SwiftUI
 
-@MainActor
-final class AppState: ObservableObject {
-	static let shared = AppState()
-
-	@Published var userActivity: NSUserActivity?
-}
-
 @main
-struct ActionsApp: App {
-	#if canImport(AppKit)
-	@NSApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
-	#endif
-
+struct AppMain: App {
+	@XApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
 	@StateObject private var appState = AppState.shared
 
 	var body: some Scene {
@@ -38,9 +28,9 @@ struct ActionsApp: App {
 	}
 }
 
-#if canImport(AppKit)
 @MainActor
-private final class AppDelegate: NSObject, NSApplicationDelegate {
+private final class AppDelegate: NSObject, XApplicationDelegate {
+	#if canImport(AppKit)
 	func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool { true }
 
 	// `.onContinueUserActivity` does not seem to work on macOS 12.0.1.
@@ -48,5 +38,5 @@ private final class AppDelegate: NSObject, NSApplicationDelegate {
 		AppState.shared.userActivity = userActivity
 		return true
 	}
+	#endif
 }
-#endif

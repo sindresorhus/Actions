@@ -6,7 +6,7 @@ struct AppIcon: View {
 	@State private var isFlipping = false
 
 	var body: some View {
-		if accessibilityReduceMotion {
+		if accessibilityReduceMotion || SSApp.isDebug {
 			Image("AppIconForView")
 				.resizable()
 				.aspectRatio(contentMode: .fit)
@@ -16,6 +16,7 @@ struct AppIcon: View {
 	}
 
 	private var animatedIcon: some View {
+		// TODO: Add depth to the icon so it's not flat when rotating it.
 		ZStack {
 			Image("AppIconForViewBackground")
 				.resizable()

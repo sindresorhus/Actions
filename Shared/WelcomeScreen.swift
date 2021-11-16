@@ -8,7 +8,7 @@ struct WelcomeScreen: View {
 			Spacer()
 			VStack(spacing: 0) {
 				AppIcon()
-					.frame(height: 200)
+					.frame(height: Device.hasSmallScreen ? 140 : 200)
 				Text(SSApp.name)
 					.font(.system(size: 40, weight: .heavy))
 					.actuallyHiddenIfAccessibilitySize()
@@ -34,6 +34,7 @@ struct WelcomeScreen: View {
 				.controlSize(.large)
 				.keyboardShortcut(.defaultAction)
 				.padding()
+				.dynamicTypeSize(...(Device.hasSmallScreen ? .accessibility3 : .accessibility4))
 			Spacer()
 			Button("Send Feedback") {
 				SSApp.openSendFeedbackPage()
@@ -45,6 +46,7 @@ struct WelcomeScreen: View {
 //				.controlSize(.small)
 				.controlSize(.large)
 				.padding(.bottom, 10) // TODO: Remove this at some point.
+				.dynamicTypeSize(...(.accessibility4))
 		}
 			.padding()
 			#if canImport(AppKit)
@@ -52,7 +54,11 @@ struct WelcomeScreen: View {
 			.padding(.vertical)
 			#elseif canImport(UIKit)
 			.frame(maxWidth: dynamicTypeSize.isAccessibilitySize ? .infinity : 540)
-			.embedInScrollViewIfAccessibilitySize()
+			.if(Device.hasSmallScreen) {
+				$0.embedInScrollView()
+			} else: {
+				$0.embedInScrollViewIfAccessibilitySize()
+			}
 			#endif
 			.task {
 				#if DEBUG

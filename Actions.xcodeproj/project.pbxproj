@@ -26,6 +26,8 @@
 		E3327E97272C68DE00AD5CC7 /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = E3327E96272C68DE00AD5CC7 /* Sentry */; };
 		E3327E99272C79F900AD5CC7 /* RemoveDuplicateLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3327E98272C79F900AD5CC7 /* RemoveDuplicateLines.swift */; };
 		E3327E9B272D22DC00AD5CC7 /* AddToList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3327E9A272D22DC00AD5CC7 /* AddToList.swift */; };
+		E33D4BA52744238300CC7A8A /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33D4BA42744238300CC7A8A /* AppState.swift */; };
+		E33D4BA62744238300CC7A8A /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33D4BA42744238300CC7A8A /* AppState.swift */; };
 		E34D03742725BB1A0065FC3B /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FC71DC271EBE5B00C9D255 /* Utilities.swift */; };
 		E34D03762725BCD10065FC3B /* RandomBoolean.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34D03752725BCD10065FC3B /* RandomBoolean.swift */; };
 		E34D03782725C1340065FC3B /* RemoveEmojis.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34D03772725C1340065FC3B /* RemoveEmojis.swift */; };
@@ -101,6 +103,8 @@
 		E3C6C1A427366A4D0003F56E /* RemoveFromList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C6C1A327366A4D0003F56E /* RemoveFromList.swift */; };
 		E3C6C1A527366A4D0003F56E /* RemoveFromList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C6C1A327366A4D0003F56E /* RemoveFromList.swift */; };
 		E3D3BDC9274367BC00417A63 /* IsConnectedToVPN.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D3BDC7274367BC00417A63 /* IsConnectedToVPN.swift */; };
+		E3D3BDCC2743A72C00417A63 /* EditURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D3BDCB2743A72C00417A63 /* EditURL.swift */; };
+		E3D3BDCD2743A72C00417A63 /* EditURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D3BDCB2743A72C00417A63 /* EditURL.swift */; };
 		E3DF2EBB27287405009127CA /* TransformTextWithJavaScript.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DF2EBA27287405009127CA /* TransformTextWithJavaScript.swift */; };
 		E3DF2EBD272931C3009127CA /* RandomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DF2EBC272931C3009127CA /* RandomColor.swift */; };
 		E3DF2EBF27293225009127CA /* SampleColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DF2EBE27293225009127CA /* SampleColor.swift */; };
@@ -179,6 +183,7 @@
 		E324CA29271EA67E00E7CA9B /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		E3327E98272C79F900AD5CC7 /* RemoveDuplicateLines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveDuplicateLines.swift; sourceTree = "<group>"; };
 		E3327E9A272D22DC00AD5CC7 /* AddToList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToList.swift; sourceTree = "<group>"; };
+		E33D4BA42744238300CC7A8A /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		E34D03752725BCD10065FC3B /* RandomBoolean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomBoolean.swift; sourceTree = "<group>"; };
 		E34D03772725C1340065FC3B /* RemoveEmojis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveEmojis.swift; sourceTree = "<group>"; };
 		E34D03792725C2D30065FC3B /* TrimWhitespace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrimWhitespace.swift; sourceTree = "<group>"; };
@@ -211,6 +216,7 @@
 		E3BFF7B92742C7BD00B830DE /* GetUserDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserDetails.swift; sourceTree = "<group>"; };
 		E3C6C1A327366A4D0003F56E /* RemoveFromList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveFromList.swift; sourceTree = "<group>"; };
 		E3D3BDC7274367BC00417A63 /* IsConnectedToVPN.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IsConnectedToVPN.swift; path = IntentsExtension/Actions/IsConnectedToVPN.swift; sourceTree = SOURCE_ROOT; };
+		E3D3BDCB2743A72C00417A63 /* EditURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditURL.swift; sourceTree = "<group>"; };
 		E3DF2EBA27287405009127CA /* TransformTextWithJavaScript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformTextWithJavaScript.swift; sourceTree = "<group>"; };
 		E3DF2EBC272931C3009127CA /* RandomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomColor.swift; sourceTree = "<group>"; };
 		E3DF2EBE27293225009127CA /* SampleColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleColor.swift; sourceTree = "<group>"; };
@@ -290,6 +296,7 @@
 			isa = PBXGroup;
 			children = (
 				E324C9EF271E972200E7CA9B /* App.swift */,
+				E33D4BA42744238300CC7A8A /* AppState.swift */,
 				E324C9F0271E972200E7CA9B /* MainScreen.swift */,
 				E3BFF7B327428F5200B830DE /* WelcomeScreen.swift */,
 				E3BFF7B62742A79100B830DE /* AppIcon.swift */,
@@ -386,6 +393,7 @@
 				E3BFF7AD2742456E00B830DE /* WriteText.swift */,
 				E3BFF7B92742C7BD00B830DE /* GetUserDetails.swift */,
 				E3D3BDC7274367BC00417A63 /* IsConnectedToVPN.swift */,
+				E3D3BDCB2743A72C00417A63 /* EditURL.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -583,6 +591,7 @@
 				E3BFF7B527428F5200B830DE /* WelcomeScreen.swift in Sources */,
 				E324CA23271E993F00E7CA9B /* Intents.intentdefinition in Sources */,
 				E324CA01271E972300E7CA9B /* MainScreen.swift in Sources */,
+				E33D4BA62744238300CC7A8A /* AppState.swift in Sources */,
 				E3BFF7B22742616400B830DE /* WriteTextScreen.swift in Sources */,
 				E3BFF7B82742A79100B830DE /* AppIcon.swift in Sources */,
 				E3FC71DD271EBE5C00C9D255 /* Utilities.swift in Sources */,
@@ -597,6 +606,7 @@
 				E3BFF7B427428F5200B830DE /* WelcomeScreen.swift in Sources */,
 				E324CA2B271EAAAC00E7CA9B /* Intents.intentdefinition in Sources */,
 				E324CA02271E972300E7CA9B /* MainScreen.swift in Sources */,
+				E33D4BA52744238300CC7A8A /* AppState.swift in Sources */,
 				E3BFF7B12742616400B830DE /* WriteTextScreen.swift in Sources */,
 				E3BFF7B72742A79100B830DE /* AppIcon.swift in Sources */,
 				E3FC71DE271EBE5C00C9D255 /* Utilities.swift in Sources */,
@@ -646,6 +656,7 @@
 				E38FB4E8273EB47B00FF3C9A /* FilterList.swift in Sources */,
 				E3DF2EBF27293225009127CA /* SampleColor.swift in Sources */,
 				E38FB4EB273EDCD600FF3C9A /* TruncateList.swift in Sources */,
+				E3D3BDCC2743A72C00417A63 /* EditURL.swift in Sources */,
 				E3BFF7BA2742C7BD00B830DE /* GetUserDetails.swift in Sources */,
 				E3DF2EBD272931C3009127CA /* RandomColor.swift in Sources */,
 				E3BFF7AB27422F6700B830DE /* IsDarkMode.swift in Sources */,
@@ -662,6 +673,7 @@
 				E39F476F272D3DF600B99CB0 /* GetUniformTypeIdentifier.swift in Sources */,
 				E39F4755272D3DED00B99CB0 /* IntentHandler.swift in Sources */,
 				E39F476E272D3DF600B99CB0 /* RandomBoolean.swift in Sources */,
+				E3D3BDCD2743A72C00417A63 /* EditURL.swift in Sources */,
 				E3EE4041273802FB009B3FED /* ApplyCaptureDate.swift in Sources */,
 				E3C6C1A527366A4D0003F56E /* RemoveFromList.swift in Sources */,
 				E39F4760272D3DF600B99CB0 /* RemoveDuplicateLines.swift in Sources */,
@@ -855,6 +867,7 @@
 				INFOPLIST_FILE = iOS/Info.plist;
 				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Required to use the “Get Music Playlists” action.";
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Required to use the “Is Bluetooth On” action.";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Required to use the “Is Bluetooth On” action.";
 				INFOPLIST_KEY_NSContactsUsageDescription = "Required to get the user's name in the “Get User Details” action.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -889,6 +902,7 @@
 				INFOPLIST_FILE = iOS/Info.plist;
 				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Required to use the “Get Music Playlists” action.";
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Required to use the “Is Bluetooth On” action.";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Required to use the “Is Bluetooth On” action.";
 				INFOPLIST_KEY_NSContactsUsageDescription = "Required to get the user's name in the “Get User Details” action.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

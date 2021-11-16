@@ -31,6 +31,7 @@ Requires macOS 12 or iOS 15 and later.
 - Combine Lists
 - Create URL
 - Date to Unix Time
+- Edit URL
 - Filter List
 - Format Date Difference
 - Generate UUID

@@ -99,6 +99,8 @@ final class IntentHandler: INExtension {
 		case is IsConnectedToVPNIntent:
 			return IsConnectedToVPNIntentHandler()
 		#endif
+		case is EditURLIntent:
+			return EditURLIntentHandler()
 		default:
 			assertionFailure("No handler for this intent")
 			return nil
