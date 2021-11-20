@@ -35,6 +35,7 @@ Requires macOS 12 or iOS 15 and later.
 - Filter List
 - Format Date Difference
 - Generate UUID
+- Get Battery State
 - Get Emojis
 - Get File Path
 - Get Music Playlists <sup>(iOS-only)</sup>

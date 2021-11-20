@@ -1,4 +1,4 @@
-import SwiftUI
+import Foundation
 
 @MainActor
 final class UnixTimeToDateIntentHandler: NSObject, UnixTimeToDateIntentHandling {

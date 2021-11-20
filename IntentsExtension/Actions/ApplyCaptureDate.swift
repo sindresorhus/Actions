@@ -1,4 +1,4 @@
-import SwiftUI
+import CoreGraphics
 
 @MainActor
 final class ApplyCaptureDateIntentHandler: NSObject, ApplyCaptureDateIntentHandling {

@@ -103,6 +103,8 @@ final class IntentHandler: INExtension {
 			return EditURLIntentHandler()
 		case is GetTitleOfURLIntent:
 			return GetTitleOfURLIntentHandler()
+		case is GetBatteryStateIntent:
+			return GetBatteryStateIntentHandler()
 		default:
 			assertionFailure("No handler for this intent")
 			return nil

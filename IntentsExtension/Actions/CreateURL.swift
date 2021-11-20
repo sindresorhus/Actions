@@ -1,4 +1,4 @@
-import SwiftUI
+import Foundation
 
 @MainActor
 final class CreateURLIntentHandler: NSObject, CreateURLIntentHandling {

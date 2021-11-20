@@ -17,6 +17,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Filter List
 - Format Date Difference
 - Generate UUID
+- Get Battery State
 - Get Emojis
 - Get File Path
 - Get Music Playlists (iOS-only)

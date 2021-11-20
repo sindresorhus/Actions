@@ -8,6 +8,8 @@ import CoreBluetooth
 import Contacts
 
 #if canImport(AppKit)
+import IOKit.ps
+
 typealias XColor = NSColor
 typealias XFont = NSFont
 typealias XImage = NSImage
@@ -311,6 +313,131 @@ enum Device {
 		return UIScreen.main.bounds.height < 700
 		#endif
 	}()
+}
+
+
+#if canImport(AppKit)
+struct InternalMacBattery {
+	struct State {
+		private static func powerSourceInfo() -> [String: AnyObject] {
+			guard
+				let blob = IOPSCopyPowerSourcesInfo()?.takeRetainedValue(),
+				let sources = IOPSCopyPowerSourcesList(blob)?.takeRetainedValue() as [CFTypeRef]?,
+				let source = sources.first,
+				let description = IOPSGetPowerSourceDescription(blob, source)?.takeUnretainedValue() as? [String: AnyObject]
+			else {
+				return [:]
+			}
+
+			return description
+		}
+
+		/**
+		Whether the device has a battery.
+		*/
+		let hasBattery: Bool
+
+		/**
+		Whether the power adapter is connected.
+		*/
+		let isPowerAdapterConnected: Bool
+
+		/**
+		Whether the battery is charging.
+		*/
+		let isCharging: Bool
+
+		/**
+		Whether the battery is fully charged and connected to a power adapter.
+		*/
+		let isCharged: Bool
+
+		init() {
+			let info = Self.powerSourceInfo()
+
+			self.hasBattery = (info[kIOPSIsPresentKey] as? Bool) == true
+				&& (info[kIOPSTypeKey] as? String) == kIOPSInternalBatteryType
+
+			if hasBattery {
+				self.isPowerAdapterConnected = info[kIOPSPowerSourceStateKey] as? String == kIOPSACPowerValue
+				self.isCharging = info[kIOPSIsChargingKey] as? Bool ?? false
+				self.isCharged = info[kIOPSIsChargedKey] as? Bool ?? false
+			} else {
+				self.isPowerAdapterConnected = true
+				self.isCharging = false
+				self.isCharged = false
+			}
+		}
+	}
+
+	/**
+	The state of the internal battery.
+
+	If the device does not have a battery, it still tries to return sensible values.
+	*/
+	static var state: State { .init() }
+}
+#endif
+
+
+extension Device {
+	enum BatteryState {
+		/**
+		The battery state for the device cannot be determined.
+		*/
+		case unknown
+
+		/**
+		The device is not plugged into power; the battery is discharging.
+		*/
+		case unplugged
+
+		/**
+		The device is plugged into power and the battery is less than 100% charged.
+		*/
+		case charging
+
+		/**
+		The device is plugged into power and the battery is 100% charged.
+		*/
+		case full
+	}
+
+	/**
+	The state of the device's battery.
+	*/
+	static var batteryState: BatteryState {
+		#if canImport(AppKit)
+		let state = InternalMacBattery.state
+
+		if state.isPowerAdapterConnected {
+			if state.isCharged {
+				return .full
+			} else if state.isCharging {
+				return .charging
+			} else {
+				return .unknown
+			}
+		} else {
+			return .unplugged
+		}
+		#elseif canImport(UIKit)
+		UIDevice.current.isBatteryMonitoringEnabled = true
+
+		switch UIDevice.current.batteryState {
+		case .unknown:
+			return .unknown
+		case .unplugged:
+			return .unplugged
+		case .charging:
+			return .charging
+		case .full:
+			return .full
+		@unknown default:
+			return .unknown
+		}
+		#endif
+	}
 }
 
 
