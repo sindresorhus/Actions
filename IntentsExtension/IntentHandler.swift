@@ -101,6 +101,8 @@ final class IntentHandler: INExtension {
 		#endif
 		case is EditURLIntent:
 			return EditURLIntentHandler()
+		case is GetTitleOfURLIntent:
+			return GetTitleOfURLIntentHandler()
 		default:
 			assertionFailure("No handler for this intent")
 			return nil

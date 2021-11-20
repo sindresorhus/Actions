@@ -28,6 +28,9 @@
 		E3327E9B272D22DC00AD5CC7 /* AddToList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3327E9A272D22DC00AD5CC7 /* AddToList.swift */; };
 		E33D4BA52744238300CC7A8A /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33D4BA42744238300CC7A8A /* AppState.swift */; };
 		E33D4BA62744238300CC7A8A /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33D4BA42744238300CC7A8A /* AppState.swift */; };
+		E33DFF642748BEDD00C79D78 /* GetTitleOfURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33DFF632748BEDD00C79D78 /* GetTitleOfURL.swift */; };
+		E33DFF652748BEDD00C79D78 /* GetTitleOfURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33DFF632748BEDD00C79D78 /* GetTitleOfURL.swift */; };
+		E33DFF672748C6B100C79D78 /* InternetAccessPolicy.json in Resources */ = {isa = PBXBuildFile; fileRef = E33DFF662748C6B100C79D78 /* InternetAccessPolicy.json */; };
 		E34D03742725BB1A0065FC3B /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FC71DC271EBE5B00C9D255 /* Utilities.swift */; };
 		E34D03762725BCD10065FC3B /* RandomBoolean.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34D03752725BCD10065FC3B /* RandomBoolean.swift */; };
 		E34D03782725C1340065FC3B /* RemoveEmojis.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34D03772725C1340065FC3B /* RemoveEmojis.swift */; };
@@ -184,6 +187,8 @@
 		E3327E98272C79F900AD5CC7 /* RemoveDuplicateLines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveDuplicateLines.swift; sourceTree = "<group>"; };
 		E3327E9A272D22DC00AD5CC7 /* AddToList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToList.swift; sourceTree = "<group>"; };
 		E33D4BA42744238300CC7A8A /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		E33DFF632748BEDD00C79D78 /* GetTitleOfURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTitleOfURL.swift; sourceTree = "<group>"; };
+		E33DFF662748C6B100C79D78 /* InternetAccessPolicy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = InternetAccessPolicy.json; sourceTree = "<group>"; };
 		E34D03752725BCD10065FC3B /* RandomBoolean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomBoolean.swift; sourceTree = "<group>"; };
 		E34D03772725C1340065FC3B /* RemoveEmojis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveEmojis.swift; sourceTree = "<group>"; };
 		E34D03792725C2D30065FC3B /* TrimWhitespace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrimWhitespace.swift; sourceTree = "<group>"; };
@@ -345,6 +350,7 @@
 				E38715862725A333003155B0 /* Actions */,
 				E324CA18271E98F300E7CA9B /* Info.plist */,
 				E3FC71E4271ED43700C9D255 /* IntentsExtension.entitlements */,
+				E33DFF662748C6B100C79D78 /* InternetAccessPolicy.json */,
 			);
 			path = IntentsExtension;
 			sourceTree = "<group>";
@@ -394,6 +400,7 @@
 				E3BFF7B92742C7BD00B830DE /* GetUserDetails.swift */,
 				E3D3BDC7274367BC00417A63 /* IsConnectedToVPN.swift */,
 				E3D3BDCB2743A72C00417A63 /* EditURL.swift */,
+				E33DFF632748BEDD00C79D78 /* GetTitleOfURL.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -549,6 +556,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E33DFF672748C6B100C79D78 /* InternetAccessPolicy.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -618,6 +626,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E33DFF642748BEDD00C79D78 /* GetTitleOfURL.swift in Sources */,
 				E3F4F95E272C0C030008B54A /* CreateURL.swift in Sources */,
 				E38FB4E2273E8D6700FF3C9A /* CombineLists.swift in Sources */,
 				E3F1EE442726E2AF00091C44 /* ShuffleList.swift in Sources */,
@@ -710,6 +719,7 @@
 				E38FB4E9273EB47B00FF3C9A /* FilterList.swift in Sources */,
 				E39F4757272D3DF600B99CB0 /* AddToList.swift in Sources */,
 				E38FB4EC273EDCD600FF3C9A /* TruncateList.swift in Sources */,
+				E33DFF652748BEDD00C79D78 /* GetTitleOfURL.swift in Sources */,
 				E39F476C272D3DF600B99CB0 /* RemoveEmojis.swift in Sources */,
 				E3BFF7AF2742456E00B830DE /* WriteText.swift in Sources */,
 				E39F4763272D3DF600B99CB0 /* GenerateUUID.swift in Sources */,

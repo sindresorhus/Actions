@@ -1,0 +1,14 @@
+{
+	"ApplicationDescription": "Actions supercharges your shortcuts",
+	"DeveloperName": "Sindre Sorhus",
+	"Website": "https://sindresorhus.com/actions",
+	"Connections" : [
+		{
+			"Host" : "*.sentry.io",
+			"NetworkProtocol" : "TCP",
+			"Port" : "443",
+			"Purpose" : "Actions sends crash reports to this server.",
+			"DenyConsequences" : "If you deny this connection, crash reports will not be sent and bugs might stay unfixed."
+		}
+	]
+}
