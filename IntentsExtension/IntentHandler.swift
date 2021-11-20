@@ -105,6 +105,8 @@ final class IntentHandler: INExtension {
 			return GetTitleOfURLIntentHandler()
 		case is GetBatteryStateIntent:
 			return GetBatteryStateIntentHandler()
+		case is IsLowPowerModeIntent:
+			return IsLowPowerModeIntentHandler()
 		default:
 			assertionFailure("No handler for this intent")
 			return nil

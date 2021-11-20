@@ -28,6 +28,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Is Bluetooth On
 - Is Connected to VPN (iOS-only)
 - Is Dark Mode
+- Is Low Power Mode
 - Random Boolean
 - Random Color
 - Random Date and Time

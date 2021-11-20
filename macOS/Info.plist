@@ -29,6 +29,7 @@
 		<string>IsBluetoothOnIntent</string>
 		<string>IsConnectedToVPNIntent</string>
 		<string>IsDarkModeIntent</string>
+		<string>IsLowPowerModeIntent</string>
 		<string>RandomBooleanIntent</string>
 		<string>RandomColorIntent</string>
 		<string>RandomDateTimeIntent</string>

@@ -8017,7 +8017,7 @@
 					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
 					<true/>
 					<key>INIntentParameterCombinationTitle</key>
-					<string>Is dark mode?</string>
+					<string>Is dark mode enabled?</string>
 					<key>INIntentParameterCombinationTitleID</key>
 					<string>IXo3ex</string>
 					<key>INIntentParameterCombinationUpdatesLinked</key>
@@ -9788,6 +9788,90 @@
 			<string>Get Battery State</string>
 			<key>INIntentTitleID</key>
 			<string>9rnjkF</string>
+			<key>INIntentType</key>
+			<string>Custom</string>
+			<key>INIntentVerb</key>
+			<string>View</string>
+		</dict>
+		<dict>
+			<key>INIntentCategory</key>
+			<string>information</string>
+			<key>INIntentConfigurable</key>
+			<true/>
+			<key>INIntentDescription</key>
+			<string>Returns whether low power mode is enabled on the device.</string>
+			<key>INIntentDescriptionID</key>
+			<string>qSafqT</string>
+			<key>INIntentIneligibleForSuggestions</key>
+			<true/>
+			<key>INIntentManagedParameterCombinations</key>
+			<dict>
+				<key></key>
+				<dict>
+					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
+					<true/>
+					<key>INIntentParameterCombinationTitle</key>
+					<string>Is low power mode enabled?</string>
+					<key>INIntentParameterCombinationTitleID</key>
+					<string>XeUkPt</string>
+					<key>INIntentParameterCombinationUpdatesLinked</key>
+					<true/>
+				</dict>
+			</dict>
+			<key>INIntentName</key>
+			<string>IsLowPowerMode</string>
+			<key>INIntentResponse</key>
+			<dict>
+				<key>INIntentResponseCodes</key>
+				<array>
+					<dict>
+						<key>INIntentResponseCodeName</key>
+						<string>success</string>
+						<key>INIntentResponseCodeSuccess</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>INIntentResponseCodeName</key>
+						<string>failure</string>
+					</dict>
+				</array>
+				<key>INIntentResponseLastParameterTag</key>
+				<integer>2</integer>
+				<key>INIntentResponseOutput</key>
+				<string>result</string>
+				<key>INIntentResponseParameters</key>
+				<array>
+					<dict>
+						<key>INIntentResponseParameterDisplayName</key>
+						<string>Is Low Power Mode</string>
+						<key>INIntentResponseParameterDisplayNameID</key>
+						<string>4KG4zW</string>
+						<key>INIntentResponseParameterDisplayPriority</key>
+						<integer>1</integer>
+						<key>INIntentResponseParameterMetadata</key>
+						<dict>
+							<key>INIntentResponseParameterMetadataFalseDisplayName</key>
+							<string>false</string>
+							<key>INIntentResponseParameterMetadataFalseDisplayNameID</key>
+							<string>MOi4yi</string>
+							<key>INIntentResponseParameterMetadataTrueDisplayName</key>
+							<string>true</string>
+							<key>INIntentResponseParameterMetadataTrueDisplayNameID</key>
+							<string>OYKBgx</string>
+						</dict>
+						<key>INIntentResponseParameterName</key>
+						<string>result</string>
+						<key>INIntentResponseParameterTag</key>
+						<integer>2</integer>
+						<key>INIntentResponseParameterType</key>
+						<string>Boolean</string>
+					</dict>
+				</array>
+			</dict>
+			<key>INIntentTitle</key>
+			<string>Is Low Power Mode</string>
+			<key>INIntentTitleID</key>
+			<string>IT7YhH</string>
 			<key>INIntentType</key>
 			<string>Custom</string>
 			<key>INIntentVerb</key>

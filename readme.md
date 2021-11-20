@@ -46,6 +46,7 @@ Requires macOS 12 or iOS 15 and later.
 - Is Bluetooth On
 - Is Connected to VPN <sup>(iOS-only)</sup>
 - Is Dark Mode
+- Is Low Power Mode
 - Random Boolean
 - Random Color
 - Random Date and Time
