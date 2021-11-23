@@ -2912,3 +2912,25 @@ extension Font {
 		.system(size: OS.current == .macOS ? 16 : 20, relativeTo: .body)
 	}
 }
+
+
+extension StringProtocol {
+	/**
+	Removes characters without a display width, often referred to as invisible or non-printable characters.
+
+	This does not include normal whitespace characters.
+
+	```
+	let x = "\u{202A}foo "
+
+	print(x.count)
+	//=> 5
+
+	print(x.removingCharactersWithoutDisplayWidth().count)
+	//=> 4
+	```
+	*/
+	func removingCharactersWithoutDisplayWidth() -> String {
+		replacingOccurrences(of: #"[\p{Control}\p{Format}\p{Nonspacing_Mark}\p{Enclosing_Mark}\p{Line_Separator}\p{Paragraph_Separator}\p{Private_Use}\p{Unassigned}]"#, with: "", options: .regularExpression)
+	}
+}

@@ -38,6 +38,8 @@
 		E34D03782725C1340065FC3B /* RemoveEmojis.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34D03772725C1340065FC3B /* RemoveEmojis.swift */; };
 		E34D037A2725C2D30065FC3B /* TrimWhitespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34D03792725C2D30065FC3B /* TrimWhitespace.swift */; };
 		E357226A273FE6BF0069070A /* IsAudioPlaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3572269273FE6BF0069070A /* IsAudioPlaying.swift */; };
+		E35A806C274CF80D00BE7B07 /* RemoveNonPrintableCharacters.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35A806B274CF80D00BE7B07 /* RemoveNonPrintableCharacters.swift */; };
+		E35A806D274CF80D00BE7B07 /* RemoveNonPrintableCharacters.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35A806B274CF80D00BE7B07 /* RemoveNonPrintableCharacters.swift */; };
 		E3660AF12727F51300C038AF /* ClampNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3660AF02727F51300C038AF /* ClampNumber.swift */; };
 		E3660AF32728017600C038AF /* RemoveEmptyLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3660AF22728017600C038AF /* RemoveEmptyLines.swift */; };
 		E371D5862739794400156765 /* SetFileCreationModificationDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E371D5852739794400156765 /* SetFileCreationModificationDate.swift */; };
@@ -198,6 +200,7 @@
 		E34D03772725C1340065FC3B /* RemoveEmojis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveEmojis.swift; sourceTree = "<group>"; };
 		E34D03792725C2D30065FC3B /* TrimWhitespace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrimWhitespace.swift; sourceTree = "<group>"; };
 		E3572269273FE6BF0069070A /* IsAudioPlaying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsAudioPlaying.swift; sourceTree = "<group>"; };
+		E35A806B274CF80D00BE7B07 /* RemoveNonPrintableCharacters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveNonPrintableCharacters.swift; sourceTree = "<group>"; };
 		E3660AF02727F51300C038AF /* ClampNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClampNumber.swift; sourceTree = "<group>"; };
 		E3660AF22728017600C038AF /* RemoveEmptyLines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveEmptyLines.swift; sourceTree = "<group>"; };
 		E371D5852739794400156765 /* SetFileCreationModificationDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetFileCreationModificationDate.swift; sourceTree = "<group>"; };
@@ -409,6 +412,7 @@
 				E33DFF632748BEDD00C79D78 /* GetTitleOfURL.swift */,
 				E33DFF682748EBA200C79D78 /* GetBatteryState.swift */,
 				E3CBF067274960A000F71E27 /* IsLowPowerMode.swift */,
+				E35A806B274CF80D00BE7B07 /* RemoveNonPrintableCharacters.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -663,6 +667,7 @@
 				E3327E9B272D22DC00AD5CC7 /* AddToList.swift in Sources */,
 				E30F466E272FA446009A358B /* RandomText.swift in Sources */,
 				E38715882725A6F4003155B0 /* TransformText.swift in Sources */,
+				E35A806C274CF80D00BE7B07 /* RemoveNonPrintableCharacters.swift in Sources */,
 				E34D03782725C1340065FC3B /* RemoveEmojis.swift in Sources */,
 				E3F1EE422726E0CE00091C44 /* SortList.swift in Sources */,
 				E38EAAFA2729DD890055451B /* UnixTimeToDate.swift in Sources */,
@@ -730,6 +735,7 @@
 				E39F4762272D3DF600B99CB0 /* RandomEmoji.swift in Sources */,
 				E38FB4E9273EB47B00FF3C9A /* FilterList.swift in Sources */,
 				E39F4757272D3DF600B99CB0 /* AddToList.swift in Sources */,
+				E35A806D274CF80D00BE7B07 /* RemoveNonPrintableCharacters.swift in Sources */,
 				E38FB4EC273EDCD600FF3C9A /* TruncateList.swift in Sources */,
 				E33DFF652748BEDD00C79D78 /* GetTitleOfURL.swift in Sources */,
 				E39F476C272D3DF600B99CB0 /* RemoveEmojis.swift in Sources */,

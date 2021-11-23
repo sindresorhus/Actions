@@ -40,6 +40,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Remove Emojis
 - Remove Empty Lines
 - Remove from List
+- Remove Non-Printable Characters
 - Reverse List
 - Sample Color from Screen (macOS-only)
 - Set Creation and Modification Date of File

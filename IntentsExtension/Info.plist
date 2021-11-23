@@ -45,6 +45,7 @@
 				<string>RemoveEmojiIntent</string>
 				<string>RemoveEmptyLinesIntent</string>
 				<string>RemoveFromListIntent</string>
+				<string>RemoveNonPrintableCharactersIntent</string>
 				<string>ReverseListIntent</string>
 				<string>SampleColorIntent</string>
 				<string>SendFeedbackIntent</string>

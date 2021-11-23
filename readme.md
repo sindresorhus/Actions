@@ -58,6 +58,7 @@ Requires macOS 12 or iOS 15 and later.
 - Remove Emojis
 - Remove Empty Lines
 - Remove from List
+- Remove Non-Printable Characters
 - Reverse List
 - Sample Color from Screen <sup>(macOS-only)</sup>
 - Set Creation and Modification Date of File

@@ -107,6 +107,8 @@ final class IntentHandler: INExtension {
 			return GetBatteryStateIntentHandler()
 		case is IsLowPowerModeIntent:
 			return IsLowPowerModeIntentHandler()
+		case is RemoveNonPrintableCharactersIntent:
+			return RemoveNonPrintableCharactersIntentHandler()
 		default:
 			assertionFailure("No handler for this intent")
 			return nil
