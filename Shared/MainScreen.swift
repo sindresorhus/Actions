@@ -27,6 +27,11 @@ struct MainScreen: View {
 			.onContinueIntent(WriteTextIntent.self) { intent, _ in
 				handleWriteTextIntent(intent)
 			}
+			#if canImport(UIKit)
+			.onContinueIntent(HideShortcutsAppIntent.self) { _, _ in
+				SSApp.moveToBackground()
+			}
+			#endif
 			.task {
 				// For testing the “Write or Edit Text” action.
 //				#if DEBUG

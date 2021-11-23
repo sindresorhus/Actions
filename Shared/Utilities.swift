@@ -62,12 +62,21 @@ enum SSApp {
 	}
 
 	#if canImport(AppKit)
-	/**
-	Can be called from any thread.
-	*/
 	static func quit() {
 		Task { @MainActor in
 			NSApp.terminate(nil)
+		}
+	}
+	#endif
+
+	#if canImport(UIKit)
+	/**
+	Move the app to the background, which returns the user to their home screen.
+	*/
+	@available(iOSApplicationExtension, unavailable)
+	static func moveToBackground() {
+		Task { @MainActor in
+			UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
 		}
 	}
 	#endif

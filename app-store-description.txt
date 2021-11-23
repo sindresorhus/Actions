@@ -25,6 +25,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Get Title of URL
 - Get Uniform Type Identifier
 - Get User Details
+- Hide Shortcuts App
 - Is Audio Playing (iOS-only)
 - Is Bluetooth On
 - Is Connected to VPN (iOS-only)

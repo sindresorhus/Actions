@@ -33,6 +33,8 @@
 		E33DFF672748C6B100C79D78 /* InternetAccessPolicy.json in Resources */ = {isa = PBXBuildFile; fileRef = E33DFF662748C6B100C79D78 /* InternetAccessPolicy.json */; };
 		E33DFF692748EBA200C79D78 /* GetBatteryState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33DFF682748EBA200C79D78 /* GetBatteryState.swift */; };
 		E33DFF6A2748EBA200C79D78 /* GetBatteryState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33DFF682748EBA200C79D78 /* GetBatteryState.swift */; };
+		E34B2542274D66A8006B44A7 /* HideShortcutsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34B2541274D66A8006B44A7 /* HideShortcutsApp.swift */; };
+		E34B2543274D66A8006B44A7 /* HideShortcutsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34B2541274D66A8006B44A7 /* HideShortcutsApp.swift */; };
 		E34D03742725BB1A0065FC3B /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FC71DC271EBE5B00C9D255 /* Utilities.swift */; };
 		E34D03762725BCD10065FC3B /* RandomBoolean.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34D03752725BCD10065FC3B /* RandomBoolean.swift */; };
 		E34D03782725C1340065FC3B /* RemoveEmojis.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34D03772725C1340065FC3B /* RemoveEmojis.swift */; };
@@ -198,6 +200,7 @@
 		E33DFF632748BEDD00C79D78 /* GetTitleOfURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTitleOfURL.swift; sourceTree = "<group>"; };
 		E33DFF662748C6B100C79D78 /* InternetAccessPolicy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = InternetAccessPolicy.json; sourceTree = "<group>"; };
 		E33DFF682748EBA200C79D78 /* GetBatteryState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GetBatteryState.swift; path = IntentsExtension/Actions/GetBatteryState.swift; sourceTree = SOURCE_ROOT; };
+		E34B2541274D66A8006B44A7 /* HideShortcutsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideShortcutsApp.swift; sourceTree = "<group>"; };
 		E34D03752725BCD10065FC3B /* RandomBoolean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomBoolean.swift; sourceTree = "<group>"; };
 		E34D03772725C1340065FC3B /* RemoveEmojis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveEmojis.swift; sourceTree = "<group>"; };
 		E34D03792725C2D30065FC3B /* TrimWhitespace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrimWhitespace.swift; sourceTree = "<group>"; };
@@ -417,6 +420,7 @@
 				E3CBF067274960A000F71E27 /* IsLowPowerMode.swift */,
 				E35A806B274CF80D00BE7B07 /* RemoveNonPrintableCharacters.swift */,
 				E3A6A472274D1802002A62A5 /* FormatCurrency.swift */,
+				E34B2541274D66A8006B44A7 /* HideShortcutsApp.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -663,6 +667,7 @@
 				E38715842725A303003155B0 /* GenerateUUID.swift in Sources */,
 				E3A6A473274D1802002A62A5 /* FormatCurrency.swift in Sources */,
 				E3DF2EC127293299009127CA /* IntentUtilities.swift in Sources */,
+				E34B2542274D66A8006B44A7 /* HideShortcutsApp.swift in Sources */,
 				E34D037A2725C2D30065FC3B /* TrimWhitespace.swift in Sources */,
 				E38EAAF22729C66B0055451B /* FormatDateDifference.swift in Sources */,
 				E324CA17271E98F300E7CA9B /* IntentHandler.swift in Sources */,
@@ -733,6 +738,7 @@
 				E30F466F272FA446009A358B /* RandomText.swift in Sources */,
 				E39F475A272D3DF600B99CB0 /* RandomDateTime.swift in Sources */,
 				E3A6A474274D1802002A62A5 /* FormatCurrency.swift in Sources */,
+				E34B2543274D66A8006B44A7 /* HideShortcutsApp.swift in Sources */,
 				E3BFF7AC27422F6700B830DE /* IsDarkMode.swift in Sources */,
 				E39F476D272D3DF600B99CB0 /* GetFilePath.swift in Sources */,
 				E39F475F272D3DF600B99CB0 /* SortList.swift in Sources */,

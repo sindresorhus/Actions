@@ -111,6 +111,8 @@ final class IntentHandler: INExtension {
 			return RemoveNonPrintableCharactersIntentHandler()
 		case is FormatCurrencyIntent:
 			return FormatCurrencyIntentHandler()
+		case is HideShortcutsAppIntent:
+			return HideShortcutsAppIntentHandler()
 		default:
 			assertionFailure("No handler for this intent")
 			return nil
