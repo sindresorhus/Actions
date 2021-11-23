@@ -33,6 +33,7 @@ Requires macOS 12 or iOS 15 and later.
 - Date to Unix Time
 - Edit URL
 - Filter List
+- Format Currency
 - Format Date Difference
 - Generate UUID
 - Get Battery State

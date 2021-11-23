@@ -95,6 +95,8 @@
 		E39F4772272D3E9000B99CB0 /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = E39F4771272D3E9000B99CB0 /* Sentry */; };
 		E39F4773272D3EAE00B99CB0 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FC71DC271EBE5B00C9D255 /* Utilities.swift */; };
 		E39F4775272D42E000B99CB0 /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E39F4774272D42E000B99CB0 /* IntentsUI.framework */; };
+		E3A6A473274D1802002A62A5 /* FormatCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A472274D1802002A62A5 /* FormatCurrency.swift */; };
+		E3A6A474274D1802002A62A5 /* FormatCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6A472274D1802002A62A5 /* FormatCurrency.swift */; };
 		E3BFF7AB27422F6700B830DE /* IsDarkMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BFF7AA27422F6700B830DE /* IsDarkMode.swift */; };
 		E3BFF7AC27422F6700B830DE /* IsDarkMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BFF7AA27422F6700B830DE /* IsDarkMode.swift */; };
 		E3BFF7AE2742456E00B830DE /* WriteText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BFF7AD2742456E00B830DE /* WriteText.swift */; };
@@ -221,6 +223,7 @@
 		E39F4748272D3DDE00B99CB0 /* IntentsExtension-iOS.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "IntentsExtension-iOS.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E39F4774272D42E000B99CB0 /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/System/Library/Frameworks/IntentsUI.framework; sourceTree = DEVELOPER_DIR; };
 		E39F4776272D516E00B99CB0 /* iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOS.entitlements; sourceTree = "<group>"; };
+		E3A6A472274D1802002A62A5 /* FormatCurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatCurrency.swift; sourceTree = "<group>"; };
 		E3BFF7AA27422F6700B830DE /* IsDarkMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsDarkMode.swift; sourceTree = "<group>"; };
 		E3BFF7AD2742456E00B830DE /* WriteText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteText.swift; sourceTree = "<group>"; };
 		E3BFF7B02742616400B830DE /* WriteTextScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteTextScreen.swift; sourceTree = "<group>"; };
@@ -413,6 +416,7 @@
 				E33DFF682748EBA200C79D78 /* GetBatteryState.swift */,
 				E3CBF067274960A000F71E27 /* IsLowPowerMode.swift */,
 				E35A806B274CF80D00BE7B07 /* RemoveNonPrintableCharacters.swift */,
+				E3A6A472274D1802002A62A5 /* FormatCurrency.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -657,6 +661,7 @@
 				E38EAAF42729CBDB0055451B /* GetFilePath.swift in Sources */,
 				E324CA21271E990D00E7CA9B /* Intents.intentdefinition in Sources */,
 				E38715842725A303003155B0 /* GenerateUUID.swift in Sources */,
+				E3A6A473274D1802002A62A5 /* FormatCurrency.swift in Sources */,
 				E3DF2EC127293299009127CA /* IntentUtilities.swift in Sources */,
 				E34D037A2725C2D30065FC3B /* TrimWhitespace.swift in Sources */,
 				E38EAAF22729C66B0055451B /* FormatDateDifference.swift in Sources */,
@@ -727,6 +732,7 @@
 				E38FB4E6273E963300FF3C9A /* GetMusicPlaylists.swift in Sources */,
 				E30F466F272FA446009A358B /* RandomText.swift in Sources */,
 				E39F475A272D3DF600B99CB0 /* RandomDateTime.swift in Sources */,
+				E3A6A474274D1802002A62A5 /* FormatCurrency.swift in Sources */,
 				E3BFF7AC27422F6700B830DE /* IsDarkMode.swift in Sources */,
 				E39F476D272D3DF600B99CB0 /* GetFilePath.swift in Sources */,
 				E39F475F272D3DF600B99CB0 /* SortList.swift in Sources */,

@@ -15,6 +15,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Date to Unix Time
 - Edit URL
 - Filter List
+- Format Currency
 - Format Date Difference
 - Generate UUID
 - Get Battery State

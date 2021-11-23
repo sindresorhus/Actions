@@ -14,6 +14,7 @@
 		<string>DateToUnixTimeIntent</string>
 		<string>EditURLIntent</string>
 		<string>FilterListIntent</string>
+		<string>FormatCurrencyIntent</string>
 		<string>FormatDateDifferenceIntent</string>
 		<string>GenerateUUIDIntent</string>
 		<string>GetBatteryStateIntent</string>

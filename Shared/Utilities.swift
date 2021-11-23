@@ -2934,3 +2934,85 @@ extension StringProtocol {
 		replacingOccurrences(of: #"[\p{Control}\p{Format}\p{Nonspacing_Mark}\p{Enclosing_Mark}\p{Line_Separator}\p{Paragraph_Separator}\p{Private_Use}\p{Unassigned}]"#, with: "", options: .regularExpression)
 	}
 }
+
+
+extension Sequence {
+	/**
+	Sort a sequence by a key path.
+
+	```
+	["ab", "a", "abc"].sorted(by: \.count)
+	//=> ["a", "ab", "abc"]
+	```
+	*/
+	public func sorted<Value: Comparable>(
+		by keyPath: KeyPath<Element, Value>,
+		order: SortOrder = .forward
+	) -> [Element] {
+		switch order {
+		case .forward:
+			return sorted { $0[keyPath: keyPath] < $1[keyPath: keyPath] }
+		case .reverse:
+			return sorted { $0[keyPath: keyPath] > $1[keyPath: keyPath] }
+		}
+	}
+}
+
+
+extension Sequence {
+	/**
+	Convert a sequence to a dictionary by mapping over the values and using the returned key as the key and the current sequence element as value.
+
+	If the the returned key is `nil`, the element is skipped.
+
+	```
+	[1, 2, 3].toDictionary { $0 }
+	//=> [1: 1, 2: 2, 3: 3]
+
+	[1, 2, 3].toDictionary(withKey: \.self)
+	//=> [1: 1, 2: 2, 3: 3]
+	```
+	*/
+	func toDictionaryCompact<Key: Hashable>(withKey pickKey: (Element) -> Key?) -> [Key: Element] {
+		var dictionary = [Key: Element]()
+
+		for element in self {
+			guard let key = pickKey(element) else {
+				continue
+			}
+
+			dictionary[key] = element
+		}
+
+		return dictionary
+	}
+}
+
+
+extension Locale {
+	static let all = availableIdentifiers.map { Self(identifier: $0) }
+
+	/**
+	A dictionary with available currency codes as keys and their locale as value.
+	*/
+	static let currencyCodesWithLocale = all
+		 .removingDuplicates(by: \.currencyCode)
+		 .toDictionaryCompact(withKey: \.currencyCode)
+
+	/**
+	An array of tuples with currency code and its localized currency name and localized region name.
+	*/
+	static let currencyCodesWithLocalizedNameAndRegionName: [(currencyCode: String, localizedCurrencyName: String, localizedRegionName: String)] = currencyCodesWithLocale
+		 .compactMap { currencyCode, locale in
+			 guard
+				let regionCode = locale.regionCode,
+				let localizedCurrencyName = locale.localizedString(forCurrencyCode: currencyCode),
+				let localizedRegionName = locale.localizedString(forRegionCode: regionCode)
+			 else {
+				 return nil
+			 }
+
+			 return (currencyCode, localizedCurrencyName, localizedRegionName)
+		 }
+		 .sorted(by: \.currencyCode)
+}

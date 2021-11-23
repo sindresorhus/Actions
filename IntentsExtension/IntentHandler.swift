@@ -109,6 +109,8 @@ final class IntentHandler: INExtension {
 			return IsLowPowerModeIntentHandler()
 		case is RemoveNonPrintableCharactersIntent:
 			return RemoveNonPrintableCharactersIntentHandler()
+		case is FormatCurrencyIntent:
+			return FormatCurrencyIntentHandler()
 		default:
 			assertionFailure("No handler for this intent")
 			return nil
