@@ -31,6 +31,8 @@ struct WriteTextScreen: View {
 			}
 			#endif
 			TextEditor(text: $text)
+				.font(.largeBody)
+				.lineSpacing(6)
 				.padding() // TODO: Use `.safeAreaInset()` when it works with `TextEditor`. (macOS 12.0.1)
 		}
 			.focused($isTextEditorFocused)

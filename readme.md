@@ -70,7 +70,11 @@ Requires macOS 12 or iOS 15 and later.
 - Unix Time to Date
 - Write or Edit Text
 
-*(And many more planned!)*
+**Looking for more?**
+
+- Get Internet Speed → [Speediness](https://sindresorhus.com/speediness)
+- Get Random GIF → [Jiffy](https://sindresorhus.com/jiffy)
+- Join Video Call → [Dato](https://sindresorhus.com/dato)
 
 ## Screenshot
 

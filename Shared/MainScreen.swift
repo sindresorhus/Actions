@@ -27,6 +27,15 @@ struct MainScreen: View {
 			.onContinueIntent(WriteTextIntent.self) { intent, _ in
 				handleWriteTextIntent(intent)
 			}
+			.task {
+				// For testing the “Write or Edit Text” action.
+//				#if DEBUG
+//				writeTextData = .init(
+//					title: "Test",
+//					text: ""
+//				)
+//				#endif
+			}
 	}
 
 	private func handleWriteTextIntent(_ intent: WriteTextIntent) {

@@ -317,7 +317,7 @@ enum Device {
 
 
 #if canImport(AppKit)
-struct InternalMacBattery {
+enum InternalMacBattery {
 	struct State {
 		private static func powerSourceInfo() -> [String: AnyObject] {
 			guard
@@ -899,7 +899,6 @@ private struct SecondaryTextStyleModifier: ViewModifier {
 			.foregroundStyle(.secondary)
 	}
 }
-
 
 extension View {
 	func secondaryTextStyle() -> some View {
@@ -2797,5 +2796,119 @@ extension Font {
 		modify: (Self) -> Self
 	) -> Self {
 		condition() ? modify(self) : self
+	}
+}
+
+
+#if canImport(UIKit)
+extension UIFont.TextStyle {
+	var font: UIFont { .preferredFont(forTextStyle: self) }
+
+	var weight: UIFont.Weight { font.weight }
+}
+
+extension UIFont.Weight {
+	var toSwiftUIFontWeight: Font.Weight {
+		switch self {
+		case .ultraLight:
+			return .ultraLight
+		case .thin:
+			return .thin
+		case .light:
+			return .light
+		case .regular:
+			return .regular
+		case .medium:
+			return .medium
+		case .semibold:
+			return .semibold
+		case .bold:
+			return .bold
+		case .heavy:
+			return .heavy
+		case .black:
+			return .black
+		default:
+			return .regular
+		}
+	}
+}
+
+extension Font.TextStyle {
+	var weight: Font.Weight { toUIFontTextStyle.weight.toSwiftUIFontWeight }
+
+	var toUIFontTextStyle: UIFont.TextStyle {
+		switch self {
+		case .largeTitle:
+			return .largeTitle
+		case .title:
+			return .title1
+		case .title2:
+			return .title2
+		case .title3:
+			return .title3
+		case .headline:
+			return .headline
+		case .body:
+			return .body
+		case .callout:
+			return .callout
+		case .subheadline:
+			return .subheadline
+		case .footnote:
+			return .footnote
+		case .caption:
+			return .caption1
+		case .caption2:
+			return .caption2
+		@unknown default:
+			return .body
+		}
+	}
+}
+
+extension UIFont {
+	var traits: [UIFontDescriptor.TraitKey: Any] {
+		fontDescriptor.object(forKey: .traits) as? [UIFontDescriptor.TraitKey: Any] ?? [:]
+	}
+
+	var weight: Weight { traits[.weight] as? Weight ?? .regular }
+}
+#endif
+
+extension Font {
+	/**
+	Specifies a system font where the given size scales relative to the given text style.
+
+	It respects the weight of the text style if no `weight` is specified.
+
+	On macOS, there is no Dynamic Type, so the `relativeTo` parameter has no effect.
+	*/
+	static func system(
+		size: Double,
+		relativeTo textStyle: TextStyle,
+		weight: Weight? = nil,
+		design: Design = .default
+	) -> Self {
+		#if canImport(AppKit)
+		return .system(size: size, weight: weight ?? .regular, design: design)
+		#elseif canImport(UIKit)
+		let style = textStyle.toUIFontTextStyle
+
+		return .system(
+			size: style.metrics.scaledValue(for: size),
+			weight: weight ?? style.weight.toSwiftUIFontWeight,
+			design: design
+		)
+		#endif
+	}
+}
+
+extension Font {
+	/**
+	A font with a large body text style.
+	*/
+	static var largeBody: Self {
+		.system(size: OS.current == .macOS ? 16 : 20, relativeTo: .body)
 	}
 }
