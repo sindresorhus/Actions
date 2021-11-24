@@ -117,6 +117,8 @@ final class IntentHandler: INExtension {
 		case is GetRunningAppsIntent:
 			return GetRunningAppsIntentHandler()
 		#endif
+		case is SpellOutNumberIntent:
+			return SpellOutNumberIntentHandler()
 		default:
 			assertionFailure("No handler for this intent")
 			return nil

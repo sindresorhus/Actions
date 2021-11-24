@@ -67,6 +67,7 @@ Requires macOS 12 or iOS 15 and later.
 - Set Creation and Modification Date of File
 - Shuffle List
 - Sort List
+- Spell Out Number
 - Transform Text
 - Transform Text with JavaScript
 - Trim Whitespace

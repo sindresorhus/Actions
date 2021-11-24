@@ -49,6 +49,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Set Creation and Modification Date of File
 - Shuffle List
 - Sort List
+- Spell Out Number
 - Transform Text
 - Transform Text with JavaScript
 - Trim Whitespace

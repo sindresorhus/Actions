@@ -55,6 +55,7 @@
 				<string>SetFileCreationModificationDateIntent</string>
 				<string>ShuffleListIntent</string>
 				<string>SortListIntent</string>
+				<string>SpellOutNumberIntent</string>
 				<string>TransformTextIntent</string>
 				<string>TransformTextWithJavaScriptIntent</string>
 				<string>TrimWhitespaceIntent</string>

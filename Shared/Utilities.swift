@@ -3027,6 +3027,12 @@ extension Locale {
 }
 
 
+extension Locale {
+	var localizedName: String { Self.current.localizedString(forIdentifier: identifier) ?? identifier }
+}
+
+
+#if canImport(AppKit)
 extension NSWorkspace {
 	/**
 	Running GUI apps. Excludes menu bar apps and daemons.
@@ -3035,3 +3041,4 @@ extension NSWorkspace {
 		runningApplications.filter { $0.activationPolicy == .regular }
 	}
 }
+#endif
