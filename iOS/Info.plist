@@ -21,6 +21,7 @@
 		<string>GetEmojisIntent</string>
 		<string>GetFilePathIntent</string>
 		<string>GetMusicPlaylistsIntent</string>
+		<string>GetRunningAppsIntent</string>
 		<string>GetTitleOfURLIntent</string>
 		<string>GetUniformTypeIdentifierIntent</string>
 		<string>GetUserDetailsIntent</string>

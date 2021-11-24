@@ -3025,3 +3025,13 @@ extension Locale {
 		 }
 		 .sorted(by: \.currencyCode)
 }
+
+
+extension NSWorkspace {
+	/**
+	Running GUI apps. Excludes menu bar apps and daemons.
+	*/
+	var runningGUIApps: [NSRunningApplication] {
+		runningApplications.filter { $0.activationPolicy == .regular }
+	}
+}

@@ -113,6 +113,10 @@ final class IntentHandler: INExtension {
 			return FormatCurrencyIntentHandler()
 		case is HideShortcutsAppIntent:
 			return HideShortcutsAppIntentHandler()
+		#if canImport(AppKit)
+		case is GetRunningAppsIntent:
+			return GetRunningAppsIntentHandler()
+		#endif
 		default:
 			assertionFailure("No handler for this intent")
 			return nil

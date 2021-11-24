@@ -22,6 +22,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Get Emojis
 - Get File Path
 - Get Music Playlists (iOS-only)
+- Get Running Apps (macOS-only)
 - Get Title of URL
 - Get Uniform Type Identifier
 - Get User Details

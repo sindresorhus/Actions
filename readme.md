@@ -40,6 +40,7 @@ Requires macOS 12 or iOS 15 and later.
 - Get Emojis
 - Get File Path
 - Get Music Playlists <sup>(iOS-only)</sup>
+- Get Running Apps <sup>(macOS-only)</sup>
 - Get Title of URL
 - Get Uniform Type Identifier
 - Get User Details
