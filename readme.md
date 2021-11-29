@@ -79,7 +79,7 @@ Requires macOS 12 or iOS 15 and later.
 
 - Get Internet Speed → [Speediness](https://sindresorhus.com/speediness)
 - Get Random GIF → [Jiffy](https://sindresorhus.com/jiffy)
-- Join Video Call → [Dato](https://sindresorhus.com/dato)
+- Better menu bar clock with a calendar and time zones → [Dato](https://sindresorhus.com/dato)
 
 ## Screenshot
 
