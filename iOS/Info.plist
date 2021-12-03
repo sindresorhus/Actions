@@ -17,6 +17,7 @@
 		<string>FormatCurrencyIntent</string>
 		<string>FormatDateDifferenceIntent</string>
 		<string>GenerateUUIDIntent</string>
+		<string>GetAudioPlaybackDestinationIntent</string>
 		<string>GetBatteryStateIntent</string>
 		<string>GetEmojisIntent</string>
 		<string>GetFilePathIntent</string>

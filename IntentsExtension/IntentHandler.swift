@@ -119,6 +119,10 @@ final class IntentHandler: INExtension {
 		#endif
 		case is SpellOutNumberIntent:
 			return SpellOutNumberIntentHandler()
+		#if canImport(UIKit)
+		case is GetAudioPlaybackDestinationIntent:
+			return GetAudioPlaybackDestinationIntentHandler()
+		#endif
 		default:
 			assertionFailure("No handler for this intent")
 			return nil

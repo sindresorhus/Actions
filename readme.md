@@ -36,6 +36,7 @@ Requires macOS 12 or iOS 15 and later.
 - Format Currency
 - Format Date Difference
 - Generate UUID
+- Get Audio Playback Destination <sup>(iOS-only)</sup>
 - Get Battery State
 - Get Emojis
 - Get File Path

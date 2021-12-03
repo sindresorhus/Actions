@@ -54,6 +54,7 @@
 		E38715842725A303003155B0 /* GenerateUUID.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38715832725A303003155B0 /* GenerateUUID.swift */; };
 		E38715882725A6F4003155B0 /* TransformText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38715872725A6F4003155B0 /* TransformText.swift */; };
 		E387158A2725A7C6003155B0 /* RandomEmoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38715892725A7C6003155B0 /* RandomEmoji.swift */; };
+		E3890479275AA8DB004735CF /* GetAudioPlaybackDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3890477275AA8D0004735CF /* GetAudioPlaybackDestination.swift */; };
 		E38EAAF02729B58F0055451B /* GetUniformTypeIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38EAAEF2729B58F0055451B /* GetUniformTypeIdentifier.swift */; };
 		E38EAAF22729C66B0055451B /* FormatDateDifference.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38EAAF12729C66B0055451B /* FormatDateDifference.swift */; };
 		E38EAAF42729CBDB0055451B /* GetFilePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38EAAF32729CBDB0055451B /* GetFilePath.swift */; };
@@ -218,6 +219,7 @@
 		E38715832725A303003155B0 /* GenerateUUID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateUUID.swift; sourceTree = "<group>"; };
 		E38715872725A6F4003155B0 /* TransformText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformText.swift; sourceTree = "<group>"; };
 		E38715892725A7C6003155B0 /* RandomEmoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomEmoji.swift; sourceTree = "<group>"; };
+		E3890477275AA8D0004735CF /* GetAudioPlaybackDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GetAudioPlaybackDestination.swift; path = IntentsExtension/Actions/GetAudioPlaybackDestination.swift; sourceTree = SOURCE_ROOT; };
 		E38EAAEF2729B58F0055451B /* GetUniformTypeIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUniformTypeIdentifier.swift; sourceTree = "<group>"; };
 		E38EAAF12729C66B0055451B /* FormatDateDifference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatDateDifference.swift; sourceTree = "<group>"; };
 		E38EAAF32729CBDB0055451B /* GetFilePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFilePath.swift; sourceTree = "<group>"; };
@@ -428,6 +430,7 @@
 				E34B2541274D66A8006B44A7 /* HideShortcutsApp.swift */,
 				E34B2544274D716A006B44A7 /* GetRunningApps.swift */,
 				E34B2546274E126C006B44A7 /* SpellOutNumber.swift */,
+				E3890477275AA8D0004735CF /* GetAudioPlaybackDestination.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -730,6 +733,7 @@
 				E39F4770272D3E0000B99CB0 /* Intents.intentdefinition in Sources */,
 				E3BFF7BB2742C7BD00B830DE /* GetUserDetails.swift in Sources */,
 				E39F475D272D3DF600B99CB0 /* FormatDateDifference.swift in Sources */,
+				E3890479275AA8DB004735CF /* GetAudioPlaybackDestination.swift in Sources */,
 				E38FB4E3273E8D6700FF3C9A /* CombineLists.swift in Sources */,
 				E39F4773272D3EAE00B99CB0 /* Utilities.swift in Sources */,
 				E39F4756272D3DF000B99CB0 /* IntentUtilities.swift in Sources */,

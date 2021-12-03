@@ -119,9 +119,10 @@ enum SSApp {
 
 		let parameters = [
 			"_gotcha": nil, // Spam prevention.
+			"timestamp": "\(Date.now.timeIntervalSince1970)",
 			"product": SSApp.name,
 			"metadata": getFeedbackMetadata(),
-			"email": email,
+			"email": email.lowercased(),
 			"message": message
 		]
 

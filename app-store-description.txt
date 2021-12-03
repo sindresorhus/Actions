@@ -18,6 +18,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Format Currency
 - Format Date Difference
 - Generate UUID
+- Get Audio Playback Destination (iOS-only)
 - Get Battery State
 - Get Emojis
 - Get File Path
