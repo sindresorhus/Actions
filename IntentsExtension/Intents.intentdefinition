@@ -8017,7 +8017,7 @@
 					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
 					<true/>
 					<key>INIntentParameterCombinationTitle</key>
-					<string>Is dark mode enabled?</string>
+					<string>Is dark mode on?</string>
 					<key>INIntentParameterCombinationTitleID</key>
 					<string>IXo3ex</string>
 					<key>INIntentParameterCombinationUpdatesLinked</key>
@@ -8075,7 +8075,7 @@
 				</array>
 			</dict>
 			<key>INIntentTitle</key>
-			<string>Is Dark Mode</string>
+			<string>Is Dark Mode On</string>
 			<key>INIntentTitleID</key>
 			<string>zhcB9Y</string>
 			<key>INIntentType</key>
@@ -9811,7 +9811,7 @@
 					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
 					<true/>
 					<key>INIntentParameterCombinationTitle</key>
-					<string>Is low power mode enabled?</string>
+					<string>Is low power mode on?</string>
 					<key>INIntentParameterCombinationTitleID</key>
 					<string>XeUkPt</string>
 					<key>INIntentParameterCombinationUpdatesLinked</key>
@@ -9869,7 +9869,7 @@
 				</array>
 			</dict>
 			<key>INIntentTitle</key>
-			<string>Is Low Power Mode</string>
+			<string>Is Low Power Mode On</string>
 			<key>INIntentTitleID</key>
 			<string>IT7YhH</string>
 			<key>INIntentType</key>
@@ -10509,13 +10509,97 @@
 				</array>
 			</dict>
 			<key>INIntentTitle</key>
-			<string>Get Audio Playback Destination</string>
+			<string>Get Audio Playback Destination (iOS-only)</string>
 			<key>INIntentTitleID</key>
 			<string>uPvn6o</string>
 			<key>INIntentType</key>
 			<string>Custom</string>
 			<key>INIntentVerb</key>
 			<string>Do</string>
+		</dict>
+		<dict>
+			<key>INIntentCategory</key>
+			<string>information</string>
+			<key>INIntentConfigurable</key>
+			<true/>
+			<key>INIntentDescription</key>
+			<string>Returns whether the silent switch (mute) is enabled on the device.</string>
+			<key>INIntentDescriptionID</key>
+			<string>UjIh9p</string>
+			<key>INIntentIneligibleForSuggestions</key>
+			<true/>
+			<key>INIntentManagedParameterCombinations</key>
+			<dict>
+				<key></key>
+				<dict>
+					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
+					<true/>
+					<key>INIntentParameterCombinationTitle</key>
+					<string>Is silent mode on?</string>
+					<key>INIntentParameterCombinationTitleID</key>
+					<string>oKTFSC</string>
+					<key>INIntentParameterCombinationUpdatesLinked</key>
+					<true/>
+				</dict>
+			</dict>
+			<key>INIntentName</key>
+			<string>IsSilentModeOn</string>
+			<key>INIntentResponse</key>
+			<dict>
+				<key>INIntentResponseCodes</key>
+				<array>
+					<dict>
+						<key>INIntentResponseCodeName</key>
+						<string>success</string>
+						<key>INIntentResponseCodeSuccess</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>INIntentResponseCodeName</key>
+						<string>failure</string>
+					</dict>
+				</array>
+				<key>INIntentResponseLastParameterTag</key>
+				<integer>2</integer>
+				<key>INIntentResponseOutput</key>
+				<string>result</string>
+				<key>INIntentResponseParameters</key>
+				<array>
+					<dict>
+						<key>INIntentResponseParameterDisplayName</key>
+						<string>Is Silent Switch Enabled</string>
+						<key>INIntentResponseParameterDisplayNameID</key>
+						<string>uX8xbU</string>
+						<key>INIntentResponseParameterDisplayPriority</key>
+						<integer>1</integer>
+						<key>INIntentResponseParameterMetadata</key>
+						<dict>
+							<key>INIntentResponseParameterMetadataFalseDisplayName</key>
+							<string>false</string>
+							<key>INIntentResponseParameterMetadataFalseDisplayNameID</key>
+							<string>gAbxq8</string>
+							<key>INIntentResponseParameterMetadataTrueDisplayName</key>
+							<string>true</string>
+							<key>INIntentResponseParameterMetadataTrueDisplayNameID</key>
+							<string>LUaiKx</string>
+						</dict>
+						<key>INIntentResponseParameterName</key>
+						<string>result</string>
+						<key>INIntentResponseParameterTag</key>
+						<integer>2</integer>
+						<key>INIntentResponseParameterType</key>
+						<string>Boolean</string>
+					</dict>
+				</array>
+			</dict>
+			<key>INIntentTitle</key>
+			<string>Is Silent Mode On (iOS-only)</string>
+			<key>INIntentTitleID</key>
+			<string>ac3mzJ</string>
+			<key>INIntentType</key>
+			<string>Custom</string>
+			<key>INIntentVerb</key>
+			<string>View</string>
 		</dict>
 	</array>
 	<key>INTypes</key>

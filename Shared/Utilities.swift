@@ -6,6 +6,7 @@ import UniformTypeIdentifiers
 import Intents
 import CoreBluetooth
 import Contacts
+import AudioToolbox
 
 #if canImport(AppKit)
 import IOKit.ps
@@ -3043,3 +3044,73 @@ extension NSWorkspace {
 	}
 }
 #endif
+
+
+struct SystemSound: Hashable, Identifiable {
+	let id: SystemSoundID
+
+	func play() async {
+		await withCheckedContinuation { continuation in
+			AudioServicesPlaySystemSoundWithCompletion(id) {
+				continuation.resume()
+			}
+		}
+	}
+}
+
+extension SystemSound {
+	/**
+	Create a system sound from a URL pointing to an audio file.
+	*/
+	init?(_ url: URL) {
+		var id: SystemSoundID = 0
+		guard AudioServicesCreateSystemSoundID(url as NSURL, &id) == kAudioServicesNoError else {
+			return nil
+		}
+
+		self.id = id
+	}
+
+	/**
+	Create a system sound from a Base64-encoded audio file.
+	*/
+	init?(base64EncodedFile: String, ofType contentType: UTType) {
+		guard
+			let url = try? Data(base64Encoded: base64EncodedFile)?
+				.writeToUniqueTemporaryFile(contentType: contentType)
+		else {
+			return nil
+		}
+
+		self.init(url)
+	}
+}
+
+extension Device {
+	private static let silentAudio: SystemSound? = {
+		// Smallest valid MP3 file.
+		let audio = "/+MYxAAAAANIAAAAAExBTUUzLjk4LjIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+
+		return SystemSound(base64EncodedFile: audio, ofType: .mp3)
+	}()
+
+	/**
+	Whether the silent switch on the device is enabled.
+	*/
+	@available(macOS, unavailable)
+	static var isSilentModeEnabled: Bool {
+		get async {
+			guard let silentAudio = silentAudio else {
+				assertionFailure()
+				return false
+			}
+
+			// When silent mode is enabled, the system skips playing the audio file and the function takes less than a millisecond to execute. We check for this to determine whether silent mode is enabled.
+
+			let startTime = CACurrentMediaTime()
+			await silentAudio.play()
+			let duration = CACurrentMediaTime() - startTime
+			return duration < 0.01
+		}
+	}
+}

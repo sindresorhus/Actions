@@ -122,6 +122,8 @@ final class IntentHandler: INExtension {
 		#if canImport(UIKit)
 		case is GetAudioPlaybackDestinationIntent:
 			return GetAudioPlaybackDestinationIntentHandler()
+		case is IsSilentModeOnIntent:
+			return IsSilentModeOnIntentHandler()
 		#endif
 		default:
 			assertionFailure("No handler for this intent")

@@ -55,6 +55,7 @@
 		E38715882725A6F4003155B0 /* TransformText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38715872725A6F4003155B0 /* TransformText.swift */; };
 		E387158A2725A7C6003155B0 /* RandomEmoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38715892725A7C6003155B0 /* RandomEmoji.swift */; };
 		E3890479275AA8DB004735CF /* GetAudioPlaybackDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3890477275AA8D0004735CF /* GetAudioPlaybackDestination.swift */; };
+		E389047C275BBBC5004735CF /* IsSilentModeOn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E389047B275BBBC5004735CF /* IsSilentModeOn.swift */; };
 		E38EAAF02729B58F0055451B /* GetUniformTypeIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38EAAEF2729B58F0055451B /* GetUniformTypeIdentifier.swift */; };
 		E38EAAF22729C66B0055451B /* FormatDateDifference.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38EAAF12729C66B0055451B /* FormatDateDifference.swift */; };
 		E38EAAF42729CBDB0055451B /* GetFilePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38EAAF32729CBDB0055451B /* GetFilePath.swift */; };
@@ -220,6 +221,7 @@
 		E38715872725A6F4003155B0 /* TransformText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformText.swift; sourceTree = "<group>"; };
 		E38715892725A7C6003155B0 /* RandomEmoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomEmoji.swift; sourceTree = "<group>"; };
 		E3890477275AA8D0004735CF /* GetAudioPlaybackDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GetAudioPlaybackDestination.swift; path = IntentsExtension/Actions/GetAudioPlaybackDestination.swift; sourceTree = SOURCE_ROOT; };
+		E389047B275BBBC5004735CF /* IsSilentModeOn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IsSilentModeOn.swift; path = IntentsExtension/Actions/IsSilentModeOn.swift; sourceTree = SOURCE_ROOT; };
 		E38EAAEF2729B58F0055451B /* GetUniformTypeIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUniformTypeIdentifier.swift; sourceTree = "<group>"; };
 		E38EAAF12729C66B0055451B /* FormatDateDifference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatDateDifference.swift; sourceTree = "<group>"; };
 		E38EAAF32729CBDB0055451B /* GetFilePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFilePath.swift; sourceTree = "<group>"; };
@@ -431,6 +433,7 @@
 				E34B2544274D716A006B44A7 /* GetRunningApps.swift */,
 				E34B2546274E126C006B44A7 /* SpellOutNumber.swift */,
 				E3890477275AA8D0004735CF /* GetAudioPlaybackDestination.swift */,
+				E389047B275BBBC5004735CF /* IsSilentModeOn.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -742,6 +745,7 @@
 				E39F4766272D3DF600B99CB0 /* ClampNumber.swift in Sources */,
 				E380C8A627422549002AEA4F /* IsBluetoothOn.swift in Sources */,
 				E39F4761272D3DF600B99CB0 /* UnixTimeToDate.swift in Sources */,
+				E389047C275BBBC5004735CF /* IsSilentModeOn.swift in Sources */,
 				E39F475E272D3DF600B99CB0 /* ShuffleList.swift in Sources */,
 				E371D5872739794400156765 /* SetFileCreationModificationDate.swift in Sources */,
 				E357226A273FE6BF0069070A /* IsAudioPlaying.swift in Sources */,
