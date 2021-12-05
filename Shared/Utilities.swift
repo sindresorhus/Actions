@@ -1731,7 +1731,7 @@ extension String {
 		let buffer = [UInt8](utf8)
 
 		for element in buffer {
-			result = 127 * (result & 0x00ffffffffffffff) + UInt64(element)
+			result = 127 * (result & 0x00FF_FFFF_FFFF_FFFF) + UInt64(element)
 		}
 
 		return result
@@ -2145,6 +2145,24 @@ extension URL {
 			filename: lastPathComponent,
 			typeIdentifier: contentType?.identifier
 		)
+	}
+}
+
+
+extension XImage {
+	/**
+	Create a `INFile` from the image.
+	*/
+	var toINFile: INFile? {
+		#if canImport(AppKit)
+		try? tiffRepresentation?
+			.writeToUniqueTemporaryFile(contentType: .tiff)
+			.toINFile
+		#elseif canImport(UIKit)
+		try? pngData()?
+			.writeToUniqueTemporaryFile(contentType: .png)
+			.toINFile
+		#endif
 	}
 }
 

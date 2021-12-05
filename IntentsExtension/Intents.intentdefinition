@@ -10720,7 +10720,7 @@
 			<key>INIntentConfigurable</key>
 			<true/>
 			<key>INIntentDescription</key>
-			<string>Generate haptic feedback (vibrate). Not supported on iPad. Requires iPhone 8 or later. The action has to momentarily open the main app as haptic feedback can only be generated from the app.</string>
+			<string>Generate haptic feedback (vibrate). Not supported on i​Pad. Requires i​Phone 8 or later. The action has to momentarily open the main app as haptic feedback can only be generated from the app.</string>
 			<key>INIntentDescriptionID</key>
 			<string>1UddTZ</string>
 			<key>INIntentIneligibleForSuggestions</key>
@@ -10829,6 +10829,135 @@
 			<string>Custom</string>
 			<key>INIntentVerb</key>
 			<string>Do</string>
+		</dict>
+		<dict>
+			<key>INIntentCategory</key>
+			<string>information</string>
+			<key>INIntentConfigurable</key>
+			<true/>
+			<key>INIntentDescription</key>
+			<string>Gets the icon for the input files.</string>
+			<key>INIntentDescriptionID</key>
+			<string>nzGLag</string>
+			<key>INIntentIneligibleForSuggestions</key>
+			<true/>
+			<key>INIntentInput</key>
+			<string>files</string>
+			<key>INIntentKeyParameter</key>
+			<string>files</string>
+			<key>INIntentLastParameterTag</key>
+			<integer>3</integer>
+			<key>INIntentManagedParameterCombinations</key>
+			<dict>
+				<key>files</key>
+				<dict>
+					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
+					<true/>
+					<key>INIntentParameterCombinationTitle</key>
+					<string>Get the icon of ${files}</string>
+					<key>INIntentParameterCombinationTitleID</key>
+					<string>hhHj7q</string>
+					<key>INIntentParameterCombinationUpdatesLinked</key>
+					<true/>
+				</dict>
+			</dict>
+			<key>INIntentName</key>
+			<string>GetFileIcon</string>
+			<key>INIntentParameters</key>
+			<array>
+				<dict>
+					<key>INIntentParameterConfigurable</key>
+					<true/>
+					<key>INIntentParameterDisplayName</key>
+					<string>Files</string>
+					<key>INIntentParameterDisplayNameID</key>
+					<string>EvyPGD</string>
+					<key>INIntentParameterDisplayPriority</key>
+					<integer>1</integer>
+					<key>INIntentParameterMetadata</key>
+					<dict>
+						<key>INIntentParameterMetadataCustomUTIs</key>
+						<array>
+							<dict>
+								<key>UTI</key>
+								<string>public.data</string>
+							</dict>
+						</array>
+						<key>INIntentParameterMetadataType</key>
+						<string>Custom</string>
+					</dict>
+					<key>INIntentParameterName</key>
+					<string>files</string>
+					<key>INIntentParameterPromptDialogs</key>
+					<array>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>Configuration</string>
+						</dict>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>Primary</string>
+						</dict>
+					</array>
+					<key>INIntentParameterSupportsMultipleValues</key>
+					<true/>
+					<key>INIntentParameterTag</key>
+					<integer>3</integer>
+					<key>INIntentParameterType</key>
+					<string>File</string>
+				</dict>
+			</array>
+			<key>INIntentResponse</key>
+			<dict>
+				<key>INIntentResponseCodes</key>
+				<array>
+					<dict>
+						<key>INIntentResponseCodeName</key>
+						<string>success</string>
+						<key>INIntentResponseCodeSuccess</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>INIntentResponseCodeName</key>
+						<string>failure</string>
+					</dict>
+				</array>
+				<key>INIntentResponseLastParameterTag</key>
+				<integer>4</integer>
+				<key>INIntentResponseOutput</key>
+				<string>result</string>
+				<key>INIntentResponseParameters</key>
+				<array>
+					<dict>
+						<key>INIntentResponseParameterDisplayName</key>
+						<string>File Icons</string>
+						<key>INIntentResponseParameterDisplayNameID</key>
+						<string>SMnQvB</string>
+						<key>INIntentResponseParameterDisplayPriority</key>
+						<integer>1</integer>
+						<key>INIntentResponseParameterName</key>
+						<string>result</string>
+						<key>INIntentResponseParameterSupportsMultipleValues</key>
+						<true/>
+						<key>INIntentResponseParameterTag</key>
+						<integer>4</integer>
+						<key>INIntentResponseParameterType</key>
+						<string>File</string>
+					</dict>
+				</array>
+			</dict>
+			<key>INIntentTitle</key>
+			<string>Get File Icon (macOS-only)</string>
+			<key>INIntentTitleID</key>
+			<string>nrD4j8</string>
+			<key>INIntentType</key>
+			<string>Custom</string>
+			<key>INIntentVerb</key>
+			<string>View</string>
 		</dict>
 	</array>
 	<key>INTypes</key>

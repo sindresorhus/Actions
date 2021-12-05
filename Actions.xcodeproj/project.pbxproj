@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E302808F275CE65D001FB6B8 /* HapticFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = E302808E275CE65D001FB6B8 /* HapticFeedback.swift */; };
+		E3028092275D7E2C001FB6B8 /* GetFileIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3028091275D7E2B001FB6B8 /* GetFileIcon.swift */; };
 		E30F466E272FA446009A358B /* RandomText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30F466D272FA446009A358B /* RandomText.swift */; };
 		E30F466F272FA446009A358B /* RandomText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30F466D272FA446009A358B /* RandomText.swift */; };
 		E324536E273FB40600B07EBF /* SendFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = E324536D273FB40600B07EBF /* SendFeedback.swift */; };
@@ -185,6 +186,7 @@
 
 /* Begin PBXFileReference section */
 		E302808E275CE65D001FB6B8 /* HapticFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedback.swift; sourceTree = "<group>"; };
+		E3028091275D7E2B001FB6B8 /* GetFileIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFileIcon.swift; sourceTree = "<group>"; };
 		E30F466D272FA446009A358B /* RandomText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomText.swift; sourceTree = "<group>"; };
 		E324536D273FB40600B07EBF /* SendFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SendFeedback.swift; path = IntentsExtension/Actions/SendFeedback.swift; sourceTree = SOURCE_ROOT; };
 		E324C9EF271E972200E7CA9B /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
@@ -437,6 +439,7 @@
 				E3890477275AA8D0004735CF /* GetAudioPlaybackDestination.swift */,
 				E389047B275BBBC5004735CF /* IsSilentModeOn.swift */,
 				E302808E275CE65D001FB6B8 /* HapticFeedback.swift */,
+				E3028091275D7E2B001FB6B8 /* GetFileIcon.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -707,6 +710,7 @@
 				E38FB4E8273EB47B00FF3C9A /* FilterList.swift in Sources */,
 				E3DF2EBF27293225009127CA /* SampleColor.swift in Sources */,
 				E38FB4EB273EDCD600FF3C9A /* TruncateList.swift in Sources */,
+				E3028092275D7E2C001FB6B8 /* GetFileIcon.swift in Sources */,
 				E3D3BDCC2743A72C00417A63 /* EditURL.swift in Sources */,
 				E3BFF7BA2742C7BD00B830DE /* GetUserDetails.swift in Sources */,
 				E3DF2EBD272931C3009127CA /* RandomColor.swift in Sources */,

@@ -26,6 +26,7 @@
 				<string>GetAudioPlaybackDestinationIntent</string>
 				<string>GetBatteryStateIntent</string>
 				<string>GetEmojisIntent</string>
+				<string>GetFileIconIntent</string>
 				<string>GetFilePathIntent</string>
 				<string>GetMusicPlaylistsIntent</string>
 				<string>GetRunningAppsIntent</string>

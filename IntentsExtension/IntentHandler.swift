@@ -127,6 +127,10 @@ final class IntentHandler: INExtension {
 		case is HapticFeedbackIntent:
 			return HapticFeedbackIntentHandler()
 		#endif
+		#if canImport(AppKit)
+		case is GetFileIconIntent:
+			return GetFileIconIntentHandler()
+		#endif
 		default:
 			assertionFailure("No handler for this intent")
 			return nil
