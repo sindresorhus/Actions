@@ -124,6 +124,8 @@ final class IntentHandler: INExtension {
 			return GetAudioPlaybackDestinationIntentHandler()
 		case is IsSilentModeOnIntent:
 			return IsSilentModeOnIntentHandler()
+		case is HapticFeedbackIntent:
+			return HapticFeedbackIntentHandler()
 		#endif
 		default:
 			assertionFailure("No handler for this intent")

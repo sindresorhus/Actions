@@ -4,6 +4,7 @@ import StoreKit
 import GameplayKit
 import UniformTypeIdentifiers
 import Intents
+import IntentsUI
 import CoreBluetooth
 import Contacts
 import AudioToolbox
@@ -27,6 +28,40 @@ typealias XApplication = UIApplication
 typealias XApplicationDelegate = UIApplicationDelegate
 typealias XApplicationDelegateAdaptor = UIApplicationDelegateAdaptor
 #endif
+
+
+// - MARK: Non-reusable utilities
+
+#if canImport(UIKit)
+extension HapticFeedbackType {
+	var toNative: Device.HapticFeedback {
+		switch self {
+		case .unknown:
+			return .legacy
+		case .success:
+			return .success
+		case .warning:
+			return .warning
+		case .error:
+			return .error
+		case .selection:
+			return .selection
+		case .soft:
+			return .soft
+		case .light:
+			return .light
+		case .medium:
+			return .medium
+		case .heavy:
+			return .heavy
+		case .rigid:
+			return .rigid
+		}
+	}
+}
+#endif
+
+// MARK: -
 
 
 // TODO: Remove this when everything is converted to async/await.
@@ -3114,3 +3149,69 @@ extension Device {
 		}
 	}
 }
+
+
+#if canImport(UIKit)
+extension Device {
+	enum HapticFeedback {
+		case success
+		case warning
+		case error
+		case selection
+		case soft
+		case light
+		case medium
+		case heavy
+		case rigid
+		case legacy
+
+		fileprivate func generate() {
+			switch self {
+			case .success:
+				UINotificationFeedbackGenerator().notificationOccurred(.success)
+			case .warning:
+				UINotificationFeedbackGenerator().notificationOccurred(.warning)
+			case .error:
+				UINotificationFeedbackGenerator().notificationOccurred(.error)
+			case .selection:
+				UISelectionFeedbackGenerator().selectionChanged()
+			case .soft:
+				UIImpactFeedbackGenerator(style: .soft).impactOccurred()
+			case .light:
+				UIImpactFeedbackGenerator(style: .light).impactOccurred()
+			case .medium:
+				UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+			case .heavy:
+				UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+			case .rigid:
+				UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
+			case .legacy:
+				AudioServicesPlaySystemSoundWithCompletion(kSystemSoundID_Vibrate, nil)
+			}
+		}
+	}
+
+	static func hapticFeedback(_ type: HapticFeedback) {
+		type.generate()
+	}
+}
+#endif
+
+
+#if canImport(AppKit)
+extension NSImage {
+	var inImage: INImage {
+		// `tiffRepresentation` is very unlikely to fail, so we just fall back to an empty image.
+		INImage(imageData: tiffRepresentation ?? Data())
+	}
+}
+#elseif canImport(UIKit) && canImport(IntentsUI)
+extension UIImage {
+	/**
+	Convert an `UIImage` to `INImage`.
+
+	- Important: If you're using this in an intent handler extension, don't forget to manually add the `IntentsUI` framework.
+	*/
+	var inImage: INImage { INImage(uiImage: self) }
+}
+#endif

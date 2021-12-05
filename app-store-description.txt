@@ -27,6 +27,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Get Title of URL
 - Get Uniform Type Identifier
 - Get User Details
+- Haptic Feedback (iOS-only)
 - Hide Shortcuts App
 - Is Audio Playing (iOS-only)
 - Is Bluetooth On

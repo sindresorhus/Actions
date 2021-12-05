@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E302808F275CE65D001FB6B8 /* HapticFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = E302808E275CE65D001FB6B8 /* HapticFeedback.swift */; };
 		E30F466E272FA446009A358B /* RandomText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30F466D272FA446009A358B /* RandomText.swift */; };
 		E30F466F272FA446009A358B /* RandomText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30F466D272FA446009A358B /* RandomText.swift */; };
 		E324536E273FB40600B07EBF /* SendFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = E324536D273FB40600B07EBF /* SendFeedback.swift */; };
@@ -183,6 +184,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E302808E275CE65D001FB6B8 /* HapticFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedback.swift; sourceTree = "<group>"; };
 		E30F466D272FA446009A358B /* RandomText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomText.swift; sourceTree = "<group>"; };
 		E324536D273FB40600B07EBF /* SendFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SendFeedback.swift; path = IntentsExtension/Actions/SendFeedback.swift; sourceTree = SOURCE_ROOT; };
 		E324C9EF271E972200E7CA9B /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
@@ -434,6 +436,7 @@
 				E34B2546274E126C006B44A7 /* SpellOutNumber.swift */,
 				E3890477275AA8D0004735CF /* GetAudioPlaybackDestination.swift */,
 				E389047B275BBBC5004735CF /* IsSilentModeOn.swift */,
+				E302808E275CE65D001FB6B8 /* HapticFeedback.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -719,6 +722,7 @@
 			files = (
 				E39F475B272D3DF600B99CB0 /* TransformTextWithJavaScript.swift in Sources */,
 				E39F4764272D3DF600B99CB0 /* ReverseList.swift in Sources */,
+				E302808F275CE65D001FB6B8 /* HapticFeedback.swift in Sources */,
 				E39F476F272D3DF600B99CB0 /* GetUniformTypeIdentifier.swift in Sources */,
 				E39F4755272D3DED00B99CB0 /* IntentHandler.swift in Sources */,
 				E39F476E272D3DF600B99CB0 /* RandomBoolean.swift in Sources */,

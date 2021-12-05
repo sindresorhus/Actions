@@ -31,6 +31,10 @@ struct MainScreen: View {
 			.onContinueIntent(HideShortcutsAppIntent.self) { _, _ in
 				SSApp.moveToBackground()
 			}
+			.onContinueIntent(HapticFeedbackIntent.self) { intent, _ in
+				Device.hapticFeedback(intent.type.toNative)
+				ShortcutsApp.open()
+			}
 			#endif
 			.task {
 				// For testing the “Write or Edit Text” action.

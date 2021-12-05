@@ -45,6 +45,7 @@ Requires macOS 12 or iOS 15 and later.
 - Get Title of URL
 - Get Uniform Type Identifier
 - Get User Details
+- Haptic Feedback <sup>(iOS-only)</sup>
 - Hide Shortcuts App
 - Is Audio Playing <sup>(iOS-only)</sup>
 - Is Bluetooth On

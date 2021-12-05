@@ -35,22 +35,3 @@ extension Color_ {
 		hexNumber = sRGBColor.hex as NSNumber
 	}
 }
-
-
-#if canImport(AppKit)
-extension NSImage {
-	var inImage: INImage {
-		// `tiffRepresentation` is very unlikely to fail, so we just fall back to an empty image.
-		INImage(imageData: tiffRepresentation ?? Data())
-	}
-}
-#elseif canImport(UIKit) && canImport(IntentsUI)
-extension UIImage {
-	/**
-	Convert an `UIImage` to `INImage`.
-
-	- Important: If you're using this in an intent handler extension, don't forget to manually add the `IntentsUI` framework.
-	*/
-	var inImage: INImage { INImage(uiImage: self) }
-}
-#endif

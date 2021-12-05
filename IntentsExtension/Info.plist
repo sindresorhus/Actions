@@ -32,6 +32,7 @@
 				<string>GetTitleOfURLIntent</string>
 				<string>GetUniformTypeIdentifierIntent</string>
 				<string>GetUserDetailsIntent</string>
+				<string>HapticFeedbackIntent</string>
 				<string>HideShortcutsAppIntent</string>
 				<string>IsAudioPlayingIntent</string>
 				<string>IsBluetoothOnIntent</string>
