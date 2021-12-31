@@ -131,6 +131,8 @@ final class IntentHandler: INExtension {
 		case is GetFileIconIntent:
 			return GetFileIconIntentHandler()
 		#endif
+		case is TransformListsIntent:
+			return TransformListsIntentHandler()
 		default:
 			assertionFailure("No handler for this intent")
 			return nil

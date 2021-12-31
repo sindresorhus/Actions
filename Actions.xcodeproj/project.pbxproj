@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0345FBFE277E9574006F63E8 /* TransformLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036DFFCB27767B0F009DA927 /* TransformLists.swift */; };
+		0345FBFF277E9574006F63E8 /* TransformLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036DFFCB27767B0F009DA927 /* TransformLists.swift */; };
 		E302808F275CE65D001FB6B8 /* HapticFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = E302808E275CE65D001FB6B8 /* HapticFeedback.swift */; };
 		E3028092275D7E2C001FB6B8 /* GetFileIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3028091275D7E2B001FB6B8 /* GetFileIcon.swift */; };
 		E30F466E272FA446009A358B /* RandomText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30F466D272FA446009A358B /* RandomText.swift */; };
@@ -185,6 +187,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		036DFFCB27767B0F009DA927 /* TransformLists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformLists.swift; sourceTree = "<group>"; };
 		E302808E275CE65D001FB6B8 /* HapticFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedback.swift; sourceTree = "<group>"; };
 		E3028091275D7E2B001FB6B8 /* GetFileIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFileIcon.swift; sourceTree = "<group>"; };
 		E30F466D272FA446009A358B /* RandomText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomText.swift; sourceTree = "<group>"; };
@@ -440,6 +443,7 @@
 				E389047B275BBBC5004735CF /* IsSilentModeOn.swift */,
 				E302808E275CE65D001FB6B8 /* HapticFeedback.swift */,
 				E3028091275D7E2B001FB6B8 /* GetFileIcon.swift */,
+				036DFFCB27767B0F009DA927 /* TransformLists.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -702,6 +706,7 @@
 				E38EAAFA2729DD890055451B /* UnixTimeToDate.swift in Sources */,
 				E3F1EE482727074B00091C44 /* ReverseList.swift in Sources */,
 				E34B2545274D716A006B44A7 /* GetRunningApps.swift in Sources */,
+				0345FBFE277E9574006F63E8 /* TransformLists.swift in Sources */,
 				E387158A2725A7C6003155B0 /* RandomEmoji.swift in Sources */,
 				E34B2547274E126C006B44A7 /* SpellOutNumber.swift in Sources */,
 				E324536E273FB40600B07EBF /* SendFeedback.swift in Sources */,
@@ -751,6 +756,7 @@
 				E39F475C272D3DF600B99CB0 /* RandomColor.swift in Sources */,
 				E38FB4EF273EE68C00FF3C9A /* GetEmojis.swift in Sources */,
 				E39F4766272D3DF600B99CB0 /* ClampNumber.swift in Sources */,
+				0345FBFF277E9574006F63E8 /* TransformLists.swift in Sources */,
 				E380C8A627422549002AEA4F /* IsBluetoothOn.swift in Sources */,
 				E39F4761272D3DF600B99CB0 /* UnixTimeToDate.swift in Sources */,
 				E389047C275BBBC5004735CF /* IsSilentModeOn.swift in Sources */,

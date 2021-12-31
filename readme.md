@@ -72,6 +72,7 @@ Requires macOS 12 or iOS 15 and later.
 - Shuffle List
 - Sort List
 - Spell Out Number
+- Transform Lists
 - Transform Text
 - Transform Text with JavaScript
 - Trim Whitespace
