@@ -49,6 +49,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Remove from List
 - Remove Non-Printable Characters
 - Reverse List
+- Round Number to Multiple
 - Sample Color from Screen (macOS-only)
 - Set Creation and Modification Date of File
 - Shuffle List

@@ -67,6 +67,7 @@ Requires macOS 12 or iOS 15 and later.
 - Remove from List
 - Remove Non-Printable Characters
 - Reverse List
+- Round Number to Multiple
 - Sample Color from Screen <sup>(macOS-only)</sup>
 - Set Creation and Modification Date of File
 - Shuffle List

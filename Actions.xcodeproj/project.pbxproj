@@ -15,6 +15,8 @@
 		E30F466F272FA446009A358B /* RandomText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30F466D272FA446009A358B /* RandomText.swift */; };
 		E321D1E6278EF80200D80571 /* TruncateText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E321D1E3278EF7FA00D80571 /* TruncateText.swift */; };
 		E321D1E7278EF80300D80571 /* TruncateText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E321D1E3278EF7FA00D80571 /* TruncateText.swift */; };
+		E321D1E9278F03A700D80571 /* RoundNumberToMultiple.swift in Sources */ = {isa = PBXBuildFile; fileRef = E321D1E8278F03A700D80571 /* RoundNumberToMultiple.swift */; };
+		E321D1EA278F03A700D80571 /* RoundNumberToMultiple.swift in Sources */ = {isa = PBXBuildFile; fileRef = E321D1E8278F03A700D80571 /* RoundNumberToMultiple.swift */; };
 		E324536E273FB40600B07EBF /* SendFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = E324536D273FB40600B07EBF /* SendFeedback.swift */; };
 		E324536F273FB40600B07EBF /* SendFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = E324536D273FB40600B07EBF /* SendFeedback.swift */; };
 		E324C9FF271E972300E7CA9B /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = E324C9EF271E972200E7CA9B /* App.swift */; };
@@ -194,6 +196,7 @@
 		E3028091275D7E2B001FB6B8 /* GetFileIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFileIcon.swift; sourceTree = "<group>"; };
 		E30F466D272FA446009A358B /* RandomText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomText.swift; sourceTree = "<group>"; };
 		E321D1E3278EF7FA00D80571 /* TruncateText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TruncateText.swift; path = IntentsExtension/Actions/TruncateText.swift; sourceTree = SOURCE_ROOT; };
+		E321D1E8278F03A700D80571 /* RoundNumberToMultiple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundNumberToMultiple.swift; sourceTree = "<group>"; };
 		E324536D273FB40600B07EBF /* SendFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SendFeedback.swift; path = IntentsExtension/Actions/SendFeedback.swift; sourceTree = SOURCE_ROOT; };
 		E324C9EF271E972200E7CA9B /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		E324C9F0271E972200E7CA9B /* MainScreen.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; tabWidth = 4; };
@@ -448,6 +451,7 @@
 				E3028091275D7E2B001FB6B8 /* GetFileIcon.swift */,
 				036DFFCB27767B0F009DA927 /* TransformLists.swift */,
 				E321D1E3278EF7FA00D80571 /* TruncateText.swift */,
+				E321D1E8278F03A700D80571 /* RoundNumberToMultiple.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -702,6 +706,7 @@
 				E38FB4EE273EE68C00FF3C9A /* GetEmojis.swift in Sources */,
 				E3F421142726958100080453 /* RandomFloatingPointNumber.swift in Sources */,
 				E3DF2EBB27287405009127CA /* TransformTextWithJavaScript.swift in Sources */,
+				E321D1E9278F03A700D80571 /* RoundNumberToMultiple.swift in Sources */,
 				E3327E9B272D22DC00AD5CC7 /* AddToList.swift in Sources */,
 				E30F466E272FA446009A358B /* RandomText.swift in Sources */,
 				E38715882725A6F4003155B0 /* TransformText.swift in Sources */,
@@ -748,6 +753,7 @@
 				E33DFF6A2748EBA200C79D78 /* GetBatteryState.swift in Sources */,
 				E39F4765272D3DF600B99CB0 /* DateToUnixTime.swift in Sources */,
 				E39F4769272D3DF600B99CB0 /* RandomFloatingPointNumber.swift in Sources */,
+				E321D1EA278F03A700D80571 /* RoundNumberToMultiple.swift in Sources */,
 				E39F4768272D3DF600B99CB0 /* CreateURL.swift in Sources */,
 				E39F476B272D3DF600B99CB0 /* TrimWhitespace.swift in Sources */,
 				E3CBF069274960A000F71E27 /* IsLowPowerMode.swift in Sources */,

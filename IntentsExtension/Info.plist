@@ -59,6 +59,7 @@
 				<string>RemoveFromListIntent</string>
 				<string>RemoveNonPrintableCharactersIntent</string>
 				<string>ReverseListIntent</string>
+				<string>RoundNumberToMultipleIntent</string>
 				<string>SampleColorIntent</string>
 				<string>SendFeedbackIntent</string>
 				<string>SetFileCreationModificationDateIntent</string>

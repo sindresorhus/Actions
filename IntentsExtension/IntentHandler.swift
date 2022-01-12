@@ -135,6 +135,8 @@ final class IntentHandler: INExtension {
 			return TransformListsIntentHandler()
 		case is TruncateTextIntent:
 			return TruncateTextIntentHandler()
+		case is RoundNumberToMultipleIntent:
+			return RoundNumberToMultipleIntentHandler()
 		default:
 			assertionFailure("No handler for this intent")
 			return nil

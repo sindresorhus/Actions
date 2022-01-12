@@ -3302,3 +3302,22 @@ extension StringProtocol {
 		return "\(truncatedString.trimmedTrailing)\(truncationIndicator)"
 	}
 }
+
+
+extension FloatingPoint {
+	/**
+	Round the number to the nearest multiple of the given number.
+
+	```
+	23.4.roundedToMultiple(of: 5)
+	//=> 5
+	```
+	*/
+	func roundedToMultiple<T: BinaryInteger>(
+		of value: T,
+		roundingRule: FloatingPointRoundingRule = .toNearestOrAwayFromZero
+	) -> Self {
+		let value = Self(value)
+		return (self / value).rounded(roundingRule) * value
+	}
+}
