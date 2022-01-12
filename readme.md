@@ -77,6 +77,7 @@ Requires macOS 12 or iOS 15 and later.
 - Transform Text with JavaScript
 - Trim Whitespace
 - Truncate List
+- Truncate Text
 - Unix Time to Date
 - Write or Edit Text
 
@@ -84,6 +85,7 @@ Requires macOS 12 or iOS 15 and later.
 
 - Get Internet Speed → [Speediness](https://sindresorhus.com/speediness)
 - Get Random GIF → [Jiffy](https://sindresorhus.com/jiffy)
+- Show Text in Menu Bar → [One Thing](https://sindresorhus.com/one-thing)
 - Join Video Call → [Dato](https://sindresorhus.com/dato)
 
 ## Screenshot

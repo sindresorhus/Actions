@@ -13,6 +13,8 @@
 		E3028092275D7E2C001FB6B8 /* GetFileIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3028091275D7E2B001FB6B8 /* GetFileIcon.swift */; };
 		E30F466E272FA446009A358B /* RandomText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30F466D272FA446009A358B /* RandomText.swift */; };
 		E30F466F272FA446009A358B /* RandomText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30F466D272FA446009A358B /* RandomText.swift */; };
+		E321D1E6278EF80200D80571 /* TruncateText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E321D1E3278EF7FA00D80571 /* TruncateText.swift */; };
+		E321D1E7278EF80300D80571 /* TruncateText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E321D1E3278EF7FA00D80571 /* TruncateText.swift */; };
 		E324536E273FB40600B07EBF /* SendFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = E324536D273FB40600B07EBF /* SendFeedback.swift */; };
 		E324536F273FB40600B07EBF /* SendFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = E324536D273FB40600B07EBF /* SendFeedback.swift */; };
 		E324C9FF271E972300E7CA9B /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = E324C9EF271E972200E7CA9B /* App.swift */; };
@@ -191,6 +193,7 @@
 		E302808E275CE65D001FB6B8 /* HapticFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedback.swift; sourceTree = "<group>"; };
 		E3028091275D7E2B001FB6B8 /* GetFileIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFileIcon.swift; sourceTree = "<group>"; };
 		E30F466D272FA446009A358B /* RandomText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomText.swift; sourceTree = "<group>"; };
+		E321D1E3278EF7FA00D80571 /* TruncateText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TruncateText.swift; path = IntentsExtension/Actions/TruncateText.swift; sourceTree = SOURCE_ROOT; };
 		E324536D273FB40600B07EBF /* SendFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SendFeedback.swift; path = IntentsExtension/Actions/SendFeedback.swift; sourceTree = SOURCE_ROOT; };
 		E324C9EF271E972200E7CA9B /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		E324C9F0271E972200E7CA9B /* MainScreen.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; tabWidth = 4; };
@@ -444,6 +447,7 @@
 				E302808E275CE65D001FB6B8 /* HapticFeedback.swift */,
 				E3028091275D7E2B001FB6B8 /* GetFileIcon.swift */,
 				036DFFCB27767B0F009DA927 /* TransformLists.swift */,
+				E321D1E3278EF7FA00D80571 /* TruncateText.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -683,6 +687,7 @@
 				E38EAAF02729B58F0055451B /* GetUniformTypeIdentifier.swift in Sources */,
 				E3BFF7AE2742456E00B830DE /* WriteText.swift in Sources */,
 				E3EE4040273802FB009B3FED /* ApplyCaptureDate.swift in Sources */,
+				E321D1E7278EF80300D80571 /* TruncateText.swift in Sources */,
 				E380C8A527422549002AEA4F /* IsBluetoothOn.swift in Sources */,
 				E3F1EE462726F25400091C44 /* RemoveDuplicatesFromList.swift in Sources */,
 				E38EAAF42729CBDB0055451B /* GetFilePath.swift in Sources */,
@@ -782,6 +787,7 @@
 				E38FB4EC273EDCD600FF3C9A /* TruncateList.swift in Sources */,
 				E33DFF652748BEDD00C79D78 /* GetTitleOfURL.swift in Sources */,
 				E34B2548274E126C006B44A7 /* SpellOutNumber.swift in Sources */,
+				E321D1E6278EF80200D80571 /* TruncateText.swift in Sources */,
 				E39F476C272D3DF600B99CB0 /* RemoveEmojis.swift in Sources */,
 				E3BFF7AF2742456E00B830DE /* WriteText.swift in Sources */,
 				E39F4763272D3DF600B99CB0 /* GenerateUUID.swift in Sources */,

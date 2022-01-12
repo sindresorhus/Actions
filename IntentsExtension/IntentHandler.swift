@@ -133,6 +133,8 @@ final class IntentHandler: INExtension {
 		#endif
 		case is TransformListsIntent:
 			return TransformListsIntentHandler()
+		case is TruncateTextIntent:
+			return TruncateTextIntentHandler()
 		default:
 			assertionFailure("No handler for this intent")
 			return nil

@@ -59,6 +59,7 @@
 		<string>TransformTextWithJavaScriptIntent</string>
 		<string>TrimWhitespaceIntent</string>
 		<string>TruncateListIntent</string>
+		<string>TruncateTextIntent</string>
 		<string>UnixTimeToDateIntent</string>
 		<string>WriteTextIntent</string>
 	</array>

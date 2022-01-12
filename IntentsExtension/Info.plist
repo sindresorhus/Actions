@@ -2,6 +2,11 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>NSExtension</key>
 	<dict>
 		<key>NSExtensionAttributes</key>
@@ -65,6 +70,7 @@
 				<string>TransformTextWithJavaScriptIntent</string>
 				<string>TrimWhitespaceIntent</string>
 				<string>TruncateListIntent</string>
+				<string>TruncateTextIntent</string>
 				<string>UnixTimeToDateIntent</string>
 				<string>WriteTextIntent</string>
 			</array>
@@ -73,11 +79,6 @@
 		<string>com.apple.intents-service</string>
 		<key>NSExtensionPrincipalClass</key>
 		<string>$(PRODUCT_MODULE_NAME).IntentHandler</string>
-	</dict>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
 	</dict>
 </dict>
 </plist>

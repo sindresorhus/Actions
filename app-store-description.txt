@@ -59,6 +59,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Transform Text with JavaScript
 - Trim Whitespace
 - Truncate List
+- Truncate Text
 - Unix Time to Date
 - Write or Edit Text
 

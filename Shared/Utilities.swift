@@ -3233,3 +3233,72 @@ extension UIImage {
 	var inImage: INImage { INImage(uiImage: self) }
 }
 #endif
+
+
+extension StringProtocol {
+	var trimmed: String {
+		trimmingCharacters(in: .whitespacesAndNewlines)
+	}
+
+	var trimmedLeading: String {
+		replacingOccurrences(of: #"^\s+"#, with: "", options: .regularExpression)
+	}
+
+	var trimmedTrailing: String {
+		replacingOccurrences(of: #"\s+$"#, with: "", options: .regularExpression)
+	}
+}
+
+
+extension CharacterSet {
+	func contains(_ character: Character) -> Bool {
+		guard
+			character.unicodeScalars.count == 1,
+			let firstUnicodeScalar = character.unicodeScalars.first
+		else {
+			return false
+		}
+
+		return contains(firstUnicodeScalar)
+	}
+}
+
+
+extension StringProtocol {
+	/**
+	Truncate the string to the given maximum length including the truncation indicator.
+
+	- Note: The resulting string might be shorter than the given number depending on whitespace and punctation.
+
+	```
+	"Unicorn".truncating(to: 4)
+	//=> "Uni…"
+	```
+	*/
+	func truncating(
+		to maxLength: Int,
+		truncationIndicator: String = "…"
+	) -> String {
+		assert(maxLength >= 0, "maxLength should not be negative")
+
+		guard maxLength > 0 else {
+			return ""
+		}
+
+		guard count > maxLength else {
+			return String(self)
+		}
+
+		var truncatedString = prefix(maxLength - truncationIndicator.count)
+
+		// If the truncated string ends with a punctation character, we strip it to make it look better.
+		if
+			let lastCharacter = truncatedString.last,
+			CharacterSet.punctuationCharacters.contains(lastCharacter)
+		{
+			truncatedString = truncatedString.dropLast()
+		}
+
+		return "\(truncatedString.trimmedTrailing)\(truncationIndicator)"
+	}
+}
