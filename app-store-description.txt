@@ -11,6 +11,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Apply Capture Date
 - Clamp Number
 - Combine Lists
+- Create Color Image
 - Create URL
 - Date to Unix Time
 - Edit URL

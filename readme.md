@@ -29,6 +29,7 @@ Requires macOS 12 or iOS 15 and later.
 - Apply Capture Date
 - Clamp Number
 - Combine Lists
+- Create Color Image
 - Create URL
 - Date to Unix Time
 - Edit URL

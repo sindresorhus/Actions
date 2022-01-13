@@ -13,6 +13,10 @@
 		E3028092275D7E2C001FB6B8 /* GetFileIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3028091275D7E2B001FB6B8 /* GetFileIcon.swift */; };
 		E30F466E272FA446009A358B /* RandomText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30F466D272FA446009A358B /* RandomText.swift */; };
 		E30F466F272FA446009A358B /* RandomText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30F466D272FA446009A358B /* RandomText.swift */; };
+		E30FD0D027908A6F00C01D80 /* CreateColorImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30FD0CD279080A900C01D80 /* CreateColorImage.swift */; };
+		E30FD0D127908A6F00C01D80 /* CreateColorImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30FD0CD279080A900C01D80 /* CreateColorImage.swift */; };
+		E30FD0D327908ACA00C01D80 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30FD0D227908AC900C01D80 /* IntentHandler.swift */; };
+		E30FD0D427908ACA00C01D80 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30FD0D227908AC900C01D80 /* IntentHandler.swift */; };
 		E321D1E6278EF80200D80571 /* TruncateText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E321D1E3278EF7FA00D80571 /* TruncateText.swift */; };
 		E321D1E7278EF80300D80571 /* TruncateText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E321D1E3278EF7FA00D80571 /* TruncateText.swift */; };
 		E321D1E9278F03A700D80571 /* RoundNumberToMultiple.swift in Sources */ = {isa = PBXBuildFile; fileRef = E321D1E8278F03A700D80571 /* RoundNumberToMultiple.swift */; };
@@ -195,6 +199,8 @@
 		E302808E275CE65D001FB6B8 /* HapticFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedback.swift; sourceTree = "<group>"; };
 		E3028091275D7E2B001FB6B8 /* GetFileIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFileIcon.swift; sourceTree = "<group>"; };
 		E30F466D272FA446009A358B /* RandomText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomText.swift; sourceTree = "<group>"; };
+		E30FD0CD279080A900C01D80 /* CreateColorImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateColorImage.swift; sourceTree = "<group>"; };
+		E30FD0D227908AC900C01D80 /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
 		E321D1E3278EF7FA00D80571 /* TruncateText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TruncateText.swift; path = IntentsExtension/Actions/TruncateText.swift; sourceTree = SOURCE_ROOT; };
 		E321D1E8278F03A700D80571 /* RoundNumberToMultiple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundNumberToMultiple.swift; sourceTree = "<group>"; };
 		E324536D273FB40600B07EBF /* SendFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SendFeedback.swift; path = IntentsExtension/Actions/SendFeedback.swift; sourceTree = SOURCE_ROOT; };
@@ -312,6 +318,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E30FD0D527908D1A00C01D80 /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				E30FD0CD279080A900C01D80 /* CreateColorImage.swift */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
 		E3225F68272E6A9400DAF6F1 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -343,7 +357,9 @@
 				E3BFF7B327428F5200B830DE /* WelcomeScreen.swift */,
 				E3BFF7B62742A79100B830DE /* AppIcon.swift */,
 				E3BFF7B02742616400B830DE /* WriteTextScreen.swift */,
+				E30FD0D227908AC900C01D80 /* IntentHandler.swift */,
 				E3FC71DC271EBE5B00C9D255 /* Utilities.swift */,
+				E30FD0D527908D1A00C01D80 /* Actions */,
 				E324C9F1271E972300E7CA9B /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -649,9 +665,11 @@
 			files = (
 				E3BFF7B527428F5200B830DE /* WelcomeScreen.swift in Sources */,
 				E324CA23271E993F00E7CA9B /* Intents.intentdefinition in Sources */,
+				E30FD0D127908A6F00C01D80 /* CreateColorImage.swift in Sources */,
 				E324CA01271E972300E7CA9B /* MainScreen.swift in Sources */,
 				E33D4BA62744238300CC7A8A /* AppState.swift in Sources */,
 				E3BFF7B22742616400B830DE /* WriteTextScreen.swift in Sources */,
+				E30FD0D427908ACA00C01D80 /* IntentHandler.swift in Sources */,
 				E3BFF7B82742A79100B830DE /* AppIcon.swift in Sources */,
 				E3FC71DD271EBE5C00C9D255 /* Utilities.swift in Sources */,
 				E324C9FF271E972300E7CA9B /* App.swift in Sources */,
@@ -664,9 +682,11 @@
 			files = (
 				E3BFF7B427428F5200B830DE /* WelcomeScreen.swift in Sources */,
 				E324CA2B271EAAAC00E7CA9B /* Intents.intentdefinition in Sources */,
+				E30FD0D027908A6F00C01D80 /* CreateColorImage.swift in Sources */,
 				E324CA02271E972300E7CA9B /* MainScreen.swift in Sources */,
 				E33D4BA52744238300CC7A8A /* AppState.swift in Sources */,
 				E3BFF7B12742616400B830DE /* WriteTextScreen.swift in Sources */,
+				E30FD0D327908ACA00C01D80 /* IntentHandler.swift in Sources */,
 				E3BFF7B72742A79100B830DE /* AppIcon.swift in Sources */,
 				E3FC71DE271EBE5C00C9D255 /* Utilities.swift in Sources */,
 				E324CA00271E972300E7CA9B /* App.swift in Sources */,
@@ -953,6 +973,7 @@
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Required to use the “Is Bluetooth On” action.";
 				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Required to use the “Is Bluetooth On” action.";
 				INFOPLIST_KEY_NSContactsUsageDescription = "Required to get the user's name in the “Get User Details” action.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
@@ -988,6 +1009,7 @@
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Required to use the “Is Bluetooth On” action.";
 				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Required to use the “Is Bluetooth On” action.";
 				INFOPLIST_KEY_NSContactsUsageDescription = "Required to get the user's name in the “Get User Details” action.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
@@ -1225,7 +1247,7 @@
 			repositoryURL = "https://github.com/getsentry/sentry-cocoa";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 7.5.0;
+				minimumVersion = 7.8.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

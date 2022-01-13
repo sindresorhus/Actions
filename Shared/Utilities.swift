@@ -189,6 +189,13 @@ extension NSAppearance {
 #endif
 
 
+extension CGSize {
+	static func * (lhs: Self, rhs: Double) -> Self {
+		.init(width: lhs.width * rhs, height: lhs.height * rhs)
+	}
+}
+
+
 extension Data {
 	var isNullTerminated: Bool { last == 0x0 }
 
@@ -803,15 +810,17 @@ extension NSImage {
 	static func color(
 		_ color: NSColor,
 		size: CGSize,
+		scale: Double,
 		borderWidth: Double = 0,
 		borderColor: NSColor? = nil,
 		cornerRadius: Double? = nil
 	) -> Self {
-		Self(size: size, flipped: false) { bounds in
+		Self(size: size * scale, flipped: false) { bounds in
 			NSGraphicsContext.current?.imageInterpolation = .high
 
 			guard let cornerRadius = cornerRadius else {
-				color.drawSwatch(in: bounds)
+				color.set()
+				bounds.fill()
 				return true
 			}
 
@@ -847,14 +856,11 @@ extension UIImage {
 	static func color(
 		_ color: UIColor,
 		size: CGSize,
-		scale: Double? = nil
+		scale: Double
 	) -> UIImage {
 		let format = UIGraphicsImageRendererFormat()
 		format.opaque = true
-
-		if let scale = scale {
-			format.scale = scale
-		}
+		format.scale = scale
 
 		return UIGraphicsImageRenderer(size: size, format: format).image { rendererContext in
 			color.setFill()
@@ -1389,6 +1395,36 @@ extension UIColor {
 }
 // swiftlint:enable no_cgfloat
 #endif
+
+
+extension XColor {
+	convenience init(hex: Int, alpha: Double = 1) {
+		self.init(
+			red: Double((hex >> 16) & 0xFF) / 255,
+			green: Double((hex >> 8) & 0xFF) / 255,
+			blue: Double(hex & 0xFF) / 255,
+			alpha: alpha
+		)
+	}
+
+	convenience init?(hexString: String, alpha: Double = 1) {
+		var string = hexString
+
+		if hexString.hasPrefix("#") {
+			string = String(hexString.dropFirst())
+		}
+
+		if string.count == 3 {
+			string = string.map { "\($0)\($0)" }.joined()
+		}
+
+		guard let hex = Int(string, radix: 16) else {
+			return nil
+		}
+
+		self.init(hex: hex, alpha: alpha)
+	}
+}
 
 
 extension XColor {
@@ -2000,6 +2036,39 @@ extension CGImage {
 }
 
 
+#if canImport(AppKit)
+extension NSBitmapImageRep {
+	func pngData() -> Data? {
+		representation(using: .png, properties: [:])
+	}
+
+	func jpegData(compressionQuality: Double) -> Data? {
+		representation(using: .jpeg, properties: [.compressionFactor: compressionQuality])
+	}
+}
+
+extension Data {
+	var bitmap: NSBitmapImageRep? { NSBitmapImageRep(data: self) }
+}
+
+extension NSImage {
+	/**
+	UIKit polyfill.
+	*/
+	func pngData() -> Data? {
+		tiffRepresentation?.bitmap?.pngData()
+	}
+
+	/**
+	UIKit polyfill.
+	*/
+	func jpegData(compressionQuality: Double) -> Data? {
+		tiffRepresentation?.bitmap?.jpegData(compressionQuality: compressionQuality)
+	}
+}
+#endif
+
+
 extension URL {
 	/**
 	Creates a unique temporary directory and returns the URL.
@@ -2154,15 +2223,9 @@ extension XImage {
 	Create a `INFile` from the image.
 	*/
 	var toINFile: INFile? {
-		#if canImport(AppKit)
-		try? tiffRepresentation?
-			.writeToUniqueTemporaryFile(contentType: .tiff)
-			.toINFile
-		#elseif canImport(UIKit)
 		try? pngData()?
 			.writeToUniqueTemporaryFile(contentType: .png)
 			.toINFile
-		#endif
 	}
 }
 

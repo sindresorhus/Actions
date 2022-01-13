@@ -29,7 +29,7 @@ struct AppMain: App {
 }
 
 @MainActor
-private final class AppDelegate: NSObject, XApplicationDelegate {
+final class AppDelegate: NSObject, XApplicationDelegate {
 	#if canImport(AppKit)
 	func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool { true }
 

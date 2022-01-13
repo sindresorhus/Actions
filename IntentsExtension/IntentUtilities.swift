@@ -22,7 +22,7 @@ extension Color_ {
 		let sRGBColor = xColor
 		#endif
 
-		let thumbnail = XImage.color(xColor, size: CGSize(width: 1, height: 1))
+		let thumbnail = XImage.color(xColor, size: CGSize(width: 1, height: 1), scale: 1)
 
 		self.init(
 			identifier: "color",

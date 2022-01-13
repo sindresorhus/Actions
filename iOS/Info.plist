@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>INIntentsSupported</key>
+	<array>
+		<string>CreateColorImageIntent</string>
+	</array>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>NSUserActivityTypes</key>
@@ -10,6 +14,7 @@
 		<string>ApplyCaptureDateIntent</string>
 		<string>ClampNumberIntent</string>
 		<string>CombineListsIntent</string>
+		<string>CreateColorImageIntent</string>
 		<string>CreateURLIntent</string>
 		<string>DateToUnixTimeIntent</string>
 		<string>EditURLIntent</string>
@@ -64,10 +69,5 @@
 		<string>UnixTimeToDateIntent</string>
 		<string>WriteTextIntent</string>
 	</array>
-	<key>UIApplicationSceneManifest</key>
-	<dict>
-		<key>UIApplicationSupportsMultipleScenes</key>
-		<false/>
-	</dict>
 </dict>
 </plist>

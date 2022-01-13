@@ -847,7 +847,7 @@
 				</dict>
 				<dict>
 					<key>INEnumValueDisplayName</key>
-					<string>subtraction</string>
+					<string>Subtraction</string>
 					<key>INEnumValueDisplayNameID</key>
 					<string>BeSAfA</string>
 					<key>INEnumValueIndex</key>
@@ -857,7 +857,7 @@
 				</dict>
 				<dict>
 					<key>INEnumValueDisplayName</key>
-					<string>intersection</string>
+					<string>Intersection</string>
 					<key>INEnumValueDisplayNameID</key>
 					<string>tz7jjJ</string>
 					<key>INEnumValueIndex</key>
@@ -867,7 +867,7 @@
 				</dict>
 				<dict>
 					<key>INEnumValueDisplayName</key>
-					<string>symmetric difference</string>
+					<string>Symmetric difference</string>
 					<key>INEnumValueDisplayNameID</key>
 					<string>0073m4</string>
 					<key>INEnumValueIndex</key>
@@ -10786,7 +10786,7 @@
 				<array>
 					<dict>
 						<key>INIntentResponseParameterDisplayName</key>
-						<string>Is Silent Switch Enabled</string>
+						<string>Is Silent Mode</string>
 						<key>INIntentResponseParameterDisplayNameID</key>
 						<string>uX8xbU</string>
 						<key>INIntentResponseParameterDisplayPriority</key>
@@ -11995,6 +11995,254 @@
 			<string>Round Number to Multiple</string>
 			<key>INIntentTitleID</key>
 			<string>sW51pr</string>
+			<key>INIntentType</key>
+			<string>Custom</string>
+			<key>INIntentVerb</key>
+			<string>Do</string>
+		</dict>
+		<dict>
+			<key>INIntentCategory</key>
+			<string>generic</string>
+			<key>INIntentConfigurable</key>
+			<true/>
+			<key>INIntentDescription</key>
+			<string>Create a solid color image.</string>
+			<key>INIntentDescriptionID</key>
+			<string>wcdZzI</string>
+			<key>INIntentIneligibleForSuggestions</key>
+			<true/>
+			<key>INIntentInput</key>
+			<string>color</string>
+			<key>INIntentKeyParameter</key>
+			<string>color</string>
+			<key>INIntentLastParameterTag</key>
+			<integer>7</integer>
+			<key>INIntentManagedParameterCombinations</key>
+			<dict>
+				<key>width,height,color,opacity</key>
+				<dict>
+					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
+					<true/>
+					<key>INIntentParameterCombinationTitle</key>
+					<string>Create image of color ${color} with size ${width}×${height}</string>
+					<key>INIntentParameterCombinationTitleID</key>
+					<string>LruxDJ</string>
+					<key>INIntentParameterCombinationUpdatesLinked</key>
+					<true/>
+				</dict>
+			</dict>
+			<key>INIntentName</key>
+			<string>CreateColorImage</string>
+			<key>INIntentParameters</key>
+			<array>
+				<dict>
+					<key>INIntentParameterConfigurable</key>
+					<true/>
+					<key>INIntentParameterDisplayName</key>
+					<string>Hex Color</string>
+					<key>INIntentParameterDisplayNameID</key>
+					<string>b1gdY7</string>
+					<key>INIntentParameterDisplayPriority</key>
+					<integer>1</integer>
+					<key>INIntentParameterMetadata</key>
+					<dict>
+						<key>INIntentParameterMetadataCapitalization</key>
+						<string>None</string>
+						<key>INIntentParameterMetadataDefaultValue</key>
+						<string>#ff69b4</string>
+						<key>INIntentParameterMetadataDefaultValueID</key>
+						<string>tZdYDi</string>
+						<key>INIntentParameterMetadataDisableAutocorrect</key>
+						<true/>
+						<key>INIntentParameterMetadataDisableSmartDashes</key>
+						<true/>
+						<key>INIntentParameterMetadataDisableSmartQuotes</key>
+						<true/>
+					</dict>
+					<key>INIntentParameterName</key>
+					<string>color</string>
+					<key>INIntentParameterPromptDialogs</key>
+					<array>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>Configuration</string>
+						</dict>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>Primary</string>
+						</dict>
+					</array>
+					<key>INIntentParameterTag</key>
+					<integer>5</integer>
+					<key>INIntentParameterType</key>
+					<string>String</string>
+				</dict>
+				<dict>
+					<key>INIntentParameterConfigurable</key>
+					<true/>
+					<key>INIntentParameterDisplayName</key>
+					<string>Width</string>
+					<key>INIntentParameterDisplayNameID</key>
+					<string>2OZkTN</string>
+					<key>INIntentParameterDisplayPriority</key>
+					<integer>2</integer>
+					<key>INIntentParameterMetadata</key>
+					<dict>
+						<key>INIntentParameterMetadataMaximumValue</key>
+						<integer>8000</integer>
+						<key>INIntentParameterMetadataMinimumValue</key>
+						<integer>1</integer>
+						<key>INIntentParameterMetadataType</key>
+						<string>Field</string>
+					</dict>
+					<key>INIntentParameterName</key>
+					<string>width</string>
+					<key>INIntentParameterPromptDialogs</key>
+					<array>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>Configuration</string>
+						</dict>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>Primary</string>
+						</dict>
+					</array>
+					<key>INIntentParameterTag</key>
+					<integer>2</integer>
+					<key>INIntentParameterType</key>
+					<string>Integer</string>
+				</dict>
+				<dict>
+					<key>INIntentParameterConfigurable</key>
+					<true/>
+					<key>INIntentParameterDisplayName</key>
+					<string>Height</string>
+					<key>INIntentParameterDisplayNameID</key>
+					<string>8wmbgi</string>
+					<key>INIntentParameterDisplayPriority</key>
+					<integer>3</integer>
+					<key>INIntentParameterMetadata</key>
+					<dict>
+						<key>INIntentParameterMetadataMaximumValue</key>
+						<integer>8000</integer>
+						<key>INIntentParameterMetadataMinimumValue</key>
+						<integer>1</integer>
+						<key>INIntentParameterMetadataType</key>
+						<string>Field</string>
+					</dict>
+					<key>INIntentParameterName</key>
+					<string>height</string>
+					<key>INIntentParameterPromptDialogs</key>
+					<array>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>Configuration</string>
+						</dict>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>Primary</string>
+						</dict>
+					</array>
+					<key>INIntentParameterTag</key>
+					<integer>4</integer>
+					<key>INIntentParameterType</key>
+					<string>Integer</string>
+				</dict>
+				<dict>
+					<key>INIntentParameterConfigurable</key>
+					<true/>
+					<key>INIntentParameterDisplayName</key>
+					<string>Opacity</string>
+					<key>INIntentParameterDisplayNameID</key>
+					<string>PAAY8r</string>
+					<key>INIntentParameterDisplayPriority</key>
+					<integer>4</integer>
+					<key>INIntentParameterMetadata</key>
+					<dict>
+						<key>INIntentParameterMetadataDefaultValue</key>
+						<real>1</real>
+						<key>INIntentParameterMetadataMaximumValue</key>
+						<real>1</real>
+						<key>INIntentParameterMetadataType</key>
+						<string>Slider</string>
+					</dict>
+					<key>INIntentParameterName</key>
+					<string>opacity</string>
+					<key>INIntentParameterPromptDialogs</key>
+					<array>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>Configuration</string>
+						</dict>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>Primary</string>
+						</dict>
+					</array>
+					<key>INIntentParameterTag</key>
+					<integer>7</integer>
+					<key>INIntentParameterType</key>
+					<string>Decimal</string>
+				</dict>
+			</array>
+			<key>INIntentResponse</key>
+			<dict>
+				<key>INIntentResponseCodes</key>
+				<array>
+					<dict>
+						<key>INIntentResponseCodeName</key>
+						<string>success</string>
+						<key>INIntentResponseCodeSuccess</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>INIntentResponseCodeName</key>
+						<string>failure</string>
+					</dict>
+				</array>
+				<key>INIntentResponseLastParameterTag</key>
+				<integer>2</integer>
+				<key>INIntentResponseOutput</key>
+				<string>result</string>
+				<key>INIntentResponseParameters</key>
+				<array>
+					<dict>
+						<key>INIntentResponseParameterDisplayName</key>
+						<string>Solid Color Image</string>
+						<key>INIntentResponseParameterDisplayNameID</key>
+						<string>538TwT</string>
+						<key>INIntentResponseParameterDisplayPriority</key>
+						<integer>1</integer>
+						<key>INIntentResponseParameterName</key>
+						<string>result</string>
+						<key>INIntentResponseParameterTag</key>
+						<integer>2</integer>
+						<key>INIntentResponseParameterType</key>
+						<string>File</string>
+					</dict>
+				</array>
+			</dict>
+			<key>INIntentTitle</key>
+			<string>Create Color Image</string>
+			<key>INIntentTitleID</key>
+			<string>O2PccD</string>
 			<key>INIntentType</key>
 			<string>Custom</string>
 			<key>INIntentVerb</key>
