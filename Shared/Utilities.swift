@@ -2007,6 +2007,17 @@ extension URL {
 }
 
 
+extension URL {
+	/**
+	Check whether the given string is a valid URL scheme.
+	*/
+	static func isValidScheme(_ scheme: String) -> Bool {
+		scheme.first?.isASCIILetterOrNumber == true
+			&& scheme.hasOnlyCharacters(in: .urlSchemeAllowed)
+	}
+}
+
+
 extension CGImage {
 	/**
 	Get metadata from an image on disk.
@@ -3324,6 +3335,38 @@ extension CharacterSet {
 
 		return contains(firstUnicodeScalar)
 	}
+}
+
+
+extension CharacterSet {
+	static let lowercaseASCIILetters = Self(charactersIn: "a"..."z")
+	static let uppercaseASCIILetters = Self(charactersIn: "A"..."Z")
+	static let asciiLetters = lowercaseLetters.union(uppercaseLetters)
+	static let asciiNumbers = Self(charactersIn: "0"..."9")
+	static let asciiLettersAndNumbers = asciiLetters.union(asciiNumbers)
+
+	// https://stackoverflow.com/a/3641782/64949
+	static let urlSchemeAllowed = Self(charactersIn: "+-.")
+		.union(asciiLettersAndNumbers)
+}
+
+
+extension StringProtocol {
+	/**
+	Check that the string only contains characters in the given `CharacterSet`.
+	*/
+	func hasOnlyCharacters(in characterSet: CharacterSet) -> Bool {
+		rangeOfCharacter(from: characterSet.inverted) == nil
+	}
+}
+
+
+extension Character {
+	var isASCIILetter: Bool { isASCII && isLetter }
+	var isLowercaseASCIILetter: Bool { isASCIILetter && isLowercase }
+	var isUppercaseASCIILetter: Bool { isASCIILetter && isUppercase }
+	var isASCIINumber: Bool { isASCII && isNumber }
+	var isASCIILetterOrNumber: Bool { isASCII && (isASCIILetter || isASCIINumber) }
 }
 
 

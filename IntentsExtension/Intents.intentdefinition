@@ -10669,7 +10669,7 @@
 			<key>INIntentConfigurable</key>
 			<true/>
 			<key>INIntentDescription</key>
-			<string>Gets the audio playback destination of the device. Can be useful in combination with the built-in "Set Playback Destination" action.</string>
+			<string>Gets the audio playback destination of the device. Can be useful in combination with the built-in "Set Playback Destination" action. Known limitation: It will not be able to detect when the output is an AirPlay device because of system limitations.</string>
 			<key>INIntentDescriptionID</key>
 			<string>qlazl7</string>
 			<key>INIntentIneligibleForSuggestions</key>
@@ -10942,7 +10942,7 @@
 			<key>INIntentConfigurable</key>
 			<true/>
 			<key>INIntentDescription</key>
-			<string>Gets the icon for the input files.</string>
+			<string>Gets the icon for the input files or directories.</string>
 			<key>INIntentDescriptionID</key>
 			<string>nzGLag</string>
 			<key>INIntentIneligibleForSuggestions</key>
@@ -10986,7 +10986,7 @@
 						<array>
 							<dict>
 								<key>UTI</key>
-								<string>public.data</string>
+								<string>public.item</string>
 							</dict>
 						</array>
 						<key>INIntentParameterMetadataType</key>

@@ -6,11 +6,17 @@ final class CreateURLIntentHandler: NSObject, CreateURLIntentHandling {
 		var urlComponents = URLComponents()
 
 		// Setting it to "https:" is not valid, but we gracefully handle that for the user.
-		urlComponents.scheme = intent.scheme?
+		let scheme = intent.scheme?
 			.nilIfEmptyOrWhitespace?
 			.replacingSuffix("://", with: "")
 			.replacingSuffix(":", with: "")
 				?? "https"
+
+		guard URL.isValidScheme(scheme) else {
+			return .failure(failure: "Invalid URL scheme.")
+		}
+
+		urlComponents.scheme = scheme
 
 		if let host = intent.host?.nilIfEmptyOrWhitespace {
 			urlComponents.host = host
