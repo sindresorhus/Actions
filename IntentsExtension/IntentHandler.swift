@@ -137,6 +137,8 @@ final class IntentHandler: INExtension {
 			return TruncateTextIntentHandler()
 		case is RoundNumberToMultipleIntent:
 			return RoundNumberToMultipleIntentHandler()
+		case is IsOnlineIntent:
+			return IsOnlineIntentHandler()
 		default:
 			assertionFailure("No handler for this intent")
 			return nil

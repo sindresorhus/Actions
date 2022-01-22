@@ -8,6 +8,7 @@ import IntentsUI
 import CoreBluetooth
 import Contacts
 import AudioToolbox
+import SystemConfiguration
 
 #if canImport(AppKit)
 import IOKit.ps
@@ -3425,5 +3426,39 @@ extension FloatingPoint {
 	) -> Self {
 		let value = Self(value)
 		return (self / value).rounded(roundingRule) * value
+	}
+}
+
+
+enum Reachability {
+	/**
+	Checks whether we're currently online.
+	*/
+	static func isOnline(host: String = "apple.com") -> Bool {
+		guard let ref = SCNetworkReachabilityCreateWithName(nil, host) else {
+			return false
+		}
+
+		var flags = SCNetworkReachabilityFlags.connectionAutomatic
+		if !SCNetworkReachabilityGetFlags(ref, &flags) {
+			return false
+		}
+
+		return flags.contains(.reachable) && !flags.contains(.connectionRequired)
+	}
+
+	/**
+	Checks multiple sources of whether we're currently online.
+	*/
+	static func isOnlineExtensive() -> Bool {
+		let hosts = [
+			"apple.com",
+			"google.com",
+			"cloudflare.com",
+			"baidu.com",
+			"yandex.ru"
+		]
+
+		return hosts.contains { isOnline(host: $0) }
 	}
 }

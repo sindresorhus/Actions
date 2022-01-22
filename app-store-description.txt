@@ -36,6 +36,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Is Connected to VPN (iOS-only)
 - Is Dark Mode On
 - Is Low Power Mode On
+- Is Online
 - Is Silent Mode On (iOS-only)
 - Random Boolean
 - Random Color

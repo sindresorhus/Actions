@@ -45,6 +45,7 @@
 				<string>IsConnectedToVPNIntent</string>
 				<string>IsDarkModeIntent</string>
 				<string>IsLowPowerModeIntent</string>
+				<string>IsOnlineIntent</string>
 				<string>IsSilentModeOnIntent</string>
 				<string>RandomBooleanIntent</string>
 				<string>RandomColorIntent</string>

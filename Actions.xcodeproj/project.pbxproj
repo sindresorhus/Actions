@@ -147,6 +147,8 @@
 		E3F1EE482727074B00091C44 /* ReverseList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F1EE472727074B00091C44 /* ReverseList.swift */; };
 		E3F4211227268FE700080453 /* RandomDateTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F4211127268FE700080453 /* RandomDateTime.swift */; };
 		E3F421142726958100080453 /* RandomFloatingPointNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F421132726958100080453 /* RandomFloatingPointNumber.swift */; };
+		E3F4EC02279C804E00113C70 /* IsOnline.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F4EC01279C804E00113C70 /* IsOnline.swift */; };
+		E3F4EC03279C804E00113C70 /* IsOnline.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F4EC01279C804E00113C70 /* IsOnline.swift */; };
 		E3F4F95E272C0C030008B54A /* CreateURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F4F95D272C0C030008B54A /* CreateURL.swift */; };
 		E3FC71DD271EBE5C00C9D255 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FC71DC271EBE5B00C9D255 /* Utilities.swift */; };
 		E3FC71DE271EBE5C00C9D255 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FC71DC271EBE5B00C9D255 /* Utilities.swift */; };
@@ -276,6 +278,7 @@
 		E3F1EE472727074B00091C44 /* ReverseList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseList.swift; sourceTree = "<group>"; };
 		E3F4211127268FE700080453 /* RandomDateTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomDateTime.swift; sourceTree = "<group>"; };
 		E3F421132726958100080453 /* RandomFloatingPointNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomFloatingPointNumber.swift; sourceTree = "<group>"; };
+		E3F4EC01279C804E00113C70 /* IsOnline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsOnline.swift; sourceTree = "<group>"; };
 		E3F4F95D272C0C030008B54A /* CreateURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateURL.swift; sourceTree = "<group>"; };
 		E3FC71DC271EBE5B00C9D255 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		E3FC71E4271ED43700C9D255 /* IntentsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = IntentsExtension.entitlements; sourceTree = "<group>"; };
@@ -468,6 +471,7 @@
 				036DFFCB27767B0F009DA927 /* TransformLists.swift */,
 				E321D1E3278EF7FA00D80571 /* TruncateText.swift */,
 				E321D1E8278F03A700D80571 /* RoundNumberToMultiple.swift */,
+				E3F4EC01279C804E00113C70 /* IsOnline.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -739,6 +743,7 @@
 				0345FBFE277E9574006F63E8 /* TransformLists.swift in Sources */,
 				E387158A2725A7C6003155B0 /* RandomEmoji.swift in Sources */,
 				E34B2547274E126C006B44A7 /* SpellOutNumber.swift in Sources */,
+				E3F4EC02279C804E00113C70 /* IsOnline.swift in Sources */,
 				E324536E273FB40600B07EBF /* SendFeedback.swift in Sources */,
 				E3660AF32728017600C038AF /* RemoveEmptyLines.swift in Sources */,
 				E371D5862739794400156765 /* SetFileCreationModificationDate.swift in Sources */,
@@ -780,6 +785,7 @@
 				E39F4770272D3E0000B99CB0 /* Intents.intentdefinition in Sources */,
 				E3BFF7BB2742C7BD00B830DE /* GetUserDetails.swift in Sources */,
 				E39F475D272D3DF600B99CB0 /* FormatDateDifference.swift in Sources */,
+				E3F4EC03279C804E00113C70 /* IsOnline.swift in Sources */,
 				E3890479275AA8DB004735CF /* GetAudioPlaybackDestination.swift in Sources */,
 				E38FB4E3273E8D6700FF3C9A /* CombineLists.swift in Sources */,
 				E39F4773272D3EAE00B99CB0 /* Utilities.swift in Sources */,

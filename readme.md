@@ -54,6 +54,7 @@ Requires macOS 12 or iOS 15 and later.
 - Is Connected to VPN <sup>(iOS-only)</sup>
 - Is Dark Mode On
 - Is Low Power Mode On
+- Is Online
 - Is Silent Mode On <sup>(iOS-only)</sup>
 - Random Boolean
 - Random Color
