@@ -11,6 +11,7 @@ struct MainScreen: View {
 			#if canImport(AppKit)
 			.frame(width: 440)
 			.windowLevel(.floating)
+			.fixedSize()
 			.onChange(of: appState.userActivity) {
 				guard let someIntent = $0?.interaction?.intent else {
 					return // swiftlint:disable:this implicit_return

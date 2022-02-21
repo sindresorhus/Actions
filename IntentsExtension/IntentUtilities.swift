@@ -28,7 +28,7 @@ extension Color_ {
 			identifier: "color",
 			display: sRGBColor.hexString,
 			subtitle: "",
-			image: thumbnail.inImage
+			image: thumbnail.toINImage
 		)
 
 		hex = sRGBColor.hexString

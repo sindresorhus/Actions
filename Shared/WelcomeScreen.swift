@@ -37,9 +37,9 @@ struct WelcomeScreen: View {
 				.dynamicTypeSize(...(Device.hasSmallScreen ? .accessibility3 : .accessibility4))
 			Spacer()
 			#if canImport(AppKit)
-			Text("Want an action to get your internet speed? Check out [Speediness](https://apps.apple.com/app/id1596706466)")
+			Link("Want even more actions?", destination: "https://github.com/sindresorhus/Actions#looking-for-more")
 				.controlSize(.small)
-				.padding(.bottom)
+//				.padding(.bottom)
 			#endif
 			Button("Send Feedback") {
 				SSApp.openSendFeedbackPage()

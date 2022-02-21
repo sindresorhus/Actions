@@ -19,7 +19,7 @@ final class GetRunningAppsIntentHandler: NSObject, GetRunningAppsIntentHandling 
 			if let representation = (app.icon?.representations.first { $0.size.width == iconSize }) {
 				let image = NSImage(size: CGSize(width: iconSize, height: iconSize))
 				image.addRepresentation(representation)
-				inImage = image.inImage
+				inImage = image.toINImage
 			}
 
 			let runningApp = RunningApp(

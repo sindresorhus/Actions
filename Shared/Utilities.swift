@@ -2783,6 +2783,7 @@ extension CNContactStore {
 		}
 
 		return containers
+			// TODO: Use `.firstNonNil()` here when available.
 			.lazy
 			.compactMap {
 				guard let identifier = $0.value(forKey: "meIdentifier") as? String else {
@@ -3293,9 +3294,9 @@ extension Device {
 
 #if canImport(AppKit)
 extension NSImage {
-	var inImage: INImage {
-		// `tiffRepresentation` is very unlikely to fail, so we just fall back to an empty image.
-		INImage(imageData: tiffRepresentation ?? Data())
+	var toINImage: INImage {
+		// `pngData` is very unlikely to fail, so we just fall back to an empty image.
+		INImage(imageData: pngData() ?? Data())
 	}
 }
 #elseif canImport(UIKit) && canImport(IntentsUI)
@@ -3305,7 +3306,7 @@ extension UIImage {
 
 	- Important: If you're using this in an intent handler extension, don't forget to manually add the `IntentsUI` framework.
 	*/
-	var inImage: INImage { INImage(uiImage: self) }
+	var toINImage: INImage { INImage(uiImage: self) }
 }
 #endif
 
