@@ -6,6 +6,7 @@ import UniformTypeIdentifiers
 import Intents
 import IntentsUI
 import CoreBluetooth
+import CoreLocation
 import Contacts
 import AudioToolbox
 import SystemConfiguration
@@ -3461,5 +3462,31 @@ enum Reachability {
 		]
 
 		return hosts.contains { isOnline(host: $0) }
+	}
+}
+
+
+extension CLLocationCoordinate2D {
+	/**
+	Get the [geo URI](https://en.wikipedia.org/wiki/Geo_URI_scheme) for the coordiate.
+	*/
+	var geoURI: URL { URL(string: "geo:\(latitude),\(longitude)")! }
+}
+
+extension CLLocation {
+	/**
+	Get the [geo URI](https://en.wikipedia.org/wiki/Geo_URI_scheme) for the location, including accuracy.
+	*/
+	func geoURI(includeAccuracy: Bool) -> URL {
+		let geoURI = coordinate.geoURI
+
+		guard
+			includeAccuracy,
+			horizontalAccuracy >= 0
+		else {
+			return geoURI
+		}
+
+		return URL(string: "\(geoURI);u=\(Int(horizontalAccuracy))")!
 	}
 }

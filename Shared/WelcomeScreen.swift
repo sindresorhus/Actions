@@ -39,7 +39,6 @@ struct WelcomeScreen: View {
 			#if canImport(AppKit)
 			Link("Want even more actions?", destination: "https://github.com/sindresorhus/Actions#looking-for-more")
 				.controlSize(.small)
-//				.padding(.bottom)
 			#endif
 			Button("Send Feedback") {
 				SSApp.openSendFeedbackPage()

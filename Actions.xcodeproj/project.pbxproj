@@ -68,6 +68,8 @@
 		E387158A2725A7C6003155B0 /* RandomEmoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38715892725A7C6003155B0 /* RandomEmoji.swift */; };
 		E3890479275AA8DB004735CF /* GetAudioPlaybackDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3890477275AA8D0004735CF /* GetAudioPlaybackDestination.swift */; };
 		E389047C275BBBC5004735CF /* IsSilentModeOn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E389047B275BBBC5004735CF /* IsSilentModeOn.swift */; };
+		E38E6EB227CBC6C7005B990D /* GeoURI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38E6EB127CBC6C7005B990D /* GeoURI.swift */; };
+		E38E6EB327CBC6C7005B990D /* GeoURI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38E6EB127CBC6C7005B990D /* GeoURI.swift */; };
 		E38EAAF02729B58F0055451B /* GetUniformTypeIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38EAAEF2729B58F0055451B /* GetUniformTypeIdentifier.swift */; };
 		E38EAAF22729C66B0055451B /* FormatDateDifference.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38EAAF12729C66B0055451B /* FormatDateDifference.swift */; };
 		E38EAAF42729CBDB0055451B /* GetFilePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38EAAF32729CBDB0055451B /* GetFilePath.swift */; };
@@ -243,6 +245,7 @@
 		E38715892725A7C6003155B0 /* RandomEmoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomEmoji.swift; sourceTree = "<group>"; };
 		E3890477275AA8D0004735CF /* GetAudioPlaybackDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GetAudioPlaybackDestination.swift; path = IntentsExtension/Actions/GetAudioPlaybackDestination.swift; sourceTree = SOURCE_ROOT; };
 		E389047B275BBBC5004735CF /* IsSilentModeOn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IsSilentModeOn.swift; path = IntentsExtension/Actions/IsSilentModeOn.swift; sourceTree = SOURCE_ROOT; };
+		E38E6EB127CBC6C7005B990D /* GeoURI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoURI.swift; sourceTree = "<group>"; };
 		E38EAAEF2729B58F0055451B /* GetUniformTypeIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUniformTypeIdentifier.swift; sourceTree = "<group>"; };
 		E38EAAF12729C66B0055451B /* FormatDateDifference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatDateDifference.swift; sourceTree = "<group>"; };
 		E38EAAF32729CBDB0055451B /* GetFilePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFilePath.swift; sourceTree = "<group>"; };
@@ -472,6 +475,7 @@
 				E321D1E3278EF7FA00D80571 /* TruncateText.swift */,
 				E321D1E8278F03A700D80571 /* RoundNumberToMultiple.swift */,
 				E3F4EC01279C804E00113C70 /* IsOnline.swift */,
+				E38E6EB127CBC6C7005B990D /* GeoURI.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -704,6 +708,7 @@
 				E33DFF692748EBA200C79D78 /* GetBatteryState.swift in Sources */,
 				E33DFF642748BEDD00C79D78 /* GetTitleOfURL.swift in Sources */,
 				E3F4F95E272C0C030008B54A /* CreateURL.swift in Sources */,
+				E38E6EB227CBC6C7005B990D /* GeoURI.swift in Sources */,
 				E38FB4E2273E8D6700FF3C9A /* CombineLists.swift in Sources */,
 				E3F1EE442726E2AF00091C44 /* ShuffleList.swift in Sources */,
 				E3C6C1A427366A4D0003F56E /* RemoveFromList.swift in Sources */,
@@ -770,6 +775,7 @@
 				E39F476F272D3DF600B99CB0 /* GetUniformTypeIdentifier.swift in Sources */,
 				E39F4755272D3DED00B99CB0 /* IntentHandler.swift in Sources */,
 				E39F476E272D3DF600B99CB0 /* RandomBoolean.swift in Sources */,
+				E38E6EB327CBC6C7005B990D /* GeoURI.swift in Sources */,
 				E3D3BDCD2743A72C00417A63 /* EditURL.swift in Sources */,
 				E3EE4041273802FB009B3FED /* ApplyCaptureDate.swift in Sources */,
 				E3C6C1A527366A4D0003F56E /* RemoveFromList.swift in Sources */,

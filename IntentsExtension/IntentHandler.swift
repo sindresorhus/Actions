@@ -139,6 +139,8 @@ final class IntentHandler: INExtension {
 			return RoundNumberToMultipleIntentHandler()
 		case is IsOnlineIntent:
 			return IsOnlineIntentHandler()
+		case is GeoURIIntent:
+			return GeoURIIntentHandler()
 		default:
 			assertionFailure("No handler for this intent")
 			return nil
