@@ -59,6 +59,8 @@
 		E35A806D274CF80D00BE7B07 /* RemoveNonPrintableCharacters.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35A806B274CF80D00BE7B07 /* RemoveNonPrintableCharacters.swift */; };
 		E3660AF12727F51300C038AF /* ClampNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3660AF02727F51300C038AF /* ClampNumber.swift */; };
 		E3660AF32728017600C038AF /* RemoveEmptyLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3660AF22728017600C038AF /* RemoveEmptyLines.swift */; };
+		E37088CF27CC8E180002B432 /* SymbolImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37088CE27CC8E180002B432 /* SymbolImage.swift */; };
+		E37088D027CC8E180002B432 /* SymbolImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37088CE27CC8E180002B432 /* SymbolImage.swift */; };
 		E371D5862739794400156765 /* SetFileCreationModificationDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E371D5852739794400156765 /* SetFileCreationModificationDate.swift */; };
 		E371D5872739794400156765 /* SetFileCreationModificationDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E371D5852739794400156765 /* SetFileCreationModificationDate.swift */; };
 		E380C8A527422549002AEA4F /* IsBluetoothOn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E380C8A427422549002AEA4F /* IsBluetoothOn.swift */; };
@@ -238,6 +240,7 @@
 		E35A806B274CF80D00BE7B07 /* RemoveNonPrintableCharacters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveNonPrintableCharacters.swift; sourceTree = "<group>"; };
 		E3660AF02727F51300C038AF /* ClampNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClampNumber.swift; sourceTree = "<group>"; };
 		E3660AF22728017600C038AF /* RemoveEmptyLines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveEmptyLines.swift; sourceTree = "<group>"; };
+		E37088CE27CC8E180002B432 /* SymbolImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolImage.swift; sourceTree = "<group>"; };
 		E371D5852739794400156765 /* SetFileCreationModificationDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetFileCreationModificationDate.swift; sourceTree = "<group>"; };
 		E380C8A427422549002AEA4F /* IsBluetoothOn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsBluetoothOn.swift; sourceTree = "<group>"; };
 		E38715832725A303003155B0 /* GenerateUUID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateUUID.swift; sourceTree = "<group>"; };
@@ -476,6 +479,7 @@
 				E321D1E8278F03A700D80571 /* RoundNumberToMultiple.swift */,
 				E3F4EC01279C804E00113C70 /* IsOnline.swift */,
 				E38E6EB127CBC6C7005B990D /* GeoURI.swift */,
+				E37088CE27CC8E180002B432 /* SymbolImage.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -732,6 +736,7 @@
 				E34D037A2725C2D30065FC3B /* TrimWhitespace.swift in Sources */,
 				E38EAAF22729C66B0055451B /* FormatDateDifference.swift in Sources */,
 				E324CA17271E98F300E7CA9B /* IntentHandler.swift in Sources */,
+				E37088CF27CC8E180002B432 /* SymbolImage.swift in Sources */,
 				E38FB4EE273EE68C00FF3C9A /* GetEmojis.swift in Sources */,
 				E3F421142726958100080453 /* RandomFloatingPointNumber.swift in Sources */,
 				E3DF2EBB27287405009127CA /* TransformTextWithJavaScript.swift in Sources */,
@@ -773,6 +778,7 @@
 				E39F4764272D3DF600B99CB0 /* ReverseList.swift in Sources */,
 				E302808F275CE65D001FB6B8 /* HapticFeedback.swift in Sources */,
 				E39F476F272D3DF600B99CB0 /* GetUniformTypeIdentifier.swift in Sources */,
+				E37088D027CC8E180002B432 /* SymbolImage.swift in Sources */,
 				E39F4755272D3DED00B99CB0 /* IntentHandler.swift in Sources */,
 				E39F476E272D3DF600B99CB0 /* RandomBoolean.swift in Sources */,
 				E38E6EB327CBC6C7005B990D /* GeoURI.swift in Sources */,
@@ -900,8 +906,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.3;
-				MACOSX_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MACOSX_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -957,8 +963,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.3;
-				MACOSX_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MACOSX_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;

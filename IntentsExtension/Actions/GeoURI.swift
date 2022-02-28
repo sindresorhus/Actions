@@ -1,5 +1,4 @@
 import SwiftUI
-import CoreLocation
 
 @MainActor
 final class GeoURIIntentHandler: NSObject, GeoURIIntentHandling {

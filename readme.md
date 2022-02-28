@@ -76,6 +76,7 @@ Requires macOS 12 or iOS 15 and later.
 - Shuffle List
 - Sort List
 - Spell Out Number
+- Symbol Image
 - Transform Lists
 - Transform Text
 - Transform Text with JavaScript

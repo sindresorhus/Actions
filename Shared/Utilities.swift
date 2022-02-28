@@ -2235,9 +2235,9 @@ extension XImage {
 	/**
 	Create a `INFile` from the image.
 	*/
-	var toINFile: INFile? {
+	func toINFile(filename: String? = nil) -> INFile? {
 		try? pngData()?
-			.writeToUniqueTemporaryFile(contentType: .png)
+			.writeToUniqueTemporaryFile(filename: filename ?? "file", contentType: .png)
 			.toINFile
 	}
 }
@@ -3490,3 +3490,81 @@ extension CLLocation {
 		return URL(string: "\(geoURI);u=\(Int(horizontalAccuracy))")!
 	}
 }
+
+
+extension CGImage {
+	var xImage: XImage { XImage(cgImage: self) }
+}
+
+
+extension XImage {
+	func resized(to newSize: CGSize) -> XImage {
+		#if canImport(AppKit)
+		return Self(size: newSize, flipped: false) {
+			self.draw(in: $0)
+			return true
+		}
+			.isTemplate(isTemplate)
+		#elseif canImport(UIKit)
+		return UIGraphicsImageRenderer(size: newSize).image { _ in
+			draw(in: CGRect(origin: .zero, size: newSize))
+		}
+			.withRenderingMode(renderingMode)
+		#endif
+	}
+}
+
+
+#if canImport(AppKit)
+extension NSImage {
+	/**
+	`UIImage` polyfill.
+	*/
+	var cgImage: CGImage? { cgImage(forProposedRect: nil, context: nil, hints: nil) }
+
+	/**
+	`UIImage` polyfill.
+	*/
+	convenience init(cgImage: CGImage) {
+		self.init(cgImage: cgImage, size: .zero)
+	}
+}
+
+extension NSImage {
+	/**
+	UIKit polyfill.
+	*/
+	convenience init?(systemName name: String) {
+		self.init(systemSymbolName: name, accessibilityDescription: nil)
+	}
+
+	/**
+	UIKit polyfill.
+
+	Makes it easier to pass in symbol configuration in a cross-platform manner.
+	*/
+	func withConfiguration(_ configuration: SymbolConfiguration) -> NSImage {
+		withSymbolConfiguration(configuration)! // Unclear how it can fail.
+	}
+}
+
+extension NSImage {
+	func normalizingImage() -> NSImage {
+		guard let image = cgImage?.xImage else {
+			return resized(to: size)
+		}
+
+		return image
+	}
+}
+
+extension NSImage {
+	/**
+	Toggle `.isTemplate` on the image.
+	*/
+	func isTemplate(_ isTemplate: Bool = true) -> Self {
+		self.isTemplate = isTemplate
+		return self
+	}
+}
+#endif

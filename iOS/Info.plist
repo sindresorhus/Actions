@@ -62,6 +62,7 @@
 		<string>ShuffleListIntent</string>
 		<string>SortListIntent</string>
 		<string>SpellOutNumberIntent</string>
+		<string>SymbolImageIntent</string>
 		<string>TransformListsIntent</string>
 		<string>TransformTextIntent</string>
 		<string>TransformTextWithJavaScriptIntent</string>

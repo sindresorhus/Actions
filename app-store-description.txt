@@ -58,6 +58,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Shuffle List
 - Sort List
 - Spell Out Number
+- Symbol Image
 - Transform Lists
 - Transform Text
 - Transform Text with JavaScript

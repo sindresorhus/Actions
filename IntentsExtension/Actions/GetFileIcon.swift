@@ -16,7 +16,7 @@ final class GetFileIconIntentHandler: NSObject, GetFileIconIntentHandling {
 
 		response.result = intent.files?.compactMap { file in
 			autoreleasepool {
-				icon(file).toINFile
+				icon(file).toINFile()
 			}
 		}
 

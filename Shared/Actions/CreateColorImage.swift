@@ -23,7 +23,7 @@ final class CreateColorImageIntentHandler: NSObject, CreateColorImageIntentHandl
 			size: .init(width: width, height: height),
 			scale: 1
 		)
-			.toINFile
+			.toINFile()
 
 		return response
 	}
