@@ -56,6 +56,7 @@ Requires macOS 12 or iOS 15 and later.
 - Is Dark Mode On
 - Is Low Power Mode On
 - Is Online
+- Is Reachable
 - Is Silent Mode On <sup>(iOS-only)</sup>
 - Random Boolean
 - Random Color

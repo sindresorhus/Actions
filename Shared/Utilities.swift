@@ -10,6 +10,8 @@ import CoreLocation
 import Contacts
 import AudioToolbox
 import SystemConfiguration
+import Network
+import Regex
 
 #if canImport(AppKit)
 import IOKit.ps
@@ -2320,6 +2322,12 @@ extension URLRequest {
 		static let json = "application/json"
 	}
 
+	enum UserAgent {
+		static let `default` = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.1 Safari/605.1.15"
+	}
+
+	typealias Headers = [String: String]
+
 	static func json(
 		_ method: Method,
 		url: URL,
@@ -2349,6 +2357,30 @@ extension URLRequest {
 		)
 	}
 
+	init(
+		method: Method,
+		url: URL,
+		contentType: String? = nil,
+		headers: Headers = [:],
+		timeout: TimeInterval = 60
+	) {
+		self.init(url: url, timeoutInterval: timeout)
+		self.method = method
+		self.allHTTPHeaderFields = headers
+		self.userAgent = UserAgent.default
+
+		if let contentType = contentType {
+			addContentType(contentType)
+		}
+	}
+
+	var userAgent: String? {
+		get { value(forHTTPHeaderField: "User-Agent") }
+		set {
+			setValue(newValue, forHTTPHeaderField: "User-Agent")
+		}
+	}
+
 	/**
 	Strongly-typed version of `httpMethod`.
 	*/
@@ -2363,6 +2395,10 @@ extension URLRequest {
 		set {
 			httpMethod = newValue.rawValue
 		}
+	}
+
+	mutating func addContentType(_ contentType: String) {
+		addValue(contentType, forHTTPHeaderField: "Content-Type")
 	}
 }
 
@@ -3568,3 +3604,97 @@ extension NSImage {
 	}
 }
 #endif
+
+
+enum Validators {
+	static func isIPv4(_ string: String) -> Bool {
+		IPv4Address(string) != nil
+	}
+
+	static func isIPv6(_ string: String) -> Bool {
+		IPv6Address(string) != nil
+	}
+
+	static func isIP(_ string: String) -> Bool {
+		isIPv4(string) || isIPv6(string)
+	}
+}
+
+
+extension URL {
+	/**
+	Create a URL from a human string, gracefully.
+
+	```
+	URL(humanString: "sindresorhus.com")?.absoluteString
+	//=> "https://sindresorhus.com"
+	```
+	*/
+	init?(humanString: String) {
+		let string = humanString.trimmed
+
+		guard
+			!string.isEmpty,
+			!string.hasPrefix("."),
+			!string.hasSuffix("."),
+			string != "https://",
+			string != "http://",
+			string != "file://"
+		else {
+			return nil
+		}
+
+		let hasScheme = Regex(#"^[a-z\d-]+:"#).isMatched(by: string) && !string.hasPrefix("localhost")
+
+		let isValid = string.contains(".")
+			|| string.hasPrefix("localhost")
+			|| hasScheme
+
+		guard isValid else {
+			return nil
+		}
+
+		let scheme = Validators.isIP(string) ? "http" : "https"
+		let url = hasScheme ? string : "\(scheme)://\(string)"
+
+		self.init(string: url)
+	}
+}
+
+
+extension URLSession {
+	/**
+	Throws an error if the given URL is not reachable.
+	*/
+	func checkIfReachable(
+		_ url: URL,
+		method: URLRequest.Method = .head,
+		timeout: TimeInterval = 10
+	) async throws {
+		var urlRequest = URLRequest(
+			method: method,
+			url: url,
+			timeout: timeout
+		)
+		urlRequest.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
+
+		let (_, response) = try await URLSession.shared.data(for: urlRequest)
+		try response.throwIfHTTPResponseButNotSuccessStatusCode()
+	}
+
+	/**
+	Returns a boolean for whether the given URL is reachable.
+	*/
+	func isReachable(
+		_ url: URL,
+		method: URLRequest.Method = .head,
+		timeout: TimeInterval = 10
+	) async -> Bool {
+		do {
+			try await checkIfReachable(url)
+			return true
+		} catch {
+			return false
+		}
+	}
+}

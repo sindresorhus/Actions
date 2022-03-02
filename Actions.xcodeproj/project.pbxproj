@@ -19,6 +19,12 @@
 		E30FD0D427908ACA00C01D80 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30FD0D227908AC900C01D80 /* IntentHandler.swift */; };
 		E311C7C327CFD5EA00FCBA00 /* SymbolImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37088CE27CC8E180002B432 /* SymbolImage.swift */; };
 		E311C7C427CFD5EA00FCBA00 /* SymbolImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37088CE27CC8E180002B432 /* SymbolImage.swift */; };
+		E311C7C627CFD87300FCBA00 /* IsReachable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E311C7C527CFD87300FCBA00 /* IsReachable.swift */; };
+		E311C7C727CFD87300FCBA00 /* IsReachable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E311C7C527CFD87300FCBA00 /* IsReachable.swift */; };
+		E311C7CA27CFE9D000FCBA00 /* Regex in Frameworks */ = {isa = PBXBuildFile; productRef = E311C7C927CFE9D000FCBA00 /* Regex */; };
+		E311C7CC27CFE9DB00FCBA00 /* Regex in Frameworks */ = {isa = PBXBuildFile; productRef = E311C7CB27CFE9DB00FCBA00 /* Regex */; };
+		E311C7CE27CFE9DF00FCBA00 /* Regex in Frameworks */ = {isa = PBXBuildFile; productRef = E311C7CD27CFE9DF00FCBA00 /* Regex */; };
+		E311C7D027CFE9E400FCBA00 /* Regex in Frameworks */ = {isa = PBXBuildFile; productRef = E311C7CF27CFE9E400FCBA00 /* Regex */; };
 		E321D1E6278EF80200D80571 /* TruncateText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E321D1E3278EF7FA00D80571 /* TruncateText.swift */; };
 		E321D1E7278EF80300D80571 /* TruncateText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E321D1E3278EF7FA00D80571 /* TruncateText.swift */; };
 		E321D1E9278F03A700D80571 /* RoundNumberToMultiple.swift in Sources */ = {isa = PBXBuildFile; fileRef = E321D1E8278F03A700D80571 /* RoundNumberToMultiple.swift */; };
@@ -207,6 +213,7 @@
 		E30F466D272FA446009A358B /* RandomText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomText.swift; sourceTree = "<group>"; };
 		E30FD0CD279080A900C01D80 /* CreateColorImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateColorImage.swift; sourceTree = "<group>"; };
 		E30FD0D227908AC900C01D80 /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
+		E311C7C527CFD87300FCBA00 /* IsReachable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsReachable.swift; sourceTree = "<group>"; };
 		E321D1E3278EF7FA00D80571 /* TruncateText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TruncateText.swift; path = IntentsExtension/Actions/TruncateText.swift; sourceTree = SOURCE_ROOT; };
 		E321D1E8278F03A700D80571 /* RoundNumberToMultiple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundNumberToMultiple.swift; sourceTree = "<group>"; };
 		E324536D273FB40600B07EBF /* SendFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SendFeedback.swift; path = IntentsExtension/Actions/SendFeedback.swift; sourceTree = SOURCE_ROOT; };
@@ -295,6 +302,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E311C7CC27CFE9DB00FCBA00 /* Regex in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +310,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E311C7CA27CFE9D000FCBA00 /* Regex in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,6 +318,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E311C7CE27CFE9DF00FCBA00 /* Regex in Frameworks */,
 				E324CA14271E98F300E7CA9B /* Intents.framework in Frameworks */,
 				E3327E97272C68DE00AD5CC7 /* Sentry in Frameworks */,
 			);
@@ -318,6 +328,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E311C7D027CFE9E400FCBA00 /* Regex in Frameworks */,
 				E39F4749272D3DDE00B99CB0 /* Intents.framework in Frameworks */,
 				E39F4772272D3E9000B99CB0 /* Sentry in Frameworks */,
 				E39F4775272D42E000B99CB0 /* IntentsUI.framework in Frameworks */,
@@ -480,6 +491,7 @@
 				E321D1E8278F03A700D80571 /* RoundNumberToMultiple.swift */,
 				E3F4EC01279C804E00113C70 /* IsOnline.swift */,
 				E38E6EB127CBC6C7005B990D /* GeoURI.swift */,
+				E311C7C527CFD87300FCBA00 /* IsReachable.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -502,6 +514,9 @@
 				E39F474F272D3DDE00B99CB0 /* PBXTargetDependency */,
 			);
 			name = "Actions (iOS)";
+			packageProductDependencies = (
+				E311C7CB27CFE9DB00FCBA00 /* Regex */,
+			);
 			productName = "Actions (iOS)";
 			productReference = E324C9F6271E972300E7CA9B /* Actions.app */;
 			productType = "com.apple.product-type.application";
@@ -522,6 +537,9 @@
 				E324CA1A271E98F300E7CA9B /* PBXTargetDependency */,
 			);
 			name = "Actions (macOS)";
+			packageProductDependencies = (
+				E311C7C927CFE9D000FCBA00 /* Regex */,
+			);
 			productName = "Actions (macOS)";
 			productReference = E324C9FC271E972300E7CA9B /* Actions.app */;
 			productType = "com.apple.product-type.application";
@@ -541,6 +559,7 @@
 			name = "IntentsExtension-macOS";
 			packageProductDependencies = (
 				E3327E96272C68DE00AD5CC7 /* Sentry */,
+				E311C7CD27CFE9DF00FCBA00 /* Regex */,
 			);
 			productName = IntentsExtension;
 			productReference = E324CA11271E98F300E7CA9B /* IntentsExtension-macOS.appex */;
@@ -561,6 +580,7 @@
 			name = "IntentsExtension-iOS";
 			packageProductDependencies = (
 				E39F4771272D3E9000B99CB0 /* Sentry */,
+				E311C7CF27CFE9E400FCBA00 /* Regex */,
 			);
 			productName = "IntentsExtension-iOS";
 			productReference = E39F4748272D3DDE00B99CB0 /* IntentsExtension-iOS.appex */;
@@ -601,6 +621,7 @@
 			mainGroup = E324C9E9271E972100E7CA9B;
 			packageReferences = (
 				E3327E95272C68DE00AD5CC7 /* XCRemoteSwiftPackageReference "sentry-cocoa" */,
+				E311C7C827CFE9D000FCBA00 /* XCRemoteSwiftPackageReference "Regex" */,
 			);
 			productRefGroup = E324C9F7271E972300E7CA9B /* Products */;
 			projectDirPath = "";
@@ -718,6 +739,7 @@
 				E38FB4E2273E8D6700FF3C9A /* CombineLists.swift in Sources */,
 				E3F1EE442726E2AF00091C44 /* ShuffleList.swift in Sources */,
 				E3C6C1A427366A4D0003F56E /* RemoveFromList.swift in Sources */,
+				E311C7C627CFD87300FCBA00 /* IsReachable.swift in Sources */,
 				E34D03762725BCD10065FC3B /* RandomBoolean.swift in Sources */,
 				E3660AF12727F51300C038AF /* ClampNumber.swift in Sources */,
 				E34D03742725BB1A0065FC3B /* Utilities.swift in Sources */,
@@ -812,6 +834,7 @@
 				E39F475E272D3DF600B99CB0 /* ShuffleList.swift in Sources */,
 				E371D5872739794400156765 /* SetFileCreationModificationDate.swift in Sources */,
 				E357226A273FE6BF0069070A /* IsAudioPlaying.swift in Sources */,
+				E311C7C727CFD87300FCBA00 /* IsReachable.swift in Sources */,
 				E3D3BDC9274367BC00417A63 /* IsConnectedToVPN.swift in Sources */,
 				E39F4758272D3DF600B99CB0 /* RemoveDuplicatesFromList.swift in Sources */,
 				E38FB4E6273E963300FF3C9A /* GetMusicPlaylists.swift in Sources */,
@@ -1260,17 +1283,45 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		E311C7C827CFE9D000FCBA00 /* XCRemoteSwiftPackageReference "Regex" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/Regex";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		E3327E95272C68DE00AD5CC7 /* XCRemoteSwiftPackageReference "sentry-cocoa" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/getsentry/sentry-cocoa";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 7.9.0;
+				minimumVersion = 7.10.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		E311C7C927CFE9D000FCBA00 /* Regex */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E311C7C827CFE9D000FCBA00 /* XCRemoteSwiftPackageReference "Regex" */;
+			productName = Regex;
+		};
+		E311C7CB27CFE9DB00FCBA00 /* Regex */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E311C7C827CFE9D000FCBA00 /* XCRemoteSwiftPackageReference "Regex" */;
+			productName = Regex;
+		};
+		E311C7CD27CFE9DF00FCBA00 /* Regex */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E311C7C827CFE9D000FCBA00 /* XCRemoteSwiftPackageReference "Regex" */;
+			productName = Regex;
+		};
+		E311C7CF27CFE9E400FCBA00 /* Regex */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E311C7C827CFE9D000FCBA00 /* XCRemoteSwiftPackageReference "Regex" */;
+			productName = Regex;
+		};
 		E3327E96272C68DE00AD5CC7 /* Sentry */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E3327E95272C68DE00AD5CC7 /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
