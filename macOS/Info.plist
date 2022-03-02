@@ -5,6 +5,7 @@
 	<key>INIntentsSupported</key>
 	<array>
 		<string>CreateColorImageIntent</string>
+		<string>SymbolImageIntent</string>
 	</array>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>

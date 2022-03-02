@@ -999,7 +999,7 @@
 	<key>INIntentDefinitionNamespace</key>
 	<string>dQRoIy</string>
 	<key>INIntentDefinitionSystemVersion</key>
-	<string>21C52</string>
+	<string>21D49</string>
 	<key>INIntentDefinitionToolsBuildVersion</key>
 	<string>13C100</string>
 	<key>INIntentDefinitionToolsVersion</key>
@@ -12685,7 +12685,7 @@
 						<key>INIntentParameterMetadataDefaultValue</key>
 						<integer>128</integer>
 						<key>INIntentParameterMetadataMaximumValue</key>
-						<integer>1024</integer>
+						<integer>2000</integer>
 						<key>INIntentParameterMetadataMinimumValue</key>
 						<integer>8</integer>
 						<key>INIntentParameterMetadataType</key>

@@ -6,6 +6,8 @@ extension AppDelegate {
 		switch intent {
 		case is CreateColorImageIntent:
 			return CreateColorImageIntentHandler()
+		case is SymbolImageIntent:
+			return SymbolImageIntentHandler()
 		default:
 			assertionFailure("No handler for this intent")
 			return nil

@@ -141,8 +141,6 @@ final class IntentHandler: INExtension {
 			return IsOnlineIntentHandler()
 		case is GeoURIIntent:
 			return GeoURIIntentHandler()
-		case is SymbolImageIntent:
-			return SymbolImageIntentHandler()
 		default:
 			assertionFailure("No handler for this intent")
 			return nil

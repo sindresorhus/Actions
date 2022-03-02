@@ -11,8 +11,8 @@ final class SymbolImageIntentHandler: NSObject, SymbolImageIntentHandling {
 
 		let size = intent.size as? Double ?? 128
 
-		guard size <= 1024 else {
-			return .failure(failure: "The maximum size is 1024")
+		guard size <= 2000 else {
+			return .failure(failure: "The maximum size is 2000")
 		}
 
 		var configuration = XImage.SymbolConfiguration(pointSize: size, weight: .regular)

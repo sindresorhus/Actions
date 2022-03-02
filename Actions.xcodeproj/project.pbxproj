@@ -17,6 +17,8 @@
 		E30FD0D127908A6F00C01D80 /* CreateColorImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30FD0CD279080A900C01D80 /* CreateColorImage.swift */; };
 		E30FD0D327908ACA00C01D80 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30FD0D227908AC900C01D80 /* IntentHandler.swift */; };
 		E30FD0D427908ACA00C01D80 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30FD0D227908AC900C01D80 /* IntentHandler.swift */; };
+		E311C7C327CFD5EA00FCBA00 /* SymbolImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37088CE27CC8E180002B432 /* SymbolImage.swift */; };
+		E311C7C427CFD5EA00FCBA00 /* SymbolImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37088CE27CC8E180002B432 /* SymbolImage.swift */; };
 		E321D1E6278EF80200D80571 /* TruncateText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E321D1E3278EF7FA00D80571 /* TruncateText.swift */; };
 		E321D1E7278EF80300D80571 /* TruncateText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E321D1E3278EF7FA00D80571 /* TruncateText.swift */; };
 		E321D1E9278F03A700D80571 /* RoundNumberToMultiple.swift in Sources */ = {isa = PBXBuildFile; fileRef = E321D1E8278F03A700D80571 /* RoundNumberToMultiple.swift */; };
@@ -59,8 +61,6 @@
 		E35A806D274CF80D00BE7B07 /* RemoveNonPrintableCharacters.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35A806B274CF80D00BE7B07 /* RemoveNonPrintableCharacters.swift */; };
 		E3660AF12727F51300C038AF /* ClampNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3660AF02727F51300C038AF /* ClampNumber.swift */; };
 		E3660AF32728017600C038AF /* RemoveEmptyLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3660AF22728017600C038AF /* RemoveEmptyLines.swift */; };
-		E37088CF27CC8E180002B432 /* SymbolImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37088CE27CC8E180002B432 /* SymbolImage.swift */; };
-		E37088D027CC8E180002B432 /* SymbolImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37088CE27CC8E180002B432 /* SymbolImage.swift */; };
 		E371D5862739794400156765 /* SetFileCreationModificationDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E371D5852739794400156765 /* SetFileCreationModificationDate.swift */; };
 		E371D5872739794400156765 /* SetFileCreationModificationDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E371D5852739794400156765 /* SetFileCreationModificationDate.swift */; };
 		E380C8A527422549002AEA4F /* IsBluetoothOn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E380C8A427422549002AEA4F /* IsBluetoothOn.swift */; };
@@ -331,6 +331,7 @@
 			isa = PBXGroup;
 			children = (
 				E30FD0CD279080A900C01D80 /* CreateColorImage.swift */,
+				E37088CE27CC8E180002B432 /* SymbolImage.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -479,7 +480,6 @@
 				E321D1E8278F03A700D80571 /* RoundNumberToMultiple.swift */,
 				E3F4EC01279C804E00113C70 /* IsOnline.swift */,
 				E38E6EB127CBC6C7005B990D /* GeoURI.swift */,
-				E37088CE27CC8E180002B432 /* SymbolImage.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -678,6 +678,7 @@
 				E3BFF7B527428F5200B830DE /* WelcomeScreen.swift in Sources */,
 				E324CA23271E993F00E7CA9B /* Intents.intentdefinition in Sources */,
 				E30FD0D127908A6F00C01D80 /* CreateColorImage.swift in Sources */,
+				E311C7C427CFD5EA00FCBA00 /* SymbolImage.swift in Sources */,
 				E324CA01271E972300E7CA9B /* MainScreen.swift in Sources */,
 				E33D4BA62744238300CC7A8A /* AppState.swift in Sources */,
 				E3BFF7B22742616400B830DE /* WriteTextScreen.swift in Sources */,
@@ -695,6 +696,7 @@
 				E3BFF7B427428F5200B830DE /* WelcomeScreen.swift in Sources */,
 				E324CA2B271EAAAC00E7CA9B /* Intents.intentdefinition in Sources */,
 				E30FD0D027908A6F00C01D80 /* CreateColorImage.swift in Sources */,
+				E311C7C327CFD5EA00FCBA00 /* SymbolImage.swift in Sources */,
 				E324CA02271E972300E7CA9B /* MainScreen.swift in Sources */,
 				E33D4BA52744238300CC7A8A /* AppState.swift in Sources */,
 				E3BFF7B12742616400B830DE /* WriteTextScreen.swift in Sources */,
@@ -736,7 +738,6 @@
 				E34D037A2725C2D30065FC3B /* TrimWhitespace.swift in Sources */,
 				E38EAAF22729C66B0055451B /* FormatDateDifference.swift in Sources */,
 				E324CA17271E98F300E7CA9B /* IntentHandler.swift in Sources */,
-				E37088CF27CC8E180002B432 /* SymbolImage.swift in Sources */,
 				E38FB4EE273EE68C00FF3C9A /* GetEmojis.swift in Sources */,
 				E3F421142726958100080453 /* RandomFloatingPointNumber.swift in Sources */,
 				E3DF2EBB27287405009127CA /* TransformTextWithJavaScript.swift in Sources */,
@@ -778,7 +779,6 @@
 				E39F4764272D3DF600B99CB0 /* ReverseList.swift in Sources */,
 				E302808F275CE65D001FB6B8 /* HapticFeedback.swift in Sources */,
 				E39F476F272D3DF600B99CB0 /* GetUniformTypeIdentifier.swift in Sources */,
-				E37088D027CC8E180002B432 /* SymbolImage.swift in Sources */,
 				E39F4755272D3DED00B99CB0 /* IntentHandler.swift in Sources */,
 				E39F476E272D3DF600B99CB0 /* RandomBoolean.swift in Sources */,
 				E38E6EB327CBC6C7005B990D /* GeoURI.swift in Sources */,
