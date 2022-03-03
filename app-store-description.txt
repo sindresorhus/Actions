@@ -40,6 +40,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Is Online
 - Is Reachable
 - Is Silent Mode On (iOS-only)
+- Parse CSV
 - Random Boolean
 - Random Color
 - Random Date and Time

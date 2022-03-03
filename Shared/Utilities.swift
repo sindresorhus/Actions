@@ -11,6 +11,7 @@ import Contacts
 import AudioToolbox
 import SystemConfiguration
 import Network
+import TabularData
 import Regex
 
 #if canImport(AppKit)
@@ -2184,6 +2185,32 @@ extension INFile {
 	}
 }
 
+extension INFile {
+	convenience init(
+		data: Data,
+		filename: String,
+		contentType: UTType?
+	) {
+		self.init(
+			data: data,
+			filename: filename,
+			typeIdentifier: contentType?.identifier
+		)
+	}
+
+	convenience init(
+		fileURL: URL,
+		filename: String,
+		contentType: UTType?
+	) {
+		self.init(
+			fileURL: fileURL,
+			filename: filename,
+			typeIdentifier: contentType?.identifier
+		)
+	}
+}
+
 
 extension INFile {
 	/**
@@ -2227,7 +2254,7 @@ extension URL {
 		INFile(
 			fileURL: self,
 			filename: lastPathComponent,
-			typeIdentifier: contentType?.identifier
+			contentType: contentType
 		)
 	}
 }
@@ -2241,6 +2268,23 @@ extension XImage {
 		try? pngData()?
 			.writeToUniqueTemporaryFile(filename: filename ?? "file", contentType: .png)
 			.toINFile
+	}
+}
+
+
+extension Data {
+	/**
+	Create a `INFile` from the data.
+	*/
+	func toINFile(
+		contentType: UTType,
+		filename: String? = nil
+	) -> INFile {
+		.init(
+			data: self,
+			filename: filename ?? "file",
+			contentType: contentType
+		)
 	}
 }
 
@@ -3696,5 +3740,24 @@ extension URLSession {
 		} catch {
 			return false
 		}
+	}
+}
+
+
+extension DataFrame.Row {
+	func toDictionary() -> [String: Any] {
+		var dictionary = [String: Any]()
+
+		for column in base.columns {
+			dictionary[column.name] = self[column.name]
+		}
+
+		return dictionary
+	}
+}
+
+extension DataFrame {
+	func toArray() -> [[String: Any]] {
+		rows.map { $0.toDictionary() }
 	}
 }

@@ -8,6 +8,8 @@ extension AppDelegate {
 			return CreateColorImageIntentHandler()
 		case is SymbolImageIntent:
 			return SymbolImageIntentHandler()
+		case is ParseCSVIntent:
+			return ParseCSVIntentHandler()
 		default:
 			assertionFailure("No handler for this intent")
 			return nil

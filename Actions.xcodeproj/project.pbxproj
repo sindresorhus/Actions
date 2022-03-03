@@ -25,6 +25,8 @@
 		E311C7CC27CFE9DB00FCBA00 /* Regex in Frameworks */ = {isa = PBXBuildFile; productRef = E311C7CB27CFE9DB00FCBA00 /* Regex */; };
 		E311C7CE27CFE9DF00FCBA00 /* Regex in Frameworks */ = {isa = PBXBuildFile; productRef = E311C7CD27CFE9DF00FCBA00 /* Regex */; };
 		E311C7D027CFE9E400FCBA00 /* Regex in Frameworks */ = {isa = PBXBuildFile; productRef = E311C7CF27CFE9E400FCBA00 /* Regex */; };
+		E311C7D727D08B6100FCBA00 /* ParseCSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = E311C7D427D08B4E00FCBA00 /* ParseCSV.swift */; };
+		E311C7D827D08B6200FCBA00 /* ParseCSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = E311C7D427D08B4E00FCBA00 /* ParseCSV.swift */; };
 		E321D1E6278EF80200D80571 /* TruncateText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E321D1E3278EF7FA00D80571 /* TruncateText.swift */; };
 		E321D1E7278EF80300D80571 /* TruncateText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E321D1E3278EF7FA00D80571 /* TruncateText.swift */; };
 		E321D1E9278F03A700D80571 /* RoundNumberToMultiple.swift in Sources */ = {isa = PBXBuildFile; fileRef = E321D1E8278F03A700D80571 /* RoundNumberToMultiple.swift */; };
@@ -214,6 +216,7 @@
 		E30FD0CD279080A900C01D80 /* CreateColorImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateColorImage.swift; sourceTree = "<group>"; };
 		E30FD0D227908AC900C01D80 /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
 		E311C7C527CFD87300FCBA00 /* IsReachable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsReachable.swift; sourceTree = "<group>"; };
+		E311C7D427D08B4E00FCBA00 /* ParseCSV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseCSV.swift; sourceTree = "<group>"; };
 		E321D1E3278EF7FA00D80571 /* TruncateText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TruncateText.swift; path = IntentsExtension/Actions/TruncateText.swift; sourceTree = SOURCE_ROOT; };
 		E321D1E8278F03A700D80571 /* RoundNumberToMultiple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundNumberToMultiple.swift; sourceTree = "<group>"; };
 		E324536D273FB40600B07EBF /* SendFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SendFeedback.swift; path = IntentsExtension/Actions/SendFeedback.swift; sourceTree = SOURCE_ROOT; };
@@ -343,6 +346,7 @@
 			children = (
 				E30FD0CD279080A900C01D80 /* CreateColorImage.swift */,
 				E37088CE27CC8E180002B432 /* SymbolImage.swift */,
+				E311C7D427D08B4E00FCBA00 /* ParseCSV.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -696,6 +700,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E311C7D827D08B6200FCBA00 /* ParseCSV.swift in Sources */,
 				E3BFF7B527428F5200B830DE /* WelcomeScreen.swift in Sources */,
 				E324CA23271E993F00E7CA9B /* Intents.intentdefinition in Sources */,
 				E30FD0D127908A6F00C01D80 /* CreateColorImage.swift in Sources */,
@@ -714,6 +719,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E311C7D727D08B6100FCBA00 /* ParseCSV.swift in Sources */,
 				E3BFF7B427428F5200B830DE /* WelcomeScreen.swift in Sources */,
 				E324CA2B271EAAAC00E7CA9B /* Intents.intentdefinition in Sources */,
 				E30FD0D027908A6F00C01D80 /* CreateColorImage.swift in Sources */,

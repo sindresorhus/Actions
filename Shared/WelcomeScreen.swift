@@ -66,7 +66,14 @@ struct WelcomeScreen: View {
 			#endif
 			.task {
 				#if DEBUG
-				openShortcutsApp()
+					#if canImport(AppKit)
+					// Don't quit app when using in-app intent.
+					if NSApp.activationPolicy() == .regular {
+						openShortcutsApp()
+					}
+					#elseif canImport(UIKit)
+					openShortcutsApp()
+					#endif
 				#endif
 			}
 	}

@@ -58,6 +58,7 @@ Requires macOS 12 or iOS 15 and later.
 - Is Online
 - Is Reachable
 - Is Silent Mode On <sup>(iOS-only)</sup>
+- Parse CSV
 - Random Boolean
 - Random Color
 - Random Date and Time

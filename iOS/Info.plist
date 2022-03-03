@@ -6,6 +6,7 @@
 	<array>
 		<string>CreateColorImageIntent</string>
 		<string>SymbolImageIntent</string>
+		<string>ParseCSVIntent</string>
 	</array>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
@@ -44,6 +45,7 @@
 		<string>IsOnlineIntent</string>
 		<string>IsReachableIntent</string>
 		<string>IsSilentModeOnIntent</string>
+		<string>ParseCSVIntent</string>
 		<string>RandomBooleanIntent</string>
 		<string>RandomColorIntent</string>
 		<string>RandomDateTimeIntent</string>
