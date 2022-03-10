@@ -15,7 +15,7 @@
 The app provides additional actions for the Shortcuts app on macOS and iOS.
 
 [**Submit action idea**](https://github.com/sindresorhus/Actions/issues/new/choose)\
-<sub>_(Submit an issue before [submitting a pull request](.github/contributing.md))_</sub>
+<sub>*(Submit an issue before [submitting a pull request](.github/contributing.md))*</sub>
 
 ## Download
 
