@@ -441,7 +441,6 @@
 			children = (
 				E38715872725A6F4003155B0 /* TransformText.swift */,
 				E38715832725A303003155B0 /* GenerateUUID.swift */,
-				99A48E722799391C00C4F6F4 /* ScanQRCodeFromImage.swift */,
 				E38715892725A7C6003155B0 /* RandomEmoji.swift */,
 				E34D03752725BCD10065FC3B /* RandomBoolean.swift */,
 				E34D03772725C1340065FC3B /* RemoveEmojis.swift */,
@@ -500,6 +499,7 @@
 				E3F4EC01279C804E00113C70 /* IsOnline.swift */,
 				E38E6EB127CBC6C7005B990D /* GeoURI.swift */,
 				E311C7C527CFD87300FCBA00 /* IsReachable.swift */,
+				99A48E722799391C00C4F6F4 /* ScanQRCodeFromImage.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
