@@ -55,7 +55,7 @@ struct WriteTextScreen: View {
 						if let text = data.text.nilIfEmptyOrWhitespace {
 							text.copyToPasteboard()
 						} else {
-							XPasteboard.general.clearContents()
+							XPasteboard.general.prepareForNewContents()
 						}
 
 						openShortcuts()

@@ -7,6 +7,7 @@
 		<string>CreateColorImageIntent</string>
 		<string>SymbolImageIntent</string>
 		<string>ParseCSVIntent</string>
+		<string>ScanQRCodesInImageIntent</string>
 	</array>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
@@ -61,7 +62,7 @@
 		<string>ReverseListIntent</string>
 		<string>RoundNumberToMultipleIntent</string>
 		<string>SampleColorIntent</string>
-		<string>ScanQRCodeFromImageIntent</string>
+		<string>ScanQRCodesInImageIntent</string>
 		<string>SendFeedbackIntent</string>
 		<string>SetFileCreationModificationDateIntent</string>
 		<string>ShuffleListIntent</string>

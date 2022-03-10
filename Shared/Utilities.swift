@@ -2597,7 +2597,7 @@ extension Error {
 extension String {
 	func copyToPasteboard() {
 		#if canImport(AppKit)
-		NSPasteboard.general.clearContents()
+		NSPasteboard.general.prepareForNewContents()
 		NSPasteboard.general.setString(self, forType: .string)
 		#elseif canImport(UIKit)
 		UIPasteboard.general.string = self
@@ -2611,7 +2611,7 @@ extension UIPasteboard {
 	/**
 	AppKit polyfill.
 	*/
-	func clearContents() {
+	func prepareForNewContents() {
 		string = ""
 	}
 }
@@ -2863,17 +2863,13 @@ extension CNContactStore {
 			return nil
 		}
 
-		return containers
-			// TODO: Use `.firstNonNil()` here when available.
-			.lazy
-			.compactMap {
-				guard let identifier = $0.value(forKey: "meIdentifier") as? String else {
-					return nil
-				}
-
-				return Int(identifier)
+		return containers.firstNonNil {
+			guard let identifier = $0.value(forKey: "meIdentifier") as? String else {
+				return nil
 			}
-			.first
+
+			return Int(identifier)
+		}
 	}
 
 	/**
@@ -3759,5 +3755,50 @@ extension DataFrame.Row {
 extension DataFrame {
 	func toArray() -> [[String: Any]] {
 		rows.map { $0.toDictionary() }
+	}
+}
+
+
+extension Sequence {
+	func firstNonNil<Result>(
+		_ transform: (Element) throws -> Result?
+	) rethrows -> Result? {
+		for value in self {
+			if let value = try transform(value) {
+				return value
+			}
+		}
+		return nil
+	}
+}
+
+
+extension CIImage {
+	/**
+	Read QR codes in the image.
+
+	It's sorted by confidence, highest confidence first.
+	*/
+	func readQRCodes() -> [CIQRCodeFeature] {
+		let detector = CIDetector(
+			ofType: CIDetectorTypeQRCode,
+			context: nil,
+			options: [
+				CIDetectorAccuracy: CIDetectorAccuracyHigh
+			]
+		)
+
+		return detector?
+			.features(in: self)
+			.compactMap { $0 as? CIQRCodeFeature } ?? []
+	}
+
+	/**
+	Read QR codes in the image and return their message.
+
+	It's sorted by confidence, highest confidence first.
+	*/
+	func readMessageForQRCodes() -> [String] {
+		readQRCodes().compactMap { $0.messageString?.nilIfEmptyOrWhitespace }
 	}
 }

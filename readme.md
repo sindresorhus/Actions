@@ -5,14 +5,14 @@
 	</a>
 	<h1>Actions</h1>
 	<p>
-		<b>Supercharge your shortcuts</b>
+		<b>Additional actions for the Shortcuts app</b>
 	</p>
 	<br>
 	<br>
 	<br>
 </div>
 
-The app provides additional actions for the Shortcuts app on macOS and iOS.
+The app provides lots of powerful extra actions for the Shortcuts app on macOS and iOS. These actions make it significantly easier to create shortcuts.
 
 [**Submit action idea**](https://github.com/sindresorhus/Actions/issues/new/choose)\
 <sub>*(Submit an issue before [submitting a pull request](.github/contributing.md))*</sub>
@@ -74,7 +74,7 @@ Requires macOS 12 or iOS 15 and later.
 - Reverse List
 - Round Number to Multiple
 - Sample Color from Screen <sup>(macOS-only)</sup>
-- Scan QR Code from Image
+- Scan QR Codes in Image
 - Set Creation and Modification Date of File
 - Shuffle List
 - Sort List
@@ -94,6 +94,7 @@ Requires macOS 12 or iOS 15 and later.
 - Get Internet Speed → [Speediness](https://sindresorhus.com/speediness)
 - Get Random GIF → [Jiffy](https://sindresorhus.com/jiffy)
 - Show Text in Menu Bar → [One Thing](https://sindresorhus.com/one-thing)
+- Clear Clipboard Formatting → [Pure Paste](https://sindresorhus.com/pure-paste)
 - Join Video Call → [Dato](https://sindresorhus.com/dato)
 
 ## Screenshot

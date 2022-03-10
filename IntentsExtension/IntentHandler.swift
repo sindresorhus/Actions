@@ -117,8 +117,6 @@ final class IntentHandler: INExtension {
 		case is GetRunningAppsIntent:
 			return GetRunningAppsIntentHandler()
 		#endif
-		case is ScanQRCodeFromImageIntent:
-			return ScanQRCodeFromImageIntentHandler()
 		case is SpellOutNumberIntent:
 			return SpellOutNumberIntentHandler()
 		#if canImport(UIKit)

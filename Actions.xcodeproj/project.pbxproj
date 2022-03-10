@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		0345FBFE277E9574006F63E8 /* TransformLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036DFFCB27767B0F009DA927 /* TransformLists.swift */; };
 		0345FBFF277E9574006F63E8 /* TransformLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036DFFCB27767B0F009DA927 /* TransformLists.swift */; };
-		99A48E73279939DB00C4F6F4 /* ScanQRCodeFromImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A48E722799391C00C4F6F4 /* ScanQRCodeFromImage.swift */; };
-		99A48E74279939E200C4F6F4 /* ScanQRCodeFromImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A48E722799391C00C4F6F4 /* ScanQRCodeFromImage.swift */; };
 		E302808F275CE65D001FB6B8 /* HapticFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = E302808E275CE65D001FB6B8 /* HapticFeedback.swift */; };
 		E3028092275D7E2C001FB6B8 /* GetFileIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3028091275D7E2B001FB6B8 /* GetFileIcon.swift */; };
 		E30F466E272FA446009A358B /* RandomText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30F466D272FA446009A358B /* RandomText.swift */; };
@@ -71,6 +69,8 @@
 		E35A806D274CF80D00BE7B07 /* RemoveNonPrintableCharacters.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35A806B274CF80D00BE7B07 /* RemoveNonPrintableCharacters.swift */; };
 		E3660AF12727F51300C038AF /* ClampNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3660AF02727F51300C038AF /* ClampNumber.swift */; };
 		E3660AF32728017600C038AF /* RemoveEmptyLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3660AF22728017600C038AF /* RemoveEmptyLines.swift */; };
+		E36AC9B527DDB81D000719FB /* ScanQRCodesInImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A48E722799391C00C4F6F4 /* ScanQRCodesInImage.swift */; };
+		E36AC9B627DDB81E000719FB /* ScanQRCodesInImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A48E722799391C00C4F6F4 /* ScanQRCodesInImage.swift */; };
 		E371D5862739794400156765 /* SetFileCreationModificationDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E371D5852739794400156765 /* SetFileCreationModificationDate.swift */; };
 		E371D5872739794400156765 /* SetFileCreationModificationDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E371D5852739794400156765 /* SetFileCreationModificationDate.swift */; };
 		E380C8A527422549002AEA4F /* IsBluetoothOn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E380C8A427422549002AEA4F /* IsBluetoothOn.swift */; };
@@ -212,7 +212,7 @@
 
 /* Begin PBXFileReference section */
 		036DFFCB27767B0F009DA927 /* TransformLists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformLists.swift; sourceTree = "<group>"; };
-		99A48E722799391C00C4F6F4 /* ScanQRCodeFromImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanQRCodeFromImage.swift; sourceTree = "<group>"; };
+		99A48E722799391C00C4F6F4 /* ScanQRCodesInImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanQRCodesInImage.swift; sourceTree = "<group>"; };
 		E302808E275CE65D001FB6B8 /* HapticFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedback.swift; sourceTree = "<group>"; };
 		E3028091275D7E2B001FB6B8 /* GetFileIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFileIcon.swift; sourceTree = "<group>"; };
 		E30F466D272FA446009A358B /* RandomText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomText.swift; sourceTree = "<group>"; };
@@ -350,6 +350,7 @@
 				E30FD0CD279080A900C01D80 /* CreateColorImage.swift */,
 				E37088CE27CC8E180002B432 /* SymbolImage.swift */,
 				E311C7D427D08B4E00FCBA00 /* ParseCSV.swift */,
+				99A48E722799391C00C4F6F4 /* ScanQRCodesInImage.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -499,7 +500,6 @@
 				E3F4EC01279C804E00113C70 /* IsOnline.swift */,
 				E38E6EB127CBC6C7005B990D /* GeoURI.swift */,
 				E311C7C527CFD87300FCBA00 /* IsReachable.swift */,
-				99A48E722799391C00C4F6F4 /* ScanQRCodeFromImage.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -704,6 +704,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E36AC9B627DDB81E000719FB /* ScanQRCodesInImage.swift in Sources */,
 				E311C7D827D08B6200FCBA00 /* ParseCSV.swift in Sources */,
 				E3BFF7B527428F5200B830DE /* WelcomeScreen.swift in Sources */,
 				E324CA23271E993F00E7CA9B /* Intents.intentdefinition in Sources */,
@@ -723,6 +724,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E36AC9B527DDB81D000719FB /* ScanQRCodesInImage.swift in Sources */,
 				E311C7D727D08B6100FCBA00 /* ParseCSV.swift in Sources */,
 				E3BFF7B427428F5200B830DE /* WelcomeScreen.swift in Sources */,
 				E324CA2B271EAAAC00E7CA9B /* Intents.intentdefinition in Sources */,
@@ -800,7 +802,6 @@
 				E3BFF7AB27422F6700B830DE /* IsDarkMode.swift in Sources */,
 				E3F4211227268FE700080453 /* RandomDateTime.swift in Sources */,
 				E3CBF068274960A000F71E27 /* IsLowPowerMode.swift in Sources */,
-				99A48E73279939DB00C4F6F4 /* ScanQRCodeFromImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -869,7 +870,6 @@
 				E39F476C272D3DF600B99CB0 /* RemoveEmojis.swift in Sources */,
 				E3BFF7AF2742456E00B830DE /* WriteText.swift in Sources */,
 				E39F4763272D3DF600B99CB0 /* GenerateUUID.swift in Sources */,
-				99A48E74279939E200C4F6F4 /* ScanQRCodeFromImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
