@@ -15,7 +15,7 @@
 The app provides additional actions for the Shortcuts app on macOS and iOS.
 
 [**Submit action idea**](https://github.com/sindresorhus/Actions/issues/new/choose)\
-<sub>*(Submit an issue before [submitting a pull request](.github/contributing.md))*</sub>
+<sub>_(Submit an issue before [submitting a pull request](.github/contributing.md))_</sub>
 
 ## Download
 
@@ -74,6 +74,7 @@ Requires macOS 12 or iOS 15 and later.
 - Reverse List
 - Round Number to Multiple
 - Sample Color from Screen <sup>(macOS-only)</sup>
+- Scan QR Code from Image
 - Set Creation and Modification Date of File
 - Shuffle List
 - Sort List
