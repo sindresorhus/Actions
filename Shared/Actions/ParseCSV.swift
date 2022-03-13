@@ -49,7 +49,7 @@ final class ParseCSVIntentHandler: NSObject, ParseCSVIntentHandling {
 //			)
 //				.toINFile(
 //					contentType: .json,
-//					filename: file.filename.replacingSuffix(".csv", with: "")
+//					filename: file.filenameWithoutExtension
 //				)
 
 			response.result = try dataFrame.rows.indexed().map {

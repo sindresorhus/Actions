@@ -12,6 +12,8 @@ extension AppDelegate {
 			return ParseCSVIntentHandler()
 		case is ScanQRCodesInImageIntent:
 			return ScanQRCodesInImageIntentHandler()
+		case is ParseJSON5Intent:
+			return ParseJSON5IntentHandler()
 		default:
 			assertionFailure("No handler for this intent")
 			return nil

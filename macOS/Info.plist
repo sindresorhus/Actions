@@ -8,6 +8,7 @@
 		<string>SymbolImageIntent</string>
 		<string>ParseCSVIntent</string>
 		<string>ScanQRCodesInImageIntent</string>
+		<string>ParseJSON5Intent</string>
 	</array>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
@@ -49,6 +50,7 @@
 		<string>IsReachableIntent</string>
 		<string>IsSilentModeOnIntent</string>
 		<string>ParseCSVIntent</string>
+		<string>ParseJSON5Intent</string>
 		<string>PrettyPrintDictionariesIntent</string>
 		<string>RandomBooleanIntent</string>
 		<string>RandomColorIntent</string>

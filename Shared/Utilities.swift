@@ -2185,6 +2185,14 @@ extension INFile {
 	}
 }
 
+
+extension INFile {
+	var filenameWithoutExtension: String {
+		filename.removingFileExtension()
+	}
+}
+
+
 extension INFile {
 	convenience init(
 		data: Data,
@@ -3817,9 +3825,9 @@ extension Data {
 	/**
 	Pretty formats the JSON.
 	*/
-	func prettyFormatJSON() throws -> Self {
+	func prettyFormatJSON() throws -> String {
 		let json = try JSONSerialization.jsonObject(with: self)
-		return try JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
+		return try JSONSerialization.data(withJSONObject: json, options: .prettyPrinted).toString ?? ""
 	}
 }
 
@@ -3828,6 +3836,16 @@ extension String {
 	Pretty formats the JSON.
 	*/
 	func prettyFormatJSON() throws -> Self {
-		try toData.prettyFormatJSON().toString ?? ""
+		try toData.prettyFormatJSON()
+	}
+}
+
+
+extension StringProtocol {
+	/**
+	Removes the file extension from a filename.
+	*/
+	func removingFileExtension() -> String {
+		replacingOccurrences(of: #"\..*$"#, with: "", options: .regularExpression)
 	}
 }
