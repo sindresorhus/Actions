@@ -64,6 +64,7 @@
 				<string>ReverseListIntent</string>
 				<string>RoundNumberToMultipleIntent</string>
 				<string>SampleColorIntent</string>
+				<string>ScanQRCodeFromImageIntent</string>
 				<string>SendFeedbackIntent</string>
 				<string>SetFileCreationModificationDateIntent</string>
 				<string>ShuffleListIntent</string>

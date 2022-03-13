@@ -56,6 +56,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Reverse List
 - Round Number to Multiple
 - Sample Color from Screen (macOS-only)
+- Scan QR Code from Image
 - Set Creation and Modification Date of File
 - Shuffle List
 - Sort List
