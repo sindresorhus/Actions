@@ -3802,3 +3802,32 @@ extension CIImage {
 		readQRCodes().compactMap { $0.messageString?.nilIfEmptyOrWhitespace }
 	}
 }
+
+
+extension Data {
+	var toString: String? { String(data: self, encoding: .utf8) }
+}
+
+extension String {
+	var toData: Data { Data(utf8) }
+}
+
+
+extension Data {
+	/**
+	Pretty formats the JSON.
+	*/
+	func prettyFormatJSON() throws -> Self {
+		let json = try JSONSerialization.jsonObject(with: self)
+		return try JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
+	}
+}
+
+extension String {
+	/**
+	Pretty formats the JSON.
+	*/
+	func prettyFormatJSON() throws -> Self {
+		try toData.prettyFormatJSON().toString ?? ""
+	}
+}

@@ -143,6 +143,8 @@ final class IntentHandler: INExtension {
 			return GeoURIIntentHandler()
 		case is IsReachableIntent:
 			return IsReachableIntentHandler()
+		case is PrettyPrintDictionariesIntent:
+			return PrettyPrintDictionariesIntentHandler()
 		default:
 			assertionFailure("No handler for this intent")
 			return nil

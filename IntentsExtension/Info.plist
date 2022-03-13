@@ -49,6 +49,7 @@
 				<string>IsOnlineIntent</string>
 				<string>IsReachableIntent</string>
 				<string>IsSilentModeOnIntent</string>
+				<string>PrettyPrintDictionariesIntent</string>
 				<string>RandomBooleanIntent</string>
 				<string>RandomColorIntent</string>
 				<string>RandomDateTimeIntent</string>

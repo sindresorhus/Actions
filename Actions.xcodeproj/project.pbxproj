@@ -71,6 +71,8 @@
 		E3660AF32728017600C038AF /* RemoveEmptyLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3660AF22728017600C038AF /* RemoveEmptyLines.swift */; };
 		E36AC9B527DDB81D000719FB /* ScanQRCodesInImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A48E722799391C00C4F6F4 /* ScanQRCodesInImage.swift */; };
 		E36AC9B627DDB81E000719FB /* ScanQRCodesInImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A48E722799391C00C4F6F4 /* ScanQRCodesInImage.swift */; };
+		E36AC9B827DDBA34000719FB /* PrettyPrintDictionaries.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36AC9B727DDBA34000719FB /* PrettyPrintDictionaries.swift */; };
+		E36AC9B927DDBA34000719FB /* PrettyPrintDictionaries.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36AC9B727DDBA34000719FB /* PrettyPrintDictionaries.swift */; };
 		E371D5862739794400156765 /* SetFileCreationModificationDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E371D5852739794400156765 /* SetFileCreationModificationDate.swift */; };
 		E371D5872739794400156765 /* SetFileCreationModificationDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E371D5852739794400156765 /* SetFileCreationModificationDate.swift */; };
 		E380C8A527422549002AEA4F /* IsBluetoothOn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E380C8A427422549002AEA4F /* IsBluetoothOn.swift */; };
@@ -253,6 +255,7 @@
 		E35A806B274CF80D00BE7B07 /* RemoveNonPrintableCharacters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveNonPrintableCharacters.swift; sourceTree = "<group>"; };
 		E3660AF02727F51300C038AF /* ClampNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClampNumber.swift; sourceTree = "<group>"; };
 		E3660AF22728017600C038AF /* RemoveEmptyLines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveEmptyLines.swift; sourceTree = "<group>"; };
+		E36AC9B727DDBA34000719FB /* PrettyPrintDictionaries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PrettyPrintDictionaries.swift; path = IntentsExtension/Actions/PrettyPrintDictionaries.swift; sourceTree = SOURCE_ROOT; };
 		E37088CE27CC8E180002B432 /* SymbolImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolImage.swift; sourceTree = "<group>"; };
 		E371D5852739794400156765 /* SetFileCreationModificationDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetFileCreationModificationDate.swift; sourceTree = "<group>"; };
 		E380C8A427422549002AEA4F /* IsBluetoothOn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsBluetoothOn.swift; sourceTree = "<group>"; };
@@ -500,6 +503,7 @@
 				E3F4EC01279C804E00113C70 /* IsOnline.swift */,
 				E38E6EB127CBC6C7005B990D /* GeoURI.swift */,
 				E311C7C527CFD87300FCBA00 /* IsReachable.swift */,
+				E36AC9B727DDBA34000719FB /* PrettyPrintDictionaries.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -750,6 +754,7 @@
 				E38E6EB227CBC6C7005B990D /* GeoURI.swift in Sources */,
 				E38FB4E2273E8D6700FF3C9A /* CombineLists.swift in Sources */,
 				E3F1EE442726E2AF00091C44 /* ShuffleList.swift in Sources */,
+				E36AC9B827DDBA34000719FB /* PrettyPrintDictionaries.swift in Sources */,
 				E3C6C1A427366A4D0003F56E /* RemoveFromList.swift in Sources */,
 				E311C7C627CFD87300FCBA00 /* IsReachable.swift in Sources */,
 				E34D03762725BCD10065FC3B /* RandomBoolean.swift in Sources */,
@@ -822,6 +827,7 @@
 				E39F4760272D3DF600B99CB0 /* RemoveDuplicateLines.swift in Sources */,
 				E39F4759272D3DF600B99CB0 /* RemoveEmptyLines.swift in Sources */,
 				E33DFF6A2748EBA200C79D78 /* GetBatteryState.swift in Sources */,
+				E36AC9B927DDBA34000719FB /* PrettyPrintDictionaries.swift in Sources */,
 				E39F4765272D3DF600B99CB0 /* DateToUnixTime.swift in Sources */,
 				E39F4769272D3DF600B99CB0 /* RandomFloatingPointNumber.swift in Sources */,
 				E321D1EA278F03A700D80571 /* RoundNumberToMultiple.swift in Sources */,

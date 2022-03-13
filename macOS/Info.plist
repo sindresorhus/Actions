@@ -49,6 +49,7 @@
 		<string>IsReachableIntent</string>
 		<string>IsSilentModeOnIntent</string>
 		<string>ParseCSVIntent</string>
+		<string>PrettyPrintDictionariesIntent</string>
 		<string>RandomBooleanIntent</string>
 		<string>RandomColorIntent</string>
 		<string>RandomDateTimeIntent</string>

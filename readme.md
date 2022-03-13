@@ -59,6 +59,7 @@ Requires macOS 12 or iOS 15 and later.
 - Is Reachable
 - Is Silent Mode On <sup>(iOS-only)</sup>
 - Parse CSV
+- Pretty Print Dictionaries
 - Random Boolean
 - Random Color
 - Random Date and Time
