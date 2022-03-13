@@ -1,7 +1,5 @@
 import Foundation
 import TabularData
-import UniformTypeIdentifiers
-import Intents
 
 @MainActor
 final class ParseCSVIntentHandler: NSObject, ParseCSVIntentHandling {

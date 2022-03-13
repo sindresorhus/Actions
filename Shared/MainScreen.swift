@@ -1,13 +1,16 @@
 import SwiftUI
 
 struct MainScreen: View {
-	@State private var writeTextData: WriteTextScreen.Data?
 	@EnvironmentObject private var appState: AppState
+	@State private var writeTextData: WriteTextScreen.Data?
+	@State private var isDocumentScannerPresented = false
+	@State private var error: Error?
 
 	var body: some View {
 		VStack {
 			WelcomeScreen()
 		}
+			.alert(error: $error)
 			#if canImport(AppKit)
 			.frame(width: 440)
 			.windowLevel(.floating)
@@ -35,6 +38,24 @@ struct MainScreen: View {
 			.onContinueIntent(HapticFeedbackIntent.self) { intent, _ in
 				Device.hapticFeedback(intent.type.toNative)
 				ShortcutsApp.open()
+			}
+			.onContinueIntent(ScanDocumentsIntent.self) { _, _ in
+				UIView.setAnimationsEnabled(false)
+				isDocumentScannerPresented = true
+			}
+			.documentScanner(isPresented: $isDocumentScannerPresented) {
+				switch $0 {
+				case .success(let images):
+					UIPasteboard.general.images = images
+				case .failure(let error):
+					self.error = error
+				}
+			}
+			.onChange(of: isDocumentScannerPresented) {
+				if !$0 {
+					UIView.setAnimationsEnabled(true)
+					ShortcutsApp.open()
+				}
 			}
 			#endif
 			.task {

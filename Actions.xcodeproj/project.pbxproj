@@ -77,6 +77,7 @@
 		E36AC9BD27DDC63E000719FB /* ParseJSON5.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36AC9BB27DDC63E000719FB /* ParseJSON5.swift */; };
 		E36AC9BF27DDE503000719FB /* MergeDictionaries.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36AC9BE27DDE503000719FB /* MergeDictionaries.swift */; };
 		E36AC9C027DDE503000719FB /* MergeDictionaries.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36AC9BE27DDE503000719FB /* MergeDictionaries.swift */; };
+		E36AC9C327DE0B07000719FB /* ScanDocuments.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36AC9C127DE0B07000719FB /* ScanDocuments.swift */; };
 		E371D5862739794400156765 /* SetFileCreationModificationDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E371D5852739794400156765 /* SetFileCreationModificationDate.swift */; };
 		E371D5872739794400156765 /* SetFileCreationModificationDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E371D5852739794400156765 /* SetFileCreationModificationDate.swift */; };
 		E380C8A527422549002AEA4F /* IsBluetoothOn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E380C8A427422549002AEA4F /* IsBluetoothOn.swift */; };
@@ -262,6 +263,7 @@
 		E36AC9B727DDBA34000719FB /* PrettyPrintDictionaries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PrettyPrintDictionaries.swift; path = IntentsExtension/Actions/PrettyPrintDictionaries.swift; sourceTree = SOURCE_ROOT; };
 		E36AC9BB27DDC63E000719FB /* ParseJSON5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseJSON5.swift; sourceTree = "<group>"; };
 		E36AC9BE27DDE503000719FB /* MergeDictionaries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeDictionaries.swift; sourceTree = "<group>"; };
+		E36AC9C127DE0B07000719FB /* ScanDocuments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanDocuments.swift; sourceTree = "<group>"; };
 		E37088CE27CC8E180002B432 /* SymbolImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolImage.swift; sourceTree = "<group>"; };
 		E371D5852739794400156765 /* SetFileCreationModificationDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetFileCreationModificationDate.swift; sourceTree = "<group>"; };
 		E380C8A427422549002AEA4F /* IsBluetoothOn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsBluetoothOn.swift; sourceTree = "<group>"; };
@@ -512,6 +514,7 @@
 				E311C7C527CFD87300FCBA00 /* IsReachable.swift */,
 				E36AC9B727DDBA34000719FB /* PrettyPrintDictionaries.swift */,
 				E36AC9BE27DDE503000719FB /* MergeDictionaries.swift */,
+				E36AC9C127DE0B07000719FB /* ScanDocuments.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -862,6 +865,7 @@
 				E39F4761272D3DF600B99CB0 /* UnixTimeToDate.swift in Sources */,
 				E389047C275BBBC5004735CF /* IsSilentModeOn.swift in Sources */,
 				E39F475E272D3DF600B99CB0 /* ShuffleList.swift in Sources */,
+				E36AC9C327DE0B07000719FB /* ScanDocuments.swift in Sources */,
 				E371D5872739794400156765 /* SetFileCreationModificationDate.swift in Sources */,
 				E357226A273FE6BF0069070A /* IsAudioPlaying.swift in Sources */,
 				E311C7C727CFD87300FCBA00 /* IsReachable.swift in Sources */,
@@ -1043,6 +1047,7 @@
 				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Required to use the “Get Music Playlists” action.";
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Required to use the “Is Bluetooth On” action.";
 				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Required to use the “Is Bluetooth On” action.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Required to use the “Scan Documents” action.";
 				INFOPLIST_KEY_NSContactsUsageDescription = "Required to get the user's name in the “Get User Details” action.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1079,6 +1084,7 @@
 				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Required to use the “Get Music Playlists” action.";
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Required to use the “Is Bluetooth On” action.";
 				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Required to use the “Is Bluetooth On” action.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Required to use the “Scan Documents” action.";
 				INFOPLIST_KEY_NSContactsUsageDescription = "Required to get the user's name in the “Get User Details” action.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

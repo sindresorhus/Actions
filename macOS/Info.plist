@@ -68,6 +68,7 @@
 		<string>ReverseListIntent</string>
 		<string>RoundNumberToMultipleIntent</string>
 		<string>SampleColorIntent</string>
+		<string>ScanDocumentsIntent</string>
 		<string>ScanQRCodesInImageIntent</string>
 		<string>SendFeedbackIntent</string>
 		<string>SetFileCreationModificationDateIntent</string>

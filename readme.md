@@ -77,6 +77,7 @@ Requires macOS 12 or iOS 15 and later.
 - Reverse List
 - Round Number to Multiple
 - Sample Color from Screen <sup>(macOS-only)</sup>
+- Scan Documents <sup>(iOS-only)</sup>
 - Scan QR Codes in Image
 - Set Creation and Modification Date of File
 - Shuffle List

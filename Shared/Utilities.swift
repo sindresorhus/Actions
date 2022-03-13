@@ -25,6 +25,8 @@ typealias XApplication = NSApplication
 typealias XApplicationDelegate = NSApplicationDelegate
 typealias XApplicationDelegateAdaptor = NSApplicationDelegateAdaptor
 #elseif canImport(UIKit)
+import VisionKit
+
 typealias XColor = UIColor
 typealias XFont = UIFont
 typealias XImage = UIImage
@@ -3888,5 +3890,168 @@ extension Dictionary {
 		for (key, value) in rhs {
 			lhs[key] = value
 		}
+	}
+}
+
+
+struct DocumentScannerView: UIViewControllerRepresentable {
+	final class Coordinator: NSObject, VNDocumentCameraViewControllerDelegate {
+		private let view: DocumentScannerView
+
+		init(_ view: DocumentScannerView) {
+			self.view = view
+		}
+
+		func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan) {
+			let pages = (0..<scan.pageCount).map { scan.imageOfPage(at: $0) }
+
+			view.onCompletion(.success(pages))
+		}
+
+		func documentCameraViewControllerDidCancel(_ controller: VNDocumentCameraViewController) {
+			view.onCancel()
+		}
+
+		func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFailWithError error: Error) {
+			view.onCompletion(.failure(error))
+		}
+	}
+
+	var onCompletion: (Result<[UIImage], Error>) -> Void
+	var onCancel: () -> Void
+
+	func makeUIViewController(context: Context) -> VNDocumentCameraViewController {
+		let scannerViewController = VNDocumentCameraViewController()
+		scannerViewController.delegate = context.coordinator
+		return scannerViewController
+	}
+
+	func updateUIViewController(_ uiViewController: VNDocumentCameraViewController, context: Context) {}
+
+	func makeCoordinator() -> Coordinator { .init(self) }
+}
+
+extension View {
+	/**
+	Presents the system document scanner.
+
+	When the operation is finished, `isPresented` will be set to `false` before `onCompletion` is called. If the user cancels the operation, `isPresented` will be set to `false` and `onCompletion` will not be called.
+	*/
+	func documentScanner(
+		isPresented: Binding<Bool>,
+		onCompletion: @escaping (Result<[UIImage], Error>) -> Void
+	) -> some View {
+		fullScreenCover(isPresented: isPresented) {
+			DocumentScannerView {
+				isPresented.wrappedValue = false
+				onCompletion($0)
+			} onCancel: {
+				isPresented.wrappedValue = false
+			}
+				.ignoresSafeArea()
+		}
+	}
+}
+
+
+extension Binding {
+	func isPresent<Wrapped>() -> Binding<Bool> where Value == Wrapped? {
+		.init(
+			get: { wrappedValue != nil },
+			set: { isPresented in
+				if !isPresented {
+					wrappedValue = nil
+				}
+			}
+		)
+	}
+}
+
+
+extension View {
+	func alert2<A, M, T>(
+		title: (T) -> Text,
+		presenting data: Binding<T?>,
+		@ViewBuilder actions: (T) -> A,
+		@ViewBuilder message: (T) -> M
+	) -> some View where A: View, M: View {
+		background(
+			EmptyView() // swiftlint:disable:this trailing_closure
+				.alert(
+					data.wrappedValue.map(title) ?? Text(""),
+					isPresented: data.isPresent(),
+					presenting: data.wrappedValue,
+					actions: actions,
+					message: message
+				)
+		)
+	}
+
+	func alert2<A, T>(
+		title: (T) -> Text,
+		message: ((T) -> String?)? = nil,
+		presenting data: Binding<T?>,
+		@ViewBuilder actions: (T) -> A
+	) -> some View where A: View {
+		alert2(
+			title: { title($0) },
+			presenting: data,
+			actions: actions,
+			message: {
+				if let message = message?($0) {
+					Text(message)
+				}
+			}
+		)
+	}
+
+	func alert2<A, T>(
+		title: (T) -> String,
+		message: ((T) -> String?)? = nil,
+		presenting data: Binding<T?>,
+		@ViewBuilder actions: (T) -> A
+	) -> some View where A: View {
+		alert2(
+			title: { Text(title($0)) },
+			message: message,
+			presenting: data,
+			actions: actions
+		)
+	}
+
+	func alert2<T>(
+		title: (T) -> Text,
+		message: ((T) -> String?)? = nil,
+		presenting data: Binding<T?>
+	) -> some View {
+		alert2(
+			title: title,
+			message: message,
+			presenting: data,
+			actions: { _ in }
+		)
+	}
+
+	func alert2<T>(
+		title: (T) -> String,
+		message: ((T) -> String?)? = nil,
+		presenting data: Binding<T?>
+	) -> some View {
+		alert2(
+			title: { Text(title($0)) },
+			message: message,
+			presenting: data
+		)
+	}
+}
+
+
+extension View {
+	func alert(error: Binding<Error?>) -> some View {
+		alert2(
+			title: { ($0 as NSError).localizedDescription },
+			message: { ($0 as NSError).localizedRecoverySuggestion },
+			presenting: error
+		)
 	}
 }

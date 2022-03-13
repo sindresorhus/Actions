@@ -147,6 +147,10 @@ final class IntentHandler: INExtension {
 			return PrettyPrintDictionariesIntentHandler()
 		case is MergeDictionariesIntent:
 			return MergeDictionariesIntentHandler()
+		#if canImport(UIKit)
+		case is ScanDocumentsIntent:
+			return ScanDocumentsIntentHandler()
+		#endif
 		default:
 			assertionFailure("No handler for this intent")
 			return nil

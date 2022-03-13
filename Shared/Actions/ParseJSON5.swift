@@ -1,5 +1,4 @@
 import SwiftUI
-import Intents
 
 @MainActor
 final class ParseJSON5IntentHandler: NSObject, ParseJSON5IntentHandling {
