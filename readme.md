@@ -58,6 +58,7 @@ Requires macOS 12 or iOS 15 and later.
 - Is Online
 - Is Reachable
 - Is Silent Mode On <sup>(iOS-only)</sup>
+- Merge Dictionaries
 - Parse CSV
 - Parse JSON5
 - Pretty Print Dictionaries

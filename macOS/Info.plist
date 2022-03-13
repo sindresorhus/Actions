@@ -49,6 +49,7 @@
 		<string>IsOnlineIntent</string>
 		<string>IsReachableIntent</string>
 		<string>IsSilentModeOnIntent</string>
+		<string>MergeDictionariesIntent</string>
 		<string>ParseCSVIntent</string>
 		<string>ParseJSON5Intent</string>
 		<string>PrettyPrintDictionariesIntent</string>

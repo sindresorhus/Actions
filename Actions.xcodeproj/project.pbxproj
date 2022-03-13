@@ -75,6 +75,8 @@
 		E36AC9B927DDBA34000719FB /* PrettyPrintDictionaries.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36AC9B727DDBA34000719FB /* PrettyPrintDictionaries.swift */; };
 		E36AC9BC27DDC63E000719FB /* ParseJSON5.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36AC9BB27DDC63E000719FB /* ParseJSON5.swift */; };
 		E36AC9BD27DDC63E000719FB /* ParseJSON5.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36AC9BB27DDC63E000719FB /* ParseJSON5.swift */; };
+		E36AC9BF27DDE503000719FB /* MergeDictionaries.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36AC9BE27DDE503000719FB /* MergeDictionaries.swift */; };
+		E36AC9C027DDE503000719FB /* MergeDictionaries.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36AC9BE27DDE503000719FB /* MergeDictionaries.swift */; };
 		E371D5862739794400156765 /* SetFileCreationModificationDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E371D5852739794400156765 /* SetFileCreationModificationDate.swift */; };
 		E371D5872739794400156765 /* SetFileCreationModificationDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E371D5852739794400156765 /* SetFileCreationModificationDate.swift */; };
 		E380C8A527422549002AEA4F /* IsBluetoothOn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E380C8A427422549002AEA4F /* IsBluetoothOn.swift */; };
@@ -259,6 +261,7 @@
 		E3660AF22728017600C038AF /* RemoveEmptyLines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveEmptyLines.swift; sourceTree = "<group>"; };
 		E36AC9B727DDBA34000719FB /* PrettyPrintDictionaries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PrettyPrintDictionaries.swift; path = IntentsExtension/Actions/PrettyPrintDictionaries.swift; sourceTree = SOURCE_ROOT; };
 		E36AC9BB27DDC63E000719FB /* ParseJSON5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseJSON5.swift; sourceTree = "<group>"; };
+		E36AC9BE27DDE503000719FB /* MergeDictionaries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeDictionaries.swift; sourceTree = "<group>"; };
 		E37088CE27CC8E180002B432 /* SymbolImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolImage.swift; sourceTree = "<group>"; };
 		E371D5852739794400156765 /* SetFileCreationModificationDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetFileCreationModificationDate.swift; sourceTree = "<group>"; };
 		E380C8A427422549002AEA4F /* IsBluetoothOn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsBluetoothOn.swift; sourceTree = "<group>"; };
@@ -508,6 +511,7 @@
 				E38E6EB127CBC6C7005B990D /* GeoURI.swift */,
 				E311C7C527CFD87300FCBA00 /* IsReachable.swift */,
 				E36AC9B727DDBA34000719FB /* PrettyPrintDictionaries.swift */,
+				E36AC9BE27DDE503000719FB /* MergeDictionaries.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -758,6 +762,7 @@
 				E33DFF642748BEDD00C79D78 /* GetTitleOfURL.swift in Sources */,
 				E3F4F95E272C0C030008B54A /* CreateURL.swift in Sources */,
 				E38E6EB227CBC6C7005B990D /* GeoURI.swift in Sources */,
+				E36AC9BF27DDE503000719FB /* MergeDictionaries.swift in Sources */,
 				E38FB4E2273E8D6700FF3C9A /* CombineLists.swift in Sources */,
 				E3F1EE442726E2AF00091C44 /* ShuffleList.swift in Sources */,
 				E36AC9B827DDBA34000719FB /* PrettyPrintDictionaries.swift in Sources */,
@@ -839,6 +844,7 @@
 				E321D1EA278F03A700D80571 /* RoundNumberToMultiple.swift in Sources */,
 				E39F4768272D3DF600B99CB0 /* CreateURL.swift in Sources */,
 				E39F476B272D3DF600B99CB0 /* TrimWhitespace.swift in Sources */,
+				E36AC9C027DDE503000719FB /* MergeDictionaries.swift in Sources */,
 				E3CBF069274960A000F71E27 /* IsLowPowerMode.swift in Sources */,
 				E39F4770272D3E0000B99CB0 /* Intents.intentdefinition in Sources */,
 				E3BFF7BB2742C7BD00B830DE /* GetUserDetails.swift in Sources */,

@@ -145,6 +145,8 @@ final class IntentHandler: INExtension {
 			return IsReachableIntentHandler()
 		case is PrettyPrintDictionariesIntent:
 			return PrettyPrintDictionariesIntentHandler()
+		case is MergeDictionariesIntent:
+			return MergeDictionariesIntentHandler()
 		default:
 			assertionFailure("No handler for this intent")
 			return nil

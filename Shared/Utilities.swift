@@ -2456,10 +2456,6 @@ extension URLRequest {
 
 
 extension URLSession {
-	enum JSONRequestError: Error {
-		case nonObject
-	}
-
 	/**
 	Send a JSON request.
 
@@ -2472,16 +2468,12 @@ extension URLSession {
 	) async throws -> ([String: Any], URLResponse) {
 		let request = try URLRequest.json(method, url: url, parameters: parameters)
 		let (data, response) = try await data(for: request)
-
 		try response.throwIfHTTPResponseButNotSuccessStatusCode()
 
-		let json = try JSONSerialization.jsonObject(with: data, options: [])
-
-		guard let dictionary = json as? [String: Any] else {
-			throw JSONRequestError.nonObject
-		}
-
-		return (dictionary, response)
+		return (
+			try data.jsonToDictionary(),
+			response
+		)
 	}
 }
 
@@ -3847,5 +3839,54 @@ extension StringProtocol {
 	*/
 	func removingFileExtension() -> String {
 		replacingOccurrences(of: #"\..*$"#, with: "", options: .regularExpression)
+	}
+}
+
+
+extension Data {
+	struct ParseJSONNonObjectError: LocalizedError {
+		let errorDescription = "The JSON must have a top-level object."
+	}
+
+	/**
+	Parses the JSON data into a dictionary.
+
+	- Throws: If the data is not valid JSON.
+	- Throws: If the JSON does not have a top-level object.
+	*/
+	func jsonToDictionary() throws -> [String: Any] {
+		let json = try JSONSerialization.jsonObject(with: self)
+
+		guard let dictionary = json as? [String: Any] else {
+			throw ParseJSONNonObjectError()
+		}
+
+		return dictionary
+	}
+}
+
+
+extension Dictionary {
+	/**
+	Convert the dictionary to a `INFIle` which will end up as a "Dictionary" type in Shortcuts.
+	*/
+	func toINFile(filename: String? = nil) throws -> INFile {
+		try JSONSerialization.data(withJSONObject: self, options: .prettyPrinted)
+			.toINFile(contentType: .json, filename: filename)
+	}
+}
+
+
+extension Dictionary {
+	static func + (lhs: [Key: Value], rhs: [Key: Value]) -> [Key: Value] {
+		var result = lhs
+		result += rhs
+		return result
+	}
+
+	static func += (lhs: inout [Key: Value], rhs: [Key: Value]) {
+		for (key, value) in rhs {
+			lhs[key] = value
+		}
 	}
 }
