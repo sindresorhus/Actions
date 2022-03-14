@@ -3894,6 +3894,7 @@ extension Dictionary {
 }
 
 
+#if canImport(UIKit)
 struct DocumentScannerView: UIViewControllerRepresentable {
 	final class Coordinator: NSObject, VNDocumentCameraViewControllerDelegate {
 		private let view: DocumentScannerView
@@ -3952,6 +3953,7 @@ extension View {
 		}
 	}
 }
+#endif
 
 
 extension Binding {
@@ -3976,7 +3978,7 @@ extension View {
 		@ViewBuilder message: (T) -> M
 	) -> some View where A: View, M: View {
 		background(
-			EmptyView() // swiftlint:disable:this trailing_closure
+			EmptyView()
 				.alert(
 					data.wrappedValue.map(title) ?? Text(""),
 					isPresented: data.isPresent(),
@@ -4024,7 +4026,7 @@ extension View {
 		message: ((T) -> String?)? = nil,
 		presenting data: Binding<T?>
 	) -> some View {
-		alert2(
+		alert2(  // swiftlint:disable:this trailing_closure
 			title: title,
 			message: message,
 			presenting: data,

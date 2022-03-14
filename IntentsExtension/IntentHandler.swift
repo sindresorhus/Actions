@@ -151,6 +151,8 @@ final class IntentHandler: INExtension {
 		case is ScanDocumentsIntent:
 			return ScanDocumentsIntentHandler()
 		#endif
+		case is FormatDurationIntent:
+			return FormatDurationIntentHandler()
 		default:
 			assertionFailure("No handler for this intent")
 			return nil

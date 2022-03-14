@@ -25,6 +25,7 @@
 		<string>FilterListIntent</string>
 		<string>FormatCurrencyIntent</string>
 		<string>FormatDateDifferenceIntent</string>
+		<string>FormatDurationIntent</string>
 		<string>GenerateUUIDIntent</string>
 		<string>GeoURIIntent</string>
 		<string>GetAudioPlaybackDestinationIntent</string>

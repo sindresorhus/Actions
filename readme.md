@@ -36,6 +36,7 @@ Requires macOS 12 or iOS 15 and later.
 - Filter List
 - Format Currency
 - Format Date Difference
+- Format Duration
 - Generate UUID
 - Geo URI
 - Get Audio Playback Destination <sup>(iOS-only)</sup>
