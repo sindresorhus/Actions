@@ -80,6 +80,8 @@
 		E36AC9C327DE0B07000719FB /* ScanDocuments.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36AC9C127DE0B07000719FB /* ScanDocuments.swift */; };
 		E36AC9C527DF0100000719FB /* FormatDuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36AC9C427DF0100000719FB /* FormatDuration.swift */; };
 		E36AC9C627DF0100000719FB /* FormatDuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36AC9C427DF0100000719FB /* FormatDuration.swift */; };
+		E36AC9CB27DF1273000719FB /* TranscribeAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36AC9CA27DF1273000719FB /* TranscribeAudio.swift */; };
+		E36AC9CC27DF1273000719FB /* TranscribeAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36AC9CA27DF1273000719FB /* TranscribeAudio.swift */; };
 		E371D5862739794400156765 /* SetFileCreationModificationDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E371D5852739794400156765 /* SetFileCreationModificationDate.swift */; };
 		E371D5872739794400156765 /* SetFileCreationModificationDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E371D5852739794400156765 /* SetFileCreationModificationDate.swift */; };
 		E380C8A527422549002AEA4F /* IsBluetoothOn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E380C8A427422549002AEA4F /* IsBluetoothOn.swift */; };
@@ -267,6 +269,7 @@
 		E36AC9BE27DDE503000719FB /* MergeDictionaries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeDictionaries.swift; sourceTree = "<group>"; };
 		E36AC9C127DE0B07000719FB /* ScanDocuments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanDocuments.swift; sourceTree = "<group>"; };
 		E36AC9C427DF0100000719FB /* FormatDuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatDuration.swift; sourceTree = "<group>"; };
+		E36AC9CA27DF1273000719FB /* TranscribeAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TranscribeAudio.swift; path = Shared/Actions/TranscribeAudio.swift; sourceTree = SOURCE_ROOT; };
 		E37088CE27CC8E180002B432 /* SymbolImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolImage.swift; sourceTree = "<group>"; };
 		E371D5852739794400156765 /* SetFileCreationModificationDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetFileCreationModificationDate.swift; sourceTree = "<group>"; };
 		E380C8A427422549002AEA4F /* IsBluetoothOn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsBluetoothOn.swift; sourceTree = "<group>"; };
@@ -366,6 +369,7 @@
 				E311C7D427D08B4E00FCBA00 /* ParseCSV.swift */,
 				99A48E722799391C00C4F6F4 /* ScanQRCodesInImage.swift */,
 				E36AC9BB27DDC63E000719FB /* ParseJSON5.swift */,
+				E36AC9CA27DF1273000719FB /* TranscribeAudio.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -728,6 +732,7 @@
 				E3BFF7B527428F5200B830DE /* WelcomeScreen.swift in Sources */,
 				E324CA23271E993F00E7CA9B /* Intents.intentdefinition in Sources */,
 				E30FD0D127908A6F00C01D80 /* CreateColorImage.swift in Sources */,
+				E36AC9CC27DF1273000719FB /* TranscribeAudio.swift in Sources */,
 				E311C7C427CFD5EA00FCBA00 /* SymbolImage.swift in Sources */,
 				E324CA01271E972300E7CA9B /* MainScreen.swift in Sources */,
 				E33D4BA62744238300CC7A8A /* AppState.swift in Sources */,
@@ -749,6 +754,7 @@
 				E3BFF7B427428F5200B830DE /* WelcomeScreen.swift in Sources */,
 				E324CA2B271EAAAC00E7CA9B /* Intents.intentdefinition in Sources */,
 				E30FD0D027908A6F00C01D80 /* CreateColorImage.swift in Sources */,
+				E36AC9CB27DF1273000719FB /* TranscribeAudio.swift in Sources */,
 				E311C7C327CFD5EA00FCBA00 /* SymbolImage.swift in Sources */,
 				E324CA02271E972300E7CA9B /* MainScreen.swift in Sources */,
 				E33D4BA52744238300CC7A8A /* AppState.swift in Sources */,
@@ -1055,6 +1061,7 @@
 				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Required to use the “Is Bluetooth On” action.";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Required to use the “Scan Documents” action.";
 				INFOPLIST_KEY_NSContactsUsageDescription = "Required to get the user's name in the “Get User Details” action.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Required to use the “Transcribe Audio” action.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1092,6 +1099,7 @@
 				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Required to use the “Is Bluetooth On” action.";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Required to use the “Scan Documents” action.";
 				INFOPLIST_KEY_NSContactsUsageDescription = "Required to get the user's name in the “Get User Details” action.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Required to use the “Transcribe Audio” action.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1129,6 +1137,7 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Required to use the “Is Bluetooth On” action.";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Sindre Sorhus";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Required to use the “Transcribe Audio” action.";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -1159,6 +1168,7 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Required to use the “Is Bluetooth On” action.";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Sindre Sorhus";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Required to use the “Transcribe Audio” action.";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",

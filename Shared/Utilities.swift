@@ -12,6 +12,7 @@ import AudioToolbox
 import SystemConfiguration
 import Network
 import TabularData
+import Speech
 import Regex
 
 #if canImport(AppKit)
@@ -4055,5 +4056,32 @@ extension View {
 			message: { ($0 as NSError).localizedRecoverySuggestion },
 			presenting: error
 		)
+	}
+}
+
+
+extension SFSpeechRecognizer {
+	func recognitionTask(with request: SFSpeechRecognitionRequest) async throws -> SFSpeechRecognitionResult {
+		var task: SFSpeechRecognitionTask?
+
+		return try await withTaskCancellationHandler {
+			try await withCheckedThrowingContinuation { continuation in
+				task = recognitionTask(with: request) { result, error in
+					if let error = error {
+						continuation.resume(throwing: error)
+						return
+					}
+
+					guard let result = result else {
+						assertionFailure()
+						return
+					}
+
+					continuation.resume(returning: result)
+				}
+			}
+		} onCancel: { [task] in
+			task?.cancel()
+		}
 	}
 }

@@ -85,6 +85,7 @@ Requires macOS 12 or iOS 15 and later.
 - Sort List
 - Spell Out Number
 - Symbol Image
+- Transcribe Audio
 - Transform Lists
 - Transform Text
 - Transform Text with JavaScript

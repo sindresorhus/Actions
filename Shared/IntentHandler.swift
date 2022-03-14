@@ -14,6 +14,8 @@ extension AppDelegate {
 			return ScanQRCodesInImageIntentHandler()
 		case is ParseJSON5Intent:
 			return ParseJSON5IntentHandler()
+		case is TranscribeAudioIntent:
+			return TranscribeAudioIntentHandler()
 		default:
 			assertionFailure("No handler for this intent")
 			return nil

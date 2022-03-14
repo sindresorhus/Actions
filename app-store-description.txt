@@ -67,6 +67,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Sort List
 - Spell Out Number
 - Symbol Image
+- Transcribe Audio
 - Transform Lists
 - Transform Text
 - Transform Text with JavaScript

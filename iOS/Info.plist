@@ -9,6 +9,7 @@
 		<string>ParseCSVIntent</string>
 		<string>ScanQRCodesInImageIntent</string>
 		<string>ParseJSON5Intent</string>
+		<string>TranscribeAudioIntent</string>
 	</array>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
@@ -75,6 +76,7 @@
 		<string>SortListIntent</string>
 		<string>SpellOutNumberIntent</string>
 		<string>SymbolImageIntent</string>
+		<string>TranscribeAudioIntent</string>
 		<string>TransformListsIntent</string>
 		<string>TransformTextIntent</string>
 		<string>TransformTextWithJavaScriptIntent</string>
