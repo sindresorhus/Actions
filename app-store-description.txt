@@ -30,6 +30,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Get Running Apps (macOS-only)
 - Get Title of URL
 - Get Uniform Type Identifier
+- Get Unsplash Image
 - Get User Details
 - Haptic Feedback (iOS-only)
 - Hide Shortcuts App

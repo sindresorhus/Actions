@@ -25,6 +25,7 @@ typealias XPasteboard = NSPasteboard
 typealias XApplication = NSApplication
 typealias XApplicationDelegate = NSApplicationDelegate
 typealias XApplicationDelegateAdaptor = NSApplicationDelegateAdaptor
+typealias XScreen = NSScreen
 #elseif canImport(UIKit)
 import VisionKit
 
@@ -35,6 +36,7 @@ typealias XPasteboard = UIPasteboard
 typealias XApplication = UIApplication
 typealias XApplicationDelegate = UIApplicationDelegate
 typealias XApplicationDelegateAdaptor = UIApplicationDelegateAdaptor
+typealias XScreen = UIScreen
 #endif
 
 
@@ -543,6 +545,30 @@ extension URL {
 		var components = URLComponents(url: self, resolvingAgainstBaseURL: false)!
 		components.addDictionaryAsQuery(dict)
 		return components.url ?? self
+	}
+
+	/**
+	Returns `self` with the given `URLQueryItem` appended.
+	*/
+	func appendingQueryItem(_ queryItem: URLQueryItem) -> Self {
+		guard var components = URLComponents(url: self, resolvingAgainstBaseURL: false) else {
+			return self
+		}
+
+		if components.queryItems == nil {
+			components.queryItems = []
+		}
+
+		components.queryItems?.append(queryItem)
+
+		return components.url ?? self
+	}
+
+	/**
+	Returns `self` with the given `name` and `value` appended if the `value` is not `nil`.
+	*/
+	func appendingQueryItem(name: String, value: String?) -> Self {
+		appendingQueryItem(URLQueryItem(name: name, value: value))
 	}
 }
 
@@ -2110,9 +2136,9 @@ extension URL {
 	/**
 	Copy the file at the current URL to a unique temporary directory and return the new URL.
 	*/
-	func copyToUniqueTemporaryDirectory() throws -> Self {
+	func copyToUniqueTemporaryDirectory(filename: String? = nil) throws -> Self {
 		let destinationUrl = try Self.uniqueTemporaryDirectory(appropriateFor: self)
-			.appendingPathComponent(lastPathComponent, isDirectory: false)
+			.appendingPathComponent(filename ?? lastPathComponent, isDirectory: false)
 
 		try FileManager.default.copyItem(at: self, to: destinationUrl)
 
@@ -2341,11 +2367,24 @@ extension URLResponse {
 
 
 extension HTTPURLResponse {
-	struct StatusCodeError: LocalizedError {
-		let statusCode: Int
+	// Note: For some reason, this just shows up as "operation could not be completed". The only way I found to show a proper message was "CustomNSError". (macOS 12.2)
+//	struct StatusCodeError: LocalizedError {
+//		let statusCode: Int
+//
+//		var errorDescription: String {
+//			"Request failed: \(HTTPURLResponse.localizedString(forStatusCode: errorCode)) (\(errorCode))"
+//		}
+//	}
 
-		var errorDescription: String {
-			HTTPURLResponse.localizedString(forStatusCode: statusCode)
+	struct StatusCodeError: CustomNSError {
+		static var domain = "HTTPURLResponse.StatusCodeError"
+
+		let errorCode: Int
+
+		var errorUserInfo: [String: Any] {
+			[
+				NSLocalizedDescriptionKey: "Request failed: \(HTTPURLResponse.localizedString(forStatusCode: errorCode)) (\(errorCode))"
+			]
 		}
 	}
 
@@ -2359,7 +2398,7 @@ extension HTTPURLResponse {
 			return
 		}
 
-		throw StatusCodeError(statusCode: statusCode)
+		throw StatusCodeError(errorCode: statusCode)
 	}
 }
 
@@ -4083,5 +4122,90 @@ extension SFSpeechRecognizer {
 		} onCancel: { [task] in
 			task?.cancel()
 		}
+	}
+}
+
+
+extension URL {
+	var filename: String {
+		get { lastPathComponent }
+		set {
+			deleteLastPathComponent()
+			appendPathComponent(newValue, isDirectory: false)
+		}
+	}
+
+	var filenameWithoutExtension: String {
+		get { deletingPathExtension().lastPathComponent }
+		set {
+			let fileExtension = pathExtension
+			deleteLastPathComponent()
+			appendPathComponent(newValue, isDirectory: false)
+			appendPathExtension(fileExtension)
+		}
+	}
+}
+
+
+extension XScreen {
+	/**
+	The size of the screen multiplied by its scale factor.
+	*/
+	var nativeSize: CGSize {
+		#if canImport(AppKit)
+		frame.size * backingScaleFactor
+		#elseif canImport(UIKit)
+		nativeBounds.size
+		#endif
+	}
+}
+
+
+extension URLSession {
+	/**
+	Improvements over `.download()`:
+	- Throws on non-2XX responses
+	- Downloads to unique location
+	- Uses the suggested filename instead of the default `CFNetwork_4234.tmp` filename
+	- Retries
+	*/
+	func betterDownload(
+		for request: URLRequest,
+		maximumRetryCount: Int = 3
+	) async throws -> (url: URL, response: URLResponse) {
+		var retryCount = 0
+
+		func run() async throws -> (URL, URLResponse) {
+			let (fileURL, response) = try await download(for: request)
+
+			do {
+				try response.throwIfHTTPResponseButNotSuccessStatusCode()
+			} catch {
+				if retryCount < maximumRetryCount {
+					retryCount += 1
+					return try await run()
+				}
+
+				throw error
+			}
+
+			return (fileURL, response)
+		}
+
+		let (fileURL, response) = try await run()
+
+		let newFileURL = try fileURL.copyToUniqueTemporaryDirectory(filename: response.suggestedFilename)
+
+		return (newFileURL, response)
+	}
+
+	func betterDownload(
+		from url: URL,
+		maximumRetryCount: Int = 3
+	) async throws -> (url: URL, response: URLResponse) {
+		try await betterDownload(
+			for: .init(url: url),
+			maximumRetryCount: maximumRetryCount
+		)
 	}
 }

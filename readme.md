@@ -48,6 +48,7 @@ Requires macOS 12 or iOS 15 and later.
 - Get Running Apps <sup>(macOS-only)</sup>
 - Get Title of URL
 - Get Uniform Type Identifier
+- Get Unsplash Image
 - Get User Details
 - Haptic Feedback <sup>(iOS-only)</sup>
 - Hide Shortcuts App

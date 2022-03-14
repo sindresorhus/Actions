@@ -40,6 +40,7 @@
 		<string>GetRunningAppsIntent</string>
 		<string>GetTitleOfURLIntent</string>
 		<string>GetUniformTypeIdentifierIntent</string>
+		<string>GetUnsplashImageIntent</string>
 		<string>GetUserDetailsIntent</string>
 		<string>HapticFeedbackIntent</string>
 		<string>HideShortcutsAppIntent</string>

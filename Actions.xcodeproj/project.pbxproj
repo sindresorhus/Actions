@@ -107,6 +107,8 @@
 		E38FB4EC273EDCD600FF3C9A /* TruncateList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38FB4EA273EDCD600FF3C9A /* TruncateList.swift */; };
 		E38FB4EE273EE68C00FF3C9A /* GetEmojis.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38FB4ED273EE68C00FF3C9A /* GetEmojis.swift */; };
 		E38FB4EF273EE68C00FF3C9A /* GetEmojis.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38FB4ED273EE68C00FF3C9A /* GetEmojis.swift */; };
+		E39EEF9927DF29770035F572 /* GetUnsplashImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39EEF9827DF29770035F572 /* GetUnsplashImage.swift */; };
+		E39EEF9A27DF29770035F572 /* GetUnsplashImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39EEF9827DF29770035F572 /* GetUnsplashImage.swift */; };
 		E39F4749272D3DDE00B99CB0 /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E324CA13271E98F300E7CA9B /* Intents.framework */; platformFilter = maccatalyst; };
 		E39F4750272D3DDE00B99CB0 /* IntentsExtension-iOS.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E39F4748272D3DDE00B99CB0 /* IntentsExtension-iOS.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E39F4755272D3DED00B99CB0 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E324CA16271E98F300E7CA9B /* IntentHandler.swift */; };
@@ -289,6 +291,7 @@
 		E38FB4E7273EB47B00FF3C9A /* FilterList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterList.swift; sourceTree = "<group>"; };
 		E38FB4EA273EDCD600FF3C9A /* TruncateList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TruncateList.swift; sourceTree = "<group>"; };
 		E38FB4ED273EE68C00FF3C9A /* GetEmojis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GetEmojis.swift; path = IntentsExtension/Actions/GetEmojis.swift; sourceTree = SOURCE_ROOT; };
+		E39EEF9827DF29770035F572 /* GetUnsplashImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUnsplashImage.swift; sourceTree = "<group>"; };
 		E39F4748272D3DDE00B99CB0 /* IntentsExtension-iOS.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "IntentsExtension-iOS.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E39F4774272D42E000B99CB0 /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/System/Library/Frameworks/IntentsUI.framework; sourceTree = DEVELOPER_DIR; };
 		E39F4776272D516E00B99CB0 /* iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOS.entitlements; sourceTree = "<group>"; };
@@ -523,6 +526,7 @@
 				E36AC9BE27DDE503000719FB /* MergeDictionaries.swift */,
 				E36AC9C127DE0B07000719FB /* ScanDocuments.swift */,
 				E36AC9C427DF0100000719FB /* FormatDuration.swift */,
+				E39EEF9827DF29770035F572 /* GetUnsplashImage.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -829,6 +833,7 @@
 				E3D3BDCC2743A72C00417A63 /* EditURL.swift in Sources */,
 				E3BFF7BA2742C7BD00B830DE /* GetUserDetails.swift in Sources */,
 				E3DF2EBD272931C3009127CA /* RandomColor.swift in Sources */,
+				E39EEF9927DF29770035F572 /* GetUnsplashImage.swift in Sources */,
 				E3BFF7AB27422F6700B830DE /* IsDarkMode.swift in Sources */,
 				E3F4211227268FE700080453 /* RandomDateTime.swift in Sources */,
 				E3CBF068274960A000F71E27 /* IsLowPowerMode.swift in Sources */,
@@ -887,6 +892,7 @@
 				E30F466F272FA446009A358B /* RandomText.swift in Sources */,
 				E39F475A272D3DF600B99CB0 /* RandomDateTime.swift in Sources */,
 				E3A6A474274D1802002A62A5 /* FormatCurrency.swift in Sources */,
+				E39EEF9A27DF29770035F572 /* GetUnsplashImage.swift in Sources */,
 				E34B2543274D66A8006B44A7 /* HideShortcutsApp.swift in Sources */,
 				E3BFF7AC27422F6700B830DE /* IsDarkMode.swift in Sources */,
 				E39F476D272D3DF600B99CB0 /* GetFilePath.swift in Sources */,
@@ -975,8 +981,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
-				MACOSX_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.3;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1032,8 +1038,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
-				MACOSX_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.3;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -1348,7 +1354,7 @@
 			repositoryURL = "https://github.com/getsentry/sentry-cocoa";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 7.10.0;
+				minimumVersion = 7.10.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
