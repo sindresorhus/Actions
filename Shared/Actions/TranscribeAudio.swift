@@ -26,6 +26,14 @@ final class TranscribeAudioIntentHandler: NSObject, TranscribeAudioIntentHandlin
 			return response
 		}
 
+		guard await SFSpeechRecognizer.requestAuthorization() == .authorized else {
+			let recoverySuggestion = OS.current == .macOS
+				? "You can grant access in “System Preferences › Security & Privacy › Speech Recognition”."
+				: "You can grant access in “Settings › \(SSApp.name)”."
+
+			return .failure(failure: "No access to speech recognition. \(recoverySuggestion)")
+		}
+
 		var locale = Locale.autoupdatingCurrent
 		if let localeIdentifier = intent.locale?.identifier {
 			locale = Locale(identifier: localeIdentifier)

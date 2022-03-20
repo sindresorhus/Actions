@@ -3516,6 +3516,11 @@ extension StringProtocol {
 			return String(self)
 		}
 
+		// Edge-case
+		guard maxLength > truncationIndicator.count else {
+			return String(truncationIndicator.prefix(maxLength))
+		}
+
 		var truncatedString = prefix(maxLength - truncationIndicator.count)
 
 		// If the truncated string ends with a punctation character, we strip it to make it look better.
@@ -4121,6 +4126,17 @@ extension SFSpeechRecognizer {
 			}
 		} onCancel: { [task] in
 			task?.cancel()
+		}
+	}
+}
+
+
+extension SFSpeechRecognizer {
+	static func requestAuthorization() async -> SFSpeechRecognizerAuthorizationStatus {
+		await withCheckedContinuation { continuation in
+			requestAuthorization {
+				continuation.resume(returning: $0)
+			}
 		}
 	}
 }

@@ -10,6 +10,11 @@ final class RandomTextIntentHandler: NSObject, RandomTextIntentHandling {
 			return .unsupported(forReason: .lessThanMinimumValue)
 		}
 
+		// Higher lengths than this exceed the allowed memory usage.
+		guard length <= 999999 else {
+			return .unsupported(forReason: .greaterThanMaximumValue)
+		}
+
 		return .success(with: length)
 	}
 
@@ -39,7 +44,7 @@ final class RandomTextIntentHandler: NSObject, RandomTextIntentHandling {
 
 		let response = RandomTextIntentResponse(code: .success, userActivity: nil)
 
-		// TODO: This can be simplified with Swift 5.6 to not use type-eraser.
+		// TODO: This can be simplified with Swift 5.7 to not use type-eraser. `some RandomNumberGenerator`.
 		var generator: AnyRandomNumberGenerator = {
 			if let seed = intent.seed?.nilIfEmptyOrWhitespace {
 				return SeededRandomNumberGenerator(seed: seed).eraseToAny()
