@@ -161,7 +161,7 @@ enum SSApp {
 		email: String,
 		message: String
 	) async throws {
-		let endpoint = URL(string: "https://formcarry.com/s/UBfgr97yfY")!
+		let endpoint = URL("https://formcarry.com/s/UBfgr97yfY")
 
 		let parameters = [
 			"_gotcha": nil, // Spam prevention.

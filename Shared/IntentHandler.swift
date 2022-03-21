@@ -16,6 +16,8 @@ extension AppDelegate {
 			return ParseJSON5IntentHandler()
 		case is TranscribeAudioIntent:
 			return TranscribeAudioIntentHandler()
+		case is GenerateCSVIntent:
+			return GenerateCSVIntentHandler()
 		default:
 			assertionFailure("No handler for this intent")
 			return nil

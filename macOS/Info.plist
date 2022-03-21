@@ -10,6 +10,7 @@
 		<string>ScanQRCodesInImageIntent</string>
 		<string>ParseJSON5Intent</string>
 		<string>TranscribeAudioIntent</string>
+		<string>GenerateCSVIntent</string>
 	</array>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
@@ -30,6 +31,7 @@
 		<string>FormatCurrencyIntent</string>
 		<string>FormatDateDifferenceIntent</string>
 		<string>FormatDurationIntent</string>
+		<string>GenerateCSVIntent</string>
 		<string>GenerateUUIDIntent</string>
 		<string>GeoURIIntent</string>
 		<string>GetAudioPlaybackDestinationIntent</string>

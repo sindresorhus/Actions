@@ -36,6 +36,12 @@ final class ParseCSVIntentHandler: NSObject, ParseCSVIntentHandling {
 				csvData: file.data,
 				options: .init(
 					hasHeaderRow: hasHeader,
+					// We intentionally do not parse booleans as `DataFrame` cannot handle parsing them from JSON in "GenerateCSV". (macOS 12.3)
+					// https://github.com/feedback-assistant/reports/issues/299
+//					trueEncodings: ["true", "TRUE", "True"],
+//					falseEncodings: ["false", "FALSE", "False"],
+					trueEncodings: [],
+					falseEncodings: [],
 					delimiter: delimiter
 				)
 			)
