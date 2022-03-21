@@ -9,6 +9,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 
 - Add to List
 - Apply Capture Date
+- Choose from List (Extended)
 - Clamp Number
 - Combine Lists
 - Create Color Image

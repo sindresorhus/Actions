@@ -48,6 +48,12 @@
 		E3327E97272C68DE00AD5CC7 /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = E3327E96272C68DE00AD5CC7 /* Sentry */; };
 		E3327E99272C79F900AD5CC7 /* RemoveDuplicateLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3327E98272C79F900AD5CC7 /* RemoveDuplicateLines.swift */; };
 		E3327E9B272D22DC00AD5CC7 /* AddToList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3327E9A272D22DC00AD5CC7 /* AddToList.swift */; };
+		E337A3DD27E84E8A0073E865 /* ChooseFromListExtended.swift in Sources */ = {isa = PBXBuildFile; fileRef = E337A3DC27E84E8A0073E865 /* ChooseFromListExtended.swift */; };
+		E337A3DE27E84E8A0073E865 /* ChooseFromListExtended.swift in Sources */ = {isa = PBXBuildFile; fileRef = E337A3DC27E84E8A0073E865 /* ChooseFromListExtended.swift */; };
+		E337A3E027E850EC0073E865 /* ChooseFromListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E337A3DF27E850EC0073E865 /* ChooseFromListScreen.swift */; };
+		E337A3E127E850EC0073E865 /* ChooseFromListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E337A3DF27E850EC0073E865 /* ChooseFromListScreen.swift */; };
+		E337A3E427E8B66D0073E865 /* FuzzyFind in Frameworks */ = {isa = PBXBuildFile; productRef = E337A3E327E8B66D0073E865 /* FuzzyFind */; };
+		E337A3E627E8BA6B0073E865 /* FuzzyFind in Frameworks */ = {isa = PBXBuildFile; productRef = E337A3E527E8BA6B0073E865 /* FuzzyFind */; };
 		E33D4BA52744238300CC7A8A /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33D4BA42744238300CC7A8A /* AppState.swift */; };
 		E33D4BA62744238300CC7A8A /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33D4BA42744238300CC7A8A /* AppState.swift */; };
 		E33DFF642748BEDD00C79D78 /* GetTitleOfURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33DFF632748BEDD00C79D78 /* GetTitleOfURL.swift */; };
@@ -252,6 +258,8 @@
 		E324CA29271EA67E00E7CA9B /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		E3327E98272C79F900AD5CC7 /* RemoveDuplicateLines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveDuplicateLines.swift; sourceTree = "<group>"; };
 		E3327E9A272D22DC00AD5CC7 /* AddToList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToList.swift; sourceTree = "<group>"; };
+		E337A3DC27E84E8A0073E865 /* ChooseFromListExtended.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseFromListExtended.swift; sourceTree = "<group>"; };
+		E337A3DF27E850EC0073E865 /* ChooseFromListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseFromListScreen.swift; sourceTree = "<group>"; };
 		E33D4BA42744238300CC7A8A /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		E33DFF632748BEDD00C79D78 /* GetTitleOfURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTitleOfURL.swift; sourceTree = "<group>"; };
 		E33DFF662748C6B100C79D78 /* InternetAccessPolicy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = InternetAccessPolicy.json; sourceTree = "<group>"; };
@@ -328,6 +336,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E337A3E627E8BA6B0073E865 /* FuzzyFind in Frameworks */,
 				E311C7CC27CFE9DB00FCBA00 /* Regex in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -336,6 +345,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E337A3E427E8B66D0073E865 /* FuzzyFind in Frameworks */,
 				E311C7CA27CFE9D000FCBA00 /* Regex in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -408,6 +418,7 @@
 				E3BFF7B327428F5200B830DE /* WelcomeScreen.swift */,
 				E3BFF7B62742A79100B830DE /* AppIcon.swift */,
 				E3BFF7B02742616400B830DE /* WriteTextScreen.swift */,
+				E337A3DF27E850EC0073E865 /* ChooseFromListScreen.swift */,
 				E30FD0D227908AC900C01D80 /* IntentHandler.swift */,
 				E3FC71DC271EBE5B00C9D255 /* Utilities.swift */,
 				E30FD0D527908D1A00C01D80 /* Actions */,
@@ -527,6 +538,7 @@
 				E36AC9C127DE0B07000719FB /* ScanDocuments.swift */,
 				E36AC9C427DF0100000719FB /* FormatDuration.swift */,
 				E39EEF9827DF29770035F572 /* GetUnsplashImage.swift */,
+				E337A3DC27E84E8A0073E865 /* ChooseFromListExtended.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -551,6 +563,7 @@
 			name = "Actions (iOS)";
 			packageProductDependencies = (
 				E311C7CB27CFE9DB00FCBA00 /* Regex */,
+				E337A3E527E8BA6B0073E865 /* FuzzyFind */,
 			);
 			productName = "Actions (iOS)";
 			productReference = E324C9F6271E972300E7CA9B /* Actions.app */;
@@ -574,6 +587,7 @@
 			name = "Actions (macOS)";
 			packageProductDependencies = (
 				E311C7C927CFE9D000FCBA00 /* Regex */,
+				E337A3E327E8B66D0073E865 /* FuzzyFind */,
 			);
 			productName = "Actions (macOS)";
 			productReference = E324C9FC271E972300E7CA9B /* Actions.app */;
@@ -657,6 +671,7 @@
 			packageReferences = (
 				E3327E95272C68DE00AD5CC7 /* XCRemoteSwiftPackageReference "sentry-cocoa" */,
 				E311C7C827CFE9D000FCBA00 /* XCRemoteSwiftPackageReference "Regex" */,
+				E337A3E227E8B66D0073E865 /* XCRemoteSwiftPackageReference "FuzzyFind" */,
 			);
 			productRefGroup = E324C9F7271E972300E7CA9B /* Products */;
 			projectDirPath = "";
@@ -737,6 +752,7 @@
 				E324CA23271E993F00E7CA9B /* Intents.intentdefinition in Sources */,
 				E30FD0D127908A6F00C01D80 /* CreateColorImage.swift in Sources */,
 				E36AC9CC27DF1273000719FB /* TranscribeAudio.swift in Sources */,
+				E337A3E127E850EC0073E865 /* ChooseFromListScreen.swift in Sources */,
 				E311C7C427CFD5EA00FCBA00 /* SymbolImage.swift in Sources */,
 				E324CA01271E972300E7CA9B /* MainScreen.swift in Sources */,
 				E33D4BA62744238300CC7A8A /* AppState.swift in Sources */,
@@ -759,6 +775,7 @@
 				E324CA2B271EAAAC00E7CA9B /* Intents.intentdefinition in Sources */,
 				E30FD0D027908A6F00C01D80 /* CreateColorImage.swift in Sources */,
 				E36AC9CB27DF1273000719FB /* TranscribeAudio.swift in Sources */,
+				E337A3E027E850EC0073E865 /* ChooseFromListScreen.swift in Sources */,
 				E311C7C327CFD5EA00FCBA00 /* SymbolImage.swift in Sources */,
 				E324CA02271E972300E7CA9B /* MainScreen.swift in Sources */,
 				E33D4BA52744238300CC7A8A /* AppState.swift in Sources */,
@@ -793,6 +810,7 @@
 				E38EAAF02729B58F0055451B /* GetUniformTypeIdentifier.swift in Sources */,
 				E3BFF7AE2742456E00B830DE /* WriteText.swift in Sources */,
 				E3EE4040273802FB009B3FED /* ApplyCaptureDate.swift in Sources */,
+				E337A3DD27E84E8A0073E865 /* ChooseFromListExtended.swift in Sources */,
 				E321D1E7278EF80300D80571 /* TruncateText.swift in Sources */,
 				E380C8A527422549002AEA4F /* IsBluetoothOn.swift in Sources */,
 				E3F1EE462726F25400091C44 /* RemoveDuplicatesFromList.swift in Sources */,
@@ -857,6 +875,7 @@
 				E39F4760272D3DF600B99CB0 /* RemoveDuplicateLines.swift in Sources */,
 				E39F4759272D3DF600B99CB0 /* RemoveEmptyLines.swift in Sources */,
 				E33DFF6A2748EBA200C79D78 /* GetBatteryState.swift in Sources */,
+				E337A3DE27E84E8A0073E865 /* ChooseFromListExtended.swift in Sources */,
 				E36AC9B927DDBA34000719FB /* PrettyPrintDictionaries.swift in Sources */,
 				E39F4765272D3DF600B99CB0 /* DateToUnixTime.swift in Sources */,
 				E39F4769272D3DF600B99CB0 /* RandomFloatingPointNumber.swift in Sources */,
@@ -1357,6 +1376,14 @@
 				minimumVersion = 7.10.2;
 			};
 		};
+		E337A3E227E8B66D0073E865 /* XCRemoteSwiftPackageReference "FuzzyFind" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/truizlop/FuzzyFind";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1384,6 +1411,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E3327E95272C68DE00AD5CC7 /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
 			productName = Sentry;
+		};
+		E337A3E327E8B66D0073E865 /* FuzzyFind */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E337A3E227E8B66D0073E865 /* XCRemoteSwiftPackageReference "FuzzyFind" */;
+			productName = FuzzyFind;
+		};
+		E337A3E527E8BA6B0073E865 /* FuzzyFind */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E337A3E227E8B66D0073E865 /* XCRemoteSwiftPackageReference "FuzzyFind" */;
+			productName = FuzzyFind;
 		};
 		E39F4771272D3E9000B99CB0 /* Sentry */ = {
 			isa = XCSwiftPackageProductDependency;

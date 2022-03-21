@@ -941,6 +941,13 @@ extension SSApp {
 }
 
 
+extension RangeReplaceableCollection {
+	mutating func prepend(_ newElement: Element) {
+		insert(newElement, at: startIndex)
+	}
+}
+
+
 extension Collection {
 	func appending(_ newElement: Element) -> [Element] {
 		self + [newElement]
@@ -1329,6 +1336,13 @@ extension String {
 	*/
 	func dashCasing() -> String {
 		delimiterCasing(delimiter: "-")
+	}
+}
+
+
+extension String {
+	var firstLine: Self {
+		components(separatedBy: .newlines).first ?? self
 	}
 }
 
@@ -4015,6 +4029,22 @@ extension Binding {
 }
 
 
+extension Binding where Value: SetAlgebra, Value.Element: Hashable {
+	func contains<T>(_ element: T) -> Binding<Bool> where T == Value.Element {
+		.init(
+			get: { wrappedValue.contains(element) },
+			set: {
+				if $0 {
+					wrappedValue.insert(element)
+				} else {
+					wrappedValue.remove(element)
+				}
+			}
+		)
+	}
+}
+
+
 extension View {
 	func alert2<A, M, T>(
 		title: (T) -> Text,
@@ -4223,5 +4253,151 @@ extension URLSession {
 			for: .init(url: url),
 			maximumRetryCount: maximumRetryCount
 		)
+	}
+}
+
+
+#if canImport(AppKit)
+extension NSPasteboard {
+	/**
+	UIKit polyfill.
+	*/
+	var string: String? {
+		get { string(forType: .string) }
+		set {
+			prepareForNewContents()
+
+			guard let string = newValue else {
+				return
+			}
+
+			setString(string, forType: .string)
+		}
+	}
+
+	/**
+	UIKit polyfill.
+	*/
+	var strings: [String]? { // swiftlint:disable:this discouraged_optional_collection
+		get {
+			pasteboardItems?.compactMap { $0.string(forType: .string) }
+		}
+		set {
+			prepareForNewContents()
+
+			guard let strings = newValue else {
+				return
+			}
+
+			let items = strings.map { string -> NSPasteboardItem in
+				let item = NSPasteboardItem()
+				item.setString(string, forType: .string)
+				return item
+			}
+
+			writeObjects(items)
+		}
+	}
+}
+#endif
+
+
+#if canImport(AppKit)
+struct SearchField: NSViewRepresentable {
+	typealias NSViewType = CocoaSearchField
+
+	final class CocoaSearchField: NSSearchField {
+		override func viewDidMoveToWindow() {
+			window?.makeFirstResponder(self)
+		}
+	}
+
+	final class Coordinator: NSObject, NSSearchFieldDelegate {
+		var view: SearchField
+
+		init(_ view: SearchField) {
+			self.view = view
+		}
+
+		func controlTextDidChange(_ notification: Notification) {
+			guard let textField = notification.object as? CocoaSearchField else {
+				return
+			}
+
+			view.text = textField.stringValue
+		}
+	}
+
+	@Binding var text: String
+	var drawsBackground = true
+	var placeholder: String?
+	var fontSize: Double?
+
+	func makeCoordinator() -> Coordinator { .init(self) }
+
+	func makeNSView(context: Context) -> NSViewType {
+		let nsView = CocoaSearchField()
+		nsView.wantsLayer = true
+		nsView.translatesAutoresizingMaskIntoConstraints = false
+		nsView.setContentHuggingPriority(.defaultHigh, for: .vertical)
+		nsView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+		nsView.delegate = context.coordinator
+		return nsView
+	}
+
+	func updateNSView(_ nsView: NSViewType, context: Context) {
+		nsView.drawsBackground = drawsBackground
+		nsView.placeholderString = placeholder
+
+		if text != nsView.stringValue {
+			nsView.stringValue = text
+		}
+
+		if let fontSize = fontSize {
+			nsView.font = .systemFont(ofSize: fontSize)
+		}
+	}
+}
+#endif
+
+
+struct NavigationLinkButtonStyle: PrimitiveButtonStyle {
+	func makeBody(configuration: Configuration) -> some View {
+		NavigationLink(
+			isActive: .init(
+				get: { false },
+				set: {
+					if $0 {
+						configuration.trigger()
+					}
+				}),
+			destination: {}
+		) {
+			configuration.label
+		}
+	}
+}
+
+extension PrimitiveButtonStyle where Self == NavigationLinkButtonStyle {
+	/**
+	Make the button look like a `NavigationLink`.
+	*/
+	static var navigationLink: Self { .init() }
+}
+
+
+extension Button where Label == SwiftUI.Label<Text, Image> {
+	init(
+		_ title: String,
+		systemImage: String,
+		role: ButtonRole? = nil,
+		action: @escaping () -> Void
+	) {
+		self.init(
+			role: role,
+			action: action
+		) {
+			Label(title, systemImage: systemImage)
+		}
 	}
 }

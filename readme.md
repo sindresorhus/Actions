@@ -27,6 +27,7 @@ Requires macOS 12 or iOS 15 and later.
 
 - Add to List
 - Apply Capture Date
+- Choose from List (Extended)
 - Clamp Number
 - Combine Lists
 - Create Color Image

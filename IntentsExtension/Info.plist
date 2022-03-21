@@ -19,6 +19,7 @@
 			<array>
 				<string>AddToListIntent</string>
 				<string>ApplyCaptureDateIntent</string>
+				<string>ChooseFromListExtendedIntent</string>
 				<string>ClampNumberIntent</string>
 				<string>CombineListsIntent</string>
 				<string>CreateURLIntent</string>

@@ -3,6 +3,7 @@ import SwiftUI
 struct MainScreen: View {
 	@EnvironmentObject private var appState: AppState
 	@State private var writeTextData: WriteTextScreen.Data?
+	@State private var chooseFromListData: ChooseFromListScreen.Data?
 	@State private var isDocumentScannerPresented = false
 	@State private var error: Error?
 
@@ -23,13 +24,27 @@ struct MainScreen: View {
 				if let intent = someIntent as? WriteTextIntent {
 					handleWriteTextIntent(intent)
 				}
+
+				if let intent = someIntent as? ChooseFromListExtendedIntent {
+					handleChooseFromListExtendedIntent(intent)
+				}
 			}
 			#endif
 			.fullScreenCoverOrSheetIfMacOS(item: $writeTextData) {
 				WriteTextScreen(data: $0)
 			}
+			.fullScreenCoverOrSheetIfMacOS(item: $chooseFromListData) {
+				ChooseFromListScreen(data: $0)
+			}
 			.onContinueIntent(WriteTextIntent.self) { intent, _ in
 				handleWriteTextIntent(intent)
+			}
+			.onContinueIntent(ChooseFromListExtendedIntent.self) { intent, _ in
+				#if canImport(UIKit)
+				UIView.setAnimationsEnabled(false)
+				#endif
+
+				handleChooseFromListExtendedIntent(intent)
 			}
 			#if canImport(UIKit)
 			.onContinueIntent(HideShortcutsAppIntent.self) { _, _ in
@@ -59,13 +74,26 @@ struct MainScreen: View {
 			}
 			#endif
 			.task {
+				#if DEBUG
 				// For testing the “Write or Edit Text” action.
-//				#if DEBUG
 //				writeTextData = .init(
 //					title: "Test",
 //					text: ""
 //				)
-//				#endif
+
+				// For testing the “Choose from List Extended” action.
+//				chooseFromListData = .init(
+//					list: [
+//						"Foo",
+//						"Bar"
+//					],
+//					title: "Test",
+//					selectMultiple: false,
+//					selectAllInitially: false,
+//					allowCustomItems: false,
+//					timeoutReturnValue: .nothing
+//				)
+				#endif
 			}
 	}
 
@@ -73,6 +101,18 @@ struct MainScreen: View {
 		writeTextData = .init(
 			title: intent.editorTitle,
 			text: intent.text?.nilIfEmptyOrWhitespace ?? ""
+		)
+	}
+
+	private func handleChooseFromListExtendedIntent(_ intent: ChooseFromListExtendedIntent) {
+		chooseFromListData = .init(
+			list: intent.list ?? [],
+			title: intent.prompt?.nilIfEmptyOrWhitespace,
+			selectMultiple: intent.selectMultiple as? Bool ?? false,
+			selectAllInitially: intent.selectAllInitially as? Bool ?? false,
+			allowCustomItems: intent.allowCustomItems as? Bool ?? false,
+			timeout: (intent.useTimeout as? Bool) == true ? (intent.timeout as? TimeInterval) : nil,
+			timeoutReturnValue: intent.timeoutReturnValue
 		)
 	}
 }

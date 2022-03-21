@@ -11,7 +11,7 @@ final class RandomTextIntentHandler: NSObject, RandomTextIntentHandling {
 		}
 
 		// Higher lengths than this exceed the allowed memory usage.
-		guard length <= 999999 else {
+		guard length <= 999_999 else {
 			return .unsupported(forReason: .greaterThanMaximumValue)
 		}
 

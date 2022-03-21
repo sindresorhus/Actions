@@ -155,6 +155,8 @@ final class IntentHandler: INExtension {
 			return FormatDurationIntentHandler()
 		case is GetUnsplashImageIntent:
 			return GetUnsplashImageIntentHandler()
+		case is ChooseFromListExtendedIntent:
+			return ChooseFromListExtendedIntentHandler()
 		default:
 			assertionFailure("No handler for this intent")
 			return nil
