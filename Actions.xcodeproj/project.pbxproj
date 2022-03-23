@@ -90,6 +90,7 @@
 		E36AC9C627DF0100000719FB /* FormatDuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36AC9C427DF0100000719FB /* FormatDuration.swift */; };
 		E36AC9CB27DF1273000719FB /* TranscribeAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36AC9CA27DF1273000719FB /* TranscribeAudio.swift */; };
 		E36AC9CC27DF1273000719FB /* TranscribeAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36AC9CA27DF1273000719FB /* TranscribeAudio.swift */; };
+		E36E8A8827EB7A9C00A0A9CB /* IsScreenLocked.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36E8A8627EB758A00A0A9CB /* IsScreenLocked.swift */; };
 		E371D5862739794400156765 /* SetFileCreationModificationDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E371D5852739794400156765 /* SetFileCreationModificationDate.swift */; };
 		E371D5872739794400156765 /* SetFileCreationModificationDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E371D5852739794400156765 /* SetFileCreationModificationDate.swift */; };
 		E380C8A527422549002AEA4F /* IsBluetoothOn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E380C8A427422549002AEA4F /* IsBluetoothOn.swift */; };
@@ -283,6 +284,7 @@
 		E36AC9C127DE0B07000719FB /* ScanDocuments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanDocuments.swift; sourceTree = "<group>"; };
 		E36AC9C427DF0100000719FB /* FormatDuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatDuration.swift; sourceTree = "<group>"; };
 		E36AC9CA27DF1273000719FB /* TranscribeAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TranscribeAudio.swift; path = Shared/Actions/TranscribeAudio.swift; sourceTree = SOURCE_ROOT; };
+		E36E8A8627EB758A00A0A9CB /* IsScreenLocked.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsScreenLocked.swift; sourceTree = "<group>"; };
 		E37088CE27CC8E180002B432 /* SymbolImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolImage.swift; sourceTree = "<group>"; };
 		E371D5852739794400156765 /* SetFileCreationModificationDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetFileCreationModificationDate.swift; sourceTree = "<group>"; };
 		E380C8A427422549002AEA4F /* IsBluetoothOn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsBluetoothOn.swift; sourceTree = "<group>"; };
@@ -387,6 +389,7 @@
 				E36AC9BB27DDC63E000719FB /* ParseJSON5.swift */,
 				E36AC9CA27DF1273000719FB /* TranscribeAudio.swift */,
 				E337A3E727E8BF930073E865 /* GenerateCSV.swift */,
+				E36E8A8627EB758A00A0A9CB /* IsScreenLocked.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -777,6 +780,7 @@
 				E36AC9B527DDB81D000719FB /* ScanQRCodesInImage.swift in Sources */,
 				E311C7D727D08B6100FCBA00 /* ParseCSV.swift in Sources */,
 				E3BFF7B427428F5200B830DE /* WelcomeScreen.swift in Sources */,
+				E36E8A8827EB7A9C00A0A9CB /* IsScreenLocked.swift in Sources */,
 				E324CA2B271EAAAC00E7CA9B /* Intents.intentdefinition in Sources */,
 				E30FD0D027908A6F00C01D80 /* CreateColorImage.swift in Sources */,
 				E36AC9CB27DF1273000719FB /* TranscribeAudio.swift in Sources */,

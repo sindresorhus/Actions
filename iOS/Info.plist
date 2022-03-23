@@ -52,6 +52,7 @@
 		<string>IsLowPowerModeIntent</string>
 		<string>IsOnlineIntent</string>
 		<string>IsReachableIntent</string>
+		<string>IsScreenLockedIntent</string>
 		<string>IsSilentModeOnIntent</string>
 		<string>MergeDictionariesIntent</string>
 		<string>ParseCSVIntent</string>

@@ -8443,11 +8443,11 @@
 						<key>INIntentResponseParameterMetadata</key>
 						<dict>
 							<key>INIntentResponseParameterMetadataFalseDisplayName</key>
-							<string>No</string>
+							<string>false</string>
 							<key>INIntentResponseParameterMetadataFalseDisplayNameID</key>
 							<string>HOXNN3</string>
 							<key>INIntentResponseParameterMetadataTrueDisplayName</key>
-							<string>Yes</string>
+							<string>true</string>
 							<key>INIntentResponseParameterMetadataTrueDisplayNameID</key>
 							<string>us5PbP</string>
 						</dict>
@@ -8535,11 +8535,11 @@
 						<key>INIntentResponseParameterMetadata</key>
 						<dict>
 							<key>INIntentResponseParameterMetadataFalseDisplayName</key>
-							<string>Off</string>
+							<string>false</string>
 							<key>INIntentResponseParameterMetadataFalseDisplayNameID</key>
 							<string>HIRMSo</string>
 							<key>INIntentResponseParameterMetadataTrueDisplayName</key>
-							<string>On</string>
+							<string>true</string>
 							<key>INIntentResponseParameterMetadataTrueDisplayNameID</key>
 							<string>OzQX98</string>
 						</dict>
@@ -8633,11 +8633,11 @@
 						<key>INIntentResponseParameterMetadata</key>
 						<dict>
 							<key>INIntentResponseParameterMetadataFalseDisplayName</key>
-							<string>No</string>
+							<string>false</string>
 							<key>INIntentResponseParameterMetadataFalseDisplayNameID</key>
 							<string>92qvMh</string>
 							<key>INIntentResponseParameterMetadataTrueDisplayName</key>
-							<string>Yes</string>
+							<string>true</string>
 							<key>INIntentResponseParameterMetadataTrueDisplayNameID</key>
 							<string>HZqca2</string>
 						</dict>
@@ -9054,11 +9054,11 @@
 						<key>INIntentResponseParameterMetadata</key>
 						<dict>
 							<key>INIntentResponseParameterMetadataFalseDisplayName</key>
-							<string>No</string>
+							<string>false</string>
 							<key>INIntentResponseParameterMetadataFalseDisplayNameID</key>
 							<string>7qEKuO</string>
 							<key>INIntentResponseParameterMetadataTrueDisplayName</key>
-							<string>Yes</string>
+							<string>true</string>
 							<key>INIntentResponseParameterMetadataTrueDisplayNameID</key>
 							<string>s4zcEg</string>
 						</dict>
@@ -16734,6 +16734,86 @@
 			<string>Custom</string>
 			<key>INIntentVerb</key>
 			<string>Do</string>
+		</dict>
+		<dict>
+			<key>INIntentCategory</key>
+			<string>information</string>
+			<key>INIntentConfigurable</key>
+			<true/>
+			<key>INIntentDescription</key>
+			<string>Returns whether the screen is locked.</string>
+			<key>INIntentDescriptionID</key>
+			<string>PgvLmJ</string>
+			<key>INIntentIneligibleForSuggestions</key>
+			<true/>
+			<key>INIntentManagedParameterCombinations</key>
+			<dict>
+				<key></key>
+				<dict>
+					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
+					<true/>
+					<key>INIntentParameterCombinationUpdatesLinked</key>
+					<true/>
+				</dict>
+			</dict>
+			<key>INIntentName</key>
+			<string>IsScreenLocked</string>
+			<key>INIntentResponse</key>
+			<dict>
+				<key>INIntentResponseCodes</key>
+				<array>
+					<dict>
+						<key>INIntentResponseCodeName</key>
+						<string>success</string>
+						<key>INIntentResponseCodeSuccess</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>INIntentResponseCodeName</key>
+						<string>failure</string>
+					</dict>
+				</array>
+				<key>INIntentResponseLastParameterTag</key>
+				<integer>2</integer>
+				<key>INIntentResponseOutput</key>
+				<string>result</string>
+				<key>INIntentResponseParameters</key>
+				<array>
+					<dict>
+						<key>INIntentResponseParameterDisplayName</key>
+						<string>Is Screen Locked</string>
+						<key>INIntentResponseParameterDisplayNameID</key>
+						<string>ERRXdB</string>
+						<key>INIntentResponseParameterDisplayPriority</key>
+						<integer>1</integer>
+						<key>INIntentResponseParameterMetadata</key>
+						<dict>
+							<key>INIntentResponseParameterMetadataFalseDisplayName</key>
+							<string>false</string>
+							<key>INIntentResponseParameterMetadataFalseDisplayNameID</key>
+							<string>aWDyoB</string>
+							<key>INIntentResponseParameterMetadataTrueDisplayName</key>
+							<string>true</string>
+							<key>INIntentResponseParameterMetadataTrueDisplayNameID</key>
+							<string>vabAbE</string>
+						</dict>
+						<key>INIntentResponseParameterName</key>
+						<string>result</string>
+						<key>INIntentResponseParameterTag</key>
+						<integer>2</integer>
+						<key>INIntentResponseParameterType</key>
+						<string>Boolean</string>
+					</dict>
+				</array>
+			</dict>
+			<key>INIntentTitle</key>
+			<string>Is Screen Locked (macOS-only)</string>
+			<key>INIntentTitleID</key>
+			<string>WYA2Bq</string>
+			<key>INIntentType</key>
+			<string>Custom</string>
+			<key>INIntentVerb</key>
+			<string>View</string>
 		</dict>
 	</array>
 	<key>INTypes</key>

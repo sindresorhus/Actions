@@ -376,6 +376,16 @@ enum Device {
 		return UIScreen.main.bounds.height < 700
 		#endif
 	}()
+
+	#if canImport(Quartz)
+	// `CGSessionCopyCurrentDictionary()` returns `nil` in an app extension.
+	@available(macOSApplicationExtension, unavailable)
+	static var isScreenLocked: Bool {
+		let key = String("dekcoLsIneercSnoisseSSGC".reversed())
+		let dictionary = CGSessionCopyCurrentDictionary() as? [String: Any]
+		return dictionary?[key] as? Bool ?? false
+	}
+	#endif
 }
 
 
@@ -1231,6 +1241,41 @@ extension String {
 				return nil
 			}
 			.joined(separator: "\n")
+	}
+}
+
+
+extension Sequence where Element: Hashable {
+	/**
+	Returns the unique elements in a sequence.
+
+	```
+	[1, 2, 1].removingDuplicates()
+	//=> [1, 2]
+	```
+	*/
+	func removingDuplicates() -> [Element] {
+		var seen = Set<Element>()
+		return filter { seen.insert($0).inserted }
+	}
+}
+
+
+extension Sequence where Element: Equatable {
+	/**
+	Returns the unique elements in a sequence.
+
+	```
+	[1, 2, 1].removingDuplicates()
+	//=> [1, 2]
+	```
+	*/
+	func removingDuplicates() -> [Element] {
+		reduce(into: []) { result, element in
+			if !result.contains(element) {
+				result.append(element)
+			}
+		}
 	}
 }
 

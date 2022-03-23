@@ -74,7 +74,8 @@ struct ChooseFromListScreen: View {
 							Button("Use Custom Item") {
 								isAddItemScreenPresented = true
 							}
-						} else {
+						}
+						if data.selectMultiple {
 							Button("Add Item", systemImage: "plus") {
 								isAddItemScreenPresented = true
 							}
@@ -149,10 +150,14 @@ struct ChooseFromListScreen: View {
 			Form {
 				if data.allowCustomItems {
 					Section {
-						Button("Custom Item") {
-							isAddItemScreenPresented = true
+						NavigationLink("Custom Item") {
+							AddItemScreen(
+								isMultiple: false,
+								isUsingNavigationLink: true
+							) {
+								finishSingleSelection($0)
+							}
 						}
-							.buttonStyle(.navigationLink)
 					}
 				}
 				// Note to self: I am not using a `Picker` with inline style as I want the navigation link style for the items.
@@ -192,7 +197,9 @@ struct ChooseFromListScreen: View {
 	}
 
 	private var elements: [String] {
-		customElements + data.list
+		(customElements + data.list)
+			.removingDuplicates()
+			.filter { !$0.isEmptyOrWhitespace }
 	}
 
 	private var searchResults: [String] {
@@ -247,7 +254,8 @@ private struct AddItemScreen: View {
 	@FocusState private var isTextFieldFocused: Bool
 
 	let isMultiple: Bool
-	let onComplete: (String) -> Void
+	var isUsingNavigationLink = false
+	let onComplete: @MainActor (String) -> Void
 
 	var body: some View {
 		Form {
@@ -265,8 +273,10 @@ private struct AddItemScreen: View {
 						.disabled(text.isEmpty)
 				}
 				ToolbarItem(placement: .cancellationAction) {
-					Button("Cancel") {
-						dismiss()
+					if !isUsingNavigationLink {
+						Button("Cancel") {
+							dismiss()
+						}
 					}
 				}
 			}
@@ -278,7 +288,9 @@ private struct AddItemScreen: View {
 				add()
 			}
 			.submitLabel(.done)
-			.embedInNavigationViewIfNotMacOS()
+			.if(!isUsingNavigationLink) {
+				$0.embedInNavigationViewIfNotMacOS()
+			}
 			#if canImport(AppKit)
 			.frame(width: 300, height: 100)
 			#endif
@@ -290,6 +302,7 @@ private struct AddItemScreen: View {
 			}
 	}
 
+	@MainActor
 	private func add() {
 		dismiss()
 		onComplete(text)

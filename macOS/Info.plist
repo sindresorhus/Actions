@@ -11,6 +11,7 @@
 		<string>ParseJSON5Intent</string>
 		<string>TranscribeAudioIntent</string>
 		<string>GenerateCSVIntent</string>
+		<string>IsScreenLockedIntent</string>
 	</array>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
@@ -54,6 +55,7 @@
 		<string>IsLowPowerModeIntent</string>
 		<string>IsOnlineIntent</string>
 		<string>IsReachableIntent</string>
+		<string>IsScreenLockedIntent</string>
 		<string>IsSilentModeOnIntent</string>
 		<string>MergeDictionariesIntent</string>
 		<string>ParseCSVIntent</string>
