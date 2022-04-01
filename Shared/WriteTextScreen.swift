@@ -44,7 +44,7 @@ struct WriteTextScreen: View {
 			.toolbar {
 				ToolbarItem(placement: .confirmationAction) {
 					Button("Done") {
-						text.copyToPasteboard()
+						text.copyToPasteboard(currentHostOnly: true)
 						openShortcuts()
 					}
 						// We disable it if it's the "Write" type and there is no text.
@@ -53,9 +53,9 @@ struct WriteTextScreen: View {
 				ToolbarItem(placement: .cancellationAction) {
 					Button("Cancel") {
 						if let text = data.text.nilIfEmptyOrWhitespace {
-							text.copyToPasteboard()
+							text.copyToPasteboard(currentHostOnly: true)
 						} else {
-							XPasteboard.general.prepareForNewContents()
+							XPasteboard.general.prepareForNewContents(currentHostOnly: true)
 						}
 
 						openShortcuts()

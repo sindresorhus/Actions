@@ -45,6 +45,8 @@
 		E324CA21271E990D00E7CA9B /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = E324CA20271E990D00E7CA9B /* Intents.intentdefinition */; };
 		E324CA23271E993F00E7CA9B /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = E324CA20271E990D00E7CA9B /* Intents.intentdefinition */; };
 		E324CA2B271EAAAC00E7CA9B /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = E324CA20271E990D00E7CA9B /* Intents.intentdefinition */; };
+		E32B4F3627FD777D0057F08D /* ExceptionCatcher in Frameworks */ = {isa = PBXBuildFile; productRef = E32B4F3527FD777D0057F08D /* ExceptionCatcher */; };
+		E32B4F3827FD78580057F08D /* ExceptionCatcher in Frameworks */ = {isa = PBXBuildFile; productRef = E32B4F3727FD78580057F08D /* ExceptionCatcher */; };
 		E3327E97272C68DE00AD5CC7 /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = E3327E96272C68DE00AD5CC7 /* Sentry */; };
 		E3327E99272C79F900AD5CC7 /* RemoveDuplicateLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3327E98272C79F900AD5CC7 /* RemoveDuplicateLines.swift */; };
 		E3327E9B272D22DC00AD5CC7 /* AddToList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3327E9A272D22DC00AD5CC7 /* AddToList.swift */; };
@@ -360,6 +362,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E311C7CE27CFE9DF00FCBA00 /* Regex in Frameworks */,
+				E32B4F3627FD777D0057F08D /* ExceptionCatcher in Frameworks */,
 				E324CA14271E98F300E7CA9B /* Intents.framework in Frameworks */,
 				E3327E97272C68DE00AD5CC7 /* Sentry in Frameworks */,
 			);
@@ -369,6 +372,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E32B4F3827FD78580057F08D /* ExceptionCatcher in Frameworks */,
 				E311C7D027CFE9E400FCBA00 /* Regex in Frameworks */,
 				E39F4749272D3DDE00B99CB0 /* Intents.framework in Frameworks */,
 				E39F4772272D3E9000B99CB0 /* Sentry in Frameworks */,
@@ -616,6 +620,7 @@
 			packageProductDependencies = (
 				E3327E96272C68DE00AD5CC7 /* Sentry */,
 				E311C7CD27CFE9DF00FCBA00 /* Regex */,
+				E32B4F3527FD777D0057F08D /* ExceptionCatcher */,
 			);
 			productName = IntentsExtension;
 			productReference = E324CA11271E98F300E7CA9B /* IntentsExtension-macOS.appex */;
@@ -637,6 +642,7 @@
 			packageProductDependencies = (
 				E39F4771272D3E9000B99CB0 /* Sentry */,
 				E311C7CF27CFE9E400FCBA00 /* Regex */,
+				E32B4F3727FD78580057F08D /* ExceptionCatcher */,
 			);
 			productName = "IntentsExtension-iOS";
 			productReference = E39F4748272D3DDE00B99CB0 /* IntentsExtension-iOS.appex */;
@@ -679,6 +685,7 @@
 				E3327E95272C68DE00AD5CC7 /* XCRemoteSwiftPackageReference "sentry-cocoa" */,
 				E311C7C827CFE9D000FCBA00 /* XCRemoteSwiftPackageReference "Regex" */,
 				E337A3E227E8B66D0073E865 /* XCRemoteSwiftPackageReference "FuzzyFind" */,
+				E32B4F3227FD77700057F08D /* XCRemoteSwiftPackageReference "ExceptionCatcher" */,
 			);
 			productRefGroup = E324C9F7271E972300E7CA9B /* Products */;
 			projectDirPath = "";
@@ -1378,6 +1385,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		E32B4F3227FD77700057F08D /* XCRemoteSwiftPackageReference "ExceptionCatcher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/ExceptionCatcher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		E3327E95272C68DE00AD5CC7 /* XCRemoteSwiftPackageReference "sentry-cocoa" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/getsentry/sentry-cocoa";
@@ -1416,6 +1431,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E311C7C827CFE9D000FCBA00 /* XCRemoteSwiftPackageReference "Regex" */;
 			productName = Regex;
+		};
+		E32B4F3527FD777D0057F08D /* ExceptionCatcher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E32B4F3227FD77700057F08D /* XCRemoteSwiftPackageReference "ExceptionCatcher" */;
+			productName = ExceptionCatcher;
+		};
+		E32B4F3727FD78580057F08D /* ExceptionCatcher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E32B4F3227FD77700057F08D /* XCRemoteSwiftPackageReference "ExceptionCatcher" */;
+			productName = ExceptionCatcher;
 		};
 		E3327E96272C68DE00AD5CC7 /* Sentry */ = {
 			isa = XCSwiftPackageProductDependency;

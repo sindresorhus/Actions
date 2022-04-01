@@ -1095,8 +1095,14 @@ extension Date {
 	```
 	*/
 	static func random(in range: ClosedRange<Self>) -> Self {
-		let timeIntervalRange = range.lowerBound.timeIntervalSinceNow...range.upperBound.timeIntervalSinceNow
-		return Self(timeIntervalSinceNow: .random(in: timeIntervalRange))
+		Self(
+			timeIntervalSinceNow: .random(
+				in: .fromGraceful(
+					range.lowerBound.timeIntervalSinceNow,
+					range.upperBound.timeIntervalSinceNow
+				)
+			)
+		)
 	}
 }
 
@@ -2696,9 +2702,12 @@ extension Error {
 
 
 extension String {
-	func copyToPasteboard() {
+	/**
+	- Parameter currentHostOnly: The pasteboard contents are available only on the current device, and not on any other devices. This parameter is only used on macOS.
+	*/
+	func copyToPasteboard(currentHostOnly: Bool = false) {
 		#if canImport(AppKit)
-		NSPasteboard.general.prepareForNewContents()
+		NSPasteboard.general.prepareForNewContents(with: currentHostOnly ? .currentHostOnly : [])
 		NSPasteboard.general.setString(self, forType: .string)
 		#elseif canImport(UIKit)
 		UIPasteboard.general.string = self
@@ -2717,6 +2726,20 @@ extension UIPasteboard {
 	}
 }
 #endif
+
+
+extension XPasteboard {
+	/**
+	Universal version.
+	*/
+	func prepareForNewContents(currentHostOnly: Bool) {
+		#if canImport(AppKit)
+		prepareForNewContents(with: currentHostOnly ? .currentHostOnly : [])
+		#else
+		string = ""
+		#endif
+	}
+}
 
 
 extension View {
@@ -4345,6 +4368,57 @@ extension NSPasteboard {
 	}
 }
 #endif
+
+
+extension XPasteboard {
+	/**
+	On macOS, the pasteboard contents are available only on the current device, and not on any other devices.
+	On iOS, there's no way to prevent sharing with Universal Clipboard.
+	*/
+	var stringForCurrentHostOnly: String? {
+		get { string }
+		set {
+			#if canImport(AppKit)
+			prepareForNewContents(with: .currentHostOnly)
+
+			guard let string = newValue else {
+				return
+			}
+
+			setString(string, forType: .string)
+			#else
+			string = newValue
+			#endif
+		}
+	}
+
+	/**
+	On macOS, the pasteboard contents are available only on the current device, and not on any other devices.
+	On iOS, there's no way to prevent sharing with Universal Clipboard.
+	*/
+	var stringsForCurrentHostOnly: [String] {
+		get { strings ?? [] }
+		set {
+			#if canImport(AppKit)
+			prepareForNewContents(with: .currentHostOnly)
+
+			guard let strings = newValue.nilIfEmpty else {
+				return
+			}
+
+			let items = strings.map { string -> NSPasteboardItem in
+				let item = NSPasteboardItem()
+				item.setString(string, forType: .string)
+				return item
+			}
+
+			writeObjects(items)
+			#else
+			strings = newValue
+			#endif
+		}
+	}
+}
 
 
 #if canImport(AppKit)

@@ -15373,12 +15373,20 @@
 						<true/>
 					</dict>
 					<dict>
+						<key>INIntentResponseCodeConciseFormatString</key>
+						<string>${failure}</string>
+						<key>INIntentResponseCodeConciseFormatStringID</key>
+						<string>JzZjgl</string>
+						<key>INIntentResponseCodeFormatString</key>
+						<string>${failure}</string>
+						<key>INIntentResponseCodeFormatStringID</key>
+						<string>weASeY</string>
 						<key>INIntentResponseCodeName</key>
 						<string>failure</string>
 					</dict>
 				</array>
 				<key>INIntentResponseLastParameterTag</key>
-				<integer>1</integer>
+				<integer>2</integer>
 				<key>INIntentResponseOutput</key>
 				<string>result</string>
 				<key>INIntentResponseParameters</key>
@@ -15394,6 +15402,20 @@
 						<string>result</string>
 						<key>INIntentResponseParameterTag</key>
 						<integer>1</integer>
+						<key>INIntentResponseParameterType</key>
+						<string>String</string>
+					</dict>
+					<dict>
+						<key>INIntentResponseParameterDisplayName</key>
+						<string>Failure</string>
+						<key>INIntentResponseParameterDisplayNameID</key>
+						<string>RKRx5L</string>
+						<key>INIntentResponseParameterDisplayPriority</key>
+						<integer>2</integer>
+						<key>INIntentResponseParameterName</key>
+						<string>failure</string>
+						<key>INIntentResponseParameterTag</key>
+						<integer>2</integer>
 						<key>INIntentResponseParameterType</key>
 						<string>String</string>
 					</dict>

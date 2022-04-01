@@ -56,7 +56,7 @@ struct ChooseFromListScreen: View {
 								return
 							}
 
-							XPasteboard.general.strings = elements.filter { selection.contains($0) }
+							XPasteboard.general.stringsForCurrentHostOnly = elements.filter { selection.contains($0) }
 							openShortcuts()
 						}
 							.disabled(multipleSelection.isEmpty)
@@ -64,7 +64,7 @@ struct ChooseFromListScreen: View {
 				}
 				ToolbarItem(placement: .cancellationAction) {
 					Button("Cancel") {
-						XPasteboard.general.prepareForNewContents()
+						XPasteboard.general.prepareForNewContents(currentHostOnly: true)
 						openShortcuts()
 					}
 				}
@@ -212,7 +212,7 @@ struct ChooseFromListScreen: View {
 
 	@MainActor
 	private func finishSingleSelection(_ selection: String) {
-		XPasteboard.general.string = selection
+		XPasteboard.general.stringForCurrentHostOnly = selection
 		openShortcuts()
 	}
 
@@ -231,7 +231,7 @@ struct ChooseFromListScreen: View {
 			}
 		}()
 
-		XPasteboard.general.string = item
+		XPasteboard.general.stringForCurrentHostOnly = item
 		openShortcuts()
 	}
 

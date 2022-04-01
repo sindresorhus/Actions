@@ -1,4 +1,5 @@
 import Foundation
+import ExceptionCatcher
 
 @MainActor
 final class FormatDurationIntentHandler: NSObject, FormatDurationIntentHandling {
@@ -47,7 +48,13 @@ final class FormatDurationIntentHandler: NSObject, FormatDurationIntentHandling 
 		formatter.allowedUnits = allowedUnits
 		formatter.maximumUnitCount = intent.maximumUnitCount as? Int ?? 6
 
-		response.result = formatter.string(from: duration)
+		do {
+			try ExceptionCatcher.catch {
+				response.result = formatter.string(from: duration)
+			}
+		} catch {
+			return .failure(failure: error.presentableMessage)
+		}
 
 		return response
 	}
