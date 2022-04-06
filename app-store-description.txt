@@ -45,6 +45,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Is Reachable
 - Is Screen Locked (macOS-only)
 - Is Silent Mode On (iOS-only)
+- Is Wi-Fi On (macOS-only)
 - Merge Dictionaries
 - Parse CSV
 - Parse JSON5

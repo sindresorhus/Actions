@@ -54,6 +54,7 @@
 		<string>IsReachableIntent</string>
 		<string>IsScreenLockedIntent</string>
 		<string>IsSilentModeOnIntent</string>
+		<string>IsWiFiOnIntent</string>
 		<string>MergeDictionariesIntent</string>
 		<string>ParseCSVIntent</string>
 		<string>ParseJSON5Intent</string>

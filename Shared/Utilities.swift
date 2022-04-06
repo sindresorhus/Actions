@@ -17,6 +17,7 @@ import Regex
 
 #if canImport(AppKit)
 import IOKit.ps
+import CoreWLAN
 
 typealias XColor = NSColor
 typealias XFont = NSFont
@@ -384,6 +385,15 @@ enum Device {
 		let key = String("dekcoLsIneercSnoisseSSGC".reversed())
 		let dictionary = CGSessionCopyCurrentDictionary() as? [String: Any]
 		return dictionary?[key] as? Bool ?? false
+	}
+	#endif
+
+	#if canImport(CoreWLAN)
+	/**
+	Whether Wi-Fi is available and powered on.
+	*/
+	static var isWiFiOn: Bool {
+		CWWiFiClient.shared().interface()?.powerOn() ?? false
 	}
 	#endif
 }

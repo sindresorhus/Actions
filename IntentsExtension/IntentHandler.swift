@@ -157,6 +157,10 @@ final class IntentHandler: INExtension {
 			return GetUnsplashImageIntentHandler()
 		case is ChooseFromListExtendedIntent:
 			return ChooseFromListExtendedIntentHandler()
+		#if canImport(AppKit)
+		case is IsWiFiOnIntent:
+			return IsWiFiOnIntentHandler()
+		#endif
 		default:
 			assertionFailure("No handler for this intent")
 			return nil

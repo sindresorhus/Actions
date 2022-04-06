@@ -63,6 +63,7 @@ Requires macOS 12 or iOS 15 and later.
 - Is Reachable
 - Is Screen Locked <sup>(macOS-only)</sup>
 - Is Silent Mode On <sup>(iOS-only)</sup>
+- Is Wi-Fi On <sup>(macOS-only)</sup>
 - Merge Dictionaries
 - Parse CSV
 - Parse JSON5

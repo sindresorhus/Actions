@@ -16837,6 +16837,90 @@
 			<key>INIntentVerb</key>
 			<string>View</string>
 		</dict>
+		<dict>
+			<key>INIntentCategory</key>
+			<string>information</string>
+			<key>INIntentConfigurable</key>
+			<true/>
+			<key>INIntentDescription</key>
+			<string>Returns whether Wi-Fi is turned on. It returns false if the device does not support Wi-Fi. Use the “Is Online” action if you simply want to check for internet connectivity.</string>
+			<key>INIntentDescriptionID</key>
+			<string>erywD5</string>
+			<key>INIntentIneligibleForSuggestions</key>
+			<true/>
+			<key>INIntentManagedParameterCombinations</key>
+			<dict>
+				<key></key>
+				<dict>
+					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
+					<true/>
+					<key>INIntentParameterCombinationTitle</key>
+					<string>Is Wi-Fi on?</string>
+					<key>INIntentParameterCombinationTitleID</key>
+					<string>tKHYFo</string>
+					<key>INIntentParameterCombinationUpdatesLinked</key>
+					<true/>
+				</dict>
+			</dict>
+			<key>INIntentName</key>
+			<string>IsWiFiOn</string>
+			<key>INIntentResponse</key>
+			<dict>
+				<key>INIntentResponseCodes</key>
+				<array>
+					<dict>
+						<key>INIntentResponseCodeName</key>
+						<string>success</string>
+						<key>INIntentResponseCodeSuccess</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>INIntentResponseCodeName</key>
+						<string>failure</string>
+					</dict>
+				</array>
+				<key>INIntentResponseLastParameterTag</key>
+				<integer>2</integer>
+				<key>INIntentResponseOutput</key>
+				<string>result</string>
+				<key>INIntentResponseParameters</key>
+				<array>
+					<dict>
+						<key>INIntentResponseParameterDisplayName</key>
+						<string>Is Wi-Fi On</string>
+						<key>INIntentResponseParameterDisplayNameID</key>
+						<string>LqlmDV</string>
+						<key>INIntentResponseParameterDisplayPriority</key>
+						<integer>1</integer>
+						<key>INIntentResponseParameterMetadata</key>
+						<dict>
+							<key>INIntentResponseParameterMetadataFalseDisplayName</key>
+							<string>false</string>
+							<key>INIntentResponseParameterMetadataFalseDisplayNameID</key>
+							<string>WyvYMA</string>
+							<key>INIntentResponseParameterMetadataTrueDisplayName</key>
+							<string>true</string>
+							<key>INIntentResponseParameterMetadataTrueDisplayNameID</key>
+							<string>UdGsTo</string>
+						</dict>
+						<key>INIntentResponseParameterName</key>
+						<string>result</string>
+						<key>INIntentResponseParameterTag</key>
+						<integer>2</integer>
+						<key>INIntentResponseParameterType</key>
+						<string>Boolean</string>
+					</dict>
+				</array>
+			</dict>
+			<key>INIntentTitle</key>
+			<string>Is Wi-Fi On (macOS-only)</string>
+			<key>INIntentTitleID</key>
+			<string>07UDwr</string>
+			<key>INIntentType</key>
+			<string>Custom</string>
+			<key>INIntentVerb</key>
+			<string>View</string>
+		</dict>
 	</array>
 	<key>INTypes</key>
 	<array>
