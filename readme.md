@@ -47,6 +47,7 @@ Requires macOS 12 or iOS 15 and later.
 - Get File Icon <sup>(macOS-only)</sup>
 - Get File Path
 - Get Music Playlists <sup>(iOS-only)</sup>
+- Get Related Words
 - Get Running Apps <sup>(macOS-only)</sup>
 - Get Title of URL
 - Get Uniform Type Identifier

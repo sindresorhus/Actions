@@ -13,6 +13,7 @@ import SystemConfiguration
 import Network
 import TabularData
 import Speech
+import NaturalLanguage
 import Regex
 
 #if canImport(AppKit)
@@ -4529,4 +4530,79 @@ extension Button where Label == SwiftUI.Label<Text, Image> {
 			Label(title, systemImage: systemImage)
 		}
 	}
+}
+
+
+extension NLLanguage: CaseIterable {
+	public static let allCases: [Self] = [
+		.amharic,
+		.arabic,
+		.armenian,
+		.bengali,
+		.bulgarian,
+		.burmese,
+		.catalan,
+		.cherokee,
+		.croatian,
+		.czech,
+		.danish,
+		.dutch,
+		.english,
+		.finnish,
+		.french,
+		.georgian,
+		.german,
+		.greek,
+		.gujarati,
+		.hebrew,
+		.hindi,
+		.hungarian,
+		.icelandic,
+		.indonesian,
+		.italian,
+		.japanese,
+		.kannada,
+		.khmer,
+		.korean,
+		.lao,
+		.malay,
+		.malayalam,
+		.marathi,
+		.mongolian,
+		.norwegian,
+		.oriya,
+		.persian,
+		.polish,
+		.portuguese,
+		.punjabi,
+		.romanian,
+		.russian,
+		.simplifiedChinese,
+		.sinhalese,
+		.slovak,
+		.spanish,
+		.swedish,
+		.tamil,
+		.telugu,
+		.thai,
+		.tibetan,
+		.traditionalChinese,
+		.turkish,
+		.ukrainian,
+		.urdu,
+		.vietnamese
+	]
+}
+
+
+extension NLLanguage {
+	var localizedName: String {
+		Locale.current.localizedString(forIdentifier: rawValue) ?? ""
+	}
+}
+
+
+extension NLEmbedding {
+	static var supportedLanguage = NLLanguage.allCases
+		.filter { !supportedRevisions(for: $0).isEmpty }
 }

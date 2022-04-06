@@ -48,6 +48,8 @@
 		E32B4F3627FD777D0057F08D /* ExceptionCatcher in Frameworks */ = {isa = PBXBuildFile; productRef = E32B4F3527FD777D0057F08D /* ExceptionCatcher */; };
 		E32B4F3827FD78580057F08D /* ExceptionCatcher in Frameworks */ = {isa = PBXBuildFile; productRef = E32B4F3727FD78580057F08D /* ExceptionCatcher */; };
 		E32B4F3A27FD961C0057F08D /* IsWiFiOn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32B4F3927FD961C0057F08D /* IsWiFiOn.swift */; };
+		E32B4F3C27FD997A0057F08D /* GetRelatedWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32B4F3B27FD997A0057F08D /* GetRelatedWords.swift */; };
+		E32B4F3D27FD997A0057F08D /* GetRelatedWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32B4F3B27FD997A0057F08D /* GetRelatedWords.swift */; };
 		E3327E97272C68DE00AD5CC7 /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = E3327E96272C68DE00AD5CC7 /* Sentry */; };
 		E3327E99272C79F900AD5CC7 /* RemoveDuplicateLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3327E98272C79F900AD5CC7 /* RemoveDuplicateLines.swift */; };
 		E3327E9B272D22DC00AD5CC7 /* AddToList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3327E9A272D22DC00AD5CC7 /* AddToList.swift */; };
@@ -263,6 +265,7 @@
 		E324CA25271E996800E7CA9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E324CA29271EA67E00E7CA9B /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		E32B4F3927FD961C0057F08D /* IsWiFiOn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsWiFiOn.swift; sourceTree = "<group>"; };
+		E32B4F3B27FD997A0057F08D /* GetRelatedWords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRelatedWords.swift; sourceTree = "<group>"; };
 		E3327E98272C79F900AD5CC7 /* RemoveDuplicateLines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveDuplicateLines.swift; sourceTree = "<group>"; };
 		E3327E9A272D22DC00AD5CC7 /* AddToList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToList.swift; sourceTree = "<group>"; };
 		E337A3DC27E84E8A0073E865 /* ChooseFromListExtended.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseFromListExtended.swift; sourceTree = "<group>"; };
@@ -553,6 +556,7 @@
 				E39EEF9827DF29770035F572 /* GetUnsplashImage.swift */,
 				E337A3DC27E84E8A0073E865 /* ChooseFromListExtended.swift */,
 				E32B4F3927FD961C0057F08D /* IsWiFiOn.swift */,
+				E32B4F3B27FD997A0057F08D /* GetRelatedWords.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -847,6 +851,7 @@
 				E3F421142726958100080453 /* RandomFloatingPointNumber.swift in Sources */,
 				E3DF2EBB27287405009127CA /* TransformTextWithJavaScript.swift in Sources */,
 				E321D1E9278F03A700D80571 /* RoundNumberToMultiple.swift in Sources */,
+				E32B4F3C27FD997A0057F08D /* GetRelatedWords.swift in Sources */,
 				E3327E9B272D22DC00AD5CC7 /* AddToList.swift in Sources */,
 				E30F466E272FA446009A358B /* RandomText.swift in Sources */,
 				E38715882725A6F4003155B0 /* TransformText.swift in Sources */,
@@ -891,6 +896,7 @@
 				E39F476E272D3DF600B99CB0 /* RandomBoolean.swift in Sources */,
 				E38E6EB327CBC6C7005B990D /* GeoURI.swift in Sources */,
 				E3D3BDCD2743A72C00417A63 /* EditURL.swift in Sources */,
+				E32B4F3D27FD997A0057F08D /* GetRelatedWords.swift in Sources */,
 				E3EE4041273802FB009B3FED /* ApplyCaptureDate.swift in Sources */,
 				E3C6C1A527366A4D0003F56E /* RemoveFromList.swift in Sources */,
 				E39F4760272D3DF600B99CB0 /* RemoveDuplicateLines.swift in Sources */,

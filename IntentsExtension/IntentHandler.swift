@@ -161,6 +161,8 @@ final class IntentHandler: INExtension {
 		case is IsWiFiOnIntent:
 			return IsWiFiOnIntentHandler()
 		#endif
+		case is GetRelatedWordsIntent:
+			return GetRelatedWordsIntentHandler()
 		default:
 			assertionFailure("No handler for this intent")
 			return nil

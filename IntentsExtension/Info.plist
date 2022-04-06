@@ -37,6 +37,7 @@
 				<string>GetFileIconIntent</string>
 				<string>GetFilePathIntent</string>
 				<string>GetMusicPlaylistsIntent</string>
+				<string>GetRelatedWordsIntent</string>
 				<string>GetRunningAppsIntent</string>
 				<string>GetTitleOfURLIntent</string>
 				<string>GetUniformTypeIdentifierIntent</string>
@@ -52,6 +53,7 @@
 				<string>IsOnlineIntent</string>
 				<string>IsReachableIntent</string>
 				<string>IsSilentModeOnIntent</string>
+				<string>IsWiFiOnIntent</string>
 				<string>MergeDictionariesIntent</string>
 				<string>PrettyPrintDictionariesIntent</string>
 				<string>RandomBooleanIntent</string>
