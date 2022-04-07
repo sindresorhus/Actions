@@ -11,6 +11,7 @@
 ### Prerequisite
 
 - [Open an issue](https://github.com/sindresorhus/Actions/issues/new/choose) for discussion first.
+- The action name must start with a verb.
 - One action addition per pull request, unless they are connected.
 - Please help review the other open pull requests and action proposals.
 

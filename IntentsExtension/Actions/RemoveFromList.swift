@@ -85,6 +85,15 @@ final class RemoveFromListIntentHandler: NSObject, RemoveFromListIntentHandling 
 			// Account for 1-based indexing.
 			let range = ClosedRange.fromGraceful(lowerBound - 1, upperBound - 1)
 			response.result = list.removingSubrange(range)
+		case .randomItems:
+			let count = intent.randomItemCount as? Int ?? 0
+
+			guard count >= 0 else { // swiftlint:disable:this empty_count
+				return .failure(failure: "The count must be 0 or higher")
+			}
+
+			let indices = list.uniqueRandomIndices(maxCount: count)
+			response.result = list.removing(atIndices: indices)
 		}
 
 		return response

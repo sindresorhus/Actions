@@ -12,30 +12,38 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Choose from List (Extended)
 - Clamp Number
 - Combine Lists
+- Convert Date to Unix Time
+- Convert Location to Geo URI
+- Convert Unix Time to Date
 - Create Color Image
 - Create URL
-- Date to Unix Time
 - Edit URL
 - Filter List
 - Format Currency
 - Format Date Difference
 - Format Duration
 - Generate CSV
+- Generate Haptic Feedback (iOS-only)
 - Generate UUID
-- Geo URI
 - Get Audio Playback Destination (iOS-only)
 - Get Battery State
 - Get Emojis
 - Get File Icon (macOS-only)
 - Get File Path
 - Get Music Playlists (iOS-only)
+- Get Random Boolean
+- Get Random Color
+- Get Random Date and Time
+- Get Random Emoticon
+- Get Random Floating-Point Number
+- Get Random Text
 - Get Related Words
 - Get Running Apps (macOS-only)
+- Get Symbol Image
 - Get Title of URL
 - Get Uniform Type Identifier
 - Get Unsplash Image
 - Get User Details
-- Haptic Feedback (iOS-only)
 - Hide Shortcuts App
 - Is Audio Playing (iOS-only)
 - Is Bluetooth On
@@ -51,12 +59,6 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Parse CSV
 - Parse JSON5
 - Pretty Print Dictionaries
-- Random Boolean
-- Random Color
-- Random Date and Time
-- Random Emoticon
-- Random Floating-Point Number
-- Random Text
 - Remove Duplicate Lines
 - Remove Duplicates from List
 - Remove Emojis
@@ -72,7 +74,6 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Shuffle List
 - Sort List
 - Spell Out Number
-- Symbol Image
 - Transcribe Audio
 - Transform Lists
 - Transform Text
@@ -80,7 +81,6 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Trim Whitespace
 - Truncate List
 - Truncate Text
-- Unix Time to Date
 - Write or Edit Text
 
 

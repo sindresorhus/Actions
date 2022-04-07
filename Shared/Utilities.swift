@@ -83,7 +83,7 @@ func delay(seconds: TimeInterval, closure: @escaping () -> Void) {
 
 
 enum SSApp {
-	static let id = Bundle.main.bundleIdentifier!
+	static let idString = Bundle.main.bundleIdentifier!
 	static let name = Bundle.main.object(forInfoDictionaryKey: kCFBundleNameKey as String) as! String
 	static let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
 	static let build = Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as! String
@@ -142,7 +142,7 @@ enum SSApp {
 
 	private static func getFeedbackMetadata() -> String {
 		"""
-		\(SSApp.name) \(SSApp.versionWithBuild) - \(SSApp.id)
+		\(SSApp.name) \(SSApp.versionWithBuild) - \(SSApp.idString)
 		\(Device.operatingSystemString)
 		\(Device.modelIdentifier)
 		"""
@@ -2621,7 +2621,7 @@ extension NSError {
 		}
 
 		return .init(
-			domain: domainPostfix.map { "\(SSApp.id) - \($0)" } ?? SSApp.id,
+			domain: domainPostfix.map { "\(SSApp.idString) - \($0)" } ?? SSApp.idString,
 			code: 1, // This is what Swift errors end up as.
 			userInfo: userInfo
 		)
@@ -4605,4 +4605,28 @@ extension NLLanguage {
 extension NLEmbedding {
 	static var supportedLanguage = NLLanguage.allCases
 		.filter { !supportedRevisions(for: $0).isEmpty }
+}
+
+
+extension Collection {
+	/**
+	Get unique random indices in the collection.
+
+	- Parameter maxCount: Must be 0 or larger.
+	*/
+	func uniqueRandomIndices<T>(maxCount: Int, using generator: inout T) -> [Index] where T: RandomNumberGenerator {
+		assert(maxCount >= 0)
+
+		// Remove the `Array` wrapper and return `some Collection<Index>` when targeting Swift 5.7.
+		return Array(indices.shuffled(using: &generator).prefix(maxCount))
+	}
+
+	/**
+	Get unique random indices in the collection.
+
+	- Parameter maxCount: Must be 0 or larger.
+	*/
+	func uniqueRandomIndices(maxCount: Int) -> [Index] {
+		uniqueRandomIndices(maxCount: maxCount, using: &.system)
+	}
 }

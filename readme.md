@@ -30,30 +30,38 @@ Requires macOS 12 or iOS 15 and later.
 - Choose from List (Extended)
 - Clamp Number
 - Combine Lists
+- Convert Date to Unix Time
+- Convert Location to Geo URI
+- Convert Unix Time to Date
 - Create Color Image
+- Create Symbol Image
 - Create URL
-- Date to Unix Time
 - Edit URL
 - Filter List
 - Format Currency
 - Format Date Difference
 - Format Duration
 - Generate CSV
+- Generate Haptic Feedback <sup>(iOS-only)</sup>
 - Generate UUID
-- Geo URI
 - Get Audio Playback Destination <sup>(iOS-only)</sup>
 - Get Battery State
 - Get Emojis
 - Get File Icon <sup>(macOS-only)</sup>
 - Get File Path
 - Get Music Playlists <sup>(iOS-only)</sup>
+- Get Random Boolean
+- Get Random Color
+- Get Random Date and Time
+- Get Random Emoticon
+- Get Random Floating-Point Number
+- Get Random Text
 - Get Related Words
 - Get Running Apps <sup>(macOS-only)</sup>
 - Get Title of URL
 - Get Uniform Type Identifier
 - Get Unsplash Image
 - Get User Details
-- Haptic Feedback <sup>(iOS-only)</sup>
 - Hide Shortcuts App
 - Is Audio Playing <sup>(iOS-only)</sup>
 - Is Bluetooth On
@@ -69,12 +77,6 @@ Requires macOS 12 or iOS 15 and later.
 - Parse CSV
 - Parse JSON5
 - Pretty Print Dictionaries
-- Random Boolean
-- Random Color
-- Random Date and Time
-- Random Emoticon
-- Random Floating-Point Number
-- Random Text
 - Remove Duplicate Lines
 - Remove Duplicates from List
 - Remove Emojis
@@ -90,7 +92,6 @@ Requires macOS 12 or iOS 15 and later.
 - Shuffle List
 - Sort List
 - Spell Out Number
-- Symbol Image
 - Transcribe Audio
 - Transform Lists
 - Transform Text
@@ -98,7 +99,6 @@ Requires macOS 12 or iOS 15 and later.
 - Trim Whitespace
 - Truncate List
 - Truncate Text
-- Unix Time to Date
 - Write or Edit Text
 
 #### Looking for more?

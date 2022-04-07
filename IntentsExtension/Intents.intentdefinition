@@ -244,6 +244,16 @@
 					<key>INEnumValueName</key>
 					<string>range</string>
 				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>Random Items</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>OkjCuu</string>
+					<key>INEnumValueIndex</key>
+					<integer>5</integer>
+					<key>INEnumValueName</key>
+					<string>randomItems</string>
+				</dict>
 			</array>
 		</dict>
 		<dict>
@@ -1294,11 +1304,11 @@
 	<key>INIntentDefinitionNamespace</key>
 	<string>dQRoIy</string>
 	<key>INIntentDefinitionSystemVersion</key>
-	<string>21E230</string>
+	<string>21E258</string>
 	<key>INIntentDefinitionToolsBuildVersion</key>
-	<string>13E113</string>
+	<string>13E500a</string>
 	<key>INIntentDefinitionToolsVersion</key>
-	<string>13.3</string>
+	<string>13.3.1</string>
 	<key>INIntents</key>
 	<array>
 		<dict>
@@ -1616,7 +1626,7 @@
 				</array>
 			</dict>
 			<key>INIntentTitle</key>
-			<string>Random Emoticon</string>
+			<string>Get Random Emoticon</string>
 			<key>INIntentTitleID</key>
 			<string>2oUQK0</string>
 			<key>INIntentType</key>
@@ -1696,7 +1706,7 @@
 				</array>
 			</dict>
 			<key>INIntentTitle</key>
-			<string>Random Boolean</string>
+			<string>Get Random Boolean</string>
 			<key>INIntentTitleID</key>
 			<string>olxxA8</string>
 			<key>INIntentType</key>
@@ -2115,7 +2125,7 @@
 				</array>
 			</dict>
 			<key>INIntentTitle</key>
-			<string>Random Date and Time</string>
+			<string>Get Random Date and Time</string>
 			<key>INIntentTitleID</key>
 			<string>NHOe93</string>
 			<key>INIntentType</key>
@@ -2277,7 +2287,7 @@
 				</array>
 			</dict>
 			<key>INIntentTitle</key>
-			<string>Random Floating-Point Number</string>
+			<string>Get Random Floating-Point Number</string>
 			<key>INIntentTitleID</key>
 			<string>A7tveU</string>
 			<key>INIntentType</key>
@@ -3588,7 +3598,7 @@
 				</array>
 			</dict>
 			<key>INIntentTitle</key>
-			<string>Random Color</string>
+			<string>Get Random Color</string>
 			<key>INIntentTitleID</key>
 			<string>OwySEz</string>
 			<key>INIntentType</key>
@@ -4278,7 +4288,7 @@
 				</array>
 			</dict>
 			<key>INIntentTitle</key>
-			<string>Date to Unix Time</string>
+			<string>Convert Date to Unix Time</string>
 			<key>INIntentTitleID</key>
 			<string>2dVl6w</string>
 			<key>INIntentType</key>
@@ -4415,7 +4425,7 @@
 				</array>
 			</dict>
 			<key>INIntentTitle</key>
-			<string>Unix Time to Date</string>
+			<string>Convert Unix Time to Date</string>
 			<key>INIntentTitleID</key>
 			<string>aDSO45</string>
 			<key>INIntentType</key>
@@ -5817,7 +5827,7 @@
 				</array>
 			</dict>
 			<key>INIntentTitle</key>
-			<string>Random Text</string>
+			<string>Get Random Text</string>
 			<key>INIntentTitleID</key>
 			<string>Ha3MUF</string>
 			<key>INIntentType</key>
@@ -5841,7 +5851,7 @@
 			<key>INIntentKeyParameter</key>
 			<string>list</string>
 			<key>INIntentLastParameterTag</key>
-			<integer>15</integer>
+			<integer>17</integer>
 			<key>INIntentManagedParameterCombinations</key>
 			<dict>
 				<key>list,action</key>
@@ -5851,7 +5861,7 @@
 					<key>INIntentParameterCombinationTitle</key>
 					<string>Remove ${action} from ${list}</string>
 					<key>INIntentParameterCombinationTitleID</key>
-					<string>nUAA1s</string>
+					<string>xASAbB</string>
 					<key>INIntentParameterCombinationUpdatesLinked</key>
 					<true/>
 				</dict>
@@ -5863,6 +5873,17 @@
 					<string>Remove ${action} ${index} from ${list}</string>
 					<key>INIntentParameterCombinationTitleID</key>
 					<string>k3pIcD</string>
+					<key>INIntentParameterCombinationUpdatesLinked</key>
+					<true/>
+				</dict>
+				<key>list,action,randomItemCount</key>
+				<dict>
+					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
+					<true/>
+					<key>INIntentParameterCombinationTitle</key>
+					<string>Remove ${randomItemCount} ${action} from ${list}</string>
+					<key>INIntentParameterCombinationTitleID</key>
+					<string>nUAA1s</string>
 					<key>INIntentParameterCombinationUpdatesLinked</key>
 					<true/>
 				</dict>
@@ -6284,6 +6305,56 @@
 						</dict>
 					</array>
 				</dict>
+				<dict>
+					<key>INIntentParameterConfigurable</key>
+					<true/>
+					<key>INIntentParameterDisplayName</key>
+					<string>Count</string>
+					<key>INIntentParameterDisplayNameID</key>
+					<string>25XrPC</string>
+					<key>INIntentParameterDisplayPriority</key>
+					<integer>6</integer>
+					<key>INIntentParameterMetadata</key>
+					<dict>
+						<key>INIntentParameterMetadataDefaultValue</key>
+						<integer>1</integer>
+						<key>INIntentParameterMetadataMaximumValue</key>
+						<data>
+						</data>
+						<key>INIntentParameterMetadataType</key>
+						<string>Field</string>
+					</dict>
+					<key>INIntentParameterName</key>
+					<string>randomItemCount</string>
+					<key>INIntentParameterPromptDialogs</key>
+					<array>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>Configuration</string>
+						</dict>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>Primary</string>
+						</dict>
+					</array>
+					<key>INIntentParameterRelationship</key>
+					<dict>
+						<key>INIntentParameterRelationshipParentName</key>
+						<string>action</string>
+						<key>INIntentParameterRelationshipPredicateName</key>
+						<string>EnumHasExactValue</string>
+						<key>INIntentParameterRelationshipPredicateValue</key>
+						<string>randomItems</string>
+					</dict>
+					<key>INIntentParameterTag</key>
+					<integer>17</integer>
+					<key>INIntentParameterType</key>
+					<string>Integer</string>
+				</dict>
 			</array>
 			<key>INIntentResponse</key>
 			<dict>
@@ -6296,12 +6367,20 @@
 						<true/>
 					</dict>
 					<dict>
+						<key>INIntentResponseCodeConciseFormatString</key>
+						<string>${failure}</string>
+						<key>INIntentResponseCodeConciseFormatStringID</key>
+						<string>3fqRu0</string>
+						<key>INIntentResponseCodeFormatString</key>
+						<string>${failure}</string>
+						<key>INIntentResponseCodeFormatStringID</key>
+						<string>V9c7s6</string>
 						<key>INIntentResponseCodeName</key>
 						<string>failure</string>
 					</dict>
 				</array>
 				<key>INIntentResponseLastParameterTag</key>
-				<integer>3</integer>
+				<integer>4</integer>
 				<key>INIntentResponseOutput</key>
 				<string>result</string>
 				<key>INIntentResponseParameters</key>
@@ -6321,6 +6400,20 @@
 						<integer>3</integer>
 						<key>INIntentResponseParameterType</key>
 						<string>File</string>
+					</dict>
+					<dict>
+						<key>INIntentResponseParameterDisplayName</key>
+						<string>Failure</string>
+						<key>INIntentResponseParameterDisplayNameID</key>
+						<string>VaLjxY</string>
+						<key>INIntentResponseParameterDisplayPriority</key>
+						<integer>2</integer>
+						<key>INIntentResponseParameterName</key>
+						<string>failure</string>
+						<key>INIntentResponseParameterTag</key>
+						<integer>4</integer>
+						<key>INIntentResponseParameterType</key>
+						<string>String</string>
 					</dict>
 				</array>
 			</dict>
@@ -11285,7 +11378,7 @@
 				</array>
 			</dict>
 			<key>INIntentTitle</key>
-			<string>Haptic Feedback (iOS-only)</string>
+			<string>Generate Haptic Feedback (iOS-only)</string>
 			<key>INIntentTitleID</key>
 			<string>lGnMfU</string>
 			<key>INIntentType</key>
@@ -12845,7 +12938,7 @@
 				</array>
 			</dict>
 			<key>INIntentTitle</key>
-			<string>Geo URI</string>
+			<string>Convert Location to Geo URI</string>
 			<key>INIntentTitleID</key>
 			<string>f7xkEV</string>
 			<key>INIntentType</key>
@@ -13324,7 +13417,7 @@
 				</array>
 			</dict>
 			<key>INIntentTitle</key>
-			<string>Symbol Image</string>
+			<string>Get Symbol Image</string>
 			<key>INIntentTitleID</key>
 			<string>H8sbhc</string>
 			<key>INIntentType</key>
@@ -17068,26 +17161,6 @@
 							<true/>
 							<key>INIntentParameterPromptDialogType</key>
 							<string>Primary</string>
-						</dict>
-						<dict>
-							<key>INIntentParameterPromptDialogCustom</key>
-							<true/>
-							<key>INIntentParameterPromptDialogFormatString</key>
-							<string>There are ${count} options matching ‘${language}’.</string>
-							<key>INIntentParameterPromptDialogFormatStringID</key>
-							<string>nJczbC</string>
-							<key>INIntentParameterPromptDialogType</key>
-							<string>DisambiguationIntroduction</string>
-						</dict>
-						<dict>
-							<key>INIntentParameterPromptDialogCustom</key>
-							<true/>
-							<key>INIntentParameterPromptDialogFormatString</key>
-							<string>Just to confirm, you wanted ‘${language}’?</string>
-							<key>INIntentParameterPromptDialogFormatStringID</key>
-							<string>Ww70m2</string>
-							<key>INIntentParameterPromptDialogType</key>
-							<string>Confirmation</string>
 						</dict>
 					</array>
 					<key>INIntentParameterSupportsDynamicEnumeration</key>
