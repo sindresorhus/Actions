@@ -52,6 +52,7 @@ Requires macOS 12 or iOS 15 and later.
 - Get Music Playlists <sup>(iOS-only)</sup>
 - Get Query Item Value from URL
 - Get Query Items from URL
+- Get Query Items from URL as Dictionary
 - Get Random Boolean
 - Get Random Color
 - Get Random Date and Time
@@ -108,6 +109,8 @@ Requires macOS 12 or iOS 15 and later.
 - Get Internet Speed → [Speediness](https://sindresorhus.com/speediness)
 - Get Random GIF → [Jiffy](https://sindresorhus.com/jiffy)
 - Show Text in Menu Bar → [One Thing](https://sindresorhus.com/one-thing)
+- Open URLs in a Specific Browser → [Velja](https://sindresorhus.com/velja)
+- Remove Tracking Parameters from URLs → [Velja](https://sindresorhus.com/velja)
 - Clear Clipboard Formatting → [Pure Paste](https://sindresorhus.com/pure-paste)
 - Join Video Call → [Dato](https://sindresorhus.com/dato)
 

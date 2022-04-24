@@ -525,38 +525,73 @@ extension Device {
 }
 
 
-private func escapeQuery(_ query: String) -> String {
-	// From RFC 3986
-	let generalDelimiters = ":#[]@"
-	let subDelimiters = "!$&'()*+,;="
-
-	var allowedCharacters = CharacterSet.urlQueryAllowed
-	allowedCharacters.remove(charactersIn: generalDelimiters + subDelimiters)
-	return query.addingPercentEncoding(withAllowedCharacters: allowedCharacters) ?? query
+extension Dictionary {
+	func compactValues<T>() -> [Key: T] where Value == T? {
+		// TODO: Make this `compactMapValues(\.self)` when https://bugs.swift.org/browse/SR-12897 is fixed.
+		compactMapValues { $0 }
+	}
 }
 
 
-extension Dictionary where Key: ExpressibleByStringLiteral, Value: ExpressibleByStringLiteral {
-	var asQueryItems: [URLQueryItem] {
+extension CharacterSet {
+	/**
+	Characters allowed to be unescaped in an URL.
+
+	https://tools.ietf.org/html/rfc3986#section-2.3
+	*/
+	static let urlUnreservedRFC3986 = CharacterSet(charactersIn: "-._~")
+		.union(asciiLettersAndNumbers)
+}
+
+
+private func escapeQueryComponent(_ query: String) -> String {
+	query.addingPercentEncoding(withAllowedCharacters: .urlUnreservedRFC3986)!
+}
+
+
+extension Dictionary where Key == String {
+	/**
+	This correctly escapes items. See `escapeQueryComponent`.
+	*/
+	var toQueryItems: [URLQueryItem] {
 		map {
 			URLQueryItem(
-				name: escapeQuery($0 as! String),
-				value: escapeQuery($1 as! String)
+				name: escapeQueryComponent($0),
+				value: escapeQueryComponent("\($1)")
 			)
 		}
 	}
 
-	var asQueryString: String {
+	var toQueryString: String {
 		var components = URLComponents()
-		components.queryItems = asQueryItems
+		components.queryItems = toQueryItems
 		return components.query!
 	}
 }
 
 
 extension URLComponents {
-	mutating func addDictionaryAsQuery(_ dict: [String: String]) {
-		percentEncodedQuery = dict.asQueryString
+	mutating func addDictionaryAsQuery(_ dictionary: [String: String]) {
+		percentEncodedQuery = dictionary.toQueryString
+	}
+}
+
+
+typealias QueryDictionary = [String: String]
+
+
+extension URLComponents {
+	/**
+	This correctly escapes items. See `escapeQueryComponent`.
+	*/
+	var queryDictionary: QueryDictionary {
+		get {
+			queryItems?.toDictionary { ($0.name, $0.value) }.compactValues() ?? [:]
+		}
+		set {
+			// Using `percentEncodedQueryItems` instead of `queryItems` since the query items are already custom-escaped. See `escapeQueryComponent`.
+			percentEncodedQueryItems = newValue.toQueryItems
+		}
 	}
 }
 
@@ -570,9 +605,17 @@ extension URL {
 		return components.queryItems ?? []
 	}
 
-	func addingDictionaryAsQuery(_ dict: [String: String]) -> Self {
+	var queryDictionary: QueryDictionary {
+		guard let components = URLComponents(url: self, resolvingAgainstBaseURL: false) else {
+			return [:]
+		}
+
+		return components.queryDictionary
+	}
+
+	func addingDictionaryAsQuery(_ dictionary: [String: String]) -> Self {
 		var components = URLComponents(url: self, resolvingAgainstBaseURL: false)!
-		components.addDictionaryAsQuery(dict)
+		components.addDictionaryAsQuery(dictionary)
 		return components.url ?? self
 	}
 
@@ -3322,6 +3365,26 @@ extension Sequence {
 		case .reverse:
 			return sorted { $0[keyPath: keyPath] > $1[keyPath: keyPath] }
 		}
+	}
+}
+
+
+extension Sequence {
+	/**
+	```
+	[(1, "a"), (nil, "b")].toDictionary { ($1, $0) }
+	//=> ["a": 1, "b": nil]
+	```
+	*/
+	func toDictionary<Key: Hashable, Value>(withKey pickKeyValue: (Element) -> (Key, Value?)) -> [Key: Value?] {
+		var dictionary = [Key: Value?]()
+
+		for element in self {
+			let newElement = pickKeyValue(element)
+			dictionary[newElement.0] = newElement.1
+		}
+
+		return dictionary
 	}
 }
 

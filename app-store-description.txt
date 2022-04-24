@@ -33,6 +33,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Get Music Playlists (iOS-only)
 - Get Query Item Value from URL
 - Get Query Items from URL
+- Get Query Items from URL as Dictionary
 - Get Random Boolean
 - Get Random Color
 - Get Random Date and Time
