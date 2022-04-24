@@ -50,6 +50,7 @@ Requires macOS 12 or iOS 15 and later.
 - Get File Icon <sup>(macOS-only)</sup>
 - Get File Path
 - Get Music Playlists <sup>(iOS-only)</sup>
+- Get Query Item Value from URL
 - Get Random Boolean
 - Get Random Color
 - Get Random Date and Time

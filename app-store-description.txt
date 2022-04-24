@@ -31,6 +31,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Get File Icon (macOS-only)
 - Get File Path
 - Get Music Playlists (iOS-only)
+- Get Query Item Value from URL
 - Get Random Boolean
 - Get Random Color
 - Get Random Date and Time

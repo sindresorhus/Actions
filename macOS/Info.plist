@@ -41,6 +41,7 @@
 		<string>GetFileIconIntent</string>
 		<string>GetFilePathIntent</string>
 		<string>GetMusicPlaylistsIntent</string>
+		<string>GetQueryItemValueFromURLIntent</string>
 		<string>GetRelatedWordsIntent</string>
 		<string>GetRunningAppsIntent</string>
 		<string>GetTitleOfURLIntent</string>

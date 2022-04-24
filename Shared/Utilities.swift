@@ -562,6 +562,14 @@ extension URLComponents {
 
 
 extension URL {
+	var queryItems: [URLQueryItem] {
+		guard let components = URLComponents(url: self, resolvingAgainstBaseURL: false) else {
+			return []
+		}
+
+		return components.queryItems ?? []
+	}
+
 	func addingDictionaryAsQuery(_ dict: [String: String]) -> Self {
 		var components = URLComponents(url: self, resolvingAgainstBaseURL: false)!
 		components.addDictionaryAsQuery(dict)
@@ -590,6 +598,13 @@ extension URL {
 	*/
 	func appendingQueryItem(name: String, value: String?) -> Self {
 		appendingQueryItem(URLQueryItem(name: name, value: value))
+	}
+
+	/**
+	Get the value of the first query item with the given name.
+	*/
+	func queryItemValue(forName name: String) -> String? {
+		queryItems.first { $0.name == name }?.value
 	}
 }
 
