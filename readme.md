@@ -51,6 +51,7 @@ Requires macOS 12 or iOS 15 and later.
 - Get File Path
 - Get Music Playlists <sup>(iOS-only)</sup>
 - Get Query Item Value from URL
+- Get Query Items from URL
 - Get Random Boolean
 - Get Random Color
 - Get Random Date and Time

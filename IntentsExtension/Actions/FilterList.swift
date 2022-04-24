@@ -36,6 +36,8 @@ final class FilterListIntentHandler: NSObject, FilterListIntentHandling {
 				return item.hasSuffix(matchText)
 			case .regex:
 				return try NSRegularExpression(pattern: matchText).matches(item)
+			case .is:
+				return item == matchText
 			}
 		}
 

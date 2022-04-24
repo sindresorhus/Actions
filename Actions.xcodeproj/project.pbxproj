@@ -182,6 +182,8 @@
 		E3DF2EC127293299009127CA /* IntentUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DF2EC027293299009127CA /* IntentUtilities.swift */; };
 		E3EC4B15281598BE00FFFB27 /* GetQueryItemValueFromURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC4B14281598BE00FFFB27 /* GetQueryItemValueFromURL.swift */; };
 		E3EC4B16281598BE00FFFB27 /* GetQueryItemValueFromURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC4B14281598BE00FFFB27 /* GetQueryItemValueFromURL.swift */; };
+		E3EC4B182815A1C400FFFB27 /* GetQueryItemsFromURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC4B172815A1C400FFFB27 /* GetQueryItemsFromURL.swift */; };
+		E3EC4B192815A1C400FFFB27 /* GetQueryItemsFromURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC4B172815A1C400FFFB27 /* GetQueryItemsFromURL.swift */; };
 		E3EE4040273802FB009B3FED /* ApplyCaptureDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EE403F273802FB009B3FED /* ApplyCaptureDate.swift */; };
 		E3EE4041273802FB009B3FED /* ApplyCaptureDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EE403F273802FB009B3FED /* ApplyCaptureDate.swift */; };
 		E3F1EE422726E0CE00091C44 /* SortList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F1EE412726E0CE00091C44 /* SortList.swift */; };
@@ -333,6 +335,7 @@
 		E3DF2EBE27293225009127CA /* SampleColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleColor.swift; sourceTree = "<group>"; };
 		E3DF2EC027293299009127CA /* IntentUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentUtilities.swift; sourceTree = "<group>"; };
 		E3EC4B14281598BE00FFFB27 /* GetQueryItemValueFromURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetQueryItemValueFromURL.swift; sourceTree = "<group>"; };
+		E3EC4B172815A1C400FFFB27 /* GetQueryItemsFromURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetQueryItemsFromURL.swift; sourceTree = "<group>"; };
 		E3EE403F273802FB009B3FED /* ApplyCaptureDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyCaptureDate.swift; sourceTree = "<group>"; };
 		E3F1EE412726E0CE00091C44 /* SortList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortList.swift; sourceTree = "<group>"; };
 		E3F1EE432726E2AF00091C44 /* ShuffleList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShuffleList.swift; sourceTree = "<group>"; };
@@ -561,6 +564,7 @@
 				E32B4F3927FD961C0057F08D /* IsWiFiOn.swift */,
 				E32B4F3B27FD997A0057F08D /* GetRelatedWords.swift */,
 				E3EC4B14281598BE00FFFB27 /* GetQueryItemValueFromURL.swift */,
+				E3EC4B172815A1C400FFFB27 /* GetQueryItemsFromURL.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -867,6 +871,7 @@
 				E38EAAFA2729DD890055451B /* UnixTimeToDate.swift in Sources */,
 				E3F1EE482727074B00091C44 /* ReverseList.swift in Sources */,
 				E34B2545274D716A006B44A7 /* GetRunningApps.swift in Sources */,
+				E3EC4B182815A1C400FFFB27 /* GetQueryItemsFromURL.swift in Sources */,
 				0345FBFE277E9574006F63E8 /* TransformLists.swift in Sources */,
 				E387158A2725A7C6003155B0 /* RandomEmoji.swift in Sources */,
 				E34B2547274E126C006B44A7 /* SpellOutNumber.swift in Sources */,
@@ -899,6 +904,7 @@
 				E39F476F272D3DF600B99CB0 /* GetUniformTypeIdentifier.swift in Sources */,
 				E39F4755272D3DED00B99CB0 /* IntentHandler.swift in Sources */,
 				E39F476E272D3DF600B99CB0 /* RandomBoolean.swift in Sources */,
+				E3EC4B192815A1C400FFFB27 /* GetQueryItemsFromURL.swift in Sources */,
 				E38E6EB327CBC6C7005B990D /* GeoURI.swift in Sources */,
 				E3D3BDCD2743A72C00417A63 /* EditURL.swift in Sources */,
 				E32B4F3D27FD997A0057F08D /* GetRelatedWords.swift in Sources */,

@@ -165,6 +165,8 @@ final class IntentHandler: INExtension {
 			return GetRelatedWordsIntentHandler()
 		case is GetQueryItemValueFromURLIntent:
 			return GetQueryItemValueFromURLIntentHandler()
+		case is GetQueryItemsFromURLIntent:
+			return GetQueryItemsFromURLIntentHandler()
 		default:
 			assertionFailure("No handler for this intent")
 			return nil
