@@ -45,6 +45,7 @@
 		E324CA21271E990D00E7CA9B /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = E324CA20271E990D00E7CA9B /* Intents.intentdefinition */; };
 		E324CA23271E993F00E7CA9B /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = E324CA20271E990D00E7CA9B /* Intents.intentdefinition */; };
 		E324CA2B271EAAAC00E7CA9B /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = E324CA20271E990D00E7CA9B /* Intents.intentdefinition */; };
+		E32B4D64281B275F00B5C6D5 /* GetDeviceOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32B4D62281B275F00B5C6D5 /* GetDeviceOrientation.swift */; };
 		E32B4F3627FD777D0057F08D /* ExceptionCatcher in Frameworks */ = {isa = PBXBuildFile; productRef = E32B4F3527FD777D0057F08D /* ExceptionCatcher */; };
 		E32B4F3827FD78580057F08D /* ExceptionCatcher in Frameworks */ = {isa = PBXBuildFile; productRef = E32B4F3727FD78580057F08D /* ExceptionCatcher */; };
 		E32B4F3A27FD961C0057F08D /* IsWiFiOn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32B4F3927FD961C0057F08D /* IsWiFiOn.swift */; };
@@ -270,6 +271,7 @@
 		E324CA24271E996800E7CA9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E324CA25271E996800E7CA9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E324CA29271EA67E00E7CA9B /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		E32B4D62281B275F00B5C6D5 /* GetDeviceOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDeviceOrientation.swift; sourceTree = "<group>"; };
 		E32B4F3927FD961C0057F08D /* IsWiFiOn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsWiFiOn.swift; sourceTree = "<group>"; };
 		E32B4F3B27FD997A0057F08D /* GetRelatedWords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRelatedWords.swift; sourceTree = "<group>"; };
 		E3327E98272C79F900AD5CC7 /* RemoveDuplicateLines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveDuplicateLines.swift; sourceTree = "<group>"; };
@@ -569,6 +571,7 @@
 				E3EC4B14281598BE00FFFB27 /* GetQueryItemValueFromURL.swift */,
 				E3EC4B172815A1C400FFFB27 /* GetQueryItemsFromURL.swift */,
 				E3EC4B1A2815BF5E00FFFB27 /* GetQueryItemsFromURLAsDictionary.swift */,
+				E32B4D62281B275F00B5C6D5 /* GetDeviceOrientation.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -960,6 +963,7 @@
 				E3BFF7AC27422F6700B830DE /* IsDarkMode.swift in Sources */,
 				E39F476D272D3DF600B99CB0 /* GetFilePath.swift in Sources */,
 				E39F475F272D3DF600B99CB0 /* SortList.swift in Sources */,
+				E32B4D64281B275F00B5C6D5 /* GetDeviceOrientation.swift in Sources */,
 				E324536F273FB40600B07EBF /* SendFeedback.swift in Sources */,
 				E39F476A272D3DF600B99CB0 /* TransformText.swift in Sources */,
 				E39F4762272D3DF600B99CB0 /* RandomEmoji.swift in Sources */,

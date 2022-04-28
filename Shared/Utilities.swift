@@ -30,6 +30,7 @@ typealias XApplicationDelegateAdaptor = NSApplicationDelegateAdaptor
 typealias XScreen = NSScreen
 #elseif canImport(UIKit)
 import VisionKit
+import CoreMotion
 
 typealias XColor = UIColor
 typealias XFont = UIFont
@@ -4706,5 +4707,85 @@ extension Collection {
 	*/
 	func uniqueRandomIndices(maxCount: Int) -> [Index] {
 		uniqueRandomIndices(maxCount: maxCount, using: &.system)
+	}
+}
+
+
+extension UIDevice {
+	private static func getOrientation(for data: CMAccelerometerData) -> UIDeviceOrientation {
+		let absAccelerationX = abs(data.acceleration.x)
+		let absAccelerationY = abs(data.acceleration.y)
+		let absAccelerationZ = abs(data.acceleration.z)
+
+		if absAccelerationZ > max(absAccelerationX, absAccelerationY) {
+			return data.acceleration.z < 0 ? .faceUp : .faceDown
+		} else if absAccelerationX > absAccelerationY {
+			return data.acceleration.x > 0 ? .landscapeRight : .landscapeLeft
+		} else if absAccelerationX < absAccelerationY {
+			return data.acceleration.y < 0 ? .portrait : .portraitUpsideDown
+		}
+
+		return .unknown
+	}
+
+	func orientationStream(interval: TimeInterval) -> AsyncThrowingStream<UIDeviceOrientation, Error> {
+		.init { continuation in
+			let motionManager = CMMotionManager()
+
+			guard motionManager.isDeviceMotionAvailable else {
+				continuation.finish(throwing: NSError.appError("This device does not provide orientation info."))
+				return
+			}
+
+			motionManager.accelerometerUpdateInterval = interval
+
+			motionManager.startAccelerometerUpdates(to: OperationQueue()) { data, error in
+				if let error = error {
+					continuation.finish(throwing: error)
+					return
+				}
+
+				guard let data = data else {
+					continuation.yield(.unknown)
+					return
+				}
+
+				continuation.yield(Self.getOrientation(for: data))
+			}
+
+			continuation.onTermination = { [motionManager] _ in
+				motionManager.stopAccelerometerUpdates()
+			}
+		}
+	}
+
+	var orientationBetter: UIDeviceOrientation {
+		get async throws {
+			(try await orientationStream(interval: 0.001).first { _ in true }) ?? .unknown
+		}
+	}
+}
+
+extension UIDeviceOrientation: CustomStringConvertible {
+	public var description: String {
+		switch self {
+		case .faceDown:
+			return "faceDown"
+		case .faceUp:
+			return "faceUp"
+		case .landscapeLeft:
+			return "landscapeLeft"
+		case .landscapeRight:
+			return "landscapeRight"
+		case .portrait:
+			return "portrait"
+		case .portraitUpsideDown:
+			return "portraitUpsideDown"
+		case .unknown:
+			return "unknown"
+		@unknown default:
+			assertionFailure()
+			return "unknown"
+		}
 	}
 }

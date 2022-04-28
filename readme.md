@@ -46,6 +46,7 @@ Requires macOS 12 or iOS 15 and later.
 - Generate UUID
 - Get Audio Playback Destination <sup>(iOS-only)</sup>
 - Get Battery State
+- Get Device Orientation <sup>(iOS-only)</sup>
 - Get Emojis
 - Get File Icon <sup>(macOS-only)</sup>
 - Get File Path

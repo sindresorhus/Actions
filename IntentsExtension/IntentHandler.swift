@@ -169,6 +169,10 @@ final class IntentHandler: INExtension {
 			return GetQueryItemsFromURLIntentHandler()
 		case is GetQueryItemsFromURLAsDictionaryIntent:
 			return GetQueryItemsFromURLAsDictionaryIntentHandler()
+		#if canImport(UIKit)
+		case is GetDeviceOrientationIntent:
+			return GetDeviceOrientationIntentHandler()
+		#endif
 		default:
 			assertionFailure("No handler for this intent")
 			return nil

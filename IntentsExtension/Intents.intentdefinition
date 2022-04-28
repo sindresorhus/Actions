@@ -1308,6 +1308,89 @@
 				</dict>
 			</array>
 		</dict>
+		<dict>
+			<key>INEnumDisplayName</key>
+			<string>Device Orientation</string>
+			<key>INEnumDisplayNameID</key>
+			<string>q8Zi8I</string>
+			<key>INEnumGeneratesHeader</key>
+			<true/>
+			<key>INEnumName</key>
+			<string>DeviceOrientation_</string>
+			<key>INEnumType</key>
+			<string>Regular</string>
+			<key>INEnumValues</key>
+			<array>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>unknown</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>Dno8lZ</string>
+					<key>INEnumValueName</key>
+					<string>unknown</string>
+				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>portrait</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>JgHTRY</string>
+					<key>INEnumValueIndex</key>
+					<integer>1</integer>
+					<key>INEnumValueName</key>
+					<string>portrait</string>
+				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>portraitUpsideDown</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>BvEzv5</string>
+					<key>INEnumValueIndex</key>
+					<integer>2</integer>
+					<key>INEnumValueName</key>
+					<string>portraitUpsideDown</string>
+				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>landscapeLeft</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>fY3ZBx</string>
+					<key>INEnumValueIndex</key>
+					<integer>3</integer>
+					<key>INEnumValueName</key>
+					<string>landscapeLeft</string>
+				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>landscapeRight</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>fqx2sT</string>
+					<key>INEnumValueIndex</key>
+					<integer>4</integer>
+					<key>INEnumValueName</key>
+					<string>landscapeRight</string>
+				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>faceUp</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>8Su4mF</string>
+					<key>INEnumValueIndex</key>
+					<integer>5</integer>
+					<key>INEnumValueName</key>
+					<string>faceUp</string>
+				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>faceDown</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>feUnRk</string>
+					<key>INEnumValueIndex</key>
+					<integer>6</integer>
+					<key>INEnumValueName</key>
+					<string>faceDown</string>
+				</dict>
+			</array>
+		</dict>
 	</array>
 	<key>INIntentDefinitionModelVersion</key>
 	<string>1.2</string>
@@ -17635,6 +17718,105 @@
 			<string>Get Query Items from URL as Dictionary</string>
 			<key>INIntentTitleID</key>
 			<string>e6yRzD</string>
+			<key>INIntentType</key>
+			<string>Custom</string>
+			<key>INIntentVerb</key>
+			<string>View</string>
+		</dict>
+		<dict>
+			<key>INIntentCategory</key>
+			<string>information</string>
+			<key>INIntentConfigurable</key>
+			<true/>
+			<key>INIntentDescription</key>
+			<string>Gets the orientation of the device. For example, whether the device is portrait or facing down. Possible values: unknown, portrait, portraitUpsideDown, landscapeLeft, landscapeRight, faceUp, faceDown</string>
+			<key>INIntentDescriptionID</key>
+			<string>4nypF9</string>
+			<key>INIntentIneligibleForSuggestions</key>
+			<true/>
+			<key>INIntentManagedParameterCombinations</key>
+			<dict>
+				<key></key>
+				<dict>
+					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
+					<true/>
+					<key>INIntentParameterCombinationTitle</key>
+					<string>Get device orientation</string>
+					<key>INIntentParameterCombinationTitleID</key>
+					<string>n9DLJZ</string>
+					<key>INIntentParameterCombinationUpdatesLinked</key>
+					<true/>
+				</dict>
+			</dict>
+			<key>INIntentName</key>
+			<string>GetDeviceOrientation</string>
+			<key>INIntentResponse</key>
+			<dict>
+				<key>INIntentResponseCodes</key>
+				<array>
+					<dict>
+						<key>INIntentResponseCodeName</key>
+						<string>success</string>
+						<key>INIntentResponseCodeSuccess</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>INIntentResponseCodeConciseFormatString</key>
+						<string>${failure}</string>
+						<key>INIntentResponseCodeConciseFormatStringID</key>
+						<string>k5Ava7</string>
+						<key>INIntentResponseCodeFormatString</key>
+						<string>${failure}</string>
+						<key>INIntentResponseCodeFormatStringID</key>
+						<string>iEkhM6</string>
+						<key>INIntentResponseCodeName</key>
+						<string>failure</string>
+					</dict>
+				</array>
+				<key>INIntentResponseLastParameterTag</key>
+				<integer>3</integer>
+				<key>INIntentResponseOutput</key>
+				<string>result</string>
+				<key>INIntentResponseParameters</key>
+				<array>
+					<dict>
+						<key>INIntentResponseParameterDisplayName</key>
+						<string>Device Orientation</string>
+						<key>INIntentResponseParameterDisplayNameID</key>
+						<string>Gz1Pey</string>
+						<key>INIntentResponseParameterDisplayPriority</key>
+						<integer>1</integer>
+						<key>INIntentResponseParameterEnumType</key>
+						<string>DeviceOrientation_</string>
+						<key>INIntentResponseParameterEnumTypeNamespace</key>
+						<string>dQRoIy</string>
+						<key>INIntentResponseParameterName</key>
+						<string>result</string>
+						<key>INIntentResponseParameterTag</key>
+						<integer>2</integer>
+						<key>INIntentResponseParameterType</key>
+						<string>Integer</string>
+					</dict>
+					<dict>
+						<key>INIntentResponseParameterDisplayName</key>
+						<string>Failure</string>
+						<key>INIntentResponseParameterDisplayNameID</key>
+						<string>YEi5YH</string>
+						<key>INIntentResponseParameterDisplayPriority</key>
+						<integer>2</integer>
+						<key>INIntentResponseParameterName</key>
+						<string>failure</string>
+						<key>INIntentResponseParameterTag</key>
+						<integer>3</integer>
+						<key>INIntentResponseParameterType</key>
+						<string>String</string>
+					</dict>
+				</array>
+			</dict>
+			<key>INIntentTitle</key>
+			<string>Get Device Orientation (iOS-only)</string>
+			<key>INIntentTitleID</key>
+			<string>BaEtyT</string>
 			<key>INIntentType</key>
 			<string>Custom</string>
 			<key>INIntentVerb</key>

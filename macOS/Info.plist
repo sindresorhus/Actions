@@ -37,6 +37,7 @@
 		<string>GeoURIIntent</string>
 		<string>GetAudioPlaybackDestinationIntent</string>
 		<string>GetBatteryStateIntent</string>
+		<string>GetDeviceOrientationIntent</string>
 		<string>GetEmojisIntent</string>
 		<string>GetFileIconIntent</string>
 		<string>GetFilePathIntent</string>

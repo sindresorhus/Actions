@@ -27,6 +27,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Generate UUID
 - Get Audio Playback Destination (iOS-only)
 - Get Battery State
+- Get Device Orientation (iOS-only)
 - Get Emojis
 - Get File Icon (macOS-only)
 - Get File Path
