@@ -53,6 +53,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Is Bluetooth On
 - Is Connected to VPN (iOS-only)
 - Is Dark Mode On
+- Is Device Orientation (iOS-only)
 - Is Low Power Mode On
 - Is Online
 - Is Reachable

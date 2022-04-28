@@ -53,6 +53,7 @@
 				<string>IsBluetoothOnIntent</string>
 				<string>IsConnectedToVPNIntent</string>
 				<string>IsDarkModeIntent</string>
+				<string>IsDeviceOrientationIntent</string>
 				<string>IsLowPowerModeIntent</string>
 				<string>IsOnlineIntent</string>
 				<string>IsReachableIntent</string>

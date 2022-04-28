@@ -172,6 +172,8 @@ final class IntentHandler: INExtension {
 		#if canImport(UIKit)
 		case is GetDeviceOrientationIntent:
 			return GetDeviceOrientationIntentHandler()
+		case is IsDeviceOrientationIntent:
+			return IsDeviceOrientationIntentHandler()
 		#endif
 		default:
 			assertionFailure("No handler for this intent")
