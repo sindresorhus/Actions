@@ -14,6 +14,7 @@ import Network
 import TabularData
 import Speech
 import NaturalLanguage
+import JavaScriptCore
 import Regex
 
 #if canImport(AppKit)
@@ -4711,6 +4712,7 @@ extension Collection {
 }
 
 
+#if canImport(UIKit)
 extension UIDevice {
 	private static func getOrientation(for data: CMAccelerometerData) -> UIDeviceOrientation {
 		let absAccelerationX = abs(data.acceleration.x)
@@ -4787,5 +4789,64 @@ extension UIDeviceOrientation: CustomStringConvertible {
 			assertionFailure()
 			return "unknown"
 		}
+	}
+}
+#endif
+
+
+extension Locale {
+	/**
+	The identifier browsers use.
+
+	This differs from `.identifier` by using a dash instead of underscore.
+
+	https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locale_identification_and_negotiation
+	*/
+	var bcp47Identifier: String {
+		identifier.replacingOccurrences(of: "_", with: "-")
+	}
+}
+
+
+extension Double {
+	/**
+	Formats the number with compact style.
+
+	```
+	let number = 12345591313.0
+
+	print(number.formatWithCompactStyle())
+	//=> "12 billion"
+	```
+	*/
+	func formatWithCompactStyle(
+		abbreviatedUnit: Bool = false,
+		locale: Locale = .current
+	) -> String? {
+		guard let context = JSContext() else {
+			return nil
+		}
+
+		context.exceptionHandler = { _, exception in
+			assertionFailure(exception?.toString() ?? "")
+		}
+
+		// TODO: Setting `minimumFractionDigits: 1, maximumFractionDigits: 1,` seems to have no effect and does not preserve one fraction digit. (macOS 12.3.1)
+		// I can set `roundingPriority: 'morePrecision'`, but then it shows all the fraction digits.
+
+		context.evaluateScript(
+			"""
+			function format(number, abbreviatedUnit, locale) {
+			   return new Intl.NumberFormat(locale, {
+				   notation: 'compact',
+				   compactDisplay: abbreviatedUnit ? 'short' : 'long'
+			   }).format(number);
+			}
+			"""
+		)
+
+		let format = context.objectForKeyedSubscript("format")
+
+		return format?.call(withArguments: [self, abbreviatedUnit, locale.bcp47Identifier]).toString()
 	}
 }

@@ -175,6 +175,8 @@ final class IntentHandler: INExtension {
 		case is IsDeviceOrientationIntent:
 			return IsDeviceOrientationIntentHandler()
 		#endif
+		case is FormatNumberCompactIntent:
+			return FormatNumberCompactIntentHandler()
 		default:
 			assertionFailure("No handler for this intent")
 			return nil

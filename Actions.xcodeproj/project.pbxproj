@@ -52,6 +52,8 @@
 		E32B4F3A27FD961C0057F08D /* IsWiFiOn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32B4F3927FD961C0057F08D /* IsWiFiOn.swift */; };
 		E32B4F3C27FD997A0057F08D /* GetRelatedWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32B4F3B27FD997A0057F08D /* GetRelatedWords.swift */; };
 		E32B4F3D27FD997A0057F08D /* GetRelatedWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32B4F3B27FD997A0057F08D /* GetRelatedWords.swift */; };
+		E32BF87A281E7645001F0755 /* FormatNumberCompact.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32BF879281E7645001F0755 /* FormatNumberCompact.swift */; };
+		E32BF87B281E7645001F0755 /* FormatNumberCompact.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32BF879281E7645001F0755 /* FormatNumberCompact.swift */; };
 		E3327E97272C68DE00AD5CC7 /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = E3327E96272C68DE00AD5CC7 /* Sentry */; };
 		E3327E99272C79F900AD5CC7 /* RemoveDuplicateLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3327E98272C79F900AD5CC7 /* RemoveDuplicateLines.swift */; };
 		E3327E9B272D22DC00AD5CC7 /* AddToList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3327E9A272D22DC00AD5CC7 /* AddToList.swift */; };
@@ -276,6 +278,7 @@
 		E32B4D62281B275F00B5C6D5 /* GetDeviceOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDeviceOrientation.swift; sourceTree = "<group>"; };
 		E32B4F3927FD961C0057F08D /* IsWiFiOn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsWiFiOn.swift; sourceTree = "<group>"; };
 		E32B4F3B27FD997A0057F08D /* GetRelatedWords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRelatedWords.swift; sourceTree = "<group>"; };
+		E32BF879281E7645001F0755 /* FormatNumberCompact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatNumberCompact.swift; sourceTree = "<group>"; };
 		E3327E98272C79F900AD5CC7 /* RemoveDuplicateLines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveDuplicateLines.swift; sourceTree = "<group>"; };
 		E3327E9A272D22DC00AD5CC7 /* AddToList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToList.swift; sourceTree = "<group>"; };
 		E337A3DC27E84E8A0073E865 /* ChooseFromListExtended.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseFromListExtended.swift; sourceTree = "<group>"; };
@@ -575,6 +578,7 @@
 				E3EC4B1A2815BF5E00FFFB27 /* GetQueryItemsFromURLAsDictionary.swift */,
 				E32B4D62281B275F00B5C6D5 /* GetDeviceOrientation.swift */,
 				E30E1740281B3DE80047C4BB /* IsDeviceOrientation.swift */,
+				E32BF879281E7645001F0755 /* FormatNumberCompact.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -895,6 +899,7 @@
 				E3DF2EBF27293225009127CA /* SampleColor.swift in Sources */,
 				E38FB4EB273EDCD600FF3C9A /* TruncateList.swift in Sources */,
 				E3028092275D7E2C001FB6B8 /* GetFileIcon.swift in Sources */,
+				E32BF87A281E7645001F0755 /* FormatNumberCompact.swift in Sources */,
 				E3D3BDCC2743A72C00417A63 /* EditURL.swift in Sources */,
 				E3BFF7BA2742C7BD00B830DE /* GetUserDetails.swift in Sources */,
 				E3DF2EBD272931C3009127CA /* RandomColor.swift in Sources */,
@@ -976,6 +981,7 @@
 				E35A806D274CF80D00BE7B07 /* RemoveNonPrintableCharacters.swift in Sources */,
 				E38FB4EC273EDCD600FF3C9A /* TruncateList.swift in Sources */,
 				E33DFF652748BEDD00C79D78 /* GetTitleOfURL.swift in Sources */,
+				E32BF87B281E7645001F0755 /* FormatNumberCompact.swift in Sources */,
 				E34B2548274E126C006B44A7 /* SpellOutNumber.swift in Sources */,
 				E3EC4B16281598BE00FFFB27 /* GetQueryItemValueFromURL.swift in Sources */,
 				E321D1E6278EF80200D80571 /* TruncateText.swift in Sources */,

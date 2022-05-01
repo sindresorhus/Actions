@@ -41,6 +41,7 @@ Requires macOS 12 or iOS 15 and later.
 - Format Currency
 - Format Date Difference
 - Format Duration
+- Format Number — Compact
 - Generate CSV
 - Generate Haptic Feedback <sup>(iOS-only)</sup>
 - Generate UUID
