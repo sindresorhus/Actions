@@ -1633,7 +1633,7 @@
 			<key>INIntentConfigurable</key>
 			<true/>
 			<key>INIntentDescription</key>
-			<string>Transforms the input text to camel case, pascal case, snake case, constant case, or dash case.</string>
+			<string>Transforms the input text to camel case, pascal case, snake case, constant case, or dash case. It also has transliteration transformations.</string>
 			<key>INIntentDescriptionID</key>
 			<string>3rgnx2</string>
 			<key>INIntentIneligibleForSuggestions</key>
@@ -1651,7 +1651,7 @@
 					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
 					<true/>
 					<key>INIntentParameterCombinationTitle</key>
-					<string>Transform ${text} to ${transformation}</string>
+					<string>Transform ${text} using ${transformation}</string>
 					<key>INIntentParameterCombinationTitleID</key>
 					<string>heq0vY</string>
 					<key>INIntentParameterCombinationUpdatesLinked</key>
@@ -15845,7 +15845,7 @@
 			<key>INIntentConfigurable</key>
 			<true/>
 			<key>INIntentDescription</key>
-			<string>Converts the speech in the input audio file to text. See the built-in "Dictate Text" action if you need to transcribe in real-time. (If you have permission issues even after granting access, try removing the action from your shortcut, force quit Shortcuts and Actions, and then add the action again).</string>
+			<string>Converts the speech in the input audio file to text. Note that the transcription is slow. See the built-in "Dictate Text" action if you need to transcribe in real-time. (If you have permission issues even after granting access, try removing the action from your shortcut, force quit Shortcuts and Actions, and then add the action again).</string>
 			<key>INIntentDescriptionID</key>
 			<string>UNvvX5</string>
 			<key>INIntentIneligibleForSuggestions</key>
@@ -15958,7 +15958,7 @@
 					<key>INIntentParameterConfigurable</key>
 					<true/>
 					<key>INIntentParameterDisplayName</key>
-					<string>Perform Offline (less accurate)</string>
+					<string>Perform Offline (buggy, don't use)</string>
 					<key>INIntentParameterDisplayNameID</key>
 					<string>71QmZh</string>
 					<key>INIntentParameterDisplayPriority</key>

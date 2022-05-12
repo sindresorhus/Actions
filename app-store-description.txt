@@ -2,6 +2,8 @@ Supercharge your shortcuts with lots of useful actions.
 
 It provides additional actions for the Shortcuts app.
 
+The actions are not able to run on Apple Watch or HomePod.
+
 The app is free without ads because I love making apps. Consider leaving a nice review.
 
 

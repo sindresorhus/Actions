@@ -529,7 +529,7 @@ extension Device {
 
 extension Dictionary {
 	func compactValues<T>() -> [Key: T] where Value == T? {
-		// TODO: Make this `compactMapValues(\.self)` when https://bugs.swift.org/browse/SR-12897 is fixed.
+		// TODO: Make this `compactMapValues(\.self)` when https://github.com/apple/swift/issues/55343 is fixed.
 		compactMapValues { $0 }
 	}
 }
@@ -2464,7 +2464,7 @@ extension Data {
 
 extension Sequence {
 	func compact<T>() -> [T] where Element == T? {
-		// TODO: Make this `compactMap(\.self)` when https://bugs.swift.org/browse/SR-12897 is fixed.
+		// TODO: Make this `compactMap(\.self)` when https://github.com/apple/swift/issues/55343 is fixed.
 		compactMap { $0 }
 	}
 }
@@ -2472,7 +2472,7 @@ extension Sequence {
 
 extension Sequence where Element: Sequence {
 	func flatten() -> [Element.Element] {
-		// TODO: Make this `flatMap(\.self)` when https://bugs.swift.org/browse/SR-12897 is fixed.
+		// TODO: Make this `flatMap(\.self)` when https://github.com/apple/swift/issues/55343 is fixed.
 		flatMap { $0 }
 	}
 }
@@ -2707,7 +2707,7 @@ enum Bluetooth {
 			}
 
 			let recoverySuggestion = OS.current == .macOS
-				? "You can grant access in “System Preferences › Security & Privacy › Bluetooth”."
+				? "You can grant access in “System Settings › Privacy & Security › Bluetooth”."
 				: "You can grant access in “Settings › \(SSApp.name)”."
 
 			let error = NSError.appError("No access to Bluetooth.", recoverySuggestion: recoverySuggestion)
@@ -4295,6 +4295,8 @@ extension View {
 
 extension SFSpeechRecognizer {
 	func recognitionTask(with request: SFSpeechRecognitionRequest) async throws -> SFSpeechRecognitionResult {
+		request.shouldReportPartialResults = false
+
 		var task: SFSpeechRecognitionTask?
 
 		return try await withTaskCancellationHandler {
@@ -4307,6 +4309,11 @@ extension SFSpeechRecognizer {
 
 					guard let result = result else {
 						assertionFailure()
+						return
+					}
+
+					// `.isFinal` can be `false` even when `.shouldReportPartialResults = false`.
+					guard result.isFinal else {
 						return
 					}
 

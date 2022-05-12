@@ -34,10 +34,7 @@ final class TranscribeAudioIntentHandler: NSObject, TranscribeAudioIntentHandlin
 			return .failure(failure: "No access to speech recognition. \(recoverySuggestion)")
 		}
 
-		var locale = Locale.autoupdatingCurrent
-		if let localeIdentifier = intent.locale?.identifier {
-			locale = Locale(identifier: localeIdentifier)
-		}
+		let locale = intent.locale?.identifier.map { Locale(identifier: $0) } ?? .autoupdatingCurrent
 
 		guard let recognizer = SFSpeechRecognizer(locale: locale) else {
 			return .failure(failure: "Unsupported locale.")
@@ -63,6 +60,13 @@ final class TranscribeAudioIntentHandler: NSObject, TranscribeAudioIntentHandlin
 
 			response.result = try await recognizer.recognitionTask(with: request).bestTranscription.formattedString
 		} catch {
+			let nsError = error as NSError
+
+			// "No speech detected" error
+			if nsError.domain == "kAFAssistantErrorDomain", nsError.code == 1110 {
+				return response
+			}
+
 			return .failure(failure: error.presentableMessage)
 		}
 

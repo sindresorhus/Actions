@@ -17,6 +17,8 @@ The app provides lots of powerful extra actions for the Shortcuts app on macOS a
 [**Submit action idea**](https://github.com/sindresorhus/Actions/issues/new/choose)\
 <sub>*(Submit an issue before [submitting a pull request](.github/contributing.md))*</sub>
 
+**Pull requests are temporarily not accepted!** This is because Apple is changing the ways shortcuts actions are [made](https://developer.apple.com/documentation/appintents/) and I don't want to add more actions using the old way.
+
 ## Download
 
 [![](https://sindresorhus.com/assets/download-on-app-store-badge.svg)](https://apps.apple.com/app/id1586435171)
