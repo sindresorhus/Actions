@@ -40,10 +40,10 @@ final class TransformTextIntentHandler: NSObject, TransformTextIntentHandling {
 			response.result = intent.text?.dashCasing()
 		case .transliterateToArabic:
 			response.result = intent.text?.applyingTransform(.latinToArabic, reverse: false)
-		case .transliterateToGreek:
-			response.result = intent.text?.applyingTransform(.latinToGreek, reverse: false)
 		case .transliterateToCyrillic:
 			response.result = intent.text?.applyingTransform(.latinToCyrillic, reverse: false)
+		case .transliterateToGreek:
+			response.result = intent.text?.applyingTransform(.latinToGreek, reverse: false)
 		case .transliterateToHebrew:
 			response.result = intent.text?.applyingTransform(.latinToHebrew, reverse: false)
 		case .transliterateToLatin:

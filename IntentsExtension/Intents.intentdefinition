@@ -87,16 +87,6 @@
 				</dict>
 				<dict>
 					<key>INEnumValueDisplayName</key>
-					<string>Transliterate to Greek Script</string>
-					<key>INEnumValueDisplayNameID</key>
-					<string>NMzq3M</string>
-					<key>INEnumValueIndex</key>
-					<integer>7</integer>
-					<key>INEnumValueName</key>
-					<string>transliterateToGreek</string>
-				</dict>
-				<dict>
-					<key>INEnumValueDisplayName</key>
 					<string>Transliterate to Cyrillic Script</string>
 					<key>INEnumValueDisplayNameID</key>
 					<string>l26jLj</string>
@@ -104,6 +94,16 @@
 					<integer>8</integer>
 					<key>INEnumValueName</key>
 					<string>transliterateToCyrillic</string>
+				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>Transliterate to Greek Script</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>NMzq3M</string>
+					<key>INEnumValueIndex</key>
+					<integer>7</integer>
+					<key>INEnumValueName</key>
+					<string>transliterateToGreek</string>
 				</dict>
 				<dict>
 					<key>INEnumValueDisplayName</key>
