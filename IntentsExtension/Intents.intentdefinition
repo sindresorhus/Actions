@@ -75,6 +75,56 @@
 					<key>INEnumValueName</key>
 					<string>dashCase</string>
 				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>Transliterate to Arabic Script</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>vPCNJJ</string>
+					<key>INEnumValueIndex</key>
+					<integer>6</integer>
+					<key>INEnumValueName</key>
+					<string>transliterateToArabic</string>
+				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>Transliterate to Greek Script</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>NMzq3M</string>
+					<key>INEnumValueIndex</key>
+					<integer>7</integer>
+					<key>INEnumValueName</key>
+					<string>transliterateToGreek</string>
+				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>Transliterate to Cyrillic Script</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>l26jLj</string>
+					<key>INEnumValueIndex</key>
+					<integer>8</integer>
+					<key>INEnumValueName</key>
+					<string>transliterateToCyrillic</string>
+				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>Transliterate to Hebrew Script</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>XclN0W</string>
+					<key>INEnumValueIndex</key>
+					<integer>9</integer>
+					<key>INEnumValueName</key>
+					<string>transliterateToHebrew</string>
+				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>Transliterate to Latin Script</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>DVDHEB</string>
+					<key>INEnumValueIndex</key>
+					<integer>10</integer>
+					<key>INEnumValueName</key>
+					<string>transliterateToLatin</string>
+				</dict>
 			</array>
 		</dict>
 		<dict>
@@ -1510,11 +1560,11 @@
 	<key>INIntentDefinitionNamespace</key>
 	<string>dQRoIy</string>
 	<key>INIntentDefinitionSystemVersion</key>
-	<string>21E258</string>
+	<string>21F79</string>
 	<key>INIntentDefinitionToolsBuildVersion</key>
-	<string>13E500a</string>
+	<string>13F100</string>
 	<key>INIntentDefinitionToolsVersion</key>
-	<string>13.3.1</string>
+	<string>13.4.1</string>
 	<key>INIntents</key>
 	<array>
 		<dict>
