@@ -77,53 +77,113 @@
 				</dict>
 				<dict>
 					<key>INEnumValueDisplayName</key>
-					<string>Transliterate to Arabic Script</string>
+					<string>Transliterate Latin to Arabic</string>
 					<key>INEnumValueDisplayNameID</key>
 					<string>vPCNJJ</string>
 					<key>INEnumValueIndex</key>
 					<integer>6</integer>
 					<key>INEnumValueName</key>
-					<string>transliterateToArabic</string>
+					<string>transliterateLatinToArabic</string>
 				</dict>
 				<dict>
 					<key>INEnumValueDisplayName</key>
-					<string>Transliterate to Cyrillic Script</string>
+					<string>Transliterate Latin to Cyrillic</string>
 					<key>INEnumValueDisplayNameID</key>
 					<string>l26jLj</string>
 					<key>INEnumValueIndex</key>
 					<integer>8</integer>
 					<key>INEnumValueName</key>
-					<string>transliterateToCyrillic</string>
+					<string>transliterateLatinToCyrillic</string>
 				</dict>
 				<dict>
 					<key>INEnumValueDisplayName</key>
-					<string>Transliterate to Greek Script</string>
+					<string>Transliterate Latin to Greek</string>
 					<key>INEnumValueDisplayNameID</key>
 					<string>NMzq3M</string>
 					<key>INEnumValueIndex</key>
 					<integer>7</integer>
 					<key>INEnumValueName</key>
-					<string>transliterateToGreek</string>
+					<string>transliterateLatinToGreek</string>
 				</dict>
 				<dict>
 					<key>INEnumValueDisplayName</key>
-					<string>Transliterate to Hebrew Script</string>
+					<string>Transliterate Latin to Hebrew</string>
 					<key>INEnumValueDisplayNameID</key>
 					<string>XclN0W</string>
 					<key>INEnumValueIndex</key>
 					<integer>9</integer>
 					<key>INEnumValueName</key>
-					<string>transliterateToHebrew</string>
+					<string>transliterateLatinToHebrew</string>
 				</dict>
 				<dict>
 					<key>INEnumValueDisplayName</key>
-					<string>Transliterate to Latin Script</string>
+					<string>Transliterate Latin to Hangul</string>
 					<key>INEnumValueDisplayNameID</key>
-					<string>DVDHEB</string>
+					<string>aiBnWz</string>
 					<key>INEnumValueIndex</key>
 					<integer>10</integer>
 					<key>INEnumValueName</key>
+					<string>transliterateLatinToHangul</string>
+				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>Transliterate Latin to Hiragana</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>6bNZ4G</string>
+					<key>INEnumValueIndex</key>
+					<integer>11</integer>
+					<key>INEnumValueName</key>
+					<string>transliterateLatinToHiragana</string>
+				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>Transliterate Latin to Thai</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>YT1fEG</string>
+					<key>INEnumValueIndex</key>
+					<integer>12</integer>
+					<key>INEnumValueName</key>
+					<string>transliterateLatinToThai</string>
+				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>Transliterate Hiragana to Katakana</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>8HgoFm</string>
+					<key>INEnumValueIndex</key>
+					<integer>13</integer>
+					<key>INEnumValueName</key>
+					<string>transliterateHiraganaToKatakana</string>
+				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>Transliterate Mandarin to Latin</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>hiiJEm</string>
+					<key>INEnumValueIndex</key>
+					<integer>14</integer>
+					<key>INEnumValueName</key>
+					<string>transliterateMandarinToLatin</string>
+				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>Transliterate to Latin</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>NOmR1N</string>
+					<key>INEnumValueIndex</key>
+					<integer>15</integer>
+					<key>INEnumValueName</key>
 					<string>transliterateToLatin</string>
+				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>Strip Diacritics</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>PF3awH</string>
+					<key>INEnumValueIndex</key>
+					<integer>16</integer>
+					<key>INEnumValueName</key>
+					<string>stripDiacritics</string>
 				</dict>
 			</array>
 		</dict>
