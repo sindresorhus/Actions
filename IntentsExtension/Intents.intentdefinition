@@ -75,6 +75,116 @@
 					<key>INEnumValueName</key>
 					<string>dashCase</string>
 				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>Transliterate Latin to Arabic</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>vPCNJJ</string>
+					<key>INEnumValueIndex</key>
+					<integer>6</integer>
+					<key>INEnumValueName</key>
+					<string>transliterateLatinToArabic</string>
+				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>Transliterate Latin to Cyrillic</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>l26jLj</string>
+					<key>INEnumValueIndex</key>
+					<integer>8</integer>
+					<key>INEnumValueName</key>
+					<string>transliterateLatinToCyrillic</string>
+				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>Transliterate Latin to Greek</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>NMzq3M</string>
+					<key>INEnumValueIndex</key>
+					<integer>7</integer>
+					<key>INEnumValueName</key>
+					<string>transliterateLatinToGreek</string>
+				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>Transliterate Latin to Hebrew</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>XclN0W</string>
+					<key>INEnumValueIndex</key>
+					<integer>9</integer>
+					<key>INEnumValueName</key>
+					<string>transliterateLatinToHebrew</string>
+				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>Transliterate Latin to Hangul</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>aiBnWz</string>
+					<key>INEnumValueIndex</key>
+					<integer>10</integer>
+					<key>INEnumValueName</key>
+					<string>transliterateLatinToHangul</string>
+				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>Transliterate Latin to Hiragana</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>6bNZ4G</string>
+					<key>INEnumValueIndex</key>
+					<integer>11</integer>
+					<key>INEnumValueName</key>
+					<string>transliterateLatinToHiragana</string>
+				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>Transliterate Latin to Thai</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>YT1fEG</string>
+					<key>INEnumValueIndex</key>
+					<integer>12</integer>
+					<key>INEnumValueName</key>
+					<string>transliterateLatinToThai</string>
+				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>Transliterate Hiragana to Katakana</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>8HgoFm</string>
+					<key>INEnumValueIndex</key>
+					<integer>13</integer>
+					<key>INEnumValueName</key>
+					<string>transliterateHiraganaToKatakana</string>
+				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>Transliterate Mandarin to Latin</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>hiiJEm</string>
+					<key>INEnumValueIndex</key>
+					<integer>14</integer>
+					<key>INEnumValueName</key>
+					<string>transliterateMandarinToLatin</string>
+				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>Transliterate to Latin</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>NOmR1N</string>
+					<key>INEnumValueIndex</key>
+					<integer>15</integer>
+					<key>INEnumValueName</key>
+					<string>transliterateToLatin</string>
+				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>Strip Diacritics</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>PF3awH</string>
+					<key>INEnumValueIndex</key>
+					<integer>16</integer>
+					<key>INEnumValueName</key>
+					<string>stripDiacritics</string>
+				</dict>
 			</array>
 		</dict>
 		<dict>
@@ -1510,11 +1620,11 @@
 	<key>INIntentDefinitionNamespace</key>
 	<string>dQRoIy</string>
 	<key>INIntentDefinitionSystemVersion</key>
-	<string>21E258</string>
+	<string>21F79</string>
 	<key>INIntentDefinitionToolsBuildVersion</key>
-	<string>13E500a</string>
+	<string>13F100</string>
 	<key>INIntentDefinitionToolsVersion</key>
-	<string>13.3.1</string>
+	<string>13.4.1</string>
 	<key>INIntents</key>
 	<array>
 		<dict>

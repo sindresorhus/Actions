@@ -38,6 +38,28 @@ final class TransformTextIntentHandler: NSObject, TransformTextIntentHandling {
 			response.result = intent.text?.constantCasing()
 		case .dashCase:
 			response.result = intent.text?.dashCasing()
+		case .transliterateLatinToArabic:
+			response.result = intent.text?.applyingTransform(.latinToArabic, reverse: false)
+		case .transliterateLatinToCyrillic:
+			response.result = intent.text?.applyingTransform(.latinToCyrillic, reverse: false)
+		case .transliterateLatinToGreek:
+			response.result = intent.text?.applyingTransform(.latinToGreek, reverse: false)
+		case .transliterateLatinToHebrew:
+			response.result = intent.text?.applyingTransform(.latinToHebrew, reverse: false)
+		case .transliterateLatinToHangul:
+			response.result = intent.text?.applyingTransform(.latinToHangul, reverse: false)
+		case .transliterateLatinToHiragana:
+			response.result = intent.text?.applyingTransform(.latinToHiragana, reverse: false)
+		case .transliterateLatinToThai:
+			response.result = intent.text?.applyingTransform(.latinToThai, reverse: false)
+		case .transliterateHiraganaToKatakana:
+			response.result = intent.text?.applyingTransform(.hiraganaToKatakana, reverse: false)
+		case .transliterateMandarinToLatin:
+			response.result = intent.text?.applyingTransform(.mandarinToLatin, reverse: false)
+		case .transliterateToLatin:
+			response.result = intent.text?.applyingTransform(.toLatin, reverse: false)
+		case .stripDiacritics:
+			response.result = intent.text?.applyingTransform(.stripDiacritics, reverse: false)
 		}
 
 		return response
