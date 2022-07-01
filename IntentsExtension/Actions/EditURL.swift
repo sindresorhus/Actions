@@ -72,10 +72,17 @@ final class EditURLIntentHandler: NSObject, EditURLIntentHandling {
 				urlComponents.path = path.trimmingCharacters(in: .whitespaces).ensurePrefix("/")
 			}
 		case .setScheme:
-			if let scheme = intent.setSchemeValue?.nilIfEmptyOrWhitespace {
-				urlComponents.scheme = scheme
+			if var scheme = intent.setSchemeValue?.nilIfEmptyOrWhitespace {
+				scheme = scheme
+					// Setting it to "https:" is not valid, but we gracefully handle that for the user.
 					.replacingSuffix("://", with: "")
 					.replacingSuffix(":", with: "")
+
+				guard URL.isValidScheme(scheme) else {
+					return .failure(failure: "Invalid URL scheme.")
+				}
+
+				urlComponents.scheme = scheme
 			}
 		case .setHost:
 			if let host = intent.setHostValue?.nilIfEmptyOrWhitespace {

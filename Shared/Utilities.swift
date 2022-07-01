@@ -1911,10 +1911,8 @@ protocol Option: RawRepresentable, Hashable, CaseIterable {}
 extension Set where Element: Option {
 	var rawValue: Int {
 		var rawValue = 0
-		for (index, element) in Element.allCases.enumerated() {
-			if contains(element) {
-				rawValue |= (1 << index)
-			}
+		for (index, element) in Element.allCases.enumerated() where contains(element) {
+			rawValue |= (1 << index)
 		}
 
 		return rawValue
@@ -2597,7 +2595,6 @@ extension URLRequest {
 		self.init(url: url, timeoutInterval: timeout)
 		self.method = method
 		self.allHTTPHeaderFields = headers
-		self.userAgent = UserAgent.default
 
 		if let contentType = contentType {
 			addContentType(contentType)
