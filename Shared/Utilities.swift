@@ -16,6 +16,7 @@ import Speech
 import NaturalLanguage
 import JavaScriptCore
 import Regex
+import CoreImage.CIFilterBuiltins
 
 #if canImport(AppKit)
 import IOKit.ps
@@ -3997,17 +3998,34 @@ extension CIImage {
 	It's sorted by confidence, highest confidence first.
 	*/
 	func readQRCodes() -> [CIQRCodeFeature] {
-		let detector = CIDetector(
-			ofType: CIDetectorTypeQRCode,
-			context: nil,
-			options: [
-				CIDetectorAccuracy: CIDetectorAccuracyHigh
-			]
-		)
+		guard
+			let detector = CIDetector(
+				ofType: CIDetectorTypeQRCode,
+				context: nil,
+				options: [
+					CIDetectorAccuracy: CIDetectorAccuracyHigh
+				]
+			)
+		else {
+			return []
+		}
 
-		return detector?
-			.features(in: self)
-			.compactMap { $0 as? CIQRCodeFeature } ?? []
+		var features = detector.features(in: self)
+
+		// If the image has transparency, the detector will replace the transparency with black, which means the black QR code will disappear. So if we have no matches, we try again with the colors inverted.
+		// Fixture: https://user-images.githubusercontent.com/713559/181952750-91804ebf-bc62-4346-8b60-a341c6d37c7e.png
+		if features.isEmpty {
+			let filter = CIFilter.colorInvert()
+			filter.inputImage = self
+
+			guard let outputImage = filter.outputImage else {
+				return []
+			}
+
+			features = detector.features(in: outputImage)
+		}
+
+		return features.compactMap { $0 as? CIQRCodeFeature }
 	}
 
 	/**
