@@ -4,7 +4,7 @@ import Intents
 @MainActor
 final class FormatCurrencyIntentHandler: NSObject, FormatCurrencyIntentHandling {
 	func provideCurrencyOptionsCollection(for intent: FormatCurrencyIntent) async throws -> INObjectCollection<Currency_> {
-		let items = Locale.currencyCodesWithLocalizedNameAndRegionName.map { currencyCode, localizedCurrencyName, localizedRegionName -> Currency_ in
+		let items = Locale.currencyCodesWithLocalizedNameAndRegionName.map { currencyCode, localizedCurrencyName, localizedRegionName in
 			let currency = Currency_(
 				identifier: currencyCode,
 				display: "\(currencyCode) — \(localizedCurrencyName)",

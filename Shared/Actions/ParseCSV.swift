@@ -10,6 +10,7 @@ final class ParseCSVIntentHandler: NSObject, ParseCSVIntentHandling {
 			return response
 		}
 
+		// TODO: Document what the auto-generated headers will look like: `Column 0`, etc.
 		let hasHeader = intent.hasHeader as? Bool ?? true
 
 		do {

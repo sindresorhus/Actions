@@ -1620,7 +1620,7 @@
 	<key>INIntentDefinitionNamespace</key>
 	<string>dQRoIy</string>
 	<key>INIntentDefinitionSystemVersion</key>
-	<string>21F79</string>
+	<string>21G72</string>
 	<key>INIntentDefinitionToolsBuildVersion</key>
 	<string>13F100</string>
 	<key>INIntentDefinitionToolsVersion</key>
@@ -15921,7 +15921,7 @@
 					<key>INIntentParameterConfigurable</key>
 					<true/>
 					<key>INIntentParameterDisplayName</key>
-					<string>Custom Locale</string>
+					<string>Custom Locale (Many of the locales do not work because of macOS/iOS bug)</string>
 					<key>INIntentParameterDisplayNameID</key>
 					<string>JIIZue</string>
 					<key>INIntentParameterDisplayPriority</key>

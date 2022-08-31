@@ -18,10 +18,8 @@ extension AppDelegate {
 			return TranscribeAudioIntentHandler()
 		case is GenerateCSVIntent:
 			return GenerateCSVIntentHandler()
-		#if canImport(AppKit)
 		case is IsScreenLockedIntent:
 			return IsScreenLockedIntentHandler()
-		#endif
 		default:
 			assertionFailure("No handler for this intent")
 			return nil

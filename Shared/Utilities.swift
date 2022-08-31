@@ -934,7 +934,7 @@ extension NSImage {
 		Self(size: size * scale, flipped: false) { bounds in
 			NSGraphicsContext.current?.imageInterpolation = .high
 
-			guard let cornerRadius = cornerRadius else {
+			guard let cornerRadius else {
 				color.set()
 				bounds.fill()
 				return true
@@ -1813,9 +1813,9 @@ extension View {
 	```
 	*/
 	@ViewBuilder
-	func ifOS<Content: View>(
+	func ifOS(
 		_ operatingSystems: OperatingSystem...,
-		modifier: (Self) -> Content
+		modifier: (Self) -> some View
 	) -> some View {
 		if operatingSystems.contains(.current) {
 			modifier(self)
@@ -2155,11 +2155,11 @@ extension URL {
 
 	```
 	try destinationURL.setResourceValues {
-		if let creationDate = creationDate {
+		if let creationDate {
 			$0.creationDate = creationDate
 		}
 
-		if let modificationDate = modificationDate {
+		if let modificationDate {
 			$0.contentModificationDate = modificationDate
 		}
 	}
@@ -2341,7 +2341,7 @@ extension CGImage {
 
 extension INFile {
 	var contentType: UTType? {
-		guard let typeIdentifier = typeIdentifier else {
+		guard let typeIdentifier else {
 			return nil
 		}
 
@@ -2492,11 +2492,11 @@ extension URLResponse {
 	var http: HTTPURLResponse? { self as? HTTPURLResponse }
 
 	func throwIfHTTPResponseButNotSuccessStatusCode() throws {
-		guard let httpURLResponse = http else {
+		guard let http else {
 			return
 		}
 
-		try httpURLResponse.throwIfNotSuccessStatusCode()
+		try http.throwIfNotSuccessStatusCode()
 	}
 }
 
@@ -2567,7 +2567,7 @@ extension URLRequest {
 		request.addValue(ContentType.json, forHTTPHeaderField: "Accept")
 		request.addValue(ContentType.json, forHTTPHeaderField: "Content-Type")
 
-		if let data = data {
+		if let data {
 			request.httpBody = data
 		}
 
@@ -2597,7 +2597,7 @@ extension URLRequest {
 		self.method = method
 		self.allHTTPHeaderFields = headers
 
-		if let contentType = contentType {
+		if let contentType {
 			addContentType(contentType)
 		}
 	}
@@ -2614,7 +2614,7 @@ extension URLRequest {
 	*/
 	var method: Method {
 		get {
-			guard let httpMethod = httpMethod else {
+			guard let httpMethod else {
 				return .get
 			}
 
@@ -2674,7 +2674,7 @@ extension NSError {
 		var userInfo = userInfo
 		userInfo[NSLocalizedDescriptionKey] = description
 
-		if let recoverySuggestion = recoverySuggestion {
+		if let recoverySuggestion {
 			userInfo[NSLocalizedRecoverySuggestionErrorKey] = recoverySuggestion
 		}
 
@@ -3056,24 +3056,50 @@ extension CNContactStore {
 			return nil
 		}
 
+		// "meIdentifier"
+		let key = String("reifitnedIem".reversed())
+
 		return containers.firstNonNil {
-			guard let identifier = $0.value(forKey: "meIdentifier") as? String else {
+			guard
+				$0.description.contains(key), // Safeguard
+				let identifier = $0.value(forKey: key) as? String,
+				let number = Int(identifier),
+				number != -1 // It returns `-1` if it has no "me" contact.
+			else {
 				return nil
 			}
 
-			return Int(identifier)
+			return number
 		}
 	}
+
+	// Cache
+	private static var meContactIdentifier: String?
 
 	/**
 	The “me” contact identifier, if any.
 	*/
 	func meContactIdentifier() -> String? {
-		let legacyMeIdentifier = legacyMeIdentifier
+		if let meContactIdentifier = Self.meContactIdentifier {
+			return meContactIdentifier
+		}
+
+		guard let legacyMeIdentifier else {
+			return nil
+		}
+
+		// "iOSLegacyIdentifier"
+		let key = String("reifitnedIycageLSOi".reversed())
+
 		var meIdentifier: String?
 
+		// TODO: Should I do `[key as NSString]` in keys to fetch?
+
 		try? enumerateContacts(with: .init(keysToFetch: [])) { contact, stop in
-			guard let legacyIdentifier = contact.value(forKey: "iOSLegacyIdentifier") as? Int else {
+			guard
+				contact.responds(to: .init(key)),
+				let legacyIdentifier = contact.value(forKey: key) as? Int
+			else {
 				return
 			}
 
@@ -3083,9 +3109,13 @@ extension CNContactStore {
 			}
 		}
 
+		Self.meContactIdentifier = meIdentifier
+
 		return meIdentifier
 	}
+}
 
+extension CNContactStore {
 	/**
 	The “me” contact, if any, as person name components.
 	*/
@@ -3125,9 +3155,9 @@ extension View {
 	```
 	*/
 	@ViewBuilder
-	func `if`<Content: View>(
+	func `if`(
 		_ condition: @autoclosure () -> Bool,
-		modify: (Self) -> Content
+		modify: (Self) -> some View
 	) -> some View {
 		if condition() {
 			modify(self)
@@ -3161,10 +3191,10 @@ extension View {
 	Conditionally modify the view. For example, apply modifiers, wrap the view, etc.
 	*/
 	@ViewBuilder
-	func `if`<IfContent: View, ElseContent: View>(
+	func `if`(
 		_ condition: @autoclosure () -> Bool,
-		if modifyIf: (Self) -> IfContent,
-		else modifyElse: (Self) -> ElseContent
+		if modifyIf: (Self) -> some View,
+		else modifyElse: (Self) -> some View
 	) -> some View {
 		if condition() {
 			modifyIf(self)
@@ -3355,8 +3385,8 @@ extension Sequence {
 	//=> ["a", "ab", "abc"]
 	```
 	*/
-	public func sorted<Value: Comparable>(
-		by keyPath: KeyPath<Element, Value>,
+	public func sorted(
+		by keyPath: KeyPath<Element, some Comparable>,
 		order: SortOrder = .forward
 	) -> [Element] {
 		switch order {
@@ -3519,7 +3549,7 @@ extension Device {
 	@available(macOS, unavailable)
 	static var isSilentModeEnabled: Bool {
 		get async {
-			guard let silentAudio = silentAudio else {
+			guard let silentAudio else {
 				assertionFailure()
 				return false
 			}
@@ -3716,8 +3746,8 @@ extension FloatingPoint {
 	//=> 5
 	```
 	*/
-	func roundedToMultiple<T: BinaryInteger>(
-		of value: T,
+	func roundedToMultiple(
+		of value: some BinaryInteger,
 		roundingRule: FloatingPointRoundingRule = .toNearestOrAwayFromZero
 	) -> Self {
 		let value = Self(value)
@@ -3986,6 +4016,7 @@ extension Sequence {
 				return value
 			}
 		}
+
 		return nil
 	}
 }
@@ -4317,12 +4348,12 @@ extension SFSpeechRecognizer {
 		return try await withTaskCancellationHandler {
 			try await withCheckedThrowingContinuation { continuation in
 				task = recognitionTask(with: request) { result, error in
-					if let error = error {
+					if let error {
 						continuation.resume(throwing: error)
 						return
 					}
 
-					guard let result = result else {
+					guard let result else {
 						assertionFailure()
 						return
 					}
@@ -4448,11 +4479,11 @@ extension NSPasteboard {
 		set {
 			prepareForNewContents()
 
-			guard let string = newValue else {
+			guard let newValue else {
 				return
 			}
 
-			setString(string, forType: .string)
+			setString(newValue, forType: .string)
 		}
 	}
 
@@ -4466,11 +4497,11 @@ extension NSPasteboard {
 		set {
 			prepareForNewContents()
 
-			guard let strings = newValue else {
+			guard let newValue else {
 				return
 			}
 
-			let items = strings.map { string -> NSPasteboardItem in
+			let items = newValue.map { string in
 				let item = NSPasteboardItem()
 				item.setString(string, forType: .string)
 				return item
@@ -4494,11 +4525,11 @@ extension XPasteboard {
 			#if canImport(AppKit)
 			prepareForNewContents(with: .currentHostOnly)
 
-			guard let string = newValue else {
+			guard let newValue else {
 				return
 			}
 
-			setString(string, forType: .string)
+			setString(newValue, forType: .string)
 			#else
 			string = newValue
 			#endif
@@ -4519,7 +4550,7 @@ extension XPasteboard {
 				return
 			}
 
-			let items = strings.map { string -> NSPasteboardItem in
+			let items = strings.map { string in
 				let item = NSPasteboardItem()
 				item.setString(string, forType: .string)
 				return item
@@ -4585,7 +4616,7 @@ struct SearchField: NSViewRepresentable {
 			nsView.stringValue = text
 		}
 
-		if let fontSize = fontSize {
+		if let fontSize {
 			nsView.font = .systemFont(ofSize: fontSize)
 		}
 	}
@@ -4618,7 +4649,7 @@ extension PrimitiveButtonStyle where Self == NavigationLinkButtonStyle {
 }
 
 
-extension Button where Label == SwiftUI.Label<Text, Image> {
+extension Button<Label<Text, Image>> {
 	init(
 		_ title: String,
 		systemImage: String,
@@ -4764,12 +4795,12 @@ extension UIDevice {
 			motionManager.accelerometerUpdateInterval = interval
 
 			motionManager.startAccelerometerUpdates(to: OperationQueue()) { data, error in
-				if let error = error {
+				if let error {
 					continuation.finish(throwing: error)
 					return
 				}
 
-				guard let data = data else {
+				guard let data else {
 					continuation.yield(.unknown)
 					return
 				}

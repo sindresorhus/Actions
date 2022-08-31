@@ -15,8 +15,6 @@
 	</array>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
-	<key>MDItemKeywords</key>
-	<string>shortcuts,shortcut,actions,action,workflow</string>
 	<key>NSUserActivityTypes</key>
 	<array>
 		<string>AddToListIntent</string>
@@ -102,5 +100,7 @@
 		<string>UnixTimeToDateIntent</string>
 		<string>WriteTextIntent</string>
 	</array>
+	<key>MDItemKeywords</key>
+	<string>shortcuts,shortcut,actions,action,workflow</string>
 </dict>
 </plist>

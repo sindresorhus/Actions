@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1320"
+   LastUpgradeVersion = "1400"
    wasCreatedForAppExtension = "YES"
    version = "2.0">
    <BuildAction
@@ -31,7 +31,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E324C9F5271E972300E7CA9B"
                BuildableName = "Actions.app"
-               BlueprintName = "Actions (iOS)"
+               BlueprintName = "Actions"
                ReferencedContainer = "container:Actions.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -63,7 +63,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E324C9F5271E972300E7CA9B"
             BuildableName = "Actions.app"
-            BlueprintName = "Actions (iOS)"
+            BlueprintName = "Actions"
             ReferencedContainer = "container:Actions.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -74,6 +74,7 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES"
+      askForAppToLaunch = "Yes"
       launchAutomaticallySubstyle = "2">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
@@ -81,7 +82,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E324C9F5271E972300E7CA9B"
             BuildableName = "Actions.app"
-            BlueprintName = "Actions (iOS)"
+            BlueprintName = "Actions"
             ReferencedContainer = "container:Actions.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

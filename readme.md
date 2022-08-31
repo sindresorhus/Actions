@@ -23,7 +23,7 @@ The app provides lots of powerful extra actions for the Shortcuts app on macOS a
 
 [![](https://sindresorhus.com/assets/download-on-app-store-badge.svg)](https://apps.apple.com/app/id1586435171)
 
-Requires macOS 12 or iOS 15 and later.
+*Requires at least macOS 12 or iOS 15*
 
 ## Included actions
 
@@ -122,6 +122,14 @@ Requires macOS 12 or iOS 15 and later.
 ## Screenshot
 
 ![](Stuff/screenshot1.jpg)
+
+### Non-App Store version for macOS
+
+A special version for users that cannot access the App Store. It won't receive updates.
+
+[Download](https://dsc.cloud/sindresorhus/Actions-1.13.1-1661934485) *(1.13.1)*
+
+*Requires macOS 12 or later*
 
 ## FAQ
 
