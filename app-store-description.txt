@@ -30,7 +30,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Generate UUID
 - Get Audio Playback Destination (iOS-only)
 - Get Battery State
-- Get Device Orientation (iOS-only)
+- Get Device Orientation
 - Get Emojis
 - Get File Icon (macOS-only)
 - Get File Path
@@ -56,7 +56,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Is Bluetooth On
 - Is Connected to VPN (iOS-only)
 - Is Dark Mode On
-- Is Device Orientation (iOS-only)
+- Is Device Orientation
 - Is Low Power Mode On
 - Is Online
 - Is Reachable

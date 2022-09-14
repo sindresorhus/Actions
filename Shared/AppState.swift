@@ -4,5 +4,7 @@ import SwiftUI
 final class AppState: ObservableObject {
 	static let shared = AppState()
 
-	@Published var userActivity: NSUserActivity?
+	@Published var isDocumentScannerPresented = false
+	@Published var writeTextData: WriteTextScreen.Data?
+	@Published var chooseFromListData: ChooseFromListScreen.Data?
 }

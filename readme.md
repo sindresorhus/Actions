@@ -17,13 +17,21 @@ The app provides lots of powerful extra actions for the Shortcuts app on macOS a
 [**Submit action idea**](https://github.com/sindresorhus/Actions/issues/new/choose)\
 <sub>*(Submit an issue before [submitting a pull request](.github/contributing.md))*</sub>
 
-**Pull requests are temporarily not accepted!** This is because Apple is changing the ways shortcuts actions are [made](https://developer.apple.com/documentation/appintents/) and I don't want to add more actions using the old way.
+---
+
+Want to run shortcuts directly from the iOS Lock Screen? Check out my new [Quick Launch](https://sindresorhus.com/quick-launch) app.
+
+---
 
 ## Download
 
 [![](https://sindresorhus.com/assets/download-on-app-store-badge.svg)](https://apps.apple.com/app/id1586435171)
 
-*Requires at least macOS 12 or iOS 15*
+*Requires at least macOS 13 or iOS 16*
+
+**Older versions (macOS)**
+
+- [Last macOS 12 compatible version](https://github.com/sindresorhus/Actions/releases/download/v1.13.1/Actions.1.13.1.-.macOS.12.zip) *(1.13.1)*
 
 ## Included actions
 
@@ -49,7 +57,7 @@ The app provides lots of powerful extra actions for the Shortcuts app on macOS a
 - Generate UUID
 - Get Audio Playback Destination <sup>(iOS-only)</sup>
 - Get Battery State
-- Get Device Orientation <sup>(iOS-only)</sup>
+- Get Device Orientation
 - Get Emojis
 - Get File Icon <sup>(macOS-only)</sup>
 - Get File Path
@@ -74,7 +82,7 @@ The app provides lots of powerful extra actions for the Shortcuts app on macOS a
 - Is Bluetooth On
 - Is Connected to VPN <sup>(iOS-only)</sup>
 - Is Dark Mode On
-- Is Device Orientation <sup>(iOS-only)</sup>
+- Is Device Orientation
 - Is Low Power Mode On
 - Is Online
 - Is Reachable
@@ -118,6 +126,7 @@ The app provides lots of powerful extra actions for the Shortcuts app on macOS a
 - Remove Tracking Parameters from URLs → [Velja](https://sindresorhus.com/velja)
 - Clear Clipboard Formatting → [Pure Paste](https://sindresorhus.com/pure-paste)
 - Join Video Call → [Dato](https://sindresorhus.com/dato)
+- Put text on the iOS Lock Screen → [Lock Screen One](https://sindresorhus.com/lock-screen-one)
 
 ## Screenshot
 

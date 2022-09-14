@@ -1,28 +1,43 @@
-import SwiftUI
+import AppIntents
 
-@MainActor
-final class ParseJSON5IntentHandler: NSObject, ParseJSON5IntentHandling {
-	func handle(intent: ParseJSON5Intent) async -> ParseJSON5IntentResponse {
-		let response = ParseJSON5IntentResponse(code: .success, userActivity: nil)
+struct ParseJSON5: AppIntent, CustomIntentMigratedAppIntent {
+	static let intentClassName = "ParseJSON5Intent"
 
-		guard let file = intent.file else {
-			return response
+	static let title: LocalizedStringResource = "Parse JSON5"
+
+	static let description = IntentDescription(
+"""
+Parses JSON5 into a dictionary.
+
+JSON5 is a more human-friendly version of JSON. It can handle comments, single-quotes, and more.
+
+The built-in "Get Dictionary from Input" action does not support JSON5.
+""",
+	categoryName: "Parse / Generate"
+	)
+
+	@Parameter(
+		title: "JSON5",
+		description: "Accepts a file or text.",
+		supportedTypeIdentifiers: ["public.item"]
+	)
+	var file: IntentFile
+
+	static var parameterSummary: some ParameterSummary {
+		Summary("Parse \(\.$file) into a dictionary")
+	}
+
+	func perform() async throws -> some IntentResult & ReturnsValue<IntentFile> {
+		let json = try JSONSerialization.jsonObject(with: file.data, options: .json5Allowed)
+
+		// TODO: Without this check, the Shortcuts app crashes on top-level array. (macOS 12.2)
+		guard json is NSDictionary else {
+			throw NSError.appError("The JSON has to be an object. The Shortcuts app cannot currently handle a top-level array.")
 		}
 
-		do {
-			let json = try JSONSerialization.jsonObject(with: file.data, options: .json5Allowed)
+		let data = try JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
+		let result = data.toIntentFile(contentType: .json, filename: file.filenameWithoutExtension)
 
-			// TODO: Without this check, the Shortcuts app crashes on top-level array. (macOS 12.2)
-			guard json is NSDictionary else {
-				return .failure(failure: "The JSON has to be an object. The Shortcuts app cannot currently handle a top-level array.")
-			}
-
-			let data = try JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
-			response.result = data.toINFile(contentType: .json, filename: file.filenameWithoutExtension)
-		} catch {
-			return .failure(failure: error.presentableMessage)
-		}
-
-		return response
+		return .result(value: result)
 	}
 }

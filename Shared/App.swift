@@ -32,11 +32,5 @@ struct AppMain: App {
 final class AppDelegate: NSObject, XApplicationDelegate {
 	#if canImport(AppKit)
 	func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool { true }
-
-	// `.onContinueUserActivity` does not seem to work on macOS 12.0.1.
-	func application(_ application: NSApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([NSUserActivityRestoring]) -> Void) -> Bool {
-		AppState.shared.userActivity = userActivity
-		return true
-	}
 	#endif
 }

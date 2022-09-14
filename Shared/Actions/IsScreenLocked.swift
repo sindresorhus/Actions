@@ -1,14 +1,21 @@
-import Foundation
+import AppIntents
 
-@MainActor
-final class IsScreenLockedIntentHandler: NSObject, IsScreenLockedIntentHandling {
-	func handle(intent: IsScreenLockedIntent) async -> IsScreenLockedIntentResponse {
-		let response = IsScreenLockedIntentResponse(code: .success, userActivity: nil)
+@available(iOS, unavailable)
+struct IsScreenLocked: AppIntent, CustomIntentMigratedAppIntent {
+	static let intentClassName = "IsScreenLockedIntent"
 
-		#if os(macOS)
-		response.result = Device.isScreenLocked as NSNumber
-		#endif
+	static let title: LocalizedStringResource = "Is Screen Locked (macOS-only)"
 
-		return response
+	static let description = IntentDescription(
+		"Returns whether the screen is locked.",
+		categoryName: "Device"
+	)
+
+	static var parameterSummary: some ParameterSummary {
+		Summary("Is the screen locked?")
+	}
+
+	func perform() async throws -> some IntentResult & ReturnsValue<Bool> {
+		.result(value: Device.isScreenLocked)
 	}
 }

@@ -1,30 +1,56 @@
-import Foundation
+import AppIntents
 
-@MainActor
-final class CreateColorImageIntentHandler: NSObject, CreateColorImageIntentHandling {
-	func handle(intent: CreateColorImageIntent) async -> CreateColorImageIntentResponse {
-		let alpha = intent.opacity as? Double ?? 1
+struct CreateColorImage: AppIntent, CustomIntentMigratedAppIntent {
+	static let intentClassName = "CreateColorImageIntent"
 
+	static let title: LocalizedStringResource = "Create Color Image"
+
+	static let description = IntentDescription(
+		"Creates a solid color image.",
+		categoryName: "Image"
+	)
+
+	@Parameter(
+		title: "Hex Color",
+		default: "#ff69b4",
+		inputOptions: .init(
+			capitalizationType: .none,
+			autocorrect: false,
+			smartQuotes: false,
+			smartDashes: false
+		)
+	)
+	var color: String
+
+	@Parameter(title: "Width", inclusiveRange: (1, 8000))
+	var width: Int
+
+	@Parameter(title: "Height", inclusiveRange: (1, 8000))
+	var height: Int
+
+	@Parameter(title: "Opacity", default: 1, controlStyle: .slider, inclusiveRange: (0, 1))
+	var opacity: Double
+
+	static var parameterSummary: some ParameterSummary {
+		Summary("Create image of color \(\.$color) with size \(\.$width)×\(\.$height)") {
+			\.$opacity
+		}
+	}
+
+	func perform() async throws -> some IntentResult & ReturnsValue<IntentFile> {
 		guard
-			let hexString = intent.color,
-			let color = XColor(hexString: hexString, alpha: alpha),
-			let width = intent.width as? Int,
-			let height = intent.height as? Int,
-			width <= 8000,
-			height <= 8000
+			let color = XColor(hexString: color, alpha: opacity)
 		else {
-			return .init(code: .success, userActivity: nil)
+			throw NSError.appError("Invalid color.")
 		}
 
-		let response = CreateColorImageIntentResponse(code: .success, userActivity: nil)
-
-		response.result = XImage.color(
+		let result = try XImage.color(
 			color,
 			size: .init(width: width, height: height),
 			scale: 1
 		)
-			.toINFile()
+			.toIntentFile()
 
-		return response
+		return .result(value: result)
 	}
 }

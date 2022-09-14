@@ -1,75 +1,120 @@
-import Foundation
+import AppIntents
 import Speech
-import Intents
 
-@MainActor
-final class TranscribeAudioIntentHandler: NSObject, TranscribeAudioIntentHandling {
-	func provideLocaleOptionsCollection(for intent: TranscribeAudioIntent) async throws -> INObjectCollection<Locale_> {
-		let items = Array(SFSpeechRecognizer.supportedLocales())
-			.sorted(by: \.localizedName)
-			.map {
-				Locale_(
-					identifier: $0.identifier,
-					display: $0.localizedName,
-					subtitle: $0.identifier,
-					image: nil
-				)
-			}
+struct TranscribeAudio: AppIntent, CustomIntentMigratedAppIntent {
+	static let intentClassName = "TranscribeAudioIntent"
 
-		return .init(items: items)
+	static let title: LocalizedStringResource = "Transcribe Audio"
+
+	static let description = IntentDescription(
+"""
+Converts the speech in the input audio file to text.
+
+Note that the transcription is slow.
+
+See the built-in "Dictate Text" action if you need to transcribe in real-time.
+
+Important: If you have permission issues even after granting access, try removing the action from your shortcut, force quit Shortcuts and Actions, and then add the action again.
+""",
+	categoryName: "Audio"
+	)
+
+	@Parameter(title: "Audio File", supportedTypeIdentifiers: ["public.audio"])
+	var file: IntentFile
+
+	@Parameter(title: "Custom Locale (Many of the locales do not work because of a macOS/iOS bug)")
+	var locale: SFLocaleAppEntity
+
+	@Parameter(title: "Perform Offline (Buggy, don't use)", default: false)
+	var offline: Bool
+
+	static var parameterSummary: some ParameterSummary {
+		Summary("Transcribe \(\.$file)") {
+			\.$locale
+			\.$offline
+		}
 	}
 
-	func handle(intent: TranscribeAudioIntent) async -> TranscribeAudioIntentResponse {
-		let response = TranscribeAudioIntentResponse(code: .success, userActivity: nil)
-
-		guard let file = intent.file else {
-			return response
-		}
-
+	func perform() async throws -> some IntentResult & ReturnsValue<String> {
 		guard await SFSpeechRecognizer.requestAuthorization() == .authorized else {
 			let recoverySuggestion = OS.current == .macOS
 				? "You can grant access in “System Preferences › Security & Privacy › Speech Recognition”."
 				: "You can grant access in “Settings › \(SSApp.name)”."
 
-			return .failure(failure: "No access to speech recognition. \(recoverySuggestion)")
+			throw NSError.appError("No access to speech recognition. \(recoverySuggestion)")
 		}
 
-		let locale = intent.locale?.identifier.map { Locale(identifier: $0) } ?? .autoupdatingCurrent
-
-		guard let recognizer = SFSpeechRecognizer(locale: locale) else {
-			return .failure(failure: "Unsupported locale.")
+		guard let recognizer = SFSpeechRecognizer(locale: .init(identifier: locale.id)) else {
+			throw NSError.appError("Unsupported locale.")
 		}
 
 		if !recognizer.isAvailable {
-			return .failure(failure: "Audio transcription is not supported on this device.")
+			throw NSError.appError("Audio transcription is not supported on this device.")
 		}
 
 		recognizer.supportsOnDeviceRecognition = true
 
-		do {
-			let url = try file.writeToUniqueTemporaryFile()
+		let url = try file.writeToUniqueTemporaryFile()
 
-			defer {
-				try? FileManager.default.removeItem(at: url)
-			}
-
-			let request = SFSpeechURLRecognitionRequest(url: url)
-			request.shouldReportPartialResults = false
-			request.taskHint = .dictation
-			request.requiresOnDeviceRecognition = intent.offline as? Bool ?? false
-
-			response.result = try await recognizer.recognitionTask(with: request).bestTranscription.formattedString
-		} catch {
-			let nsError = error as NSError
-
-			// "No speech detected" error
-			if nsError.domain == "kAFAssistantErrorDomain", nsError.code == 1110 {
-				return response
-			}
-
-			return .failure(failure: error.presentableMessage)
+		defer {
+			try? FileManager.default.removeItem(at: url)
 		}
 
-		return response
+		let request = SFSpeechURLRecognitionRequest(url: url)
+		request.shouldReportPartialResults = false
+		request.taskHint = .dictation
+		request.requiresOnDeviceRecognition = offline
+
+		let result = try await {
+			do {
+				return try await recognizer.recognitionTask(with: request).bestTranscription.formattedString
+			} catch {
+				let nsError = error as NSError
+
+				// "No speech detected" error
+				if nsError.domain == "kAFAssistantErrorDomain", nsError.code == 1110 {
+					return ""
+				}
+
+				throw error
+			}
+		}()
+
+		return .result(value: result)
+	}
+}
+
+struct SFLocaleAppEntity: AppEntity {
+	struct SFLocaleAppEntityQuery: EntityQuery {
+		private func allEntities() -> [SFLocaleAppEntity] {
+			Array(SFSpeechRecognizer.supportedLocales())
+				.sorted(by: \.localizedName)
+				.map(SFLocaleAppEntity.init)
+		}
+
+		func entities(for identifiers: [SFLocaleAppEntity.ID]) async throws -> [SFLocaleAppEntity] {
+			allEntities().filter { identifiers.contains($0.id) }
+		}
+
+		func suggestedEntities() async throws -> [SFLocaleAppEntity] {
+			allEntities()
+		}
+	}
+
+	static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "Locale")
+
+	static let defaultQuery = SFLocaleAppEntityQuery()
+
+	private let localizedName: String
+
+	let id: String
+
+	init(_ locale: Locale) {
+		self.id = locale.identifier
+		self.localizedName = locale.localizedName
+	}
+
+	var displayRepresentation: DisplayRepresentation {
+		.init(title: "\(localizedName)")
 	}
 }

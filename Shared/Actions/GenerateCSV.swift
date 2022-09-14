@@ -1,45 +1,62 @@
-import Foundation
+import AppIntents
 import TabularData
 
-@MainActor
-final class GenerateCSVIntentHandler: NSObject, GenerateCSVIntentHandling {
-	func handle(intent: GenerateCSVIntent) async -> GenerateCSVIntentResponse {
-		let response = GenerateCSVIntentResponse(code: .success, userActivity: nil)
+struct GenerateCSV: AppIntent, CustomIntentMigratedAppIntent {
+	static let intentClassName = "GenerateCSVIntent"
 
-		guard let dictionaries = intent.dictionaries else {
-			return response
+	static let title: LocalizedStringResource = "Generate CSV"
+
+	static let description = IntentDescription(
+"""
+Generates a CSV file from a list of dictionaries.
+
+The keys of the dictionaries are the CSV headers.
+
+The dictionaries must have the same shape.
+""",
+	categoryName: "Parse / Generate"
+	)
+
+	@Parameter(title: "Dictionaries", supportedTypeIdentifiers: ["public.data"])
+	var dictionaries: [IntentFile]
+
+	@Parameter(title: "Delimiter", default: .comma)
+	var delimiter: CSVDelimiterAppEnum
+
+	@Parameter(
+		title: "Custom Delimiter",
+		inputOptions: .init(
+			capitalizationType: .none,
+			autocorrect: false,
+			smartQuotes: false,
+			smartDashes: false
+		)
+	)
+	var customDelimiter: String?
+
+	static var parameterSummary: some ParameterSummary {
+		When(\.$delimiter, .equalTo, .custom) {
+			Summary("Generate CSV from \(\.$dictionaries)") {
+				\.$delimiter
+				\.$customDelimiter
+			}
+		} otherwise: {
+			Summary {
+				\.$dictionaries
+				\.$delimiter
+			}
 		}
+	}
 
-		do {
-			let delimiter: Character = try {
-				switch intent.delimiter {
-				case .unknown, .comma:
-					return ","
-				case .tab:
-					return "\t"
-				case .custom:
-					guard
-						let delimiter = intent.customDelimiter,
-						delimiter.count == 1,
-						let character = delimiter.first
-					else {
-						throw NSError.appError("Invalid delimiter. The delimiter should be a single character.")
-					}
+	func perform() async throws -> some IntentResult & ReturnsValue<IntentFile> {
+		let json = dictionaries.compactMap { $0.data.toString }.joined(separator: ",")
+		let dataFrame = try DataFrame(jsonData: "[\(json)]".toData)
+		let finalDelimiter = try delimiter.character(customDelimiter: customDelimiter)
 
-					return character
-				}
-			}()
+		let result = try dataFrame
+			.csvRepresentation(options: .init(delimiter: finalDelimiter))
+			.toIntentFile(contentType: .commaSeparatedText)
 
-			let json = dictionaries.compactMap { $0.data.toString }.joined(separator: ",")
-			let dataFrame = try DataFrame(jsonData: "[\(json)]".toData)
-
-			response.result = try dataFrame
-				.csvRepresentation(options: .init(delimiter: delimiter))
-				.toINFile(contentType: .commaSeparatedText)
-		} catch {
-			return .failure(failure: error.presentableMessage)
-		}
-
-		return response
+		return .result(value: result)
 	}
 }

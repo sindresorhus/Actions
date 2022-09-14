@@ -19,59 +19,57 @@ struct WriteTextScreen: View {
 	}
 
 	var body: some View {
-		VStack(spacing: 0) {
-			#if canImport(AppKit)
-			if let title = data.title {
-				HStack {
-					Text(title)
-						.font(.headline)
-						.padding()
-				}
-					.padding(.bottom, -16)
-			}
-			#endif
-			TextEditor(text: $text)
-				.font(.largeBody)
-				.lineSpacing(6)
-				.padding() // TODO: Use `.safeAreaInset()` when it works with `TextEditor`. (macOS 12.0.1)
-		}
-			.focused($isTextEditorFocused)
-			.navigationTitle(data.title ?? "Text Editor")
-			.frame(maxWidth: .infinity, maxHeight: .infinity)
-			#if canImport(UIKit)
-			.navigationBarTitleDisplayMode(.inline)
-			#endif
-			.toolbar {
-				ToolbarItem(placement: .confirmationAction) {
-					Button("Done") {
-						text.copyToPasteboard(currentHostOnly: true)
-						openShortcuts()
+		NavigationStack {
+			VStack(spacing: 0) {
+				#if canImport(AppKit)
+				if let title = data.title {
+					HStack {
+						Text(title)
+							.font(.headline)
+							.padding()
 					}
-						// We disable it if it's the "Write" type and there is no text.
-						.disabled(data.text.isEmpty && text.isEmptyOrWhitespace)
+						.padding(.bottom, -16)
 				}
-				ToolbarItem(placement: .cancellationAction) {
-					Button("Cancel") {
-						if let text = data.text.nilIfEmptyOrWhitespace {
+				#endif
+				TextEditor(text: $text)
+					.font(.largeBody)
+					.lineSpacing(6)
+					.focused($isTextEditorFocused)
+					.padding() // TODO: Use `.safeAreaInset()` when it works with `TextEditor`. (macOS 12.0.1)
+			}
+				.navigationTitle(data.title ?? "Text Editor")
+				.frame(maxWidth: .infinity, maxHeight: .infinity)
+				#if canImport(UIKit)
+				.navigationBarTitleDisplayMode(.inline)
+				#endif
+				.toolbar {
+					ToolbarItem(placement: .confirmationAction) {
+						Button("Done") {
 							text.copyToPasteboard(currentHostOnly: true)
-						} else {
-							XPasteboard.general.prepareForNewContents(currentHostOnly: true)
+							openShortcuts()
 						}
+							// We disable it if it's the "Write" type and there is no text.
+							.disabled(data.text.isEmpty && text.isEmptyOrWhitespace)
+					}
+					ToolbarItem(placement: .cancellationAction) {
+						Button("Cancel") {
+							if let text = data.text.nilIfEmptyOrWhitespace {
+								text.copyToPasteboard(currentHostOnly: true)
+							} else {
+								XPasteboard.general.prepareForNewContents(currentHostOnly: true)
+							}
 
-						openShortcuts()
+							openShortcuts()
+						}
 					}
 				}
-			}
-			.embedInNavigationViewIfNotMacOS()
-			#if canImport(AppKit)
-			.frame(minWidth: 600, minHeight: 420)
-			#endif
-			.task {
-				// This is needed to work around iOS 15 bug.
-				DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+				#if canImport(AppKit)
+				.frame(minWidth: 600, minHeight: 420)
+				#endif
+				.task {
 					isTextEditorFocused = true
 				}
-			}
+		}
 	}
 
 	@MainActor

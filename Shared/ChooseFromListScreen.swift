@@ -9,7 +9,7 @@ struct ChooseFromListScreen: View {
 		var selectAllInitially: Bool
 		var allowCustomItems: Bool
 		var timeout: TimeInterval?
-		var timeoutReturnValue: ChooseFromListTimeoutValue
+		var timeoutReturnValue: ChooseFromListTimeoutValueAppEnum
 
 		var id: String { "ChooseFromListExtended" }
 	}
@@ -24,100 +24,117 @@ struct ChooseFromListScreen: View {
 	let data: Data
 
 	var body: some View {
-		VStack(spacing: 0) {
-			#if canImport(AppKit)
-			header
-			#endif
-			list
+		NavigationStack {
+			VStack(spacing: 0) {
 				#if canImport(AppKit)
-				.listStyle(.inset(alternatesRowBackgrounds: true))
+				header
 				#endif
-		}
-			.navigationTitle(title)
-			#if canImport(UIKit)
-			.navigationBarTitleDisplayMode(.inline)
-			.environment(\.editMode, .constant(data.selectMultiple ? .active : .inactive))
-			#endif
-			.sheet(isPresented: $isAddItemScreenPresented) {
-				AddItemScreen(isMultiple: data.selectMultiple) {
-					if data.selectMultiple {
-						customElements.prepend($0)
-						multipleSelection.insert($0)
-					} else {
-						finishSingleSelection($0)
+				list
+					#if canImport(AppKit)
+					.listStyle(.inset(alternatesRowBackgrounds: true))
+					#endif
+			}
+				.navigationTitle(title)
+				#if canImport(UIKit)
+				.navigationBarTitleDisplayMode(.inline)
+				.environment(\.editMode, .constant(data.selectMultiple ? .active : .inactive))
+				// TODO: Does this work on macOS 13 too? If so, simplify.
+				.alert2(
+					data.selectMultiple ? "Add Item" : "Custom Item",
+					isPresented: $isAddItemScreenPresented
+				) {
+					AddItemScreen2 { item in
+						if data.selectMultiple {
+							customElements.prepend(item)
+							// TODO: We don't select as it selects two elements instead of just this one. (iOS 16.0)
+//							multipleSelection.insert(item)
+						} else {
+							finishSingleSelection(item)
+						}
 					}
 				}
-			}
-			.toolbar {
-				ToolbarItem(placement: .confirmationAction) {
-					if data.selectMultiple {
-						Button("Done") {
-							guard let selection = multipleSelection.nilIfEmpty else {
-								return
-							}
+				#else
+				.sheet(isPresented: $isAddItemScreenPresented) {
+					AddItemScreen(isMultiple: data.selectMultiple) {
+						if data.selectMultiple {
+							customElements.prepend($0)
+							multipleSelection.insert($0)
+						} else {
+							finishSingleSelection($0)
+						}
+					}
+				}
+				#endif
+				.toolbar {
+					ToolbarItem(placement: .confirmationAction) {
+						if data.selectMultiple {
+							Button("Done") {
+								guard let selection = multipleSelection.nilIfEmpty else {
+									return
+								}
 
-							XPasteboard.general.stringsForCurrentHostOnly = elements.filter { selection.contains($0) }
+								XPasteboard.general.stringsForCurrentHostOnly = elements.filter { selection.contains($0) }
+								openShortcuts()
+							}
+								.disabled(multipleSelection.isEmpty)
+						}
+					}
+					ToolbarItem(placement: .cancellationAction) {
+						Button("Cancel") {
+							XPasteboard.general.prepareForNewContents(currentHostOnly: true)
 							openShortcuts()
 						}
-							.disabled(multipleSelection.isEmpty)
 					}
-				}
-				ToolbarItem(placement: .cancellationAction) {
-					Button("Cancel") {
-						XPasteboard.general.prepareForNewContents(currentHostOnly: true)
-						openShortcuts()
-					}
-				}
-				ToolbarItem {
-					if data.allowCustomItems {
-						if OS.current == .macOS, !data.selectMultiple {
-							Button("Use Custom Item") {
-								isAddItemScreenPresented = true
+					ToolbarItem {
+						if data.allowCustomItems {
+							if OS.current == .macOS, !data.selectMultiple {
+								Button("Use Custom Item") {
+									isAddItemScreenPresented = true
+								}
+							}
+							if data.selectMultiple {
+								Button("Add Item", systemImage: "plus") {
+									isAddItemScreenPresented = true
+								}
+									.labelStyle(.iconOnly)
+									.keyboardShortcut("n")
 							}
 						}
-						if data.selectMultiple {
-							Button("Add Item", systemImage: "plus") {
-								isAddItemScreenPresented = true
-							}
-								.labelStyle(.iconOnly)
-								.keyboardShortcut("n")
-						}
 					}
 				}
-			}
-			.embedInNavigationViewIfNotMacOS()
-			#if canImport(AppKit)
-			.frame(width: 440, height: 560)
-			.windowLevel(.floating)
-			#else
-			.searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
-			#endif
-			.onChange(of: singleSelection) {
-				guard let selection = $0 else {
-					return
-				}
-
-				finishSingleSelection(selection)
-			}
-			.task {
-				if data.selectMultiple, data.selectAllInitially {
-					multipleSelection = Set(elements)
-				}
-
-				#if canImport(UIKit)
-				UIView.setAnimationsEnabled(true)
+				#if canImport(AppKit)
+				.frame(width: 440, height: 560)
+				.windowLevel(.floating)
+				#else
+				.searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
 				#endif
-			}
-			.task {
-				guard let timeout = data.timeout else {
-					return
-				}
+				.onChange(of: singleSelection) {
+					guard let selection = $0 else {
+						return
+					}
 
-				// TODO: Use `Task.sleep` when it accepts a duration.
-				delay(seconds: timeout) {
-					timeoutAction()
+					finishSingleSelection(selection)
 				}
-			}
+				.task {
+					if data.selectMultiple, data.selectAllInitially {
+						multipleSelection = Set(elements)
+					}
+
+					#if canImport(UIKit)
+					UIView.setAnimationsEnabled(true)
+					#endif
+				}
+				.task {
+					guard let timeout = data.timeout else {
+						return
+					}
+
+					// TODO: Use `Task.sleep` when it accepts a duration.
+					delay(seconds: timeout) {
+						timeoutAction()
+					}
+				}
+		}
 	}
 
 	@ViewBuilder
@@ -165,6 +182,7 @@ struct ChooseFromListScreen: View {
 					Button(element.trimmed.firstLine) {
 						singleSelection = element
 					}
+						// TODO: Check if I can do this on macOS 13.
 						// We cannot do this on macOS as macOS cannot have a `NavigationView` with a single column. (macOS 12.3)
 						.buttonStyle(.navigationLink)
 						.lineLimit(2)
@@ -205,7 +223,7 @@ struct ChooseFromListScreen: View {
 	private var searchResults: [String] {
 		fuzzyFind(
 			queries: [searchText],
-			inputs: elements.map { $0.trimmed.firstLine }
+			inputs: elements.map(\.trimmed.firstLine)
 		)
 			.map(\.asString)
 	}
@@ -218,9 +236,9 @@ struct ChooseFromListScreen: View {
 
 	@MainActor
 	private func timeoutAction() {
-		let item = { () -> String? in
+		let item: String? = {
 			switch data.timeoutReturnValue {
-			case .unknown, .nothing:
+			case .nothing:
 				return nil
 			case .firstItem:
 				return elements.first
@@ -255,7 +273,7 @@ private struct AddItemScreen: View {
 
 	let isMultiple: Bool
 	var isUsingNavigationLink = false
-	let onComplete: @MainActor (String) -> Void
+	let onCompletion: @MainActor (String) -> Void
 
 	var body: some View {
 		Form {
@@ -288,23 +306,41 @@ private struct AddItemScreen: View {
 				add()
 			}
 			.submitLabel(.done)
-			.if(!isUsingNavigationLink) {
-				$0.embedInNavigationViewIfNotMacOS()
-			}
+//			.if(!isUsingNavigationLink) {
+//				$0.embedInNavigationViewIfNotMacOS()
+//			}
 			#if canImport(AppKit)
 			.frame(width: 300, height: 100)
 			#endif
 			.task {
-				// It does not focus with this. (iOS 15.4)
-				delay(seconds: 0.5) {
-					isTextFieldFocused = true
-				}
+				isTextFieldFocused = true
 			}
 	}
 
 	@MainActor
 	private func add() {
 		dismiss()
-		onComplete(text)
+		onCompletion(text)
+	}
+}
+
+private struct AddItemScreen2: View {
+	@State private var text = ""
+
+	let onCompletion: (String) -> Void
+
+	var body: some View {
+		TextField("", text: $text)
+		Button("Add") {
+			onCompletion(text)
+			clear()
+		}
+		Button("Cancel", role: .cancel) {
+			clear()
+		}
+	}
+
+	private func clear() {
+		text = "" // TODO: Text is not cleared. It should be. (iOS 16.0)
 	}
 }

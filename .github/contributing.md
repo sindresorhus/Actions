@@ -17,20 +17,17 @@
 
 #### Resources
 
-- [Meet Shortcuts for macOS - WWDC2021](https://developer.apple.com/videos/play/wwdc2021/10232/)
-- [Design great actions for Shortcuts, Siri, and Suggestions - WWDC2021](https://developer.apple.com/videos/play/wwdc2021/10283/)
-- [Shortcuts - Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/siri/overview/shortcuts-and-suggestions/)
-- [Adding User Interactivity with Siri Shortcuts and the Shortcuts App](https://developer.apple.com/documentation/sirikit/adding_user_interactivity_with_siri_shortcuts_and_the_shortcuts_app)
-- [Demystifying Siri, Part 2: Creating a Custom Intent](https://andrewgraham.dev/demystifying-siri-part-2-creating-a-custom-intent/)
+- [Dive into App Intents - WWDC2022](https://developer.apple.com/videos/play/wwdc2022/10032/)
+- [Shortcuts - Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/technologies/siri/shortcuts-and-suggestions)
 
 ### Creating the action
 
-- Open the Xcode project, select the `Intents` file, and click the `+` button in the intents editor.
-- Keep the naming, description, and checkboxes consistent with existing actions.
-- Create a new Swift file in the `IntentsExtension/Actions` directory named the same as the intent title. Make sure it's included in both the macOS and iOS extension targets.
-- Add the intent to the `IntentHandler` file.
+- Open the Xcode project.
+- Create a new file in the `Actions2` folder named after the intent you are creating.
+	+ The file should be alphabetically sorted in Xcode.
+- Keep the naming, description, and code style consistent with existing actions.
 - Implement the logic. Try to create reusable extensions whenever it makes sense.
-- Run the “Actions (macOS)” target, which will open the app and then open the Shortcuts app. You can then test out your work. If you need to debug, run the `IntentsExtension (macOS)` target instead and use `Shortuts` as the target app.
+- Run the “Actions” target, which will open the app and then open the Shortcuts app. You can then test out your work.
 - Add the action to `readme.md` and `app-store-description.txt`.
 
 ### General

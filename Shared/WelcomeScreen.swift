@@ -46,10 +46,7 @@ struct WelcomeScreen: View {
 				#if canImport(AppKit)
 				.buttonStyle(.link)
 				#endif
-				// TODO: Make it small again when the app is more mature.
-//				.controlSize(.small)
-				.controlSize(.large)
-				.padding(.bottom, 10) // TODO: Remove this at some point.
+				.controlSize(.small)
 				.dynamicTypeSize(...(.accessibility4))
 		}
 			.padding()

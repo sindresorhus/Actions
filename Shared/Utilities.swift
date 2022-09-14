@@ -15,8 +15,9 @@ import TabularData
 import Speech
 import NaturalLanguage
 import JavaScriptCore
-import Regex
 import CoreImage.CIFilterBuiltins
+import AppIntents
+import PDFKit
 
 #if canImport(AppKit)
 import IOKit.ps
@@ -43,40 +44,6 @@ typealias XApplicationDelegate = UIApplicationDelegate
 typealias XApplicationDelegateAdaptor = UIApplicationDelegateAdaptor
 typealias XScreen = UIScreen
 #endif
-
-
-// - MARK: Non-reusable utilities
-
-#if canImport(UIKit)
-extension HapticFeedbackType {
-	var toNative: Device.HapticFeedback {
-		switch self {
-		case .unknown:
-			return .legacy
-		case .success:
-			return .success
-		case .warning:
-			return .warning
-		case .error:
-			return .error
-		case .selection:
-			return .selection
-		case .soft:
-			return .soft
-		case .light:
-			return .light
-		case .medium:
-			return .medium
-		case .heavy:
-			return .heavy
-		case .rigid:
-			return .rigid
-		}
-	}
-}
-#endif
-
-// MARK: -
 
 
 // TODO: Remove this when everything is converted to async/await.
@@ -157,7 +124,7 @@ enum SSApp {
 			"metadata": getFeedbackMetadata()
 		]
 
-		URL("https://sindresorhus.com/feedback/")
+		URL("https://sindresorhus.com/feedback")
 			.addingDictionaryAsQuery(query)
 			.open()
 	}
@@ -178,21 +145,6 @@ enum SSApp {
 		]
 
 		_ = try await URLSession.shared.json(.post, url: endpoint, parameters: parameters as [String: Any])
-	}
-}
-
-
-extension DispatchQueue {
-	/**
-	Performs the `execute` closure immediately if we're on the main thread or synchronously puts it on the main thread otherwise.
-	*/
-	@discardableResult
-	static func mainSafeSync<T>(execute work: () throws -> T) rethrows -> T {
-		if Thread.isMainThread {
-			return try work()
-		} else {
-			return try main.sync(execute: work)
-		}
 	}
 }
 
@@ -382,24 +334,33 @@ enum Device {
 		#endif
 	}()
 
-	#if canImport(Quartz)
-	// `CGSessionCopyCurrentDictionary()` returns `nil` in an app extension.
-	@available(macOSApplicationExtension, unavailable)
+	@available(iOS, unavailable)
+	@available(tvOS, unavailable)
+	@available(watchOS, unavailable)
+	@available(macOSApplicationExtension, unavailable) // `CGSessionCopyCurrentDictionary()` returns `nil` in an app extension.
 	static var isScreenLocked: Bool {
+		#if canImport(Quartz)
 		let key = String("dekcoLsIneercSnoisseSSGC".reversed())
 		let dictionary = CGSessionCopyCurrentDictionary() as? [String: Any]
 		return dictionary?[key] as? Bool ?? false
+		#else
+		return false
+		#endif
 	}
-	#endif
 
-	#if canImport(CoreWLAN)
 	/**
 	Whether Wi-Fi is available and powered on.
 	*/
+	@available(iOS, unavailable)
+	@available(tvOS, unavailable)
+	@available(watchOS, unavailable)
 	static var isWiFiOn: Bool {
-		CWWiFiClient.shared().interface()?.powerOn() ?? false
+		#if canImport(CoreWLAN)
+		return CWWiFiClient.shared().interface()?.powerOn() ?? false
+		#else
+		return false
+		#endif
 	}
-	#endif
 }
 
 
@@ -659,7 +620,7 @@ extension StringProtocol {
 	/**
 	Makes it easier to deal with optional sub-strings.
 	*/
-	var string: String { String(self) }
+	var toString: String { String(self) }
 }
 
 
@@ -668,14 +629,14 @@ extension CGFloat {
 	/**
 	Get a Double from a CGFloat. This makes it easier to work with optionals.
 	*/
-	var double: Double { Double(self) }
+	var toDouble: Double { Double(self) }
 }
 
 extension Int {
 	/**
 	Get a Double from an Int. This makes it easier to work with optionals.
 	*/
-	var double: Double { Double(self) }
+	var toDouble: Double { Double(self) }
 }
 
 
@@ -956,7 +917,7 @@ extension NSImage {
 
 			if
 				borderWidth > 0,
-				let borderColor = borderColor
+				let borderColor
 			{
 				borderColor.setStroke()
 				bezierPath.lineWidth = borderWidth
@@ -1175,31 +1136,6 @@ extension Date {
 				)
 			)
 		)
-	}
-}
-
-
-extension DateComponents {
-	/**
-	Returns a random `DateComponents` within the given range.
-
-	The `start` can be after or before `end`.
-
-	```
-	let start = Calendar.current.dateComponents(in: .current, from: .now)
-	let end = Calendar.current.dateComponents(in: .current, from: .now.addingTimeInterval(1000))
-	DateComponents.random(start: start, end: end, for: .current)?.date
-	```
-	*/
-	static func random(start: Self, end: Self, for calendar: Calendar) -> Self? {
-		guard
-			let startDate = start.date,
-			let endDate = end.date
-		else {
-			return nil
-		}
-
-		return calendar.dateComponents(in: .current, from: .random(in: .fromGraceful(startDate, endDate)))
 	}
 }
 
@@ -1957,34 +1893,6 @@ extension RandomNumberGenerator where Self == SystemRandomNumberGenerator {
 }
 
 
-/**
-A type-erased random number generator.
-*/
-struct AnyRandomNumberGenerator: RandomNumberGenerator {
-	@usableFromInline
-	var enclosed: RandomNumberGenerator
-
-	@inlinable
-	init(_ enclosed: RandomNumberGenerator) {
-		self.enclosed = enclosed
-	}
-
-	@inlinable
-	mutating func next() -> UInt64 {
-		enclosed.next()
-	}
-}
-
-extension RandomNumberGenerator {
-	/**
-	Type-erase the random number generator.
-	*/
-	func eraseToAny() -> AnyRandomNumberGenerator {
-		AnyRandomNumberGenerator(self)
-	}
-}
-
-
 #if !os(watchOS)
 struct SeededRandomNumberGenerator: RandomNumberGenerator {
 	private let source: GKMersenneTwisterRandomSource
@@ -2001,6 +1909,30 @@ struct SeededRandomNumberGenerator: RandomNumberGenerator {
 		let next1 = UInt64(bitPattern: Int64(source.nextInt()))
 		let next2 = UInt64(bitPattern: Int64(source.nextInt()))
 		return next1 ^ (next2 << 32)
+	}
+}
+
+extension RandomNumberGenerator where Self == SeededRandomNumberGenerator {
+	/**
+	```
+	random(length: length, using: &.seeded(seed: "🦄"))
+	```
+	*/
+	static func seeded(seed: String) -> Self {
+		.init(seed: seed)
+	}
+}
+
+extension SeededRandomNumberGenerator {
+	/**
+	Uses a seeded random generator if the seed is specified, otherwise, the system random generator.
+
+	```
+	random(length: length, using: &SeededRandomNumberGenerator.seededOrNot(seed: "🦄"))
+	```
+	*/
+	static func seededOrNot(seed: String? = nil) -> any RandomNumberGenerator {
+		seed.flatMap { .seeded(seed: $0) } ?? .system
 	}
 }
 #endif
@@ -2023,11 +1955,11 @@ extension String {
 	//=> "ca32aab12c"
 	```
 	*/
-	static func random<T>(
+	static func random(
 		length: Int,
 		characters: String,
-		using generator: inout T
-	) -> Self where T: RandomNumberGenerator {
+		using generator: inout some RandomNumberGenerator
+	) -> Self {
 		precondition(!characters.isEmpty)
 		return Self((0..<length).map { _ in characters.randomElement(using: &generator)! })
 	}
@@ -2055,11 +1987,11 @@ extension String {
 	//=> "czzet1fv6d"
 	```
 	*/
-	static func random<T>(
+	static func random(
 		length: Int,
 		characters: RandomCharacters = [.lowercase, .uppercase, .digits],
-		using generator: inout T
-	) -> Self where T: RandomNumberGenerator {
+		using generator: inout some RandomNumberGenerator
+	) -> Self {
 		var characterString = ""
 
 		if characters.contains(.lowercase) {
@@ -2339,65 +2271,27 @@ extension CGImage {
 }
 
 
-extension INFile {
-	var contentType: UTType? {
-		guard let typeIdentifier else {
-			return nil
-		}
-
-		return UTType(typeIdentifier)
-	}
-}
-
-
-extension INFile {
+extension IntentFile {
 	var filenameWithoutExtension: String {
 		filename.removingFileExtension()
 	}
 }
 
 
-extension INFile {
-	convenience init(
-		data: Data,
-		filename: String,
-		contentType: UTType?
-	) {
-		self.init(
-			data: data,
-			filename: filename,
-			typeIdentifier: contentType?.identifier
-		)
-	}
-
-	convenience init(
-		fileURL: URL,
-		filename: String,
-		contentType: UTType?
-	) {
-		self.init(
-			fileURL: fileURL,
-			filename: filename,
-			typeIdentifier: contentType?.identifier
-		)
-	}
-}
-
-
-extension INFile {
+extension IntentFile {
 	/**
 	Write the data to a unique temporary path and return the `URL`.
 	*/
 	func writeToUniqueTemporaryFile() throws -> URL {
 		try data.writeToUniqueTemporaryFile(
 			filename: filename,
-			contentType: contentType ?? .data
+			contentType: type ?? .data
 		)
 	}
 }
 
 
-extension INFile {
+extension IntentFile {
 	/**
 	Gives you a copy of the file written to disk which you can modify as you please.
 
@@ -2412,21 +2306,22 @@ extension INFile {
 
 	We intentionally do not use `.fileURL` as accessing it when the file is, for example, in the `Downloads` directory, causes a permission prompt on macOS, which requires manual interaction.
 	*/
-	func modifyingFileAsURL(_ modify: (URL) throws -> URL) throws -> INFile {
-		try modify(writeToUniqueTemporaryFile()).toINFile
+	func modifyingFileAsURL(_ modify: (URL) throws -> URL) throws -> Self {
+		try modify(writeToUniqueTemporaryFile()).toIntentFile
 	}
 }
 
 
+
 extension URL {
 	/**
-	Create a `INFile` from the URL.
+	Create a `IntentFile` from the URL.
 	*/
-	var toINFile: INFile {
-		INFile(
+	var toIntentFile: IntentFile {
+		.init(
 			fileURL: self,
 			filename: lastPathComponent,
-			contentType: contentType
+			type: contentType
 		)
 	}
 }
@@ -2434,28 +2329,32 @@ extension URL {
 
 extension XImage {
 	/**
-	Create a `INFile` from the image.
+	Create an `IntentFile` from the image.
 	*/
-	func toINFile(filename: String? = nil) -> INFile? {
-		try? pngData()?
+	func toIntentFile(filename: String? = nil) throws -> IntentFile {
+		guard let data = pngData() else {
+			throw NSError.appError("Failed to generate PNG data from image.")
+		}
+
+		return try data
 			.writeToUniqueTemporaryFile(filename: filename ?? "file", contentType: .png)
-			.toINFile
+			.toIntentFile
 	}
 }
 
 
 extension Data {
 	/**
-	Create a `INFile` from the data.
+	Create an `IntentFile` from the data.
 	*/
-	func toINFile(
+	func toIntentFile(
 		contentType: UTType,
 		filename: String? = nil
-	) -> INFile {
+	) -> IntentFile {
 		.init(
 			data: self,
 			filename: filename ?? "file",
-			contentType: contentType
+			type: contentType
 		)
 	}
 }
@@ -2473,14 +2372,6 @@ extension Sequence where Element: Sequence {
 	func flatten() -> [Element.Element] {
 		// TODO: Make this `flatMap(\.self)` when https://github.com/apple/swift/issues/55343 is fixed.
 		flatMap { $0 }
-	}
-}
-
-
-extension NSRegularExpression {
-	func matches(_ string: String) -> Bool {
-		let range = NSRange(location: 0, length: string.utf16.count)
-		return firstMatch(in: string, options: [], range: range) != nil
 	}
 }
 
@@ -2697,6 +2588,8 @@ enum Bluetooth {
 			self.continuation = continuation
 			super.init()
 			self.manager = CBCentralManager(delegate: self, queue: nil, options: [CBCentralManagerOptionShowPowerAlertKey: false])
+
+			checkAccess()
 		}
 
 		private func checkAccess() {
@@ -2749,27 +2642,6 @@ enum Bluetooth {
 }
 
 
-extension Error {
-	/**
-	The `.localizedDescription` property does not include `.localizedRecoverySuggestion`, so you might miss out on important information. This property includes both.
-
-	Use this property when you have to pass the error to something that will present the error to the user, but only accepts a string. For example, the returned error message in an Siri intent handler.
-	*/
-	var presentableMessage: String {
-		let nsError = self as NSError
-		let description = localizedDescription.trimmingCharacters(in: .whitespacesAndNewlines)
-
-		guard
-			let recoverySuggestion = nsError.localizedRecoverySuggestion?.trimmingCharacters(in: .whitespacesAndNewlines)
-		else {
-			return description
-		}
-
-		return "\(description.ensureSuffix(".")) \(recoverySuggestion.ensureSuffix("."))"
-	}
-}
-
-
 extension String {
 	/**
 	- Parameter currentHostOnly: The pasteboard contents are available only on the current device, and not on any other devices. This parameter is only used on macOS.
@@ -2813,90 +2685,18 @@ extension XPasteboard {
 
 extension View {
 	/**
-	Embed the view in a `NavigationView`.
+	Embed the view in a `NavigationStack`.
 
-	- Note: Modifiers before this apply to the contents and modifiers after apply to the `NavigationView`.
+	- Note: Modifiers before this apply to the contents and modifiers after apply to the `NavigationStack`.
 	*/
 	@ViewBuilder
-	func embedInNavigationView(shouldEmbed: Bool = true) -> some View {
+	func embedInNavigationStack(_ shouldEmbed: Bool = true) -> some View {
 		if shouldEmbed {
-			NavigationView {
+			NavigationStack {
 				self
 			}
 		} else {
 			self
-		}
-	}
-
-	/**
-	Embed the view in a `NavigationView` if the current platform is **not** macOS.
-
-	This can be useful when you want a navigation view in a sheet, as macOS would try to add a sidebar then, which you probably don't want.
-
-	- Note: Modifiers before this apply to the contents and modifiers after apply to the `NavigationView`.
-	*/
-	@ViewBuilder
-	func embedInNavigationViewIfNotMacOS() -> some View {
-		#if canImport(AppKit)
-		self
-		#elseif canImport(UIKit)
-		embedInNavigationView()
-		#endif
-	}
-}
-
-
-extension INIntent {
-	/**
-	The name of the intent, which is the same as its identifier. For example, `WriteTextIntent`.
-	*/
-	static var typeName: String {
-		// This is safe as the intent identifier is stable.
-		String(describing: self)
-	}
-
-	/**
-	Create a `NSUserActivity` instance based on the name of the intent.
-
-	This can be useful for intent handlers that needs to continue in the main app.
-
-	```
-	@MainActor
-	final class WriteTextIntentHandler: NSObject, WriteTextIntentHandling {
-		func handle(intent: WriteTextIntent) async -> WriteTextIntentResponse {
-			.init(code: .continueInApp, userActivity: WriteTextIntent.nsUserActivity)
-		}
-	}
-	```
-	*/
-	static var nsUserActivity: NSUserActivity {
-		// This is safe as the intent identifier is stable.
-		.init(activityType: typeName)
-	}
-}
-
-
-extension View {
-	/**
-	Type-safe alternative to `.onContinueUserActivity()` specifically for intents.
-
-	```
-	.onContinueIntent(WriteTextIntent.self) { intent, _ in
-		text = intent.text
-	}
-	```
-	*/
-	func onContinueIntent<T: INIntent>(
-		_ intentType: T.Type,
-		perform action: @escaping (T, NSUserActivity) -> Void
-	) -> some View {
-		onContinueUserActivity(intentType.typeName) {
-			guard let intent = $0.interaction?.intent as? T else {
-				assertionFailure()
-				return
-			}
-
-			action(intent, $0)
 		}
 	}
 }
@@ -2906,11 +2706,11 @@ extension View {
 	/**
 	Present a fullscreen cover on iOS and a sheet on macOS.
 	*/
-	func fullScreenCoverOrSheetIfMacOS<Item, Content>(
+	func fullScreenCoverOrSheetIfMacOS<Item: Identifiable>(
 		item: Binding<Item?>,
 		onDismiss: (() -> Void)? = nil,
-		@ViewBuilder content: @escaping (Item) -> Content
-	) -> some View where Item: Identifiable, Content: View {
+		@ViewBuilder content: @escaping (Item) -> some View
+	) -> some View {
 		#if canImport(AppKit)
 		return sheet(item: item, onDismiss: onDismiss, content: content)
 		#elseif canImport(UIKit)
@@ -2985,10 +2785,8 @@ enum User {
 
 	/**
 	The current user's language code.
-
-	For example: `en`
 	*/
-	static var languageCode: String { Locale.current.languageCode ?? "en" }
+	static var languageCode: Locale.LanguageCode { Locale.current.language.languageCode ?? .english }
 
 	/**
 	The current user's shell.
@@ -3354,7 +3152,7 @@ extension Font {
 }
 
 
-extension StringProtocol {
+extension String {
 	/**
 	Removes characters without a display width, often referred to as invisible or non-printable characters.
 
@@ -3371,7 +3169,7 @@ extension StringProtocol {
 	```
 	*/
 	func removingCharactersWithoutDisplayWidth() -> String {
-		replacingOccurrences(of: #"[\p{Control}\p{Format}\p{Nonspacing_Mark}\p{Enclosing_Mark}\p{Line_Separator}\p{Paragraph_Separator}\p{Private_Use}\p{Unassigned}]"#, with: "", options: .regularExpression)
+		replacing(/[\p{Control}\p{Format}\p{Nonspacing_Mark}\p{Enclosing_Mark}\p{Line_Separator}\p{Paragraph_Separator}\p{Private_Use}\p{Unassigned}]/, with: "")
 	}
 }
 
@@ -3455,26 +3253,26 @@ extension Locale {
 	/**
 	A dictionary with available currency codes as keys and their locale as value.
 	*/
-	static let currencyCodesWithLocale = all
-		 .removingDuplicates(by: \.currencyCode)
-		 .toDictionaryCompact(withKey: \.currencyCode)
+	static let currencyWithLocale = all
+		.removingDuplicates(by: \.currency)
+		.toDictionaryCompact(withKey: \.currency)
 
 	/**
 	An array of tuples with currency code and its localized currency name and localized region name.
 	*/
-	static let currencyCodesWithLocalizedNameAndRegionName: [(currencyCode: String, localizedCurrencyName: String, localizedRegionName: String)] = currencyCodesWithLocale
-		 .compactMap { currencyCode, locale in
+	static let currencyWithLocalizedNameAndRegionName: [(currency: Currency, localizedCurrencyName: String, localizedRegionName: String)] = currencyWithLocale
+		 .compactMap { currency, locale in
 			 guard
-				let regionCode = locale.regionCode,
-				let localizedCurrencyName = locale.localizedString(forCurrencyCode: currencyCode),
-				let localizedRegionName = locale.localizedString(forRegionCode: regionCode)
+				let region = locale.language.region,
+				let localizedCurrencyName = locale.localizedString(forCurrencyCode: currency.identifier),
+				let localizedRegionName = locale.localizedString(forRegionCode: region.identifier)
 			 else {
 				 return nil
 			 }
 
-			 return (currencyCode, localizedCurrencyName, localizedRegionName)
+			 return (currency, localizedCurrencyName, localizedRegionName)
 		 }
-		 .sorted(by: \.currencyCode)
+		 .sorted(by: \.currency.identifier)
 }
 
 
@@ -3612,36 +3410,17 @@ extension Device {
 #endif
 
 
-#if canImport(AppKit)
-extension NSImage {
-	var toINImage: INImage {
-		// `pngData` is very unlikely to fail, so we just fall back to an empty image.
-		INImage(imageData: pngData() ?? Data())
-	}
-}
-#elseif canImport(UIKit) && canImport(IntentsUI)
-extension UIImage {
-	/**
-	Convert an `UIImage` to `INImage`.
-
-	- Important: If you're using this in an intent handler extension, don't forget to manually add the `IntentsUI` framework.
-	*/
-	var toINImage: INImage { INImage(uiImage: self) }
-}
-#endif
-
-
-extension StringProtocol {
+extension String {
 	var trimmed: String {
 		trimmingCharacters(in: .whitespacesAndNewlines)
 	}
 
 	var trimmedLeading: String {
-		replacingOccurrences(of: #"^\s+"#, with: "", options: .regularExpression)
+		replacing(/^\s+/, with: "")
 	}
 
 	var trimmedTrailing: String {
-		replacingOccurrences(of: #"\s+$"#, with: "", options: .regularExpression)
+		replacing(/\s+$/, with: "")
 	}
 }
 
@@ -3732,7 +3511,7 @@ extension StringProtocol {
 			truncatedString = truncatedString.dropLast()
 		}
 
-		return "\(truncatedString.trimmedTrailing)\(truncationIndicator)"
+		return "\(truncatedString.toString.trimmedTrailing)\(truncationIndicator)"
 	}
 }
 
@@ -3932,7 +3711,7 @@ extension URL {
 			return nil
 		}
 
-		let hasScheme = Regex(#"^[a-z\d-]+:"#).isMatched(by: string) && !string.hasPrefix("localhost")
+		let hasScheme = string.starts(with: /[a-z\d-]+:/) && !string.hasPrefix("localhost")
 
 		let isValid = string.contains(".")
 			|| string.hasPrefix("localhost")
@@ -4078,6 +3857,10 @@ extension String {
 	var toData: Data { Data(utf8) }
 }
 
+extension [Character] {
+	var toString: String { .init(self) }
+}
+
 
 extension Data {
 	/**
@@ -4134,11 +3917,11 @@ extension Data {
 
 extension Dictionary {
 	/**
-	Convert the dictionary to a `INFIle` which will end up as a "Dictionary" type in Shortcuts.
+	Convert the dictionary to an `IntentFile` which will end up as a "Dictionary" type in Shortcuts.
 	*/
-	func toINFile(filename: String? = nil) throws -> INFile {
+	func toIntentFile(filename: String? = nil) throws -> IntentFile {
 		try JSONSerialization.data(withJSONObject: self, options: .prettyPrinted)
-			.toINFile(contentType: .json, filename: filename)
+			.toIntentFile(contentType: .json, filename: filename)
 	}
 }
 
@@ -4251,12 +4034,112 @@ extension Binding where Value: SetAlgebra, Value.Element: Hashable {
 
 
 extension View {
-	func alert2<A, M, T>(
+	func alert2(
+		_ title: Text,
+		isPresented: Binding<Bool>,
+		@ViewBuilder actions: () -> some View,
+		@ViewBuilder message: () -> some View
+	) -> some View {
+		background(
+			EmptyView()
+				.alert(
+					title,
+					isPresented: isPresented,
+					actions: actions,
+					message: message
+				)
+		)
+	}
+
+	func alert2(
+		_ title: String,
+		isPresented: Binding<Bool>,
+		@ViewBuilder actions: () -> some View,
+		@ViewBuilder message: () -> some View
+	) -> some View {
+		alert2(
+			Text(title),
+			isPresented: isPresented,
+			actions: actions,
+			message: message
+		)
+	}
+
+	func alert2(
+		_ title: Text,
+		message: String? = nil,
+		isPresented: Binding<Bool>,
+		@ViewBuilder actions: () -> some View
+	) -> some View {
+		// swiftlint:disable:next trailing_closure
+		alert2(
+			title,
+			isPresented: isPresented,
+			actions: actions,
+			message: {
+				if let message {
+					Text(message)
+				}
+			}
+		)
+	}
+
+	func alert2(
+		_ title: String,
+		message: String? = nil,
+		isPresented: Binding<Bool>,
+		@ViewBuilder actions: () -> some View
+	) -> some View {
+		// swiftlint:disable:next trailing_closure
+		alert2(
+			title,
+			isPresented: isPresented,
+			actions: actions,
+			message: {
+				if let message {
+					Text(message)
+				}
+			}
+		)
+	}
+
+	func alert2(
+		_ title: Text,
+		message: String? = nil,
+		isPresented: Binding<Bool>
+	) -> some View {
+		// swiftlint:disable:next trailing_closure
+		alert2(
+			title,
+			message: message,
+			isPresented: isPresented,
+			actions: {}
+		)
+	}
+
+	func alert2(
+		_ title: String,
+		message: String? = nil,
+		isPresented: Binding<Bool>
+	) -> some View {
+		// swiftlint:disable:next trailing_closure
+		alert2(
+			title,
+			message: message,
+			isPresented: isPresented,
+			actions: {}
+		)
+	}
+}
+
+
+extension View {
+	func alert2<T>(
 		title: (T) -> Text,
 		presenting data: Binding<T?>,
-		@ViewBuilder actions: (T) -> A,
-		@ViewBuilder message: (T) -> M
-	) -> some View where A: View, M: View {
+		@ViewBuilder actions: (T) -> some View,
+		@ViewBuilder message: (T) -> some View
+	) -> some View {
 		background(
 			EmptyView()
 				.alert(
@@ -4269,12 +4152,12 @@ extension View {
 		)
 	}
 
-	func alert2<A, T>(
+	func alert2<T>(
 		title: (T) -> Text,
 		message: ((T) -> String?)? = nil,
 		presenting data: Binding<T?>,
-		@ViewBuilder actions: (T) -> A
-	) -> some View where A: View {
+		@ViewBuilder actions: (T) -> some View
+	) -> some View {
 		alert2(
 			title: { title($0) },
 			presenting: data,
@@ -4287,12 +4170,12 @@ extension View {
 		)
 	}
 
-	func alert2<A, T>(
+	func alert2<T>(
 		title: (T) -> String,
 		message: ((T) -> String?)? = nil,
 		presenting data: Binding<T?>,
-		@ViewBuilder actions: (T) -> A
-	) -> some View where A: View {
+		@ViewBuilder actions: (T) -> some View
+	) -> some View {
 		alert2(
 			title: { Text(title($0)) },
 			message: message,
@@ -4306,7 +4189,8 @@ extension View {
 		message: ((T) -> String?)? = nil,
 		presenting data: Binding<T?>
 	) -> some View {
-		alert2(  // swiftlint:disable:this trailing_closure
+		// swiftlint:disable:next trailing_closure
+		alert2(
 			title: title,
 			message: message,
 			presenting: data,
@@ -4626,17 +4510,13 @@ struct SearchField: NSViewRepresentable {
 
 struct NavigationLinkButtonStyle: PrimitiveButtonStyle {
 	func makeBody(configuration: Configuration) -> some View {
-		NavigationLink(
-			isActive: .init(
-				get: { false },
-				set: {
-					if $0 {
-						configuration.trigger()
-					}
-				}),
-			destination: {}
-		) {
-			configuration.label
+		ZStack {
+			NavigationLink(value: true) {
+				configuration.label
+			}
+			Button("") {
+				configuration.trigger()
+			}
 		}
 	}
 }
@@ -4747,7 +4627,7 @@ extension Collection {
 
 	- Parameter maxCount: Must be 0 or larger.
 	*/
-	func uniqueRandomIndices<T>(maxCount: Int, using generator: inout T) -> [Index] where T: RandomNumberGenerator {
+	func uniqueRandomIndices(maxCount: Int, using generator: inout some RandomNumberGenerator) -> [Index] {
 		assert(maxCount >= 0)
 
 		// Remove the `Array` wrapper and return `some Collection<Index>` when targeting Swift 5.7.
@@ -4901,5 +4781,79 @@ extension Double {
 		let format = context.objectForKeyedSubscript("format")
 
 		return format?.call(withArguments: [self, abbreviatedUnit, locale.bcp47Identifier]).toString()
+	}
+}
+
+
+extension XImage {
+	func toDisplayRepresentationImage(isTemplate: Bool? = nil) -> DisplayRepresentation.Image? {
+		guard let data = pngData() else {
+			return nil
+		}
+
+		return .init(data: data)
+	}
+}
+
+
+extension Task<Never, Never> {
+	public static func sleep(seconds: TimeInterval) async throws {
+	   try await sleep(nanoseconds: UInt64(seconds * Double(NSEC_PER_SEC)))
+	}
+}
+
+
+extension View {
+	/**
+	Fills the frame.
+	*/
+	func fillFrame(
+		_ axis: Axis.Set = [.horizontal, .vertical],
+		alignment: Alignment = .center
+	) -> some View {
+		frame(
+			maxWidth: axis.contains(.horizontal) ? .infinity : nil,
+			maxHeight: axis.contains(.vertical) ? .infinity : nil,
+			alignment: alignment
+		)
+	}
+}
+
+// TODO: Use strongly-typed category names when Swift has "const" features for enum cases.
+//enum IntentCategory: String {
+//	case list = "List"
+//	case dictionary = "Dictionary"
+//	case text = "Text"
+//	case image = "Image"
+//	case audio = "Audio"
+//	case device = "Device"
+//	case web = "Web"
+//}
+//
+//extension IntentDescription {
+//	init(
+//		_ descriptionText: LocalizedStringResource,
+//		category: IntentCategory,
+//		searchKeywords: [LocalizedStringResource] = []
+//	) {
+//		self.init(
+//			descriptionText,
+//			categoryName: "\(category.rawValue)",
+//			searchKeywords: searchKeywords
+//		)
+//	}
+//}
+
+
+extension Array<XImage> {
+	func createPDF() -> Data? {
+		let pdfDocument = PDFDocument()
+
+		for (index, image) in indexed() {
+			let pdfPage = PDFPage(image: image)
+			pdfDocument.insert(pdfPage!, at: index)
+		}
+
+		return pdfDocument.dataRepresentation()
 	}
 }
