@@ -25,6 +25,7 @@
 		E337A3E127E850EC0073E865 /* ChooseFromListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E337A3DF27E850EC0073E865 /* ChooseFromListScreen.swift */; };
 		E337A3E627E8BA6B0073E865 /* FuzzyFind in Frameworks */ = {isa = PBXBuildFile; productRef = E337A3E527E8BA6B0073E865 /* FuzzyFind */; };
 		E33D4BA62744238300CC7A8A /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33D4BA42744238300CC7A8A /* AppState.swift */; };
+		E3A85FE528E94E7300F423F1 /* FormatPersonName.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A85FE428E94E7300F423F1 /* FormatPersonName.swift */; };
 		E3BFF7B22742616400B830DE /* WriteTextScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BFF7B02742616400B830DE /* WriteTextScreen.swift */; };
 		E3BFF7B527428F5200B830DE /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BFF7B327428F5200B830DE /* WelcomeScreen.swift */; };
 		E3BFF7B82742A79100B830DE /* AppIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BFF7B62742A79100B830DE /* AppIcon.swift */; };
@@ -139,6 +140,7 @@
 		E33D4BA42744238300CC7A8A /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		E33DFF662748C6B100C79D78 /* InternetAccessPolicy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = InternetAccessPolicy.json; sourceTree = "<group>"; };
 		E39F4776272D516E00B99CB0 /* Actions.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Actions.entitlements; sourceTree = "<group>"; };
+		E3A85FE428E94E7300F423F1 /* FormatPersonName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatPersonName.swift; sourceTree = "<group>"; };
 		E3BFF7B02742616400B830DE /* WriteTextScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteTextScreen.swift; sourceTree = "<group>"; };
 		E3BFF7B327428F5200B830DE /* WelcomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreen.swift; sourceTree = "<group>"; };
 		E3BFF7B62742A79100B830DE /* AppIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIcon.swift; sourceTree = "<group>"; };
@@ -303,6 +305,7 @@
 				E3C33CBB28D4413E00386C59 /* FormatCurrency.swift */,
 				E3EC2DD728D244B200A88E25 /* FormatDateDifference.swift */,
 				E3F64D6B28D9EDFE0009B500 /* FormatDuration.swift */,
+				E3A85FE428E94E7300F423F1 /* FormatPersonName.swift */,
 				E31DE80D28D62CE200DE79EF /* FormatNumberCompact.swift */,
 				E3EC2DAF28D1EA6B00A88E25 /* GenerateUUID.swift */,
 				E31DE7F328D5E3B400DE79EF /* GeoURI.swift */,
@@ -484,6 +487,7 @@
 				E3EC2DBF28D2045300A88E25 /* SortList.swift in Sources */,
 				E3EC2DB828D1F76100A88E25 /* TrimWhitespace.swift in Sources */,
 				E3C33CAA28D3A81700386C59 /* IsDarkMode.swift in Sources */,
+				E3A85FE528E94E7300F423F1 /* FormatPersonName.swift in Sources */,
 				E3EC2DCC28D22CDC00A88E25 /* TransformTextWithJavaScript.swift in Sources */,
 				E3EC2DC628D2181F00A88E25 /* ReverseList.swift in Sources */,
 				E3C33CBD28D4413E00386C59 /* FormatCurrency.swift in Sources */,

@@ -52,6 +52,7 @@ Want to run shortcuts directly from the iOS Lock Screen? Check out my new [Quick
 - Format Date Difference
 - Format Duration
 - Format Number — Compact
+- Format Person Name
 - Generate CSV
 - Generate Haptic Feedback <sup>(iOS-only)</sup>
 - Generate UUID

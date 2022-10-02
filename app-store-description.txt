@@ -25,6 +25,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Format Date Difference
 - Format Duration
 - Format Number — Compact
+- Format Person Name
 - Generate CSV
 - Generate Haptic Feedback (iOS-only)
 - Generate UUID
