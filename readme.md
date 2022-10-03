@@ -37,6 +37,7 @@ Want to run shortcuts directly from the iOS Lock Screen? Check out my new [Quick
 
 - Add to List
 - Apply Capture Date
+- Blur Images
 - Choose from List (Extended)
 - Clamp Number
 - Combine Lists

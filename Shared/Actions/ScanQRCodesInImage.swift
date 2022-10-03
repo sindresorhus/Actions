@@ -30,13 +30,8 @@ The messages are sorted by the physical size of their QR code in ascending order
 	}
 
 	func perform() async throws -> some IntentResult & ReturnsValue<[String]> {
-		guard let ciImage = CIImage(data: image.data) else {
-			throw NSError.appError("Invalid image.")
-		}
-
-		let messages = ciImage.readMessageForQRCodes()
+		let messages = try CIImage.from(image.data).readMessageForQRCodes()
 		let result = multiple ? messages : Array(messages.prefix(1))
-
 		return .result(value: result)
 	}
 }

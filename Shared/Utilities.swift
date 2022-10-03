@@ -4857,3 +4857,71 @@ extension Array<XImage> {
 		return pdfDocument.dataRepresentation()
 	}
 }
+
+
+extension CGRect {
+	var shortestSide: Double { min(width, height) }
+}
+
+
+extension CGColorSpace {
+	static let typed_extendedSRGB = CGColorSpace(name: CGColorSpace.extendedSRGB)!
+}
+
+
+extension CIImage {
+	func pngData() -> Data? {
+		CIContext().pngRepresentation(
+			of: self,
+			format: .RGBA8,
+			colorSpace: colorSpace ?? .typed_extendedSRGB
+		)
+	}
+}
+
+
+extension CIImage {
+	/**
+	A better way to load a `CIImage` from `Data`:
+	1. Throws on failure.
+	2. Normalizes orientation.
+	*/
+	static func from(_ data: Data) throws -> Self {
+		guard let ciImage = Self(data: data, options: [.applyOrientationProperty: true]) else {
+			throw NSError.appError("Invalid image or unsupported image format.")
+		}
+
+		return ciImage
+	}
+}
+
+
+extension CIImage {
+	/**
+	Apply a gaussian blur effect to the image.
+
+	- Parameter radius: The blur radius in pixels. The required amount will vary depending on image dimensions.
+	*/
+	func gaussianBlurred(radius: Double) -> CIImage {
+		clampedToExtent() // This ensures it won't get softened edges.
+			.applyingGaussianBlur(sigma: radius)
+			.cropped(to: extent)
+	}
+
+	/**
+	Apply a gaussian blur effect to the image.
+
+	- Parameter fractionalAmount: The blur amount in the range `0...1`. For example, `0.5` blur will look the same regardless of the dimensions of the image.
+	*/
+	func gaussianBlurred(fractionalAmount: Double) -> CIImage {
+		// Make the slider exponential.
+		// The 400 constant is just the visually optimal one from doing lots of experimentation. This favors more control over low blur values.
+		let finalAmount = pow(400, fractionalAmount) / 400
+
+		// TODO: This should probably use the pixel count, not just the shortest side length.
+		// The max amount is the whole length, but there is no visible difference between the whole and half.
+		let multiplier = extent.shortestSide / 2
+
+		return gaussianBlurred(radius: finalAmount * multiplier)
+	}
+}

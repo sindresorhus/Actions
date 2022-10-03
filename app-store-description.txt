@@ -11,6 +11,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 
 - Add to List
 - Apply Capture Date
+- Blur Images
 - Choose from List (Extended)
 - Clamp Number
 - Combine Lists
