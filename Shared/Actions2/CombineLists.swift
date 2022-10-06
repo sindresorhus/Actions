@@ -13,7 +13,7 @@ Supports up to 10 lists.
 
 Tap and hold a list parameter to select a variable to a list. Don't quick tap it.
 """,
-	categoryName: "List"
+		categoryName: "List"
 	)
 
 	@Parameter(title: "List 1", supportedTypeIdentifiers: ["public.item"])

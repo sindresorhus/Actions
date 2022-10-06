@@ -14,7 +14,7 @@ Returns the currently running apps, including various metadata about them.
 
 Use the built-in "Show Result" action to inspect the individual properties.
 """,
-	categoryName: "Device"
+		categoryName: "Device"
 	)
 
 	static var parameterSummary: some ParameterSummary {

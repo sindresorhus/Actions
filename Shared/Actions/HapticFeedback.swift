@@ -15,7 +15,7 @@ Not supported on i​Pad. Requires i​Phone 8 or later.
 
 On macOS, it does nothing.
 """,
-	categoryName: "Device"
+		categoryName: "Device"
 	)
 
 	static let openAppWhenRun = true

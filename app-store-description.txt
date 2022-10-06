@@ -15,6 +15,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Choose from List (Extended)
 - Clamp Number
 - Combine Lists
+- Calculate with Soulver
 - Convert Date to Unix Time
 - Convert Location to Geo URI
 - Convert Unix Time to Date

@@ -12,7 +12,7 @@ Returns whether the device is in the chosen orientation.
 
 On macOS it always returns “false”.
 """,
-	categoryName: "Device"
+		categoryName: "Device"
 	)
 
 	@Parameter(title: "Orientation")

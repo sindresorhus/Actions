@@ -11,7 +11,7 @@ Clamps the input number to above or equal to the given minimum number and below 
 
 For example, if you provide 10 as the number, 4 as minimum, and 8 as maximum, you will get 8 back.
 """,
-	categoryName: "Number"
+		categoryName: "Number"
 	)
 
 	@Parameter(title: "Number", controlStyle: .field)

@@ -5,14 +5,15 @@ struct GetSymbolImage: AppIntent, CustomIntentMigratedAppIntent {
 
 	static let title: LocalizedStringResource = "Get Symbol Image"
 
-	static let description = IntentDescription("""
+	static let description = IntentDescription(
+"""
 Returns a SF Symbols symbol as an image.
 
 For example, “checkmark.circle.fill”.
 
 Use the SF Symbols app to find the symbol you want.
 """,
-	categoryName: "Image"
+		categoryName: "Image"
 	)
 
 	@Parameter(

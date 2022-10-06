@@ -11,7 +11,7 @@ Hides the Shortcuts app.
 
 This is useful for making cross-platform shortcuts. If you just target iOS, use the built-in “Go to Home Screen” action instead.
 """,
-	categoryName: "Utility"
+		categoryName: "Utility"
 	)
 
 	static let openAppWhenRun = true

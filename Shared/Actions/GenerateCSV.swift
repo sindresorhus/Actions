@@ -14,7 +14,7 @@ The keys of the dictionaries are the CSV headers.
 
 The dictionaries must have the same shape.
 """,
-	categoryName: "Parse / Generate"
+		categoryName: "Parse / Generate"
 	)
 
 	@Parameter(title: "Dictionaries", supportedTypeIdentifiers: ["public.data"])

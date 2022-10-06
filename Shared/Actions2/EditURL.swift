@@ -19,7 +19,7 @@ Lets you edit the components of the input URL.
 
 For example, add a query item, change the path, or remove the fragment.
 """,
-	categoryName: "URL"
+		categoryName: "URL"
 	)
 
 	@Parameter(title: "URL")

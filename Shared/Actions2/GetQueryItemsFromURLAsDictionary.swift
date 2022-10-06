@@ -15,7 +15,7 @@ Limitation: URLs support having multiple query items with the same name, but dic
 
 Tip: You could, for example, use this action together with the built-in “Get Dictionary Value” action.
 """,
-	categoryName: "URL"
+		categoryName: "URL"
 	)
 
 	@Parameter(title: "URL")

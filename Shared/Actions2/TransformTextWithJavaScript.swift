@@ -14,7 +14,7 @@ The input text is available in a global variable named “$text”.
 
 The code is excuted with JavaScriptCore (same as used in Safari), not JXA.
 """,
-	categoryName: "Text"
+		categoryName: "Text"
 	)
 
 	@Parameter(

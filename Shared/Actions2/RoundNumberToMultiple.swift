@@ -11,7 +11,7 @@ Rounds the input number to the nearest multiple of the second number.
 
 For example, if the number represents minutes and you want to round it to the nearest half-hour, you could use 30 as the multiple.
 """,
-	categoryName: "Number"
+		categoryName: "Number"
 	)
 
 	@Parameter(title: "Number")

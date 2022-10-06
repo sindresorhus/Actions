@@ -15,7 +15,7 @@ Returns details about the current user.
 
 For example, username, name, language, idle time, etc.
 """,
-	categoryName: "Device"
+		categoryName: "Device"
 	)
 
 	@Parameter(title: "Type", default: .name)

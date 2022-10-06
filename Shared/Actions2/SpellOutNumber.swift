@@ -13,7 +13,7 @@ For example, 1000 becomes "one thousand".
 
 If a locale is not specified, the system locale is used.
 """,
-	categoryName: "Formatting"
+		categoryName: "Formatting"
 	)
 
 	@Parameter(title: "Number")

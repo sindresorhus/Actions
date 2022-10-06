@@ -65,6 +65,8 @@
 		E3CB44AF28D7A6BA0031D55F /* SpellOutNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CB44AD28D7A6BA0031D55F /* SpellOutNumber.swift */; };
 		E3D514C628EEA6B9003F7C2E /* PlayAlertSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D514C528EEA6B9003F7C2E /* PlayAlertSound.swift */; };
 		E3D514C828EEA8F8003F7C2E /* FlashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D514C728EEA8F8003F7C2E /* FlashScreen.swift */; };
+		E3D514CA28EEAAEC003F7C2E /* CalculateWithSoulver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D514C928EEAAEC003F7C2E /* CalculateWithSoulver.swift */; };
+		E3D514CD28EEABA6003F7C2E /* SoulverCore in Frameworks */ = {isa = PBXBuildFile; productRef = E3D514CC28EEABA6003F7C2E /* SoulverCore */; };
 		E3DB884D28E6E3AD00FEE8D6 /* HapticFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DB884B28E6E3AD00FEE8D6 /* HapticFeedback.swift */; };
 		E3DB885028E6EE7B00FEE8D6 /* HideShortcutsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DB884F28E6EE7B00FEE8D6 /* HideShortcutsApp.swift */; };
 		E3DB885228E6EFBB00FEE8D6 /* ScanDocuments.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DB885128E6EFBB00FEE8D6 /* ScanDocuments.swift */; };
@@ -183,6 +185,7 @@
 		E3CB44AD28D7A6BA0031D55F /* SpellOutNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellOutNumber.swift; sourceTree = "<group>"; };
 		E3D514C528EEA6B9003F7C2E /* PlayAlertSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayAlertSound.swift; sourceTree = "<group>"; };
 		E3D514C728EEA8F8003F7C2E /* FlashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashScreen.swift; sourceTree = "<group>"; };
+		E3D514C928EEAAEC003F7C2E /* CalculateWithSoulver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateWithSoulver.swift; sourceTree = "<group>"; };
 		E3DB884B28E6E3AD00FEE8D6 /* HapticFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedback.swift; sourceTree = "<group>"; };
 		E3DB884F28E6EE7B00FEE8D6 /* HideShortcutsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideShortcutsApp.swift; sourceTree = "<group>"; };
 		E3DB885128E6EFBB00FEE8D6 /* ScanDocuments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanDocuments.swift; sourceTree = "<group>"; };
@@ -230,6 +233,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E337A3E627E8BA6B0073E865 /* FuzzyFind in Frameworks */,
+				E3D514CD28EEABA6003F7C2E /* SoulverCore in Frameworks */,
 				E3F64D7028D9EFE80009B500 /* ExceptionCatcher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -302,6 +306,7 @@
 			children = (
 				E3EC2DE528D25DF900A88E25 /* AddToList.swift */,
 				E3C33C9128D3569F00386C59 /* ApplyCaptureDate.swift */,
+				E3D514C928EEAAEC003F7C2E /* CalculateWithSoulver.swift */,
 				E3EC2DC728D2197400A88E25 /* ClampNumber.swift */,
 				E3C33C9728D35D7400386C59 /* CombineLists.swift */,
 				E3EC2DDD28D24CD900A88E25 /* ConvertDateToUnixTime.swift */,
@@ -396,6 +401,7 @@
 			packageProductDependencies = (
 				E337A3E527E8BA6B0073E865 /* FuzzyFind */,
 				E3F64D6F28D9EFE80009B500 /* ExceptionCatcher */,
+				E3D514CC28EEABA6003F7C2E /* SoulverCore */,
 			);
 			productName = "Actions (iOS)";
 			productReference = E324C9F6271E972300E7CA9B /* Actions.app */;
@@ -429,6 +435,7 @@
 				E3327E95272C68DE00AD5CC7 /* XCRemoteSwiftPackageReference "sentry-cocoa" */,
 				E337A3E227E8B66D0073E865 /* XCRemoteSwiftPackageReference "FuzzyFind" */,
 				E32B4F3227FD77700057F08D /* XCRemoteSwiftPackageReference "ExceptionCatcher" */,
+				E3D514CB28EEABA6003F7C2E /* XCRemoteSwiftPackageReference "SoulverCore" */,
 			);
 			productRefGroup = E324C9F7271E972300E7CA9B /* Products */;
 			projectDirPath = "";
@@ -534,6 +541,7 @@
 				E3F64D7928D9FCA20009B500 /* GetSymbolImage.swift in Sources */,
 				E3BFF7B22742616400B830DE /* WriteTextScreen.swift in Sources */,
 				E3DB885728E727E200FEE8D6 /* ChooseFromListExtended.swift in Sources */,
+				E3D514CA28EEAAEC003F7C2E /* CalculateWithSoulver.swift in Sources */,
 				E3BFF7B82742A79100B830DE /* AppIcon.swift in Sources */,
 				E3EC2DB028D1EA6B00A88E25 /* GenerateUUID.swift in Sources */,
 				E3EC2DE628D25DF900A88E25 /* AddToList.swift in Sources */,
@@ -799,7 +807,7 @@
 			repositoryURL = "https://github.com/getsentry/sentry-cocoa";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 7.23.0;
+				minimumVersion = 7.27.0;
 			};
 		};
 		E337A3E227E8B66D0073E865 /* XCRemoteSwiftPackageReference "FuzzyFind" */ = {
@@ -810,6 +818,14 @@
 				minimumVersion = 0.1.0;
 			};
 		};
+		E3D514CB28EEABA6003F7C2E /* XCRemoteSwiftPackageReference "SoulverCore" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/soulverteam/SoulverCore";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -817,6 +833,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E337A3E227E8B66D0073E865 /* XCRemoteSwiftPackageReference "FuzzyFind" */;
 			productName = FuzzyFind;
+		};
+		E3D514CC28EEABA6003F7C2E /* SoulverCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E3D514CB28EEABA6003F7C2E /* XCRemoteSwiftPackageReference "SoulverCore" */;
+			productName = SoulverCore;
 		};
 		E3F64D6F28D9EFE80009B500 /* ExceptionCatcher */ = {
 			isa = XCSwiftPackageProductDependency;

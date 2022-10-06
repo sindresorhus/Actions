@@ -13,7 +13,7 @@ JSON5 is a more human-friendly version of JSON. It can handle comments, single-q
 
 The built-in "Get Dictionary from Input" action does not support JSON5.
 """,
-	categoryName: "Parse / Generate"
+		categoryName: "Parse / Generate"
 	)
 
 	@Parameter(

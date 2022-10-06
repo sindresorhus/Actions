@@ -11,7 +11,7 @@ Formats the number into text using a compact style.
 
 For example, 3420 becomes “3.4 thousand” or “3.4K”.
 """,
-	categoryName: "Formatting"
+		categoryName: "Formatting"
 	)
 
 	@Parameter(title: "Number")

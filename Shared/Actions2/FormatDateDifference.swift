@@ -11,7 +11,7 @@ Formats the difference of one date relative to another date.
 
 For example, “Yesterday” or “2 weeks ago”.
 """,
-	categoryName: "Formatting"
+		categoryName: "Formatting"
 	)
 
 	@Parameter(title: "First Date")

@@ -4,10 +4,8 @@ struct FormatPersonName: AppIntent {
 	static let title: LocalizedStringResource = "Format Person Name"
 
 	static let description = IntentDescription(
-"""
-Formats the name of a person.
-""",
-	categoryName: "Formatting"
+		"Formats the name of a person.",
+		categoryName: "Formatting"
 	)
 
 	@Parameter(title: "Given Name", inputOptions: .init(autocorrect: false))

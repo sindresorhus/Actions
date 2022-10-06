@@ -16,7 +16,7 @@ This is an extended version of the built-in "Choose from List" action.
 
 Add the “Wait to Return” and “Get Clipboard” actions after this one.
 """,
-	categoryName: "Utility"
+		categoryName: "Utility"
 	)
 
 	static let openAppWhenRun = true

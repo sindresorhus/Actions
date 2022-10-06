@@ -11,7 +11,7 @@ Returns whether the web server at the given host is reachable.
 
 Use the “Is Online” action if you just want to check whether your computer is online.
 """,
-	categoryName: "Device"
+		categoryName: "Device"
 	)
 
 	@Parameter(

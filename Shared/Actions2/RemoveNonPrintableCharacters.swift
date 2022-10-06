@@ -11,7 +11,7 @@ Removes non-printable (invisible) Unicode characters from the input text, exclud
 
 This can be useful to clean up input text which might contain things like left-to-right embedding, control characters, etc.
 """,
-	categoryName: "Text"
+		categoryName: "Text"
 	)
 
 	@Parameter(title: "Text")

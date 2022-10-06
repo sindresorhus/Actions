@@ -14,7 +14,7 @@ It returns false if the device does not support Wi-Fi.
 
 Use the “Is Online” action if you simply want to check for internet connectivity.
 """,
-	categoryName: "Device"
+		categoryName: "Device"
 	)
 
 	static var parameterSummary: some ParameterSummary {

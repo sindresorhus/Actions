@@ -11,7 +11,7 @@ Returns all query items from the input URL.
 
 The name and value of the query item can be accessed individually.
 """,
-	categoryName: "URL"
+		categoryName: "URL"
 	)
 
 	@Parameter(title: "URL")

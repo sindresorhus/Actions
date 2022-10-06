@@ -14,7 +14,7 @@ By default, it only returns the message for the first QR code.
 
 The messages are sorted by the physical size of their QR code in ascending order (largest first).
 """,
-	categoryName: "Image"
+		categoryName: "Image"
 	)
 
 	@Parameter(title: "Image", supportedTypeIdentifiers: ["public.image"])

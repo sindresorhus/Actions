@@ -19,5 +19,6 @@ Intent categories:
 - Music
 - Formatting
 - Parse / Generate
+- Math
 - Miscellaneous
 */

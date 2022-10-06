@@ -20,7 +20,7 @@ Styles:
 - Full: 9 hours, 41 minutes, 30 seconds
 - Spell Out: nine hours, forty-one minutes, thirty seconds
 """,
-	categoryName: "Formatting"
+		categoryName: "Formatting"
 	)
 
 	@Parameter(title: "Duration", description: "In seconds.", controlStyle: .field)

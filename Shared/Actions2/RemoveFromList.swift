@@ -11,7 +11,7 @@ Removes items from the input list.
 
 It uses 1-based indexing.
 """,
-	categoryName: "List"
+		categoryName: "List"
 	)
 
 	@Parameter(

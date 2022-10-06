@@ -11,7 +11,7 @@ Returns the Uniform Type Identifier (UTI) of the input file.
 
 For example, a JPEG file would return “public.jpeg”.
 """,
-	categoryName: "File"
+		categoryName: "File"
 	)
 
 	@Parameter(title: "File", supportedTypeIdentifiers: ["public.item"])

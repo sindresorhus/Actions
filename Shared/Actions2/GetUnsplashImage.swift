@@ -11,7 +11,7 @@ Returns a random image from Unsplash.
 
 For example, use it together with the built-in “Set Wallpaper” action.
 """,
-	categoryName: "Web"
+		categoryName: "Web"
 	)
 
 	@Parameter(title: "Keywords", default: [])

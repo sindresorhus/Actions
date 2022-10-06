@@ -13,7 +13,7 @@ Note that duplicates will be removed from the result.
 
 Tap and hold a list parameter to select a variable to a list. Don't quick tap it.
 """,
-	categoryName: "List"
+		categoryName: "List"
 	)
 
 	@Parameter(title: "Operation", default: .intersection)

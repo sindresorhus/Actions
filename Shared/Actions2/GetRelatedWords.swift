@@ -12,7 +12,7 @@ Returns words related to the input word.
 
 For example, given the word “horse”, it would return stallion, racehorse, pony, etc.
 """,
-	categoryName: "Text"
+		categoryName: "Text"
 	)
 
 	@Parameter(

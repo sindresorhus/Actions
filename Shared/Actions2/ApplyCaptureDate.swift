@@ -14,7 +14,7 @@ If an image does not have a capture date metadata, the file is just passed throu
 
 This action can be useful to run after the built-in "Convert Image" action (ensure "Preserve Metadata" is checked).
 """,
-	categoryName: "File"
+		categoryName: "File"
 	)
 
 	@Parameter(title: "Images", supportedTypeIdentifiers: ["public.image"])

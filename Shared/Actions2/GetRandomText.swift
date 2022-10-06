@@ -18,7 +18,7 @@ Returns random text of the given length.
 
 This can be useful as a placeholder, token, etc.
 """,
-	categoryName: "Random"
+		categoryName: "Random"
 	)
 
 	// We set an upper bound to not exceed allowed memory usage.

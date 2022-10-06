@@ -23,7 +23,7 @@ Possible values:
 
 On macOS, it always returns “unknown”.
 """,
-	categoryName: "Device"
+		categoryName: "Device"
 	)
 
 	func perform() async throws -> some IntentResult & ReturnsValue<DeviceOrientationAppEnum> {
