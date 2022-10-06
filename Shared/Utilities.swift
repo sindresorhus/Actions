@@ -3410,6 +3410,18 @@ extension Device {
 #endif
 
 
+#if canImport(AppKit)
+extension Device {
+	/**
+	Flash the screen like when taking a screenshot.
+	*/
+	static func flashScreen() async {
+		await SystemSound(id: kSystemSoundID_FlashScreen).play(alert: true)
+	}
+}
+#endif
+
+
 extension String {
 	var trimmed: String {
 		trimmingCharacters(in: .whitespacesAndNewlines)

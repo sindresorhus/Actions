@@ -27,16 +27,17 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Format Duration
 - Format Number — Compact
 - Format Person Name
+- Flash Screen
 - Generate CSV
-- Generate Haptic Feedback (iOS-only)
+- Generate Haptic Feedback
 - Generate UUID
-- Get Audio Playback Destination (iOS-only)
+- Get Audio Playback Destination
 - Get Battery State
 - Get Device Orientation
 - Get Emojis
-- Get File Icon (macOS-only)
+- Get File Icon
 - Get File Path
-- Get Music Playlists (iOS-only)
+- Get Music Playlists
 - Get Query Item Value from URL
 - Get Query Items from URL
 - Get Query Items from URL as Dictionary
@@ -47,28 +48,28 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Get Random Floating-Point Number
 - Get Random Text
 - Get Related Words
-- Get Running Apps (macOS-only)
+- Get Running Apps
 - Get Symbol Image
 - Get Title of URL
 - Get Uniform Type Identifier
 - Get Unsplash Image
 - Get User Details
 - Hide Shortcuts App
-- Is Audio Playing (iOS-only)
+- Is Audio Playing
 - Is Bluetooth On
-- Is Connected to VPN (iOS-only)
+- Is Connected to VPN
 - Is Dark Mode On
 - Is Device Orientation
 - Is Low Power Mode On
 - Is Online
 - Is Reachable
-- Is Screen Locked (macOS-only)
-- Is Silent Mode On (iOS-only)
-- Is Wi-Fi On (macOS-only)
+- Is Screen Locked
+- Is Silent Mode On
+- Is Wi-Fi On
 - Merge Dictionaries
 - Parse CSV
 - Parse JSON5
-- Play Alert Sound (macOS-only)
+- Play Alert Sound
 - Pretty Print Dictionaries
 - Remove Duplicate Lines
 - Remove Duplicates from List
@@ -78,8 +79,8 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Remove Non-Printable Characters
 - Reverse List
 - Round Number to Multiple
-- Sample Color from Screen (macOS-only)
-- Scan Documents (iOS-only)
+- Sample Color from Screen
+- Scan Documents
 - Scan QR Codes in Image
 - Set Creation and Modification Date of File
 - Shuffle List

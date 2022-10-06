@@ -64,6 +64,7 @@
 		E3CB44AB28D7A10C0031D55F /* TranscribeAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CB44A928D7A10C0031D55F /* TranscribeAudio.swift */; };
 		E3CB44AF28D7A6BA0031D55F /* SpellOutNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CB44AD28D7A6BA0031D55F /* SpellOutNumber.swift */; };
 		E3D514C628EEA6B9003F7C2E /* PlayAlertSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D514C528EEA6B9003F7C2E /* PlayAlertSound.swift */; };
+		E3D514C828EEA8F8003F7C2E /* FlashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D514C728EEA8F8003F7C2E /* FlashScreen.swift */; };
 		E3DB884D28E6E3AD00FEE8D6 /* HapticFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DB884B28E6E3AD00FEE8D6 /* HapticFeedback.swift */; };
 		E3DB885028E6EE7B00FEE8D6 /* HideShortcutsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DB884F28E6EE7B00FEE8D6 /* HideShortcutsApp.swift */; };
 		E3DB885228E6EFBB00FEE8D6 /* ScanDocuments.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DB885128E6EFBB00FEE8D6 /* ScanDocuments.swift */; };
@@ -181,6 +182,7 @@
 		E3CB44A928D7A10C0031D55F /* TranscribeAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranscribeAudio.swift; sourceTree = "<group>"; };
 		E3CB44AD28D7A6BA0031D55F /* SpellOutNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellOutNumber.swift; sourceTree = "<group>"; };
 		E3D514C528EEA6B9003F7C2E /* PlayAlertSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayAlertSound.swift; sourceTree = "<group>"; };
+		E3D514C728EEA8F8003F7C2E /* FlashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashScreen.swift; sourceTree = "<group>"; };
 		E3DB884B28E6E3AD00FEE8D6 /* HapticFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedback.swift; sourceTree = "<group>"; };
 		E3DB884F28E6EE7B00FEE8D6 /* HideShortcutsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideShortcutsApp.swift; sourceTree = "<group>"; };
 		E3DB885128E6EFBB00FEE8D6 /* ScanDocuments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanDocuments.swift; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 				E3EC2DE128D2588800A88E25 /* CreateURL.swift */,
 				E3F64D7128D9F3810009B500 /* EditURL.swift */,
 				E3C33C9B28D376C400386C59 /* FilterList.swift */,
+				E3D514C728EEA8F8003F7C2E /* FlashScreen.swift */,
 				E3C33CBB28D4413E00386C59 /* FormatCurrency.swift */,
 				E3EC2DD728D244B200A88E25 /* FormatDateDifference.swift */,
 				E3F64D6B28D9EDFE0009B500 /* FormatDuration.swift */,
@@ -517,6 +520,7 @@
 				E3EC2DDE28D24CD900A88E25 /* ConvertDateToUnixTime.swift in Sources */,
 				E3C33C9528D35B9C00386C59 /* SetFileCreationModificationDate.swift in Sources */,
 				E3EC2DAE28D1E77700A88E25 /* TransformText.swift in Sources */,
+				E3D514C828EEA8F8003F7C2E /* FlashScreen.swift in Sources */,
 				E3C33CA828D3A6CB00386C59 /* IsBluetoothOn.swift in Sources */,
 				E3C33CA428D38AF600386C59 /* SendFeedback.swift in Sources */,
 				E3EC2DB228D1F23D00A88E25 /* GetRandomEmoticon.swift in Sources */,

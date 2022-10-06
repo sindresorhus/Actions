@@ -54,6 +54,7 @@ Want to run shortcuts directly from the iOS Lock Screen? Check out my new [Quick
 - Format Duration
 - Format Number — Compact
 - Format Person Name
+- Flash Screen <sup>(macOS-only)</sup>
 - Generate CSV
 - Generate Haptic Feedback <sup>(iOS-only)</sup>
 - Generate UUID
