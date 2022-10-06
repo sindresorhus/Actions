@@ -94,6 +94,7 @@ Want to run shortcuts directly from the iOS Lock Screen? Check out my new [Quick
 - Merge Dictionaries
 - Parse CSV
 - Parse JSON5
+- Play Alert Sound <sup>(macOS-only)</sup>
 - Pretty Print Dictionaries
 - Remove Duplicate Lines
 - Remove Duplicates from List

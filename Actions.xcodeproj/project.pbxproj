@@ -63,6 +63,7 @@
 		E3CB44A828D79EF90031D55F /* ScanQRCodesInImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CB44A728D79EF90031D55F /* ScanQRCodesInImage.swift */; };
 		E3CB44AB28D7A10C0031D55F /* TranscribeAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CB44A928D7A10C0031D55F /* TranscribeAudio.swift */; };
 		E3CB44AF28D7A6BA0031D55F /* SpellOutNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CB44AD28D7A6BA0031D55F /* SpellOutNumber.swift */; };
+		E3D514C628EEA6B9003F7C2E /* PlayAlertSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D514C528EEA6B9003F7C2E /* PlayAlertSound.swift */; };
 		E3DB884D28E6E3AD00FEE8D6 /* HapticFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DB884B28E6E3AD00FEE8D6 /* HapticFeedback.swift */; };
 		E3DB885028E6EE7B00FEE8D6 /* HideShortcutsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DB884F28E6EE7B00FEE8D6 /* HideShortcutsApp.swift */; };
 		E3DB885228E6EFBB00FEE8D6 /* ScanDocuments.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DB885128E6EFBB00FEE8D6 /* ScanDocuments.swift */; };
@@ -179,6 +180,7 @@
 		E3CB44A728D79EF90031D55F /* ScanQRCodesInImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanQRCodesInImage.swift; sourceTree = "<group>"; };
 		E3CB44A928D7A10C0031D55F /* TranscribeAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranscribeAudio.swift; sourceTree = "<group>"; };
 		E3CB44AD28D7A6BA0031D55F /* SpellOutNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellOutNumber.swift; sourceTree = "<group>"; };
+		E3D514C528EEA6B9003F7C2E /* PlayAlertSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayAlertSound.swift; sourceTree = "<group>"; };
 		E3DB884B28E6E3AD00FEE8D6 /* HapticFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedback.swift; sourceTree = "<group>"; };
 		E3DB884F28E6EE7B00FEE8D6 /* HideShortcutsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideShortcutsApp.swift; sourceTree = "<group>"; };
 		E3DB885128E6EFBB00FEE8D6 /* ScanDocuments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanDocuments.swift; sourceTree = "<group>"; };
@@ -308,8 +310,8 @@
 				E3C33CBB28D4413E00386C59 /* FormatCurrency.swift */,
 				E3EC2DD728D244B200A88E25 /* FormatDateDifference.swift */,
 				E3F64D6B28D9EDFE0009B500 /* FormatDuration.swift */,
-				E3A85FE428E94E7300F423F1 /* FormatPersonName.swift */,
 				E31DE80D28D62CE200DE79EF /* FormatNumberCompact.swift */,
+				E3A85FE428E94E7300F423F1 /* FormatPersonName.swift */,
 				E3EC2DAF28D1EA6B00A88E25 /* GenerateUUID.swift */,
 				E31DE7F328D5E3B400DE79EF /* GeoURI.swift */,
 				E3C33CDE28D4914C00386C59 /* GetAudioPlaybackDestination.swift */,
@@ -345,6 +347,7 @@
 				E31DE7E928D5DE0C00DE79EF /* IsSilentModeOn.swift */,
 				E31DE7F728D5E94500DE79EF /* IsWiFiOn.swift */,
 				E3CB44A128D794DA0031D55F /* MergeDictionaries.swift */,
+				E3D514C528EEA6B9003F7C2E /* PlayAlertSound.swift */,
 				E3CB448F28D77E840031D55F /* PrettyPrintDictionaries.swift */,
 				E3EC2DE328D25CF300A88E25 /* RemoveDuplicateLines.swift */,
 				E3EC2DC328D215A100A88E25 /* RemoveDuplicatesFromList.swift */,
@@ -517,6 +520,7 @@
 				E3C33CA828D3A6CB00386C59 /* IsBluetoothOn.swift in Sources */,
 				E3C33CA428D38AF600386C59 /* SendFeedback.swift in Sources */,
 				E3EC2DB228D1F23D00A88E25 /* GetRandomEmoticon.swift in Sources */,
+				E3D514C628EEA6B9003F7C2E /* PlayAlertSound.swift in Sources */,
 				E3EC2DD828D244B200A88E25 /* FormatDateDifference.swift in Sources */,
 				E3CB44A828D79EF90031D55F /* ScanQRCodesInImage.swift in Sources */,
 				E3DB885228E6EFBB00FEE8D6 /* ScanDocuments.swift in Sources */,

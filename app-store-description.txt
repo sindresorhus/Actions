@@ -68,6 +68,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Merge Dictionaries
 - Parse CSV
 - Parse JSON5
+- Play Alert Sound (macOS-only)
 - Pretty Print Dictionaries
 - Remove Duplicate Lines
 - Remove Duplicates from List

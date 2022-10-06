@@ -3221,7 +3221,7 @@ extension Sequence {
 	/**
 	Convert a sequence to a dictionary by mapping over the values and using the returned key as the key and the current sequence element as value.
 
-	If the the returned key is `nil`, the element is skipped.
+	If the returned key is `nil`, the element is skipped.
 
 	```
 	[1, 2, 3].toDictionary { $0 }
