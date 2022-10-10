@@ -7,7 +7,26 @@ struct TransformText: AppIntent, CustomIntentMigratedAppIntent {
 
 	static let description = IntentDescription(
 		"Transforms the input text to camel case, pascal case, snake case, constant case, or dash case. It also has transliteration transformations.",
-		categoryName: "Text"
+		categoryName: "Text",
+		searchKeywords: [
+			"camelcase",
+			"pascalcase",
+			"snakecase",
+			"constantcase",
+			"dashcase",
+			"case",
+			"camel",
+			"pascal",
+			"snake",
+			"constant",
+			"dash",
+			"slugify",
+			"slug",
+			"transliterate",
+			"latin",
+			"ascii",
+			"diacritic"
+		]
 	)
 
 	@Parameter(title: "Text")
@@ -33,6 +52,12 @@ struct TransformText: AppIntent, CustomIntentMigratedAppIntent {
 				return text.constantCasing()
 			case .dashCase:
 				return text.dashCasing()
+			case .slugify:
+				return text.slugified()
+			case .stripDiacritics:
+				return text.applyingTransform(.stripDiacritics, reverse: false)
+			case .transliterateToLatin:
+				return text.applyingTransform(.toLatin, reverse: false)
 			case .transliterateLatinToArabic:
 				return text.applyingTransform(.latinToArabic, reverse: false)
 			case .transliterateLatinToCyrillic:
@@ -51,10 +76,6 @@ struct TransformText: AppIntent, CustomIntentMigratedAppIntent {
 				return text.applyingTransform(.hiraganaToKatakana, reverse: false)
 			case .transliterateMandarinToLatin:
 				return text.applyingTransform(.mandarinToLatin, reverse: false)
-			case .transliterateToLatin:
-				return text.applyingTransform(.toLatin, reverse: false)
-			case .stripDiacritics:
-				return text.applyingTransform(.stripDiacritics, reverse: false)
 			}
 		}()
 
@@ -70,6 +91,9 @@ enum TransformationAppEnum: String, AppEnum {
 	case snakeCase
 	case constantCase
 	case dashCase
+	case slugify
+	case stripDiacritics
+	case transliterateToLatin
 	case transliterateLatinToArabic
 	case transliterateLatinToCyrillic
 	case transliterateLatinToGreek
@@ -79,8 +103,6 @@ enum TransformationAppEnum: String, AppEnum {
 	case transliterateLatinToThai
 	case transliterateHiraganaToKatakana
 	case transliterateMandarinToLatin
-	case transliterateToLatin
-	case stripDiacritics
 
 	static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "Transformation")
 
@@ -90,6 +112,12 @@ enum TransformationAppEnum: String, AppEnum {
 		.snakeCase: "snake_case",
 		.constantCase: "CONSTANT_CASE",
 		.dashCase: "dash-case",
+		.slugify: .init(
+			title: "Slugify",
+			subtitle: "“Sør āē 拼” → “sor-ae-pin”"
+		),
+		.stripDiacritics: "Strip Diacritics",
+		.transliterateToLatin: "Transliterate to Latin",
 		.transliterateLatinToArabic: "Transliterate Latin to Arabic",
 		.transliterateLatinToCyrillic: "Transliterate Latin to Cyrillic",
 		.transliterateLatinToGreek: "Transliterate Latin to Greek",
@@ -98,8 +126,6 @@ enum TransformationAppEnum: String, AppEnum {
 		.transliterateLatinToHiragana: "Transliterate Latin to Hiragana",
 		.transliterateLatinToThai: "Transliterate Latin to Thai",
 		.transliterateHiraganaToKatakana: "Transliterate Hiragana to Katakana",
-		.transliterateMandarinToLatin: "Transliterate Mandarin to Latin",
-		.transliterateToLatin: "Transliterate to Latin",
-		.stripDiacritics: "Strip Diacritics"
+		.transliterateMandarinToLatin: "Transliterate Mandarin to Latin"
 	]
 }

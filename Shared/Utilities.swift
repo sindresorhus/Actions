@@ -4937,3 +4937,21 @@ extension CIImage {
 		return gaussianBlurred(radius: finalAmount * multiplier)
 	}
 }
+
+
+extension StringTransform {
+	static let toLatinASCIILowercase = Self("Any-Latin; Latin-ASCII; Lower;")
+}
+
+
+extension String {
+	func slugified(separator: Character = "-") -> Self {
+		let allowedCharacters = CharacterSet(charactersIn: "\(separator)")
+			.union(.asciiLettersAndNumbers)
+
+		return (applyingTransform(.toLatinASCIILowercase, reverse: false) ?? self)
+			.components(separatedBy: allowedCharacters.inverted)
+			.filter { !$0.isEmpty }
+			.joined(separator: Self(separator))
+	}
+}
