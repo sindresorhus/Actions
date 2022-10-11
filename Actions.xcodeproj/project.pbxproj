@@ -28,6 +28,7 @@
 		E34AB51628F58B500082AE78 /* Authenticate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34AB51528F58B500082AE78 /* Authenticate.swift */; };
 		E34AB51828F5AA170082AE78 /* ConvertCoordinatesToLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34AB51728F5AA170082AE78 /* ConvertCoordinatesToLocation.swift */; };
 		E3A85FE528E94E7300F423F1 /* FormatPersonName.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A85FE428E94E7300F423F1 /* FormatPersonName.swift */; };
+		E3B1C3C428F5D68D009BE0B7 /* GetIndexOfListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B1C3C328F5D68D009BE0B7 /* GetIndexOfListItem.swift */; };
 		E3BFF7B22742616400B830DE /* WriteTextScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BFF7B02742616400B830DE /* WriteTextScreen.swift */; };
 		E3BFF7B527428F5200B830DE /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BFF7B327428F5200B830DE /* WelcomeScreen.swift */; };
 		E3BFF7B82742A79100B830DE /* AppIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BFF7B62742A79100B830DE /* AppIcon.swift */; };
@@ -150,6 +151,7 @@
 		E34AB51728F5AA170082AE78 /* ConvertCoordinatesToLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertCoordinatesToLocation.swift; sourceTree = "<group>"; };
 		E39F4776272D516E00B99CB0 /* Actions.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Actions.entitlements; sourceTree = "<group>"; };
 		E3A85FE428E94E7300F423F1 /* FormatPersonName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatPersonName.swift; sourceTree = "<group>"; };
+		E3B1C3C328F5D68D009BE0B7 /* GetIndexOfListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetIndexOfListItem.swift; sourceTree = "<group>"; };
 		E3BFF7B02742616400B830DE /* WriteTextScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteTextScreen.swift; sourceTree = "<group>"; };
 		E3BFF7B327428F5200B830DE /* WelcomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreen.swift; sourceTree = "<group>"; };
 		E3BFF7B62742A79100B830DE /* AppIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIcon.swift; sourceTree = "<group>"; };
@@ -334,6 +336,7 @@
 				E3C33CA128D37E2B00386C59 /* GetEmojis.swift */,
 				E3CB449B28D78F4C0031D55F /* GetFileIcon.swift */,
 				E3EC2DD928D246BC00A88E25 /* GetFilePath.swift */,
+				E3B1C3C328F5D68D009BE0B7 /* GetIndexOfListItem.swift */,
 				E3C33C9928D35F3D00386C59 /* GetMusicPlaylists.swift */,
 				E31DE80728D61FE800DE79EF /* GetQueryItemsFromURL.swift */,
 				E31DE80B28D62ACC00DE79EF /* GetQueryItemsFromURLAsDictionary.swift */,
@@ -563,6 +566,7 @@
 				E3CB44A528D7972B0031D55F /* GetUnsplashImage.swift in Sources */,
 				E31DE80928D61FE800DE79EF /* GetQueryItemsFromURL.swift in Sources */,
 				E3CB449028D77E840031D55F /* PrettyPrintDictionaries.swift in Sources */,
+				E3B1C3C428F5D68D009BE0B7 /* GetIndexOfListItem.swift in Sources */,
 				E3CB448828D717CA0031D55F /* IsDeviceOrientation.swift in Sources */,
 				E3EC2DD328D240AE00A88E25 /* SampleColor.swift in Sources */,
 				E3EC2DBA28D1F8B500A88E25 /* GetRandomInstant.swift in Sources */,

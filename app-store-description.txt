@@ -40,6 +40,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Get Emojis
 - Get File Icon
 - Get File Path
+- Get Index of List Item
 - Get Music Playlists
 - Get Query Item Value from URL
 - Get Query Items from URL

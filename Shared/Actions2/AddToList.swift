@@ -6,8 +6,18 @@ struct AddToList: AppIntent, CustomIntentMigratedAppIntent {
 	static let title: LocalizedStringResource = "Add to List"
 
 	static let description = IntentDescription(
-		"Adds the input item to the given list. Even though the description says this action accepts input of type Files, it accepts any type.",
-		categoryName: "List"
+"""
+Adds the input item to the given list.
+
+Even though the description says this action accepts input of type Files, it accepts any type.
+""",
+		categoryName: "List",
+		searchKeywords: [
+			"append",
+			"prepend",
+			"push",
+			"shift"
+		]
 	)
 
 	@Parameter(

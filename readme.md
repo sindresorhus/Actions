@@ -66,6 +66,7 @@ Want to run shortcuts directly from the iOS Lock Screen? Check out my new [Quick
 - Get Emojis
 - Get File Icon <sup>(macOS-only)</sup>
 - Get File Path
+- Get Index of List Item
 - Get Music Playlists <sup>(iOS-only)</sup>
 - Get Query Item Value from URL
 - Get Query Items from URL
