@@ -676,6 +676,35 @@ extension URL {
 }
 
 
+extension URL {
+	/**
+	Opens the URL or throws with a human-friendly error message if it is unable to.
+
+	- Note: It does nothing in app extensions.
+	*/
+	@MainActor // It's marked mainactor as `UIApplication.shared.open` requires it, but is not yet annotated. (iOS 16.0)
+	func openAsync() async throws {
+		#if canImport(AppKit)
+		try await NSWorkspace.shared.open(self, configuration: .init())
+		#elseif canImport(UIKit) && !APP_EXTENSION
+		guard await UIApplication.shared.open(self) else {
+			throw NSError.appError("Failed to open the URL “\(absoluteString)”.")
+		}
+		#endif
+	}
+
+	@MainActor
+	func openAsyncOrOpenShortcutsApp() async throws {
+		do {
+			try await openAsync()
+		} catch {
+			ShortcutsApp.open()
+			throw error
+		}
+	}
+}
+
+
 extension String {
 	/*
 	```
@@ -4954,4 +4983,19 @@ extension String {
 			.filter { !$0.isEmpty }
 			.joined(separator: Self(separator))
 	}
+}
+
+
+extension Color {
+	#if os(iOS)
+	/**
+	- Important: Prefer `ShapeStyle.background` whenever possible.
+	*/
+	static let legacyBackground = Self(UIColor.systemBackground)
+	#else
+	/**
+	- Important: Prefer `ShapeStyle.background` whenever possible.
+	*/
+	static let legacyBackground = Self(NSColor.windowBackgroundColor)
+	#endif
 }

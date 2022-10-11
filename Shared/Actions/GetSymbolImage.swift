@@ -3,7 +3,7 @@ import AppIntents
 struct GetSymbolImage: AppIntent, CustomIntentMigratedAppIntent {
 	static let intentClassName = "SymbolImageIntent"
 
-	static let title: LocalizedStringResource = "Get Symbol Image"
+	static let title: LocalizedStringResource = "Get SF Symbol Image"
 
 	static let description = IntentDescription(
 """

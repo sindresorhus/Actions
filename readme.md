@@ -37,11 +37,12 @@ Want to run shortcuts directly from the iOS Lock Screen? Check out my new [Quick
 
 - Add to List
 - Apply Capture Date
+- Authenticate
 - Blur Images
+- Calculate with Soulver
 - Choose from List (Extended)
 - Clamp Number
 - Combine Lists
-- Calculate with Soulver
 - Convert Date to Unix Time
 - Convert Location to Geo URI
 - Convert Unix Time to Date

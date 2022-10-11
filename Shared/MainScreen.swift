@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct MainScreen: View {
+	@Environment(\.scenePhase) private var scenePhase
 	@EnvironmentObject private var appState: AppState
 	@State private var error: Error?
 
@@ -27,6 +28,18 @@ struct MainScreen: View {
 					UIPasteboard.general.images = images
 				case .failure(let error):
 					self.error = error
+				}
+			}
+			.overlay {
+				if appState.isFullscreenOverlayPresented {
+					// We use this instead of `.fullScreenCover` as there's no way to turn off its animation.
+					Color.legacyBackground
+						.ignoresSafeArea()
+				}
+			}
+			.onChange(of: scenePhase) {
+				if $0 != .active {
+					appState.isFullscreenOverlayPresented = false
 				}
 			}
 			.onChange(of: appState.isDocumentScannerPresented) {

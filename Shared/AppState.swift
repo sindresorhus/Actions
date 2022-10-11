@@ -7,4 +7,5 @@ final class AppState: ObservableObject {
 	@Published var isDocumentScannerPresented = false
 	@Published var writeTextData: WriteTextScreen.Data?
 	@Published var chooseFromListData: ChooseFromListScreen.Data?
+	@Published var isFullscreenOverlayPresented = false
 }
