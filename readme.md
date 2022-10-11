@@ -43,20 +43,20 @@ Want to run shortcuts directly from the iOS Lock Screen? Check out my new [Quick
 - Choose from List (Extended)
 - Clamp Number
 - Combine Lists
+- Convert Coordinates to Location
 - Convert Date to Unix Time
 - Convert Location to Geo URI
 - Convert Unix Time to Date
 - Create Color Image
-- Create Symbol Image
 - Create URL
 - Edit URL
 - Filter List
+- Flash Screen <sup>(macOS-only)</sup>
 - Format Currency
 - Format Date Difference
 - Format Duration
 - Format Number — Compact
 - Format Person Name
-- Flash Screen <sup>(macOS-only)</sup>
 - Generate CSV
 - Generate Haptic Feedback <sup>(iOS-only)</sup>
 - Generate UUID
@@ -78,6 +78,7 @@ Want to run shortcuts directly from the iOS Lock Screen? Check out my new [Quick
 - Get Random Text
 - Get Related Words
 - Get Running Apps <sup>(macOS-only)</sup>
+- Get Symbol Image
 - Get Title of URL
 - Get Uniform Type Identifier
 - Get Unsplash Image

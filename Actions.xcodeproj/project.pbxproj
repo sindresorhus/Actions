@@ -26,6 +26,7 @@
 		E337A3E627E8BA6B0073E865 /* FuzzyFind in Frameworks */ = {isa = PBXBuildFile; productRef = E337A3E527E8BA6B0073E865 /* FuzzyFind */; };
 		E33D4BA62744238300CC7A8A /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33D4BA42744238300CC7A8A /* AppState.swift */; };
 		E34AB51628F58B500082AE78 /* Authenticate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34AB51528F58B500082AE78 /* Authenticate.swift */; };
+		E34AB51828F5AA170082AE78 /* ConvertCoordinatesToLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34AB51728F5AA170082AE78 /* ConvertCoordinatesToLocation.swift */; };
 		E3A85FE528E94E7300F423F1 /* FormatPersonName.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A85FE428E94E7300F423F1 /* FormatPersonName.swift */; };
 		E3BFF7B22742616400B830DE /* WriteTextScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BFF7B02742616400B830DE /* WriteTextScreen.swift */; };
 		E3BFF7B527428F5200B830DE /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BFF7B327428F5200B830DE /* WelcomeScreen.swift */; };
@@ -146,6 +147,7 @@
 		E33D4BA42744238300CC7A8A /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		E33DFF662748C6B100C79D78 /* InternetAccessPolicy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = InternetAccessPolicy.json; sourceTree = "<group>"; };
 		E34AB51528F58B500082AE78 /* Authenticate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticate.swift; sourceTree = "<group>"; };
+		E34AB51728F5AA170082AE78 /* ConvertCoordinatesToLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertCoordinatesToLocation.swift; sourceTree = "<group>"; };
 		E39F4776272D516E00B99CB0 /* Actions.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Actions.entitlements; sourceTree = "<group>"; };
 		E3A85FE428E94E7300F423F1 /* FormatPersonName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatPersonName.swift; sourceTree = "<group>"; };
 		E3BFF7B02742616400B830DE /* WriteTextScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteTextScreen.swift; sourceTree = "<group>"; };
@@ -312,6 +314,7 @@
 				E3D514C928EEAAEC003F7C2E /* CalculateWithSoulver.swift */,
 				E3EC2DC728D2197400A88E25 /* ClampNumber.swift */,
 				E3C33C9728D35D7400386C59 /* CombineLists.swift */,
+				E34AB51728F5AA170082AE78 /* ConvertCoordinatesToLocation.swift */,
 				E3EC2DDD28D24CD900A88E25 /* ConvertDateToUnixTime.swift */,
 				E3EC2DDF28D253D600A88E25 /* ConvertUnixTimeToDate.swift */,
 				E3EC2DE128D2588800A88E25 /* CreateURL.swift */,
@@ -526,6 +529,7 @@
 				E31DE7F228D5E30C00DE79EF /* IsOnline.swift in Sources */,
 				E3F64D6D28D9EDFE0009B500 /* FormatDuration.swift in Sources */,
 				E3C33C9A28D35F3D00386C59 /* GetMusicPlaylists.swift in Sources */,
+				E34AB51828F5AA170082AE78 /* ConvertCoordinatesToLocation.swift in Sources */,
 				E3EC2DC228D20D0400A88E25 /* ShuffleList.swift in Sources */,
 				E33D4BA62744238300CC7A8A /* AppState.swift in Sources */,
 				E3EC2DDE28D24CD900A88E25 /* ConvertDateToUnixTime.swift in Sources */,

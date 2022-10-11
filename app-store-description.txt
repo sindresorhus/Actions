@@ -17,6 +17,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Choose from List (Extended)
 - Clamp Number
 - Combine Lists
+- Convert Coordinates to Location
 - Convert Date to Unix Time
 - Convert Location to Geo URI
 - Convert Unix Time to Date
@@ -24,12 +25,12 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Create URL
 - Edit URL
 - Filter List
+- Flash Screen
 - Format Currency
 - Format Date Difference
 - Format Duration
 - Format Number — Compact
 - Format Person Name
-- Flash Screen
 - Generate CSV
 - Generate Haptic Feedback
 - Generate UUID
@@ -51,7 +52,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Get Random Text
 - Get Related Words
 - Get Running Apps
-- Get Symbol Image
+- Get SF Symbol Image
 - Get Title of URL
 - Get Uniform Type Identifier
 - Get Unsplash Image
