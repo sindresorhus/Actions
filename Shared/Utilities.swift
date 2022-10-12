@@ -1472,11 +1472,23 @@ extension String {
 
 extension String {
 	/**
-	Returns a string with empty or whitespace-only lines removed.
+	Returns a new string with empty or whitespace-only lines removed.
 	*/
 	func removingEmptyLines() -> Self {
 		lines()
 			.filter { !$0.isEmptyOrWhitespace }
+			.joined(separator: "\n")
+	}
+}
+
+
+extension String {
+	/**
+	Returns a new string with the lines in reversed order.
+	*/
+	func reversingLines() -> Self {
+		lines()
+			.reversed()
 			.joined(separator: "\n")
 	}
 }

@@ -107,6 +107,7 @@ Want to run shortcuts directly from the iOS Lock Screen? Check out my new [Quick
 - Remove Empty Lines
 - Remove from List
 - Remove Non-Printable Characters
+- Reverse Lines
 - Reverse List
 - Round Number to Multiple
 - Sample Color from Screen <sup>(macOS-only)</sup>

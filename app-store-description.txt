@@ -81,6 +81,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Remove Empty Lines
 - Remove from List
 - Remove Non-Printable Characters
+- Reverse Lines
 - Reverse List
 - Round Number to Multiple
 - Sample Color from Screen

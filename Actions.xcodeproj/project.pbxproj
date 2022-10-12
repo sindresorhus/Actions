@@ -27,6 +27,7 @@
 		E33D4BA62744238300CC7A8A /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33D4BA42744238300CC7A8A /* AppState.swift */; };
 		E34AB51628F58B500082AE78 /* Authenticate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34AB51528F58B500082AE78 /* Authenticate.swift */; };
 		E34AB51828F5AA170082AE78 /* ConvertCoordinatesToLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34AB51728F5AA170082AE78 /* ConvertCoordinatesToLocation.swift */; };
+		E352420628F6CAAD00A957A7 /* ReverseLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = E352420528F6CAAD00A957A7 /* ReverseLines.swift */; };
 		E3A85FE528E94E7300F423F1 /* FormatPersonName.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A85FE428E94E7300F423F1 /* FormatPersonName.swift */; };
 		E3B1C3C428F5D68D009BE0B7 /* GetIndexOfListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B1C3C328F5D68D009BE0B7 /* GetIndexOfListItem.swift */; };
 		E3BFF7B22742616400B830DE /* WriteTextScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BFF7B02742616400B830DE /* WriteTextScreen.swift */; };
@@ -149,6 +150,7 @@
 		E33DFF662748C6B100C79D78 /* InternetAccessPolicy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = InternetAccessPolicy.json; sourceTree = "<group>"; };
 		E34AB51528F58B500082AE78 /* Authenticate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticate.swift; sourceTree = "<group>"; };
 		E34AB51728F5AA170082AE78 /* ConvertCoordinatesToLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertCoordinatesToLocation.swift; sourceTree = "<group>"; };
+		E352420528F6CAAD00A957A7 /* ReverseLines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseLines.swift; sourceTree = "<group>"; };
 		E39F4776272D516E00B99CB0 /* Actions.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Actions.entitlements; sourceTree = "<group>"; };
 		E3A85FE428E94E7300F423F1 /* FormatPersonName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatPersonName.swift; sourceTree = "<group>"; };
 		E3B1C3C328F5D68D009BE0B7 /* GetIndexOfListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetIndexOfListItem.swift; sourceTree = "<group>"; };
@@ -372,6 +374,7 @@
 				E3EC2DC928D22B6F00A88E25 /* RemoveEmptyLines.swift */,
 				E3EC2DE928D2E5B900A88E25 /* RemoveFromList.swift */,
 				E3C33CB928D4406500386C59 /* RemoveNonPrintableCharacters.swift */,
+				E352420528F6CAAD00A957A7 /* ReverseLines.swift */,
 				E3EC2DC528D2181F00A88E25 /* ReverseList.swift */,
 				E31DE7ED28D5E14400DE79EF /* RoundNumberToMultiple.swift */,
 				E3EC2DD128D240AE00A88E25 /* SampleColor.swift */,
@@ -491,6 +494,7 @@
 				E3CB449228D7803C0031D55F /* ParseJSON5.swift in Sources */,
 				E3C33CA628D3A52300386C59 /* IsAudioPlaying.swift in Sources */,
 				E3EC2DC428D215A100A88E25 /* RemoveDuplicatesFromList.swift in Sources */,
+				E352420628F6CAAD00A957A7 /* ReverseLines.swift in Sources */,
 				E3C33C9828D35D7400386C59 /* CombineLists.swift in Sources */,
 				E3CB449F28D791D40031D55F /* GenerateCSV.swift in Sources */,
 				E3C33CB028D3B3EF00386C59 /* IsConnectedToVPN.swift in Sources */,
