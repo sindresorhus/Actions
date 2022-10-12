@@ -21,6 +21,13 @@ struct MainScreen: View {
 			.fullScreenCoverOrSheetIfMacOS(item: $appState.chooseFromListData) {
 				ChooseFromListScreen(data: $0)
 			}
+			.alert2(
+				title: \.title,
+				message: { $0.message?.nilIfEmptyOrWhitespace },
+				presenting: $appState.askForTextData
+			) { data in
+				AskForTextScreen(data: data)
+			}
 			#if canImport(UIKit)
 			.documentScanner(isPresented: $appState.isDocumentScannerPresented) {
 				switch $0 {

@@ -44,9 +44,9 @@ IMPORTANT: The result is copied to the clipboard as the text “true” or “fa
 		do {
 			let context = LAContext()
 			try await context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: "Authenticate the shortcut")
-			XPasteboard.general.string = "true"
+			XPasteboard.general.stringForCurrentHostOnly = "true"
 		} catch {
-			XPasteboard.general.string = "false"
+			XPasteboard.general.stringForCurrentHostOnly = "false"
 		}
 
 		if let openURL {

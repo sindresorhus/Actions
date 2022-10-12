@@ -28,6 +28,8 @@
 		E34AB51628F58B500082AE78 /* Authenticate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34AB51528F58B500082AE78 /* Authenticate.swift */; };
 		E34AB51828F5AA170082AE78 /* ConvertCoordinatesToLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34AB51728F5AA170082AE78 /* ConvertCoordinatesToLocation.swift */; };
 		E352420628F6CAAD00A957A7 /* ReverseLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = E352420528F6CAAD00A957A7 /* ReverseLines.swift */; };
+		E352420A28F6EEDE00A957A7 /* AskForText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E352420928F6EEDE00A957A7 /* AskForText.swift */; };
+		E352420C28F6F6AD00A957A7 /* AskForTextScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E352420B28F6F6AD00A957A7 /* AskForTextScreen.swift */; };
 		E3A85FE528E94E7300F423F1 /* FormatPersonName.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A85FE428E94E7300F423F1 /* FormatPersonName.swift */; };
 		E3B1C3C428F5D68D009BE0B7 /* GetIndexOfListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B1C3C328F5D68D009BE0B7 /* GetIndexOfListItem.swift */; };
 		E3BFF7B22742616400B830DE /* WriteTextScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BFF7B02742616400B830DE /* WriteTextScreen.swift */; };
@@ -151,6 +153,8 @@
 		E34AB51528F58B500082AE78 /* Authenticate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticate.swift; sourceTree = "<group>"; };
 		E34AB51728F5AA170082AE78 /* ConvertCoordinatesToLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertCoordinatesToLocation.swift; sourceTree = "<group>"; };
 		E352420528F6CAAD00A957A7 /* ReverseLines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseLines.swift; sourceTree = "<group>"; };
+		E352420928F6EEDE00A957A7 /* AskForText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AskForText.swift; path = Shared/Actions/AskForText.swift; sourceTree = SOURCE_ROOT; };
+		E352420B28F6F6AD00A957A7 /* AskForTextScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskForTextScreen.swift; sourceTree = "<group>"; };
 		E39F4776272D516E00B99CB0 /* Actions.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Actions.entitlements; sourceTree = "<group>"; };
 		E3A85FE428E94E7300F423F1 /* FormatPersonName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatPersonName.swift; sourceTree = "<group>"; };
 		E3B1C3C328F5D68D009BE0B7 /* GetIndexOfListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetIndexOfListItem.swift; sourceTree = "<group>"; };
@@ -252,6 +256,7 @@
 		E30FD0D527908D1A00C01D80 /* Actions */ = {
 			isa = PBXGroup;
 			children = (
+				E352420928F6EEDE00A957A7 /* AskForText.swift */,
 				E34AB51528F58B500082AE78 /* Authenticate.swift */,
 				E3EA7D7A28EAC2210043F782 /* BlurImages.swift */,
 				E3DB885528E727E200FEE8D6 /* ChooseFromListExtended.swift */,
@@ -291,6 +296,7 @@
 				E3BFF7B62742A79100B830DE /* AppIcon.swift */,
 				E3BFF7B02742616400B830DE /* WriteTextScreen.swift */,
 				E337A3DF27E850EC0073E865 /* ChooseFromListScreen.swift */,
+				E352420B28F6F6AD00A957A7 /* AskForTextScreen.swift */,
 				E3FC71DC271EBE5B00C9D255 /* Utilities.swift */,
 				E30FD0D527908D1A00C01D80 /* Actions */,
 				E38715862725A333003155B0 /* Actions2 */,
@@ -514,6 +520,7 @@
 				E31DE7F428D5E3B400DE79EF /* GeoURI.swift in Sources */,
 				E31DE7EF28D5E14400DE79EF /* RoundNumberToMultiple.swift in Sources */,
 				E3EC2DCA28D22B6F00A88E25 /* RemoveEmptyLines.swift in Sources */,
+				E352420C28F6F6AD00A957A7 /* AskForTextScreen.swift in Sources */,
 				E337A3E127E850EC0073E865 /* ChooseFromListScreen.swift in Sources */,
 				E3EC2DBF28D2045300A88E25 /* SortList.swift in Sources */,
 				E3EC2DB828D1F76100A88E25 /* TrimWhitespace.swift in Sources */,
@@ -573,6 +580,7 @@
 				E3B1C3C428F5D68D009BE0B7 /* GetIndexOfListItem.swift in Sources */,
 				E3CB448828D717CA0031D55F /* IsDeviceOrientation.swift in Sources */,
 				E3EC2DD328D240AE00A88E25 /* SampleColor.swift in Sources */,
+				E352420A28F6EEDE00A957A7 /* AskForText.swift in Sources */,
 				E3EC2DBA28D1F8B500A88E25 /* GetRandomInstant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

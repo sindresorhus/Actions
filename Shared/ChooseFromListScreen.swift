@@ -129,10 +129,8 @@ struct ChooseFromListScreen: View {
 						return
 					}
 
-					// TODO: Use `Task.sleep` when it accepts a duration.
-					delay(seconds: timeout) {
-						timeoutAction()
-					}
+					try? await Task.sleep(seconds: timeout)
+					timeoutAction()
 				}
 		}
 	}

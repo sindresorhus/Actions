@@ -43,8 +43,13 @@ IMPORTANT: Add the “Wait to Return” and “Get Clipboard” actions after th
 	@Parameter(title: "Use Timeout", default: false)
 	var useTimeout: Bool
 
-	@Parameter(title: "Timeout", default: 10, inclusiveRange: (1, 9999))
-	var timeout: Double?
+	@Parameter(
+		title: "Timeout",
+		defaultValue: 10,
+		defaultUnit: .seconds,
+		supportsNegativeNumbers: false
+	)
+	var timeout: Measurement<UnitDuration>?
 
 	@Parameter(title: "Return Value on Timeout", default: .nothing)
 	var timeoutReturnValue: ChooseFromListTimeoutValueAppEnum
@@ -103,7 +108,7 @@ IMPORTANT: Add the “Wait to Return” and “Get Clipboard” actions after th
 			selectMultiple: selectMultiple,
 			selectAllInitially: selectAllInitially,
 			allowCustomItems: allowCustomItems,
-			timeout: useTimeout ? timeout : nil,
+			timeout: useTimeout ? timeout?.converted(to: .seconds).value : nil,
 			timeoutReturnValue: timeoutReturnValue
 		)
 
