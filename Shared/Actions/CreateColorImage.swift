@@ -41,7 +41,7 @@ struct CreateColorImage: AppIntent, CustomIntentMigratedAppIntent {
 		guard
 			let color = XColor(hexString: color, alpha: opacity)
 		else {
-			throw NSError.appError("Invalid color.")
+			throw "Invalid color.".toError
 		}
 
 		let result = try XImage.color(

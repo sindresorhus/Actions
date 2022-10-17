@@ -58,7 +58,7 @@ Note: Use Base64 encoding whenever possible as it's more space efficient.
 					.toIntentFile(filename: input.filenameWithoutExtension)
 			case .decode:
 				guard let string = input.data.toString else {
-					throw NSError.appError("The input must be text or a plain text file.")
+					throw "The input must be text or a plain text file.".toError
 				}
 
 				return string

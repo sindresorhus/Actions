@@ -73,7 +73,7 @@ It uses 1-based indexing.
 					let index,
 					list.indices.contains(index - 1) // Account for 1-based indexing.
 				else {
-					throw NSError.appError("You must specify a valid index.")
+					throw "You must specify a valid index.".toError
 				}
 
 				// Account for 1-based indexing.
@@ -85,7 +85,7 @@ It uses 1-based indexing.
 					list.indices.contains(rangeLowerBound - 1), // Account for 1-based indexing.
 					list.indices.contains(rangeUpperBound - 1)
 				else {
-					throw NSError.appError("You must specify a valid range.")
+					throw "You must specify a valid range.".toError
 				}
 
 				// Account for 1-based indexing.
@@ -97,7 +97,7 @@ It uses 1-based indexing.
 					let randomItemCount,
 					randomItemCount >= 0
 				else {
-					throw NSError.appError("You must specify a count of 0 or higher")
+					throw "You must specify a count of 0 or higher".toError
 				}
 
 				let indices = list.uniqueRandomIndices(maxCount: randomItemCount)

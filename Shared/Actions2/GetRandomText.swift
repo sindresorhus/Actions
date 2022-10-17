@@ -85,7 +85,7 @@ This can be useful as a placeholder, token, etc.
 		let result = try {
 			if useCustomCharacters {
 				guard let customCharacters = customCharacters?.nilIfEmptyOrWhitespace else {
-					throw NSError.appError("You must specify some custom characters.")
+					throw "You must specify some custom characters.".toError
 				}
 
 				return String.random(
@@ -95,7 +95,7 @@ This can be useful as a placeholder, token, etc.
 				)
 			} else {
 				guard !characters.isEmpty else {
-					throw NSError.appError("You must enable at least one of “Lowercase”, “Uppercase”, and “Digits”.")
+					throw "You must enable at least one of “Lowercase”, “Uppercase”, and “Digits”.".toError
 				}
 
 				return String.random(

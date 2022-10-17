@@ -121,7 +121,7 @@ extension CSVDelimiterAppEnum {
 				delimiter.count == 1,
 				let character = delimiter.first
 			else {
-				throw NSError.appError("Invalid delimiter. The delimiter should be a single character.")
+				throw "Invalid delimiter. The delimiter should be a single character.".toError
 			}
 
 			return character

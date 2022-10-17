@@ -22,7 +22,7 @@ struct GetFilePath: AppIntent, CustomIntentMigratedAppIntent {
 
 	func perform() async throws -> some IntentResult & ReturnsValue<String> {
 		guard let fileURL = file.fileURL else {
-			throw NSError.appError("The given file does not have a path.")
+			throw "The given file does not have a path.".toError
 		}
 
 		let result = {

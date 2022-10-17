@@ -25,7 +25,7 @@ struct GeoURI: AppIntent, CustomIntentMigratedAppIntent {
 
 	func perform() async throws -> some IntentResult & ReturnsValue<URL> {
 		guard let result = location.location?.geoURI(includeAccuracy: includeAccuracy) else {
-			throw NSError.appError("Failed to get the latitude and longitude for the given the location.")
+			throw "Failed to get the latitude and longitude for the given the location.".toError
 		}
 
 		return .result(value: result)

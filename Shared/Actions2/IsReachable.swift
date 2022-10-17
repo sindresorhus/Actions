@@ -38,7 +38,7 @@ Use the “Is Online” action if you just want to check whether your computer i
 
 	func perform() async throws -> some IntentResult & ReturnsValue<Bool> {
 		guard let url = URL(humanString: host) else {
-			throw NSError.appError("Invalid host")
+			throw "Invalid host.".toError
 		}
 
 		let result = await URLSession.shared.isReachable(url, timeout: timeout)

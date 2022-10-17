@@ -36,11 +36,11 @@ struct SendFeedback: AppIntent, CustomIntentMigratedAppIntent {
 			let email = email.trimmed.nilIfEmpty,
 			email.contains("@")
 		else {
-			throw NSError.appError("Invalid email address.")
+			throw "Invalid email address.".toError
 		}
 
 		guard let message = message.nilIfEmptyOrWhitespace else {
-			throw NSError.appError("Write a message.")
+			throw "Write a message.".toError
 		}
 
 		try await SSApp.sendFeedback(email: email, message: message)

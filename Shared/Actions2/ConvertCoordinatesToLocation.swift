@@ -28,7 +28,7 @@ Tip: Use the built-in “Get Details of Locations” action to get more details 
 		let placemarks = try await CLGeocoder().reverseGeocodeLocation(.init(latitude: latitude, longitude: longitude))
 
 		guard let placemark = placemarks.first else {
-			throw NSError.appError("No known location at this coordinate.")
+			throw "No known location at this coordinate.".toError
 		}
 
 		return .result(value: placemark)

@@ -56,8 +56,8 @@ For example, use it together with the built-in “Set Wallpaper” action.
 		case .any:
 			break
 		case .screenSize:
-			guard let screen = XScreen.screens.first else {
-				throw NSError.appError("Could not get the screen size.")
+			guard let screen = XScreen.screens2.first else {
+				throw "Could not get the screen size.".toError
 			}
 
 			let size = screen.nativeSize
@@ -67,7 +67,7 @@ For example, use it together with the built-in “Set Wallpaper” action.
 				let width = sizeWidth?.nilIfZero,
 				let height = sizeHeight?.nilIfZero
 			else {
-				throw NSError.appError("You must specify both “width” and “height”.")
+				throw "You must specify both “width” and “height”.".toError
 			}
 
 			url = url.appendingPathComponent("\(Int(width))x\(Int(height))")

@@ -58,7 +58,7 @@ Use the SF Symbols app to find the symbol you want.
 
 	func perform() async throws -> some IntentResult & ReturnsValue<IntentFile> {
 		guard size <= 2000 else {
-			throw NSError.appError("The maximum size is 2000.")
+			throw "The maximum size is 2000.".toError
 		}
 
 		var configuration = XImage.SymbolConfiguration(pointSize: Double(size), weight: .regular)
@@ -87,7 +87,7 @@ Use the SF Symbols app to find the symbol you want.
 		}
 
 		guard var image = XImage(systemName: symbolName) else {
-			throw NSError.appError("No symbol with the given name or it requires a newer operating system version.")
+			throw "No symbol with the given name or it requires a newer operating system version.".toError
 		}
 
 		image = image.withConfiguration(configuration)

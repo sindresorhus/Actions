@@ -83,7 +83,7 @@ struct CreateURL: AppIntent, CustomIntentMigratedAppIntent {
 				?? "https"
 
 		guard URL.isValidScheme(scheme) else {
-			throw NSError.appError("Invalid URL scheme.")
+			throw "Invalid URL scheme.".toError
 		}
 
 		urlComponents.scheme = scheme
@@ -131,7 +131,7 @@ struct CreateURL: AppIntent, CustomIntentMigratedAppIntent {
 		}
 
 		guard let url = urlComponents.url else {
-			throw NSError.appError("The created URL is invalid.")
+			throw "The created URL is invalid.".toError
 		}
 
 		return .result(value: url)

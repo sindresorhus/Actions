@@ -29,6 +29,7 @@
 		E34AB51828F5AA170082AE78 /* ConvertCoordinatesToLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34AB51728F5AA170082AE78 /* ConvertCoordinatesToLocation.swift */; };
 		E351082F28FD099B007C85AE /* IsCellularDataOn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351082E28FD099B007C85AE /* IsCellularDataOn.swift */; };
 		E351083128FD14A2007C85AE /* HexEncode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351083028FD14A2007C85AE /* HexEncode.swift */; };
+		E351083928FD8089007C85AE /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = E351083828FD8089007C85AE /* Sentry */; };
 		E352420628F6CAAD00A957A7 /* ReverseLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = E352420528F6CAAD00A957A7 /* ReverseLines.swift */; };
 		E352420A28F6EEDE00A957A7 /* AskForText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E352420928F6EEDE00A957A7 /* AskForText.swift */; };
 		E352420C28F6F6AD00A957A7 /* AskForTextScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E352420B28F6F6AD00A957A7 /* AskForTextScreen.swift */; };
@@ -251,6 +252,7 @@
 				E337A3E627E8BA6B0073E865 /* FuzzyFind in Frameworks */,
 				E3D514CD28EEABA6003F7C2E /* SoulverCore in Frameworks */,
 				E3F64D7028D9EFE80009B500 /* ExceptionCatcher in Frameworks */,
+				E351083928FD8089007C85AE /* Sentry in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +289,7 @@
 				E324CA29271EA67E00E7CA9B /* Config.xcconfig */,
 				E324C9EE271E972200E7CA9B /* Shared */,
 				E324C9F7271E972300E7CA9B /* Products */,
+				E351083728FD8089007C85AE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -319,6 +322,13 @@
 				E324C9F6271E972300E7CA9B /* Actions.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		E351083728FD8089007C85AE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		E38715862725A333003155B0 /* Actions2 */ = {
@@ -426,6 +436,7 @@
 				E337A3E527E8BA6B0073E865 /* FuzzyFind */,
 				E3F64D6F28D9EFE80009B500 /* ExceptionCatcher */,
 				E3D514CC28EEABA6003F7C2E /* SoulverCore */,
+				E351083828FD8089007C85AE /* Sentry */,
 			);
 			productName = "Actions (iOS)";
 			productReference = E324C9F6271E972300E7CA9B /* Actions.app */;
@@ -841,7 +852,7 @@
 			repositoryURL = "https://github.com/getsentry/sentry-cocoa";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 7.27.0;
+				minimumVersion = 7.28.0;
 			};
 		};
 		E337A3E227E8B66D0073E865 /* XCRemoteSwiftPackageReference "FuzzyFind" */ = {
@@ -857,7 +868,7 @@
 			repositoryURL = "https://github.com/soulverteam/SoulverCore";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.2.2;
+				minimumVersion = 2.2.3;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -867,6 +878,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E337A3E227E8B66D0073E865 /* XCRemoteSwiftPackageReference "FuzzyFind" */;
 			productName = FuzzyFind;
+		};
+		E351083828FD8089007C85AE /* Sentry */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E3327E95272C68DE00AD5CC7 /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
+			productName = Sentry;
 		};
 		E3D514CC28EEABA6003F7C2E /* SoulverCore */ = {
 			isa = XCSwiftPackageProductDependency;

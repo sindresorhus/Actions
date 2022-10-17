@@ -32,7 +32,7 @@ The built-in "Get Dictionary from Input" action does not support JSON5.
 
 		// TODO: Without this check, the Shortcuts app crashes on top-level array. (macOS 12.2)
 		guard json is NSDictionary else {
-			throw NSError.appError("The JSON has to be an object. The Shortcuts app cannot currently handle a top-level array.")
+			throw "The JSON has to be an object. The Shortcuts app cannot currently handle a top-level array.".toError
 		}
 
 		let data = try JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)

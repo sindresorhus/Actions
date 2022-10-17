@@ -18,6 +18,7 @@ import JavaScriptCore
 import CoreImage.CIFilterBuiltins
 import AppIntents
 import PDFKit
+import Sentry
 
 #if canImport(AppKit)
 import IOKit.ps
@@ -145,6 +146,22 @@ enum SSApp {
 		]
 
 		_ = try await URLSession.shared.json(.post, url: endpoint, parameters: parameters as [String: Any])
+	}
+}
+
+
+extension SSApp {
+	/**
+	Initialize Sentry.
+	*/
+	static func initSentry(_ dsn: String) {
+		#if !DEBUG && canImport(Sentry)
+		SentrySDK.start {
+			$0.dsn = dsn
+			$0.enableSwizzling = false
+			$0.stitchAsyncCode = true
+		}
+		#endif
 	}
 }
 
@@ -688,7 +705,7 @@ extension URL {
 		try await NSWorkspace.shared.open(self, configuration: .init())
 		#elseif canImport(UIKit) && !APP_EXTENSION
 		guard await UIApplication.shared.open(self) else {
-			throw NSError.appError("Failed to open the URL “\(absoluteString)”.")
+			throw "Failed to open the URL “\(absoluteString)”.".toError
 		}
 		#endif
 	}
@@ -2114,6 +2131,14 @@ extension Locale {
 }
 
 
+extension Locale {
+	/**
+	American English.
+	*/
+	static let englishUS = Self(languageCode: .english, languageRegion: .unitedStates)
+}
+
+
 extension URL {
 	private func resourceValue<T>(forKey key: URLResourceKey) -> T? {
 		guard let values = try? resourceValues(forKeys: [key]) else {
@@ -2374,7 +2399,7 @@ extension XImage {
 	*/
 	func toIntentFile(filename: String? = nil) throws -> IntentFile {
 		guard let data = pngData() else {
-			throw NSError.appError("Failed to generate PNG data from image.")
+			throw "Failed to generate PNG data from image.".toError
 		}
 
 		return try data
@@ -2446,24 +2471,11 @@ extension URLResponse {
 
 
 extension HTTPURLResponse {
-	// Note: For some reason, this just shows up as "operation could not be completed". The only way I found to show a proper message was "CustomNSError". (macOS 12.2)
-//	struct StatusCodeError: LocalizedError {
-//		let statusCode: Int
-//
-//		var errorDescription: String {
-//			"Request failed: \(HTTPURLResponse.localizedString(forStatusCode: errorCode)) (\(errorCode))"
-//		}
-//	}
-
-	struct StatusCodeError: CustomNSError {
-		static var domain = "HTTPURLResponse.StatusCodeError"
-
+	struct StatusCodeError: LocalizedError {
 		let errorCode: Int
 
-		var errorUserInfo: [String: Any] {
-			[
-				NSLocalizedDescriptionKey: "Request failed: \(HTTPURLResponse.localizedString(forStatusCode: errorCode)) (\(errorCode))"
-			]
+		var errorDescription: String? {
+			"Request failed: \(HTTPURLResponse.localizedString(forStatusCode: errorCode)) (\(errorCode))"
 		}
 	}
 
@@ -2598,36 +2610,70 @@ extension URLSession {
 }
 
 
-extension NSError {
-	/**
-	Use this for generic app errors.
+extension Error {
+	var presentableMessage: String {
+		let description = localizedDescription.trimmingCharacters(in: .whitespacesAndNewlines)
 
-	- Note: Prefer using a specific enum-type error whenever possible.
+		guard
+			let recoverySuggestion = (self as NSError).localizedRecoverySuggestion?.trimmingCharacters(in: .whitespacesAndNewlines)
+		else {
+			return description
+		}
 
-	- Parameter description: The description of the error. This is shown as the first line in error dialogs.
-	- Parameter recoverySuggestion: Explain how the user how they can recover from the error. For example, "Try choosing a different directory". This is usually shown as the second line in error dialogs.
-	- Parameter userInfo: Metadata to add to the error. Can be a custom key or any of the `NSLocalizedDescriptionKey` keys except `NSLocalizedDescriptionKey` and `NSLocalizedRecoverySuggestionErrorKey`.
-	- Parameter domainPostfix: String to append to the `domain` to make it easier to identify the error. The domain is the app's bundle identifier.
-	*/
-	static func appError(
+		return "\(description.ensureSuffix(".")) \(recoverySuggestion.ensureSuffix("."))"
+	}
+}
+
+
+struct GeneralError: LocalizedError, CustomNSError {
+	// LocalizedError
+	let errorDescription: String?
+	let recoverySuggestion: String?
+	let helpAnchor: String?
+
+	// CustomNSError
+	let errorUserInfo: [String: Any]
+
+	init(
 		_ description: String,
 		recoverySuggestion: String? = nil,
 		userInfo: [String: Any] = [:],
-		domainPostfix: String? = nil
-	) -> Self {
-		var userInfo = userInfo
-		userInfo[NSLocalizedDescriptionKey] = description
+		url: URL? = nil,
+		underlyingErrors: [Error] = [],
+		helpAnchor: String? = nil
+	) {
+		self.errorDescription = description
+		self.recoverySuggestion = recoverySuggestion
+		self.helpAnchor = helpAnchor
 
-		if let recoverySuggestion {
-			userInfo[NSLocalizedRecoverySuggestionErrorKey] = recoverySuggestion
-		}
+		self.errorUserInfo = {
+			var userInfo = userInfo
 
-		return .init(
-			domain: domainPostfix.map { "\(SSApp.idString) - \($0)" } ?? SSApp.idString,
-			code: 1, // This is what Swift errors end up as.
-			userInfo: userInfo
-		)
+			if !underlyingErrors.isEmpty {
+				userInfo[NSMultipleUnderlyingErrorsKey] = underlyingErrors
+			}
+
+			if let url {
+				userInfo[NSURLErrorKey] = url
+			}
+
+			return userInfo
+		}()
 	}
+}
+
+
+// Required for error messages to be shown in App Intents.
+extension GeneralError: CustomLocalizedStringResourceConvertible {
+	var localizedStringResource: LocalizedStringResource { "\(presentableMessage)" }
+}
+
+
+extension String {
+	/**
+	Convert a string into an error.
+	*/
+	var toError: some LocalizedError { GeneralError(self) }
 }
 
 
@@ -2651,10 +2697,11 @@ enum Bluetooth {
 			}
 
 			let recoverySuggestion = OS.current == .macOS
+				// TODO: Update this when macOS 13 is out.
 				? "You can grant access in “System Settings › Privacy & Security › Bluetooth”."
 				: "You can grant access in “Settings › \(SSApp.name)”."
 
-			let error = NSError.appError("No access to Bluetooth.", recoverySuggestion: recoverySuggestion)
+			let error = GeneralError("No access to Bluetooth.", recoverySuggestion: recoverySuggestion)
 			continuation.resume(throwing: error)
 			hasCalled = true
 		}
@@ -3959,7 +4006,7 @@ extension StringProtocol {
 
 extension Data {
 	struct ParseJSONNonObjectError: LocalizedError {
-		let errorDescription = "The JSON must have a top-level object."
+		let errorDescription: String? = "The JSON must have a top-level object."
 	}
 
 	/**
@@ -4733,7 +4780,7 @@ extension UIDevice {
 			let motionManager = CMMotionManager()
 
 			guard motionManager.isDeviceMotionAvailable else {
-				continuation.finish(throwing: NSError.appError("This device does not provide orientation info."))
+				continuation.finish(throwing: "This device does not provide orientation info.".toError)
 				return
 			}
 
@@ -4953,7 +5000,7 @@ extension CIImage {
 	*/
 	static func from(_ data: Data) throws -> Self {
 		guard let ciImage = Self(data: data, options: [.applyOrientationProperty: true]) else {
-			throw NSError.appError("Invalid image or unsupported image format.")
+			throw "Invalid image or unsupported image format.".toError
 		}
 
 		return ciImage
@@ -5104,5 +5151,43 @@ extension String {
 				}
 			}
 			.data
+	}
+}
+
+
+#if canImport(UIKit)
+private protocol SilenceDeprecationForUIScreenWindows {
+	var screens: [UIScreen] { get }
+}
+
+private final class SilenceDeprecationForUIScreenWindowsImplementation: SilenceDeprecationForUIScreenWindows {
+	@available(iOS, deprecated: 16)
+	var screens: [UIScreen] { UIScreen.screens }
+}
+
+extension UIScreen {
+	static var screens2: [UIScreen] {
+		(SilenceDeprecationForUIScreenWindowsImplementation() as SilenceDeprecationForUIScreenWindows).screens
+	}
+}
+#else
+extension XScreen {
+	static var screens2: [XScreen] { screens }
+}
+#endif
+
+
+extension URL {
+	@discardableResult
+	func accessSecurityScopedResource<Value>(_ accessor: (URL) throws -> Value) rethrows -> Value {
+		let didStartAccessing = startAccessingSecurityScopedResource()
+
+		defer {
+			if didStartAccessing {
+				stopAccessingSecurityScopedResource()
+			}
+		}
+
+		return try accessor(self)
 	}
 }

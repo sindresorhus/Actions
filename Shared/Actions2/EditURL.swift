@@ -110,7 +110,7 @@ For example, add a query item, change the path, or remove the fragment.
 
 	func getURL() throws -> URL {
 		guard var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true) else {
-			throw NSError.appError("“\(url)” is not a valid URL.")
+			throw "“\(url)” is not a valid URL.".toError
 		}
 
 		switch action {
@@ -176,7 +176,7 @@ For example, add a query item, change the path, or remove the fragment.
 					.replacingSuffix(":", with: "")
 
 				guard URL.isValidScheme(scheme) else {
-					throw NSError.appError("Invalid URL scheme.")
+					throw "Invalid URL scheme.".toError
 				}
 
 				urlComponents.scheme = scheme
@@ -196,7 +196,7 @@ For example, add a query item, change the path, or remove the fragment.
 		}
 
 		guard let url = urlComponents.url else {
-			throw NSError.appError("The edited URL is invalid.")
+			throw "The edited URL is invalid.".toError
 		}
 
 		return url

@@ -41,7 +41,7 @@ struct BlurImages: AppIntent {
 					.toIntentFile(contentType: .png, filename: UUID().uuidString)
 //					.toIntentFile(contentType: .png, filename: $0.filename)
 			else {
-				throw NSError.appError("Failed to blur image.")
+				throw "Failed to blur image.".toError
 			}
 
 			return file

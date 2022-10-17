@@ -43,7 +43,7 @@ The code is excuted with JavaScriptCore (same as used in Safari), not JXA.
 
 	func perform() async throws -> some IntentResult & ReturnsValue<String> {
 		guard let jsContext = JSContext() else {
-			throw NSError.appError("Failed to initialize JavaScript engine.")
+			throw "Failed to initialize JavaScript engine.".toError
 		}
 
 		jsContext.setObject(text as NSString, forKeyedSubscript: "$text" as NSString)
@@ -51,11 +51,11 @@ The code is excuted with JavaScriptCore (same as used in Safari), not JXA.
 		let script = "(() => {\n\(javaScriptCode)\n})()"
 
 		guard let result = jsContext.evaluateScript(script)?.toString() else {
-			throw NSError.appError("Failed to evaluate JavaScript code.")
+			throw "Failed to evaluate JavaScript code.".toError
 		}
 
 		if let exception = jsContext.exception?.toString() {
-			throw NSError.appError(exception)
+			throw exception.toError
 		}
 
 		return .result(value: result)

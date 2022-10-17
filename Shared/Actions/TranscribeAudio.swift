@@ -38,18 +38,19 @@ Important: If you have permission issues even after granting access, try removin
 	func perform() async throws -> some IntentResult & ReturnsValue<String> {
 		guard await SFSpeechRecognizer.requestAuthorization() == .authorized else {
 			let recoverySuggestion = OS.current == .macOS
+				// TODO: Update this when macOS 13 is out.
 				? "You can grant access in “System Preferences › Security & Privacy › Speech Recognition”."
 				: "You can grant access in “Settings › \(SSApp.name)”."
 
-			throw NSError.appError("No access to speech recognition. \(recoverySuggestion)")
+			throw "No access to speech recognition. \(recoverySuggestion)".toError
 		}
 
 		guard let recognizer = SFSpeechRecognizer(locale: .init(identifier: locale.id)) else {
-			throw NSError.appError("Unsupported locale.")
+			throw "Unsupported locale.".toError
 		}
 
 		if !recognizer.isAvailable {
-			throw NSError.appError("Audio transcription is not supported on this device.")
+			throw "Audio transcription is not supported on this device.".toError
 		}
 
 		recognizer.supportsOnDeviceRecognition = true

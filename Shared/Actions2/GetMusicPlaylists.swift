@@ -18,7 +18,7 @@ struct GetMusicPlaylists: AppIntent, CustomIntentMigratedAppIntent {
 
 		// This is intentionally after so we don't have to explicitly request access before checking.
 		guard MPMediaLibrary.authorizationStatus() == .authorized else {
-			throw NSError.appError("No access to the Music library. You can grant access in “Settings › Actions”.")
+			throw "No access to the Music library. You can grant access in “Settings › Actions”.".toError
 		}
 
 		return .result(value: playlistNames)
