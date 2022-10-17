@@ -13,7 +13,7 @@ struct ParseCSV: AppIntent, CustomIntentMigratedAppIntent {
 
 	@Parameter(
 		title: "CSV",
-		description: "Accepts a file or text.",
+		description: "Accepts a file or text. Tap the parameter to select a file. Tap and hold to select a variable to some text.",
 		supportedTypeIdentifiers: [
 			"public.comma-separated-values-text",
 			"public.tab-separated-values-text"

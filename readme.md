@@ -85,6 +85,7 @@ Want to run shortcuts directly from the iOS Lock Screen? Check out my new [Quick
 - Get Uniform Type Identifier
 - Get Unsplash Image
 - Get User Details
+- Hex Encode
 - Hide Shortcuts App
 - Is Audio Playing <sup>(iOS-only)</sup>
 - Is Bluetooth On

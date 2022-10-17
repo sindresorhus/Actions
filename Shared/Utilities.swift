@@ -2401,6 +2401,18 @@ extension Data {
 }
 
 
+extension String {
+	/**
+	Create an `IntentFile` from the string.
+	*/
+	func toIntentFile(
+		filename: String? = nil
+	) -> IntentFile {
+		toData.toIntentFile(contentType: .utf8PlainText, filename: filename)
+	}
+}
+
+
 extension Sequence {
 	func compact<T>() -> [T] where Element == T? {
 		// TODO: Make this `compactMap(\.self)` when https://github.com/apple/swift/issues/55343 is fixed.
@@ -5048,5 +5060,49 @@ extension Device {
 			let path = await NWPathMonitor.changes(requiredInterfaceType: .cellular).first()
 			return path?.status == .satisfied
 		}
+	}
+}
+
+
+extension Data {
+	func hexEncodedString() -> String {
+		let utf8Digits = Array("0123456789abcdef".utf8)
+
+		return String(unsafeUninitializedCapacity: count * 2) { pointer in
+			var string = pointer.baseAddress!
+
+			for byte in self {
+				string[0] = utf8Digits[Int(byte / 16)]
+				string[1] = utf8Digits[Int(byte % 16)]
+				string += 2
+			}
+
+			return count * 2
+		}
+	}
+}
+
+
+extension String {
+	func hexDecodedData() -> Data {
+		lazy
+			.dropFirst(hasPrefix("0x") ? 2 : 0)
+			.compactMap {
+				$0.hexDigitValue.map { UInt8($0) }
+			}
+			.reduce(
+				into: (
+					data: Data(capacity: count / 2),
+					byte: nil as UInt8?
+				)
+			) { partialResult, nibble in
+				if let byte = partialResult.byte {
+					partialResult.data.append(byte + nibble)
+					partialResult.byte = nil
+				} else {
+					partialResult.byte = nibble << 4
+				}
+			}
+			.data
 	}
 }

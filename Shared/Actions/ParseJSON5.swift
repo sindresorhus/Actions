@@ -18,8 +18,8 @@ The built-in "Get Dictionary from Input" action does not support JSON5.
 
 	@Parameter(
 		title: "JSON5",
-		description: "Accepts a file or text.",
-		supportedTypeIdentifiers: ["public.item"]
+		description: "Accepts a file or text. Tap the parameter to select a file. Tap and hold to select a variable to some text.",
+		supportedTypeIdentifiers: ["public.data"]
 	)
 	var file: IntentFile
 

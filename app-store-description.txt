@@ -59,6 +59,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Get Uniform Type Identifier
 - Get Unsplash Image
 - Get User Details
+- Hex Encode
 - Hide Shortcuts App
 - Is Audio Playing
 - Is Bluetooth On
