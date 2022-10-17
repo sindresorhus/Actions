@@ -88,6 +88,7 @@ Want to run shortcuts directly from the iOS Lock Screen? Check out my new [Quick
 - Hide Shortcuts App
 - Is Audio Playing <sup>(iOS-only)</sup>
 - Is Bluetooth On
+- Is Cellular Data On
 - Is Connected to VPN <sup>(iOS-only)</sup>
 - Is Dark Mode On
 - Is Device Orientation

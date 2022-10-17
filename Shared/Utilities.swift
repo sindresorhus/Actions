@@ -5011,3 +5011,42 @@ extension Color {
 	static let legacyBackground = Self(NSColor.windowBackgroundColor)
 	#endif
 }
+
+
+extension AsyncSequence {
+	func first() async rethrows -> Element? {
+		try await first { _ in true }
+	}
+}
+
+
+extension NWPathMonitor {
+	/**
+	Observe network changes for a specific interface type.
+	*/
+	static func changes(requiredInterfaceType: NWInterface.InterfaceType) -> AsyncStream<NWPath> {
+		AsyncStream { continuation in
+			let monitor = NWPathMonitor(requiredInterfaceType: requiredInterfaceType)
+
+			monitor.pathUpdateHandler = {
+				continuation.yield($0)
+			}
+
+			monitor.start(queue: .global())
+
+			continuation.onTermination = { [monitor] _ in
+				monitor.cancel()
+			}
+		}
+	}
+}
+
+
+extension Device {
+	static var isCellularDataEnabled: Bool {
+		get async {
+			let path = await NWPathMonitor.changes(requiredInterfaceType: .cellular).first()
+			return path?.status == .satisfied
+		}
+	}
+}

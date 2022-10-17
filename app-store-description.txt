@@ -62,6 +62,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Hide Shortcuts App
 - Is Audio Playing
 - Is Bluetooth On
+- Is Cellular Data On
 - Is Connected to VPN
 - Is Dark Mode On
 - Is Device Orientation

@@ -27,6 +27,7 @@
 		E33D4BA62744238300CC7A8A /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33D4BA42744238300CC7A8A /* AppState.swift */; };
 		E34AB51628F58B500082AE78 /* Authenticate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34AB51528F58B500082AE78 /* Authenticate.swift */; };
 		E34AB51828F5AA170082AE78 /* ConvertCoordinatesToLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34AB51728F5AA170082AE78 /* ConvertCoordinatesToLocation.swift */; };
+		E351082F28FD099B007C85AE /* IsCellularDataOn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351082E28FD099B007C85AE /* IsCellularDataOn.swift */; };
 		E352420628F6CAAD00A957A7 /* ReverseLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = E352420528F6CAAD00A957A7 /* ReverseLines.swift */; };
 		E352420A28F6EEDE00A957A7 /* AskForText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E352420928F6EEDE00A957A7 /* AskForText.swift */; };
 		E352420C28F6F6AD00A957A7 /* AskForTextScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E352420B28F6F6AD00A957A7 /* AskForTextScreen.swift */; };
@@ -152,6 +153,7 @@
 		E33DFF662748C6B100C79D78 /* InternetAccessPolicy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = InternetAccessPolicy.json; sourceTree = "<group>"; };
 		E34AB51528F58B500082AE78 /* Authenticate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticate.swift; sourceTree = "<group>"; };
 		E34AB51728F5AA170082AE78 /* ConvertCoordinatesToLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertCoordinatesToLocation.swift; sourceTree = "<group>"; };
+		E351082E28FD099B007C85AE /* IsCellularDataOn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsCellularDataOn.swift; sourceTree = "<group>"; };
 		E352420528F6CAAD00A957A7 /* ReverseLines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseLines.swift; sourceTree = "<group>"; };
 		E352420928F6EEDE00A957A7 /* AskForText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AskForText.swift; path = Shared/Actions/AskForText.swift; sourceTree = SOURCE_ROOT; };
 		E352420B28F6F6AD00A957A7 /* AskForTextScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskForTextScreen.swift; sourceTree = "<group>"; };
@@ -363,6 +365,7 @@
 				E3C33CAB28D3A96700386C59 /* GetUserDetails.swift */,
 				E3C33CA528D3A52300386C59 /* IsAudioPlaying.swift */,
 				E3C33CA728D3A6CB00386C59 /* IsBluetoothOn.swift */,
+				E351082E28FD099B007C85AE /* IsCellularDataOn.swift */,
 				E3C33CAF28D3B3EF00386C59 /* IsConnectedToVPN.swift */,
 				E3C33CA928D3A81700386C59 /* IsDarkMode.swift */,
 				E3CB448628D717CA0031D55F /* IsDeviceOrientation.swift */,
@@ -572,6 +575,7 @@
 				E324C9FF271E972300E7CA9B /* App.swift in Sources */,
 				E3CB44AB28D7A10C0031D55F /* TranscribeAudio.swift in Sources */,
 				E3EC2DE228D2588800A88E25 /* CreateURL.swift in Sources */,
+				E351082F28FD099B007C85AE /* IsCellularDataOn.swift in Sources */,
 				E3C33CDF28D4914C00386C59 /* GetAudioPlaybackDestination.swift in Sources */,
 				E3EC2DB428D1F3A300A88E25 /* GetRandomBoolean.swift in Sources */,
 				E3CB44A528D7972B0031D55F /* GetUnsplashImage.swift in Sources */,
