@@ -100,6 +100,7 @@ Want to run shortcuts directly from the iOS Lock Screen? Check out my new [Quick
 - Is Silent Mode On <sup>(iOS-only)</sup>
 - Is Wi-Fi On <sup>(macOS-only)</sup>
 - Merge Dictionaries
+- Overwrite File
 - Parse CSV
 - Parse JSON5
 - Play Alert Sound <sup>(macOS-only)</sup>

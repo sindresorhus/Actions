@@ -74,6 +74,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Is Silent Mode On
 - Is Wi-Fi On
 - Merge Dictionaries
+- Overwrite File
 - Parse CSV
 - Parse JSON5
 - Play Alert Sound
