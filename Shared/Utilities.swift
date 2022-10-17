@@ -5191,3 +5191,13 @@ extension URL {
 		return try accessor(self)
 	}
 }
+
+
+extension Data {
+	/**
+	Returns cryptographically secure random data.
+	*/
+	static func random(length: Int) -> Data {
+		Data((0..<length).map { _ in UInt8.random(in: .min...(.max)) })
+	}
+}

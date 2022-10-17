@@ -34,6 +34,8 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Format Person Name
 - Generate CSV
 - Generate Haptic Feedback
+- Generate Random Data
+- Generate Random Text
 - Generate UUID
 - Get Audio Playback Destination
 - Get Battery State
@@ -51,7 +53,6 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Get Random Date and Time
 - Get Random Emoticon
 - Get Random Floating-Point Number
-- Get Random Text
 - Get Related Words
 - Get Running Apps
 - Get SF Symbol Image

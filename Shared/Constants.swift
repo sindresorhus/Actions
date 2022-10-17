@@ -20,5 +20,7 @@ Intent categories:
 - Formatting
 - Parse / Generate
 - Math
+- Location
+- Meta
 - Miscellaneous
 */

@@ -7,7 +7,7 @@ struct SendFeedback: AppIntent, CustomIntentMigratedAppIntent {
 
 	static let description = IntentDescription(
 		"Lets you send feedback, action ideas, bug reports, etc, directly to the developer of the Actions app. You can also email me at sindresorhus@gmail.com if you prefer that.",
-		categoryName: "Miscellaneous"
+		categoryName: "Meta"
 	)
 
 	@Parameter(title: "Message", inputOptions: .init(multiline: true))

@@ -60,6 +60,8 @@ Want to run shortcuts directly from the iOS Lock Screen? Check out my new [Quick
 - Format Person Name
 - Generate CSV
 - Generate Haptic Feedback <sup>(iOS-only)</sup>
+- Generate Random Data
+- Generate Random Text
 - Generate UUID
 - Get Audio Playback Destination <sup>(iOS-only)</sup>
 - Get Battery State
@@ -77,7 +79,6 @@ Want to run shortcuts directly from the iOS Lock Screen? Check out my new [Quick
 - Get Random Date and Time
 - Get Random Emoticon
 - Get Random Floating-Point Number
-- Get Random Text
 - Get Related Words
 - Get Running Apps <sup>(macOS-only)</sup>
 - Get Symbol Image

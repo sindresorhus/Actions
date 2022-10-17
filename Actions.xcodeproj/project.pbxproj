@@ -73,6 +73,7 @@
 		E3CB44A828D79EF90031D55F /* ScanQRCodesInImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CB44A728D79EF90031D55F /* ScanQRCodesInImage.swift */; };
 		E3CB44AB28D7A10C0031D55F /* TranscribeAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CB44A928D7A10C0031D55F /* TranscribeAudio.swift */; };
 		E3CB44AF28D7A6BA0031D55F /* SpellOutNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CB44AD28D7A6BA0031D55F /* SpellOutNumber.swift */; };
+		E3CF4F9828FDA7EB00BD88D5 /* GenerateRandomData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CF4F9728FDA7EB00BD88D5 /* GenerateRandomData.swift */; };
 		E3D514C628EEA6B9003F7C2E /* PlayAlertSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D514C528EEA6B9003F7C2E /* PlayAlertSound.swift */; };
 		E3D514C828EEA8F8003F7C2E /* FlashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D514C728EEA8F8003F7C2E /* FlashScreen.swift */; };
 		E3D514CA28EEAAEC003F7C2E /* CalculateWithSoulver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D514C928EEAAEC003F7C2E /* CalculateWithSoulver.swift */; };
@@ -109,7 +110,7 @@
 		E3EC2DE228D2588800A88E25 /* CreateURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC2DE128D2588800A88E25 /* CreateURL.swift */; };
 		E3EC2DE428D25CF300A88E25 /* RemoveDuplicateLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC2DE328D25CF300A88E25 /* RemoveDuplicateLines.swift */; };
 		E3EC2DE628D25DF900A88E25 /* AddToList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC2DE528D25DF900A88E25 /* AddToList.swift */; };
-		E3EC2DE828D2DB1000A88E25 /* GetRandomText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC2DE728D2DB1000A88E25 /* GetRandomText.swift */; };
+		E3EC2DE828D2DB1000A88E25 /* GenerateRandomText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC2DE728D2DB1000A88E25 /* GenerateRandomText.swift */; };
 		E3EC2DEB28D2E5B900A88E25 /* RemoveFromList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC2DE928D2E5B900A88E25 /* RemoveFromList.swift */; };
 		E3F64D6D28D9EDFE0009B500 /* FormatDuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F64D6B28D9EDFE0009B500 /* FormatDuration.swift */; };
 		E3F64D7028D9EFE80009B500 /* ExceptionCatcher in Frameworks */ = {isa = PBXBuildFile; productRef = E3F64D6F28D9EFE80009B500 /* ExceptionCatcher */; };
@@ -202,6 +203,7 @@
 		E3CB44A728D79EF90031D55F /* ScanQRCodesInImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanQRCodesInImage.swift; sourceTree = "<group>"; };
 		E3CB44A928D7A10C0031D55F /* TranscribeAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranscribeAudio.swift; sourceTree = "<group>"; };
 		E3CB44AD28D7A6BA0031D55F /* SpellOutNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellOutNumber.swift; sourceTree = "<group>"; };
+		E3CF4F9728FDA7EB00BD88D5 /* GenerateRandomData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateRandomData.swift; sourceTree = "<group>"; };
 		E3D514C528EEA6B9003F7C2E /* PlayAlertSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayAlertSound.swift; sourceTree = "<group>"; };
 		E3D514C728EEA8F8003F7C2E /* FlashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashScreen.swift; sourceTree = "<group>"; };
 		E3D514C928EEAAEC003F7C2E /* CalculateWithSoulver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateWithSoulver.swift; sourceTree = "<group>"; };
@@ -237,7 +239,7 @@
 		E3EC2DE128D2588800A88E25 /* CreateURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateURL.swift; sourceTree = "<group>"; };
 		E3EC2DE328D25CF300A88E25 /* RemoveDuplicateLines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveDuplicateLines.swift; sourceTree = "<group>"; };
 		E3EC2DE528D25DF900A88E25 /* AddToList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToList.swift; sourceTree = "<group>"; };
-		E3EC2DE728D2DB1000A88E25 /* GetRandomText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRandomText.swift; sourceTree = "<group>"; };
+		E3EC2DE728D2DB1000A88E25 /* GenerateRandomText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateRandomText.swift; sourceTree = "<group>"; };
 		E3EC2DE928D2E5B900A88E25 /* RemoveFromList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveFromList.swift; sourceTree = "<group>"; };
 		E3F64D6B28D9EDFE0009B500 /* FormatDuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatDuration.swift; sourceTree = "<group>"; };
 		E3F64D7128D9F3810009B500 /* EditURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditURL.swift; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 				E3DB885528E727E200FEE8D6 /* ChooseFromListExtended.swift */,
 				E3F64D7528D9F9930009B500 /* CreateColorImage.swift */,
 				E3CB449D28D791D40031D55F /* GenerateCSV.swift */,
+				E3CF4F9728FDA7EB00BD88D5 /* GenerateRandomData.swift */,
 				E3F64D7728D9FCA20009B500 /* GetSymbolImage.swift */,
 				E3DB884B28E6E3AD00FEE8D6 /* HapticFeedback.swift */,
 				E351083028FD14A2007C85AE /* HexEncode.swift */,
@@ -354,6 +357,7 @@
 				E3F64D6B28D9EDFE0009B500 /* FormatDuration.swift */,
 				E31DE80D28D62CE200DE79EF /* FormatNumberCompact.swift */,
 				E3A85FE428E94E7300F423F1 /* FormatPersonName.swift */,
+				E3EC2DE728D2DB1000A88E25 /* GenerateRandomText.swift */,
 				E3EC2DAF28D1EA6B00A88E25 /* GenerateUUID.swift */,
 				E31DE7F328D5E3B400DE79EF /* GeoURI.swift */,
 				E3C33CDE28D4914C00386C59 /* GetAudioPlaybackDestination.swift */,
@@ -372,7 +376,6 @@
 				E3EC2DB128D1F23D00A88E25 /* GetRandomEmoticon.swift */,
 				E3EC2DBB28D2008000A88E25 /* GetRandomFloatingPointNumber.swift */,
 				E3EC2DB928D1F8B500A88E25 /* GetRandomInstant.swift */,
-				E3EC2DE728D2DB1000A88E25 /* GetRandomText.swift */,
 				E3CB449328D782FE0031D55F /* GetRelatedWords.swift */,
 				E3C33CDA28D48C3200386C59 /* GetRunningApps.swift */,
 				E3C33CB128D43C7500386C59 /* GetTitleOfURL.swift */,
@@ -570,6 +573,7 @@
 				E33D4BA62744238300CC7A8A /* AppState.swift in Sources */,
 				E3EC2DDE28D24CD900A88E25 /* ConvertDateToUnixTime.swift in Sources */,
 				E3C33C9528D35B9C00386C59 /* SetFileCreationModificationDate.swift in Sources */,
+				E3CF4F9828FDA7EB00BD88D5 /* GenerateRandomData.swift in Sources */,
 				E3EC2DAE28D1E77700A88E25 /* TransformText.swift in Sources */,
 				E3D514C828EEA8F8003F7C2E /* FlashScreen.swift in Sources */,
 				E3C33CA828D3A6CB00386C59 /* IsBluetoothOn.swift in Sources */,
@@ -580,7 +584,7 @@
 				E3CB44A828D79EF90031D55F /* ScanQRCodesInImage.swift in Sources */,
 				E3DB885228E6EFBB00FEE8D6 /* ScanDocuments.swift in Sources */,
 				E3DB885028E6EE7B00FEE8D6 /* HideShortcutsApp.swift in Sources */,
-				E3EC2DE828D2DB1000A88E25 /* GetRandomText.swift in Sources */,
+				E3EC2DE828D2DB1000A88E25 /* GenerateRandomText.swift in Sources */,
 				E3EC2DB628D1F51F00A88E25 /* RemoveEmojis.swift in Sources */,
 				E3F64D7928D9FCA20009B500 /* GetSymbolImage.swift in Sources */,
 				E3BFF7B22742616400B830DE /* WriteTextScreen.swift in Sources */,

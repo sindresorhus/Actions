@@ -8,7 +8,7 @@ struct GeoURI: AppIntent, CustomIntentMigratedAppIntent {
 
 	static let description = IntentDescription(
 		"Returns the geo URI for the given location.",
-		categoryName: "Miscellaneous"
+		categoryName: "Location"
 	)
 
 	@Parameter(title: "Location")

@@ -10,7 +10,7 @@ Returns the location at the given latitude and longitude.
 
 Tip: Use the built-in “Get Details of Locations” action to get more details from the location.
 """,
-		categoryName: "Miscellaneous"
+		categoryName: "Location"
 	)
 
 	@Parameter(title: "Latitude", controlStyle: .field)

@@ -7,14 +7,14 @@ private let plainInputOptions = String.IntentInputOptions(
 	smartDashes: false
 )
 
-struct GetRandomText: AppIntent, CustomIntentMigratedAppIntent {
+struct GenerateRandomText: AppIntent, CustomIntentMigratedAppIntent {
 	static let intentClassName = "RandomTextIntent"
 
-	static let title: LocalizedStringResource = "Get Random Text"
+	static let title: LocalizedStringResource = "Generate Random Text"
 
 	static let description = IntentDescription(
 """
-Returns random text of the given length.
+Generates random text of the given length.
 
 This can be useful as a placeholder, token, etc.
 """,
