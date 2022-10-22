@@ -13,20 +13,18 @@ struct SortList: AppIntent, CustomIntentMigratedAppIntent {
 	@Parameter(title: "List", description: "A list of text and/or numbers.")
 	var list: [String]
 
-	@Parameter(title: "Ascending", default: true)
-//	@Parameter(title: "Sort Order", default: true, displayName: .init(true: "Ascending", false: "Descending"))
+	@Parameter(
+		title: "Sort Order",
+		default: true,
+		displayName: Bool.IntentDisplayName(true: "Ascending", false: "Descending")
+	)
 	var ascending: Bool
 
 	@Parameter(title: "Sort Type", default: .natural)
 	var sortType: SortTypeAppEnum
 
 	static var parameterSummary: some ParameterSummary {
-		// TODO: iOS 16.0 only shows "On" for ascending even though we have specified a `displayName`.
-//		Summary("Sort \(\.$list) in \(\.$ascending) order") {
-//			\.$sortType
-//		}
-		Summary("Sort \(\.$list)") {
-			\.$ascending
+		Summary("Sort \(\.$list) in \(\.$ascending) order") {
 			\.$sortType
 		}
 	}
@@ -45,13 +43,15 @@ enum SortTypeAppEnum: String, AppEnum {
 	case natural
 	case localized
 	case localizedCaseInsensitive
+	case number
 
 	static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "Sort Type")
 
 	static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
 		.natural: "Natural",
 		.localized: "Localized",
-		.localizedCaseInsensitive: "Localized Case Insensitive"
+		.localizedCaseInsensitive: "Localized Case Insensitive",
+		.number: "Number"
 	]
 }
 
@@ -64,6 +64,8 @@ extension SortTypeAppEnum {
 			return .localized
 		case .localizedCaseInsensitive:
 			return .localizedCaseInsensitive
+		case .number:
+			return .number
 		}
 	}
 }

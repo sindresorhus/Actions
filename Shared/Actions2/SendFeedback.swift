@@ -10,12 +10,13 @@ struct SendFeedback: AppIntent, CustomIntentMigratedAppIntent {
 		categoryName: "Meta"
 	)
 
-	@Parameter(title: "Message", inputOptions: .init(multiline: true))
+	@Parameter(title: "Message", inputOptions: String.IntentInputOptions(multiline: true))
 	var message: String
 
 	@Parameter(
 		title: "Your Email",
-		inputOptions: .init(
+		// TODO: Make it `.init(` at some point when the Swift compiler is better at extracting const literals.
+		inputOptions: String.IntentInputOptions(
 			keyboardType: .URL,
 			capitalizationType: .none,
 			smartQuotes: false,

@@ -39,7 +39,7 @@ For example, use it together with the built-in “Set Wallpaper” action.
 				\.$sizeHeight
 			}
 		} otherwise: {
-			Summary("Get Unsplash image"){
+			Summary("Get Unsplash image") {
 				\.$keywords
 				\.$onlyFeaturedImages
 				\.$size

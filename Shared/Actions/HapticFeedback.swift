@@ -1,5 +1,6 @@
 import AppIntents
 
+@available(macOS, unavailable)
 struct HapticFeedback: AppIntent, CustomIntentMigratedAppIntent {
 	static let intentClassName = "HapticFeedbackIntent"
 
@@ -28,9 +29,12 @@ On macOS, it does nothing.
 	}
 
 	func perform() async throws -> some IntentResult {
+		#if canImport(UIKit)
 		Device.hapticFeedback(type.toNative)
-		try? await Task.sleep(seconds: 1)
+		try? await Task.sleep(for: .seconds(1))
 		await ShortcutsApp.open()
+		#endif
+
 		return .result()
 	}
 }

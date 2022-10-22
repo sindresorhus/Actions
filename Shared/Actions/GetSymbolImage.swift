@@ -18,7 +18,7 @@ Use the SF Symbols app to find the symbol you want.
 
 	@Parameter(
 		title: "Symbol Name",
-		inputOptions: .init(
+		inputOptions: String.IntentInputOptions(
 			capitalizationType: .none,
 			autocorrect: false,
 			smartQuotes: false,

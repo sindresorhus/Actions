@@ -12,7 +12,7 @@ struct PrettyPrintDictionaries: AppIntent, CustomIntentMigratedAppIntent {
 
 	@Parameter(
 		title: "Dictionary",
-		inputOptions: .init(
+		inputOptions: String.IntentInputOptions(
 			capitalizationType: .none,
 			autocorrect: false,
 			smartQuotes: false,

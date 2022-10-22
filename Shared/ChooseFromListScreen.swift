@@ -1,6 +1,7 @@
 import SwiftUI
 import FuzzyFind
 
+// TODO: Move this to a new `Window`.
 struct ChooseFromListScreen: View {
 	struct Data: Identifiable {
 		var list: [String]
@@ -38,7 +39,7 @@ struct ChooseFromListScreen: View {
 				#if canImport(UIKit)
 				.navigationBarTitleDisplayMode(.inline)
 				.environment(\.editMode, .constant(data.selectMultiple ? .active : .inactive))
-				// TODO: Does this work on macOS 13 too? If so, simplify.
+				// TODO: I can use this for macOS too, but as of macOS 13.0, there's a bug where the alert get's two buttons called "Add".
 				.alert2(
 					data.selectMultiple ? "Add Item" : "Custom Item",
 					isPresented: $isAddItemScreenPresented
@@ -129,7 +130,7 @@ struct ChooseFromListScreen: View {
 						return
 					}
 
-					try? await Task.sleep(seconds: timeout)
+					try? await Task.sleep(for: .seconds(timeout))
 					timeoutAction()
 				}
 		}
@@ -153,6 +154,7 @@ struct ChooseFromListScreen: View {
 			}
 			#endif
 		} else {
+			// TODO: Use the iOS solution on macOS too. Use `.formStyle(.grouped)`.
 			#if canImport(AppKit)
 			List(searchResults, id: \.self, selection: $singleSelection) {
 				Text($0.trimmed.firstLine)
@@ -192,18 +194,12 @@ struct ChooseFromListScreen: View {
 
 	#if canImport(AppKit)
 	private var header: some View {
-		VStack(spacing: 0) {
-			Text(title)
-				.font(.headline)
-				.padding()
-				.padding(.bottom, -8)
-			// TODO: `.searchable` does not work on macOS when used in a sheet. Open FB about this if not if not fixed in macOS 13.
-			SearchField(text: $searchText, placeholder: "Search")
-				.padding()
-				.onExitCommand {
-					searchText = ""
-				}
-		}
+		// TODO: `.searchable` does not work on macOS when used in a sheet. Open FB about this if not if not fixed in macOS 13.
+		SearchField(text: $searchText, placeholder: "Search")
+			.padding()
+			.onExitCommand {
+				searchText = ""
+			}
 	}
 	#endif
 
@@ -274,45 +270,47 @@ private struct AddItemScreen: View {
 	let onCompletion: @MainActor (String) -> Void
 
 	var body: some View {
-		Form {
-			TextField("", text: $text)
-				.controlSize(.large)
-				.focused($isTextFieldFocused)
-				.padding()
-		}
-			.navigationTitle(isMultiple ? "Add Item" : "Custom Item")
-			.toolbar {
-				ToolbarItem(placement: .confirmationAction) {
-					Button(isMultiple ? "Add" : "Done") {
-						add()
+		NavigationStack {
+			Form {
+				TextField("", text: $text)
+					.controlSize(.large)
+					.focused($isTextFieldFocused)
+					.padding()
+			}
+				.navigationTitle(isMultiple ? "Add Item" : "Custom Item")
+				.toolbar {
+					ToolbarItem(placement: .confirmationAction) {
+						Button(isMultiple ? "Add" : "Done") {
+							add()
+						}
+							.disabled(text.isEmpty)
 					}
-						.disabled(text.isEmpty)
-				}
-				ToolbarItem(placement: .cancellationAction) {
-					if !isUsingNavigationLink {
-						Button("Cancel") {
-							dismiss()
+					ToolbarItem(placement: .cancellationAction) {
+						if !isUsingNavigationLink {
+							Button("Cancel") {
+								dismiss()
+							}
 						}
 					}
 				}
-			}
-			.onSubmit {
-				guard !text.isEmpty else {
-					return
-				}
+				.onSubmit {
+					guard !text.isEmpty else {
+						return
+					}
 
-				add()
-			}
-			.submitLabel(.done)
-//			.if(!isUsingNavigationLink) {
-//				$0.embedInNavigationViewIfNotMacOS()
-//			}
-			#if canImport(AppKit)
-			.frame(width: 300, height: 100)
-			#endif
-			.task {
-				isTextFieldFocused = true
-			}
+					add()
+				}
+				.submitLabel(.done)
+	//			.if(!isUsingNavigationLink) {
+	//				$0.embedInNavigationViewIfNotMacOS()
+	//			}
+				#if canImport(AppKit)
+				.frame(width: 300, height: 100)
+				#endif
+				.task {
+					isTextFieldFocused = true
+				}
+		}
 	}
 
 	@MainActor

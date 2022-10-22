@@ -17,15 +17,22 @@ The dictionaries must have the same shape.
 		categoryName: "Parse / Generate"
 	)
 
-	@Parameter(title: "Dictionaries", supportedTypeIdentifiers: ["public.data"])
+	@Parameter(title: "Dictionaries", supportedTypeIdentifiers: ["public.json"])
 	var dictionaries: [IntentFile]
+
+	@Parameter(
+		title: "Keys",
+		description: "By default, all keys are included. Here, you can specify which keys to include and in what order.",
+		default: []
+	)
+	var keys: [String]
 
 	@Parameter(title: "Delimiter", default: .comma)
 	var delimiter: CSVDelimiterAppEnum
 
 	@Parameter(
 		title: "Custom Delimiter",
-		inputOptions: .init(
+		inputOptions: String.IntentInputOptions(
 			capitalizationType: .none,
 			autocorrect: false,
 			smartQuotes: false,
@@ -39,23 +46,29 @@ The dictionaries must have the same shape.
 			Summary("Generate CSV from \(\.$dictionaries)") {
 				\.$delimiter
 				\.$customDelimiter
+				\.$keys
 			}
 		} otherwise: {
-			Summary {
-				\.$dictionaries
+			Summary("Generate CSV from \(\.$dictionaries)") {
 				\.$delimiter
+				\.$keys
 			}
 		}
 	}
 
 	func perform() async throws -> some IntentResult & ReturnsValue<IntentFile> {
-		let json = dictionaries.compactMap { $0.data.toString }.joined(separator: ",")
-		let dataFrame = try DataFrame(jsonData: "[\(json)]".toData)
+		let json = dictionaries.compactMap(\.data.toString).joined(separator: ",")
+		var dataFrame = try DataFrame(jsonData: "[\(json)]".toData)
+
+		if !keys.isEmpty {
+			dataFrame = dataFrame.selecting(columnNames: keys)
+		}
+
 		let finalDelimiter = try delimiter.character(customDelimiter: customDelimiter)
 
 		let result = try dataFrame
 			.csvRepresentation(options: .init(delimiter: finalDelimiter))
-			.toIntentFile(contentType: .commaSeparatedText)
+			.toIntentFile(contentType: .commaSeparatedText, filename: UUID().uuidString) // TODO: The UUID works around a bug in iOS 16.1 where it doesn't generate unique names.
 
 		return .result(value: result)
 	}

@@ -22,6 +22,7 @@ On macOS it always returns “false”.
 		Summary("Is the device in \(\.$orientation) orientation?")
 	}
 
+	#if canImport(UIKit)
 	private func check(_ uiDeviceOrientation: UIDeviceOrientation) -> Bool {
 		switch orientation {
 		case .portrait:
@@ -44,6 +45,7 @@ On macOS it always returns “false”.
 			return uiDeviceOrientation.isFlat
 		}
 	}
+	#endif
 
 	func perform() async throws -> some IntentResult & ReturnsValue<Bool> {
 		#if canImport(UIKit)

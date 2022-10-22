@@ -1,5 +1,6 @@
 import AppIntents
 import LocalAuthentication
+import SwiftUI
 
 struct Authenticate: AppIntent {
 	static let title: LocalizedStringResource = "Authenticate"
@@ -22,7 +23,9 @@ IMPORTANT: The result is copied to the clipboard as the text “true” or “fa
 		]
 	)
 
+	#if canImport(UIKit)
 	static let openAppWhenRun = true
+	#endif
 
 	@Parameter(
 		title: "Open When Finished",
@@ -34,12 +37,14 @@ IMPORTANT: The result is copied to the clipboard as the text “true” or “fa
 	func perform() async throws -> some IntentResult {
 		AppState.shared.isFullscreenOverlayPresented = true
 
+		#if canImport(UIKit)
 		defer {
 			Task {
-				try? await Task.sleep(seconds: 2)
+				try? await Task.sleep(for: .seconds(2))
 				AppState.shared.isFullscreenOverlayPresented = false
 			}
 		}
+		#endif
 
 		do {
 			let context = LAContext()
@@ -52,6 +57,11 @@ IMPORTANT: The result is copied to the clipboard as the text “true” or “fa
 		if let openURL {
 			try await openURL.openAsyncOrOpenShortcutsApp()
 		} else {
+			// This makes the “Wait to Return” action work.
+			#if canImport(AppKit)
+			NSRunningApplication.runningApplications(withBundleIdentifier: "com.apple.shortcuts").first?.hide()
+			#endif
+
 			ShortcutsApp.open()
 		}
 

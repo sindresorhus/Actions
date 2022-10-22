@@ -1,13 +1,5 @@
 import AppIntents
 
-private let inputOptions = String.IntentInputOptions(
-	keyboardType: .URL,
-	capitalizationType: .none,
-	autocorrect: false,
-	smartQuotes: false,
-	smartDashes: false
-)
-
 struct EditURL: AppIntent, CustomIntentMigratedAppIntent {
 	static let intentClassName = "EditURLIntent"
 
@@ -28,43 +20,160 @@ For example, add a query item, change the path, or remove the fragment.
 	@Parameter(title: "Action", default: .addQueryItem)
 	var action: EditURLActionAppEnum
 
-	@Parameter(title: "Name", inputOptions: inputOptions)
+	@Parameter(
+		title: "Name",
+		inputOptions: String.IntentInputOptions(
+			keyboardType: .URL,
+			capitalizationType: .none,
+			autocorrect: false,
+			smartQuotes: false,
+			smartDashes: false
+		)
+	)
 	var queryItemName: String?
 
-	@Parameter(title: "Value", inputOptions: inputOptions)
+	@Parameter(
+		title: "Value",
+		inputOptions: String.IntentInputOptions(
+			keyboardType: .URL,
+			capitalizationType: .none,
+			autocorrect: false,
+			smartQuotes: false,
+			smartDashes: false
+		)
+	)
 	var queryItemValue: String?
 
-	@Parameter(title: "Path Component", inputOptions: inputOptions)
+	@Parameter(
+		title: "Path Component",
+		inputOptions: String.IntentInputOptions(
+			keyboardType: .URL,
+			capitalizationType: .none,
+			autocorrect: false,
+			smartQuotes: false,
+			smartDashes: false
+		)
+	)
 	var addPathComponentValue: String?
 
-	@Parameter(title: "Query", inputOptions: inputOptions)
+	@Parameter(
+		title: "Query",
+		inputOptions: String.IntentInputOptions(
+			keyboardType: .URL,
+			capitalizationType: .none,
+			autocorrect: false,
+			smartQuotes: false,
+			smartDashes: false
+		)
+	)
 	var appendToQueryValue: String?
 
-	@Parameter(title: "Fragment", inputOptions: inputOptions)
+	@Parameter(
+		title: "Fragment",
+		inputOptions: String.IntentInputOptions(
+			keyboardType: .URL,
+			capitalizationType: .none,
+			autocorrect: false,
+			smartQuotes: false,
+			smartDashes: false
+		)
+	)
 	var appendToFragmentValue: String?
 
-	@Parameter(title: "Name", inputOptions: inputOptions)
+	@Parameter(
+		title: "Name",
+		inputOptions: String.IntentInputOptions(
+			keyboardType: .URL,
+			capitalizationType: .none,
+			autocorrect: false,
+			smartQuotes: false,
+			smartDashes: false
+		)
+	)
 	var removeQueryItemsNamedValue: String?
 
-	@Parameter(title: "Username", inputOptions: inputOptions)
+	@Parameter(
+		title: "Username",
+		inputOptions: String.IntentInputOptions(
+			keyboardType: .URL,
+			capitalizationType: .none,
+			autocorrect: false,
+			smartQuotes: false,
+			smartDashes: false
+		)
+	)
 	var username: String?
 
-	@Parameter(title: "Password", inputOptions: inputOptions)
+	@Parameter(
+		title: "Password",
+		inputOptions: String.IntentInputOptions(
+			keyboardType: .URL,
+			capitalizationType: .none,
+			autocorrect: false,
+			smartQuotes: false,
+			smartDashes: false
+		)
+	)
 	var password: String?
 
-	@Parameter(title: "Query", inputOptions: inputOptions)
+	@Parameter(
+		title: "Query",
+		inputOptions: String.IntentInputOptions(
+			keyboardType: .URL,
+			capitalizationType: .none,
+			autocorrect: false,
+			smartQuotes: false,
+			smartDashes: false
+		)
+	)
 	var setQueryValue: String?
 
-	@Parameter(title: "Fragment", inputOptions: inputOptions)
+	@Parameter(
+		title: "Fragment",
+		inputOptions: String.IntentInputOptions(
+			keyboardType: .URL,
+			capitalizationType: .none,
+			autocorrect: false,
+			smartQuotes: false,
+			smartDashes: false
+		)
+	)
 	var setFragmentValue: String?
 
-	@Parameter(title: "Path", inputOptions: inputOptions)
+	@Parameter(
+		title: "Path",
+		inputOptions: String.IntentInputOptions(
+			keyboardType: .URL,
+			capitalizationType: .none,
+			autocorrect: false,
+			smartQuotes: false,
+			smartDashes: false
+		)
+	)
 	var setPathValue: String?
 
-	@Parameter(title: "Scheme", inputOptions: inputOptions)
+	@Parameter(
+		title: "Scheme",
+		inputOptions: String.IntentInputOptions(
+			keyboardType: .URL,
+			capitalizationType: .none,
+			autocorrect: false,
+			smartQuotes: false,
+			smartDashes: false
+		)
+	)
 	var setSchemeValue: String?
 
-	@Parameter(title: "Host", inputOptions: inputOptions)
+	@Parameter(
+		title: "Host",
+		inputOptions: String.IntentInputOptions(
+			keyboardType: .URL,
+			capitalizationType: .none,
+			autocorrect: false,
+			smartQuotes: false,
+			smartDashes: false
+		)
+	)
 	var setHostValue: String?
 
 	static var parameterSummary: some ParameterSummary {

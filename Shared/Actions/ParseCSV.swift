@@ -29,7 +29,7 @@ struct ParseCSV: AppIntent, CustomIntentMigratedAppIntent {
 
 	@Parameter(
 		title: "Custom Delimiter",
-		inputOptions: .init(
+		inputOptions: String.IntentInputOptions(
 			capitalizationType: .none,
 			autocorrect: false,
 			smartQuotes: false,

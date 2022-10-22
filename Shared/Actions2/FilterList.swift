@@ -13,7 +13,11 @@ struct FilterList: AppIntent, CustomIntentMigratedAppIntent {
 	@Parameter(title: "List", description: "A list of text and/or numbers.")
 	var list: [String]
 
-	@Parameter(title: "Keep", default: true/*, displayName: .init(true: "Keep", false: "Remove")*/)
+	@Parameter(
+		title: "Keep",
+		default: true,
+		displayName: Bool.IntentDisplayName(true: "Keep", false: "Remove")
+	)
 	var shouldKeep: Bool
 
 	@Parameter(title: "Condition", default: .contains)
@@ -21,7 +25,7 @@ struct FilterList: AppIntent, CustomIntentMigratedAppIntent {
 
 	@Parameter(
 		title: "Text",
-		inputOptions: .init(
+		inputOptions: String.IntentInputOptions(
 			capitalizationType: .none,
 			autocorrect: false,
 			smartQuotes: false,
@@ -40,29 +44,14 @@ struct FilterList: AppIntent, CustomIntentMigratedAppIntent {
 	var limit: Int
 
 	static var parameterSummary: some ParameterSummary {
-		// TODO: iOS does not show the displayName. (iOS 16.0)
-//		When(\.$shouldLimit, .equalTo, true) {
-//			Summary("\(\.$shouldKeep) items in \(\.$list) that \(\.$condition) \(\.$matchText)") {
-//				\.$shouldLimit
-//				\.$limit
-//				\.$caseSensitive
-//			}
-//		} otherwise: {
-//			Summary("\(\.$shouldKeep) items in \(\.$list) that \(\.$condition) \(\.$matchText)") {
-//				\.$shouldLimit
-//				\.$caseSensitive
-//			}
-//		}
 		When(\.$shouldLimit, .equalTo, true) {
-			Summary("Keep/remove items in \(\.$list) that \(\.$condition) \(\.$matchText)") {
-				\.$shouldKeep
+			Summary("\(\.$shouldKeep) items in \(\.$list) that \(\.$condition) \(\.$matchText)") {
 				\.$shouldLimit
 				\.$limit
 				\.$caseSensitive
 			}
 		} otherwise: {
-			Summary("Keep/remove items in \(\.$list) that \(\.$condition) \(\.$matchText)") {
-				\.$shouldKeep
+			Summary("\(\.$shouldKeep) items in \(\.$list) that \(\.$condition) \(\.$matchText)") {
 				\.$shouldLimit
 				\.$caseSensitive
 			}

@@ -15,7 +15,7 @@ struct GetQueryItemValueFromURL: AppIntent, CustomIntentMigratedAppIntent {
 
 	@Parameter(
 		title: "Name",
-		inputOptions: .init(
+		inputOptions: String.IntentInputOptions(
 			capitalizationType: .none,
 			autocorrect: false,
 			smartQuotes: false,

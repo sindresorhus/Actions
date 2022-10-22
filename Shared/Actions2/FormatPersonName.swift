@@ -8,19 +8,19 @@ struct FormatPersonName: AppIntent {
 		categoryName: "Formatting"
 	)
 
-	@Parameter(title: "Given Name", inputOptions: .init(autocorrect: false))
+	@Parameter(title: "Given Name", inputOptions: String.IntentInputOptions(autocorrect: false))
 	var givenName: String
 
-	@Parameter(title: "Middle Name", inputOptions: .init(autocorrect: false))
+	@Parameter(title: "Middle Name", inputOptions: String.IntentInputOptions(autocorrect: false))
 	var middleName: String?
 
-	@Parameter(title: "Family Name", inputOptions: .init(autocorrect: false))
+	@Parameter(title: "Family Name", inputOptions: String.IntentInputOptions(autocorrect: false))
 	var familyName: String?
 
-	@Parameter(title: "Name Prefix", inputOptions: .init(autocorrect: false))
+	@Parameter(title: "Name Prefix", inputOptions: String.IntentInputOptions(autocorrect: false))
 	var namePrefix: String?
 
-	@Parameter(title: "Nickname", inputOptions: .init(autocorrect: false))
+	@Parameter(title: "Nickname", inputOptions: String.IntentInputOptions(autocorrect: false))
 	var nickname: String?
 
 	@Parameter(title: "Style", default: .medium)
@@ -59,7 +59,7 @@ enum FormatPersonNameStyleAppEnum: String, AppEnum {
 		.short: .init(title: "Short", subtitle: "Jenny"),
 		.medium: .init(title: "Medium", subtitle: "Jane Doe"),
 		.long: .init(title: "Long", subtitle: "Ms. Jane Doe"),
-		.abbreviated: .init(title: "Abbreviated", subtitle: "JD"),
+		.abbreviated: .init(title: "Abbreviated", subtitle: "JD")
 	]
 }
 

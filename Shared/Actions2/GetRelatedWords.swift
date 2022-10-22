@@ -17,7 +17,7 @@ For example, given the word “horse”, it would return stallion, racehorse, po
 
 	@Parameter(
 		title: "Word",
-		inputOptions: .init(
+		inputOptions: String.IntentInputOptions(
 			capitalizationType: .none,
 			smartQuotes: false,
 			smartDashes: false

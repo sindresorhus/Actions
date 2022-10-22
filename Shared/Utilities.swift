@@ -1,4 +1,4 @@
-import SwiftUI
+@preconcurrency import SwiftUI
 import Combine
 import StoreKit
 import GameplayKit
@@ -113,7 +113,7 @@ enum SSApp {
 
 	private static func getFeedbackMetadata() -> String {
 		"""
-		\(SSApp.name) \(SSApp.versionWithBuild) - \(SSApp.idString)
+		\(name) \(versionWithBuild) - \(idString)
 		\(Device.operatingSystemString)
 		\(Device.modelIdentifier)
 		"""
@@ -121,7 +121,7 @@ enum SSApp {
 
 	static func openSendFeedbackPage() {
 		let query: [String: String] = [
-			"product": SSApp.name,
+			"product": name,
 			"metadata": getFeedbackMetadata()
 		]
 
@@ -139,7 +139,7 @@ enum SSApp {
 		let parameters = [
 			"_gotcha": nil, // Spam prevention.
 			"timestamp": "\(Int(Date.now.timeIntervalSince1970))",
-			"product": SSApp.name,
+			"product": name,
 			"metadata": getFeedbackMetadata(),
 			"email": email.lowercased(),
 			"message": message
@@ -159,7 +159,6 @@ extension SSApp {
 		SentrySDK.start {
 			$0.dsn = dsn
 			$0.enableSwizzling = false
-			$0.stitchAsyncCode = true
 		}
 		#endif
 	}
@@ -1206,6 +1205,13 @@ enum SortType {
 
 	case localized
 	case localizedCaseInsensitive
+
+	/**
+	Assumes each string is a valid number.
+
+	Non-numbers will be sorted last.
+	*/
+	case number
 }
 
 extension Sequence where Element: StringProtocol {
@@ -1240,6 +1246,8 @@ extension Sequence where Element: StringProtocol {
 			return sorted { $0.localizedCompare($1) == comparisonResult }
 		case .localizedCaseInsensitive:
 			return sorted { $0.localizedCaseInsensitiveCompare($1) == comparisonResult }
+		case .number:
+			return sortedByReturnValue(order: order) { Double($0) ?? .infinity }
 		}
 	}
 }
@@ -3269,7 +3277,7 @@ extension String {
 	```
 	*/
 	func removingCharactersWithoutDisplayWidth() -> String {
-		replacing(/[\p{Control}\p{Format}\p{Nonspacing_Mark}\p{Enclosing_Mark}\p{Line_Separator}\p{Paragraph_Separator}\p{Private_Use}\p{Unassigned}]/, with: "")
+		replacing(/[\p{Control}\p{Format}\p{Nonspacing_Mark}\p{Enclosing_Mark}\p{Line_Separator}\p{Paragraph_Separator}\p{Private_Use}\p{Unassigned}]/, with: "") // swiftlint:disable:this closure_spacing
 	}
 }
 
@@ -3292,6 +3300,18 @@ extension Sequence {
 			return sorted { $0[keyPath: keyPath] < $1[keyPath: keyPath] }
 		case .reverse:
 			return sorted { $0[keyPath: keyPath] > $1[keyPath: keyPath] }
+		}
+	}
+
+	public func sortedByReturnValue(
+		order: SortOrder = .forward,
+		getValue: (Element) throws -> some Comparable
+	) rethrows -> [Element] {
+		switch order {
+		case .forward:
+			return try sorted { (try getValue($0)) < (try getValue($1)) }
+		case .reverse:
+			return try sorted { (try getValue($0)) > (try getValue($1)) }
 		}
 	}
 }
@@ -3396,9 +3416,11 @@ extension NSWorkspace {
 struct SystemSound: Hashable, Identifiable {
 	let id: SystemSoundID
 
-	func play() async {
+	func play(alert: Bool = false) async {
+		let method = alert ? AudioServicesPlayAlertSoundWithCompletion : AudioServicesPlaySystemSoundWithCompletion
+
 		await withCheckedContinuation { continuation in
-			AudioServicesPlaySystemSoundWithCompletion(id) {
+			method(id) {
 				continuation.resume()
 			}
 		}
@@ -3956,7 +3978,7 @@ extension CIImage {
 	It's sorted by confidence, highest confidence first.
 	*/
 	func readMessageForQRCodes() -> [String] {
-		readQRCodes().compactMap { $0.messageString?.nilIfEmptyOrWhitespace }
+		readQRCodes().compactMap(\.messageString?.nilIfEmptyOrWhitespace)
 	}
 }
 
@@ -4898,19 +4920,13 @@ extension Double {
 
 
 extension XImage {
+	// swiftlint:disable:next discouraged_optional_boolean
 	func toDisplayRepresentationImage(isTemplate: Bool? = nil) -> DisplayRepresentation.Image? {
 		guard let data = pngData() else {
 			return nil
 		}
 
-		return .init(data: data)
-	}
-}
-
-
-extension Task<Never, Never> {
-	public static func sleep(seconds: TimeInterval) async throws {
-	   try await sleep(nanoseconds: UInt64(seconds * Double(NSEC_PER_SEC)))
+		return .init(data: data, isTemplate: isTemplate)
 	}
 }
 

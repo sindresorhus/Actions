@@ -1,6 +1,6 @@
 import AppIntents
 import AVFAudio
-import UIKit
+import SwiftUI
 
 @available(macOS, unavailable)
 struct GetAudioPlaybackDestination: AppIntent, CustomIntentMigratedAppIntent {
@@ -24,6 +24,7 @@ Known limitation: It will not be able to detect when the output is an AirPlay de
 	}
 
 	func perform() async throws -> some IntentResult & ReturnsValue<String> {
+		#if canImport(UIKit)
 		guard let outputDevice = AVAudioSession.sharedInstance().currentRoute.outputs.first else {
 			// TODO: How to properly handle optionals?
 			return .result(value: "")
@@ -34,5 +35,8 @@ Known limitation: It will not be able to detect when the output is an AirPlay de
 			: outputDevice.portName
 
 		return .result(value: result)
+		#else
+		return .result(value: "")
+		#endif
 	}
 }

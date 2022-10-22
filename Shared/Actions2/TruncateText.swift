@@ -19,7 +19,7 @@ struct TruncateText: AppIntent, CustomIntentMigratedAppIntent {
 	@Parameter(
 		title: "Truncation Indicator",
 		default: "…",
-		inputOptions: .init(
+		inputOptions: String.IntentInputOptions(
 			capitalizationType: .none,
 			autocorrect: false,
 			smartQuotes: false,
@@ -43,4 +43,3 @@ struct TruncateText: AppIntent, CustomIntentMigratedAppIntent {
 		return .result(value: result)
 	}
 }
-

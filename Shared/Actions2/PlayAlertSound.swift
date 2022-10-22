@@ -16,7 +16,7 @@ struct PlayAlertSound: AppIntent {
 
 	func perform() async throws -> some IntentResult {
 		#if canImport(AppKit)
-		NSBeep.play()
+		NSSound.beep()
 		#endif
 
 		return .result()

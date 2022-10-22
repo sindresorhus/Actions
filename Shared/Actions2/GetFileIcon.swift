@@ -1,4 +1,5 @@
 import AppIntents
+import SwiftUI
 
 @available(iOS, unavailable)
 struct GetFileIcon: AppIntent, CustomIntentMigratedAppIntent {
@@ -7,7 +8,7 @@ struct GetFileIcon: AppIntent, CustomIntentMigratedAppIntent {
 	static let title: LocalizedStringResource = "Get File Icon (macOS-only)"
 
 	static let description = IntentDescription(
-		"Gets the icon for the input files or directories.",
+		"Returns the icon for the input files or directories.",
 		categoryName: "File"
 	)
 
@@ -24,13 +25,13 @@ struct GetFileIcon: AppIntent, CustomIntentMigratedAppIntent {
 			if let url = file.fileURL {
 				return NSWorkspace.shared.icon(forFile: url.path)
 			} else {
-				return NSWorkspace.shared.icon(for: file.contentType ?? .data)
+				return NSWorkspace.shared.icon(for: file.type ?? .data)
 			}
 		}
 
-		let result = files.compactMap { file in
-			autoreleasepool {
-				icon(file).toIntentFile()
+		let result = try files.compactMap { file in
+			try autoreleasepool {
+				try icon(file).toIntentFile()
 			}
 		}
 

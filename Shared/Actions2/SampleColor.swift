@@ -16,7 +16,7 @@ struct SampleColor: AppIntent, CustomIntentMigratedAppIntent {
 	func perform() async throws -> some IntentResult & ReturnsValue<ColorAppEntity?> {
 		#if canImport(AppKit)
 		guard let color = await NSColorSampler().sample() else {
-			return nil
+			return .result(value: nil)
 		}
 
 		return .result(value: .init(color))

@@ -16,7 +16,7 @@ struct FlashScreen: AppIntent {
 
 	func perform() async throws -> some IntentResult {
 		#if canImport(AppKit)
-		await SystemSound.flashScreen()
+		await Device.flashScreen()
 		#endif
 
 		return .result()

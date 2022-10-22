@@ -13,6 +13,7 @@ struct AskForTextScreen: View {
 	@Environment(\.dismiss) private var dismiss
 	@State private var text = ""
 	@State private var isTimeoutCancelled = false
+	@FocusState private var isFocused: Bool
 	private let data: Data
 
 	init(data: Data) {
@@ -22,27 +23,36 @@ struct AskForTextScreen: View {
 
 	var body: some View {
 		VStack {
-			TextField("", text: $text)
-				.lineLimit(4, reservesSpace: true) // Has no effect. (iOS 16.0)
 			Button("Done") {
 				XPasteboard.general.stringForCurrentHostOnly = text
-				ShortcutsApp.open()
+				openShortcuts()
 			}
 			if data.showCancelButton {
 				Button("Cancel", role: .cancel) {
-					ShortcutsApp.open()
+					openShortcuts()
 				}
 			}
+			// It's important that this is last as otherwise it shows only two "Done" buttons. (macOS 13.0)
+			TextField("", text: $text)
+				.lineLimit(4, reservesSpace: true) // Has no effect. (iOS 16.0)
+				.focused($isFocused)
 		}
 			.onChange(of: text) { _ in
 				isTimeoutCancelled = true
 			}
 			.task {
+				#if canImport(AppKit)
+				NSApp.activate(ignoringOtherApps: true)
+				#endif
+
+				// TODO: Does not work. (macoS 13.0)
+				isFocused = true
+
 				guard let timeout = data.timeout else {
 					return
 				}
 
-				try? await Task.sleep(seconds: timeout)
+				try? await Task.sleep(for: .seconds(timeout))
 
 				guard !isTimeoutCancelled else {
 					return
@@ -54,15 +64,21 @@ struct AskForTextScreen: View {
 
 	@MainActor
 	private func timeoutAction() {
-		// TODO: Report to Apple: Dismiss should work inside an alert.
-		dismiss()
-
 		XPasteboard.general.stringForCurrentHostOnly = data.timeoutReturnValue
+		openShortcuts()
+	}
 
-		// TODO: Handle macOS.
+	@MainActor
+	private func openShortcuts() {
 		ShortcutsApp.open()
-
+		dismiss() // TODO: Report to Apple: Dismiss should work inside an alert.
 		AppState.shared.askForTextData = nil
+
+		#if canImport(AppKit)
+		DispatchQueue.main.async {
+			SSApp.quit()
+		}
+		#endif
 	}
 }
 

@@ -23,35 +23,23 @@ IMPORTANT: The result is copied to the clipboard. Add the “Wait to Return” a
 	@Parameter(
 		title: "Edit",
 		default: false,
-		displayName: .init(true: "Edit", false: "Write")
+		displayName: Bool.IntentDisplayName(true: "Edit", false: "Write")
 	)
 	var shouldEdit: Bool
 
 	@Parameter(
 		title: "Editor Title",
-		inputOptions: .init(capitalizationType: .words)
+		inputOptions: String.IntentInputOptions(capitalizationType: .words)
 	)
 	var editorTitle: String?
 
 	static var parameterSummary: some ParameterSummary {
-		// TODO: Booleans labels don't show. (iOS 16.0)
-//		When(\.$shouldEdit, .equalTo, true) {
-//			Summary("\(\.$shouldEdit) \(\.$text)") {
-//				\.$editorTitle
-//			}
-//		} otherwise: {
-//			Summary("\(\.$shouldEdit) text") {
-//				\.$editorTitle
-//			}
-//		}
 		When(\.$shouldEdit, .equalTo, true) {
-			Summary("Edit \(\.$text)") {
-				\.$shouldEdit
+			Summary("\(\.$shouldEdit) \(\.$text)") {
 				\.$editorTitle
 			}
 		} otherwise: {
-			Summary("Write text") {
-				\.$shouldEdit
+			Summary("\(\.$shouldEdit) text") {
 				\.$editorTitle
 			}
 		}

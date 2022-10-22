@@ -20,23 +20,11 @@ struct WriteTextScreen: View {
 
 	var body: some View {
 		NavigationStack {
-			VStack(spacing: 0) {
-				#if canImport(AppKit)
-				if let title = data.title {
-					HStack {
-						Text(title)
-							.font(.headline)
-							.padding()
-					}
-						.padding(.bottom, -16)
-				}
-				#endif
-				TextEditor(text: $text)
-					.font(.largeBody)
-					.lineSpacing(6)
-					.focused($isTextEditorFocused)
-					.padding() // TODO: Use `.safeAreaInset()` when it works with `TextEditor`. (macOS 12.0.1)
-			}
+			TextEditor(text: $text)
+				.font(.largeBody)
+				.lineSpacing(6)
+				.focused($isTextEditorFocused)
+				.padding() // TODO: Use `.safeAreaInset()` when it works with `TextEditor`. (macOS 12.0.1)
 				.navigationTitle(data.title ?? "Text Editor")
 				.frame(maxWidth: .infinity, maxHeight: .infinity)
 				#if canImport(UIKit)

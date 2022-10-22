@@ -13,7 +13,7 @@ struct CreateColorImage: AppIntent, CustomIntentMigratedAppIntent {
 	@Parameter(
 		title: "Hex Color",
 		default: "#ff69b4",
-		inputOptions: .init(
+		inputOptions: String.IntentInputOptions(
 			capitalizationType: .none,
 			autocorrect: false,
 			smartQuotes: false,

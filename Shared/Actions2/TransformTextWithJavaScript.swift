@@ -19,7 +19,7 @@ The code is excuted with JavaScriptCore (same as used in Safari), not JXA.
 
 	@Parameter(
 		title: "Text",
-		inputOptions: .init(multiline: true)
+		inputOptions: String.IntentInputOptions(multiline: true)
 	)
 	var text: String
 
@@ -27,7 +27,7 @@ The code is excuted with JavaScriptCore (same as used in Safari), not JXA.
 		title: "JavaScript Code",
 		description: "You are expected to return a string. The code must be synchronous.",
 		default: "return $text.toLowerCase();",
-		inputOptions: .init(
+		inputOptions: String.IntentInputOptions(
 			capitalizationType: .none,
 			multiline: true,
 			autocorrect: false,

@@ -6,7 +6,13 @@ struct SetFileCreationModificationDate: AppIntent, CustomIntentMigratedAppIntent
 	static let title: LocalizedStringResource = "Set Creation and Modification Date of File"
 
 	static let description = IntentDescription(
-		"Sets the creation and modification date of a file to a new value.",
+"""
+Sets the creation and modification date of a file or folder to a new value.
+
+To be able to select a folder, use the built-in “Folder” action.
+
+Note: Setting the modification date of a file/folder in iCloud may not work as iCloud changes the modification date when it syncs.
+""",
 		categoryName: "File"
 	)
 
@@ -19,26 +25,48 @@ struct SetFileCreationModificationDate: AppIntent, CustomIntentMigratedAppIntent
 	@Parameter(title: "Date and Time")
 	var date: Date
 
+	@Parameter(
+		title: "Modify Original",
+		description: "When enabled, applies the changes to the original file (for example, in iCloud) instead of just the copy used in the shortcut.",
+		default: false
+	)
+	var modifyOriginal: Bool
+
 	static var parameterSummary: some ParameterSummary {
-		Summary("Set \(\.$type) of \(\.$file) to \(\.$date)")
+		Summary("Set \(\.$type) of \(\.$file) to \(\.$date)") {
+			\.$modifyOriginal
+		}
+	}
+
+	private func modify(_ url: URL) throws {
+		try url.setResourceValues {
+			switch type {
+			case .creationDate:
+				$0.creationDate = date
+			case .modificationDate:
+				$0.contentModificationDate = date
+			case .both:
+				$0.creationDate = date
+				$0.contentModificationDate = date
+			}
+		}
 	}
 
 	func perform() async throws -> some IntentResult & ReturnsValue<IntentFile> {
-		let result = try file.modifyingFileAsURL { url in
-			try url.setResourceValues {
-				switch type {
-				case .creationDate:
-					$0.creationDate = date
-				case .modificationDate:
-					$0.contentModificationDate = date
-				case .both:
-					$0.creationDate = date
-					$0.contentModificationDate = date
+		let result = try {
+			if modifyOriginal, let url = file.fileURL {
+				try url.accessSecurityScopedResource {
+					try modify($0)
+				}
+
+				return file
+			} else {
+				return try file.modifyingFileAsURL {
+					try modify($0)
+					return $0
 				}
 			}
-
-			return url
-		}
+		}()
 
 		return .result(value: result)
 	}

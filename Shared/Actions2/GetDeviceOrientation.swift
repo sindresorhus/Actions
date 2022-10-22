@@ -61,6 +61,7 @@ enum DeviceOrientationAppEnum: String, AppEnum {
 	]
 }
 
+#if canImport(UIKit)
 @available(macOS, unavailable)
 extension DeviceOrientationAppEnum {
 	fileprivate init(_ uiDeviceOrientation: UIDeviceOrientation) {
@@ -85,3 +86,4 @@ extension DeviceOrientationAppEnum {
 		}
 	}
 }
+#endif

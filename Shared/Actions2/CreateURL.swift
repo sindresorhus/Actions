@@ -1,13 +1,5 @@
 import AppIntents
 
-private let inputOptions = String.IntentInputOptions(
-	keyboardType: .URL,
-	capitalizationType: .none,
-	autocorrect: false,
-	smartQuotes: false,
-	smartDashes: false
-)
-
 struct CreateURL: AppIntent, CustomIntentMigratedAppIntent {
 	static let intentClassName = "CreateURLIntent"
 
@@ -18,31 +10,102 @@ struct CreateURL: AppIntent, CustomIntentMigratedAppIntent {
 		categoryName: "URL"
 	)
 
-	@Parameter(title: "Scheme", default: "https", inputOptions: inputOptions)
+	@Parameter(
+		title: "Scheme",
+		default: "https",
+		inputOptions: String.IntentInputOptions(
+			keyboardType: .URL,
+			capitalizationType: .none,
+			autocorrect: false,
+			smartQuotes: false,
+			smartDashes: false
+		)
+	)
 	var scheme: String
 
-	@Parameter(title: "Host", inputOptions: inputOptions)
+	@Parameter(
+		title: "Host",
+		inputOptions: String.IntentInputOptions(
+			keyboardType: .URL,
+			capitalizationType: .none,
+			autocorrect: false,
+			smartQuotes: false,
+			smartDashes: false
+		)
+	)
 	var host: String?
 
-	@Parameter(title: "Path", inputOptions: inputOptions)
+	@Parameter(
+		title: "Path",
+		inputOptions: String.IntentInputOptions(
+			keyboardType: .URL,
+			capitalizationType: .none,
+			autocorrect: false,
+			smartQuotes: false,
+			smartDashes: false
+		)
+	)
 	var path: String?
 
-	@Parameter(title: "Query Items (every other item is key & value)", default: [], inputOptions: inputOptions)
+	@Parameter(
+		title: "Query Items (every other item is key & value)",
+		default: [],
+		inputOptions: String.IntentInputOptions(
+			keyboardType: .URL,
+			capitalizationType: .none,
+			autocorrect: false,
+			smartQuotes: false,
+			smartDashes: false
+		)
+	)
 	var queryItems: [String]
 
-	@Parameter(title: "Fragment", inputOptions: inputOptions)
+	@Parameter(
+		title: "Fragment",
+		inputOptions: String.IntentInputOptions(
+			keyboardType: .URL,
+			capitalizationType: .none,
+			autocorrect: false,
+			smartQuotes: false,
+			smartDashes: false
+		)
+	)
 	var fragment: String?
 
-	@Parameter(title: "User", inputOptions: inputOptions)
+	@Parameter(
+		title: "User",
+		inputOptions: String.IntentInputOptions(
+			keyboardType: .URL,
+			capitalizationType: .none,
+			autocorrect: false,
+			smartQuotes: false,
+			smartDashes: false
+		)
+	)
 	var user: String?
 
-	@Parameter(title: "Password", inputOptions: inputOptions)
+	@Parameter(
+		title: "Password",
+		inputOptions: String.IntentInputOptions(
+			keyboardType: .URL,
+			capitalizationType: .none,
+			autocorrect: false,
+			smartQuotes: false,
+			smartDashes: false
+		)
+	)
 	var password: String?
 
-	@Parameter(title: "Custom Port", default: false)
+	@Parameter(
+		title: "Custom Port",
+		default: false
+	)
 	var useCustomPort: Bool
 
-	@Parameter(title: "Port", controlStyle: .field)
+	@Parameter(
+		title: "Port",
+		controlStyle: .field
+	)
 	var port: Int?
 
 	static var parameterSummary: some ParameterSummary {

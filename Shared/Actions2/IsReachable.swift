@@ -17,7 +17,7 @@ Use the “Is Online” action if you just want to check whether your computer i
 	@Parameter(
 		title: "Host",
 		description: "A domain like “google.com”, a URL like “https://google.com”, or an IP address.",
-		inputOptions: .init(
+		inputOptions: String.IntentInputOptions(
 			keyboardType: .URL,
 			capitalizationType: .none,
 			autocorrect: false,

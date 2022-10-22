@@ -23,7 +23,7 @@ This action can be useful to run after the built-in "Convert Image" action (ensu
 	@Parameter(
 		title: "Also Set Modification Date",
 		default: false,
-		displayName: .init(true: "Creation Date", false: "Creation & Modification Date")
+		displayName: Bool.IntentDisplayName(true: "Creation Date", false: "Creation & Modification Date")
 	)
 	var setModificationDate: Bool
 

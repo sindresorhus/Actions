@@ -40,7 +40,7 @@ Want to run shortcuts directly from the iOS Lock Screen? Check out my new [Quick
 - Ask for Text with Timeout
 - Authenticate
 - Blur Images
-- Calculate with Soulver
+<!-- - Calculate with Soulver -->
 - Choose from List (Extended)
 - Clamp Number
 - Combine Lists

@@ -5,6 +5,10 @@ struct MainScreen: View {
 	@EnvironmentObject private var appState: AppState
 	@State private var error: Error?
 
+	#if canImport(AppKit)
+	@State private var hostingWindow: NSWindow?
+	#endif
+
 	var body: some View {
 		VStack {
 			WelcomeScreen()
@@ -14,6 +18,7 @@ struct MainScreen: View {
 			.frame(width: 440)
 			.windowLevel(.floating)
 			.fixedSize()
+			.bindNativeWindow($hostingWindow)
 			#endif
 			.fullScreenCoverOrSheetIfMacOS(item: $appState.writeTextData) {
 				WriteTextScreen(data: $0)
@@ -28,6 +33,13 @@ struct MainScreen: View {
 			) { data in
 				AskForTextScreen(data: data)
 			}
+			.overlay {
+				if appState.isFullscreenOverlayPresented {
+					// We use this instead of `.fullScreenCover` as there's no way to turn off its animation.
+					Color.legacyBackground
+						.ignoresSafeArea()
+				}
+			}
 			#if canImport(UIKit)
 			.documentScanner(isPresented: $appState.isDocumentScannerPresented) {
 				switch $0 {
@@ -35,13 +47,6 @@ struct MainScreen: View {
 					UIPasteboard.general.images = images
 				case .failure(let error):
 					self.error = error
-				}
-			}
-			.overlay {
-				if appState.isFullscreenOverlayPresented {
-					// We use this instead of `.fullScreenCover` as there's no way to turn off its animation.
-					Color.legacyBackground
-						.ignoresSafeArea()
 				}
 			}
 			.onChange(of: scenePhase) {
@@ -57,15 +62,19 @@ struct MainScreen: View {
 			}
 			#endif
 			.task {
+				#if canImport(AppKit)
+				hostingWindow?.center()
+				#endif
+
 				#if DEBUG
 				// For testing the “Write or Edit Text” action.
-//				writeTextData = .init(
+//				appState.writeTextData = .init(
 //					title: "Test",
 //					text: ""
 //				)
 
 				// For testing the “Choose from List Extended” action.
-//				chooseFromListData = .init(
+//				appState.chooseFromListData = .init(
 //					list: [
 //						"Foo",
 //						"Bar"
@@ -75,6 +84,12 @@ struct MainScreen: View {
 //					selectAllInitially: false,
 //					allowCustomItems: false,
 //					timeoutReturnValue: .nothing
+//				)
+
+//				appState.askForTextData = .init(
+//					text: "X",
+//					title: "X",
+//					timeoutReturnValue: "X"
 //				)
 				#endif
 			}

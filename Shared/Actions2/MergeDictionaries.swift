@@ -86,4 +86,3 @@ In Shortcuts, dictionaries are just JSON, so you can use this to merge JSON (fil
 		return .result(value: result)
 	}
 }
-

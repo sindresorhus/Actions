@@ -40,7 +40,14 @@ struct RunningAppAppEntity: TransientAppEntity {
 	var processIdentifier: Int
 
 	@Property(title: "URL")
-	var url: URL
+	var url: URL?
+
+	// TODO: This is not shown. (macOS 13.0)
+	@Property(title: "Icon")
+	var icon: IntentFile?
+
+	@Property(title: "Icon (128px)")
+	var iconSmall: IntentFile?
 
 	@Property(title: "Is Active")
 	var isActive: Bool
@@ -53,15 +60,15 @@ struct RunningAppAppEntity: TransientAppEntity {
 
 	var displayRepresentation: DisplayRepresentation {
 		.init(
-			title: name,
-			subtitle: bundleIdentifier,
-			image: nil // TODO
+			title: "\(name)",
+			subtitle: "\(bundleIdentifier)",
+			image: iconSmall.flatMap { .init(data: $0.data) }
 		)
 	}
 }
 
 extension RunningAppAppEntity {
-	init?(_ nsRunningApplication: NSRunningApplication) {
+	init?(_ app: NSRunningApplication) {
 		guard
 			let localizedName = app.localizedName,
 			let bundleIdentifier = app.bundleIdentifier
@@ -69,19 +76,23 @@ extension RunningAppAppEntity {
 			return nil
 		}
 
-		let iconSize = 128.0
-		var inImage: INImage?
-		if let representation = (app.icon?.representations.first { $0.size.width == iconSize }) {
-			let image = NSImage(size: CGSize(width: iconSize, height: iconSize))
+		func getIcon(size: Double) throws -> IntentFile? {
+			guard let representation = (app.icon?.representations.first { $0.size.width == size }) else {
+				return nil
+			}
+
+			let image = NSImage(size: .init(width: size, height: size))
 			image.addRepresentation(representation)
-			inImage = image.toINImage
+			return try image.toIntentFile()
 		}
 
 		self.init()
 		self.name = localizedName
 		self.bundleIdentifier = bundleIdentifier
-		self.processIdentifier = app.processIdentifier
+		self.processIdentifier = Int(app.processIdentifier)
 		self.url = app.bundleURL
+		self.icon = try? getIcon(size: 1024)
+		self.iconSmall = try? getIcon(size: 128)
 		self.isActive = app.isActive
 		self.isHidden = app.isHidden
 		self.launchDate = app.launchDate ?? .now

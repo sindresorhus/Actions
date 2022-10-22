@@ -1,6 +1,9 @@
 only_rules:
-  - anyobject_protocol
+  # Disabled as it's super buggy.
+  # - accessibility_label_for_image
   - array_init
+  # Disabled as it's too buggy.
+  # - attributes
   - block_based_kvo
   - class_delegate_protocol
   - closing_brace
@@ -8,8 +11,12 @@ only_rules:
   - closure_parameter_position
   - closure_spacing
   - collection_alignment
-  - colon
+  # Buggy
+  # - colon
   - comma
+  - comma_inheritance
+  # Enable once in a while. Too annoying to have enabled all the time.
+  # - comment_spacing
   - compiler_protocol_init
   - computed_accessors_order
   - conditional_returns_on_newline
@@ -23,11 +30,13 @@ only_rules:
   - discarded_notification_center_observer
   - discouraged_assert
   - discouraged_direct_init
+  - discouraged_none_name
   - discouraged_object_literal
   - discouraged_optional_boolean
-  - discouraged_optional_collection
+  # - discouraged_optional_collection
   - duplicate_enum_cases
   - duplicate_imports
+  - duplicated_key_in_dictionary_literal
   - dynamic_inline
   - empty_collection_literal
   - empty_count
@@ -43,6 +52,10 @@ only_rules:
   - first_where
   - flatmap_over_map_reduce
   - for_where
+  # Enable these once in a while
+  # - force_cast
+  # - force_try
+  # - force_unwrapping
   - generic_type_name
   - ibinspectable_in_extension
   - identical_operands
@@ -50,6 +63,8 @@ only_rules:
   - implicit_getter
   - implicit_return
   - inclusive_language
+  # TODO: It's buggy. Wait a while and if never fixed, open an issue.
+  # - indentation_width
   - inert_defer
   - is_disjoint
   - joined_default_parameter
@@ -63,9 +78,16 @@ only_rules:
   - legacy_nsgeometry_functions
   - legacy_random
   - literal_expression_end_indentation
+  # Too annoying
+  # - legacy_objc_type
   - lower_acl_than_parent
   - mark
   - modifier_order
+  # Buggy with multi-line closures.
+  # - multiline_arguments
+  # Disabled for now as it has too many false-positives.
+  # TODO: Open issue about it
+  # - multiline_arguments_brackets
   - multiline_function_chains
   - multiline_literal_brackets
   - multiline_parameters
@@ -76,12 +98,15 @@ only_rules:
   - no_space_in_method_call
   - notification_center_detachment
   - nsobject_prefer_isequal
-  - number_separator
-  - opening_brace
-  - operator_usage_whitespace
+  # Buggy
+  # - opening_brace
+  # - operator_usage_whitespace
   - operator_whitespace
+  # Doesn't work
+  # - optional_enum_case_matching
   - orphaned_doc_comment
   - overridden_super_call
+  - prefer_self_in_static_references
   - prefer_self_type_over_type_of_self
   - prefer_zero_over_explicit_init
   - private_action
@@ -102,6 +127,9 @@ only_rules:
   - redundant_void_return
   - required_enum_case
   - return_arrow_whitespace
+  - return_value_from_void_function
+  - self_binding
+  - self_in_property_initialization
   - shorthand_operator
   - sorted_first_last
   - statement_position
@@ -112,12 +140,17 @@ only_rules:
   - switch_case_on_newline
   - syntactic_sugar
   - test_case_accessibility
+  # TODO: Enable this again!
+  # - todo
   - toggle_bool
   - trailing_closure
   - trailing_comma
   - trailing_newline
   - trailing_semicolon
   - trailing_whitespace
+  # Disabled for now as it's not flexible enough
+  # - type_contents_order
+  - unavailable_condition
   - unavailable_function
   - unneeded_break_in_switch
   - unneeded_parentheses_in_closure_argument
@@ -131,10 +164,14 @@ only_rules:
   - unused_setter_value
   - valid_ibinspectable
   - vertical_parameter_alignment
-  - vertical_parameter_alignment_on_call
+  # It's buggy.
+  # - vertical_parameter_alignment_on_call
   - vertical_whitespace_closing_braces
   - vertical_whitespace_opening_braces
+  - void_function_in_ternary
   - void_return
+  # Too buggy
+  # - weak_delegate
   - xct_specific_matcher
   - xctfail_message
   - yoda_condition
@@ -142,8 +179,23 @@ analyzer_rules:
   - capture_variable
   - unused_declaration
   - unused_import
-number_separator:
-  minimum_length: 5
+  - typesafe_array_init
+# force_cast: warning
+# force_try: warning
+# force_unwrapping: warning
+# type_contents_order:
+#   order:
+#     - case
+#     - [type_alias, associated_type, subtype]
+#     - type_property
+#     - type_method
+#     - ib_outlet
+#     - [ib_inspectable, instance_property]
+#     - initializer
+#     - deinitializer
+#     - subscript
+#     - view_life_cycle_method
+#     - [ib_action, other_method]
 identifier_name:
   max_length:
     warning: 100
@@ -196,3 +248,6 @@ custom_rules:
   final_class:
     regex: '^class [a-zA-Z\d]+[^{]+\{'
     message: 'Classes should be marked as final whenever possible. If you actually need it to be subclassable, just add `// swiftlint:disable:next final_class`.'
+  no_alignment_center:
+    regex: '\b\(alignment: .center\b'
+    message: 'This alignment is the default.'

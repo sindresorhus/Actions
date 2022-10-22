@@ -30,16 +30,15 @@ Even though the description says this action accepts input of type Files, it acc
 	@Parameter(title: "Item", supportedTypeIdentifiers: ["public.item"])
 	var item: IntentFile
 
-//	@Parameter(title: "Prepend", default: false, displayName: .init(true: "Prepend", false: "Append"))
-	@Parameter(title: "Prepend instead of append", default: false)
+	@Parameter(
+		title: "Prepend",
+		default: false,
+		displayName: Bool.IntentDisplayName(true: "Prepend", false: "Append")
+	)
 	var prepend: Bool
 
 	static var parameterSummary: some ParameterSummary {
-		// TODO: iOS 16.0 only shows "On" even though we have specified a `displayName`.
-//		Summary("\(\.$prepend) \(\.$item) to \(\.$list)")
-		Summary("Add \(\.$item) to \(\.$list)") {
-			\.$prepend
-		}
+		Summary("\(\.$prepend) \(\.$item) to \(\.$list)")
 	}
 
 	func perform() async throws -> some IntentResult & ReturnsValue<[IntentFile]> {

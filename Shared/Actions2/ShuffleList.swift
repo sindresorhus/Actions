@@ -20,7 +20,12 @@ struct ShuffleList: AppIntent, CustomIntentMigratedAppIntent {
 	@Parameter(title: "Limit", default: false)
 	var shouldLimit: Bool
 
-	@Parameter(title: "Maximum Results", default: 10, controlStyle: .field, inclusiveRange: (0, 9999999999))
+	@Parameter(
+		title: "Maximum Results",
+		default: 10,
+		controlStyle: .field,
+		inclusiveRange: (0, 9999999999)
+	)
 	var limit: Int
 
 	static var parameterSummary: some ParameterSummary {

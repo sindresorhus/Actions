@@ -32,7 +32,7 @@ Note: Use Base64 encoding whenever possible as it's more space efficient.
 	@Parameter(
 		title: "Uniform Type Identifier",
 		description: "For example, if the Hex string represents a PNG image, use “public.png”.",
-		inputOptions: .init(
+		inputOptions: String.IntentInputOptions(
 			capitalizationType: .none,
 			autocorrect: false,
 			smartQuotes: false,
