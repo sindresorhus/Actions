@@ -884,7 +884,7 @@
 			repositoryURL = "https://github.com/soulverteam/SoulverCore";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.2.4;
+				minimumVersion = 2.2.5;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

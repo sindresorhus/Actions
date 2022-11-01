@@ -18,6 +18,7 @@ import JavaScriptCore
 import CoreImage.CIFilterBuiltins
 import AppIntents
 import PDFKit
+import os
 import Sentry
 
 #if canImport(AppKit)
@@ -2705,7 +2706,6 @@ enum Bluetooth {
 			}
 
 			let recoverySuggestion = OS.current == .macOS
-				// TODO: Update this when macOS 13 is out.
 				? "You can grant access in “System Settings › Privacy & Security › Bluetooth”."
 				: "You can grant access in “Settings › \(SSApp.name)”."
 
@@ -2729,6 +2729,8 @@ enum Bluetooth {
 		}
 	}
 
+	private static var bluetoothManagers = [UUID: BluetoothManager]()
+
 	/**
 	Check whether Bluetooth is turned on.
 
@@ -2736,16 +2738,22 @@ enum Bluetooth {
 
 	- Throws: An error if the app has no access to Bluetooth with a message on how to grant it.
 	*/
+	@MainActor // We use this to prevent any thread issues.
 	static func isOn() async throws -> Bool {
-		// Required as otherwise `BluetoothManager` will not be retained long enough.
-		var manager: BluetoothManager?
+		let key = UUID()
 
-		// Silence Swift compiler warning.
-		withExtendedLifetime(manager) {}
-
-		return try await withCheckedThrowingContinuation { continuation in
-			manager = BluetoothManager(continuation: continuation)
+		let result = try await withCheckedThrowingContinuation { continuation in
+			Self.bluetoothManagers[key] = BluetoothManager(continuation: continuation)
 		}
+
+		// This delay is required to give the system time to present the permission prompt if needed.
+		if CBCentralManager.authorization == .notDetermined {
+			try? await Task.sleep(for: .seconds(0.1))
+		}
+
+		Self.bluetoothManagers[key] = nil
+
+		return result
 	}
 }
 

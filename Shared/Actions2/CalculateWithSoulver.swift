@@ -111,15 +111,3 @@ If you like this action, you may also like the Soulver macOS app.
 		return calculator.calculate(expression).stringValue
 	}
 }
-
-
-extension ECBCurrencyRateProvider {
-	@discardableResult
-	func updateRates() async -> Bool {
-		await withCheckedContinuation { continuation in
-			updateRates {
-				continuation.resume(returning: $0)
-			}
-		}
-	}
-}

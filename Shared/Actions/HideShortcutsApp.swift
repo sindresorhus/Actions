@@ -15,9 +15,10 @@ This is useful for making cross-platform shortcuts. If you just target iOS, use 
 		categoryName: "Utility"
 	)
 
-	#if canImport(UIKit)
+	// AppIntents cannot handle this conditional. (Xcode 14.1)
+//	#if canImport(UIKit)
 	static let openAppWhenRun = true
-	#endif
+//	#endif
 
 	static var parameterSummary: some ParameterSummary {
 		Summary("Hide the Shortcuts app")
@@ -28,6 +29,11 @@ This is useful for making cross-platform shortcuts. If you just target iOS, use 
 		NSRunningApplication.runningApplications(withBundleIdentifier: "com.apple.shortcuts").first?.hide()
 		#else
 		SSApp.moveToBackground()
+		#endif
+
+		// TODO: This can be removed when we disable the `static let openAppWhenRun = true` for macOS again.
+		#if canImport(AppKit)
+		SSApp.quit()
 		#endif
 
 		return .result()

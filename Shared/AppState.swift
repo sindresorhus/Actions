@@ -1,4 +1,5 @@
 import SwiftUI
+import CoreBluetooth
 
 @MainActor
 final class AppState: ObservableObject {
@@ -9,4 +10,22 @@ final class AppState: ObservableObject {
 	@Published var chooseFromListData: ChooseFromListScreen.Data?
 	@Published var askForTextData: AskForTextScreen.Data?
 	@Published var isFullscreenOverlayPresented = false
+
+	init() {
+		// TODO: Check if it shows a prompt when we move the action back to being in an extension.
+		// We have to request the permission in the app as it no longer (with iOS 16.1) a prompt when running the action. The prompt actually shows when we switch back to the app. So it seems it's shown in the incorrect scene.
+		#if canImport(UIKit)
+		askForBluetoothAccessIfNeeded()
+		#endif
+	}
+
+	private func askForBluetoothAccessIfNeeded() {
+		guard CBCentralManager.authorization == .notDetermined else {
+			return
+		}
+
+		Task {
+			try? await Bluetooth.isOn()
+		}
+	}
 }

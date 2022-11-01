@@ -23,9 +23,10 @@ IMPORTANT: The result is copied to the clipboard as the text “true” or “fa
 		]
 	)
 
-	#if canImport(UIKit)
+	// AppIntents cannot handle this conditional. (Xcode 14.1)
+//	#if canImport(UIKit)
 	static let openAppWhenRun = true
-	#endif
+//	#endif
 
 	@Parameter(
 		title: "Open When Finished",
@@ -63,6 +64,11 @@ IMPORTANT: The result is copied to the clipboard as the text “true” or “fa
 			#endif
 
 			ShortcutsApp.open()
+
+			// TODO: This can be removed when we disable the `static let openAppWhenRun = true` for macOS again.
+			#if canImport(AppKit)
+			SSApp.quit()
+			#endif
 		}
 
 		return .result()
