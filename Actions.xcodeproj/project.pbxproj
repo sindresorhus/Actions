@@ -34,6 +34,7 @@
 		E352420628F6CAAD00A957A7 /* ReverseLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = E352420528F6CAAD00A957A7 /* ReverseLines.swift */; };
 		E352420A28F6EEDE00A957A7 /* AskForText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E352420928F6EEDE00A957A7 /* AskForText.swift */; };
 		E352420C28F6F6AD00A957A7 /* AskForTextScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E352420B28F6F6AD00A957A7 /* AskForTextScreen.swift */; };
+		E396D58A2910EC91002A1043 /* SoulverCore in Frameworks */ = {isa = PBXBuildFile; productRef = E396D5892910EC91002A1043 /* SoulverCore */; };
 		E3A85FE528E94E7300F423F1 /* FormatPersonName.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A85FE428E94E7300F423F1 /* FormatPersonName.swift */; };
 		E3B1C3C428F5D68D009BE0B7 /* GetIndexOfListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B1C3C328F5D68D009BE0B7 /* GetIndexOfListItem.swift */; };
 		E3BFF7B22742616400B830DE /* WriteTextScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BFF7B02742616400B830DE /* WriteTextScreen.swift */; };
@@ -239,6 +240,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E396D58A2910EC91002A1043 /* SoulverCore in Frameworks */,
 				E337A3E627E8BA6B0073E865 /* FuzzyFind in Frameworks */,
 				E3F64D7028D9EFE80009B500 /* ExceptionCatcher in Frameworks */,
 				E351083928FD8089007C85AE /* Sentry in Frameworks */,
@@ -419,6 +421,7 @@
 				E337A3E527E8BA6B0073E865 /* FuzzyFind */,
 				E3F64D6F28D9EFE80009B500 /* ExceptionCatcher */,
 				E351083828FD8089007C85AE /* Sentry */,
+				E396D5892910EC91002A1043 /* SoulverCore */,
 			);
 			productName = "Actions (iOS)";
 			productReference = E324C9F6271E972300E7CA9B /* Actions.app */;
@@ -452,6 +455,7 @@
 				E3327E95272C68DE00AD5CC7 /* XCRemoteSwiftPackageReference "sentry-cocoa" */,
 				E337A3E227E8B66D0073E865 /* XCRemoteSwiftPackageReference "FuzzyFind" */,
 				E32B4F3227FD77700057F08D /* XCRemoteSwiftPackageReference "ExceptionCatcher" */,
+				E396D5882910EC91002A1043 /* XCRemoteSwiftPackageReference "SoulverCore" */,
 			);
 			productRefGroup = E324C9F7271E972300E7CA9B /* Products */;
 			projectDirPath = "";
@@ -766,6 +770,7 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+					"@executable_path/../Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sindresorhus.Actions;
 				PRODUCT_NAME = Actions;
@@ -811,6 +816,7 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+					"@executable_path/../Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sindresorhus.Actions;
 				PRODUCT_NAME = Actions;
@@ -873,6 +879,14 @@
 				minimumVersion = 0.1.0;
 			};
 		};
+		E396D5882910EC91002A1043 /* XCRemoteSwiftPackageReference "SoulverCore" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/soulverteam/SoulverCore";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.4;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -885,6 +899,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E3327E95272C68DE00AD5CC7 /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
 			productName = Sentry;
+		};
+		E396D5892910EC91002A1043 /* SoulverCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E396D5882910EC91002A1043 /* XCRemoteSwiftPackageReference "SoulverCore" */;
+			productName = SoulverCore;
 		};
 		E3F64D6F28D9EFE80009B500 /* ExceptionCatcher */ = {
 			isa = XCSwiftPackageProductDependency;

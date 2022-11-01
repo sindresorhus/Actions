@@ -14,6 +14,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Ask for Text with Timeout
 - Authenticate
 - Blur Images
+- Calculate with Soulver
 - Choose from List (Extended)
 - Clamp Number
 - Combine Lists
