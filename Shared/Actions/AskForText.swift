@@ -72,6 +72,3 @@ IMPORTANT: The result is copied to the clipboard. Add the “Wait to Return” a
 		return .result()
 	}
 }
-
-// TODO: Remove me when it's support it natively.
-extension UnitDuration: @unchecked Sendable {}

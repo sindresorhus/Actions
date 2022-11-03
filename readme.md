@@ -70,6 +70,7 @@ Want to run shortcuts directly from the iOS Lock Screen? Check out my new [Quick
 - Get File Icon <sup>(macOS-only)</sup>
 - Get File Path
 - Get Index of List Item
+- Get Map Image of Location
 - Get Music Playlists <sup>(iOS-only)</sup>
 - Get Query Item Value from URL
 - Get Query Items from URL
@@ -140,7 +141,7 @@ Want to run shortcuts directly from the iOS Lock Screen? Check out my new [Quick
 - Remove Tracking Parameters from URLs → [Velja](https://sindresorhus.com/velja)
 - Clear Clipboard Formatting → [Pure Paste](https://sindresorhus.com/pure-paste)
 - Join Video Call → [Dato](https://sindresorhus.com/dato)
-- Put text on the iOS Lock Screen → [Lock Screen One](https://sindresorhus.com/lock-screen-one)
+- Put text on the iOS Lock Screen → [Any Text](https://sindresorhus.com/any-text)
 
 ## Screenshot
 

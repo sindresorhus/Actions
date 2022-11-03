@@ -1,0 +1,204 @@
+import AppIntents
+import MapKit
+import SwiftUI
+
+struct GetMapImageOfLocation: AppIntent {
+	static let title: LocalizedStringResource = "Get Map Image of Location"
+
+	static let description = IntentDescription(
+		"Returns an image with the given location marked and centered on a map.",
+		categoryName: "Location"
+	)
+
+	@Parameter(title: "Location")
+	var location: CLPlacemark
+
+	@Parameter(
+		title: "Visible Radius",
+		description: "How much area to show around the location.",
+		defaultValue: 10,
+		defaultUnit: .kilometers,
+		supportsNegativeNumbers: false
+	)
+	var radius: Measurement<UnitLength>
+
+	@Parameter(title: "Width", default: 1000, controlStyle: .field)
+	var width: Int
+
+	@Parameter(title: "Height", default: 1000, controlStyle: .field)
+	var height: Int
+
+	@Parameter(title: "Show Placemark", default: true)
+	var showPlacemark: Bool
+
+	@Parameter(title: "Map Type", default: .standard)
+	var mapType: MapTypeAppEnum
+
+	@Parameter(
+		title: "Appearance",
+		description: "On macOS, it always uses the system appearance (because of a macOS bug).",
+		default: .system
+	)
+	var appearance: AppearanceAppEnum
+
+	static var parameterSummary: some ParameterSummary {
+		Summary("Get map image of \(\.$location) with \(\.$radius) radius") {
+			\.$width
+			\.$height
+			\.$showPlacemark
+			\.$mapType
+			\.$appearance
+		}
+	}
+
+	@MainActor
+	func perform() async throws -> some IntentResult & ReturnsValue<IntentFile> {
+		guard let coordinates = location.location?.coordinate else {
+			throw "Failed to get coordinates from location.".toError
+		}
+
+		let radiusMeters = radius.converted(to: .meters).value
+
+		let options = MKMapSnapshotter.Options()
+		options.region = .init(center: coordinates, latitudinalMeters: radiusMeters, longitudinalMeters: radiusMeters)
+		options.size = .init(width: width, height: height)
+		options.mapType = mapType.toNative
+
+		if appearance != .system {
+			options.useDarkMode = appearance == .dark
+		}
+
+		let snapshot = try await MKMapSnapshotter(options: options).start()
+
+		let image = showPlacemark
+			? try drawPlacemark(on: snapshot.image, at: snapshot.point(for: coordinates))
+			: snapshot.image
+
+		let result = try image.toIntentFile()
+
+		return .result(value: result)
+	}
+
+	@MainActor
+	private func drawPlacemark(on image: XImage, at point: CGPoint) throws -> XImage {
+		let canvas = Canvas { context, _ in
+			let rect = context.clipBoundingRect
+
+			context.draw(image.toSwiftUIImage, in: rect)
+
+			let circleSize = CGSize(width: 30, height: 30)
+
+			let circlePath = Circle().path(in: .init(
+				x: point.x - (circleSize.width / 2),
+				y: point.y - (circleSize.height / 2),
+				width: circleSize.width,
+				height: circleSize.height
+			))
+
+			context.fill(circlePath, with: .style(.red.gradient))
+		}
+			.frame(width: width.toDouble, height: height.toDouble)
+
+		let renderer = ImageRenderer(content: canvas)
+
+		guard let image = renderer.xImage else {
+			throw "Failed to render placemark on map.".toError
+		}
+
+		return image
+	}
+}
+
+
+enum MapTypeAppEnum: String, AppEnum {
+	case standard
+	case satellite
+	case hybrid
+	case satelliteFlyover
+	case hybridFlyover
+	case mutedStandard
+
+	static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "Map Type")
+
+	static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
+		.standard: .init(
+			title: "Standard",
+			subtitle: "A street map that shows the position of all roads and some road names."
+		),
+		.satellite: .init(
+			title: "Satellite",
+			subtitle: "Satellite imagery of the area."
+		),
+		.hybrid: .init(
+			title: "Hybrid",
+			subtitle: "A satellite image of the area with road and road name information layered on top."
+		),
+		.satelliteFlyover: .init(
+			title: "Satellite Flyover",
+			subtitle: "A satellite image of the area with flyover data where available."
+		),
+		.hybridFlyover: .init(
+			title: "Hybrid Flyover",
+			subtitle: "A hybrid satellite image with flyover data where available."
+		),
+		.mutedStandard: .init(
+			title: "Muted Standard",
+			subtitle: "A street map where your data is emphasized over the underlying map details."
+		)
+	]
+}
+
+
+extension MapTypeAppEnum {
+	var toNative: MKMapType {
+		switch self {
+		case .standard:
+			return .standard
+		case .satellite:
+			return .satellite
+		case .hybrid:
+			return .hybrid
+		case .satelliteFlyover:
+			return .satelliteFlyover
+		case .hybridFlyover:
+			return .hybridFlyover
+		case .mutedStandard:
+			return .mutedStandard
+		}
+	}
+}
+
+
+enum AppearanceAppEnum: String, AppEnum {
+	case system
+	case light
+	case dark
+
+	static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "Appearance")
+
+	static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
+		.system: "System",
+		.light: "Light",
+		.dark: "Dark"
+	]
+}
+
+
+extension MKMapSnapshotter.Options {
+	/**
+	It uses the system appearance if this is not set.
+	*/
+	var useDarkMode: Bool {
+		get {
+			assertionFailure("Not implemented")
+			return false
+		}
+		set {
+			#if canImport(AppKit)
+			appearance = .init(appearanceNamed: newValue ? .darkAqua : .aqua, bundle: .main)
+			#else
+			traitCollection = .init(userInterfaceStyle: newValue ? .dark : .light)
+			#endif
+		}
+	}
+}

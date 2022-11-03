@@ -47,6 +47,10 @@ typealias XApplicationDelegateAdaptor = UIApplicationDelegateAdaptor
 typealias XScreen = UIScreen
 #endif
 
+// TODO: Remove me when it's support it natively.
+extension UnitDuration: @unchecked Sendable {}
+extension UnitLength: @unchecked Sendable {}
+
 
 // TODO: Remove this when everything is converted to async/await.
 func delay(seconds: TimeInterval, closure: @escaping () -> Void) {
@@ -2701,7 +2705,10 @@ enum Bluetooth {
 		}
 
 		private func checkAccess() {
-			guard CBCentralManager.authorization != .allowedAlways else {
+			guard
+				!hasCalled,
+				CBCentralManager.authorization != .allowedAlways
+			else {
 				return
 			}
 
@@ -5224,4 +5231,38 @@ extension Data {
 	static func random(length: Int) -> Data {
 		Data((0..<length).map { _ in UInt8.random(in: .min...(.max)) })
 	}
+}
+
+
+extension Image {
+	/**
+	Create a SwiftUI `Image` from either `NSImage` or `UIImage`.
+	*/
+	init(xImage: XImage) {
+		#if canImport(AppKit)
+		self.init(nsImage: xImage)
+		#elseif canImport(UIKit)
+		self.init(uiImage: xImage)
+		#endif
+	}
+}
+
+
+extension XImage {
+	var toSwiftUIImage: Image { Image(xImage: self) }
+}
+
+
+extension ImageRenderer {
+	@MainActor
+	var xImage: XImage? {
+		#if canImport(AppKit)
+		return nsImage
+		#else
+		return uiImage
+		#endif
+	}
+
+	@MainActor
+	var image: Image? { xImage?.toSwiftUIImage }
 }

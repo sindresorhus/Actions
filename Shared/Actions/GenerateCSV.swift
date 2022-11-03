@@ -60,6 +60,9 @@ The dictionaries must have the same shape.
 		let json = dictionaries.compactMap(\.data.toString).joined(separator: ",")
 		var dataFrame = try DataFrame(jsonData: "[\(json)]".toData)
 
+		// Shortcuts can leave keys empty sometimes and TabularData throws an excepting if trying to use those.
+		let keys = keys.filter { !$0.isEmptyOrWhitespace }
+
 		if !keys.isEmpty {
 			dataFrame = dataFrame.selecting(columnNames: keys)
 		}
