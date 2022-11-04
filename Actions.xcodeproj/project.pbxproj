@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E317489F2913BEAB00F6319E /* GetMapImageOfLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E317489E2913BEAB00F6319E /* GetMapImageOfLocation.swift */; };
+		E31748A1291589B600F6319E /* GetHighResolutionTimestamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31748A0291589B600F6319E /* GetHighResolutionTimestamp.swift */; };
 		E31DE7EA28D5DE0C00DE79EF /* IsSilentModeOn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31DE7E928D5DE0C00DE79EF /* IsSilentModeOn.swift */; };
 		E31DE7EC28D5DEF800DE79EF /* TruncateText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31DE7EB28D5DEF800DE79EF /* TruncateText.swift */; };
 		E31DE7EF28D5E14400DE79EF /* RoundNumberToMultiple.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31DE7ED28D5E14400DE79EF /* RoundNumberToMultiple.swift */; };
@@ -123,6 +124,7 @@
 
 /* Begin PBXFileReference section */
 		E317489E2913BEAB00F6319E /* GetMapImageOfLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMapImageOfLocation.swift; sourceTree = "<group>"; };
+		E31748A0291589B600F6319E /* GetHighResolutionTimestamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHighResolutionTimestamp.swift; sourceTree = "<group>"; };
 		E31DE7E928D5DE0C00DE79EF /* IsSilentModeOn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsSilentModeOn.swift; sourceTree = "<group>"; };
 		E31DE7EB28D5DEF800DE79EF /* TruncateText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TruncateText.swift; sourceTree = "<group>"; };
 		E31DE7ED28D5E14400DE79EF /* RoundNumberToMultiple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundNumberToMultiple.swift; sourceTree = "<group>"; };
@@ -348,6 +350,7 @@
 				E3C33CA128D37E2B00386C59 /* GetEmojis.swift */,
 				E3CB449B28D78F4C0031D55F /* GetFileIcon.swift */,
 				E3EC2DD928D246BC00A88E25 /* GetFilePath.swift */,
+				E31748A0291589B600F6319E /* GetHighResolutionTimestamp.swift */,
 				E3B1C3C328F5D68D009BE0B7 /* GetIndexOfListItem.swift */,
 				E317489E2913BEAB00F6319E /* GetMapImageOfLocation.swift */,
 				E3C33C9928D35F3D00386C59 /* GetMusicPlaylists.swift */,
@@ -574,6 +577,7 @@
 				E31DE7F228D5E30C00DE79EF /* IsOnline.swift in Sources */,
 				E3F64D6D28D9EDFE0009B500 /* FormatDuration.swift in Sources */,
 				E3C33C9A28D35F3D00386C59 /* GetMusicPlaylists.swift in Sources */,
+				E31748A1291589B600F6319E /* GetHighResolutionTimestamp.swift in Sources */,
 				E34AB51828F5AA170082AE78 /* ConvertCoordinatesToLocation.swift in Sources */,
 				E3EC2DC228D20D0400A88E25 /* ShuffleList.swift in Sources */,
 				E33D4BA62744238300CC7A8A /* AppState.swift in Sources */,

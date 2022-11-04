@@ -43,6 +43,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Get Emojis
 - Get File Icon
 - Get File Path
+- Get High-Resolution Timestamp
 - Get Index of List Item
 - Get Map Image of Location
 - Get Music Playlists
