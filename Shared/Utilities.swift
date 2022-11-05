@@ -382,6 +382,11 @@ enum Device {
 		return false
 		#endif
 	}
+
+	/**
+	Returns a timestamp representing the current instant in nanoseconds.
+	*/
+	static var timestamp: Int { Int(clamping: clock_gettime_nsec_np(CLOCK_MONOTONIC_RAW)) }
 }
 
 
@@ -714,6 +719,7 @@ extension URL {
 		#endif
 	}
 
+	#if !APP_EXTENSION
 	@MainActor
 	func openAsyncOrOpenShortcutsApp() async throws {
 		do {
@@ -723,6 +729,7 @@ extension URL {
 			throw error
 		}
 	}
+	#endif
 }
 
 
@@ -4377,11 +4384,14 @@ extension SFSpeechRecognizer {
 		request.shouldReportPartialResults = false
 
 		var task: SFSpeechRecognitionTask?
+		var hasHadError = false
 
 		return try await withTaskCancellationHandler {
 			try await withCheckedThrowingContinuation { continuation in
 				task = recognitionTask(with: request) { result, error in
-					if let error {
+					// It can be called multiple times with an error it seems.
+					if !hasHadError, let error {
+						hasHadError = true
 						continuation.resume(throwing: error)
 						return
 					}
@@ -5265,4 +5275,19 @@ extension ImageRenderer {
 
 	@MainActor
 	var image: Image? { xImage?.toSwiftUIImage }
+}
+
+
+extension CLLocationCoordinate2D {
+	var isValid: Bool {
+		CLLocationCoordinate2DIsValid(self) && !(latitude == 0 && longitude == 0)
+	}
+
+	func validate() throws {
+		if !isValid {
+			throw "Invalid coordinate: \(formatted)".toError
+		}
+	}
+
+	var formatted: String { "\(latitude), \(longitude)" }
 }

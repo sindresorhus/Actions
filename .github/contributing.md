@@ -23,7 +23,8 @@
 ### Creating the action
 
 - Open the Xcode project.
-- Create a new file in the `Actions2` folder named after the intent you are creating.
+- Decide whether the action should reside in the intents extension or the app. Prefer the intents extension. Generally, only actions requiring significant memory or ones that open the main app should be in the app target.
+- Create a new file in the `Actions` folder (in the correct target) named after the intent you are creating.
 	+ The file should be alphabetically sorted in Xcode.
 - Keep the naming, description, and code style consistent with existing actions.
 - Implement the logic. Try to create reusable extensions whenever it makes sense.

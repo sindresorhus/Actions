@@ -21,7 +21,6 @@ The timestamp is not meant to be stored for a long time. It's only unique for th
 	}
 
 	func perform() async throws -> some IntentResult & ReturnsValue<Int> {
-		let result = Int(clamping: clock_gettime_nsec_np(CLOCK_MONOTONIC_RAW))
-		return .result(value: result)
+		.result(value: Device.timestamp)
 	}
 }

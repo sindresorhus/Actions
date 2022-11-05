@@ -22,10 +22,20 @@ struct GetMapImageOfLocation: AppIntent {
 	)
 	var radius: Measurement<UnitLength>
 
-	@Parameter(title: "Width", default: 1000, controlStyle: .field)
+	@Parameter(
+		title: "Width",
+		description: "The image width in pixels.",
+		default: 1000,
+		controlStyle: .field
+	)
 	var width: Int
 
-	@Parameter(title: "Height", default: 1000, controlStyle: .field)
+	@Parameter(
+		title: "Height",
+		description: "The image height in pixels.",
+		default: 1000,
+		controlStyle: .field
+	)
 	var height: Int
 
 	@Parameter(title: "Show Placemark", default: true)
@@ -56,6 +66,8 @@ struct GetMapImageOfLocation: AppIntent {
 		guard let coordinates = location.location?.coordinate else {
 			throw "Failed to get coordinates from location.".toError
 		}
+
+		try coordinates.validate()
 
 		let radiusMeters = radius.converted(to: .meters).value
 
@@ -97,9 +109,10 @@ struct GetMapImageOfLocation: AppIntent {
 
 			context.fill(circlePath, with: .style(.red.gradient))
 		}
-			.frame(width: width.toDouble, height: height.toDouble)
 
 		let renderer = ImageRenderer(content: canvas)
+		renderer.proposedSize = .init(width: width.toDouble, height: height.toDouble)
+		renderer.isOpaque = true
 
 		guard let image = renderer.xImage else {
 			throw "Failed to render placemark on map.".toError
