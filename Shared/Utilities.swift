@@ -1993,7 +1993,8 @@ struct SeededRandomNumberGenerator: RandomNumberGenerator {
 extension RandomNumberGenerator where Self == SeededRandomNumberGenerator {
 	/**
 	```
-	random(length: length, using: &.seeded(seed: "🦄"))
+	var generator = RandomNumberGenerator.seeded(seed: "🦄")
+	random(length: length, using: &generator)
 	```
 	*/
 	static func seeded(seed: String) -> Self {
@@ -2006,7 +2007,8 @@ extension SeededRandomNumberGenerator {
 	Uses a seeded random generator if the seed is specified, otherwise, the system random generator.
 
 	```
-	random(length: length, using: &SeededRandomNumberGenerator.seededOrNot(seed: "🦄"))
+	var generator = SeededRandomNumberGenerator.seededOrNot(seed: "🦄")
+	random(length: length, using: &generator)
 	```
 	*/
 	static func seededOrNot(seed: String? = nil) -> any RandomNumberGenerator {

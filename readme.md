@@ -81,9 +81,10 @@ Want to run shortcuts directly from the iOS Lock Screen? Check out my new [Quick
 - Get Random Date and Time
 - Get Random Emoticon
 - Get Random Floating-Point Number
+- Get Random Number from Seed
 - Get Related Words
 - Get Running Apps <sup>(macOS-only)</sup>
-- Get Symbol Image
+- Get SF Symbol Image
 - Get Title of URL
 - Get Uniform Type Identifier
 - Get Unsplash Image

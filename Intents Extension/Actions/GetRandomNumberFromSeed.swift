@@ -1,20 +1,18 @@
 import AppIntents
 
-struct GetRandomFloatingPointNumber: AppIntent, CustomIntentMigratedAppIntent {
-	static let intentClassName = "RandomFloatingPointNumberIntent"
-
-	static let title: LocalizedStringResource = "Get Random Floating-Point Number"
+struct GetRandomNumberFromSeed: AppIntent {
+	static let title: LocalizedStringResource = "Get Random Number from Seed"
 
 	static let description = IntentDescription(
-		"Returns a random floating-point number between the given minimum and maximum value.",
+		"Returns a random number between the given minimum and maximum value.",
 		categoryName: "Random"
 	)
 
 	@Parameter(title: "Minimum", controlStyle: .field)
-	var minimum: Double
+	var minimum: Int
 
 	@Parameter(title: "Maximum", controlStyle: .field)
-	var maximum: Double
+	var maximum: Int
 
 	@Parameter(
 		title: "Seed",
@@ -29,12 +27,10 @@ struct GetRandomFloatingPointNumber: AppIntent, CustomIntentMigratedAppIntent {
 	var seed: String?
 
 	static var parameterSummary: some ParameterSummary {
-		Summary("Get a random floating-point number between \(\.$minimum) and \(\.$maximum)") {
-			\.$seed
-		}
+		Summary("Get a random number between \(\.$minimum) and \(\.$maximum) from \(\.$seed)")
 	}
 
-	func perform() async throws -> some IntentResult & ReturnsValue<Double> {
+	func perform() async throws -> some IntentResult & ReturnsValue<Int> {
 		var generator = SeededRandomNumberGenerator.seededOrNot(seed: seed?.nilIfEmptyOrWhitespace)
 		return .result(value: .random(in: .fromGraceful(minimum, maximum), using: &generator))
 	}

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E30E56132922602B00C44823 /* GetRandomNumberFromSeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30E56122922602B00C44823 /* GetRandomNumberFromSeed.swift */; };
+		E30E56142922602B00C44823 /* GetRandomNumberFromSeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30E56122922602B00C44823 /* GetRandomNumberFromSeed.swift */; };
 		E31748A92916A0B200F6319E /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31748A82916A0B200F6319E /* Main.swift */; };
 		E31748AF2916A0B200F6319E /* Intents Extension iOS.appex in Embed ExtensionKit Extensions */ = {isa = PBXBuildFile; fileRef = E31748A62916A0B100F6319E /* Intents Extension iOS.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E31748B52916A12800F6319E /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FC71DC271EBE5B00C9D255 /* Utilities.swift */; };
@@ -244,6 +246,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E30E56122922602B00C44823 /* GetRandomNumberFromSeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRandomNumberFromSeed.swift; sourceTree = "<group>"; };
 		E317489E2913BEAB00F6319E /* GetMapImageOfLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMapImageOfLocation.swift; sourceTree = "<group>"; };
 		E31748A0291589B600F6319E /* GetHighResolutionTimestamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHighResolutionTimestamp.swift; sourceTree = "<group>"; };
 		E31748A62916A0B100F6319E /* Intents Extension iOS.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.extensionkit-extension"; includeInIndex = 0; path = "Intents Extension iOS.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -483,6 +486,7 @@
 				E3EC2DB128D1F23D00A88E25 /* GetRandomEmoticon.swift */,
 				E3EC2DBB28D2008000A88E25 /* GetRandomFloatingPointNumber.swift */,
 				E3EC2DB928D1F8B500A88E25 /* GetRandomInstant.swift */,
+				E30E56122922602B00C44823 /* GetRandomNumberFromSeed.swift */,
 				E3CB449328D782FE0031D55F /* GetRelatedWords.swift */,
 				E3C33CB128D43C7500386C59 /* GetTitleOfURL.swift */,
 				E3EC2DD528D2430100A88E25 /* GetUniformTypeIdentifier.swift */,
@@ -781,6 +785,7 @@
 				E31749302916A20C00F6319E /* GetFileIcon.swift in Sources */,
 				E31749112916A20C00F6319E /* GetTitleOfURL.swift in Sources */,
 				E317493C2916A20C00F6319E /* GetRandomInstant.swift in Sources */,
+				E30E56132922602B00C44823 /* GetRandomNumberFromSeed.swift in Sources */,
 				E317492B2916A20C00F6319E /* GetRelatedWords.swift in Sources */,
 				E317492C2916A20C00F6319E /* GetRandomColor.swift in Sources */,
 				E317493D2916A20C00F6319E /* TransformText.swift in Sources */,
@@ -869,6 +874,7 @@
 				E317499F2916A64100F6319E /* GetUserDetails.swift in Sources */,
 				E31749C52916A6D500F6319E /* Utilities.swift in Sources */,
 				E317497D2916A64100F6319E /* IsDarkMode.swift in Sources */,
+				E30E56142922602B00C44823 /* GetRandomNumberFromSeed.swift in Sources */,
 				E31749752916A64100F6319E /* GetRandomFloatingPointNumber.swift in Sources */,
 				E317497F2916A64100F6319E /* TransformLists.swift in Sources */,
 				E31749902916A64100F6319E /* GetRelatedWords.swift in Sources */,

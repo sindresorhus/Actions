@@ -1,12 +1,5 @@
 import AppIntents
 
-private let plainInputOptions = String.IntentInputOptions(
-	capitalizationType: .none,
-	autocorrect: false,
-	smartQuotes: false,
-	smartDashes: false
-)
-
 struct GenerateRandomText: AppIntent, CustomIntentMigratedAppIntent {
 	static let intentClassName = "RandomTextIntent"
 
@@ -37,13 +30,26 @@ This can be useful as a placeholder, token, etc.
 	@Parameter(title: "Use Custom Characters", default: false)
 	var useCustomCharacters: Bool
 
-	@Parameter(title: "Custom Characters", inputOptions: plainInputOptions)
+	@Parameter(
+		title: "Custom Characters",
+		inputOptions: String.IntentInputOptions(
+			capitalizationType: .none,
+			autocorrect: false,
+			smartQuotes: false,
+			smartDashes: false
+		)
+	)
 	var customCharacters: String?
 
 	@Parameter(
 		title: "Seed",
-		description: "When specified, the generated text will always be the same if the seed is the same.",
-		inputOptions: plainInputOptions
+		description: "When specified, the returned text will always be the same if the seed is the same.",
+		inputOptions: String.IntentInputOptions(
+			capitalizationType: .none,
+			autocorrect: false,
+			smartQuotes: false,
+			smartDashes: false
+		)
 	)
 	var seed: String?
 

@@ -55,6 +55,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Get Random Date and Time
 - Get Random Emoticon
 - Get Random Floating-Point Number
+- Get Random Number from Seed
 - Get Related Words
 - Get Running Apps
 - Get SF Symbol Image
