@@ -138,6 +138,8 @@ struct CreateURL: AppIntent, CustomIntentMigratedAppIntent {
 	func perform() async throws -> some IntentResult & ReturnsValue<URL> {
 		var urlComponents = URLComponents()
 
+		let originalScheme = scheme
+
 		// Setting it to "https:" is not valid, but we gracefully handle that for the user.
 		let scheme = scheme
 			.nilIfEmptyOrWhitespace?
@@ -147,7 +149,18 @@ struct CreateURL: AppIntent, CustomIntentMigratedAppIntent {
 
 		guard URL.isValidScheme(scheme) else {
 			throw "Invalid URL scheme.".toError
+				// TOOD: Remove the `.report()` at some point.
+				.report(userInfo: ["scheme": scheme, "originalScheme": originalScheme as Any])
 		}
+
+		// We use this to get some debug info as `.scheme` throws an exception on invalid input.
+		SSApp.addBreadcrumb(
+			"CreateURL - scheme",
+			data: [
+				"scheme": scheme,
+				"originalScheme": originalScheme as Any
+			]
+		)
 
 		urlComponents.scheme = scheme
 

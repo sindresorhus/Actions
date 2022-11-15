@@ -170,6 +170,207 @@ extension SSApp {
 }
 
 
+extension NSObject {
+	/**
+	Returns the class name without module name.
+	*/
+	static var simpleClassName: String { String(describing: self) }
+
+	/**
+	Returns the class name of the instance without module name.
+	*/
+	var simpleClassName: String { Self.simpleClassName }
+}
+
+
+extension Error {
+	/**
+	Whether the error was originally created as an `NSError`.
+	*/
+	var isNSError: Bool {
+		(self as NSError).simpleClassName != "__SwiftNativeNSError"
+	}
+}
+
+
+extension NSError {
+	static func from(error: Error, userInfo: [String: Any] = [:]) -> NSError {
+		let nsError = error as NSError
+
+		// Since Error and NSError are often bridged between each other, we check if it was originally an NSError and then return that. If the code is 1 we still wrap it even though it's an NSError to get better Sentry reporting.
+		guard !error.isNSError || nsError.code == 1 else {
+			guard !userInfo.isEmpty else {
+				return nsError
+			}
+
+			return nsError.appending(userInfo: userInfo)
+		}
+
+		var userInfo = nsError.userInfo.appending(userInfo)
+		userInfo[NSLocalizedDescriptionKey] = error.localizedDescription
+
+		// Awful, but no better way to get the enum case name.
+		// This gets `Error.generateFrameFailed` from `Error.generateFrameFailed(Error Domain=AVFoundationErrorDomain Code=-11832 […]`.
+		let errorName = "\(error)".split(separator: "(").first ?? ""
+
+		return .init(
+			domain: "\(nsError.domain)\(errorName.isEmpty ? "" : ".")\(errorName)",
+			code: nsError.code,
+			userInfo: userInfo
+		)
+	}
+
+	/**
+	Returns a new error with the user info appended.
+	*/
+	func appending(userInfo newUserInfo: [String: Any]) -> NSError {
+		// Cannot use `Self` here: https://github.com/apple/swift/issues/58046
+		NSError(
+			domain: domain,
+			code: code,
+			userInfo: userInfo.appending(newUserInfo)
+		)
+	}
+}
+
+extension SSApp {
+	@inlinable
+	static func reportError(
+		_ error: Error,
+		userInfo: [String: Any] = [:],
+		file: String = #fileID,
+		line: Int = #line
+	) {
+		guard !(error is CancellationError) else {
+			#if DEBUG
+			print("[\(file):\(line)] CancellationError:", error)
+			#endif
+			return
+		}
+
+		let userInfo = userInfo
+			.appendingIfNotHasKey([
+				"file": file,
+				"line": line
+			])
+
+		let error = NSError.from(
+			error: error,
+			userInfo: userInfo
+		)
+
+		#if DEBUG
+		print("[\(file):\(line)] Reporting error:", error)
+		#endif
+
+		#if canImport(Sentry)
+		SentrySDK.capture(error: error)
+		#endif
+	}
+
+	@inlinable
+	static func reportError(
+		_ message: String,
+		userInfo: [String: Any] = [:],
+		file: String = #fileID,
+		line: Int = #line
+	) {
+		reportError(
+			message.toError,
+			userInfo: userInfo,
+			file: file,
+			line: line
+		)
+	}
+}
+
+extension Error {
+	@discardableResult
+	func report(
+		userInfo: [String: Any] = [:],
+		file: String = #file,
+		line: Int = #line
+	) -> Self {
+		SSApp.reportError(
+			self,
+			userInfo: userInfo,
+			file: file,
+			line: line
+		)
+
+		return self
+	}
+}
+
+extension SSApp {
+	/**
+	Adds a breadcrumb for Sentry crash reporting.
+	*/
+	static func addBreadcrumb(
+		_ message: String,
+		data: [String: Any]? = nil // swiftlint:disable:this discouraged_optional_collection
+	) {
+		#if !DEBUG && canImport(Sentry)
+		let breadcrumb = Breadcrumb(level: .info, category: "app.ss")
+
+		breadcrumb.message = message
+
+		if let data {
+			breadcrumb.data = data
+		}
+
+		SentrySDK.addBreadcrumb(crumb: breadcrumb)
+		#endif
+	}
+}
+
+
+extension Dictionary {
+	/**
+	Check if the dictionary has the given key.
+
+	- Note: Should in theory be faster than `Dictionary#keys.contains()`.
+	*/
+	func hasKey(_ key: Key) -> Bool {
+		index(forKey: key) != nil
+	}
+}
+
+
+extension Dictionary {
+	/**
+	Adds the elements of the given dictionary to a copy of self and returns that.
+
+	Identical keys in the given dictionary overwrites keys in the copy of self.
+
+	- Note: This exists as an addition to `+` as Swift sometimes struggle to infer the type of `dict + dict`.
+	*/
+	func appending(_ dictionary: Self) -> Self {
+		self + dictionary
+	}
+}
+
+
+extension Dictionary {
+	/**
+	Appends each item in the given dictionary where the key don't already exists.
+	*/
+	func appendingIfNotHasKey(_ dictionary: Self) -> Self {
+		var copy = self
+
+		for (key, value) in dictionary {
+			guard !copy.hasKey(key) else {
+				continue
+			}
+
+			copy[key] = value
+		}
+
+		return copy
+	}
+}
+
+
 #if canImport(AppKit)
 extension NSAppearance {
 	var isDarkMode: Bool { bestMatch(from: [.darkAqua, .aqua]) == .darkAqua }
@@ -775,6 +976,7 @@ extension URL {
 
 #if canImport(AppKit)
 private struct WindowAccessor: NSViewRepresentable {
+	@MainActor
 	private final class WindowAccessorView: NSView {
 		@Binding var windowBinding: NSWindow?
 
@@ -833,6 +1035,7 @@ extension View {
 	/**
 	Access the native backing-window of a SwiftUI window.
 	*/
+	@MainActor
 	func accessNativeWindow(_ onWindow: @escaping (NSWindow?) -> Void) -> some View {
 		modifier(WindowViewModifier(onWindow: onWindow))
 	}
@@ -840,9 +1043,23 @@ extension View {
 	/**
 	Set the window level of a SwiftUI window.
 	*/
+	@MainActor
 	func windowLevel(_ level: NSWindow.Level) -> some View {
 		accessNativeWindow {
 			$0?.level = level
+		}
+	}
+
+	/**
+	Centers the window when the view appears.
+	*/
+	@MainActor
+	func windowCenterOnAppear() -> some View {
+		withState(nil as NSWindow?) { valueBinding in
+			bindNativeWindow(valueBinding)
+				.task {
+					valueBinding.wrappedValue?.center()
+				}
 		}
 	}
 }
@@ -5292,4 +5509,44 @@ extension CLLocationCoordinate2D {
 	}
 
 	var formatted: String { "\(latitude), \(longitude)" }
+}
+
+
+private struct StateAccessView<Value, Content: View>: View {
+	private let content: (Binding<Value>) -> Content
+	@State private var state: Value
+
+	init(
+		initialValue: Value,
+		@ViewBuilder content: @escaping (Binding<Value>) -> Content
+	) {
+		self.content = content
+		self._state = .init(wrappedValue: initialValue)
+	}
+
+	var body: some View {
+		content($state)
+	}
+}
+
+/**
+Access a state value inline in a view.
+
+```
+withState("") { stringBinding in
+	TextEditor(text: stringBinding)
+}
+```
+
+- Note: Use this sparingly.
+- Note: `initialValue` will be set once. Changes to it will not be reflected.
+*/
+func withState<Value>(
+	_ initialValue: Value,
+	@ViewBuilder content: @escaping (Binding<Value>) -> some View
+) -> some View {
+	StateAccessView(
+		initialValue: initialValue,
+		content: content
+	)
 }

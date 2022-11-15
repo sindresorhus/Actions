@@ -27,7 +27,7 @@ Note: Setting the modification date of a file/folder in iCloud may not work as i
 
 	@Parameter(
 		title: "Modify Original",
-		description: "When enabled, applies the changes to the original file (for example, in iCloud) instead of just the copy used in the shortcut.",
+		description: "When enabled, applies the changes to the original file (for example, in iCloud) instead of just the copy used in the shortcut. NOTE: It only works if you select a file directly in the parameter. It cannot come from a variable.",
 		default: false
 	)
 	var modifyOriginal: Bool

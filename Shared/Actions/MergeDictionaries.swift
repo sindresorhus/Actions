@@ -57,6 +57,8 @@ In Shortcuts, dictionaries are just JSON, so you can use this to merge JSON (fil
 	func perform() async throws -> some IntentResult & ReturnsValue<IntentFile> {
 		// Note to self: We manually define each dictionary parameter in the Intents definition as using "Supports multiple values" on a single parameter does not show multiple inputs in the UI. (macOS 12.2)
 
+		// Note: This is not in the intents extension as when it's there `dictionary1.data` always empty for some weird reason. (macOS 13.0)
+
 		let filename = dictionary1.filename
 
 		let dictionary1 = try dictionary1.data.jsonToDictionary()

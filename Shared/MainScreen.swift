@@ -5,10 +5,6 @@ struct MainScreen: View {
 	@EnvironmentObject private var appState: AppState
 	@State private var error: Error?
 
-	#if canImport(AppKit)
-	@State private var hostingWindow: NSWindow?
-	#endif
-
 	var body: some View {
 		VStack {
 			WelcomeScreen()
@@ -16,9 +12,9 @@ struct MainScreen: View {
 			.alert(error: $error)
 			#if canImport(AppKit)
 			.frame(width: 440)
-			.windowLevel(.floating)
 			.fixedSize()
-			.bindNativeWindow($hostingWindow)
+			.windowLevel(.floating)
+			.windowCenterOnAppear()
 			#endif
 			.fullScreenCoverOrSheetIfMacOS(item: $appState.writeTextData) {
 				WriteTextScreen(data: $0)
@@ -62,17 +58,18 @@ struct MainScreen: View {
 			}
 			#endif
 			.task {
-				#if canImport(AppKit)
-				hostingWindow?.center()
-				#endif
+				debug()
+			}
+	}
 
-				#if DEBUG
+	private func debug() {
+		#if DEBUG
 				// For testing the “Write or Edit Text” action.
 //				appState.writeTextData = .init(
 //					title: "Test",
 //					text: ""
 //				)
-
+//
 				// For testing the “Choose from List Extended” action.
 //				appState.chooseFromListData = .init(
 //					list: [
@@ -85,14 +82,13 @@ struct MainScreen: View {
 //					allowCustomItems: false,
 //					timeoutReturnValue: .nothing
 //				)
-
+//
 //				appState.askForTextData = .init(
 //					text: "X",
 //					title: "X",
 //					timeoutReturnValue: "X"
 //				)
-				#endif
-			}
+		#endif
 	}
 }
 

@@ -37,7 +37,6 @@ It uses 1-based indexing.
 	@Parameter(title: "Count", default: 1/*, inclusiveRange: (0, 999_999)*/)
 	var randomItemCount: Int?
 
-	// TODO: This does not seem to be working. It works if I comment out this property. (iOS 16.0)
 	static var parameterSummary: some ParameterSummary {
 		Switch(\.$action) {
 			Case(.index) {

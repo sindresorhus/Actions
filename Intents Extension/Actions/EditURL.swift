@@ -286,7 +286,18 @@ For example, add a query item, change the path, or remove the fragment.
 
 				guard URL.isValidScheme(scheme) else {
 					throw "Invalid URL scheme.".toError
+						// TOOD: Remove the `.report()` at some point.
+						.report(userInfo: ["scheme": scheme, "originalScheme": setSchemeValue as Any])
 				}
+
+				// We use this to get some debug info as `.scheme` throws an exception on invalid input.
+				SSApp.addBreadcrumb(
+					"EditURL - setScheme",
+					data: [
+						"scheme": scheme,
+						"originalScheme": setSchemeValue as Any
+					]
+				)
 
 				urlComponents.scheme = scheme
 			}

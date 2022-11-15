@@ -67,6 +67,13 @@ If you like this action, you may also like the Soulver macOS app.
 	var showThousandsSeparator: Bool
 
 	@Parameter(
+		title: "Abbreviate Large Numbers",
+		description: "Show numbers from a million and up as “1.35M” instead of “1350000”.",
+		default: true
+	)
+	var abbreviateLargeNumbers: Bool
+
+	@Parameter(
 		title: "Use Live Currency Rates",
 		description: "This will make the action run slower. It will fall back to the built-in rates if the live rates cannot be fetched.",
 		default: false
@@ -77,6 +84,7 @@ If you like this action, you may also like the Soulver macOS app.
 		Summary("Calculate \(\.$expression)") {
 			\.$decimalPlaces
 			\.$showThousandsSeparator
+			\.$abbreviateLargeNumbers
 			\.$useLiveCurrencyRates
 		}
 	}
@@ -97,8 +105,9 @@ If you like this action, you may also like the Soulver macOS app.
 		let calculator = Calculator(customization: customizationWithLiveCurrencyRates)
 
 		var formattingPreferences = FormattingPreferences()
-		formattingPreferences.thousandsSeparatorDisabled = !showThousandsSeparator
 		formattingPreferences.dp = decimalPlaces
+		formattingPreferences.thousandsSeparatorDisabled = !showThousandsSeparator
+		formattingPreferences.notationPreferences = abbreviateLargeNumbers ? .init(notationStyle: .auto, upperNotationThreshold: .million) : .off
 		calculator.formattingPreferences = formattingPreferences
 
 		if liveCurrencyRates {
