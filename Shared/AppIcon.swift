@@ -17,7 +17,7 @@ struct AppIcon: View {
 
 	private var animatedIcon: some View {
 		// TODO: Add depth to the icon so it's not flat when rotating it.
-		ZStack {
+		ZStack { // swiftlint:disable:this accessibility_trait_for_button
 			Image("AppIconForViewBackground")
 				.resizable()
 				.aspectRatio(contentMode: .fit)

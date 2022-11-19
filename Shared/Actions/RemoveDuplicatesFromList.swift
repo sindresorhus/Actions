@@ -1,5 +1,7 @@
 import AppIntents
 
+// NOTE: This must be in the app and not extension because when it's in the extension, it only returns a single item. (macOS 13.0.1)
+
 struct RemoveDuplicatesFromList: AppIntent, CustomIntentMigratedAppIntent {
 	static let intentClassName = "RemoveDuplicatesFromListIntent"
 

@@ -19,6 +19,7 @@ import CoreImage.CIFilterBuiltins
 import AppIntents
 import PDFKit
 import os
+import MapKit
 import Sentry
 
 #if canImport(AppKit)
@@ -50,6 +51,7 @@ typealias XScreen = UIScreen
 // TODO: Remove me when it's support it natively.
 extension UnitDuration: @unchecked Sendable {}
 extension UnitLength: @unchecked Sendable {}
+extension XColor: @unchecked Sendable {}
 
 
 // TODO: Remove this when everything is converted to async/await.
@@ -1013,7 +1015,7 @@ extension View {
 	/**
 	Bind the native backing-window of a SwiftUI window to a property.
 	*/
-	func bindNativeWindow(_ window: Binding<NSWindow?>) -> some View {
+	func bindHostingWindow(_ window: Binding<NSWindow?>) -> some View {
 		background(WindowAccessor(window))
 	}
 }
@@ -1027,7 +1029,7 @@ private struct WindowViewModifier: ViewModifier {
 		onWindow(window)
 
 		return content
-			.bindNativeWindow($window)
+			.bindHostingWindow($window)
 	}
 }
 
@@ -1036,7 +1038,7 @@ extension View {
 	Access the native backing-window of a SwiftUI window.
 	*/
 	@MainActor
-	func accessNativeWindow(_ onWindow: @escaping (NSWindow?) -> Void) -> some View {
+	func accessHostingWindow(_ onWindow: @escaping (NSWindow?) -> Void) -> some View {
 		modifier(WindowViewModifier(onWindow: onWindow))
 	}
 
@@ -1045,7 +1047,7 @@ extension View {
 	*/
 	@MainActor
 	func windowLevel(_ level: NSWindow.Level) -> some View {
-		accessNativeWindow {
+		accessHostingWindow {
 			$0?.level = level
 		}
 	}
@@ -1056,7 +1058,7 @@ extension View {
 	@MainActor
 	func windowCenterOnAppear() -> some View {
 		withState(nil as NSWindow?) { valueBinding in
-			bindNativeWindow(valueBinding)
+			bindHostingWindow(valueBinding)
 				.task {
 					valueBinding.wrappedValue?.center()
 				}
@@ -3518,7 +3520,7 @@ extension String {
 	```
 	*/
 	func removingCharactersWithoutDisplayWidth() -> String {
-		replacing(/[\p{Control}\p{Format}\p{Nonspacing_Mark}\p{Enclosing_Mark}\p{Line_Separator}\p{Paragraph_Separator}\p{Private_Use}\p{Unassigned}]/, with: "") // swiftlint:disable:this closure_spacing
+		replacing(/[\p{Control}\p{Format}\p{Nonspacing_Mark}\p{Enclosing_Mark}\p{Line_Separator}\p{Paragraph_Separator}\p{Private_Use}\p{Unassigned}]/, with: "")
 	}
 }
 
@@ -4603,14 +4605,18 @@ extension SFSpeechRecognizer {
 		request.shouldReportPartialResults = false
 
 		var task: SFSpeechRecognitionTask?
-		var hasHadError = false
+		var hasResumed = false
 
 		return try await withTaskCancellationHandler {
 			try await withCheckedThrowingContinuation { continuation in
 				task = recognitionTask(with: request) { result, error in
-					// It can be called multiple times with an error it seems.
-					if !hasHadError, let error {
-						hasHadError = true
+					// It's possible that this closure can be called with a cancel error even after it has finished, so we have to protect it.
+					guard !hasResumed else {
+						return
+					}
+
+					if let error {
+						hasResumed = true
 						continuation.resume(throwing: error)
 						return
 					}
@@ -4625,6 +4631,7 @@ extension SFSpeechRecognizer {
 						return
 					}
 
+					hasResumed = true
 					continuation.resume(returning: result)
 				}
 			}
@@ -5549,4 +5556,60 @@ func withState<Value>(
 		initialValue: initialValue,
 		content: content
 	)
+}
+
+
+extension MKCoordinateRegion {
+	init(
+		center centerCoordinate: CLLocationCoordinate2D,
+		radius: Measurement<UnitLength>
+	) {
+		self.init(
+			center: centerCoordinate,
+			radiusMeters: radius.converted(to: .meters).value
+		)
+	}
+}
+
+extension MKCoordinateRegion {
+	init(
+		center centerCoordinate: CLLocationCoordinate2D,
+		radiusMeters: CLLocationDistance
+	) {
+		self.init(
+			center: centerCoordinate,
+			latitudinalMeters: radiusMeters,
+			longitudinalMeters: radiusMeters
+		)
+	}
+}
+
+extension MKCoordinateRegion {
+	/**
+	Clamp to closest valid value.
+	*/
+	mutating func normalize() {
+		center.normalize()
+		span.normalize()
+	}
+}
+
+extension CLLocationCoordinate2D {
+	/**
+	Clamp to closest valid value.
+	*/
+	mutating func normalize() {
+		latitude = latitude.clamped(to: -90...90)
+		longitude = longitude.clamped(to: -180...180)
+	}
+}
+
+extension MKCoordinateSpan {
+	/**
+	Clamp to closest valid value.
+	*/
+	mutating func normalize() {
+		latitudeDelta = latitudeDelta.clamped(to: 0...180)
+		longitudeDelta = longitudeDelta.clamped(to: 0...360)
+	}
 }

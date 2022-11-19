@@ -7,7 +7,7 @@ struct GetTitleOfURL: AppIntent, CustomIntentMigratedAppIntent {
 	static let title: LocalizedStringResource = "Get Title of URL"
 
 	static let description = IntentDescription(
-		"Returns the title of the given website.",
+		"Returns the title of the given website, or nothing if it failed to get the title.",
 		categoryName: "URL"
 	)
 
@@ -22,7 +22,15 @@ struct GetTitleOfURL: AppIntent, CustomIntentMigratedAppIntent {
 		let metadataProvider = LPMetadataProvider()
 		metadataProvider.shouldFetchSubresources = false
 
-		let result = try await metadataProvider.startFetchingMetadata(for: url).title ?? url.host ?? ""
+		let result: String = await {
+			do {
+				return try await metadataProvider.startFetchingMetadata(for: url).title ?? url.host
+			} catch {
+				// TODO: When I support a logging action, log the error here then.
+				print(error)
+				return nil // Shortcuts doesn't have any error handling capabilities, so better to just return empty result on failure.
+			}
+		}() ?? ""
 
 		return .result(value: result)
 	}

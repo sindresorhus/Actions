@@ -24,7 +24,7 @@ struct ShuffleList: AppIntent, CustomIntentMigratedAppIntent {
 		title: "Maximum Results",
 		default: 10,
 		controlStyle: .field,
-		inclusiveRange: (0, 9999999999)
+		inclusiveRange: (0, 9_999_999_999)
 	)
 	var limit: Int
 

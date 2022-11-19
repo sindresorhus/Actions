@@ -17,7 +17,7 @@ struct BlurImages: AppIntent {
 
 	@Parameter(
 		title: "Amount",
-		description: "For example, 10% blur will look the same regardless of the dimensions of the image.",
+		description: "For example, 10% blur will look the same regardless of the dimensions of the image. If you specify it as a variable, it should be a number from 0 to 1.",
 		controlStyle: .slider,
 		inclusiveRange: (0, 1)
 	)

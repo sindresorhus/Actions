@@ -69,10 +69,11 @@ struct GetMapImageOfLocation: AppIntent {
 
 		try coordinates.validate()
 
-		let radiusMeters = radius.converted(to: .meters).value
+		var region = MKCoordinateRegion(center: coordinates, radius: radius)
+		region.normalize() // Prevent exception on invalid input.
 
 		let options = MKMapSnapshotter.Options()
-		options.region = .init(center: coordinates, latitudinalMeters: radiusMeters, longitudinalMeters: radiusMeters)
+		options.region = region
 		options.size = .init(width: width, height: height)
 		options.mapType = mapType.toNative
 
@@ -121,7 +122,6 @@ struct GetMapImageOfLocation: AppIntent {
 		return image
 	}
 }
-
 
 enum MapTypeAppEnum: String, AppEnum {
 	case standard

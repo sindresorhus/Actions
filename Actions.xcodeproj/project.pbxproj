@@ -25,7 +25,6 @@
 		E31749112916A20C00F6319E /* GetTitleOfURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C33CB128D43C7500386C59 /* GetTitleOfURL.swift */; };
 		E31749122916A20C00F6319E /* RemoveEmptyLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC2DC928D22B6F00A88E25 /* RemoveEmptyLines.swift */; };
 		E31749132916A20C00F6319E /* TrimWhitespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC2DB728D1F76100A88E25 /* TrimWhitespace.swift */; };
-		E31749142916A20C00F6319E /* RemoveDuplicatesFromList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC2DC328D215A100A88E25 /* RemoveDuplicatesFromList.swift */; };
 		E31749152916A20C00F6319E /* GetIndexOfListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B1C3C328F5D68D009BE0B7 /* GetIndexOfListItem.swift */; };
 		E31749162916A20C00F6319E /* SendFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C33CA328D38AF600386C59 /* SendFeedback.swift */; };
 		E31749172916A20C00F6319E /* GetUserDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C33CAB28D3A96700386C59 /* GetUserDetails.swift */; };
@@ -113,7 +112,6 @@
 		E31749822916A64100F6319E /* GeoURI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31DE7F328D5E3B400DE79EF /* GeoURI.swift */; };
 		E31749832916A64100F6319E /* IsWiFiOn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31DE7F728D5E94500DE79EF /* IsWiFiOn.swift */; };
 		E31749842916A64100F6319E /* EditURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F64D7128D9F3810009B500 /* EditURL.swift */; };
-		E31749852916A64100F6319E /* RemoveDuplicatesFromList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC2DC328D215A100A88E25 /* RemoveDuplicatesFromList.swift */; };
 		E31749862916A64100F6319E /* ApplyCaptureDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C33C9128D3569F00386C59 /* ApplyCaptureDate.swift */; };
 		E31749872916A64100F6319E /* SampleColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC2DD128D240AE00A88E25 /* SampleColor.swift */; };
 		E31749882916A64100F6319E /* GetFileIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CB449B28D78F4C0031D55F /* GetFileIcon.swift */; };
@@ -189,6 +187,7 @@
 		E352420A28F6EEDE00A957A7 /* AskForText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E352420928F6EEDE00A957A7 /* AskForText.swift */; };
 		E352420C28F6F6AD00A957A7 /* AskForTextScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E352420B28F6F6AD00A957A7 /* AskForTextScreen.swift */; };
 		E38035CB29278B1700D29A07 /* MergeDictionaries.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CB44A128D794DA0031D55F /* MergeDictionaries.swift */; };
+		E3963A5A292CAF9F00210AC2 /* RemoveDuplicatesFromList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC2DC328D215A100A88E25 /* RemoveDuplicatesFromList.swift */; };
 		E3BFF7B22742616400B830DE /* WriteTextScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BFF7B02742616400B830DE /* WriteTextScreen.swift */; };
 		E3BFF7B527428F5200B830DE /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BFF7B327428F5200B830DE /* WelcomeScreen.swift */; };
 		E3BFF7B82742A79100B830DE /* AppIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BFF7B62742A79100B830DE /* AppIcon.swift */; };
@@ -419,6 +418,7 @@
 				E351083528FD79D8007C85AE /* OverwriteFile.swift */,
 				E3CB449728D78CBE0031D55F /* ParseCSV.swift */,
 				E3CB449128D7803C0031D55F /* ParseJSON5.swift */,
+				E3EC2DC328D215A100A88E25 /* RemoveDuplicatesFromList.swift */,
 				E3DB885128E6EFBB00FEE8D6 /* ScanDocuments.swift */,
 				E3CB44A728D79EF90031D55F /* ScanQRCodesInImage.swift */,
 				E3CB44A928D7A10C0031D55F /* TranscribeAudio.swift */,
@@ -506,7 +506,6 @@
 				E3D514C528EEA6B9003F7C2E /* PlayAlertSound.swift */,
 				E3CB448F28D77E840031D55F /* PrettyPrintDictionaries.swift */,
 				E3EC2DE328D25CF300A88E25 /* RemoveDuplicateLines.swift */,
-				E3EC2DC328D215A100A88E25 /* RemoveDuplicatesFromList.swift */,
 				E3EC2DB528D1F51F00A88E25 /* RemoveEmojis.swift */,
 				E3EC2DC928D22B6F00A88E25 /* RemoveEmptyLines.swift */,
 				E3EC2DE928D2E5B900A88E25 /* RemoveFromList.swift */,
@@ -734,7 +733,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "swiftlint\n";
+			shellScript = "PATH=\"/opt/homebrew/bin/:${PATH}\"\nswiftlint\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -772,7 +771,6 @@
 				E31748B52916A12800F6319E /* Utilities.swift in Sources */,
 				E31749252916A20C00F6319E /* ConvertUnixTimeToDate.swift in Sources */,
 				E317492A2916A20C00F6319E /* GetQueryItemValueFromURL.swift in Sources */,
-				E31749142916A20C00F6319E /* RemoveDuplicatesFromList.swift in Sources */,
 				E31749272916A20C00F6319E /* GetUnsplashImage.swift in Sources */,
 				E31749342916A20C00F6319E /* EditURL.swift in Sources */,
 				E317494F2916A20C00F6319E /* ReverseList.swift in Sources */,
@@ -833,7 +831,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E31749812916A64100F6319E /* ReverseLines.swift in Sources */,
-				E31749852916A64100F6319E /* RemoveDuplicatesFromList.swift in Sources */,
 				E31749782916A64100F6319E /* GetRandomBoolean.swift in Sources */,
 				E31749B42916A64100F6319E /* GetUnsplashImage.swift in Sources */,
 				E31749AE2916A64100F6319E /* FormatDuration.swift in Sources */,
@@ -925,6 +922,7 @@
 				E3BFF7B527428F5200B830DE /* WelcomeScreen.swift in Sources */,
 				E3F64D7628D9F9930009B500 /* CreateColorImage.swift in Sources */,
 				E3CB449228D7803C0031D55F /* ParseJSON5.swift in Sources */,
+				E3963A5A292CAF9F00210AC2 /* RemoveDuplicatesFromList.swift in Sources */,
 				E3CB449F28D791D40031D55F /* GenerateCSV.swift in Sources */,
 				E34AB51628F58B500082AE78 /* Authenticate.swift in Sources */,
 				E3CB449928D78CBE0031D55F /* ParseCSV.swift in Sources */,
@@ -1356,7 +1354,7 @@
 			repositoryURL = "https://github.com/soulverteam/SoulverCore";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.2.6;
+				minimumVersion = 2.2.8;
 			};
 		};
 		E32B4F3227FD77700057F08D /* XCRemoteSwiftPackageReference "ExceptionCatcher" */ = {
