@@ -54,7 +54,6 @@
 		E317492F2916A20C00F6319E /* IsWiFiOn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31DE7F728D5E94500DE79EF /* IsWiFiOn.swift */; };
 		E31749302916A20C00F6319E /* GetFileIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CB449B28D78F4C0031D55F /* GetFileIcon.swift */; };
 		E31749312916A20C00F6319E /* FormatDateDifference.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC2DD728D244B200A88E25 /* FormatDateDifference.swift */; };
-		E31749322916A20C00F6319E /* IsDarkMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C33CA928D3A81700386C59 /* IsDarkMode.swift */; };
 		E31749332916A20C00F6319E /* RemoveEmojis.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC2DB528D1F51F00A88E25 /* RemoveEmojis.swift */; };
 		E31749342916A20C00F6319E /* EditURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F64D7128D9F3810009B500 /* EditURL.swift */; };
 		E31749352916A20C00F6319E /* GeoURI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31DE7F328D5E3B400DE79EF /* GeoURI.swift */; };
@@ -104,7 +103,6 @@
 		E317497A2916A64100F6319E /* IsAudioPlaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C33CA528D3A52300386C59 /* IsAudioPlaying.swift */; };
 		E317497B2916A64100F6319E /* GetRandomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC2DCD28D238AB00A88E25 /* GetRandomColor.swift */; };
 		E317497C2916A64100F6319E /* IsSilentModeOn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31DE7E928D5DE0C00DE79EF /* IsSilentModeOn.swift */; };
-		E317497D2916A64100F6319E /* IsDarkMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C33CA928D3A81700386C59 /* IsDarkMode.swift */; };
 		E317497E2916A64100F6319E /* GetQueryItemsFromURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31DE80728D61FE800DE79EF /* GetQueryItemsFromURL.swift */; };
 		E317497F2916A64100F6319E /* TransformLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CB448C28D77A440031D55F /* TransformLists.swift */; };
 		E31749802916A64100F6319E /* FlashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D514C728EEA8F8003F7C2E /* FlashScreen.swift */; };
@@ -186,6 +184,7 @@
 		E351083928FD8089007C85AE /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = E351083828FD8089007C85AE /* Sentry */; };
 		E352420A28F6EEDE00A957A7 /* AskForText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E352420928F6EEDE00A957A7 /* AskForText.swift */; };
 		E352420C28F6F6AD00A957A7 /* AskForTextScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E352420B28F6F6AD00A957A7 /* AskForTextScreen.swift */; };
+		E376FD8329524B6400C0F81F /* IsDarkMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C33CA928D3A81700386C59 /* IsDarkMode.swift */; };
 		E38035CB29278B1700D29A07 /* MergeDictionaries.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CB44A128D794DA0031D55F /* MergeDictionaries.swift */; };
 		E3963A5A292CAF9F00210AC2 /* RemoveDuplicatesFromList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC2DC328D215A100A88E25 /* RemoveDuplicatesFromList.swift */; };
 		E3BFF7B22742616400B830DE /* WriteTextScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BFF7B02742616400B830DE /* WriteTextScreen.swift */; };
@@ -413,6 +412,7 @@
 				E3DB884B28E6E3AD00FEE8D6 /* HapticFeedback.swift */,
 				E351083028FD14A2007C85AE /* HexEncode.swift */,
 				E3DB884F28E6EE7B00FEE8D6 /* HideShortcutsApp.swift */,
+				E3C33CA928D3A81700386C59 /* IsDarkMode.swift */,
 				E3CB448A28D71A180031D55F /* IsScreenLocked.swift */,
 				E3CB44A128D794DA0031D55F /* MergeDictionaries.swift */,
 				E351083528FD79D8007C85AE /* OverwriteFile.swift */,
@@ -496,7 +496,6 @@
 				E3C33CA728D3A6CB00386C59 /* IsBluetoothOn.swift */,
 				E351082E28FD099B007C85AE /* IsCellularDataOn.swift */,
 				E3C33CAF28D3B3EF00386C59 /* IsConnectedToVPN.swift */,
-				E3C33CA928D3A81700386C59 /* IsDarkMode.swift */,
 				E3CB448628D717CA0031D55F /* IsDeviceOrientation.swift */,
 				E3C33CB728D43FCF00386C59 /* IsLowPowerMode.swift */,
 				E31DE7F128D5E30C00DE79EF /* IsOnline.swift */,
@@ -811,7 +810,6 @@
 				E31749462916A20C00F6319E /* FlashScreen.swift in Sources */,
 				E31749082916A20C00F6319E /* TruncateList.swift in Sources */,
 				E31749532916A20C00F6319E /* SortList.swift in Sources */,
-				E31749322916A20C00F6319E /* IsDarkMode.swift in Sources */,
 				E31749292916A20C00F6319E /* ReverseLines.swift in Sources */,
 				E31749332916A20C00F6319E /* RemoveEmojis.swift in Sources */,
 				E317490E2916A20C00F6319E /* ShuffleList.swift in Sources */,
@@ -868,7 +866,6 @@
 				E31749B72916A64100F6319E /* TrimWhitespace.swift in Sources */,
 				E317499F2916A64100F6319E /* GetUserDetails.swift in Sources */,
 				E31749C52916A6D500F6319E /* Utilities.swift in Sources */,
-				E317497D2916A64100F6319E /* IsDarkMode.swift in Sources */,
 				E30E56142922602B00C44823 /* GetRandomNumberFromSeed.swift in Sources */,
 				E31749752916A64100F6319E /* GetRandomFloatingPointNumber.swift in Sources */,
 				E317497F2916A64100F6319E /* TransformLists.swift in Sources */,
@@ -945,6 +942,7 @@
 				E3BFF7B22742616400B830DE /* WriteTextScreen.swift in Sources */,
 				E3DB885728E727E200FEE8D6 /* ChooseFromListExtended.swift in Sources */,
 				E3BFF7B82742A79100B830DE /* AppIcon.swift in Sources */,
+				E376FD8329524B6400C0F81F /* IsDarkMode.swift in Sources */,
 				E3FC71DD271EBE5C00C9D255 /* Utilities.swift in Sources */,
 				E324C9FF271E972300E7CA9B /* App.swift in Sources */,
 				E3CB44AB28D7A10C0031D55F /* TranscribeAudio.swift in Sources */,
@@ -1142,8 +1140,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1200,8 +1198,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -1370,7 +1368,7 @@
 			repositoryURL = "https://github.com/getsentry/sentry-cocoa";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 7.31.0;
+				minimumVersion = 7.31.4;
 			};
 		};
 		E337A3E227E8B66D0073E865 /* XCRemoteSwiftPackageReference "FuzzyFind" */ = {
