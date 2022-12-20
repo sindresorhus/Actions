@@ -1,3 +1,4 @@
+import SwiftUI
 import AppIntents
 
 struct AskForText: AppIntent {
@@ -18,6 +19,13 @@ IMPORTANT: The result is copied to the clipboard. Add the “Wait to Return” a
 
 	@Parameter(title: "Prompt")
 	var prompt: String
+
+	@Parameter(
+		title: "Type",
+		description: "This helps iOS pick the optimal keyboard.",
+		default: .text
+	)
+	var type: InputTypeAppEnum
 
 	@Parameter(title: "Message")
 	var message: String?
@@ -48,6 +56,7 @@ IMPORTANT: The result is copied to the clipboard. Add the “Wait to Return” a
 
 	static var parameterSummary: some ParameterSummary {
 		Summary("Ask for text with \(\.$prompt)") {
+			\.$type
 			\.$message
 			\.$defaultAnswer
 			\.$timeout
@@ -66,9 +75,77 @@ IMPORTANT: The result is copied to the clipboard. Add the “Wait to Return” a
 			message: message,
 			timeout: timeout?.converted(to: .seconds).value.nilIfZero,
 			timeoutReturnValue: timeoutReturnValue,
-			showCancelButton: showCancelButton
+			showCancelButton: showCancelButton,
+			type: type
 		)
 
 		return .result()
 	}
 }
+
+enum InputTypeAppEnum: String, AppEnum {
+	case text
+	case number
+	case url
+	case email
+	case phoneNumber
+
+	static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "Input Type")
+
+	static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
+		.text: "Text",
+		.number: "Number",
+		.url: "URL",
+		.email: "Email",
+		.phoneNumber: "Phone Number"
+	]
+}
+
+#if canImport(UIKit)
+extension InputTypeAppEnum {
+	var toContentType: UITextContentType? {
+		switch self {
+		case .text:
+			return nil
+		case .number:
+			return nil
+		case .url:
+			return .URL
+		case .email:
+			return .emailAddress
+		case .phoneNumber:
+			return .telephoneNumber
+		}
+	}
+
+	var toKeyboardType: UIKeyboardType? {
+		switch self {
+		case .text:
+			return nil
+		case .number:
+			return .decimalPad
+		case .url:
+			return .URL
+		case .email:
+			return .emailAddress
+		case .phoneNumber:
+			return .phonePad
+		}
+	}
+
+	var shouldDisableAutocorrectionAndAutocapitalization: Bool {
+		switch self {
+		case .text:
+			return false
+		case .number:
+			return true
+		case .url:
+			return true
+		case .email:
+			return true
+		case .phoneNumber:
+			return true
+		}
+	}
+}
+#endif

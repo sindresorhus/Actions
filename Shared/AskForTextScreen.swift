@@ -8,6 +8,7 @@ struct AskForTextScreen: View {
 		var timeout: Double?
 		var timeoutReturnValue: String
 		var showCancelButton = true
+		var type: InputTypeAppEnum
 	}
 
 	@Environment(\.dismiss) private var dismiss
@@ -27,6 +28,9 @@ struct AskForTextScreen: View {
 				XPasteboard.general.stringForCurrentHostOnly = text
 				openShortcuts()
 			}
+				// TODO: The button disappears if the below is uncommented. (iOS 16.2)
+				// TODO: Disable the button if not valid email, URL, etc, when using the types.
+//				.disabled(text.isEmptyOrWhitespace)
 			if data.showCancelButton {
 				Button("Cancel", role: .cancel) {
 					openShortcuts()
@@ -36,6 +40,12 @@ struct AskForTextScreen: View {
 			TextField("", text: $text)
 				.lineLimit(4, reservesSpace: true) // Has no effect. (iOS 16.0)
 				.focused($isFocused)
+				#if canImport(UIKit)
+				.textContentType(data.type.toContentType)
+				.keyboardType(data.type.toKeyboardType ?? .default)
+				.textInputAutocapitalization(data.type.shouldDisableAutocorrectionAndAutocapitalization ? .never : nil)
+				.autocorrectionDisabled(data.type.shouldDisableAutocorrectionAndAutocapitalization)
+				#endif
 		}
 			.onChange(of: text) { _ in
 				isTimeoutCancelled = true
