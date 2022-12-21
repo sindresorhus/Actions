@@ -39,6 +39,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Generate UUID
 - Get Audio Playback Destination
 - Get Battery State
+- Get Default Printer
 - Get Device Orientation
 - Get Emojis
 - Get File Icon
@@ -47,6 +48,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Get Index of List Item
 - Get Map Image of Location
 - Get Music Playlists
+- Get Printers
 - Get Query Item Value from URL
 - Get Query Items from URL
 - Get Query Items from URL as Dictionary
@@ -96,6 +98,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Scan Documents
 - Scan QR Codes in Image
 - Set Creation and Modification Date of File
+- Set Default Printer
 - Shuffle List
 - Sort List
 - Spell Out Number

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E303EED329529D0B007BE918 /* GetDefaultPrinter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E376FD862952937200C0F81F /* GetDefaultPrinter.swift */; };
+		E303EED429529D14007BE918 /* GetPrinters.swift in Sources */ = {isa = PBXBuildFile; fileRef = E376FD84295287E500C0F81F /* GetPrinters.swift */; };
+		E303EED529529D1B007BE918 /* SetDefaultPrinter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E376FD882952946400C0F81F /* SetDefaultPrinter.swift */; };
 		E30E56132922602B00C44823 /* GetRandomNumberFromSeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30E56122922602B00C44823 /* GetRandomNumberFromSeed.swift */; };
 		E30E56142922602B00C44823 /* GetRandomNumberFromSeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30E56122922602B00C44823 /* GetRandomNumberFromSeed.swift */; };
 		E31748A92916A0B200F6319E /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31748A82916A0B200F6319E /* Main.swift */; };
@@ -280,6 +283,9 @@
 		E352420528F6CAAD00A957A7 /* ReverseLines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseLines.swift; sourceTree = "<group>"; };
 		E352420928F6EEDE00A957A7 /* AskForText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AskForText.swift; path = Shared/Actions/AskForText.swift; sourceTree = SOURCE_ROOT; };
 		E352420B28F6F6AD00A957A7 /* AskForTextScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskForTextScreen.swift; sourceTree = "<group>"; };
+		E376FD84295287E500C0F81F /* GetPrinters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPrinters.swift; sourceTree = "<group>"; };
+		E376FD862952937200C0F81F /* GetDefaultPrinter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDefaultPrinter.swift; sourceTree = "<group>"; };
+		E376FD882952946400C0F81F /* SetDefaultPrinter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDefaultPrinter.swift; sourceTree = "<group>"; };
 		E39F4776272D516E00B99CB0 /* Actions.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Actions.entitlements; sourceTree = "<group>"; };
 		E3A85FE428E94E7300F423F1 /* FormatPersonName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatPersonName.swift; sourceTree = "<group>"; };
 		E3B1C3C328F5D68D009BE0B7 /* GetIndexOfListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetIndexOfListItem.swift; sourceTree = "<group>"; };
@@ -407,6 +413,8 @@
 				E3F64D7528D9F9930009B500 /* CreateColorImage.swift */,
 				E3CB449D28D791D40031D55F /* GenerateCSV.swift */,
 				E3CF4F9728FDA7EB00BD88D5 /* GenerateRandomData.swift */,
+				E376FD862952937200C0F81F /* GetDefaultPrinter.swift */,
+				E376FD84295287E500C0F81F /* GetPrinters.swift */,
 				E3C33CDA28D48C3200386C59 /* GetRunningApps.swift */,
 				E3F64D7728D9FCA20009B500 /* GetSymbolImage.swift */,
 				E3DB884B28E6E3AD00FEE8D6 /* HapticFeedback.swift */,
@@ -421,6 +429,7 @@
 				E3EC2DC328D215A100A88E25 /* RemoveDuplicatesFromList.swift */,
 				E3DB885128E6EFBB00FEE8D6 /* ScanDocuments.swift */,
 				E3CB44A728D79EF90031D55F /* ScanQRCodesInImage.swift */,
+				E376FD882952946400C0F81F /* SetDefaultPrinter.swift */,
 				E3CB44A928D7A10C0031D55F /* TranscribeAudio.swift */,
 				E3DB885328E7057100FEE8D6 /* WriteText.swift */,
 			);
@@ -935,14 +944,17 @@
 				E33D4BA62744238300CC7A8A /* AppState.swift in Sources */,
 				E3CF4F9828FDA7EB00BD88D5 /* GenerateRandomData.swift in Sources */,
 				E3CB44A828D79EF90031D55F /* ScanQRCodesInImage.swift in Sources */,
+				E303EED329529D0B007BE918 /* GetDefaultPrinter.swift in Sources */,
 				E3DB885228E6EFBB00FEE8D6 /* ScanDocuments.swift in Sources */,
 				E38035CB29278B1700D29A07 /* MergeDictionaries.swift in Sources */,
+				E303EED429529D14007BE918 /* GetPrinters.swift in Sources */,
 				E3DB885028E6EE7B00FEE8D6 /* HideShortcutsApp.swift in Sources */,
 				E3F64D7928D9FCA20009B500 /* GetSymbolImage.swift in Sources */,
 				E3BFF7B22742616400B830DE /* WriteTextScreen.swift in Sources */,
 				E3DB885728E727E200FEE8D6 /* ChooseFromListExtended.swift in Sources */,
 				E3BFF7B82742A79100B830DE /* AppIcon.swift in Sources */,
 				E376FD8329524B6400C0F81F /* IsDarkMode.swift in Sources */,
+				E303EED529529D1B007BE918 /* SetDefaultPrinter.swift in Sources */,
 				E3FC71DD271EBE5C00C9D255 /* Utilities.swift in Sources */,
 				E324C9FF271E972300E7CA9B /* App.swift in Sources */,
 				E3CB44AB28D7A10C0031D55F /* TranscribeAudio.swift in Sources */,

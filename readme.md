@@ -65,6 +65,7 @@ Want to run shortcuts directly from the iOS Lock Screen? Check out my new [Quick
 - Generate UUID
 - Get Audio Playback Destination <sup>(iOS-only)</sup>
 - Get Battery State
+- Get Default Printer <sup>(macOS-only)</sup>
 - Get Device Orientation
 - Get Emojis
 - Get File Icon <sup>(macOS-only)</sup>
@@ -73,6 +74,7 @@ Want to run shortcuts directly from the iOS Lock Screen? Check out my new [Quick
 - Get Index of List Item
 - Get Map Image of Location
 - Get Music Playlists <sup>(iOS-only)</sup>
+- Get Printers <sup>(macOS-only)</sup>
 - Get Query Item Value from URL
 - Get Query Items from URL
 - Get Query Items from URL as Dictionary
@@ -122,6 +124,7 @@ Want to run shortcuts directly from the iOS Lock Screen? Check out my new [Quick
 - Scan Documents <sup>(iOS-only)</sup>
 - Scan QR Codes in Image
 - Set Creation and Modification Date of File
+- Set Default Printer <sup>(macOS-only)</sup>
 - Shuffle List
 - Sort List
 - Spell Out Number

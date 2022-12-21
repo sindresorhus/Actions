@@ -25,6 +25,7 @@ import Sentry
 #if canImport(AppKit)
 import IOKit.ps
 import CoreWLAN
+import ApplicationServices
 
 typealias XColor = NSColor
 typealias XFont = NSFont
@@ -5613,3 +5614,127 @@ extension MKCoordinateSpan {
 		longitudeDelta = longitudeDelta.clamped(to: 0...360)
 	}
 }
+
+
+extension CFArray {
+	/**
+	Convert a `CFArray` to an `Array`.
+
+	Usually, you would just do `cfArray as NSArray as? [Foo]`, but sometimes that does not work.
+
+	- Important: Make sure to specify the correct type, including optionality.
+	*/
+	func toArray<T>(ofType: T.Type) -> [T] {
+		(0..<CFArrayGetCount(self)).map {
+			unsafeBitCast(
+			   CFArrayGetValueAtIndex(self, $0),
+			   to: T.self
+			)
+		}
+	}
+}
+
+
+#if canImport(AppKit)
+/**
+- Important: Requires the `com.apple.security.print` entitlement.
+*/
+struct Printer: Identifiable {
+	private let pmPrinter: PMPrinter
+
+	fileprivate init(printer: PMPrinter) {
+		self.pmPrinter = printer
+	}
+
+	fileprivate var _id: String? { PMPrinterGetID(pmPrinter)?.takeUnretainedValue() as String? }
+
+	var id: String { _id ?? UUID().uuidString } // The fallback should in theory never be hit.
+
+	var name: String? { PMPrinterGetName(pmPrinter)?.takeUnretainedValue() as String? }
+
+	var isDefault: Bool { PMPrinterIsDefault(pmPrinter) }
+
+	var isFavorite: Bool { PMPrinterIsFavorite(pmPrinter) }
+
+	var isRemote: Bool {
+		var isRemote: DarwinBoolean = false
+		PMPrinterIsRemote(pmPrinter, &isRemote)
+		return isRemote.boolValue
+	}
+
+	var location: String? { PMPrinterGetLocation(pmPrinter)?.takeUnretainedValue() as String? }
+
+	var state: State {
+		var state: PMPrinterState = 0
+		PMPrinterGetState(pmPrinter, &state)
+
+		switch Int(state) {
+		case kPMPrinterIdle:
+			return .idle
+		case kPMPrinterProcessing:
+			return .processing
+		case kPMPrinterStopped:
+			return .stopped
+		default:
+			return .idle
+		}
+	}
+
+	var makeAndModel: String? {
+		var makeAndModel: Unmanaged<CFString>?
+		PMPrinterGetMakeAndModelName(pmPrinter, &makeAndModel)
+		return makeAndModel?.takeUnretainedValue() as String?
+	}
+
+	var deviceURL: URL? {
+		var url: Unmanaged<CFURL>?
+		PMPrinterCopyDeviceURI(pmPrinter, &url)
+		return url?.takeUnretainedValue() as URL?
+	}
+
+	func setAsDefault() {
+		PMPrinterSetDefault(pmPrinter)
+	}
+}
+
+extension Printer {
+	enum State {
+		case idle
+		case processing
+		case stopped
+
+		var title: String {
+			switch self {
+			case .idle:
+				return "Idle"
+			case .processing:
+				return "Processing"
+			case .stopped:
+				return "Stopped"
+			}
+		}
+	}
+}
+
+extension Printer {
+	static func all() -> [Self] {
+		allPMPrinters()
+			.map { .init(printer: $0) }
+			.filter { $0._id != nil }
+	}
+
+	static var defaultPrinter: Self? {
+		all().first(where: \.isDefault)
+	}
+
+	private static func allPMPrinters() -> [PMPrinter] {
+		var unmanagedArray: Unmanaged<CFArray>?
+		PMServerCreatePrinterList(nil, &unmanagedArray)
+
+		// `return unmanagedArray?.takeUnretainedValue() as NSArray? as? [PMPrinter]` crashes Swift.
+
+		return unmanagedArray?.takeUnretainedValue().toArray(ofType: PMPrinter.self) ?? []
+	}
+}
+
+#endif
