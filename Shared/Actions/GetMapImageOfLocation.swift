@@ -2,6 +2,8 @@ import AppIntents
 import MapKit
 import SwiftUI
 
+// NOTE: This has to be an in-app intent as `ImageRenderer` just produces a black image when in an app extension.
+
 struct GetMapImageOfLocation: AppIntent {
 	static let title: LocalizedStringResource = "Get Map Image of Location"
 

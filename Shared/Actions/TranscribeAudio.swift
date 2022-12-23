@@ -10,7 +10,7 @@ struct TranscribeAudio: AppIntent, CustomIntentMigratedAppIntent {
 """
 Converts the speech in the input audio file to text.
 
-Note that the transcription is slow.
+Note: On iOS, the transcription only works if the audio takes less than 30 seconds to process. This usually means about 1 minute of transcription. This is because third-party actions only get 30 seconds to execute.
 
 See the built-in "Dictate Text" action if you need to transcribe in real-time.
 
@@ -38,8 +38,7 @@ Important: If you have permission issues even after granting access, try removin
 	func perform() async throws -> some IntentResult & ReturnsValue<String> {
 		guard await SFSpeechRecognizer.requestAuthorization() == .authorized else {
 			let recoverySuggestion = OS.current == .macOS
-				// TODO: Update this when macOS 13 is out.
-				? "You can grant access in “System Preferences › Security & Privacy › Speech Recognition”."
+				? "You can grant access in “System Settings › Privacy & Security › Speech Recognition”."
 				: "You can grant access in “Settings › \(SSApp.name)”."
 
 			throw "No access to speech recognition. \(recoverySuggestion)".toError

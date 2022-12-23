@@ -144,6 +144,7 @@ Want to run shortcuts directly from the iOS Lock Screen? Check out my new [Quick
 - Show Text in Menu Bar → [One Thing](https://sindresorhus.com/one-thing)
 - Open URLs in a Specific Browser → [Velja](https://sindresorhus.com/velja)
 - Remove Tracking Parameters from URLs → [Velja](https://sindresorhus.com/velja)
+- Generate images from text with AI → [Amazing AI](https://sindresorhus.com/amazing-ai)
 - Clear Clipboard Formatting → [Pure Paste](https://sindresorhus.com/pure-paste)
 - Join Video Call → [Dato](https://sindresorhus.com/dato)
 - Put text on the iOS Lock Screen → [Any Text](https://sindresorhus.com/any-text)

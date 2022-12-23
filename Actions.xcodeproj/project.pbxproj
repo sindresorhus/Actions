@@ -71,7 +71,6 @@
 		E317493F2916A20C00F6319E /* IsReachable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31DE7F528D5E50400DE79EF /* IsReachable.swift */; };
 		E31749402916A20C00F6319E /* CreateURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC2DE128D2588800A88E25 /* CreateURL.swift */; };
 		E31749412916A20C00F6319E /* FormatNumberCompact.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31DE80D28D62CE200DE79EF /* FormatNumberCompact.swift */; };
-		E31749422916A20C00F6319E /* GetMapImageOfLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E317489E2913BEAB00F6319E /* GetMapImageOfLocation.swift */; };
 		E31749432916A20C00F6319E /* IsAudioPlaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C33CA528D3A52300386C59 /* IsAudioPlaying.swift */; };
 		E31749442916A20C00F6319E /* IsLowPowerMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C33CB728D43FCF00386C59 /* IsLowPowerMode.swift */; };
 		E31749452916A20C00F6319E /* IsSilentModeOn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31DE7E928D5DE0C00DE79EF /* IsSilentModeOn.swift */; };
@@ -146,7 +145,6 @@
 		E31749A52916A64100F6319E /* FormatNumberCompact.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31DE80D28D62CE200DE79EF /* FormatNumberCompact.swift */; };
 		E31749A62916A64100F6319E /* GetRandomEmoticon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC2DB128D1F23D00A88E25 /* GetRandomEmoticon.swift */; };
 		E31749A72916A64100F6319E /* IsCellularDataOn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351082E28FD099B007C85AE /* IsCellularDataOn.swift */; };
-		E31749A82916A64100F6319E /* GetMapImageOfLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E317489E2913BEAB00F6319E /* GetMapImageOfLocation.swift */; };
 		E31749A92916A64100F6319E /* IsConnectedToVPN.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C33CAF28D3B3EF00386C59 /* IsConnectedToVPN.swift */; };
 		E31749AA2916A64100F6319E /* PrettyPrintDictionaries.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CB448F28D77E840031D55F /* PrettyPrintDictionaries.swift */; };
 		E31749AB2916A64100F6319E /* IsDeviceOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CB448628D717CA0031D55F /* IsDeviceOrientation.swift */; };
@@ -181,6 +179,7 @@
 		E337A3E127E850EC0073E865 /* ChooseFromListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E337A3DF27E850EC0073E865 /* ChooseFromListScreen.swift */; };
 		E337A3E627E8BA6B0073E865 /* FuzzyFind in Frameworks */ = {isa = PBXBuildFile; productRef = E337A3E527E8BA6B0073E865 /* FuzzyFind */; };
 		E33D4BA62744238300CC7A8A /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33D4BA42744238300CC7A8A /* AppState.swift */; };
+		E343F9B829713AFF00AD82F4 /* GetMapImageOfLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E317489E2913BEAB00F6319E /* GetMapImageOfLocation.swift */; };
 		E34AB51628F58B500082AE78 /* Authenticate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34AB51528F58B500082AE78 /* Authenticate.swift */; };
 		E351083128FD14A2007C85AE /* HexEncode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351083028FD14A2007C85AE /* HexEncode.swift */; };
 		E351083628FD79D8007C85AE /* OverwriteFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351083528FD79D8007C85AE /* OverwriteFile.swift */; };
@@ -414,6 +413,7 @@
 				E3CB449D28D791D40031D55F /* GenerateCSV.swift */,
 				E3CF4F9728FDA7EB00BD88D5 /* GenerateRandomData.swift */,
 				E376FD862952937200C0F81F /* GetDefaultPrinter.swift */,
+				E317489E2913BEAB00F6319E /* GetMapImageOfLocation.swift */,
 				E376FD84295287E500C0F81F /* GetPrinters.swift */,
 				E3C33CDA28D48C3200386C59 /* GetRunningApps.swift */,
 				E3F64D7728D9FCA20009B500 /* GetSymbolImage.swift */,
@@ -485,7 +485,6 @@
 				E3EC2DD928D246BC00A88E25 /* GetFilePath.swift */,
 				E31748A0291589B600F6319E /* GetHighResolutionTimestamp.swift */,
 				E3B1C3C328F5D68D009BE0B7 /* GetIndexOfListItem.swift */,
-				E317489E2913BEAB00F6319E /* GetMapImageOfLocation.swift */,
 				E3C33C9928D35F3D00386C59 /* GetMusicPlaylists.swift */,
 				E31DE80728D61FE800DE79EF /* GetQueryItemsFromURL.swift */,
 				E31DE80B28D62ACC00DE79EF /* GetQueryItemsFromURLAsDictionary.swift */,
@@ -805,7 +804,6 @@
 				E31749492916A20C00F6319E /* FilterList.swift in Sources */,
 				E317491F2916A20C00F6319E /* GenerateRandomText.swift in Sources */,
 				E317490B2916A20C00F6319E /* PrettyPrintDictionaries.swift in Sources */,
-				E31749422916A20C00F6319E /* GetMapImageOfLocation.swift in Sources */,
 				E31749122916A20C00F6319E /* RemoveEmptyLines.swift in Sources */,
 				E317492E2916A20C00F6319E /* FormatCurrency.swift in Sources */,
 				E317494A2916A20C00F6319E /* GetRandomBoolean.swift in Sources */,
@@ -854,7 +852,6 @@
 				E31749722916A64100F6319E /* RemoveEmptyLines.swift in Sources */,
 				E317498F2916A64100F6319E /* ConvertUnixTimeToDate.swift in Sources */,
 				E31749A92916A64100F6319E /* IsConnectedToVPN.swift in Sources */,
-				E31749A82916A64100F6319E /* GetMapImageOfLocation.swift in Sources */,
 				E31749A52916A64100F6319E /* FormatNumberCompact.swift in Sources */,
 				E31749B62916A64100F6319E /* ConvertCoordinatesToLocation.swift in Sources */,
 				E31749732916A64100F6319E /* FormatPersonName.swift in Sources */,
@@ -947,6 +944,7 @@
 				E303EED329529D0B007BE918 /* GetDefaultPrinter.swift in Sources */,
 				E3DB885228E6EFBB00FEE8D6 /* ScanDocuments.swift in Sources */,
 				E38035CB29278B1700D29A07 /* MergeDictionaries.swift in Sources */,
+				E343F9B829713AFF00AD82F4 /* GetMapImageOfLocation.swift in Sources */,
 				E303EED429529D14007BE918 /* GetPrinters.swift in Sources */,
 				E3DB885028E6EE7B00FEE8D6 /* HideShortcutsApp.swift in Sources */,
 				E3F64D7928D9FCA20009B500 /* GetSymbolImage.swift in Sources */,
@@ -1364,7 +1362,7 @@
 			repositoryURL = "https://github.com/soulverteam/SoulverCore";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.2.8;
+				minimumVersion = 2.2.9;
 			};
 		};
 		E32B4F3227FD77700057F08D /* XCRemoteSwiftPackageReference "ExceptionCatcher" */ = {

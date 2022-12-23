@@ -3723,7 +3723,7 @@ extension Device {
 			let startTime = CACurrentMediaTime()
 			await silentAudio.play()
 			let duration = CACurrentMediaTime() - startTime
-			return duration < 0.01
+			return duration < 0.05 // 0.01 works on modern phones, but this may fix the detection on older phones like iPhone 8.
 		}
 	}
 }

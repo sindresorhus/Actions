@@ -30,6 +30,10 @@ For example, if the number represents minutes and you want to round it to the ne
 	}
 
 	func perform() async throws -> some IntentResult & ReturnsValue<Int> {
+		guard number.isFinite else {
+			throw "Cannot handle infinite number".toError
+		}
+
 		let result = number.roundedToMultiple(
 			of: multiple,
 			roundingRule: .init(mode)
