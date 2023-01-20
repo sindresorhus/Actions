@@ -6,12 +6,16 @@ struct GetFilePath: AppIntent, CustomIntentMigratedAppIntent {
 	static let title: LocalizedStringResource = "Get File Path"
 
 	static let description = IntentDescription(
-		"Returns the path or URL to the input file.",
+"""
+Returns the path or URL of the input files.
+
+Folder paths always end with a slash.
+""",
 		categoryName: "File"
 	)
 
-	@Parameter(title: "File", supportedTypeIdentifiers: ["public.data"])
-	var file: IntentFile
+	@Parameter(title: "File", supportedTypeIdentifiers: ["public.item"])
+	var file: [IntentFile]
 
 	@Parameter(title: "Type", default: .path)
 	var type: FilePathTypeAppEnum
@@ -20,12 +24,16 @@ struct GetFilePath: AppIntent, CustomIntentMigratedAppIntent {
 		Summary("Get the \(\.$type) to \(\.$file)")
 	}
 
-	func perform() async throws -> some IntentResult & ReturnsValue<String> {
+	func perform() async throws -> some IntentResult & ReturnsValue<[String]> {
+		.result(value: try file.map(getResult))
+	}
+
+	private func getResult(_ file: IntentFile) throws -> String {
 		guard let fileURL = file.fileURL else {
 			throw "The given file does not have a path.".toError
 		}
 
-		let result = {
+		var result = {
 			switch type {
 			case .path:
 				return fileURL.path
@@ -36,7 +44,11 @@ struct GetFilePath: AppIntent, CustomIntentMigratedAppIntent {
 			}
 		}()
 
-		return .result(value: result)
+		if file.type == .folder {
+			result = result.ensureSuffix("/")
+		}
+
+		return result
 	}
 }
 

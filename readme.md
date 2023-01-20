@@ -19,7 +19,9 @@ The app provides lots of powerful extra actions for the Shortcuts app on macOS a
 
 ---
 
-Want to run shortcuts directly from the iOS Lock Screen? Check out my new [Quick Launch](https://sindresorhus.com/quick-launch) app.
+Want to run shortcuts directly from the iOS Lock Screen? Check out my [Quick Launch](https://sindresorhus.com/quick-launch) app.
+
+And trigger shortcuts on your Mac from your iOS device with my [Hyperduck](https://sindresorhus.com/hyperduck#shortcuts) app.
 
 ---
 
@@ -31,7 +33,7 @@ Want to run shortcuts directly from the iOS Lock Screen? Check out my new [Quick
 
 **Older versions (macOS)**
 
-- [Last macOS 12 compatible version](https://github.com/sindresorhus/Actions/releases/download/v1.13.1/Actions.1.13.1.-.macOS.12.zip) *(1.13.1)*
+- [1.13.1](https://github.com/sindresorhus/Actions/releases/download/v1.13.1/Actions.1.13.1.-.macOS.12.zip) for macOS 12+
 
 ## Included actions
 
@@ -101,9 +103,9 @@ Want to run shortcuts directly from the iOS Lock Screen? Check out my new [Quick
 - Is Device Orientation
 - Is Low Power Mode On
 - Is Online
-- Is Reachable
 - Is Screen Locked <sup>(macOS-only)</sup>
 - Is Silent Mode On <sup>(iOS-only)</sup>
+- Is Web Server Reachable
 - Is Wi-Fi On <sup>(macOS-only)</sup>
 - Merge Dictionaries
 - Overwrite File
@@ -137,17 +139,18 @@ Want to run shortcuts directly from the iOS Lock Screen? Check out my new [Quick
 - Truncate Text
 - Write or Edit Text
 
-#### Looking for more?
+#### Want more shortcut actions?
 
-- Get Internet Speed → [Speediness](https://sindresorhus.com/speediness)
-- Get Random GIF → [Jiffy](https://sindresorhus.com/jiffy)
-- Show Text in Menu Bar → [One Thing](https://sindresorhus.com/one-thing)
-- Open URLs in a Specific Browser → [Velja](https://sindresorhus.com/velja)
-- Remove Tracking Parameters from URLs → [Velja](https://sindresorhus.com/velja)
+- Trigger shortcuts on your Mac from your iOS device → [Hyperduck](https://sindresorhus.com/hyperduck#shortcuts)
+- Show text in menu bar → [One Thing](https://sindresorhus.com/one-thing)
+- Open URLs in a specific browser → [Velja](https://sindresorhus.com/velja)
+- Remove tracking parameters from URLs → [Velja](https://sindresorhus.com/velja)
 - Generate images from text with AI → [Amazing AI](https://sindresorhus.com/amazing-ai)
-- Clear Clipboard Formatting → [Pure Paste](https://sindresorhus.com/pure-paste)
-- Join Video Call → [Dato](https://sindresorhus.com/dato)
+- Clear clipboard formatting → [Pure Paste](https://sindresorhus.com/pure-paste)
+- Get internet speed → [Speediness](https://sindresorhus.com/speediness)
+- Join video calls → [Dato](https://sindresorhus.com/dato)
 - Put text on the iOS Lock Screen → [Any Text](https://sindresorhus.com/any-text)
+- Get random animated GIF → [Jiffy](https://sindresorhus.com/jiffy)
 
 ## Screenshot
 

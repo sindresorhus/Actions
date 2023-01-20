@@ -27,7 +27,7 @@ struct ColorAppEntity: TransientAppEntity {
 	var displayRepresentation: DisplayRepresentation {
 		.init(
 			title: "\(hex)",
-			// TODO: The image is not shown. (iOS 16.0)
+			subtitle: "", // Required to show the `image`. (iOS 16.2)
 			image: color.flatMap {
 				XImage.color($0, size: CGSize(width: 1, height: 1), scale: 1)
 					.toDisplayRepresentationImage()

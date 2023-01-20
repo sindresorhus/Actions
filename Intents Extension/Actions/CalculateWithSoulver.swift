@@ -38,6 +38,15 @@ January 30 2020 + 3 months 2 weeks 5 days
 9:35am in New York to Japan
 → 10:35 pm
 
+days until April
+→ 37 days
+
+days left in Feb
+→ 5 days
+
+days remaining in 2023
+→ 311 days
+
 $25k over 10 years at 7.5%
 → $51,525.79 (compound interest)
 
@@ -95,14 +104,16 @@ If you like this action, you may also like the Soulver macOS app.
 	}
 
 	private func calculate(liveCurrencyRates: Bool) async -> String {
+		var customization = EngineCustomization.standard
+		customization.featureFlags.allowMisplacedThousandsSeparators = false
+
 		let ecbCurrencyRateProvider = ECBCurrencyRateProvider()
-		var customizationWithLiveCurrencyRates = EngineCustomization.standard
 
 		if liveCurrencyRates {
-			customizationWithLiveCurrencyRates.currencyRateProvider = ecbCurrencyRateProvider
+			customization.currencyRateProvider = ecbCurrencyRateProvider
 		}
 
-		let calculator = Calculator(customization: customizationWithLiveCurrencyRates)
+		let calculator = Calculator(customization: customization)
 
 		var formattingPreferences = FormattingPreferences()
 		formattingPreferences.dp = decimalPlaces

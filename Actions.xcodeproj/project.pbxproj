@@ -68,7 +68,7 @@
 		E317493C2916A20C00F6319E /* GetRandomInstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC2DB928D1F8B500A88E25 /* GetRandomInstant.swift */; };
 		E317493D2916A20C00F6319E /* TransformText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC2DAA28D1E33B00A88E25 /* TransformText.swift */; };
 		E317493E2916A20C00F6319E /* FormatDuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F64D6B28D9EDFE0009B500 /* FormatDuration.swift */; };
-		E317493F2916A20C00F6319E /* IsReachable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31DE7F528D5E50400DE79EF /* IsReachable.swift */; };
+		E317493F2916A20C00F6319E /* IsWebServerReachable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31DE7F528D5E50400DE79EF /* IsWebServerReachable.swift */; };
 		E31749402916A20C00F6319E /* CreateURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC2DE128D2588800A88E25 /* CreateURL.swift */; };
 		E31749412916A20C00F6319E /* FormatNumberCompact.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31DE80D28D62CE200DE79EF /* FormatNumberCompact.swift */; };
 		E31749432916A20C00F6319E /* IsAudioPlaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C33CA528D3A52300386C59 /* IsAudioPlaying.swift */; };
@@ -153,7 +153,7 @@
 		E31749AE2916A64100F6319E /* FormatDuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F64D6B28D9EDFE0009B500 /* FormatDuration.swift */; };
 		E31749AF2916A64100F6319E /* ShuffleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC2DC128D20D0400A88E25 /* ShuffleList.swift */; };
 		E31749B02916A64100F6319E /* CombineLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C33C9728D35D7400386C59 /* CombineLists.swift */; };
-		E31749B12916A64100F6319E /* IsReachable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31DE7F528D5E50400DE79EF /* IsReachable.swift */; };
+		E31749B12916A64100F6319E /* IsWebServerReachable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31DE7F528D5E50400DE79EF /* IsWebServerReachable.swift */; };
 		E31749B22916A64100F6319E /* GenerateUUID.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC2DAF28D1EA6B00A88E25 /* GenerateUUID.swift */; };
 		E31749B32916A64100F6319E /* RemoveDuplicateLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC2DE328D25CF300A88E25 /* RemoveDuplicateLines.swift */; };
 		E31749B42916A64100F6319E /* GetUnsplashImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CB44A328D7972B0031D55F /* GetUnsplashImage.swift */; };
@@ -258,7 +258,7 @@
 		E31DE7ED28D5E14400DE79EF /* RoundNumberToMultiple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundNumberToMultiple.swift; sourceTree = "<group>"; };
 		E31DE7F128D5E30C00DE79EF /* IsOnline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsOnline.swift; sourceTree = "<group>"; };
 		E31DE7F328D5E3B400DE79EF /* GeoURI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoURI.swift; sourceTree = "<group>"; };
-		E31DE7F528D5E50400DE79EF /* IsReachable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsReachable.swift; sourceTree = "<group>"; };
+		E31DE7F528D5E50400DE79EF /* IsWebServerReachable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsWebServerReachable.swift; sourceTree = "<group>"; };
 		E31DE7F728D5E94500DE79EF /* IsWiFiOn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsWiFiOn.swift; sourceTree = "<group>"; };
 		E31DE80128D619DB00DE79EF /* GetDeviceOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDeviceOrientation.swift; sourceTree = "<group>"; };
 		E31DE80528D61E4500DE79EF /* GetQueryItemValueFromURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetQueryItemValueFromURL.swift; sourceTree = "<group>"; };
@@ -507,8 +507,8 @@
 				E3CB448628D717CA0031D55F /* IsDeviceOrientation.swift */,
 				E3C33CB728D43FCF00386C59 /* IsLowPowerMode.swift */,
 				E31DE7F128D5E30C00DE79EF /* IsOnline.swift */,
-				E31DE7F528D5E50400DE79EF /* IsReachable.swift */,
 				E31DE7E928D5DE0C00DE79EF /* IsSilentModeOn.swift */,
+				E31DE7F528D5E50400DE79EF /* IsWebServerReachable.swift */,
 				E31DE7F728D5E94500DE79EF /* IsWiFiOn.swift */,
 				E3D514C528EEA6B9003F7C2E /* PlayAlertSound.swift */,
 				E3CB448F28D77E840031D55F /* PrettyPrintDictionaries.swift */,
@@ -784,7 +784,7 @@
 				E31749132916A20C00F6319E /* TrimWhitespace.swift in Sources */,
 				E31749242916A20C00F6319E /* CalculateWithSoulver.swift in Sources */,
 				E317491B2916A20C00F6319E /* RemoveNonPrintableCharacters.swift in Sources */,
-				E317493F2916A20C00F6319E /* IsReachable.swift in Sources */,
+				E317493F2916A20C00F6319E /* IsWebServerReachable.swift in Sources */,
 				E31749212916A20C00F6319E /* SampleColor.swift in Sources */,
 				E31749302916A20C00F6319E /* GetFileIcon.swift in Sources */,
 				E31749112916A20C00F6319E /* GetTitleOfURL.swift in Sources */,
@@ -857,7 +857,7 @@
 				E31749732916A64100F6319E /* FormatPersonName.swift in Sources */,
 				E31749772916A64100F6319E /* RemoveNonPrintableCharacters.swift in Sources */,
 				E31749A72916A64100F6319E /* IsCellularDataOn.swift in Sources */,
-				E31749B12916A64100F6319E /* IsReachable.swift in Sources */,
+				E31749B12916A64100F6319E /* IsWebServerReachable.swift in Sources */,
 				E31749BB2916A64100F6319E /* GetQueryItemsFromURLAsDictionary.swift in Sources */,
 				E31749AF2916A64100F6319E /* ShuffleList.swift in Sources */,
 				E31749AB2916A64100F6319E /* IsDeviceOrientation.swift in Sources */,
@@ -1362,7 +1362,7 @@
 			repositoryURL = "https://github.com/soulverteam/SoulverCore";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.2.9;
+				minimumVersion = 2.2.11;
 			};
 		};
 		E32B4F3227FD77700057F08D /* XCRemoteSwiftPackageReference "ExceptionCatcher" */ = {
@@ -1378,7 +1378,7 @@
 			repositoryURL = "https://github.com/getsentry/sentry-cocoa";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 7.31.4;
+				minimumVersion = 8.2.0;
 			};
 		};
 		E337A3E227E8B66D0073E865 /* XCRemoteSwiftPackageReference "FuzzyFind" */ = {

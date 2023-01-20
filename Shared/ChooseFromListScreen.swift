@@ -9,7 +9,7 @@ struct ChooseFromListScreen: View {
 		var selectMultiple: Bool
 		var selectAllInitially: Bool
 		var allowCustomItems: Bool
-		var timeout: TimeInterval?
+		var timeout: Duration?
 		var timeoutReturnValue: ChooseFromListTimeoutValueAppEnum
 
 		var id: String { "ChooseFromListExtended" }
@@ -130,7 +130,7 @@ struct ChooseFromListScreen: View {
 						return
 					}
 
-					try? await Task.sleep(for: .seconds(timeout))
+					try? await Task.sleep(for: timeout)
 					timeoutAction()
 				}
 		}

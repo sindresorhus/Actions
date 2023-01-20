@@ -39,6 +39,17 @@ For example, if the number represents minutes and you want to round it to the ne
 			roundingRule: .init(mode)
 		)
 
+		guard !result.isNaN else {
+			throw "The resulting number was NaN, which is not valid.".toError
+				.report(
+					userInfo: [
+						"inputNumber": number,
+						"inputMultiple": multiple,
+						"mode": mode.rawValue
+					]
+				)
+		}
+
 		return .result(value: Int(result))
 	}
 }

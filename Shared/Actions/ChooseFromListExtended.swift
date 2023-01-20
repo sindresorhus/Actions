@@ -108,7 +108,7 @@ IMPORTANT: Add the “Wait to Return” and “Get Clipboard” actions after th
 			selectMultiple: selectMultiple,
 			selectAllInitially: selectAllInitially,
 			allowCustomItems: allowCustomItems,
-			timeout: useTimeout ? timeout?.converted(to: .seconds).value : nil,
+			timeout: useTimeout ? timeout?.converted(to: .seconds).value.timeIntervalToDuration : nil,
 			timeoutReturnValue: timeoutReturnValue
 		)
 

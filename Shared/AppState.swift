@@ -11,7 +11,7 @@ final class AppState: ObservableObject {
 	@Published var askForTextData: AskForTextScreen.Data?
 	@Published var isFullscreenOverlayPresented = false
 
-	init() {
+	private init() {
 		// TODO: Check if it shows a prompt when we move the action back to being in an extension.
 		// We have to request the permission in the app as it no longer (with iOS 16.1) a prompt when running the action. The prompt actually shows when we switch back to the app. So it seems it's shown in the incorrect scene.
 		#if canImport(UIKit)

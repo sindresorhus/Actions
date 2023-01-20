@@ -4,6 +4,8 @@ It provides additional actions for the Shortcuts app.
 
 The actions are not able to run on Apple Watch or HomePod.
 
+Restart your device if the actions don't show up in the Shortcuts app.
+
 The app is free without ads because I love making apps. Consider leaving a nice review.
 
 
@@ -75,9 +77,9 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Is Device Orientation
 - Is Low Power Mode On
 - Is Online
-- Is Reachable
 - Is Screen Locked
 - Is Silent Mode On
+- Is Web Server Reachable
 - Is Wi-Fi On
 - Merge Dictionaries
 - Overwrite File

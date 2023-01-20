@@ -56,8 +56,8 @@ extension XColor: @unchecked Sendable {}
 
 
 // TODO: Remove this when everything is converted to async/await.
-func delay(seconds: TimeInterval, closure: @escaping () -> Void) {
-	DispatchQueue.main.asyncAfter(deadline: .now() + seconds, execute: closure)
+func delay(_ duration: Duration, closure: @escaping () -> Void) {
+	DispatchQueue.main.asyncAfter(deadline: .now() + duration.toTimeInterval, execute: closure)
 }
 
 
@@ -167,6 +167,7 @@ extension SSApp {
 		SentrySDK.start {
 			$0.dsn = dsn
 			$0.enableSwizzling = false
+			$0.enableAppHangTracking = false // https://github.com/getsentry/sentry-cocoa/issues/2643
 		}
 		#endif
 	}
@@ -2789,9 +2790,9 @@ extension URLRequest {
 		url: URL,
 		contentType: String? = nil,
 		headers: Headers = [:],
-		timeout: TimeInterval = 60
+		timeout: Duration = .seconds(60)
 	) {
-		self.init(url: url, timeoutInterval: timeout)
+		self.init(url: url, timeoutInterval: timeout.toTimeInterval)
 		self.method = method
 		self.allHTTPHeaderFields = headers
 
@@ -3157,8 +3158,8 @@ enum User {
 	/**
 	The duration since the user was last active on the computer.
 	*/
-	static var idleTime: TimeInterval {
-		CGEventSource.secondsSinceLastEventType(.hidSystemState, eventType: .any)
+	static var idleTime: Duration {
+		.seconds(CGEventSource.secondsSinceLastEventType(.hidSystemState, eventType: .any))
 	}
 	#endif
 }
@@ -3723,7 +3724,7 @@ extension Device {
 			let startTime = CACurrentMediaTime()
 			await silentAudio.play()
 			let duration = CACurrentMediaTime() - startTime
-			return duration < 0.05 // 0.01 works on modern phones, but this may fix the detection on older phones like iPhone 8.
+			return duration < 0.05 // 0.01 works on modern phones, but 0.05 is required for older phones like iPhone 8.
 		}
 	}
 }
@@ -4114,17 +4115,22 @@ extension URLSession {
 	func checkIfReachable(
 		_ url: URL,
 		method: URLRequest.Method = .head,
-		timeout: TimeInterval = 10
+		timeout: Duration = .seconds(10),
+		requireSuccessStatusCode: Bool = true
 	) async throws {
 		var urlRequest = URLRequest(
 			method: method,
 			url: url,
 			timeout: timeout
 		)
+
 		urlRequest.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
 
 		let (_, response) = try await URLSession.shared.data(for: urlRequest)
-		try response.throwIfHTTPResponseButNotSuccessStatusCode()
+
+		if requireSuccessStatusCode {
+			try response.throwIfHTTPResponseButNotSuccessStatusCode()
+		}
 	}
 
 	/**
@@ -4133,10 +4139,17 @@ extension URLSession {
 	func isReachable(
 		_ url: URL,
 		method: URLRequest.Method = .head,
-		timeout: TimeInterval = 10
+		timeout: Duration = .seconds(10),
+		requireSuccessStatusCode: Bool = true
 	) async -> Bool {
 		do {
-			try await checkIfReachable(url)
+			try await checkIfReachable(
+				url,
+				method: method,
+				timeout: timeout,
+				requireSuccessStatusCode: requireSuccessStatusCode
+			)
+
 			return true
 		} catch {
 			return false
@@ -5049,7 +5062,7 @@ extension UIDevice {
 		return .unknown
 	}
 
-	func orientationStream(interval: TimeInterval) -> AsyncThrowingStream<UIDeviceOrientation, Error> {
+	func orientationStream(interval: Duration) -> AsyncThrowingStream<UIDeviceOrientation, Error> {
 		.init { continuation in
 			let motionManager = CMMotionManager()
 
@@ -5058,7 +5071,7 @@ extension UIDevice {
 				return
 			}
 
-			motionManager.accelerometerUpdateInterval = interval
+			motionManager.accelerometerUpdateInterval = interval.toTimeInterval
 
 			motionManager.startAccelerometerUpdates(to: OperationQueue()) { data, error in
 				if let error {
@@ -5082,7 +5095,7 @@ extension UIDevice {
 
 	var orientationBetter: UIDeviceOrientation {
 		get async throws {
-			(try await orientationStream(interval: 0.001).first { _ in true }) ?? .unknown
+			(try await orientationStream(interval: .seconds(0.001)).first { _ in true }) ?? .unknown
 		}
 	}
 }
@@ -5738,3 +5751,47 @@ extension Printer {
 }
 
 #endif
+
+
+extension Duration {
+	enum ConversionUnit: Double {
+		case days = 86_400_000_000_000
+		case hours = 3_600_000_000_000
+		case minutes = 60_000_000_000
+		case seconds = 1_000_000_000
+		case milliseconds = 1_000_000
+		case microseconds = 1000
+	}
+
+	/**
+	Nanoseconds representation.
+	*/
+	var nanoseconds: Int64 {
+		let (seconds, attoseconds) = components
+		let secondsNanos = seconds * 1_000_000_000
+		let attosecondsNanons = attoseconds / 1_000_000_000
+		let (totalNanos, isOverflow) = secondsNanos.addingReportingOverflow(attosecondsNanons)
+		return isOverflow ? .max : totalNanos
+	}
+
+	func `in`(_ unit: ConversionUnit) -> Double {
+		Double(nanoseconds) / unit.rawValue
+	}
+
+	var toTimeInterval: TimeInterval { self.in(.seconds) }
+}
+
+
+extension FloatingPoint {
+	/**
+	Splits the number into the whole number and its fraction.
+	*/
+	var components: (whole: Self, fraction: Self) { modf(self) }
+}
+
+extension Double {
+	var timeIntervalToDuration: Duration {
+		let (whole, fraction) = components
+		return .init(secondsComponent: .init(whole), attosecondsComponent: .init(fraction))
+	}
+}
