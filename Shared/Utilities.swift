@@ -35,6 +35,7 @@ typealias XApplication = NSApplication
 typealias XApplicationDelegate = NSApplicationDelegate
 typealias XApplicationDelegateAdaptor = NSApplicationDelegateAdaptor
 typealias XScreen = NSScreen
+typealias WindowIfMacOS = Window
 #elseif canImport(UIKit)
 import VisionKit
 import CoreMotion
@@ -47,6 +48,7 @@ typealias XApplication = UIApplication
 typealias XApplicationDelegate = UIApplicationDelegate
 typealias XApplicationDelegateAdaptor = UIApplicationDelegateAdaptor
 typealias XScreen = UIScreen
+typealias WindowIfMacOS = WindowGroup
 #endif
 
 // TODO: Remove me when it's support it natively.
@@ -2413,7 +2415,12 @@ extension URL {
 		try copy.setResourceValues(values)
 	}
 
-	var contentType: UTType? { resourceValue(forKey: .contentTypeKey) }
+	var contentType: UTType? {
+		resourceValue(forKey: .contentTypeKey)
+			?? UTType(filenameExtension: pathExtension)
+	}
+
+	var localizedName: String { resourceValue(forKey: .localizedNameKey) ?? lastPathComponent }
 }
 
 
@@ -3653,6 +3660,12 @@ extension NSWorkspace {
 	*/
 	var runningGUIApps: [NSRunningApplication] {
 		runningApplications.filter { $0.activationPolicy == .regular }
+	}
+}
+
+extension NSWorkspace {
+	func appName(for url: URL) -> String {
+		url.localizedName.replacingSuffix(".app", with: "").toString
 	}
 }
 #endif

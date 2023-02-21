@@ -56,7 +56,7 @@ For example, username, name, language, idle time, etc.
 				return User.languageCode.identifier
 			case .idleTime:
 				#if canImport(AppKit)
-				return Int(User.idleTime).formatted()
+				return Int(User.idleTime.toTimeInterval).formatted()
 				#else
 				return nil
 				#endif

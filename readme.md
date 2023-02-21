@@ -109,6 +109,7 @@ And trigger shortcuts on your Mac from your iOS device with my [Hyperduck](https
 - Is Web Server Reachable
 - Is Wi-Fi On <sup>(macOS-only)</sup>
 - Merge Dictionaries
+- Open URLs with App <sup>(macOS-only)</sup>
 - Overwrite File
 - Parse CSV
 - Parse JSON5

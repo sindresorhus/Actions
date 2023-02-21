@@ -192,6 +192,8 @@
 		E3BFF7B22742616400B830DE /* WriteTextScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BFF7B02742616400B830DE /* WriteTextScreen.swift */; };
 		E3BFF7B527428F5200B830DE /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BFF7B327428F5200B830DE /* WelcomeScreen.swift */; };
 		E3BFF7B82742A79100B830DE /* AppIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BFF7B62742A79100B830DE /* AppIcon.swift */; };
+		E3C1DD2129A55C2600F63F45 /* OpenURLsWithApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39DC11A29A54E27004F4FB8 /* OpenURLsWithApp.swift */; };
+		E3C1DD2229A55C2700F63F45 /* OpenURLsWithApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39DC11A29A54E27004F4FB8 /* OpenURLsWithApp.swift */; };
 		E3C33CDC28D48C3200386C59 /* GetRunningApps.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C33CDA28D48C3200386C59 /* GetRunningApps.swift */; };
 		E3CB448B28D71A180031D55F /* IsScreenLocked.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CB448A28D71A180031D55F /* IsScreenLocked.swift */; };
 		E3CB449228D7803C0031D55F /* ParseJSON5.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CB449128D7803C0031D55F /* ParseJSON5.swift */; };
@@ -287,6 +289,7 @@
 		E376FD84295287E500C0F81F /* GetPrinters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPrinters.swift; sourceTree = "<group>"; };
 		E376FD862952937200C0F81F /* GetDefaultPrinter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDefaultPrinter.swift; sourceTree = "<group>"; };
 		E376FD882952946400C0F81F /* SetDefaultPrinter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDefaultPrinter.swift; sourceTree = "<group>"; };
+		E39DC11A29A54E27004F4FB8 /* OpenURLsWithApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OpenURLsWithApp.swift; path = "Intents Extension/Actions/OpenURLsWithApp.swift"; sourceTree = SOURCE_ROOT; };
 		E39F4776272D516E00B99CB0 /* Actions.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Actions.entitlements; sourceTree = "<group>"; };
 		E3A85FE428E94E7300F423F1 /* FormatPersonName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatPersonName.swift; sourceTree = "<group>"; };
 		E3B1C3C328F5D68D009BE0B7 /* GetIndexOfListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetIndexOfListItem.swift; sourceTree = "<group>"; };
@@ -514,6 +517,7 @@
 				E31DE7E928D5DE0C00DE79EF /* IsSilentModeOn.swift */,
 				E31DE7F528D5E50400DE79EF /* IsWebServerReachable.swift */,
 				E31DE7F728D5E94500DE79EF /* IsWiFiOn.swift */,
+				E39DC11A29A54E27004F4FB8 /* OpenURLsWithApp.swift */,
 				E3D514C528EEA6B9003F7C2E /* PlayAlertSound.swift */,
 				E3CB448F28D77E840031D55F /* PrettyPrintDictionaries.swift */,
 				E3EC2DE328D25CF300A88E25 /* RemoveDuplicateLines.swift */,
@@ -775,6 +779,7 @@
 				E31748A92916A0B200F6319E /* Main.swift in Sources */,
 				E31749512916A20C00F6319E /* TransformLists.swift in Sources */,
 				E31749172916A20C00F6319E /* GetUserDetails.swift in Sources */,
+				E3C1DD2129A55C2600F63F45 /* OpenURLsWithApp.swift in Sources */,
 				E317494D2916A20C00F6319E /* GetRandomEmoticon.swift in Sources */,
 				E31749092916A20C00F6319E /* IsOnline.swift in Sources */,
 				E31749232916A20C00F6319E /* GetBatteryState.swift in Sources */,
@@ -861,6 +866,7 @@
 				E31749A52916A64100F6319E /* FormatNumberCompact.swift in Sources */,
 				E31749B62916A64100F6319E /* ConvertCoordinatesToLocation.swift in Sources */,
 				E31749732916A64100F6319E /* FormatPersonName.swift in Sources */,
+				E3C1DD2229A55C2700F63F45 /* OpenURLsWithApp.swift in Sources */,
 				E31749772916A64100F6319E /* RemoveNonPrintableCharacters.swift in Sources */,
 				E31749A72916A64100F6319E /* IsCellularDataOn.swift in Sources */,
 				E31749BB2916A64100F6319E /* GetQueryItemsFromURLAsDictionary.swift in Sources */,

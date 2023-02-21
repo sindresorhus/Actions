@@ -7,7 +7,6 @@ TODO:
 
 @main
 struct AppMain: App {
-	@XApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
 	@StateObject private var appState = AppState.shared
 
 	init() {
@@ -15,7 +14,7 @@ struct AppMain: App {
 	}
 
 	var body: some Scene {
-		WindowGroup {
+		WindowIfMacOS(Text(SSApp.name), id: "main") {
 			MainScreen()
 				.environmentObject(appState)
 		}
@@ -38,11 +37,4 @@ struct AppMain: App {
 			}
 			#endif
 	}
-}
-
-@MainActor
-final class AppDelegate: NSObject, XApplicationDelegate {
-	#if canImport(AppKit)
-	func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool { true }
-	#endif
 }
