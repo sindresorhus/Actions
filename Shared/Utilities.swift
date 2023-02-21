@@ -5365,7 +5365,7 @@ extension NWPathMonitor {
 	Observe network changes for a specific interface type.
 	*/
 	static func changes(requiredInterfaceType: NWInterface.InterfaceType) -> AsyncStream<NWPath> {
-		AsyncStream { continuation in
+		.init { continuation in
 			let monitor = NWPathMonitor(requiredInterfaceType: requiredInterfaceType)
 
 			monitor.pathUpdateHandler = {
@@ -5377,6 +5377,47 @@ extension NWPathMonitor {
 			continuation.onTermination = { [monitor] _ in
 				monitor.cancel()
 			}
+		}
+	}
+}
+
+
+extension NWConnection {
+	struct TimeoutError: Error {}
+
+	/**
+	Connect to the endpoint and wait for the connection to be established.
+	*/
+	func connect(timeout: Duration? = nil) async throws {
+		try await withTaskCancellationHandler {
+			try await withCheckedThrowingContinuation { continuation in
+				stateUpdateHandler = {
+					switch $0 {
+					case .setup, .preparing:
+						break
+					case .ready:
+						continuation.resume()
+					case .waiting(let error), .failed(let error):
+						continuation.resume(throwing: error)
+					case .cancelled:
+						continuation.resume(throwing: CancellationError())
+					@unknown default:
+						assertionFailure("Unhandled enum case.")
+						continuation.resume(throwing: CancellationError())
+					}
+				}
+
+				if let timeout {
+					Task {
+						try? await Task.sleep(for: timeout)
+						continuation.resume(throwing: TimeoutError())
+					}
+				}
+
+				start(queue: .global())
+			}
+		} onCancel: {
+			cancel()
 		}
 	}
 }

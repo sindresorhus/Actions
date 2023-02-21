@@ -7,18 +7,18 @@ struct IsReachable: AppIntent, CustomIntentMigratedAppIntent {
 
 	static let description = IntentDescription(
 """
-Returns whether the web server at the given host is reachable.
+Returns whether the web server at the given host or URL is reachable.
 
 Use the “Is Online” action if you just want to check whether your computer is online.
 
-Use the "Is Host Reachable" action if your want to check reachability with a host that is not a web server.
+Use the "Is Host Reachable" action if you want to check reachability with a host that is not a web server.
 """,
 		categoryName: "Device"
 	)
 
 	@Parameter(
 		title: "Host",
-		description: "A domain like “google.com”, a URL like “https://google.com”, or an IP address.",
+		description: "A domain (sindresorhus.com), URL (https://sindresorhus.com/actions), or IP address (172.67.135.124).",
 		inputOptions: String.IntentInputOptions(
 			keyboardType: .URL,
 			capitalizationType: .none,

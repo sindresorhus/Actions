@@ -101,6 +101,7 @@ And trigger shortcuts on your Mac from your iOS device with my [Hyperduck](https
 - Is Connected to VPN <sup>(iOS-only)</sup>
 - Is Dark Mode On
 - Is Device Orientation
+- Is Host Reachable
 - Is Low Power Mode On
 - Is Online
 - Is Screen Locked <sup>(macOS-only)</sup>
