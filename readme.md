@@ -93,6 +93,7 @@ And trigger shortcuts on your Mac from your iOS device with my [Hyperduck](https
 - Get Uniform Type Identifier
 - Get Unsplash Image
 - Get User Details
+- Global Variable
 - Hex Encode
 - Hide Shortcuts App
 - Is Audio Playing <sup>(iOS-only)</sup>

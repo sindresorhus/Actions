@@ -325,7 +325,7 @@ extension SSApp {
 			breadcrumb.data = data
 		}
 
-		SentrySDK.addBreadcrumb(crumb: breadcrumb)
+		SentrySDK.addBreadcrumb(breadcrumb)
 		#endif
 	}
 }
@@ -5847,5 +5847,98 @@ extension Double {
 	var timeIntervalToDuration: Duration {
 		let (whole, fraction) = components
 		return .init(secondsComponent: .init(whole), attosecondsComponent: .init(fraction))
+	}
+}
+
+
+extension NSUbiquitousKeyValueStore {
+	/**
+	Strictly ensures the value is a boolean and not a number.
+
+	`NSUbiquitousKeyValueStore` is pretty loose about types.
+	*/
+	@nonobjc
+	func strictBool(forKey key: String) -> Bool? { // swiftlint:disable:this discouraged_optional_boolean
+		guard
+			let nsNumber = object(forKey: key) as? NSNumber,
+			nsNumber.isBool
+		else {
+			return nil
+		}
+
+		return nsNumber.boolValue
+	}
+
+	/**
+	Strictly ensures the value is a double and not an integer or bool.
+	*/
+	@nonobjc
+	func strictDouble(forKey key: String) -> Double? {
+		guard
+			let nsNumber = object(forKey: key) as? NSNumber,
+			nsNumber.isFloat,
+			!nsNumber.isBool
+		else {
+			return nil
+		}
+
+		return nsNumber.doubleValue
+	}
+
+	/**
+	Strictly ensures the value is an integer and not a double or bool.
+	*/
+	@nonobjc
+	func strictInt(forKey key: String) -> Int? {
+		guard
+			let nsNumber = object(forKey: key) as? NSNumber,
+			!nsNumber.isFloat,
+			!nsNumber.isBool
+		else {
+			return nil
+		}
+
+		return nsNumber.intValue
+	}
+
+	/**
+	Strictly ensures the value is a number and not a bool, but does not care whether the underlying type is a float or integer.
+	*/
+	@nonobjc
+	func strictNumber(forKey key: String) -> Double? {
+		guard
+			let nsNumber = object(forKey: key) as? NSNumber,
+			!nsNumber.isBool
+		else {
+			return nil
+		}
+
+		return nsNumber.doubleValue
+	}
+}
+
+
+extension NSNumber {
+	/**
+	Whether the underlying number is a boolean.
+	*/
+	@nonobjc
+	var isBool: Bool { CFGetTypeID(self) == CFBooleanGetTypeID() }
+
+	/**
+	Whether the underlying number is a float.
+	*/
+	@nonobjc
+	var isFloat: Bool {
+		guard !isBool else {
+			return false
+		}
+
+		switch CFNumberGetType(self) {
+		case .doubleType, .float32Type, .float64Type, .floatType, .cgFloatType:
+			return true
+		default:
+			return false
+		}
 	}
 }

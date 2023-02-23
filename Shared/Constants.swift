@@ -26,5 +26,6 @@ Intent categories:
 - Math
 - Location
 - Meta
+- Global Variable
 - Miscellaneous
 */
