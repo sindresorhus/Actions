@@ -9,7 +9,7 @@ Sets a global variable with the given text.
 
 Tip: You can store a dictionary of string/boolean/number values by passing it in as a variable. To get the persisted dictionary back, pass the output of the “Global Variables: Get Text” action to the “Get Dictionary from Input” action.
 
-Global variables persist across your shortcuts and devices, with a limit of 1000 variables and a total storage capacity of 1 MB. Avoid using this for large amounts of data.
+Global variables persist across your shortcuts and devices, with a limit of 1000 variables and a total storage capacity of 1 MB. Avoid using this for large amounts of data. For large data, use iCloud Drive, Notes, or Data Jar.
 """,
 		categoryName: "Global Variable"
 	)
@@ -80,7 +80,7 @@ struct GlobalVariableSetBoolean: AppIntent {
 """
 Sets a global variable with the given boolean.
 
-Global variables persist across your shortcuts and devices, with a limit of 1000 variables and a total storage capacity of 1 MB. Avoid using this for large amounts of data.
+Global variables persist across your shortcuts and devices, with a limit of 1000 variables and a total storage capacity of 1 MB. Avoid using this for large amounts of data. For large data, use iCloud Drive, Notes, or Data Jar.
 """,
 		categoryName: "Global Variable"
 	)
@@ -158,7 +158,7 @@ struct GlobalVariableSetNumber: AppIntent {
 """
 Sets a global variable with the given number.
 
-Global variables persist across your shortcuts and devices, with a limit of 1000 variables and a total storage capacity of 1 MB. Avoid using this for large amounts of data.
+Global variables persist across your shortcuts and devices, with a limit of 1000 variables and a total storage capacity of 1 MB. Avoid using this for large amounts of data. For large data, use iCloud Drive, Notes, or Data Jar.
 """,
 		categoryName: "Global Variable"
 	)

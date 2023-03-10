@@ -10,6 +10,8 @@ struct RemoveFromList: AppIntent, CustomIntentMigratedAppIntent {
 Removes items from the input list.
 
 It uses 1-based indexing.
+
+Note: If you get the error “The operation failed because Shortcuts couldn't convert from Text to NSString.”, just change the preview to show a list view instead. This is a bug in the Shortcuts app.
 """,
 		categoryName: "List"
 	)

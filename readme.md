@@ -23,6 +23,8 @@ Want to run shortcuts directly from the iOS Lock Screen? Check out my [Quick Lau
 
 And trigger shortcuts on your Mac from your iOS device with my [Hyperduck](https://sindresorhus.com/hyperduck#shortcuts) app.
 
+And for high-quality transcription, see my [Aiko](https://sindresorhus.com/aiko) app.
+
 ---
 
 ## Download
@@ -144,6 +146,7 @@ And trigger shortcuts on your Mac from your iOS device with my [Hyperduck](https
 
 #### Want more shortcut actions?
 
+- High-quality transcription (speech to text) in 100 languages → [Aiko](https://sindresorhus.com/aiko)
 - Trigger shortcuts on your Mac from your iOS device → [Hyperduck](https://sindresorhus.com/hyperduck#shortcuts)
 - Show text in menu bar → [One Thing](https://sindresorhus.com/one-thing)
 - Open URLs in a specific browser → [Velja](https://sindresorhus.com/velja)
@@ -163,11 +166,15 @@ And trigger shortcuts on your Mac from your iOS device with my [Hyperduck](https
 
 A special version for users that cannot access the App Store. It won't receive updates.
 
-[Download](https://dsc.cloud/sindresorhus/Actions-1.13.1-1661934485) *(1.13.1)*
+[Download](https://dsc.cloud/sindresorhus/Actions-2.3.1-1678525767.zip) *(2.3.1)*
 
-*Requires macOS 12 or later*
+*Requires macOS 13 or later*
 
 ## FAQ
+
+#### The actions don't show up in the Shortcuts app
+
+Restart your device.
 
 #### Why is this free without ads?
 

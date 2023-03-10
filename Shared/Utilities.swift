@@ -5373,6 +5373,44 @@ extension AsyncSequence {
 }
 
 
+struct TimeoutError: Error, Equatable {}
+
+func withTimeout<T: Sendable>(
+	_ timeout: Duration?,
+	operation: @Sendable () async throws -> T
+) async throws -> T {
+	guard let timeout else {
+		return try await operation()
+	}
+
+	return try await withoutActuallyEscaping(operation) { escapableOperation in
+		try await withThrowingTaskGroup(of: T.self) { group in
+			let deadline = Date(timeIntervalSinceNow: timeout.toTimeInterval)
+
+			group.addTask {
+				try await escapableOperation()
+			}
+
+			group.addTask {
+				let interval = deadline.timeIntervalSinceNow
+				if interval > 0 {
+					try await Task.sleep(for: interval.timeIntervalToDuration)
+				}
+
+				try Task.checkCancellation()
+				throw TimeoutError()
+			}
+
+			let result = try await group.next()!
+
+			group.cancelAll()
+
+			return result
+		}
+	}
+}
+
+
 extension NWPathMonitor {
 	/**
 	Observe network changes for a specific interface type.
@@ -5396,41 +5434,42 @@ extension NWPathMonitor {
 
 
 extension NWConnection {
-	struct TimeoutError: Error {}
-
 	/**
 	Connect to the endpoint and wait for the connection to be established.
 	*/
 	func connect(timeout: Duration? = nil) async throws {
-		try await withTaskCancellationHandler {
-			try await withCheckedThrowingContinuation { continuation in
-				stateUpdateHandler = {
-					switch $0 {
-					case .setup, .preparing:
-						break
-					case .ready:
-						continuation.resume()
-					case .waiting(let error), .failed(let error):
-						continuation.resume(throwing: error)
-					case .cancelled:
-						continuation.resume(throwing: CancellationError())
-					@unknown default:
-						assertionFailure("Unhandled enum case.")
-						continuation.resume(throwing: CancellationError())
-					}
-				}
+		try await withTimeout(timeout) {
+			try await withTaskCancellationHandler {
+				try await withCheckedThrowingContinuation { continuation in
+					stateUpdateHandler = { [weak self] in
+						guard let self else {
+							return
+						}
 
-				if let timeout {
-					Task {
-						try? await Task.sleep(for: timeout)
-						continuation.resume(throwing: TimeoutError())
+						switch $0 {
+						case .setup, .preparing:
+							break
+						case .ready:
+							self.stateUpdateHandler = nil
+							continuation.resume()
+						case .waiting(let error), .failed(let error):
+							self.stateUpdateHandler = nil
+							continuation.resume(throwing: error)
+						case .cancelled:
+							self.stateUpdateHandler = nil
+							continuation.resume(throwing: CancellationError())
+						@unknown default:
+							assertionFailure("Unhandled enum case.")
+							self.stateUpdateHandler = nil
+							continuation.resume(throwing: CancellationError())
+						}
 					}
-				}
 
-				start(queue: .global())
+					start(queue: .global())
+				}
+			} onCancel: {
+				cancel()
 			}
-		} onCancel: {
-			cancel()
 		}
 	}
 }
