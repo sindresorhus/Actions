@@ -30,19 +30,38 @@ For example, use it together with the built-in “Set Wallpaper” action.
 	var sizeHeight: Int?
 
 	static var parameterSummary: some ParameterSummary {
-		When(\.$size, .equalTo, .custom) {
-			Summary("Get Unsplash image") {
-				\.$keywords
-				\.$onlyFeaturedImages
-				\.$size
-				\.$sizeWidth
-				\.$sizeHeight
+		// This fails on Xcode 14.3
+//		When(\.$size, .equalTo, .custom) {
+//			Summary("Get Unsplash image") {
+//				\.$keywords
+//				\.$onlyFeaturedImages
+//				\.$size
+//				\.$sizeWidth
+//				\.$sizeHeight
+//			}
+//		} otherwise: {
+//			Summary("Get Unsplash image") {
+//				\.$keywords
+//				\.$onlyFeaturedImages
+//				\.$size
+//			}
+//		}
+		Switch(\.$size) {
+			Case(.custom) {
+				Summary("Get Unsplash image") {
+					\.$keywords
+					\.$onlyFeaturedImages
+					\.$size
+					\.$sizeWidth
+					\.$sizeHeight
+				}
 			}
-		} otherwise: {
-			Summary("Get Unsplash image") {
-				\.$keywords
-				\.$onlyFeaturedImages
-				\.$size
+			DefaultCase {
+				Summary("Get Unsplash image") {
+					\.$keywords
+					\.$onlyFeaturedImages
+					\.$size
+				}
 			}
 		}
 	}

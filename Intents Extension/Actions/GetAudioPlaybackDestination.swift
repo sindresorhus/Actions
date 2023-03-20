@@ -16,7 +16,10 @@ Can be useful in combination with the built-in “Set Playback Destination” ac
 
 Known limitation: It will not be able to detect when the output is an AirPlay device because of a iOS bug.
 """,
-		categoryName: "Device"
+		categoryName: "Device",
+		searchKeywords: [
+			"output"
+		]
 	)
 
 	static var parameterSummary: some ParameterSummary {

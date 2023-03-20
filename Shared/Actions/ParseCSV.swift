@@ -39,16 +39,32 @@ struct ParseCSV: AppIntent, CustomIntentMigratedAppIntent {
 	var customDelimiter: String?
 
 	static var parameterSummary: some ParameterSummary {
-		When(\.$delimiter, .equalTo, .custom) {
-			Summary("Parse \(\.$file)") {
-				\.$delimiter
-				\.$hasHeader
-				\.$customDelimiter
+		// This fails on Xcode 14.3
+//		When(\.$delimiter, .equalTo, .custom) {
+//			Summary("Parse \(\.$file)") {
+//				\.$delimiter
+//				\.$hasHeader
+//				\.$customDelimiter
+//			}
+//		} otherwise: {
+//			Summary("Parse \(\.$file)") {
+//				\.$hasHeader
+//				\.$delimiter
+//			}
+//		}
+		Switch(\.$delimiter) {
+			Case(.custom) {
+				Summary("Parse \(\.$file)") {
+					\.$delimiter
+					\.$hasHeader
+					\.$customDelimiter
+				}
 			}
-		} otherwise: {
-			Summary("Parse \(\.$file)") {
-				\.$hasHeader
-				\.$delimiter
+			DefaultCase {
+				Summary("Parse \(\.$file)") {
+					\.$hasHeader
+					\.$delimiter
+				}
 			}
 		}
 	}

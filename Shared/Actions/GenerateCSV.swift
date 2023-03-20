@@ -42,16 +42,32 @@ The dictionaries must have the same shape.
 	var customDelimiter: String?
 
 	static var parameterSummary: some ParameterSummary {
-		When(\.$delimiter, .equalTo, .custom) {
-			Summary("Generate CSV from \(\.$dictionaries)") {
-				\.$delimiter
-				\.$customDelimiter
-				\.$keys
+		// This fails on Xcode 14.3
+//		When(\.$delimiter, .equalTo, .custom) {
+//			Summary("Generate CSV from \(\.$dictionaries)") {
+//				\.$delimiter
+//				\.$customDelimiter
+//				\.$keys
+//			}
+//		} otherwise: {
+//			Summary("Generate CSV from \(\.$dictionaries)") {
+//				\.$delimiter
+//				\.$keys
+//			}
+//		}
+		Switch(\.$delimiter) {
+			Case(.custom) {
+				Summary("Generate CSV from \(\.$dictionaries)") {
+					\.$delimiter
+					\.$customDelimiter
+					\.$keys
+				}
 			}
-		} otherwise: {
-			Summary("Generate CSV from \(\.$dictionaries)") {
-				\.$delimiter
-				\.$keys
+			DefaultCase {
+				Summary("Generate CSV from \(\.$dictionaries)") {
+					\.$delimiter
+					\.$keys
+				}
 			}
 		}
 	}

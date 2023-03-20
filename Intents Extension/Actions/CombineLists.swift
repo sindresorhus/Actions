@@ -21,6 +21,7 @@ Note: If you get the error “The operation failed because Shortcuts couldn't co
 	@Parameter(title: "List 1", supportedTypeIdentifiers: ["public.item"])
 	var list1: [IntentFile]
 
+	// swiftlint:disable discouraged_optional_collection
 	@Parameter(title: "List 2", supportedTypeIdentifiers: ["public.item"])
 	var list2: [IntentFile]?
 
@@ -47,6 +48,7 @@ Note: If you get the error “The operation failed because Shortcuts couldn't co
 
 	@Parameter(title: "List 10", supportedTypeIdentifiers: ["public.item"])
 	var list10: [IntentFile]?
+	// swiftlint:enable discouraged_optional_collection
 
 	static var parameterSummary: some ParameterSummary {
 		Summary("Combine \(\.$list1) with \(\.$list2)") {

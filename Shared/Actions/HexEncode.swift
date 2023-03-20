@@ -42,10 +42,19 @@ Note: Use Base64 encoding whenever possible as it's more space efficient.
 	var decodeContentType: String?
 
 	static var parameterSummary: some ParameterSummary {
-		When(\.$action, .equalTo, .encode) {
-			Summary("\(\.$action) \(\.$input) to Hex")
-		} otherwise: {
-			Summary("\(\.$action) \(\.$input) from Hex to \(\.$decodeContentType)")
+		// This fails on Xcode 14.3
+//		When(\.$action, .equalTo, .encode) {
+//			Summary("\(\.$action) \(\.$input) to Hex")
+//		} otherwise: {
+//			Summary("\(\.$action) \(\.$input) from Hex to \(\.$decodeContentType)")
+//		}
+		Switch(\.$action) {
+			Case(.encode) {
+				Summary("\(\.$action) \(\.$input) to Hex")
+			}
+			DefaultCase {
+				Summary("\(\.$action) \(\.$input) from Hex to \(\.$decodeContentType)")
+			}
 		}
 	}
 

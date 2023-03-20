@@ -130,8 +130,10 @@ struct ChooseFromListScreen: View {
 						return
 					}
 
-					try? await Task.sleep(for: timeout)
-					timeoutAction()
+					do {
+						try await Task.sleep(for: timeout)
+						timeoutAction()
+					} catch {}
 				}
 		}
 	}

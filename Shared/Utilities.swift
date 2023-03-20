@@ -1216,7 +1216,7 @@ extension UIImage {
 		scale: Double
 	) -> UIImage {
 		let format = UIGraphicsImageRendererFormat()
-		format.opaque = true
+		format.opaque = color.alphaComponent == 1
 		format.scale = scale
 
 		return UIGraphicsImageRenderer(size: size, format: format).image { rendererContext in
@@ -4422,7 +4422,7 @@ extension Binding {
 
 
 extension Binding where Value: SetAlgebra, Value.Element: Hashable {
-	func contains<T>(_ element: T) -> Binding<Bool> where T == Value.Element {
+	func contains(_ element: Value.Element) -> Binding<Bool> {
 		.init(
 			get: { wrappedValue.contains(element) },
 			set: {
@@ -5251,7 +5251,7 @@ extension View {
 //}
 
 
-extension Array<XImage> {
+extension [XImage] {
 	func createPDF() -> Data? {
 		let pdfDocument = PDFDocument()
 
@@ -5450,17 +5450,17 @@ extension NWConnection {
 						case .setup, .preparing:
 							break
 						case .ready:
-							self.stateUpdateHandler = nil
+							stateUpdateHandler = nil
 							continuation.resume()
 						case .waiting(let error), .failed(let error):
-							self.stateUpdateHandler = nil
+							stateUpdateHandler = nil
 							continuation.resume(throwing: error)
 						case .cancelled:
-							self.stateUpdateHandler = nil
+							stateUpdateHandler = nil
 							continuation.resume(throwing: CancellationError())
 						@unknown default:
 							assertionFailure("Unhandled enum case.")
-							self.stateUpdateHandler = nil
+							stateUpdateHandler = nil
 							continuation.resume(throwing: CancellationError())
 						}
 					}
@@ -5733,8 +5733,8 @@ extension CFArray {
 	func toArray<T>(ofType: T.Type) -> [T] {
 		(0..<CFArrayGetCount(self)).map {
 			unsafeBitCast(
-			   CFArrayGetValueAtIndex(self, $0),
-			   to: T.self
+				CFArrayGetValueAtIndex(self, $0),
+				to: T.self
 			)
 		}
 	}
@@ -5874,19 +5874,8 @@ extension Duration {
 	var toTimeInterval: TimeInterval { self.in(.seconds) }
 }
 
-
-extension FloatingPoint {
-	/**
-	Splits the number into the whole number and its fraction.
-	*/
-	var components: (whole: Self, fraction: Self) { modf(self) }
-}
-
 extension Double {
-	var timeIntervalToDuration: Duration {
-		let (whole, fraction) = components
-		return .init(secondsComponent: .init(whole), attosecondsComponent: .init(fraction))
-	}
+	var timeIntervalToDuration: Duration { .seconds(self) }
 }
 
 
