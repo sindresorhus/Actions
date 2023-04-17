@@ -9,7 +9,7 @@ Removes the fractional part of the given number.
 
 Example: 3.4 => 3
 """,
-		categoryName: "Text",
+		categoryName: "Number",
 		searchKeywords: [
 			"decimal",
 			"fraction",

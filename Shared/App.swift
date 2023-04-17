@@ -3,6 +3,9 @@ import SwiftUI
 /*
 TODO:
 - Use `Window` for the WriteTextScreen and other UI on macOS.
+
+NOTES:
+- GetUnsplashImage and GetTitleOfURL are temporarily moved into the app target to work around: https://github.com/sindresorhus/Actions/issues/119
 */
 
 @main

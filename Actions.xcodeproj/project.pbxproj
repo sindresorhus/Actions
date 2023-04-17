@@ -25,7 +25,6 @@
 		E317490E2916A20C00F6319E /* ShuffleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC2DC128D20D0400A88E25 /* ShuffleList.swift */; };
 		E317490F2916A20C00F6319E /* ApplyCaptureDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C33C9128D3569F00386C59 /* ApplyCaptureDate.swift */; };
 		E31749102916A20C00F6319E /* GetFilePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC2DD928D246BC00A88E25 /* GetFilePath.swift */; };
-		E31749112916A20C00F6319E /* GetTitleOfURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C33CB128D43C7500386C59 /* GetTitleOfURL.swift */; };
 		E31749122916A20C00F6319E /* RemoveEmptyLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC2DC928D22B6F00A88E25 /* RemoveEmptyLines.swift */; };
 		E31749132916A20C00F6319E /* TrimWhitespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC2DB728D1F76100A88E25 /* TrimWhitespace.swift */; };
 		E31749152916A20C00F6319E /* GetIndexOfListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B1C3C328F5D68D009BE0B7 /* GetIndexOfListItem.swift */; };
@@ -46,7 +45,6 @@
 		E31749242916A20C00F6319E /* CalculateWithSoulver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D514C928EEAAEC003F7C2E /* CalculateWithSoulver.swift */; };
 		E31749252916A20C00F6319E /* ConvertUnixTimeToDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC2DDF28D253D600A88E25 /* ConvertUnixTimeToDate.swift */; };
 		E31749262916A20C00F6319E /* ConvertDateToUnixTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC2DDD28D24CD900A88E25 /* ConvertDateToUnixTime.swift */; };
-		E31749272916A20C00F6319E /* GetUnsplashImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CB44A328D7972B0031D55F /* GetUnsplashImage.swift */; };
 		E31749282916A20C00F6319E /* IsCellularDataOn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351082E28FD099B007C85AE /* IsCellularDataOn.swift */; };
 		E31749292916A20C00F6319E /* ReverseLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = E352420528F6CAAD00A957A7 /* ReverseLines.swift */; };
 		E317492A2916A20C00F6319E /* GetQueryItemValueFromURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31DE80528D61E4500DE79EF /* GetQueryItemValueFromURL.swift */; };
@@ -136,7 +134,6 @@
 		E317499D2916A64100F6319E /* FormatDateDifference.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC2DD728D244B200A88E25 /* FormatDateDifference.swift */; };
 		E317499E2916A64100F6319E /* GetFilePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC2DD928D246BC00A88E25 /* GetFilePath.swift */; };
 		E317499F2916A64100F6319E /* GetUserDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C33CAB28D3A96700386C59 /* GetUserDetails.swift */; };
-		E31749A02916A64100F6319E /* GetTitleOfURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C33CB128D43C7500386C59 /* GetTitleOfURL.swift */; };
 		E31749A12916A64100F6319E /* IsOnline.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31DE7F128D5E30C00DE79EF /* IsOnline.swift */; };
 		E31749A22916A64100F6319E /* GetRandomInstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC2DB928D1F8B500A88E25 /* GetRandomInstant.swift */; };
 		E31749A32916A64100F6319E /* GetUniformTypeIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC2DD528D2430100A88E25 /* GetUniformTypeIdentifier.swift */; };
@@ -154,7 +151,6 @@
 		E31749B02916A64100F6319E /* CombineLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C33C9728D35D7400386C59 /* CombineLists.swift */; };
 		E31749B22916A64100F6319E /* GenerateUUID.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC2DAF28D1EA6B00A88E25 /* GenerateUUID.swift */; };
 		E31749B32916A64100F6319E /* RemoveDuplicateLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC2DE328D25CF300A88E25 /* RemoveDuplicateLines.swift */; };
-		E31749B42916A64100F6319E /* GetUnsplashImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CB44A328D7972B0031D55F /* GetUnsplashImage.swift */; };
 		E31749B52916A64100F6319E /* SetFileCreationModificationDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C33C9328D35B9C00386C59 /* SetFileCreationModificationDate.swift */; };
 		E31749B62916A64100F6319E /* ConvertCoordinatesToLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34AB51728F5AA170082AE78 /* ConvertCoordinatesToLocation.swift */; };
 		E31749B72916A64100F6319E /* TrimWhitespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC2DB728D1F76100A88E25 /* TrimWhitespace.swift */; };
@@ -191,6 +187,8 @@
 		E39DC11629A5460C004F4FB8 /* IsHostReachable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D0655D29A51E160059A16E /* IsHostReachable.swift */; };
 		E3B8FD1629ED376F001249CF /* TruncateNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B8FD1529ED376F001249CF /* TruncateNumber.swift */; };
 		E3B8FD1729ED376F001249CF /* TruncateNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B8FD1529ED376F001249CF /* TruncateNumber.swift */; };
+		E3B8FD1829ED42DA001249CF /* GetUnsplashImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CB44A328D7972B0031D55F /* GetUnsplashImage.swift */; };
+		E3B8FD1929ED4305001249CF /* GetTitleOfURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C33CB128D43C7500386C59 /* GetTitleOfURL.swift */; };
 		E3BFF7B22742616400B830DE /* WriteTextScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BFF7B02742616400B830DE /* WriteTextScreen.swift */; };
 		E3BFF7B527428F5200B830DE /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BFF7B327428F5200B830DE /* WelcomeScreen.swift */; };
 		E3BFF7B82742A79100B830DE /* AppIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BFF7B62742A79100B830DE /* AppIcon.swift */; };
@@ -797,7 +795,6 @@
 				E31748B52916A12800F6319E /* Utilities.swift in Sources */,
 				E31749252916A20C00F6319E /* ConvertUnixTimeToDate.swift in Sources */,
 				E317492A2916A20C00F6319E /* GetQueryItemValueFromURL.swift in Sources */,
-				E31749272916A20C00F6319E /* GetUnsplashImage.swift in Sources */,
 				E31749342916A20C00F6319E /* EditURL.swift in Sources */,
 				E317494F2916A20C00F6319E /* ReverseList.swift in Sources */,
 				E31749132916A20C00F6319E /* TrimWhitespace.swift in Sources */,
@@ -805,7 +802,6 @@
 				E317491B2916A20C00F6319E /* RemoveNonPrintableCharacters.swift in Sources */,
 				E31749212916A20C00F6319E /* SampleColor.swift in Sources */,
 				E31749302916A20C00F6319E /* GetFileIcon.swift in Sources */,
-				E31749112916A20C00F6319E /* GetTitleOfURL.swift in Sources */,
 				E317493C2916A20C00F6319E /* GetRandomInstant.swift in Sources */,
 				E30E56132922602B00C44823 /* GetRandomNumberFromSeed.swift in Sources */,
 				E317492B2916A20C00F6319E /* GetRelatedWords.swift in Sources */,
@@ -855,7 +851,6 @@
 			files = (
 				E31749812916A64100F6319E /* ReverseLines.swift in Sources */,
 				E31749782916A64100F6319E /* GetRandomBoolean.swift in Sources */,
-				E31749B42916A64100F6319E /* GetUnsplashImage.swift in Sources */,
 				E31749AE2916A64100F6319E /* FormatDuration.swift in Sources */,
 				E31749AA2916A64100F6319E /* PrettyPrintDictionaries.swift in Sources */,
 				E317497A2916A64100F6319E /* IsAudioPlaying.swift in Sources */,
@@ -902,7 +897,6 @@
 				E31749B92916A64100F6319E /* CreateURL.swift in Sources */,
 				E31749982916A64100F6319E /* CalculateWithSoulver.swift in Sources */,
 				E317498A2916A64100F6319E /* ReverseList.swift in Sources */,
-				E31749A02916A64100F6319E /* GetTitleOfURL.swift in Sources */,
 				E31749BD2916A64100F6319E /* GetIndexOfListItem.swift in Sources */,
 				E31749B02916A64100F6319E /* CombineLists.swift in Sources */,
 				E31749942916A64100F6319E /* SpellOutNumber.swift in Sources */,
@@ -965,6 +959,8 @@
 				E3CB44A828D79EF90031D55F /* ScanQRCodesInImage.swift in Sources */,
 				E303EED329529D0B007BE918 /* GetDefaultPrinter.swift in Sources */,
 				E3DB885228E6EFBB00FEE8D6 /* ScanDocuments.swift in Sources */,
+				E3B8FD1929ED4305001249CF /* GetTitleOfURL.swift in Sources */,
+				E3B8FD1829ED42DA001249CF /* GetUnsplashImage.swift in Sources */,
 				E38035CB29278B1700D29A07 /* MergeDictionaries.swift in Sources */,
 				E343F9B829713AFF00AD82F4 /* GetMapImageOfLocation.swift in Sources */,
 				E303EED429529D14007BE918 /* GetPrinters.swift in Sources */,
@@ -1382,7 +1378,7 @@
 			repositoryURL = "https://github.com/soulverteam/SoulverCore";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.2.11;
+				minimumVersion = 2.3.1;
 			};
 		};
 		E32B4F3227FD77700057F08D /* XCRemoteSwiftPackageReference "ExceptionCatcher" */ = {
@@ -1398,7 +1394,7 @@
 			repositoryURL = "https://github.com/getsentry/sentry-cocoa";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 8.3.0;
+				minimumVersion = 8.4.0;
 			};
 		};
 		E337A3E227E8B66D0073E865 /* XCRemoteSwiftPackageReference "FuzzyFind" */ = {
