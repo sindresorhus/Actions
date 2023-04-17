@@ -141,6 +141,7 @@ And for high-quality transcription, see my [Aiko](https://sindresorhus.com/aiko)
 - Transform Text with JavaScript
 - Trim Whitespace
 - Truncate List
+- Truncate Number
 - Truncate Text
 - Write or Edit Text
 

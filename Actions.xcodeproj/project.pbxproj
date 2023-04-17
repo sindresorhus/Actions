@@ -189,6 +189,8 @@
 		E3963A5A292CAF9F00210AC2 /* RemoveDuplicatesFromList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC2DC328D215A100A88E25 /* RemoveDuplicatesFromList.swift */; };
 		E39DC11529A5460B004F4FB8 /* IsHostReachable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D0655D29A51E160059A16E /* IsHostReachable.swift */; };
 		E39DC11629A5460C004F4FB8 /* IsHostReachable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D0655D29A51E160059A16E /* IsHostReachable.swift */; };
+		E3B8FD1629ED376F001249CF /* TruncateNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B8FD1529ED376F001249CF /* TruncateNumber.swift */; };
+		E3B8FD1729ED376F001249CF /* TruncateNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B8FD1529ED376F001249CF /* TruncateNumber.swift */; };
 		E3BFF7B22742616400B830DE /* WriteTextScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BFF7B02742616400B830DE /* WriteTextScreen.swift */; };
 		E3BFF7B527428F5200B830DE /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BFF7B327428F5200B830DE /* WelcomeScreen.swift */; };
 		E3BFF7B82742A79100B830DE /* AppIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BFF7B62742A79100B830DE /* AppIcon.swift */; };
@@ -294,6 +296,7 @@
 		E39F4776272D516E00B99CB0 /* Actions.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Actions.entitlements; sourceTree = "<group>"; };
 		E3A85FE428E94E7300F423F1 /* FormatPersonName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatPersonName.swift; sourceTree = "<group>"; };
 		E3B1C3C328F5D68D009BE0B7 /* GetIndexOfListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetIndexOfListItem.swift; sourceTree = "<group>"; };
+		E3B8FD1529ED376F001249CF /* TruncateNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TruncateNumber.swift; sourceTree = "<group>"; };
 		E3BFF7B02742616400B830DE /* WriteTextScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteTextScreen.swift; sourceTree = "<group>"; };
 		E3BFF7B327428F5200B830DE /* WelcomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreen.swift; sourceTree = "<group>"; };
 		E3BFF7B62742A79100B830DE /* AppIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIcon.swift; sourceTree = "<group>"; };
@@ -542,6 +545,7 @@
 				E3EC2DCB28D22CDC00A88E25 /* TransformTextWithJavaScript.swift */,
 				E3EC2DB728D1F76100A88E25 /* TrimWhitespace.swift */,
 				E3C33C9F28D37C7E00386C59 /* TruncateList.swift */,
+				E3B8FD1529ED376F001249CF /* TruncateNumber.swift */,
 				E31DE7EB28D5DEF800DE79EF /* TruncateText.swift */,
 			);
 			path = Actions;
@@ -787,6 +791,7 @@
 				E31749092916A20C00F6319E /* IsOnline.swift in Sources */,
 				E31749232916A20C00F6319E /* GetBatteryState.swift in Sources */,
 				E317493B2916A20C00F6319E /* TruncateText.swift in Sources */,
+				E3B8FD1629ED376F001249CF /* TruncateNumber.swift in Sources */,
 				E317494B2916A20C00F6319E /* IsBluetoothOn.swift in Sources */,
 				E39DC11529A5460B004F4FB8 /* IsHostReachable.swift in Sources */,
 				E31748B52916A12800F6319E /* Utilities.swift in Sources */,
@@ -874,6 +879,7 @@
 				E31749A72916A64100F6319E /* IsCellularDataOn.swift in Sources */,
 				E31749BB2916A64100F6319E /* GetQueryItemsFromURLAsDictionary.swift in Sources */,
 				E31749AF2916A64100F6319E /* ShuffleList.swift in Sources */,
+				E3B8FD1729ED376F001249CF /* TruncateNumber.swift in Sources */,
 				E31749AB2916A64100F6319E /* IsDeviceOrientation.swift in Sources */,
 				E39DC11629A5460C004F4FB8 /* IsHostReachable.swift in Sources */,
 				E317499A2916A64100F6319E /* RemoveEmojis.swift in Sources */,
