@@ -104,6 +104,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Scan QR Codes in Image
 - Set Creation and Modification Date of File
 - Set Default Printer
+- Set Uniform Type Identifier
 - Shuffle List
 - Sort List
 - Spell Out Number

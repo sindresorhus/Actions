@@ -132,6 +132,7 @@ And for high-quality transcription, see my [Aiko](https://sindresorhus.com/aiko)
 - Scan QR Codes in Image
 - Set Creation and Modification Date of File
 - Set Default Printer <sup>(macOS-only)</sup>
+- Set Uniform Type Identifier
 - Shuffle List
 - Sort List
 - Spell Out Number

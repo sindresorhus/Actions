@@ -5440,9 +5440,13 @@ extension NWConnection {
 	func connect(timeout: Duration? = nil) async throws {
 		try await withTimeout(timeout) {
 			try await withTaskCancellationHandler {
-				try await withCheckedThrowingContinuation { continuation in
+				var hasResumed = false
+				return try await withCheckedThrowingContinuation { continuation in
 					stateUpdateHandler = { [weak self] in
-						guard let self else {
+						guard
+							let self,
+							!hasResumed
+						else {
 							return
 						}
 
@@ -5451,16 +5455,20 @@ extension NWConnection {
 							break
 						case .ready:
 							stateUpdateHandler = nil
+							hasResumed = true
 							continuation.resume()
 						case .waiting(let error), .failed(let error):
 							stateUpdateHandler = nil
+							hasResumed = true
 							continuation.resume(throwing: error)
 						case .cancelled:
 							stateUpdateHandler = nil
+							hasResumed = true
 							continuation.resume(throwing: CancellationError())
 						@unknown default:
 							assertionFailure("Unhandled enum case.")
 							stateUpdateHandler = nil
+							hasResumed = true
 							continuation.resume(throwing: CancellationError())
 						}
 					}
