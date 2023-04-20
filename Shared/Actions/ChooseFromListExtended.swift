@@ -100,19 +100,17 @@ Note: If you get the error “The operation failed because Shortcuts couldn't co
 
 	@MainActor
 	func perform() async throws -> some IntentResult {
-		#if canImport(UIKit)
-		UIView.setAnimationsEnabled(false)
-		#endif
-
-		AppState.shared.chooseFromListData = .init(
-			list: list,
-			title: prompt?.nilIfEmptyOrWhitespace,
-			selectMultiple: selectMultiple,
-			selectAllInitially: selectAllInitially,
-			allowCustomItems: allowCustomItems,
-			timeout: useTimeout ? timeout?.converted(to: .seconds).value.timeIntervalToDuration : nil,
-			timeoutReturnValue: timeoutReturnValue
-		)
+		withoutAnimation {
+			AppState.shared.chooseFromListData = .init(
+				list: list,
+				title: prompt?.nilIfEmptyOrWhitespace,
+				selectMultiple: selectMultiple,
+				selectAllInitially: selectAllInitially,
+				allowCustomItems: allowCustomItems,
+				timeout: useTimeout ? timeout?.converted(to: .seconds).value.timeIntervalToDuration : nil,
+				timeoutReturnValue: timeoutReturnValue
+			)
+		}
 
 		return .result()
 	}

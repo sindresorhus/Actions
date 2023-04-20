@@ -68,6 +68,7 @@ And for high-quality transcription, see my [Aiko](https://sindresorhus.com/aiko)
 - Generate Random Text
 - Generate UUID
 - Get Audio Playback Destination <sup>(iOS-only)</sup>
+- Get Average Color of Image
 - Get Battery State
 - Get Default Printer <sup>(macOS-only)</sup>
 - Get Device Orientation

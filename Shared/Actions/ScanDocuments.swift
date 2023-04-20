@@ -24,12 +24,10 @@ IMPORTANT: The resulting images are copied to the clipboard. Add the “Wait to 
 
 	@MainActor
 	func perform() async throws -> some IntentResult {
-		#if canImport(UIKit)
-		UIView.setAnimationsEnabled(false)
-		#endif
-
 		// TODO: Is there really no better way of handling this?
-		AppState.shared.isDocumentScannerPresented = true
+		withoutAnimation {
+			AppState.shared.isDocumentScannerPresented = true
+		}
 
 		return .result()
 	}

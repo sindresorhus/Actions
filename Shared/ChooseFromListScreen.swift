@@ -120,10 +120,6 @@ struct ChooseFromListScreen: View {
 					if data.selectMultiple, data.selectAllInitially {
 						multipleSelection = Set(elements)
 					}
-
-					#if canImport(UIKit)
-					UIView.setAnimationsEnabled(true)
-					#endif
 				}
 				.task {
 					guard let timeout = data.timeout else {

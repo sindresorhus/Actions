@@ -2493,6 +2493,21 @@ extension NSImage {
 	func jpegData(compressionQuality: Double) -> Data? {
 		tiffRepresentation?.bitmap?.jpegData(compressionQuality: compressionQuality)
 	}
+
+	/**
+	`UIImage` polyfill.
+	*/
+	var ciImage: CIImage? {
+		if let cgImage {
+			return CIImage(cgImage: cgImage, options: [.applyOrientationProperty: true])
+		}
+
+		guard let tiffRepresentation else {
+			return nil
+		}
+
+		return CIImage(data: tiffRepresentation, options: [.applyOrientationProperty: true])
+	}
 }
 #endif
 
@@ -5977,4 +5992,46 @@ extension NSNumber {
 			return false
 		}
 	}
+}
+
+
+extension XImage {
+	func averageColor() -> XColor? {
+		guard let inputImage = ciImage else {
+			return nil
+		}
+
+		let filter = CIFilter.areaAverage()
+		filter.inputImage = inputImage
+		filter.extent = inputImage.extent
+
+		guard let outputImage = filter.outputImage else {
+			return nil
+		}
+
+		var bitmap = [UInt8](repeating: 0, count: 4)
+		let context = CIContext(options: [.workingColorSpace: NSNull()])
+		context.render(
+			outputImage,
+			toBitmap: &bitmap,
+			rowBytes: bitmap.count,
+			bounds: CGRect(x: 0, y: 0, width: 1, height: 1),
+			format: .RGBA8,
+			colorSpace: nil
+		)
+
+		return .init(
+			red: Double(bitmap[0]) / 255,
+			green: Double(bitmap[1]) / 255,
+			blue: Double(bitmap[2]) / 255,
+			alpha: Double(bitmap[3]) / 255
+		)
+	}
+}
+
+// The inverse of `withAnimation()`.
+func withoutAnimation<Result>(@_inheritActorContext _ body: () throws -> Result) rethrows -> Result {
+	var transaction = Transaction()
+	transaction.disablesAnimations = true
+	return try withTransaction(transaction, body)
 }

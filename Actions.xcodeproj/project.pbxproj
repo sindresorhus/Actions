@@ -191,6 +191,7 @@
 		E3B8FD1929ED4305001249CF /* GetTitleOfURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C33CB128D43C7500386C59 /* GetTitleOfURL.swift */; };
 		E3B8FD1B29EEFF49001249CF /* SetUniformTypeIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B8FD1A29EEFF49001249CF /* SetUniformTypeIdentifier.swift */; };
 		E3B8FD1C29EEFF49001249CF /* SetUniformTypeIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B8FD1A29EEFF49001249CF /* SetUniformTypeIdentifier.swift */; };
+		E3B8FD1E29F11DCA001249CF /* GetAverageColorOfImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B8FD1D29F11DCA001249CF /* GetAverageColorOfImage.swift */; };
 		E3BFF7B22742616400B830DE /* WriteTextScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BFF7B02742616400B830DE /* WriteTextScreen.swift */; };
 		E3BFF7B527428F5200B830DE /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BFF7B327428F5200B830DE /* WelcomeScreen.swift */; };
 		E3BFF7B82742A79100B830DE /* AppIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BFF7B62742A79100B830DE /* AppIcon.swift */; };
@@ -298,6 +299,7 @@
 		E3B1C3C328F5D68D009BE0B7 /* GetIndexOfListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetIndexOfListItem.swift; sourceTree = "<group>"; };
 		E3B8FD1529ED376F001249CF /* TruncateNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TruncateNumber.swift; sourceTree = "<group>"; };
 		E3B8FD1A29EEFF49001249CF /* SetUniformTypeIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUniformTypeIdentifier.swift; sourceTree = "<group>"; };
+		E3B8FD1D29F11DCA001249CF /* GetAverageColorOfImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GetAverageColorOfImage.swift; path = "Intents Extension/Actions/GetAverageColorOfImage.swift"; sourceTree = SOURCE_ROOT; };
 		E3BFF7B02742616400B830DE /* WriteTextScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteTextScreen.swift; sourceTree = "<group>"; };
 		E3BFF7B327428F5200B830DE /* WelcomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreen.swift; sourceTree = "<group>"; };
 		E3BFF7B62742A79100B830DE /* AppIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIcon.swift; sourceTree = "<group>"; };
@@ -424,6 +426,7 @@
 				E3F64D7528D9F9930009B500 /* CreateColorImage.swift */,
 				E3CB449D28D791D40031D55F /* GenerateCSV.swift */,
 				E3CF4F9728FDA7EB00BD88D5 /* GenerateRandomData.swift */,
+				E3B8FD1D29F11DCA001249CF /* GetAverageColorOfImage.swift */,
 				E376FD862952937200C0F81F /* GetDefaultPrinter.swift */,
 				E317489E2913BEAB00F6319E /* GetMapImageOfLocation.swift */,
 				E376FD84295287E500C0F81F /* GetPrinters.swift */,
@@ -948,6 +951,7 @@
 				E3CB449228D7803C0031D55F /* ParseJSON5.swift in Sources */,
 				E3963A5A292CAF9F00210AC2 /* RemoveDuplicatesFromList.swift in Sources */,
 				E3CB449F28D791D40031D55F /* GenerateCSV.swift in Sources */,
+				E3B8FD1E29F11DCA001249CF /* GetAverageColorOfImage.swift in Sources */,
 				E34AB51628F58B500082AE78 /* Authenticate.swift in Sources */,
 				E3CB449928D78CBE0031D55F /* ParseCSV.swift in Sources */,
 				E351083628FD79D8007C85AE /* OverwriteFile.swift in Sources */,

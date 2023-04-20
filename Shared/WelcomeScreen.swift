@@ -19,6 +19,11 @@ struct WelcomeScreen: View {
 				Text("This app has no user-interface. It provides a bunch of useful actions that you can use when creating shortcuts.")
 					.multilineText()
 					.padding()
+				if !SSApp.isFirstLaunch {
+					Text("You may have have to restart your device for the actions to show up.")
+						.bold()
+						.padding(.bottom)
+				}
 				Text(OS.current == .iOS ? "Open the Shortcuts app, tap the “Apps” tab in the action picker, and then tap the “Actions” app." : "Open the Shortcuts app, click the “Apps” tab in the right sidebar, and then click the “Actions” app.")
 					.multilineText()
 					.secondaryTextStyle()

@@ -41,6 +41,7 @@ struct MainScreen: View {
 				switch $0 {
 				case .success(let images):
 					UIPasteboard.general.images = images
+					ShortcutsApp.open()
 				case .failure(let error):
 					self.error = error
 				}
@@ -48,12 +49,6 @@ struct MainScreen: View {
 			.onChange(of: scenePhase) {
 				if $0 != .active {
 					appState.isFullscreenOverlayPresented = false
-				}
-			}
-			.onChange(of: appState.isDocumentScannerPresented) {
-				if !$0 {
-					UIView.setAnimationsEnabled(true)
-					ShortcutsApp.open()
 				}
 			}
 			#endif
