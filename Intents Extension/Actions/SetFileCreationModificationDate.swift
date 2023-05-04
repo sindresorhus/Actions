@@ -54,17 +54,20 @@ Note: Setting the modification date of a file/folder in iCloud may not work as i
 
 	func perform() async throws -> some IntentResult & ReturnsValue<IntentFile> {
 		let result = try {
-			if modifyOriginal, let url = file.fileURL {
+			if
+				modifyOriginal,
+				let url = file.fileURL
+			{
 				try url.accessSecurityScopedResource {
 					try modify($0)
 				}
 
 				return file
-			} else {
-				return try file.modifyingFileAsURL {
-					try modify($0)
-					return $0
-				}
+			}
+
+			return try file.modifyingFileAsURL {
+				try modify($0)
+				return $0
 			}
 		}()
 

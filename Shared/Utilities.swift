@@ -115,10 +115,10 @@ enum SSApp {
 
 		if UserDefaults.standard.bool(forKey: key) {
 			return false
-		} else {
-			UserDefaults.standard.set(true, forKey: key)
-			return true
 		}
+
+		UserDefaults.standard.set(true, forKey: key)
+		return true
 	}()
 
 	private static func getFeedbackMetadata() -> String {
@@ -691,17 +691,19 @@ extension Device {
 		#if canImport(AppKit)
 		let state = InternalMacBattery.state
 
-		if state.isPowerAdapterConnected {
-			if state.isCharged {
-				return .full
-			} else if state.isCharging {
-				return .charging
-			} else {
-				return .unknown
-			}
-		} else {
+		guard state.isPowerAdapterConnected else {
 			return .unplugged
 		}
+
+		if state.isCharged {
+			return .full
+		}
+
+		if state.isCharging {
+			return .charging
+		}
+
+		return .unknown
 		#elseif canImport(UIKit)
 		UIDevice.current.isBatteryMonitoringEnabled = true
 
@@ -3942,6 +3944,24 @@ extension FloatingPoint {
 }
 
 
+extension BinaryFloatingPoint {
+	func truncated(
+		toDecimalPlaces decimalPlaces: Int
+	) -> Self {
+		guard decimalPlaces >= 0 else {
+			return self
+		}
+
+		var divisor: Self = 1
+		for _ in 0..<decimalPlaces {
+			divisor *= 10
+		}
+
+		return floor(divisor * self) / divisor
+	}
+}
+
+
 enum Reachability {
 	/**
 	Checks whether we're currently online.
@@ -5081,9 +5101,13 @@ extension UIDevice {
 
 		if absAccelerationZ > max(absAccelerationX, absAccelerationY) {
 			return data.acceleration.z < 0 ? .faceUp : .faceDown
-		} else if absAccelerationX > absAccelerationY {
+		}
+
+		if absAccelerationX > absAccelerationY {
 			return data.acceleration.x > 0 ? .landscapeRight : .landscapeLeft
-		} else if absAccelerationX < absAccelerationY {
+		}
+
+		if absAccelerationX < absAccelerationY {
 			return data.acceleration.y < 0 ? .portrait : .portraitUpsideDown
 		}
 
@@ -5398,29 +5422,25 @@ func withTimeout<T: Sendable>(
 		return try await operation()
 	}
 
+	let start = ContinuousClock.now
+
+	// `withoutActuallyEscaping` should be safe as the operation is called before the function returns.
 	return try await withoutActuallyEscaping(operation) { escapableOperation in
 		try await withThrowingTaskGroup(of: T.self) { group in
-			let deadline = Date(timeIntervalSinceNow: timeout.toTimeInterval)
-
 			group.addTask {
 				try await escapableOperation()
 			}
 
-			group.addTask {
-				let interval = deadline.timeIntervalSinceNow
-				if interval > 0 {
-					try await Task.sleep(for: interval.timeIntervalToDuration)
-				}
-
-				try Task.checkCancellation()
+			group.addTask(priority: .high) {
+				try await Task.sleep(until: start + timeout, clock: .continuous)
 				throw TimeoutError()
 			}
 
-			let result = try await group.next()!
+			defer {
+				group.cancelAll()
+			}
 
-			group.cancelAll()
-
-			return result
+			return try await group.next()!
 		}
 	}
 }

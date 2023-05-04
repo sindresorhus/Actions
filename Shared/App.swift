@@ -21,7 +21,7 @@ struct AppMain: App {
 			MainScreen()
 				.environmentObject(appState)
 		}
-			#if canImport(AppKit)
+			#if os(macOS)
 			.windowStyle(.hiddenTitleBar)
 			.windowResizability(.contentSize)
 			.defaultPosition(.center)

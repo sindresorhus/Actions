@@ -99,17 +99,17 @@ This can be useful as a placeholder, token, etc.
 					characters: customCharacters,
 					using: &generator
 				)
-			} else {
-				guard !characters.isEmpty else {
-					throw "You must enable at least one of “Lowercase”, “Uppercase”, and “Digits”.".toError
-				}
-
-				return String.random(
-					length: length,
-					characters: characters,
-					using: &generator
-				)
 			}
+
+			guard !characters.isEmpty else {
+				throw "You must enable at least one of “Lowercase”, “Uppercase”, and “Digits”.".toError
+			}
+
+			return String.random(
+				length: length,
+				characters: characters,
+				using: &generator
+			)
 		}()
 
 		return .result(value: result)

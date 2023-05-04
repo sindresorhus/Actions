@@ -24,9 +24,9 @@ struct GetFileIcon: AppIntent, CustomIntentMigratedAppIntent {
 		func icon(_ file: IntentFile) -> XImage {
 			if let url = file.fileURL {
 				return NSWorkspace.shared.icon(forFile: url.path)
-			} else {
-				return NSWorkspace.shared.icon(for: file.type ?? .data)
 			}
+
+			return NSWorkspace.shared.icon(for: file.type ?? .data)
 		}
 
 		let result = try files.compactMap { file in

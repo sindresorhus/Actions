@@ -63,7 +63,7 @@ struct GetMapImageOfLocation: AppIntent {
 		}
 	}
 
-	@MainActor
+	// Note: The action hangs if it's annotated with `@MainActor`.
 	func perform() async throws -> some IntentResult & ReturnsValue<IntentFile> {
 		guard let coordinates = location.location?.coordinate else {
 			throw "Failed to get coordinates from location.".toError
@@ -86,7 +86,7 @@ struct GetMapImageOfLocation: AppIntent {
 		let snapshot = try await MKMapSnapshotter(options: options).start()
 
 		let image = showPlacemark
-			? try drawPlacemark(on: snapshot.image, at: snapshot.point(for: coordinates))
+			? try await drawPlacemark(on: snapshot.image, at: snapshot.point(for: coordinates))
 			: snapshot.image
 
 		let result = try image.toIntentFile()
