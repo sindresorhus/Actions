@@ -6055,3 +6055,23 @@ func withoutAnimation<Result>(@_inheritActorContext _ body: () throws -> Result)
 	transaction.disablesAnimations = true
 	return try withTransaction(transaction, body)
 }
+
+
+extension View {
+	/**
+	`.task()` with debouncing.
+	*/
+	func debouncingTask(
+		id: some Equatable,
+		priority: TaskPriority = .userInitiated,
+		interval: Duration,
+		@_inheritActorContext @_implicitSelfCapture _ action: @Sendable @escaping () async -> Void
+	) -> some View {
+		task(id: id, priority: priority) {
+			do {
+				try await Task.sleep(for: interval)
+				await action()
+			} catch {}
+		}
+	}
+}

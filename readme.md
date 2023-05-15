@@ -41,6 +41,7 @@ And for high-quality transcription, see my [Aiko](https://sindresorhus.com/aiko)
 
 - Add to List
 - Apply Capture Date
+- Ask ChatGPT
 - Ask for Text with Timeout
 - Authenticate
 - Blur Images

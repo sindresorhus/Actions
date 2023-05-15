@@ -39,5 +39,10 @@ struct AppMain: App {
 				}
 			}
 			#endif
+		#if os(macOS)
+		Settings {
+			SettingsScreen()
+		}
+		#endif
 	}
 }
