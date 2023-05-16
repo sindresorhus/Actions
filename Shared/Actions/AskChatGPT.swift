@@ -45,13 +45,28 @@ TIP: If you want a dictionary back, end your prompt with: “Return the result a
 
 		let openAI = OpenAISwift(authToken: token)
 
-		let response = try await openAI.sendChat(
-			with: [
-				.init(role: .system, content: "Keep it short."),
-				.init(role: .user, content: prompt)
-			],
-			model: model == .gpt3_5 ? .chat(.chatgpt) : .other("gpt-4")
-		)
+		let response: OpenAI<MessageResult>
+		do {
+			response = try await openAI.sendChat(
+				with: [
+					.init(role: .system, content: "Keep it short."),
+					.init(role: .user, content: prompt)
+				],
+				model: model == .gpt3_5 ? .chat(.chatgpt) : .other("gpt-4")
+			)
+		} catch OpenAIError.genericError(let error) {
+			throw error.presentableMessage.toError
+		} catch OpenAIError.decodingError(let error) {
+			throw error.presentableMessage.toError
+		} catch OpenAIError.chatError(let error) {
+			var message = error.message
+
+			if error.code == "model_not_found" {
+				message += ". Make sure you have access to this model. GPT-4 requires special access."
+			}
+
+			throw error.message.toError
+		}
 
 		guard let reply = response.choices?.first?.message.content else {
 			throw "Missing reply.".toError
@@ -69,6 +84,6 @@ enum Model_AppEnum: String, AppEnum {
 
 	static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
 		.gpt3_5: "GPT-3.5",
-		.gpt4: "GPT-4"
+		.gpt4: "GPT-4 (Requires special access!)"
 	]
 }
