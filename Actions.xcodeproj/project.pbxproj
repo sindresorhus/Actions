@@ -1426,7 +1426,7 @@
 			repositoryURL = "https://github.com/getsentry/sentry-cocoa";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 8.7.0;
+				minimumVersion = 8.7.2;
 			};
 		};
 		E337A3E227E8B66D0073E865 /* XCRemoteSwiftPackageReference "FuzzyFind" */ = {

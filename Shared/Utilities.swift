@@ -2495,11 +2495,18 @@ extension NSImage {
 	func jpegData(compressionQuality: Double) -> Data? {
 		tiffRepresentation?.bitmap?.jpegData(compressionQuality: compressionQuality)
 	}
+}
+#endif
 
+
+extension XImage {
 	/**
-	`UIImage` polyfill.
+	Convert a `UIImage`/`NSImage` to a `CIImage`.
 	*/
-	var ciImage: CIImage? {
+	var toCIImage: CIImage? {
+		#if os(iOS)
+		return CIImage(image: self, options: [.applyOrientationProperty: true])
+		#else
 		if let cgImage {
 			return CIImage(cgImage: cgImage, options: [.applyOrientationProperty: true])
 		}
@@ -2509,9 +2516,9 @@ extension NSImage {
 		}
 
 		return CIImage(data: tiffRepresentation, options: [.applyOrientationProperty: true])
+		#endif
 	}
 }
-#endif
 
 
 extension URL {
@@ -6015,11 +6022,9 @@ extension NSNumber {
 }
 
 
-extension XImage {
+extension CIImage {
 	func averageColor() -> XColor? {
-		guard let inputImage = ciImage else {
-			return nil
-		}
+		let inputImage = self
 
 		let filter = CIFilter.areaAverage()
 		filter.inputImage = inputImage
@@ -6048,6 +6053,13 @@ extension XImage {
 		)
 	}
 }
+
+extension XImage {
+	func averageColor() -> XColor? {
+		toCIImage?.averageColor()
+	}
+}
+
 
 // The inverse of `withAnimation()`.
 func withoutAnimation<Result>(@_inheritActorContext _ body: () throws -> Result) rethrows -> Result {

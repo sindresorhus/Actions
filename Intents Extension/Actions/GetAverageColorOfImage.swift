@@ -1,4 +1,5 @@
 import AppIntents
+import CoreImage
 
 struct GetAverageColorOfImage: AppIntent {
 	static let title: LocalizedStringResource = "Get Average Color of Image"
@@ -22,7 +23,7 @@ struct GetAverageColorOfImage: AppIntent {
 	}
 
 	func perform() async throws -> some IntentResult & ReturnsValue<ColorAppEntity> {
-		guard let image = XImage(data: image.data) else {
+		guard let image = CIImage(data: image.data) else {
 			throw "Invalid or unsupported image.".toError
 		}
 
