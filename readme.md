@@ -168,11 +168,9 @@ And for high-quality transcription, see my [Aiko](https://sindresorhus.com/aiko)
 
 ### Non-App Store version for macOS
 
-A special version for users that cannot access the App Store. It won't receive updates.
+A special version for users that cannot access the App Store. It won't receive automatic updates. I will update it here once a year.
 
-[Download](https://dsc.cloud/sindresorhus/Actions-2.3.1-1678525767.zip) *(2.3.1)*
-
-*Requires macOS 13 or later*
+[Download](https://dsc.cloud/sindresorhus/Actions-2.3.1-1678525767.zip) *(2.3.1 · macOS 13+)*
 
 ## FAQ
 

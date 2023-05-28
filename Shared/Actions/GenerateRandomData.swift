@@ -28,6 +28,10 @@ Example use-cases: Generating keys, secrets, nonces, OTP, passwords, PINs, secur
 	}
 
 	func perform() async throws -> some IntentResult & ReturnsValue<IntentFile> {
+		guard size >= 0 else {
+			throw "The size cannot be negative.".toError
+		}
+
 		let result = {
 			let filename = "Random Data \(UUID().uuidString)" // TODO: We use UUID here as there's a bug in iOS where if you run the same workflow multiple times, it will not be able to display the output. Some filename overlap. (iOS 16.0.3) Check if this is fixed in iOS 16.1.
 			let data = Data.random(length: size)
