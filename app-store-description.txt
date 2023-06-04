@@ -45,6 +45,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Get Battery State
 - Get Default Printer
 - Get Device Orientation
+- Get Dominant Colors of Image
 - Get Emojis
 - Get File Icon
 - Get File Path

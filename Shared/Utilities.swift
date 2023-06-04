@@ -6013,7 +6013,7 @@ extension NSNumber {
 
 
 extension CIImage {
-	func averageColor() -> XColor? {
+	func averageColor() throws -> XColor {
 		let inputImage = self
 
 		let filter = CIFilter.areaAverage()
@@ -6021,7 +6021,7 @@ extension CIImage {
 		filter.extent = inputImage.extent
 
 		guard let outputImage = filter.outputImage else {
-			return nil
+			throw "Failed to get average color from the image.".toError
 		}
 
 		var bitmap = [UInt8](repeating: 0, count: 4)
@@ -6036,17 +6036,70 @@ extension CIImage {
 		)
 
 		return .init(
-			red: Double(bitmap[0]) / 255,
-			green: Double(bitmap[1]) / 255,
-			blue: Double(bitmap[2]) / 255,
-			alpha: Double(bitmap[3]) / 255
+			red: bitmap.colorValue(at: 0),
+			green: bitmap.colorValue(at: 1),
+			blue: bitmap.colorValue(at: 2),
+			alpha: bitmap.colorValue(at: 3)
 		)
 	}
 }
 
-extension XImage {
-	func averageColor() -> XColor? {
-		toCIImage?.averageColor()
+
+extension CIImage {
+	/**
+	Extracts the dominant colors from the image.
+
+	- Parameter count: Must be in the range `0...128`.
+	*/
+	func dominantColors(count: Int) throws -> [XColor] {
+		assert((0...128).contains(count), "`count` must be in the range 0...128")
+
+		let inputImage = self
+
+		let filter = CIFilter.kMeans()
+		filter.inputImage = inputImage
+		filter.extent = inputImage.extent
+		filter.count = count
+		filter.passes = 20 // This is the max.
+		filter.perceptual = true
+
+		guard var outputImage = filter.outputImage else {
+			throw "Failed to get dominant color from the image.".toError
+		}
+
+		outputImage = outputImage.settingAlphaOne(in: outputImage.extent)
+
+		let context = CIContext()
+		var bitmap = [UInt8](repeating: 0, count: 4 * count)
+
+		context.render(
+			outputImage,
+			toBitmap: &bitmap,
+			rowBytes: 4 * count,
+			bounds: outputImage.extent,
+			format: .RGBA8,
+			colorSpace: inputImage.colorSpace
+		)
+
+		return (0..<count).map { index in
+			XColor(
+				red: bitmap.colorValue(at: index * 4),
+				green: bitmap.colorValue(at: index * 4 + 1),
+				blue: bitmap.colorValue(at: index * 4 + 2),
+				alpha: bitmap.colorValue(at: index * 4 + 3)
+			)
+		}
+	}
+}
+
+
+extension [UInt8] {
+	fileprivate func colorValue(at index: Int) -> Double {
+		guard index < count else {
+			return 0
+		}
+
+		return Double(self[index]) / 255.0
 	}
 }
 

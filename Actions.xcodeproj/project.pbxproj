@@ -185,6 +185,7 @@
 		E352420A28F6EEDE00A957A7 /* AskForText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E352420928F6EEDE00A957A7 /* AskForText.swift */; };
 		E352420C28F6F6AD00A957A7 /* AskForTextScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E352420B28F6F6AD00A957A7 /* AskForTextScreen.swift */; };
 		E376FD8329524B6400C0F81F /* IsDarkMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C33CA928D3A81700386C59 /* IsDarkMode.swift */; };
+		E37A1E222A2D214800E68E92 /* GetDominantColorsOfImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37A1E212A2D214800E68E92 /* GetDominantColorsOfImage.swift */; };
 		E38035CB29278B1700D29A07 /* MergeDictionaries.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CB44A128D794DA0031D55F /* MergeDictionaries.swift */; };
 		E3963A5A292CAF9F00210AC2 /* RemoveDuplicatesFromList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC2DC328D215A100A88E25 /* RemoveDuplicatesFromList.swift */; };
 		E39DC11529A5460B004F4FB8 /* IsHostReachable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D0655D29A51E160059A16E /* IsHostReachable.swift */; };
@@ -301,6 +302,7 @@
 		E376FD84295287E500C0F81F /* GetPrinters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPrinters.swift; sourceTree = "<group>"; };
 		E376FD862952937200C0F81F /* GetDefaultPrinter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDefaultPrinter.swift; sourceTree = "<group>"; };
 		E376FD882952946400C0F81F /* SetDefaultPrinter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDefaultPrinter.swift; sourceTree = "<group>"; };
+		E37A1E212A2D214800E68E92 /* GetDominantColorsOfImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDominantColorsOfImage.swift; sourceTree = "<group>"; };
 		E39DC11A29A54E27004F4FB8 /* OpenURLsWithApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OpenURLsWithApp.swift; path = "Intents Extension/Actions/OpenURLsWithApp.swift"; sourceTree = SOURCE_ROOT; };
 		E39F4776272D516E00B99CB0 /* Actions.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Actions.entitlements; sourceTree = "<group>"; };
 		E3A85FE428E94E7300F423F1 /* FormatPersonName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatPersonName.swift; sourceTree = "<group>"; };
@@ -308,7 +310,7 @@
 		E3B1C3C328F5D68D009BE0B7 /* GetIndexOfListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetIndexOfListItem.swift; sourceTree = "<group>"; };
 		E3B8FD1529ED376F001249CF /* TruncateNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TruncateNumber.swift; sourceTree = "<group>"; };
 		E3B8FD1A29EEFF49001249CF /* SetUniformTypeIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUniformTypeIdentifier.swift; sourceTree = "<group>"; };
-		E3B8FD1D29F11DCA001249CF /* GetAverageColorOfImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GetAverageColorOfImage.swift; path = "Intents Extension/Actions/GetAverageColorOfImage.swift"; sourceTree = SOURCE_ROOT; };
+		E3B8FD1D29F11DCA001249CF /* GetAverageColorOfImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GetAverageColorOfImage.swift; path = Shared/Actions/GetAverageColorOfImage.swift; sourceTree = SOURCE_ROOT; };
 		E3BFF7B02742616400B830DE /* WriteTextScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteTextScreen.swift; sourceTree = "<group>"; };
 		E3BFF7B327428F5200B830DE /* WelcomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreen.swift; sourceTree = "<group>"; };
 		E3BFF7B62742A79100B830DE /* AppIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIcon.swift; sourceTree = "<group>"; };
@@ -440,6 +442,7 @@
 				E3CF4F9728FDA7EB00BD88D5 /* GenerateRandomData.swift */,
 				E3B8FD1D29F11DCA001249CF /* GetAverageColorOfImage.swift */,
 				E376FD862952937200C0F81F /* GetDefaultPrinter.swift */,
+				E37A1E212A2D214800E68E92 /* GetDominantColorsOfImage.swift */,
 				E317489E2913BEAB00F6319E /* GetMapImageOfLocation.swift */,
 				E376FD84295287E500C0F81F /* GetPrinters.swift */,
 				E3C33CDA28D48C3200386C59 /* GetRunningApps.swift */,
@@ -973,6 +976,7 @@
 				E3963A5A292CAF9F00210AC2 /* RemoveDuplicatesFromList.swift in Sources */,
 				E3CB449F28D791D40031D55F /* GenerateCSV.swift in Sources */,
 				E3B8FD1E29F11DCA001249CF /* GetAverageColorOfImage.swift in Sources */,
+				E37A1E222A2D214800E68E92 /* GetDominantColorsOfImage.swift in Sources */,
 				E34AB51628F58B500082AE78 /* Authenticate.swift in Sources */,
 				E3CB449928D78CBE0031D55F /* ParseCSV.swift in Sources */,
 				E351083628FD79D8007C85AE /* OverwriteFile.swift in Sources */,

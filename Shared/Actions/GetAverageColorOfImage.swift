@@ -5,7 +5,11 @@ struct GetAverageColorOfImage: AppIntent {
 	static let title: LocalizedStringResource = "Get Average Color of Image"
 
 	static let description = IntentDescription(
-		"Returns the average color of the image.",
+"""
+Returns the average color of the image.
+
+Average color is all the colors in an image mixed into one, while dominant color is the most seen color in an image.
+""",
 		categoryName: "Image",
 		searchKeywords: [
 			"colour"
@@ -27,9 +31,7 @@ struct GetAverageColorOfImage: AppIntent {
 			throw "Invalid or unsupported image.".toError
 		}
 
-		guard let color = image.averageColor() else {
-			throw "Failed to get average color from image.".toError
-		}
+		let color = try image.averageColor()
 
 		return .result(value: .init(color))
 	}
