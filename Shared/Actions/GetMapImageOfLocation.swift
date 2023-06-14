@@ -8,7 +8,11 @@ struct GetMapImageOfLocation: AppIntent {
 	static let title: LocalizedStringResource = "Get Map Image of Location"
 
 	static let description = IntentDescription(
-		"Returns an image with the given location marked and centered on a map.",
+"""
+Returns an image with the given location marked and centered on a map.
+
+Known issue: On iOS, it only works the first time. There is some kind of iOS bug that makes it not work the second time it's run. There's unfortunately no workaround and we have to wait for Apple to fix this.
+""",
 		categoryName: "Location"
 	)
 

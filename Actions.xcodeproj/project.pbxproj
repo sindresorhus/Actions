@@ -1453,8 +1453,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/adamrushy/OpenAISwift";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.3.0;
+				kind = revision;
+				revision = 73dbe257e6cc612294f771f2dc295dcf1540af33;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

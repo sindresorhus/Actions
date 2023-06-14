@@ -4377,6 +4377,20 @@ extension Dictionary {
 }
 
 
+extension Dictionary {
+	/**
+	Returns a new dictionary containing only the key-value pairs that have non-nil keys as the result of transformation by the given closure.
+	*/
+	func compactMapKeys<T>(_ transform: (Key) throws -> T?) rethrows -> [T: Value] {
+		try reduce(into: [T: Value]()) { result, x in
+			if let key = try transform(x.key) {
+				result[key] = x.value
+			}
+		}
+	}
+}
+
+
 #if canImport(UIKit)
 struct DocumentScannerView: UIViewControllerRepresentable {
 	final class Coordinator: NSObject, VNDocumentCameraViewControllerDelegate {
@@ -5472,36 +5486,39 @@ extension NWConnection {
 	func connect(timeout: Duration? = nil) async throws {
 		try await withTimeout(timeout) {
 			try await withTaskCancellationHandler {
-				var hasResumed = false
-				return try await withCheckedThrowingContinuation { continuation in
-					stateUpdateHandler = { [weak self] in
-						guard
-							let self,
-							!hasResumed
-						else {
-							return
-						}
+				try await withCheckedThrowingContinuation { continuation in
+					let hasResumedBox = LockedValueBox(false)
 
-						switch $0 {
-						case .setup, .preparing:
-							break
-						case .ready:
-							stateUpdateHandler = nil
-							hasResumed = true
-							continuation.resume()
-						case .waiting(let error), .failed(let error):
-							stateUpdateHandler = nil
-							hasResumed = true
-							continuation.resume(throwing: error)
-						case .cancelled:
-							stateUpdateHandler = nil
-							hasResumed = true
-							continuation.resume(throwing: CancellationError())
-						@unknown default:
-							assertionFailure("Unhandled enum case.")
-							stateUpdateHandler = nil
-							hasResumed = true
-							continuation.resume(throwing: CancellationError())
+					stateUpdateHandler = { state in
+						hasResumedBox.withLockedValue { [weak self] hasResumed in
+							guard
+								let self,
+								!hasResumed
+							else {
+								return
+							}
+
+							switch state {
+							case .setup, .preparing:
+								break
+							case .ready:
+								stateUpdateHandler = nil
+								hasResumed = true
+								continuation.resume()
+							case .waiting(let error), .failed(let error):
+								stateUpdateHandler = nil
+								hasResumed = true
+								continuation.resume(throwing: error)
+							case .cancelled:
+								stateUpdateHandler = nil
+								hasResumed = true
+								continuation.resume(throwing: CancellationError())
+							@unknown default:
+								assertionFailure("Unhandled enum case.")
+								stateUpdateHandler = nil
+								hasResumed = true
+								continuation.resume(throwing: CancellationError())
+							}
 						}
 					}
 
@@ -6120,13 +6137,38 @@ extension View {
 		id: some Equatable,
 		priority: TaskPriority = .userInitiated,
 		interval: Duration,
-		@_inheritActorContext @_implicitSelfCapture _ action: @Sendable @escaping () async -> Void
+		@_inheritActorContext @_implicitSelfCapture _ action: @escaping @Sendable () async -> Void
 	) -> some View {
 		task(id: id, priority: priority) {
 			do {
 				try await Task.sleep(for: interval)
 				await action()
 			} catch {}
+		}
+	}
+}
+
+
+struct LockedValueBox<Value>: Sendable {
+	private final class Storage: @unchecked Sendable {
+		let lock = OSAllocatedUnfairLock()
+
+		var value: Value
+
+		init(value: Value) {
+			self.value = value
+		}
+	}
+
+	private let storage: Storage
+
+	init(_ value: Value) {
+		self.storage = Storage(value: value)
+	}
+
+	func withLockedValue<T>(_ mutate: (inout Value) throws -> T) rethrows -> T {
+		try storage.lock.withLock {
+			try mutate(&storage.value)
 		}
 	}
 }
