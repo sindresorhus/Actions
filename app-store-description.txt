@@ -119,6 +119,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Truncate List
 - Truncate Number
 - Truncate Text
+- Wait Milliseconds
 - Write or Edit Text
 
 

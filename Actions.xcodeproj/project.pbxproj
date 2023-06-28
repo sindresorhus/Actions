@@ -184,6 +184,8 @@
 		E351083928FD8089007C85AE /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = E351083828FD8089007C85AE /* Sentry */; };
 		E352420A28F6EEDE00A957A7 /* AskForText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E352420928F6EEDE00A957A7 /* AskForText.swift */; };
 		E352420C28F6F6AD00A957A7 /* AskForTextScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E352420B28F6F6AD00A957A7 /* AskForTextScreen.swift */; };
+		E365C11B2A4C683200A902D4 /* WaitMilliseconds.swift in Sources */ = {isa = PBXBuildFile; fileRef = E365C11A2A4C683200A902D4 /* WaitMilliseconds.swift */; };
+		E365C11C2A4C683200A902D4 /* WaitMilliseconds.swift in Sources */ = {isa = PBXBuildFile; fileRef = E365C11A2A4C683200A902D4 /* WaitMilliseconds.swift */; };
 		E376FD8329524B6400C0F81F /* IsDarkMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C33CA928D3A81700386C59 /* IsDarkMode.swift */; };
 		E37A1E222A2D214800E68E92 /* GetDominantColorsOfImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37A1E212A2D214800E68E92 /* GetDominantColorsOfImage.swift */; };
 		E38035CB29278B1700D29A07 /* MergeDictionaries.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CB44A128D794DA0031D55F /* MergeDictionaries.swift */; };
@@ -299,6 +301,7 @@
 		E352420528F6CAAD00A957A7 /* ReverseLines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseLines.swift; sourceTree = "<group>"; };
 		E352420928F6EEDE00A957A7 /* AskForText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AskForText.swift; path = Shared/Actions/AskForText.swift; sourceTree = SOURCE_ROOT; };
 		E352420B28F6F6AD00A957A7 /* AskForTextScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskForTextScreen.swift; sourceTree = "<group>"; };
+		E365C11A2A4C683200A902D4 /* WaitMilliseconds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitMilliseconds.swift; sourceTree = "<group>"; };
 		E376FD84295287E500C0F81F /* GetPrinters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPrinters.swift; sourceTree = "<group>"; };
 		E376FD862952937200C0F81F /* GetDefaultPrinter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDefaultPrinter.swift; sourceTree = "<group>"; };
 		E376FD882952946400C0F81F /* SetDefaultPrinter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDefaultPrinter.swift; sourceTree = "<group>"; };
@@ -568,6 +571,7 @@
 				E3C33C9F28D37C7E00386C59 /* TruncateList.swift */,
 				E3B8FD1529ED376F001249CF /* TruncateNumber.swift */,
 				E31DE7EB28D5DEF800DE79EF /* TruncateText.swift */,
+				E365C11A2A4C683200A902D4 /* WaitMilliseconds.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -805,6 +809,7 @@
 				E31749152916A20C00F6319E /* GetIndexOfListItem.swift in Sources */,
 				E31749482916A20C00F6319E /* GetQueryItemsFromURL.swift in Sources */,
 				E31749162916A20C00F6319E /* SendFeedback.swift in Sources */,
+				E365C11B2A4C683200A902D4 /* WaitMilliseconds.swift in Sources */,
 				E317490A2916A20C00F6319E /* AddToList.swift in Sources */,
 				E317491A2916A20C00F6319E /* IsConnectedToVPN.swift in Sources */,
 				E31749402916A20C00F6319E /* CreateURL.swift in Sources */,
@@ -894,6 +899,7 @@
 				E31749B82916A64100F6319E /* ConvertDateToUnixTime.swift in Sources */,
 				E317497B2916A64100F6319E /* GetRandomColor.swift in Sources */,
 				E31749B32916A64100F6319E /* RemoveDuplicateLines.swift in Sources */,
+				E365C11C2A4C683200A902D4 /* WaitMilliseconds.swift in Sources */,
 				E31749722916A64100F6319E /* RemoveEmptyLines.swift in Sources */,
 				E317498F2916A64100F6319E /* ConvertUnixTimeToDate.swift in Sources */,
 				E31749A92916A64100F6319E /* IsConnectedToVPN.swift in Sources */,

@@ -147,6 +147,7 @@ And for high-quality transcription, see my [Aiko](https://sindresorhus.com/aiko)
 - Truncate List
 - Truncate Number
 - Truncate Text
+- Wait Milliseconds
 - Write or Edit Text
 
 #### Want more shortcut actions?

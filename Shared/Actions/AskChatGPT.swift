@@ -88,7 +88,7 @@ As an example, you can pass {"50256": -100} to prevent the <|endoftext|> token f
 	)
 	// We are not using IntentFile as it cannot use a variable on macOS. (macOS 14)
 //	var logitBias: IntentFile
-	var logitBias: String
+	var logitBias: String?
 
 	static var parameterSummary: some ParameterSummary {
 		Summary("Ask ChatGPT \(\.$prompt)") {
@@ -114,7 +114,8 @@ As an example, you can pass {"50256": -100} to prevent the <|endoftext|> token f
 
 		let openAI = OpenAISwift(authToken: token)
 
-		let logitBiasFinal = try logitBias
+		let logitBiasFinal = try logitBias?
+			.nilIfEmptyOrWhitespace?
 			.toData
 			.jsonToDictionary()
 			.compactMapKeys { Int($0) }

@@ -63,6 +63,11 @@ func delay(_ duration: Duration, closure: @escaping () -> Void) {
 }
 
 
+func sleep(_ duration: Duration) {
+	usleep(useconds_t(duration.toTimeInterval * Double(USEC_PER_SEC)))
+}
+
+
 enum SSApp {
 	static let idString = Bundle.main.bundleIdentifier!
 	static let name = Bundle.main.object(forInfoDictionaryKey: kCFBundleNameKey as String) as! String
