@@ -20,7 +20,7 @@ struct WelcomeScreen: View {
 					.multilineText()
 					.padding()
 				if !SSApp.isFirstLaunch {
-					Text("You may have have to restart your device for the actions to show up.")
+					Text("You may have to restart your device for the actions to show up.")
 						.bold()
 						.padding(.bottom)
 				}

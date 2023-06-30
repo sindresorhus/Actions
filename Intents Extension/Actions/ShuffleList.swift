@@ -36,7 +36,7 @@ Note: If you get the error “The operation failed because Shortcuts couldn't co
 		When(\.$shouldLimit, .equalTo, true) {
 			Summary("Shuffle \(\.$list)") {
 				\.$shouldLimit
-				// TODO: FB - It would be nice if you could use an if-statement here instead of having two summaries.
+				// SOMEDAY: It would be nice if you could use an if-statement here instead of having two summaries: https://github.com/feedback-assistant/reports/issues/396
 				\.$limit
 			}
 		} otherwise: {

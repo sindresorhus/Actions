@@ -23,8 +23,15 @@ Use the built-in “Wait” action for durations longer than 1 second.
 
 	@MainActor
 	func perform() async throws -> some IntentResult {
+		let finalDuration = Duration.milliseconds(duration)
+
+		// The sleep method clamps for anything over an hour, but we only allow a minute as the user should then use the built-in method.
+		guard finalDuration < .seconds(3600) else {
+			throw "Use the builtin “Wait” action for longer durations.".toError
+		}
+
 		// We use this as it's slightly more accurate than the async version.
-		sleep(.milliseconds(duration))
+		sleep(finalDuration)
 
 		return .result()
 	}

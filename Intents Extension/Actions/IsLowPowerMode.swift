@@ -11,6 +11,9 @@ struct IsLowPowerMode: AppIntent, CustomIntentMigratedAppIntent {
 	)
 
 	func perform() async throws -> some IntentResult & ReturnsValue<Bool> {
-		.result(value: ProcessInfo.processInfo.isLowPowerModeEnabled)
+		// Give the system time to change the mode when used in an automation.
+		sleep(.milliseconds(30))
+
+		return .result(value: ProcessInfo.processInfo.isLowPowerModeEnabled)
 	}
 }

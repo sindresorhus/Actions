@@ -64,7 +64,10 @@ func delay(_ duration: Duration, closure: @escaping () -> Void) {
 
 
 func sleep(_ duration: Duration) {
-	usleep(useconds_t(duration.toTimeInterval * Double(USEC_PER_SEC)))
+	let durationInMicroseconds = duration.toTimeInterval * Double(USEC_PER_SEC)
+	assert(durationInMicroseconds <= Double(UInt32.max), "The given duration overflows the `sleep` method")
+	let clampedDuration = min(durationInMicroseconds, Double(UInt32.max))
+	usleep(UInt32(clampedDuration))
 }
 
 
