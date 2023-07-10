@@ -217,6 +217,8 @@
 		E3CF4F9828FDA7EB00BD88D5 /* GenerateRandomData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CF4F9728FDA7EB00BD88D5 /* GenerateRandomData.swift */; };
 		E3D0656129A53EC60059A16E /* IsWebServerReachable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31DE7F528D5E50400DE79EF /* IsWebServerReachable.swift */; };
 		E3D0656229A53EC60059A16E /* IsWebServerReachable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31DE7F528D5E50400DE79EF /* IsWebServerReachable.swift */; };
+		E3D3A30C2A5BECED00F45541 /* GetDeviceDetailsExtended.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D3A30B2A5BECED00F45541 /* GetDeviceDetailsExtended.swift */; };
+		E3D3A30D2A5BECED00F45541 /* GetDeviceDetailsExtended.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D3A30B2A5BECED00F45541 /* GetDeviceDetailsExtended.swift */; };
 		E3DB884D28E6E3AD00FEE8D6 /* HapticFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DB884B28E6E3AD00FEE8D6 /* HapticFeedback.swift */; };
 		E3DB885028E6EE7B00FEE8D6 /* HideShortcutsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DB884F28E6EE7B00FEE8D6 /* HideShortcutsApp.swift */; };
 		E3DB885228E6EFBB00FEE8D6 /* ScanDocuments.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DB885128E6EFBB00FEE8D6 /* ScanDocuments.swift */; };
@@ -354,6 +356,7 @@
 		E3CC6D6129A7E293002D8C67 /* GlobalVariable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariable.swift; sourceTree = "<group>"; };
 		E3CF4F9728FDA7EB00BD88D5 /* GenerateRandomData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateRandomData.swift; sourceTree = "<group>"; };
 		E3D0655D29A51E160059A16E /* IsHostReachable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsHostReachable.swift; sourceTree = "<group>"; };
+		E3D3A30B2A5BECED00F45541 /* GetDeviceDetailsExtended.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDeviceDetailsExtended.swift; sourceTree = "<group>"; };
 		E3D514C528EEA6B9003F7C2E /* PlayAlertSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayAlertSound.swift; sourceTree = "<group>"; };
 		E3D514C728EEA8F8003F7C2E /* FlashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashScreen.swift; sourceTree = "<group>"; };
 		E3D514C928EEAAEC003F7C2E /* CalculateWithSoulver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateWithSoulver.swift; sourceTree = "<group>"; };
@@ -514,6 +517,7 @@
 				E3AB2D8A29F840B900ED2913 /* GetActionsVersion.swift */,
 				E3C33CDE28D4914C00386C59 /* GetAudioPlaybackDestination.swift */,
 				E3C33CB328D43DDA00386C59 /* GetBatteryState.swift */,
+				E3D3A30B2A5BECED00F45541 /* GetDeviceDetailsExtended.swift */,
 				E31DE80128D619DB00DE79EF /* GetDeviceOrientation.swift */,
 				E3C33CA128D37E2B00386C59 /* GetEmojis.swift */,
 				E3CB449B28D78F4C0031D55F /* GetFileIcon.swift */,
@@ -859,6 +863,7 @@
 				E31749382916A20C00F6319E /* RemoveFromList.swift in Sources */,
 				E31749282916A20C00F6319E /* IsCellularDataOn.swift in Sources */,
 				E317490C2916A20C00F6319E /* PlayAlertSound.swift in Sources */,
+				E3D3A30C2A5BECED00F45541 /* GetDeviceDetailsExtended.swift in Sources */,
 				E31749102916A20C00F6319E /* GetFilePath.swift in Sources */,
 				E317491E2916A20C00F6319E /* SpellOutNumber.swift in Sources */,
 				E31749312916A20C00F6319E /* FormatDateDifference.swift in Sources */,
@@ -948,6 +953,7 @@
 				E31749832916A64100F6319E /* IsWiFiOn.swift in Sources */,
 				E31749AC2916A64100F6319E /* SendFeedback.swift in Sources */,
 				E31749A22916A64100F6319E /* GetRandomInstant.swift in Sources */,
+				E3D3A30D2A5BECED00F45541 /* GetDeviceDetailsExtended.swift in Sources */,
 				E31749872916A64100F6319E /* SampleColor.swift in Sources */,
 				E31749A62916A64100F6319E /* GetRandomEmoticon.swift in Sources */,
 				E31749892916A64100F6319E /* SortList.swift in Sources */,

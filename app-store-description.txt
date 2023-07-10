@@ -44,6 +44,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Get Average Color of Image
 - Get Battery State
 - Get Default Printer
+- Get Device Details (Extended)
 - Get Device Orientation
 - Get Dominant Colors of Image
 - Get Emojis

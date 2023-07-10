@@ -602,6 +602,18 @@ enum Device {
 	Returns a timestamp representing the current instant in nanoseconds.
 	*/
 	static var timestamp: Int { Int(clamping: clock_gettime_nsec_np(CLOCK_MONOTONIC_RAW)) }
+
+	/**
+	The uptime of the system, not incuding sleep.
+	*/
+	static var uptime: Duration { ProcessInfo.processInfo.systemUptime.timeIntervalToDuration }
+
+	/**
+	The uptime of the system including sleep. Also known as monotonic clock time.
+	*/
+	static var uptimeIncludingSleep: Duration {
+		.nanoseconds(clock_gettime_nsec_np(CLOCK_MONOTONIC_RAW_APPROX))
+	}
 }
 
 
@@ -6178,5 +6190,18 @@ struct LockedValueBox<Value>: Sendable {
 		try storage.lock.withLock {
 			try mutate(&storage.value)
 		}
+	}
+}
+
+
+extension Duration {
+	var toMeasurement: Measurement<UnitDuration> {
+		.init(value: toTimeInterval, unit: .seconds)
+	}
+}
+
+extension Measurement<UnitDuration> {
+	var toDuration: Duration {
+		converted(to: .seconds).value.timeIntervalToDuration
 	}
 }

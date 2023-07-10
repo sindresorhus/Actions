@@ -72,6 +72,7 @@ And for high-quality transcription, see my [Aiko](https://sindresorhus.com/aiko)
 - Get Average Color of Image
 - Get Battery State
 - Get Default Printer <sup>(macOS-only)</sup>
+- Get Device Details (Extended)
 - Get Device Orientation
 - Get Dominant Colors of Image
 - Get Emojis
