@@ -6,6 +6,7 @@ struct ChooseFromListScreen: View {
 	struct Data: Identifiable {
 		var list: [String]
 		var title: String?
+		var message: String?
 		var selectMultiple: Bool
 		var selectAllInitially: Bool
 		var allowCustomItems: Bool
@@ -34,6 +35,16 @@ struct ChooseFromListScreen: View {
 					#if canImport(AppKit)
 					.listStyle(.inset(alternatesRowBackgrounds: true))
 					#endif
+					.safeAreaInset(edge: .top) {
+						if let message = data.message {
+							Text(message)
+								.foregroundStyle(.secondary)
+								.fillFrame(.horizontal)
+								.padding(.horizontal)
+								.padding(.bottom)
+								.background(.bar)
+						}
+					}
 			}
 				.navigationTitle(title)
 				#if canImport(UIKit)

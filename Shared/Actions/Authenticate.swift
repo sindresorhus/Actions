@@ -10,6 +10,9 @@ struct Authenticate: AppIntent {
 Authenticate the user using Face ID or Touch ID.
 
 IMPORTANT: The result is copied to the clipboard as the text “true” or “false”. Add the “Wait to Return” and “Get Clipboard” actions after this one. Use the “If” action to decide what to do with the result.
+
+Q: Why can't it return the value directly?
+A: The system authentication feature can only be triggered from an app, so the action has to send you to the Actions app, which shows it, and then sends you back to the shortcut.
 """,
 		categoryName: "Device",
 		searchKeywords: [

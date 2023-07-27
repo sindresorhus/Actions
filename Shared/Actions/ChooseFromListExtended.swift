@@ -30,8 +30,11 @@ Note: If you get the error “The operation failed because Shortcuts couldn't co
 	@Parameter(title: "List")
 	var list: [String]
 
-	@Parameter(title: "Prompt")
+	@Parameter(title: "Prompt", description: "Keep it short.")
 	var prompt: String?
+
+	@Parameter(title: "Message", description: "Shown above the choices. This one can be longer. For example, use it to show instructions.")
+	var message: String?
 
 	@Parameter(title: "Select Multiple", default: false)
 	var selectMultiple: Bool
@@ -61,6 +64,7 @@ Note: If you get the error “The operation failed because Shortcuts couldn't co
 			When(\.$useTimeout, .equalTo, true) {
 				Summary("Choose from \(\.$list)") {
 					\.$prompt
+					\.$message
 					\.$selectMultiple
 					\.$selectAllInitially
 					\.$useTimeout
@@ -71,6 +75,7 @@ Note: If you get the error “The operation failed because Shortcuts couldn't co
 			} otherwise: {
 				Summary("Choose from \(\.$list)") {
 					\.$prompt
+					\.$message
 					\.$selectMultiple
 					\.$selectAllInitially
 					\.$useTimeout
@@ -81,6 +86,7 @@ Note: If you get the error “The operation failed because Shortcuts couldn't co
 			When(\.$useTimeout, .equalTo, true) {
 				Summary("Choose from \(\.$list)") {
 					\.$prompt
+					\.$message
 					\.$selectMultiple
 					\.$useTimeout
 					\.$timeout
@@ -90,6 +96,7 @@ Note: If you get the error “The operation failed because Shortcuts couldn't co
 			} otherwise: {
 				Summary("Choose from \(\.$list)") {
 					\.$prompt
+					\.$message
 					\.$selectMultiple
 					\.$useTimeout
 					\.$allowCustomItems
@@ -104,6 +111,7 @@ Note: If you get the error “The operation failed because Shortcuts couldn't co
 			AppState.shared.chooseFromListData = .init(
 				list: list,
 				title: prompt?.nilIfEmptyOrWhitespace,
+				message: message?.nilIfEmptyOrWhitespace,
 				selectMultiple: selectMultiple,
 				selectAllInitially: selectAllInitially,
 				allowCustomItems: allowCustomItems,
