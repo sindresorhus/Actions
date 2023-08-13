@@ -109,6 +109,7 @@ And for high-quality transcription, see my [Aiko](https://sindresorhus.com/aiko)
 - Is Cellular Data On
 - Is Connected to VPN <sup>(iOS-only)</sup>
 - Is Dark Mode On
+- Is Day
 - Is Device Orientation
 - Is Host Reachable
 - Is Low Power Mode On

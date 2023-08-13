@@ -81,6 +81,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Is Cellular Data On
 - Is Connected to VPN
 - Is Dark Mode On
+- Is Day
 - Is Device Orientation
 - Is Host Reachable
 - Is Low Power Mode On

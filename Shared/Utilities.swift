@@ -6217,3 +6217,30 @@ extension Measurement<UnitDuration> {
 		converted(to: .seconds).value.timeIntervalToDuration
 	}
 }
+
+
+extension Locale.Weekday: CaseIterable {
+	/**
+	Does not respect locale for the order.
+	*/
+	public static let allCases: [Self] = [
+		.monday,
+		.tuesday,
+		.wednesday,
+		.thursday,
+		.friday,
+		.saturday,
+		.sunday
+	]
+}
+
+
+extension Calendar {
+	/**
+	Returns the weekday for the day at the given date.
+	*/
+	func weekday(for date: Date) -> Locale.Weekday {
+		let index = (component(.weekday, from: date) + 5) % 7
+		return .allCases[index]
+	}
+}
