@@ -71,6 +71,7 @@ And for high-quality transcription, see my [Aiko](https://sindresorhus.com/aiko)
 - Get Audio Playback Destination <sup>(iOS-only)</sup>
 - Get Average Color of Image
 - Get Battery State
+- Get Boolean from Input
 - Get Default Printer <sup>(macOS-only)</sup>
 - Get Device Details (Extended)
 - Get Device Orientation

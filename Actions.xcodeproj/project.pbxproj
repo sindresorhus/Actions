@@ -179,6 +179,8 @@
 		E33D4BA62744238300CC7A8A /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33D4BA42744238300CC7A8A /* AppState.swift */; };
 		E343F9B829713AFF00AD82F4 /* GetMapImageOfLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E317489E2913BEAB00F6319E /* GetMapImageOfLocation.swift */; };
 		E34839A12A885DD90040DF6E /* InvertImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34839A02A885DD90040DF6E /* InvertImages.swift */; };
+		E34839A32A88DF7D0040DF6E /* GetBooleanFromInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34839A22A88DF7D0040DF6E /* GetBooleanFromInput.swift */; };
+		E34839A42A88DF7D0040DF6E /* GetBooleanFromInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34839A22A88DF7D0040DF6E /* GetBooleanFromInput.swift */; };
 		E34AB51628F58B500082AE78 /* Authenticate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34AB51528F58B500082AE78 /* Authenticate.swift */; };
 		E351083128FD14A2007C85AE /* HexEncode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351083028FD14A2007C85AE /* HexEncode.swift */; };
 		E351083628FD79D8007C85AE /* OverwriteFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351083528FD79D8007C85AE /* OverwriteFile.swift */; };
@@ -297,6 +299,7 @@
 		E33D4BA42744238300CC7A8A /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		E33DFF662748C6B100C79D78 /* InternetAccessPolicy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = InternetAccessPolicy.json; sourceTree = "<group>"; };
 		E34839A02A885DD90040DF6E /* InvertImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvertImages.swift; sourceTree = "<group>"; };
+		E34839A22A88DF7D0040DF6E /* GetBooleanFromInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBooleanFromInput.swift; sourceTree = "<group>"; };
 		E34AB51528F58B500082AE78 /* Authenticate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticate.swift; sourceTree = "<group>"; };
 		E34AB51728F5AA170082AE78 /* ConvertCoordinatesToLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertCoordinatesToLocation.swift; sourceTree = "<group>"; };
 		E351082E28FD099B007C85AE /* IsCellularDataOn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsCellularDataOn.swift; sourceTree = "<group>"; };
@@ -520,6 +523,7 @@
 				E3AB2D8A29F840B900ED2913 /* GetActionsVersion.swift */,
 				E3C33CDE28D4914C00386C59 /* GetAudioPlaybackDestination.swift */,
 				E3C33CB328D43DDA00386C59 /* GetBatteryState.swift */,
+				E34839A22A88DF7D0040DF6E /* GetBooleanFromInput.swift */,
 				E3D3A30B2A5BECED00F45541 /* GetDeviceDetailsExtended.swift */,
 				E31DE80128D619DB00DE79EF /* GetDeviceOrientation.swift */,
 				E3C33CA128D37E2B00386C59 /* GetEmojis.swift */,
@@ -806,6 +810,7 @@
 				E31749372916A20C00F6319E /* FormatPersonName.swift in Sources */,
 				E31749182916A20C00F6319E /* IsDeviceOrientation.swift in Sources */,
 				E31749552916A20C00F6319E /* CombineLists.swift in Sources */,
+				E34839A32A88DF7D0040DF6E /* GetBooleanFromInput.swift in Sources */,
 				E31749202916A20C00F6319E /* GetRandomFloatingPointNumber.swift in Sources */,
 				E317490F2916A20C00F6319E /* ApplyCaptureDate.swift in Sources */,
 				E31749502916A20C00F6319E /* SetFileCreationModificationDate.swift in Sources */,
@@ -896,6 +901,7 @@
 				E31749782916A64100F6319E /* GetRandomBoolean.swift in Sources */,
 				E31749AE2916A64100F6319E /* FormatDuration.swift in Sources */,
 				E31749AA2916A64100F6319E /* PrettyPrintDictionaries.swift in Sources */,
+				E34839A42A88DF7D0040DF6E /* GetBooleanFromInput.swift in Sources */,
 				E317497A2916A64100F6319E /* IsAudioPlaying.swift in Sources */,
 				E31749822916A64100F6319E /* GeoURI.swift in Sources */,
 				E317498C2916A64100F6319E /* TransformTextWithJavaScript.swift in Sources */,

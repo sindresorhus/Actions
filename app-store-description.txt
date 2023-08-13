@@ -43,6 +43,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Get Audio Playback Destination
 - Get Average Color of Image
 - Get Battery State
+- Get Boolean from Input
 - Get Default Printer
 - Get Device Details (Extended)
 - Get Device Orientation
