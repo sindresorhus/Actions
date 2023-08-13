@@ -102,6 +102,7 @@ And for high-quality transcription, see my [Aiko](https://sindresorhus.com/aiko)
 - Global Variable
 - Hex Encode
 - Hide Shortcuts App
+- Invert Images
 - Is Audio Playing <sup>(iOS-only)</sup>
 - Is Bluetooth On
 - Is Cellular Data On

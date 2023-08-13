@@ -40,11 +40,9 @@ Dominant color is the most seen color in an image, while average color is all th
 	}
 
 	func perform() async throws -> some IntentResult & ReturnsValue<[ColorAppEntity]> {
-		guard let image = CIImage(data: image.data) else {
-			throw "Invalid or unsupported image.".toError
-		}
-
-		let colors = try image.dominantColors(count: count).map { ColorAppEntity($0) }
+		let colors = try CIImage.from(image.data)
+			.dominantColors(count: count)
+			.map { ColorAppEntity($0) }
 
 		return .result(value: colors)
 	}

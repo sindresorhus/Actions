@@ -178,6 +178,7 @@
 		E33D08142A11679300FBCAD7 /* SettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33D08132A11679300FBCAD7 /* SettingsScreen.swift */; };
 		E33D4BA62744238300CC7A8A /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33D4BA42744238300CC7A8A /* AppState.swift */; };
 		E343F9B829713AFF00AD82F4 /* GetMapImageOfLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E317489E2913BEAB00F6319E /* GetMapImageOfLocation.swift */; };
+		E34839A12A885DD90040DF6E /* InvertImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34839A02A885DD90040DF6E /* InvertImages.swift */; };
 		E34AB51628F58B500082AE78 /* Authenticate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34AB51528F58B500082AE78 /* Authenticate.swift */; };
 		E351083128FD14A2007C85AE /* HexEncode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351083028FD14A2007C85AE /* HexEncode.swift */; };
 		E351083628FD79D8007C85AE /* OverwriteFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351083528FD79D8007C85AE /* OverwriteFile.swift */; };
@@ -295,6 +296,7 @@
 		E33D08132A11679300FBCAD7 /* SettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreen.swift; sourceTree = "<group>"; };
 		E33D4BA42744238300CC7A8A /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		E33DFF662748C6B100C79D78 /* InternetAccessPolicy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = InternetAccessPolicy.json; sourceTree = "<group>"; };
+		E34839A02A885DD90040DF6E /* InvertImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvertImages.swift; sourceTree = "<group>"; };
 		E34AB51528F58B500082AE78 /* Authenticate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticate.swift; sourceTree = "<group>"; };
 		E34AB51728F5AA170082AE78 /* ConvertCoordinatesToLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertCoordinatesToLocation.swift; sourceTree = "<group>"; };
 		E351082E28FD099B007C85AE /* IsCellularDataOn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsCellularDataOn.swift; sourceTree = "<group>"; };
@@ -457,6 +459,7 @@
 				E3DB884B28E6E3AD00FEE8D6 /* HapticFeedback.swift */,
 				E351083028FD14A2007C85AE /* HexEncode.swift */,
 				E3DB884F28E6EE7B00FEE8D6 /* HideShortcutsApp.swift */,
+				E34839A02A885DD90040DF6E /* InvertImages.swift */,
 				E3C33CA928D3A81700386C59 /* IsDarkMode.swift */,
 				E3CB448A28D71A180031D55F /* IsScreenLocked.swift */,
 				E3CB44A128D794DA0031D55F /* MergeDictionaries.swift */,
@@ -986,6 +989,7 @@
 				E3F64D7628D9F9930009B500 /* CreateColorImage.swift in Sources */,
 				E3CB449228D7803C0031D55F /* ParseJSON5.swift in Sources */,
 				E3963A5A292CAF9F00210AC2 /* RemoveDuplicatesFromList.swift in Sources */,
+				E34839A12A885DD90040DF6E /* InvertImages.swift in Sources */,
 				E3CB449F28D791D40031D55F /* GenerateCSV.swift in Sources */,
 				E3B8FD1E29F11DCA001249CF /* GetAverageColorOfImage.swift in Sources */,
 				E37A1E222A2D214800E68E92 /* GetDominantColorsOfImage.swift in Sources */,

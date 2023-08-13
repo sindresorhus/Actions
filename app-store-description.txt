@@ -74,6 +74,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Global Variable
 - Hex Encode
 - Hide Shortcuts App
+- Invert Images
 - Is Audio Playing
 - Is Bluetooth On
 - Is Cellular Data On

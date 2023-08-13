@@ -27,12 +27,7 @@ Average color is all the colors in an image mixed into one, while dominant color
 	}
 
 	func perform() async throws -> some IntentResult & ReturnsValue<ColorAppEntity> {
-		guard let image = CIImage(data: image.data) else {
-			throw "Invalid or unsupported image.".toError
-		}
-
-		let color = try image.averageColor()
-
+		let color = try CIImage.from(image.data).averageColor()
 		return .result(value: .init(color))
 	}
 }

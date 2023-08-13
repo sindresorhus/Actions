@@ -6149,6 +6149,18 @@ func withoutAnimation<Result>(@_inheritActorContext _ body: () throws -> Result)
 }
 
 
+extension CIImage {
+	/**
+	Inverts the colors.
+	*/
+	var inverted: CIImage? {
+		let filter = CIFilter.colorInvert()
+		filter.inputImage = self
+		return filter.outputImage
+	}
+}
+
+
 extension View {
 	/**
 	`.task()` with debouncing.
