@@ -54,6 +54,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Get High-Resolution Timestamp
 - Get Index of List Item
 - Get Map Image of Location
+- Get Modifier Key State
 - Get Music Playlists
 - Get Printers
 - Get Query Item Value from URL
