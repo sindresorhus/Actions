@@ -234,6 +234,12 @@
 		E3F64D7628D9F9930009B500 /* CreateColorImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F64D7528D9F9930009B500 /* CreateColorImage.swift */; };
 		E3F64D7928D9FCA20009B500 /* GetSymbolImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F64D7728D9FCA20009B500 /* GetSymbolImage.swift */; };
 		E3FC71DD271EBE5C00C9D255 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FC71DC271EBE5B00C9D255 /* Utilities.swift */; };
+		FD3BD4322A966507001A7F03 /* SoulverCore in Frameworks */ = {isa = PBXBuildFile; productRef = FD3BD4312A966507001A7F03 /* SoulverCore */; };
+		FDEDC6862A9560AE0063530F /* RMShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDEDC6832A955C530063530F /* RMShape.swift */; };
+		FDEDC6872A9560AE0063530F /* RMIconContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDEDC67D2A9552200063530F /* RMIconContainer.swift */; };
+		FDEDC6882A9560AE0063530F /* RMStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDEDC67B2A9551F50063530F /* RMStyle.swift */; };
+		FDEDC68A2A9560AE0063530F /* CreateMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDEDC6712A95519B0063530F /* CreateMenuItem.swift */; };
+		FDEDC68E2A9565E80063530F /* RMIconType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDEDC68D2A9565E80063530F /* RMIconType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -407,6 +413,11 @@
 		E3F64D7528D9F9930009B500 /* CreateColorImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateColorImage.swift; sourceTree = "<group>"; };
 		E3F64D7728D9FCA20009B500 /* GetSymbolImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSymbolImage.swift; sourceTree = "<group>"; };
 		E3FC71DC271EBE5B00C9D255 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		FDEDC6712A95519B0063530F /* CreateMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMenuItem.swift; sourceTree = "<group>"; };
+		FDEDC67B2A9551F50063530F /* RMStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMStyle.swift; sourceTree = "<group>"; };
+		FDEDC67D2A9552200063530F /* RMIconContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMIconContainer.swift; sourceTree = "<group>"; };
+		FDEDC6832A955C530063530F /* RMShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMShape.swift; sourceTree = "<group>"; };
+		FDEDC68D2A9565E80063530F /* RMIconType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMIconType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -424,6 +435,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E31749C22916A6B400F6319E /* Sentry in Frameworks */,
+				FD3BD4322A966507001A7F03 /* SoulverCore in Frameworks */,
 				E31749C42916A6B700F6319E /* ExceptionCatcher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -446,6 +458,7 @@
 		E30FD0D527908D1A00C01D80 /* Actions */ = {
 			isa = PBXGroup;
 			children = (
+				FDEDC6702A95518D0063530F /* Rich Menu */,
 				E33D080E2A11629500FBCAD7 /* AskChatGPT.swift */,
 				E352420928F6EEDE00A957A7 /* AskForText.swift */,
 				E34AB51528F58B500082AE78 /* Authenticate.swift */,
@@ -635,6 +648,26 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		FDEDC6702A95518D0063530F /* Rich Menu */ = {
+			isa = PBXGroup;
+			children = (
+				FDEDC6712A95519B0063530F /* CreateMenuItem.swift */,
+				FDEDC6732A9551AA0063530F /* Models */,
+			);
+			path = "Rich Menu";
+			sourceTree = "<group>";
+		};
+		FDEDC6732A9551AA0063530F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FDEDC67B2A9551F50063530F /* RMStyle.swift */,
+				FDEDC6832A955C530063530F /* RMShape.swift */,
+				FDEDC67D2A9552200063530F /* RMIconContainer.swift */,
+				FDEDC68D2A9565E80063530F /* RMIconType.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -675,6 +708,7 @@
 			packageProductDependencies = (
 				E31749C12916A6B400F6319E /* Sentry */,
 				E31749C32916A6B700F6319E /* ExceptionCatcher */,
+				FD3BD4312A966507001A7F03 /* SoulverCore */,
 			);
 			productName = "Intents Extension";
 			productReference = E31749642916A5FB00F6319E /* Intents Extension macOS.appex */;
@@ -997,9 +1031,11 @@
 				E3EA7D7B28EAC2210043F782 /* BlurImages.swift in Sources */,
 				E33D080F2A11629500FBCAD7 /* AskChatGPT.swift in Sources */,
 				E3C33CDC28D48C3200386C59 /* GetRunningApps.swift in Sources */,
+				FDEDC68A2A9560AE0063530F /* CreateMenuItem.swift in Sources */,
 				E3BFF7B527428F5200B830DE /* WelcomeScreen.swift in Sources */,
 				E3F64D7628D9F9930009B500 /* CreateColorImage.swift in Sources */,
 				E3CB449228D7803C0031D55F /* ParseJSON5.swift in Sources */,
+				FDEDC6882A9560AE0063530F /* RMStyle.swift in Sources */,
 				E3963A5A292CAF9F00210AC2 /* RemoveDuplicatesFromList.swift in Sources */,
 				E34839A12A885DD90040DF6E /* InvertImages.swift in Sources */,
 				E3CB449F28D791D40031D55F /* GenerateCSV.swift in Sources */,
@@ -1023,6 +1059,7 @@
 				E303EED329529D0B007BE918 /* GetDefaultPrinter.swift in Sources */,
 				E3DB885228E6EFBB00FEE8D6 /* ScanDocuments.swift in Sources */,
 				E3B8FD1929ED4305001249CF /* GetTitleOfURL.swift in Sources */,
+				FDEDC68E2A9565E80063530F /* RMIconType.swift in Sources */,
 				E3B8FD1829ED42DA001249CF /* GetUnsplashImage.swift in Sources */,
 				E38035CB29278B1700D29A07 /* MergeDictionaries.swift in Sources */,
 				E343F9B829713AFF00AD82F4 /* GetMapImageOfLocation.swift in Sources */,
@@ -1036,9 +1073,11 @@
 				E33D08142A11679300FBCAD7 /* SettingsScreen.swift in Sources */,
 				E303EED529529D1B007BE918 /* SetDefaultPrinter.swift in Sources */,
 				E3FC71DD271EBE5C00C9D255 /* Utilities.swift in Sources */,
+				FDEDC6872A9560AE0063530F /* RMIconContainer.swift in Sources */,
 				E324C9FF271E972300E7CA9B /* App.swift in Sources */,
 				E3CB44AB28D7A10C0031D55F /* TranscribeAudio.swift in Sources */,
 				E352420A28F6EEDE00A957A7 /* AskForText.swift in Sources */,
+				FDEDC6862A9560AE0063530F /* RMShape.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1068,7 +1107,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YG56YK5RN5;
+				DEVELOPMENT_TEAM = ME2UKFKL5H;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Intents Extension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Intents Extension";
@@ -1079,7 +1118,7 @@
 					"@executable_path/../../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sindresorhus.Actions.Intents-Extension";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER).Intents-Extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
@@ -1128,7 +1167,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Intents Extension/Intents_Extension.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YG56YK5RN5;
+				DEVELOPMENT_TEAM = ME2UKFKL5H;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Intents Extension/Info.plist";
@@ -1139,7 +1178,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sindresorhus.Actions.Intents-Extension";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER).Intents-Extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
@@ -1310,7 +1349,7 @@
 				CODE_SIGN_ENTITLEMENTS = Shared/Actions.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YG56YK5RN5;
+				DEVELOPMENT_TEAM = ME2UKFKL5H;
 				ENABLE_BITCODE = NO;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				ENABLE_PREVIEWS = YES;
@@ -1335,7 +1374,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.sindresorhus.Actions;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER)";
 				PRODUCT_NAME = Actions;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
@@ -1532,6 +1571,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E3327E95272C68DE00AD5CC7 /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
 			productName = Sentry;
+		};
+		FD3BD4312A966507001A7F03 /* SoulverCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E317495D2916A4A300F6319E /* XCRemoteSwiftPackageReference "SoulverCore" */;
+			productName = SoulverCore;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

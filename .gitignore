@@ -1,2 +1,4 @@
 xcuserdata
 project.xcworkspace
+Build/
+.DS_Store
