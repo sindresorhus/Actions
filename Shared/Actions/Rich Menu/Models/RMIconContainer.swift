@@ -6,9 +6,11 @@ struct RMIconContainer<Icon: View>: View {
     var backgroundColor: Color
     var backgroundShape: RMBackgroundShape
 
-    /// Initializes with a custom view as the icon and the specified background color
+    /**
+    Initializes with a custom view as the icon and the specified background color
+   	*/
     /// - Parameters:
-    ///   - icon: any view, will be clipped to 93x93
+    ///   - icon: Any view. Will be clipped to 93x93.
     ///   - background: a color
     ///   - backgroundShape: Shape for the background
     private init(
