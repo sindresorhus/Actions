@@ -10,7 +10,7 @@ enum RMStyle: String, AppEnum {
 
     static var caseDisplayRepresentations: [Self: DisplayRepresentation] {
         [
-            .default: "default",
+            .default: "Default",
             .red: "red",
             .orange: "orange",
             .yellow: "yellow",
