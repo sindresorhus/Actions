@@ -31,11 +31,18 @@
 - Run the “Actions” target, which will open the app and then open the Shortcuts app. You can then test out your work.
 - Add the action to `readme.md` and `app-store-description.txt`.
 
+#### Code style
+
+- Use tab-indentation.
+- Use `/**\nDescription.\n*/` comment style over `\\\ Description.`.
+- Prefer `let` whenever possible.
+- Make types and variables `private` whenever possible.
+- Make sure linting passes.
+- Keep all the code related to the action in a single file. Reusable extensions can be put in `Utilities.swift`.
+
 ### General
 
 - Make sure you test on both macOS and iOS before submitting a pull request.
-- Make sure linting passes.
-- Use tab-indentation.
 
 ### Pull request
 
