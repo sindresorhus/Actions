@@ -199,6 +199,8 @@
 		E39DC11629A5460C004F4FB8 /* IsHostReachable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D0655D29A51E160059A16E /* IsHostReachable.swift */; };
 		E3AB2D8B29F840B900ED2913 /* GetActionsVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AB2D8A29F840B900ED2913 /* GetActionsVersion.swift */; };
 		E3AB2D8C29F840B900ED2913 /* GetActionsVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AB2D8A29F840B900ED2913 /* GetActionsVersion.swift */; };
+		E3AFA5C32A9B58160044E2F1 /* Boolean.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AFA5C22A9B58160044E2F1 /* Boolean.swift */; };
+		E3AFA5C42A9B58160044E2F1 /* Boolean.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AFA5C22A9B58160044E2F1 /* Boolean.swift */; };
 		E3B8FD1629ED376F001249CF /* TruncateNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B8FD1529ED376F001249CF /* TruncateNumber.swift */; };
 		E3B8FD1729ED376F001249CF /* TruncateNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B8FD1529ED376F001249CF /* TruncateNumber.swift */; };
 		E3B8FD1829ED42DA001249CF /* GetUnsplashImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CB44A328D7972B0031D55F /* GetUnsplashImage.swift */; };
@@ -322,6 +324,7 @@
 		E39F4776272D516E00B99CB0 /* Actions.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Actions.entitlements; sourceTree = "<group>"; };
 		E3A85FE428E94E7300F423F1 /* FormatPersonName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatPersonName.swift; sourceTree = "<group>"; };
 		E3AB2D8A29F840B900ED2913 /* GetActionsVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetActionsVersion.swift; sourceTree = "<group>"; };
+		E3AFA5C22A9B58160044E2F1 /* Boolean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Boolean.swift; sourceTree = "<group>"; };
 		E3B1C3C328F5D68D009BE0B7 /* GetIndexOfListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetIndexOfListItem.swift; sourceTree = "<group>"; };
 		E3B8FD1529ED376F001249CF /* TruncateNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TruncateNumber.swift; sourceTree = "<group>"; };
 		E3B8FD1A29EEFF49001249CF /* SetUniformTypeIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUniformTypeIdentifier.swift; sourceTree = "<group>"; };
@@ -508,6 +511,7 @@
 			children = (
 				E3EC2DE528D25DF900A88E25 /* AddToList.swift */,
 				E3C33C9128D3569F00386C59 /* ApplyCaptureDate.swift */,
+				E3AFA5C22A9B58160044E2F1 /* Boolean.swift */,
 				E3D514C928EEAAEC003F7C2E /* CalculateWithSoulver.swift */,
 				E3EC2DC728D2197400A88E25 /* ClampNumber.swift */,
 				E3C33C9728D35D7400386C59 /* CombineLists.swift */,
@@ -842,6 +846,7 @@
 				E31749172916A20C00F6319E /* GetUserDetails.swift in Sources */,
 				E3C1DD2129A55C2600F63F45 /* OpenURLsWithApp.swift in Sources */,
 				E317494D2916A20C00F6319E /* GetRandomEmoticon.swift in Sources */,
+				E3AFA5C32A9B58160044E2F1 /* Boolean.swift in Sources */,
 				E31749092916A20C00F6319E /* IsOnline.swift in Sources */,
 				E31749232916A20C00F6319E /* GetBatteryState.swift in Sources */,
 				E317493B2916A20C00F6319E /* TruncateText.swift in Sources */,
@@ -935,6 +940,7 @@
 				E3C1DD2229A55C2700F63F45 /* OpenURLsWithApp.swift in Sources */,
 				E31749772916A64100F6319E /* RemoveNonPrintableCharacters.swift in Sources */,
 				E31749A72916A64100F6319E /* IsCellularDataOn.swift in Sources */,
+				E3AFA5C42A9B58160044E2F1 /* Boolean.swift in Sources */,
 				E31749BB2916A64100F6319E /* GetQueryItemsFromURLAsDictionary.swift in Sources */,
 				E31749AF2916A64100F6319E /* ShuffleList.swift in Sources */,
 				E3B8FD1729ED376F001249CF /* TruncateNumber.swift in Sources */,
