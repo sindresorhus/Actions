@@ -3,24 +3,24 @@ import AppIntents
 import SwiftUI
 
 // MARK: Action
-struct CreateMenuItem: AppIntent {
+private struct CreateMenuItem: AppIntent {
 	static let title: LocalizedStringResource = "Create Menu Item"
 
 	static let description = IntentDescription(
-  """
-  Create a menu item with a title, subtitle and icon.
+"""
+Create a menu item with a title, subtitle and icon.
 
-  You can later use one or more of these Items in a "Choose from List" action.
+You can later use one or more of these Items in a "Choose from List" action.
 
-  Add an "Add to Variable" Action below this to populate a list and then use that variable in the "Choose From List" Action.
-  """,
-  categoryName: "Rich Menu",
-  searchKeywords: [
-	"menu",
-	"menu item",
-	"choose from menu",
-	"rich menu"
-  ]
+Add an "Add to Variable" action below this to populate a list and then use that variable in the "Choose From List" action.
+""",
+		categoryName: "Rich Menu",
+		searchKeywords: [
+			"menu",
+			"menu item",
+			"choose from menu",
+			"rich menu"
+		]
 	)
 
 	static var parameterSummary: some ParameterSummary {
@@ -96,11 +96,12 @@ struct CreateMenuItem: AppIntent {
 
 	@Parameter(
 		title: "Background",
-		description: """
-  A Background for your Icon
+		description:
+"""
+A Background for your Icon
 
-  Use this in combination with Background Shape to show a background behind your icon
-  """,
+Use this in combination with background shape to show a background behind your icon
+""",
 		default: .default
 	)
 	var background: RMStyle
@@ -109,9 +110,9 @@ struct CreateMenuItem: AppIntent {
 	@Parameter(
 		title: "SF Symbol Name",
 		description: """
-  The Name of a SF Symbol
+  The name of a SF Symbol
 
-  For available Symbols see Apple's Website (https://developer.apple.com/sf-symbols/) ])
+  For available symbols see Apple's website (https://developer.apple.com/sf-symbols/)
   """,
 		default: "plus"
 	)
@@ -127,15 +128,15 @@ struct CreateMenuItem: AppIntent {
 	// Emoji
 	@Parameter(
 		title: "Emoji",
-		description: """
-  Any Emoji 😀.
+		description:
+"""
+Any Emoji 😀.
 
-  Tap the Emoji button on your keyboard and select one emoji.
-  """,
-		default: "😀",
+Tap the Emoji button on your keyboard and select one emoji.
+""",
 		inputOptions: .init(keyboardType: .default)
 	)
-	var emoji: String
+	var emoji: String?
 
 	@Parameter(
 		title: "Data"
@@ -144,9 +145,10 @@ struct CreateMenuItem: AppIntent {
 
 	@Parameter(
 		title: "Background Style",
-		description: """
-  The style of the icon's background.
-  """,
+		description:
+"""
+The style of the icon's background.
+""",
 		default: .circle
 	)
 	var backgroundShape: RMBackgroundShape
@@ -163,7 +165,7 @@ struct CreateMenuItem: AppIntent {
 			.render()
 		case .emoji:
 			return await RMIconContainer(
-				emoji: emoji,
+				emoji: emoji ?? "",
 				backgroundColor: background.color(isBackground: true),
 				backgroundShape: backgroundShape
 			)
@@ -244,7 +246,7 @@ enum RMStyle: String, AppEnum {
 	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Style"
 
 	static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
-		.default: "Default",
+		.default: "default",
 		.red: "red",
 		.orange: "orange",
 		.yellow: "yellow",
@@ -332,9 +334,9 @@ enum RMBackgroundShape: String, AppEnum {
 
 
 	static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
-		.circle: DisplayRepresentation(title: "Circle"),
-		.square: DisplayRepresentation(title: "Square"),
-		.noBackground: DisplayRepresentation(title: "No Background")
+		.circle: "circle",
+		.square: "square",
+		.noBackground: "no background"
 	]
 
 	case circle
@@ -430,9 +432,9 @@ struct RMIconContainer<Icon: View>: View {
 		foregroundColor: Color,
 		backgroundColor: Color,
 		backgroundShape: RMBackgroundShape
-	) where Icon == RMSybmolIconView {
+	) where Icon == RMSymbolIconView {
 		self.init(icon: {
-			RMSybmolIconView(
+			RMSymbolIconView(
 				systemName: systemName,
 				foregroundColor: foregroundColor == .primary ? .primary : foregroundColor
 			)
@@ -491,7 +493,7 @@ struct RMEmojiIconView: View {
 }
 
 
-struct RMSybmolIconView: View {
+struct RMSymbolIconView: View {
 	let systemName: String
 	let foregroundColor: Color
 
