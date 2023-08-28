@@ -239,6 +239,8 @@
 		FD3BD4322A966507001A7F03 /* SoulverCore in Frameworks */ = {isa = PBXBuildFile; productRef = FD3BD4312A966507001A7F03 /* SoulverCore */; };
 		FD691FC92A9CB9C500C55178 /* CreateMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD691FC82A9CB9C500C55178 /* CreateMenuItem.swift */; };
 		FD691FCA2A9CB9C500C55178 /* CreateMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD691FC82A9CB9C500C55178 /* CreateMenuItem.swift */; };
+		FD691FCE2A9CCD4C00C55178 /* CreateMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD691FCD2A9CCD4C00C55178 /* CreateMenuItem.swift */; };
+		FD691FCF2A9CCD4C00C55178 /* CreateMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD691FCD2A9CCD4C00C55178 /* CreateMenuItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -414,6 +416,7 @@
 		E3F64D7728D9FCA20009B500 /* GetSymbolImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSymbolImage.swift; sourceTree = "<group>"; };
 		E3FC71DC271EBE5B00C9D255 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		FD691FC82A9CB9C500C55178 /* CreateMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateMenuItem.swift; sourceTree = "<group>"; };
+		FD691FCD2A9CCD4C00C55178 /* CreateMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateMenuItem.swift; path = Shared/Actions/CreateMenuItem.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -521,6 +524,7 @@
 				E3EC2DDD28D24CD900A88E25 /* ConvertDateToUnixTime.swift */,
 				E3EC2DDF28D253D600A88E25 /* ConvertUnixTimeToDate.swift */,
 				E3EC2DE128D2588800A88E25 /* CreateURL.swift */,
+				FD691FCD2A9CCD4C00C55178 /* CreateMenuItem.swift */,
 				E3F64D7128D9F3810009B500 /* EditURL.swift */,
 				E3C33C9B28D376C400386C59 /* FilterList.swift */,
 				E3D514C728EEA8F8003F7C2E /* FlashScreen.swift */,
@@ -860,6 +864,7 @@
 				E317492A2916A20C00F6319E /* GetQueryItemValueFromURL.swift in Sources */,
 				E31749342916A20C00F6319E /* EditURL.swift in Sources */,
 				E317494F2916A20C00F6319E /* ReverseList.swift in Sources */,
+				FD691FCE2A9CCD4C00C55178 /* CreateMenuItem.swift in Sources */,
 				E31749132916A20C00F6319E /* TrimWhitespace.swift in Sources */,
 				E31749242916A20C00F6319E /* CalculateWithSoulver.swift in Sources */,
 				E317491B2916A20C00F6319E /* RemoveNonPrintableCharacters.swift in Sources */,
@@ -954,6 +959,7 @@
 				E31749862916A64100F6319E /* ApplyCaptureDate.swift in Sources */,
 				E31749BF2916A64100F6319E /* GetDeviceOrientation.swift in Sources */,
 				E317499C2916A64100F6319E /* GenerateRandomText.swift in Sources */,
+				FD691FCF2A9CCD4C00C55178 /* CreateMenuItem.swift in Sources */,
 				E317499B2916A64100F6319E /* RoundNumberToMultiple.swift in Sources */,
 				E31749C02916A64C00F6319E /* Main.swift in Sources */,
 				E31749B72916A64100F6319E /* TrimWhitespace.swift in Sources */,
