@@ -119,7 +119,7 @@ struct CreateMenuItem: AppIntent {
 	
 	@Parameter(
 		title: "Foreground",
-		description: "The Color for your SF Symbol",
+		description: "The color for your SF Symbol",
 		default: .default
 	)
 	var foreground: RMStyle
