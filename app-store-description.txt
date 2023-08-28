@@ -26,6 +26,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Convert Location to Geo URI
 - Convert Unix Time to Date
 - Create Color Image
+- Create Menu Item
 - Create URL
 - Edit URL
 - Filter List
