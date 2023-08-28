@@ -3,7 +3,7 @@ import AppIntents
 import SwiftUI
 
 // MARK: Action
-private struct CreateMenuItem: AppIntent {
+struct CreateMenuItem: AppIntent {
 	static let title: LocalizedStringResource = "Create Menu Item"
 
 	static let description = IntentDescription(
