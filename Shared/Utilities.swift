@@ -2550,12 +2550,22 @@ extension URL {
 	The system ensures the directory is not cleaned up until after the app quits.
 	*/
 	static func uniqueTemporaryDirectory(
-		appropriateFor: Self = Bundle.main.bundleURL
+		appropriateFor: Self? = nil
 	) throws -> Self {
-		try FileManager.default.url(
+		let url = {
+			// TODO: Test if I can use `URL.documentsDirectory` on macOS too? Wait until macOS 14 is targeted.
+			#if os(macOS)
+			Bundle.main.bundleURL
+			#else
+			// See: https://developer.apple.com/forums/thread/735726
+			URL.documentsDirectory
+			#endif
+		}
+
+		return try FileManager.default.url(
 			for: .itemReplacementDirectory,
 			in: .userDomainMask,
-			appropriateFor: appropriateFor,
+			appropriateFor: appropriateFor ?? url(),
 			create: true
 		)
 	}
