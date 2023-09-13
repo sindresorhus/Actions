@@ -51,10 +51,17 @@ typealias XScreen = UIScreen
 typealias WindowIfMacOS = WindowGroup
 #endif
 
+// TODO: See if I can remove any of these when targeting iOS 17.
 // TODO: Remove me when it's support it natively.
 extension UnitDuration: @unchecked Sendable {}
 extension UnitLength: @unchecked Sendable {}
 extension XColor: @unchecked Sendable {}
+
+#if os(macOS)
+extension NSRunningApplication: @unchecked Sendable {}
+extension NSWorkspace.OpenConfiguration: @unchecked Sendable {}
+extension NSImage: @unchecked Sendable {}
+#endif
 
 
 // TODO: Remove this when everything is converted to async/await.

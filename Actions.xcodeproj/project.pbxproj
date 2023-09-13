@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -181,7 +181,6 @@
 		E31748A62916A0B100F6319E /* Intents Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.extensionkit-extension"; includeInIndex = 0; path = "Intents Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E31748A82916A0B200F6319E /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		E31748AC2916A0B200F6319E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E317496B2916A5FB00F6319E /* Intents_Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Intents_Extension.entitlements; sourceTree = "<group>"; };
 		E31DE7E928D5DE0C00DE79EF /* IsSilentModeOn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsSilentModeOn.swift; sourceTree = "<group>"; };
 		E31DE7EB28D5DEF800DE79EF /* TruncateText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TruncateText.swift; sourceTree = "<group>"; };
 		E31DE7ED28D5E14400DE79EF /* RoundNumberToMultiple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundNumberToMultiple.swift; sourceTree = "<group>"; };
@@ -200,6 +199,7 @@
 		E324C9F6271E972300E7CA9B /* Actions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Actions.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E324CA24271E996800E7CA9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E324CA29271EA67E00E7CA9B /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		E324D75E2AB1A79500BBE6BA /* Intents Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Intents Extension.entitlements"; sourceTree = "<group>"; };
 		E337A3DF27E850EC0073E865 /* ChooseFromListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseFromListScreen.swift; sourceTree = "<group>"; };
 		E33D080E2A11629500FBCAD7 /* AskChatGPT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskChatGPT.swift; sourceTree = "<group>"; };
 		E33D08132A11679300FBCAD7 /* SettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreen.swift; sourceTree = "<group>"; };
@@ -386,7 +386,7 @@
 				E31748A82916A0B200F6319E /* Main.swift */,
 				E31749562916A25B00F6319E /* Actions */,
 				E31748AC2916A0B200F6319E /* Info.plist */,
-				E317496B2916A5FB00F6319E /* Intents_Extension.entitlements */,
+				E324D75E2AB1A79500BBE6BA /* Intents Extension.entitlements */,
 			);
 			path = "Intents Extension";
 			sourceTree = "<group>";
@@ -604,7 +604,7 @@
 				};
 			};
 			buildConfigurationList = E324C9ED271E972100E7CA9B /* Build configuration list for PBXProject "Actions" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 15.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -833,9 +833,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = "Intents Extension/Intents Extension.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YG56YK5RN5;
+				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Intents Extension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Intents Extension";
@@ -865,9 +867,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = "Intents Extension/Intents Extension.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YG56YK5RN5;
+				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Intents Extension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Intents Extension";

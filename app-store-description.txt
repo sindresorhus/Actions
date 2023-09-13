@@ -30,34 +30,34 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Create URL
 - Edit URL
 - Filter List
-- Flash Screen
+- Flash Screen (macOS-only)
 - Format Currency
 - Format Date Difference
 - Format Duration
 - Format Number — Compact
 - Format Person Name
 - Generate CSV
-- Generate Haptic Feedback
+- Generate Haptic Feedback (iOS-only)
 - Generate Random Data
 - Generate Random Text
 - Generate UUID
-- Get Audio Playback Destination
+- Get Audio Playback Destination (iOS-only)
 - Get Average Color of Image
 - Get Battery State
 - Get Boolean from Input
-- Get Default Printer
+- Get Default Printer (macOS-only)
 - Get Device Details (Extended)
 - Get Device Orientation
 - Get Dominant Colors of Image
 - Get Emojis
-- Get File Icon
+- Get File Icon (macOS-only)
 - Get File Path
 - Get High-Resolution Timestamp
 - Get Index of List Item
 - Get Map Image of Location
-- Get Modifier Key State
-- Get Music Playlists
-- Get Printers
+- Get Modifier Key State (macOS-only)
+- Get Music Playlists (iOS-only)
+- Get Printers (macOS-only)
 - Get Query Item Value from URL
 - Get Query Items from URL
 - Get Query Items from URL as Dictionary
@@ -68,7 +68,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Get Random Floating-Point Number
 - Get Random Number from Seed
 - Get Related Words
-- Get Running Apps
+- Get Running Apps (macOS-only)
 - Get SF Symbol Image
 - Get Title of URL
 - Get Uniform Type Identifier
@@ -78,26 +78,26 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Hex Encode
 - Hide Shortcuts App
 - Invert Images
-- Is Audio Playing
+- Is Audio Playing (iOS-only)
 - Is Bluetooth On
 - Is Cellular Data On
-- Is Connected to VPN
+- Is Connected to VPN (iOS-only)
 - Is Dark Mode On
 - Is Day
 - Is Device Orientation
 - Is Host Reachable
 - Is Low Power Mode On
 - Is Online
-- Is Screen Locked
-- Is Silent Mode On
+- Is Screen Locked (macOS-only)
+- Is Silent Mode On (iOS-only)
 - Is Web Server Reachable
-- Is Wi-Fi On
+- Is Wi-Fi On (macOS-only)
 - Merge Dictionaries
-- Open URLs with App
+- Open URLs with App (macOS-only)
 - Overwrite File
 - Parse CSV
 - Parse JSON5
-- Play Alert Sound
+- Play Alert Sound (macOS-only)
 - Pretty Print Dictionaries
 - Remove Duplicate Lines
 - Remove Duplicates from List
@@ -108,11 +108,11 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Reverse Lines
 - Reverse List
 - Round Number to Multiple
-- Sample Color from Screen
-- Scan Documents
+- Sample Color from Screen (macOS-only)
+- Scan Documents (iOS-only)
 - Scan QR Codes in Image
 - Set Creation and Modification Date of File
-- Set Default Printer
+- Set Default Printer (macOS-only)
 - Set Uniform Type Identifier
 - Shuffle List
 - Sort List
