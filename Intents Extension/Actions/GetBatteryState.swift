@@ -18,16 +18,14 @@ struct GetBatteryState: AppIntent, CustomIntentMigratedAppIntent {
 	}
 
 	func perform() async throws -> some IntentResult & ReturnsValue<Bool> {
-		let result = {
-			switch state {
+		let result = switch state {
 			case .unplugged:
-				return Device.batteryState == .unplugged
+				Device.batteryState == .unplugged
 			case .charging:
-				return Device.batteryState == .charging
+				Device.batteryState == .charging
 			case .full:
-				return Device.batteryState == .full
+				Device.batteryState == .full
 			}
-		}()
 
 		return .result(value: result)
 	}

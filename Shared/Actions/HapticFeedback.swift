@@ -70,23 +70,23 @@ extension HapticFeedbackTypeAppEnum {
 	var toNative: Device.HapticFeedback {
 		switch self {
 		case .success:
-			return .success
+			.success
 		case .warning:
-			return .warning
+			.warning
 		case .error:
-			return .error
+			.error
 		case .selection:
-			return .selection
+			.selection
 		case .soft:
-			return .soft
+			.soft
 		case .light:
-			return .light
+			.light
 		case .medium:
-			return .medium
+			.medium
 		case .heavy:
-			return .heavy
+			.heavy
 		case .rigid:
-			return .rigid
+			.rigid
 		}
 	}
 }

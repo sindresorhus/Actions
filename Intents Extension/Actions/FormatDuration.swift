@@ -130,17 +130,17 @@ extension FormatDurationUnitStyleAppEnum {
 	fileprivate var toNative: DateComponentsFormatter.UnitsStyle {
 		switch self {
 		case .positional:
-			return .positional
+			.positional
 		case .abbreviated:
-			return .abbreviated
+			.abbreviated
 		case .brief:
-			return .brief
+			.brief
 		case .short:
-			return .short
+			.short
 		case .full:
-			return .full
+			.full
 		case .spellOut:
-			return .spellOut
+			.spellOut
 		}
 	}
 }

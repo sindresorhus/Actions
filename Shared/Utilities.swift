@@ -3470,25 +3470,25 @@ extension UIFont.Weight {
 	var toSwiftUIFontWeight: Font.Weight {
 		switch self {
 		case .ultraLight:
-			return .ultraLight
+			.ultraLight
 		case .thin:
-			return .thin
+			.thin
 		case .light:
-			return .light
+			.light
 		case .regular:
-			return .regular
+			.regular
 		case .medium:
-			return .medium
+			.medium
 		case .semibold:
-			return .semibold
+			.semibold
 		case .bold:
-			return .bold
+			.bold
 		case .heavy:
-			return .heavy
+			.heavy
 		case .black:
-			return .black
+			.black
 		default:
-			return .regular
+			.regular
 		}
 	}
 }
@@ -3499,29 +3499,29 @@ extension Font.TextStyle {
 	var toUIFontTextStyle: UIFont.TextStyle {
 		switch self {
 		case .largeTitle:
-			return .largeTitle
+			.largeTitle
 		case .title:
-			return .title1
+			.title1
 		case .title2:
-			return .title2
+			.title2
 		case .title3:
-			return .title3
+			.title3
 		case .headline:
-			return .headline
+			.headline
 		case .body:
-			return .body
+			.body
 		case .callout:
-			return .callout
+			.callout
 		case .subheadline:
-			return .subheadline
+			.subheadline
 		case .footnote:
-			return .footnote
+			.footnote
 		case .caption:
-			return .caption1
+			.caption1
 		case .caption2:
-			return .caption2
+			.caption2
 		@unknown default:
-			return .body
+			.body
 		}
 	}
 }
@@ -3600,9 +3600,9 @@ extension Sequence {
 	) -> [Element] {
 		switch order {
 		case .forward:
-			return sorted { $0[keyPath: keyPath] < $1[keyPath: keyPath] }
+			sorted { $0[keyPath: keyPath] < $1[keyPath: keyPath] }
 		case .reverse:
-			return sorted { $0[keyPath: keyPath] > $1[keyPath: keyPath] }
+			sorted { $0[keyPath: keyPath] > $1[keyPath: keyPath] }
 		}
 	}
 
@@ -3612,9 +3612,9 @@ extension Sequence {
 	) rethrows -> [Element] {
 		switch order {
 		case .forward:
-			return try sorted { (try getValue($0)) < (try getValue($1)) }
+			try sorted { (try getValue($0)) < (try getValue($1)) }
 		case .reverse:
-			return try sorted { (try getValue($0)) > (try getValue($1)) }
+			try sorted { (try getValue($0)) > (try getValue($1)) }
 		}
 	}
 }
@@ -5906,11 +5906,11 @@ extension Printer {
 		var title: String {
 			switch self {
 			case .idle:
-				return "Idle"
+				"Idle"
 			case .processing:
-				return "Processing"
+				"Processing"
 			case .stopped:
-				return "Stopped"
+				"Stopped"
 			}
 		}
 	}

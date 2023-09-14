@@ -239,18 +239,16 @@ struct ChooseFromListScreen: View {
 
 	@MainActor
 	private func timeoutAction() {
-		let item: String? = {
-			switch data.timeoutReturnValue {
+		let item: String? = switch data.timeoutReturnValue {
 			case .nothing:
-				return nil
+				nil
 			case .firstItem:
-				return elements.first
+				elements.first
 			case .lastItem:
-				return elements.last
+				elements.last
 			case .randomItem:
-				return elements.randomElement()
+				elements.randomElement()
 			}
-		}()
 
 		XPasteboard.general.stringForCurrentHostOnly = item
 		openShortcuts()

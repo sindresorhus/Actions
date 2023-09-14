@@ -33,16 +33,14 @@ Folder paths always end with a slash.
 			throw "The given file does not have a path.".toError
 		}
 
-		var result = {
-			switch type {
+		var result = switch type {
 			case .path:
-				return fileURL.path
+				fileURL.path
 			case .url:
-				return fileURL.absoluteString
+				fileURL.absoluteString
 			case .tildePath:
-				return fileURL.tildePath
+				fileURL.tildePath
 			}
-		}()
 
 		if file.type == .folder {
 			result = result.ensureSuffix("/")

@@ -172,17 +172,17 @@ extension MapTypeAppEnum {
 	var toNative: MKMapType {
 		switch self {
 		case .standard:
-			return .standard
+			.standard
 		case .satellite:
-			return .satellite
+			.satellite
 		case .hybrid:
-			return .hybrid
+			.hybrid
 		case .satelliteFlyover:
-			return .satelliteFlyover
+			.satelliteFlyover
 		case .hybridFlyover:
-			return .hybridFlyover
+			.hybridFlyover
 		case .mutedStandard:
-			return .mutedStandard
+			.mutedStandard
 		}
 	}
 }
