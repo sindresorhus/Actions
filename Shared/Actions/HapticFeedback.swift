@@ -30,8 +30,13 @@ On macOS, it does nothing.
 
 	func perform() async throws -> some IntentResult {
 		#if canImport(UIKit)
-		Device.hapticFeedback(type.toNative)
-		try? await Task.sleep(for: .seconds(1))
+		if #available(macOS 14, iOS 17, tvOS 17, watchOS 10, *) {
+			try? await Task.sleep(for: .seconds(0.5))
+			Device.hapticFeedback(type.toNative)
+		} else {
+			Device.hapticFeedback(type.toNative)
+			try? await Task.sleep(for: .seconds(1))
+		}
 		await ShortcutsApp.open()
 		#endif
 
