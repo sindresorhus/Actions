@@ -81,6 +81,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Is Audio Playing (iOS-only)
 - Is Bluetooth On
 - Is Cellular Data On
+- Is Cellular Low Data Mode On
 - Is Connected to VPN (iOS-only)
 - Is Dark Mode On
 - Is Day

@@ -5513,6 +5513,12 @@ extension NWPathMonitor {
 			}
 		}
 	}
+
+	static var currentCellularPath: NWPath? {
+		get async {
+			await NWPathMonitor.changes(requiredInterfaceType: .cellular).first()
+		}
+	}
 }
 
 
@@ -5572,8 +5578,15 @@ extension NWConnection {
 extension Device {
 	static var isCellularDataEnabled: Bool {
 		get async {
-			let path = await NWPathMonitor.changes(requiredInterfaceType: .cellular).first()
+			let path = await NWPathMonitor.currentCellularPath
 			return path?.status == .satisfied
+		}
+	}
+
+	static var isCellularLowDataModeEnabled: Bool {
+		get async {
+			let path = await NWPathMonitor.currentCellularPath
+			return path?.isConstrained ?? false
 		}
 	}
 }
