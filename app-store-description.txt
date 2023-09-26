@@ -84,6 +84,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Is Connected to VPN (iOS-only)
 - Is Dark Mode On
 - Is Day
+- Is Device Locked
 - Is Device Orientation
 - Is Host Reachable
 - Is Low Power Mode On

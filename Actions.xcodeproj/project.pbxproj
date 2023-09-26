@@ -104,6 +104,7 @@
 		E34839A62A88E6A70040DF6E /* IsDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34839A52A88E6A70040DF6E /* IsDay.swift */; };
 		E34AB51628F58B500082AE78 /* Authenticate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34AB51528F58B500082AE78 /* Authenticate.swift */; };
 		E350B24F2AC2AF7D00BFC34D /* IsCellularLowDataModeOn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E350B24E2AC2AF7D00BFC34D /* IsCellularLowDataModeOn.swift */; };
+		E350B2522AC3005800BFC34D /* IsDeviceLocked.swift in Sources */ = {isa = PBXBuildFile; fileRef = E350B2512AC3005800BFC34D /* IsDeviceLocked.swift */; };
 		E351083128FD14A2007C85AE /* HexEncode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351083028FD14A2007C85AE /* HexEncode.swift */; };
 		E351083628FD79D8007C85AE /* OverwriteFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351083528FD79D8007C85AE /* OverwriteFile.swift */; };
 		E351083928FD8089007C85AE /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = E351083828FD8089007C85AE /* Sentry */; };
@@ -211,6 +212,7 @@
 		E34AB51528F58B500082AE78 /* Authenticate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticate.swift; sourceTree = "<group>"; };
 		E34AB51728F5AA170082AE78 /* ConvertCoordinatesToLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertCoordinatesToLocation.swift; sourceTree = "<group>"; };
 		E350B24E2AC2AF7D00BFC34D /* IsCellularLowDataModeOn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsCellularLowDataModeOn.swift; sourceTree = "<group>"; };
+		E350B2512AC3005800BFC34D /* IsDeviceLocked.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsDeviceLocked.swift; sourceTree = "<group>"; };
 		E351082E28FD099B007C85AE /* IsCellularDataOn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsCellularDataOn.swift; sourceTree = "<group>"; };
 		E351083028FD14A2007C85AE /* HexEncode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexEncode.swift; sourceTree = "<group>"; };
 		E351083528FD79D8007C85AE /* OverwriteFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverwriteFile.swift; sourceTree = "<group>"; };
@@ -365,6 +367,7 @@
 				E3DB884F28E6EE7B00FEE8D6 /* HideShortcutsApp.swift */,
 				E34839A02A885DD90040DF6E /* InvertImages.swift */,
 				E3C33CA928D3A81700386C59 /* IsDarkMode.swift */,
+				E350B2512AC3005800BFC34D /* IsDeviceLocked.swift */,
 				E3CB448A28D71A180031D55F /* IsScreenLocked.swift */,
 				E3CB44A128D794DA0031D55F /* MergeDictionaries.swift */,
 				E351083528FD79D8007C85AE /* OverwriteFile.swift */,
@@ -790,6 +793,7 @@
 				E3DB886C28E7549800FEE8D6 /* Constants.swift in Sources */,
 				E3DB884D28E6E3AD00FEE8D6 /* HapticFeedback.swift in Sources */,
 				E3CB448B28D71A180031D55F /* IsScreenLocked.swift in Sources */,
+				E350B2522AC3005800BFC34D /* IsDeviceLocked.swift in Sources */,
 				E3DB885428E7057100FEE8D6 /* WriteText.swift in Sources */,
 				E3CC6D6229A7E293002D8C67 /* GlobalVariable.swift in Sources */,
 				E324CA01271E972300E7CA9B /* MainScreen.swift in Sources */,
