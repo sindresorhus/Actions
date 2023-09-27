@@ -63,13 +63,13 @@ extension SortTypeAppEnum {
 	var toNative: SortType {
 		switch self {
 		case .natural:
-			return .natural
+			.natural
 		case .localized:
-			return .localized
+			.localized
 		case .localizedCaseInsensitive:
-			return .localizedCaseInsensitive
+			.localizedCaseInsensitive
 		case .number:
-			return .number
+			.number
 		}
 	}
 }

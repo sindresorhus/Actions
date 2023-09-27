@@ -54,14 +54,13 @@ Note: If you get the error “The operation failed because Shortcuts couldn't co
 		let set1 = Set(list1.map(\.data))
 		let set2 = Set(list2.map(\.data))
 
-		let set3: Set<Data>
-		switch type {
+		let set3: Set<Data> = switch type {
 		case .subtraction:
-			set3 = set1.subtracting(set2)
+			set1.subtracting(set2)
 		case .intersection:
-			set3 = set1.intersection(set2)
+			set1.intersection(set2)
 		case .symmetricDifference:
-			set3 = set1.symmetricDifference(set2)
+			set1.symmetricDifference(set2)
 		}
 
 		let inputFiles = list1 + list2
