@@ -3,4 +3,7 @@ CURRENT_PROJECT_VERSION = 47
 
 // Source for the base of all bundle IDs
 // -> Intents extensions and app will derive bundleID from here
-PRODUCT_BUNDLE_IDENTIFIER = com.sindresorhus.Actions-dev
+PRODUCT_BUNDLE_IDENTIFIER = com.sindresorhus.Actions
+
+// This makes it easier to not commit the dev team
+DEVELOPMENT_TEAM = YG56YK5RN5

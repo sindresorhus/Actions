@@ -24,61 +24,55 @@ Add an "Add to Variable" action below this to populate a list and then use that 
 	)
 
 	static var parameterSummary: some ParameterSummary {
-		When(\.$menuTitle, .hasAnyValue) {
-			Switch(\.$iconType) {
-				// MARK: SFSymbol
-				Case(RMIconType.sfSymbol) {
-					When(\.$backgroundShape, .notEqualTo, .noBackground) {
-						Summary("Create \(\.$systemName) with \(\.$menuTitle) and \(\.$subtitle)") {
-							\.$iconType
-							\.$foreground
-							\.$backgroundShape
-							\.$background
-							\.$data
-						}
-					} otherwise: {
-						Summary("Create \(\.$systemName) with \(\.$menuTitle) and \(\.$subtitle)") {
-							\.$iconType
-							\.$foreground
-							\.$backgroundShape
-							\.$background
-							\.$data
-						}
-					}
-				}
-
-				// MARK: Emoji
-				Case(RMIconType.emoji) {
-					When(\.$backgroundShape, .equalTo, .noBackground) {
-						Summary("Create \(\.$emoji) with \(\.$menuTitle) and \(\.$subtitle)") {
-							\.$iconType
-							\.$backgroundShape
-							\.$background
-							\.$data
-						}
-					} otherwise: {
-						Summary("Create \(\.$emoji) with \(\.$menuTitle) and \(\.$subtitle)") {
-							\.$iconType
-							\.$foreground
-							\.$backgroundShape
-							\.$background
-							\.$data
-						}
-					}
-				}
-
-				DefaultCase {
-					Summary("Create Item with \(\.$menuTitle) and \(\.$subtitle)") {
+		Switch(\.$iconType) {
+			// MARK: SFSymbol
+			Case(RMIconType.sfSymbol) {
+				When(\.$backgroundShape, .equalTo, .noBackground) {
+					Summary("Create \(\.$menuTitle) with \(\.$systemName) and \(\.$subtitle)") {
 						\.$iconType
+						\.$foreground
+						\.$backgroundShape
+						\.$data
+					}
+				} otherwise: {
+					Summary("Create \(\.$menuTitle) with \(\.$systemName) and \(\.$subtitle)") {
+						\.$iconType
+						\.$foreground
 						\.$backgroundShape
 						\.$background
 						\.$data
 					}
 				}
 			}
-		} otherwise: {
-			// MARK: No Title
-			Summary("Create Menu Item with \(\.$menuTitle)")
+			
+			// MARK: Emoji
+			Case(RMIconType.emoji) {
+				When(\.$backgroundShape, .equalTo, .noBackground) {
+					Summary("Create \(\.$menuTitle) with \(\.$emoji) and \(\.$subtitle)") {
+						\.$iconType
+						\.$foreground
+						\.$backgroundShape
+						\.$data
+					}
+				} otherwise: {
+					Summary("Create \(\.$menuTitle) with \(\.$emoji) and \(\.$subtitle)") {
+						\.$iconType
+						\.$foreground
+						\.$backgroundShape
+						\.$background
+						\.$data
+					}
+				}
+			}
+			
+			DefaultCase {
+				Summary("Create Item with \(\.$menuTitle) and \(\.$subtitle)") {
+					\.$iconType
+					\.$backgroundShape
+					\.$background
+					\.$data
+				}
+			}
 		}
 	}
 
@@ -108,13 +102,12 @@ Use this in combination with background shape to show a background behind your i
 
 	// SF Symbol
 	@Parameter(
-		title: "SF Symbol Name",
+		title: "SF Symbol",
 		description: """
   The name of a SF Symbol
 
   For available symbols see Apple's website (https://developer.apple.com/sf-symbols/)
-  """,
-		default: "plus"
+  """
 	)
 	var systemName: String
 
@@ -189,13 +182,13 @@ The style of the icon's background.
 // MARK: Menu Item
 struct MenuItem: TransientAppEntity {
 	init() {
-		self.init(title: nil, subtitle: nil)
+		self.init(title: "", subtitle: nil)
 	}
 
 	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Menu Item"
 
 	var displayRepresentation: DisplayRepresentation {
-		let title: LocalizedStringResource = "\(title ?? "")"
+		let title: LocalizedStringResource = "\(title)"
 		let subtitle: LocalizedStringResource? = if let subtitle  { "\(subtitle)" } else { nil }
 		let image: DisplayRepresentation.Image? = if let icon {
 			if #available(iOS 17.0, macOS 14.0, *) {
@@ -215,7 +208,7 @@ struct MenuItem: TransientAppEntity {
 	}
 
 	@Property(title: "Title")
-	var title: String?
+	var title: String
 
 	@Property(title: "Subtitle")
 	var subtitle: String?
@@ -224,12 +217,12 @@ struct MenuItem: TransientAppEntity {
 	var icon: IntentFile?
 
 	init(
-		title: String? = nil,
+		title: String,
 		subtitle: String? = nil,
 		icon: Data? = nil
 	) {
 		if let icon {
-			self.icon = .init(data: icon, filename: "icon.png", type: .image)
+			self.icon = .init(data: icon, filename: "icon.png", type: .png)
 		} else {
 			self.icon = nil
 		}
@@ -423,7 +416,7 @@ struct RMIconContainer<Icon: View>: View {
 	/**
 	 Initializes with a an SFSymbol icon with the specified background color
 	 - Parameters:
-	 - sfSymbol: SF Symbol Name ,
+	 - sfSymbol: SF Symbol ,
 	 - background: a color
 	 - backgroundShape: Shape for the background
 	 */
