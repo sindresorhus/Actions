@@ -3774,6 +3774,8 @@ extension Device {
 
 	/**
 	Whether the silent switch on the device is enabled.
+
+	- Note: This will report true even if silent mode is not enabled if run while Voice Memos is recording.
 	*/
 	@available(macOS, unavailable)
 	static var isSilentModeEnabled: Bool {

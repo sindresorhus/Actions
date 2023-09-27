@@ -80,10 +80,20 @@ struct GlobalVariableSetBoolean: AppIntent {
 """
 Sets a global variable with the given boolean.
 
+You can also toggle a boolean.
+
 Global variables persist across your shortcuts and devices, with a limit of 1000 variables and a total storage capacity of 1 MB. Avoid using this for large amounts of data. For large data, use iCloud Drive, Notes, or Data Jar.
 """,
 		categoryName: "Global Variable"
 	)
+
+	@Parameter(
+		title: "Action",
+		default: false,
+		// TODO: macOS 14, use .init
+		displayName: Bool.IntentDisplayName(true: "Toggle", false: "Set")
+	)
+	var shouldToggle: Bool
 
 	@Parameter(
 		title: "Key",
@@ -104,11 +114,21 @@ Global variables persist across your shortcuts and devices, with a limit of 1000
 	var value: Bool
 
 	static var parameterSummary: some ParameterSummary {
-		Summary("Set global boolean variable \(\.$key) to \(\.$value)")
+		When(\.$shouldToggle, .equalTo, true) {
+			Summary("\(\.$shouldToggle) global boolean variable \(\.$key)")
+		} otherwise: {
+			Summary("\(\.$shouldToggle) global boolean variable \(\.$key) to \(\.$value)")
+		}
 	}
 
 	func perform() async throws -> some IntentResult {
-		try setValue(key: key, value: value)
+		if shouldToggle {
+			let value = NSUbiquitousKeyValueStore.default.strictBool(forKey: "\(keyPrefix)\(key)") ?? false
+			try setValue(key: key, value: !value)
+		} else {
+			try setValue(key: key, value: value)
+		}
+
 		return .result()
 	}
 }
@@ -158,10 +178,18 @@ struct GlobalVariableSetNumber: AppIntent {
 """
 Sets a global variable with the given number.
 
+You can also increment or decrement a number.
+
 Global variables persist across your shortcuts and devices, with a limit of 1000 variables and a total storage capacity of 1 MB. Avoid using this for large amounts of data. For large data, use iCloud Drive, Notes, or Data Jar.
 """,
 		categoryName: "Global Variable"
 	)
+
+	@Parameter(
+		title: "Action",
+		default: .set
+	)
+	var action: GlobalVariableSetNumberAction_AppEnum
 
 	@Parameter(
 		title: "Key",
@@ -179,13 +207,47 @@ Global variables persist across your shortcuts and devices, with a limit of 1000
 	var value: Double
 
 	static var parameterSummary: some ParameterSummary {
-		Summary("Set global number variable \(\.$key) to \(\.$value)")
+		Switch(\.$action) {
+			Case(.increment) {
+				Summary("\(\.$action) global number variable \(\.$key) by \(\.$value)")
+			}
+			Case(.decrement) {
+				Summary("\(\.$action) global number variable \(\.$key) by \(\.$value)")
+			}
+			DefaultCase {
+				Summary("\(\.$action) global number variable \(\.$key) to \(\.$value)")
+			}
+		}
 	}
 
 	func perform() async throws -> some IntentResult {
-		try setValue(key: key, value: value)
+		lazy var number = NSUbiquitousKeyValueStore.default.strictNumber(forKey: "\(keyPrefix)\(key)") ?? 0
+
+		switch action {
+		case .set:
+			try setValue(key: key, value: value)
+		case .increment:
+			try setValue(key: key, value: number + value)
+		case .decrement:
+			try setValue(key: key, value: number - value)
+		}
+
 		return .result()
 	}
+}
+
+enum GlobalVariableSetNumberAction_AppEnum: String, AppEnum {
+	case set
+	case increment
+	case decrement
+
+	static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "Global Variable Set Number Action")
+
+	static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
+		.set: "Set",
+		.increment: "Increment",
+		.decrement: "Decrement"
+	]
 }
 
 struct GlobalVariableGetNumber: AppIntent {
