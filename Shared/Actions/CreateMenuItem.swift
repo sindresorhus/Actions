@@ -49,7 +49,7 @@ Add an "Add to Variable" action below this to populate a list and then use that 
 
 				// MARK: Emoji
 				Case(RMIconType.emoji) {
-					When(\.$backgroundShape, .notEqualTo, .noBackground) {
+					When(\.$backgroundShape, .equalTo, .noBackground) {
 						Summary("Create \(\.$emoji) with \(\.$menuTitle) and \(\.$subtitle)") {
 							\.$iconType
 							\.$backgroundShape
