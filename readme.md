@@ -55,6 +55,7 @@ And for high-quality transcription, see my [Aiko](https://sindresorhus.com/aiko)
 - Convert Location to Geo URI
 - Convert Unix Time to Date
 - Create Color Image
+- Create Menu Item
 - Create URL
 - Edit URL
 - Filter List
