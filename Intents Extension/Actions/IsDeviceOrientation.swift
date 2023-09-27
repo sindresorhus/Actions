@@ -26,23 +26,23 @@ On macOS it always returns “false”.
 	private func check(_ uiDeviceOrientation: UIDeviceOrientation) -> Bool {
 		switch orientation {
 		case .portrait:
-			return uiDeviceOrientation == .portrait
+			uiDeviceOrientation == .portrait
 		case .portraitUpsideDown:
-			return uiDeviceOrientation == .portraitUpsideDown
+			uiDeviceOrientation == .portraitUpsideDown
 		case .landscapeLeft:
-			return uiDeviceOrientation == .landscapeLeft
+			uiDeviceOrientation == .landscapeLeft
 		case .landscapeRight:
-			return uiDeviceOrientation == .landscapeRight
+			uiDeviceOrientation == .landscapeRight
 		case .faceUp:
-			return uiDeviceOrientation == .faceUp
+			uiDeviceOrientation == .faceUp
 		case .faceDown:
-			return uiDeviceOrientation == .faceDown
+			uiDeviceOrientation == .faceDown
 		case .anyPortrait:
-			return uiDeviceOrientation.isPortrait
+			uiDeviceOrientation.isPortrait
 		case .anyLandscape:
-			return uiDeviceOrientation.isLandscape
+			uiDeviceOrientation.isLandscape
 		case .faceUpOrDown:
-			return uiDeviceOrientation.isFlat
+			uiDeviceOrientation.isFlat
 		}
 	}
 	#endif

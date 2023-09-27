@@ -106,45 +106,45 @@ extension InputTypeAppEnum {
 	var toContentType: UITextContentType? {
 		switch self {
 		case .text:
-			return nil
+			nil
 		case .number:
-			return nil
+			nil
 		case .url:
-			return .URL
+			.URL
 		case .email:
-			return .emailAddress
+			.emailAddress
 		case .phoneNumber:
-			return .telephoneNumber
+			.telephoneNumber
 		}
 	}
 
 	var toKeyboardType: UIKeyboardType? {
 		switch self {
 		case .text:
-			return nil
+			nil
 		case .number:
-			return .decimalPad
+			.decimalPad
 		case .url:
-			return .URL
+			.URL
 		case .email:
-			return .emailAddress
+			.emailAddress
 		case .phoneNumber:
-			return .phonePad
+			.phonePad
 		}
 	}
 
 	var shouldDisableAutocorrectionAndAutocapitalization: Bool {
 		switch self {
 		case .text:
-			return false
+			false
 		case .number:
-			return true
+			true
 		case .url:
-			return true
+			true
 		case .email:
-			return true
+			true
 		case .phoneNumber:
-			return true
+			true
 		}
 	}
 }

@@ -23,8 +23,7 @@ Tip: Use the built-in “Get Details of Locations” action to get more details 
 		Summary("Get location at coordinates \(\.$latitude), \(\.$longitude)")
 	}
 
-	@MainActor
-	func perform() async throws -> some IntentResult & ReturnsValue<CLLocation> {
+	func perform() async throws -> some IntentResult & ReturnsValue<CLPlacemark> {
 		let placemarks = try await CLGeocoder().reverseGeocodeLocation(.init(latitude: latitude, longitude: longitude))
 
 		guard let placemark = placemarks.first else {

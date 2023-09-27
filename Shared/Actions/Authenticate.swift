@@ -26,6 +26,7 @@ A: The system authentication feature can only be triggered from an app, so the a
 		]
 	)
 
+	// TODO: Try again when targeting iOS 17.
 	// AppIntents cannot handle this conditional. (Xcode 14.1)
 //	#if canImport(UIKit)
 	static let openAppWhenRun = true
@@ -36,6 +37,12 @@ A: The system authentication feature can only be triggered from an app, so the a
 		description: "If provided, opens the URL instead of the Shortcuts app when finished."
 	)
 	var openURL: URL?
+
+	@Parameter(
+		title: "Timeout (seconds)",
+		description: "When it times out, it returns “false” as if the authentication failed."
+	)
+	var timeout: Double?
 
 	@MainActor
 	func perform() async throws -> some IntentResult {
@@ -52,6 +59,13 @@ A: The system authentication feature can only be triggered from an app, so the a
 
 		do {
 			let context = LAContext()
+
+			if let timeout {
+				delay(.seconds(timeout)) {
+					context.invalidate()
+				}
+			}
+
 			try await context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: "Authenticate the shortcut")
 			XPasteboard.general.stringForCurrentHostOnly = "true"
 		} catch {

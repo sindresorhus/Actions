@@ -67,13 +67,13 @@ extension FormatPersonNameStyleAppEnum {
 	fileprivate var toNative: PersonNameComponents.FormatStyle.Style {
 		switch self {
 		case .short:
-			return .short
+			.short
 		case .medium:
-			return .medium
+			.medium
 		case .long:
-			return .long
+			.long
 		case .abbreviated:
-			return .abbreviated
+			.abbreviated
 		}
 	}
 }

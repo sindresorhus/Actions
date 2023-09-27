@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1410"
+   LastUpgradeVersion = "1500"
    wasCreatedForAppExtension = "YES"
    version = "2.0">
    <BuildAction
@@ -16,8 +16,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E31748A52916A0B100F6319E"
-               BuildableName = "Intents Extension iOS.appex"
-               BlueprintName = "Intents Extension iOS"
+               BuildableName = "Intents Extension.appex"
+               BlueprintName = "Intents Extension"
                ReferencedContainer = "container:Actions.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

@@ -51,10 +51,17 @@ typealias XScreen = UIScreen
 typealias WindowIfMacOS = WindowGroup
 #endif
 
+// TODO: See if I can remove any of these when targeting iOS 17.
 // TODO: Remove me when it's support it natively.
 extension UnitDuration: @unchecked Sendable {}
 extension UnitLength: @unchecked Sendable {}
 extension XColor: @unchecked Sendable {}
+
+#if os(macOS)
+extension NSRunningApplication: @unchecked Sendable {}
+extension NSWorkspace.OpenConfiguration: @unchecked Sendable {}
+extension NSImage: @unchecked Sendable {}
+#endif
 
 
 // TODO: Remove this when everything is converted to async/await.
@@ -2550,12 +2557,22 @@ extension URL {
 	The system ensures the directory is not cleaned up until after the app quits.
 	*/
 	static func uniqueTemporaryDirectory(
-		appropriateFor: Self = Bundle.main.bundleURL
+		appropriateFor: Self? = nil
 	) throws -> Self {
-		try FileManager.default.url(
+		let url = {
+			// TODO: Test if I can use `URL.documentsDirectory` on macOS too? Wait until macOS 14 is targeted.
+			#if os(macOS)
+			Bundle.main.bundleURL
+			#else
+			// See: https://developer.apple.com/forums/thread/735726
+			URL.documentsDirectory
+			#endif
+		}
+
+		return try FileManager.default.url(
 			for: .itemReplacementDirectory,
 			in: .userDomainMask,
-			appropriateFor: appropriateFor,
+			appropriateFor: appropriateFor ?? url(),
 			create: true
 		)
 	}
@@ -3453,25 +3470,25 @@ extension UIFont.Weight {
 	var toSwiftUIFontWeight: Font.Weight {
 		switch self {
 		case .ultraLight:
-			return .ultraLight
+			.ultraLight
 		case .thin:
-			return .thin
+			.thin
 		case .light:
-			return .light
+			.light
 		case .regular:
-			return .regular
+			.regular
 		case .medium:
-			return .medium
+			.medium
 		case .semibold:
-			return .semibold
+			.semibold
 		case .bold:
-			return .bold
+			.bold
 		case .heavy:
-			return .heavy
+			.heavy
 		case .black:
-			return .black
+			.black
 		default:
-			return .regular
+			.regular
 		}
 	}
 }
@@ -3482,29 +3499,29 @@ extension Font.TextStyle {
 	var toUIFontTextStyle: UIFont.TextStyle {
 		switch self {
 		case .largeTitle:
-			return .largeTitle
+			.largeTitle
 		case .title:
-			return .title1
+			.title1
 		case .title2:
-			return .title2
+			.title2
 		case .title3:
-			return .title3
+			.title3
 		case .headline:
-			return .headline
+			.headline
 		case .body:
-			return .body
+			.body
 		case .callout:
-			return .callout
+			.callout
 		case .subheadline:
-			return .subheadline
+			.subheadline
 		case .footnote:
-			return .footnote
+			.footnote
 		case .caption:
-			return .caption1
+			.caption1
 		case .caption2:
-			return .caption2
+			.caption2
 		@unknown default:
-			return .body
+			.body
 		}
 	}
 }
@@ -3583,9 +3600,9 @@ extension Sequence {
 	) -> [Element] {
 		switch order {
 		case .forward:
-			return sorted { $0[keyPath: keyPath] < $1[keyPath: keyPath] }
+			sorted { $0[keyPath: keyPath] < $1[keyPath: keyPath] }
 		case .reverse:
-			return sorted { $0[keyPath: keyPath] > $1[keyPath: keyPath] }
+			sorted { $0[keyPath: keyPath] > $1[keyPath: keyPath] }
 		}
 	}
 
@@ -3595,9 +3612,9 @@ extension Sequence {
 	) rethrows -> [Element] {
 		switch order {
 		case .forward:
-			return try sorted { (try getValue($0)) < (try getValue($1)) }
+			try sorted { (try getValue($0)) < (try getValue($1)) }
 		case .reverse:
-			return try sorted { (try getValue($0)) > (try getValue($1)) }
+			try sorted { (try getValue($0)) > (try getValue($1)) }
 		}
 	}
 }
@@ -5889,11 +5906,11 @@ extension Printer {
 		var title: String {
 			switch self {
 			case .idle:
-				return "Idle"
+				"Idle"
 			case .processing:
-				return "Processing"
+				"Processing"
 			case .stopped:
-				return "Stopped"
+				"Stopped"
 			}
 		}
 	}
