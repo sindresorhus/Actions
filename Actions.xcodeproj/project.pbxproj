@@ -149,7 +149,6 @@
 		E3F64D7628D9F9930009B500 /* CreateColorImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F64D7528D9F9930009B500 /* CreateColorImage.swift */; };
 		E3F64D7928D9FCA20009B500 /* GetSymbolImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F64D7728D9FCA20009B500 /* GetSymbolImage.swift */; };
 		E3FC71DD271EBE5C00C9D255 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FC71DC271EBE5B00C9D255 /* Utilities.swift */; };
-		FD691FC92A9CB9C500C55178 /* CreateMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD691FC82A9CB9C500C55178 /* CreateMenuItem.swift */; };
 		FD691FCE2A9CCD4C00C55178 /* CreateMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD691FCD2A9CCD4C00C55178 /* CreateMenuItem.swift */; };
 /* End PBXBuildFile section */
 
@@ -738,7 +737,6 @@
 				E317493D2916A20C00F6319E /* TransformText.swift in Sources */,
 				E31749192916A20C00F6319E /* ConvertCoordinatesToLocation.swift in Sources */,
 				E31749262916A20C00F6319E /* ConvertDateToUnixTime.swift in Sources */,
-				FD691FC92A9CB9C500C55178 /* CreateMenuItem.swift in Sources */,
 				E317494E2916A20C00F6319E /* GenerateUUID.swift in Sources */,
 				E31749392916A20C00F6319E /* TransformTextWithJavaScript.swift in Sources */,
 				E317492F2916A20C00F6319E /* IsWiFiOn.swift in Sources */,

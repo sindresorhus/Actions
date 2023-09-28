@@ -44,7 +44,7 @@ Add an "Add to Variable" action below this to populate a list and then use that 
 					}
 				}
 			}
-			
+
 			// MARK: Emoji
 			Case(RMIconType.emoji) {
 				When(\.$backgroundShape, .equalTo, .noBackground) {
@@ -64,7 +64,7 @@ Add an "Add to Variable" action below this to populate a list and then use that 
 					}
 				}
 			}
-			
+
 			DefaultCase {
 				Summary("Create Item with \(\.$menuTitle) and \(\.$subtitle)") {
 					\.$iconType
