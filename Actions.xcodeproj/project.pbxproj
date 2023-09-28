@@ -96,7 +96,6 @@
 		E337A3E627E8BA6B0073E865 /* FuzzyFind in Frameworks */ = {isa = PBXBuildFile; productRef = E337A3E527E8BA6B0073E865 /* FuzzyFind */; };
 		E33D080D2A11623200FBCAD7 /* SimpleKeychain in Frameworks */ = {isa = PBXBuildFile; productRef = E33D080C2A11623200FBCAD7 /* SimpleKeychain */; };
 		E33D080F2A11629500FBCAD7 /* AskChatGPT.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33D080E2A11629500FBCAD7 /* AskChatGPT.swift */; };
-		E33D08122A1163FD00FBCAD7 /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = E33D08112A1163FD00FBCAD7 /* OpenAISwift */; };
 		E33D08142A11679300FBCAD7 /* SettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33D08132A11679300FBCAD7 /* SettingsScreen.swift */; };
 		E33D4BA62744238300CC7A8A /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33D4BA42744238300CC7A8A /* AppState.swift */; };
 		E343F9B829713AFF00AD82F4 /* GetMapImageOfLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E317489E2913BEAB00F6319E /* GetMapImageOfLocation.swift */; };
@@ -104,6 +103,8 @@
 		E34839A32A88DF7D0040DF6E /* GetBooleanFromInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34839A22A88DF7D0040DF6E /* GetBooleanFromInput.swift */; };
 		E34839A62A88E6A70040DF6E /* IsDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34839A52A88E6A70040DF6E /* IsDay.swift */; };
 		E34AB51628F58B500082AE78 /* Authenticate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34AB51528F58B500082AE78 /* Authenticate.swift */; };
+		E350B24F2AC2AF7D00BFC34D /* IsCellularLowDataModeOn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E350B24E2AC2AF7D00BFC34D /* IsCellularLowDataModeOn.swift */; };
+		E350B2522AC3005800BFC34D /* IsDeviceLocked.swift in Sources */ = {isa = PBXBuildFile; fileRef = E350B2512AC3005800BFC34D /* IsDeviceLocked.swift */; };
 		E351083128FD14A2007C85AE /* HexEncode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351083028FD14A2007C85AE /* HexEncode.swift */; };
 		E351083628FD79D8007C85AE /* OverwriteFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351083528FD79D8007C85AE /* OverwriteFile.swift */; };
 		E351083928FD8089007C85AE /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = E351083828FD8089007C85AE /* Sentry */; };
@@ -212,6 +213,8 @@
 		E34839A52A88E6A70040DF6E /* IsDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsDay.swift; sourceTree = "<group>"; };
 		E34AB51528F58B500082AE78 /* Authenticate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticate.swift; sourceTree = "<group>"; };
 		E34AB51728F5AA170082AE78 /* ConvertCoordinatesToLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertCoordinatesToLocation.swift; sourceTree = "<group>"; };
+		E350B24E2AC2AF7D00BFC34D /* IsCellularLowDataModeOn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsCellularLowDataModeOn.swift; sourceTree = "<group>"; };
+		E350B2512AC3005800BFC34D /* IsDeviceLocked.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsDeviceLocked.swift; sourceTree = "<group>"; };
 		E351082E28FD099B007C85AE /* IsCellularDataOn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsCellularDataOn.swift; sourceTree = "<group>"; };
 		E351083028FD14A2007C85AE /* HexEncode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexEncode.swift; sourceTree = "<group>"; };
 		E351083528FD79D8007C85AE /* OverwriteFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverwriteFile.swift; sourceTree = "<group>"; };
@@ -335,7 +338,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E33D080D2A11623200FBCAD7 /* SimpleKeychain in Frameworks */,
-				E33D08122A1163FD00FBCAD7 /* OpenAISwift in Frameworks */,
 				E337A3E627E8BA6B0073E865 /* FuzzyFind in Frameworks */,
 				E317495F2916A4A300F6319E /* SoulverCore in Frameworks */,
 				E351083928FD8089007C85AE /* Sentry in Frameworks */,
@@ -370,6 +372,7 @@
 				E3DB884F28E6EE7B00FEE8D6 /* HideShortcutsApp.swift */,
 				E34839A02A885DD90040DF6E /* InvertImages.swift */,
 				E3C33CA928D3A81700386C59 /* IsDarkMode.swift */,
+				E350B2512AC3005800BFC34D /* IsDeviceLocked.swift */,
 				E3CB448A28D71A180031D55F /* IsScreenLocked.swift */,
 				E3CB44A128D794DA0031D55F /* MergeDictionaries.swift */,
 				E351083528FD79D8007C85AE /* OverwriteFile.swift */,
@@ -458,6 +461,7 @@
 				E3C33CA528D3A52300386C59 /* IsAudioPlaying.swift */,
 				E3C33CA728D3A6CB00386C59 /* IsBluetoothOn.swift */,
 				E351082E28FD099B007C85AE /* IsCellularDataOn.swift */,
+				E350B24E2AC2AF7D00BFC34D /* IsCellularLowDataModeOn.swift */,
 				E3C33CAF28D3B3EF00386C59 /* IsConnectedToVPN.swift */,
 				E34839A52A88E6A70040DF6E /* IsDay.swift */,
 				E3CB448628D717CA0031D55F /* IsDeviceOrientation.swift */,
@@ -517,10 +521,10 @@
 				E324C9F0271E972200E7CA9B /* MainScreen.swift */,
 				E33D08132A11679300FBCAD7 /* SettingsScreen.swift */,
 				E3BFF7B327428F5200B830DE /* WelcomeScreen.swift */,
-				E3BFF7B62742A79100B830DE /* AppIcon.swift */,
 				E3BFF7B02742616400B830DE /* WriteTextScreen.swift */,
 				E337A3DF27E850EC0073E865 /* ChooseFromListScreen.swift */,
 				E352420B28F6F6AD00A957A7 /* AskForTextScreen.swift */,
+				E3BFF7B62742A79100B830DE /* AppIcon.swift */,
 				E3FC71DC271EBE5B00C9D255 /* Utilities.swift */,
 				E30FD0D527908D1A00C01D80 /* Actions */,
 				E324C9F1271E972300E7CA9B /* Assets.xcassets */,
@@ -585,7 +589,6 @@
 				E351083828FD8089007C85AE /* Sentry */,
 				E317495E2916A4A300F6319E /* SoulverCore */,
 				E33D080C2A11623200FBCAD7 /* SimpleKeychain */,
-				E33D08112A1163FD00FBCAD7 /* OpenAISwift */,
 			);
 			productName = "Actions (iOS)";
 			productReference = E324C9F6271E972300E7CA9B /* Actions.app */;
@@ -624,7 +627,6 @@
 				E32B4F3227FD77700057F08D /* XCRemoteSwiftPackageReference "ExceptionCatcher" */,
 				E317495D2916A4A300F6319E /* XCRemoteSwiftPackageReference "SoulverCore" */,
 				E33D080B2A11623200FBCAD7 /* XCRemoteSwiftPackageReference "SimpleKeychain" */,
-				E33D08102A1163FD00FBCAD7 /* XCRemoteSwiftPackageReference "OpenAISwift" */,
 			);
 			productRefGroup = E324C9F7271E972300E7CA9B /* Products */;
 			projectDirPath = "";
@@ -685,6 +687,7 @@
 				E34839A62A88E6A70040DF6E /* IsDay.swift in Sources */,
 				E31749432916A20C00F6319E /* IsAudioPlaying.swift in Sources */,
 				E31749372916A20C00F6319E /* FormatPersonName.swift in Sources */,
+				E350B24F2AC2AF7D00BFC34D /* IsCellularLowDataModeOn.swift in Sources */,
 				E31749182916A20C00F6319E /* IsDeviceOrientation.swift in Sources */,
 				E31749552916A20C00F6319E /* CombineLists.swift in Sources */,
 				E34839A32A88DF7D0040DF6E /* GetBooleanFromInput.swift in Sources */,
@@ -798,6 +801,7 @@
 				E3DB886C28E7549800FEE8D6 /* Constants.swift in Sources */,
 				E3DB884D28E6E3AD00FEE8D6 /* HapticFeedback.swift in Sources */,
 				E3CB448B28D71A180031D55F /* IsScreenLocked.swift in Sources */,
+				E350B2522AC3005800BFC34D /* IsDeviceLocked.swift in Sources */,
 				E3DB885428E7057100FEE8D6 /* WriteText.swift in Sources */,
 				E3CC6D6229A7E293002D8C67 /* GlobalVariable.swift in Sources */,
 				E324CA01271E972300E7CA9B /* MainScreen.swift in Sources */,
@@ -963,8 +967,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
-				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1024,8 +1028,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
-				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -1057,6 +1061,7 @@
 				INFOPLIST_KEY_NSCameraUsageDescription = "Required to use the “Scan Documents” action.";
 				INFOPLIST_KEY_NSContactsUsageDescription = "Required to get the user's name in the “Get User Details” action.";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Required to use the “Authenticate” action.";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © Sindre Sorhus";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Required to use the “Transcribe Audio” action.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1104,6 +1109,7 @@
 				INFOPLIST_KEY_NSCameraUsageDescription = "Required to use the “Scan Documents” action.";
 				INFOPLIST_KEY_NSContactsUsageDescription = "Required to get the user's name in the “Get User Details” action.";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Required to use the “Authenticate” action.";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © Sindre Sorhus";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Required to use the “Transcribe Audio” action.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1202,14 +1208,6 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		E33D08102A1163FD00FBCAD7 /* XCRemoteSwiftPackageReference "OpenAISwift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/adamrushy/OpenAISwift";
-			requirement = {
-				kind = revision;
-				revision = 73dbe257e6cc612294f771f2dc295dcf1540af33;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1237,11 +1235,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E33D080B2A11623200FBCAD7 /* XCRemoteSwiftPackageReference "SimpleKeychain" */;
 			productName = SimpleKeychain;
-		};
-		E33D08112A1163FD00FBCAD7 /* OpenAISwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E33D08102A1163FD00FBCAD7 /* XCRemoteSwiftPackageReference "OpenAISwift" */;
-			productName = OpenAISwift;
 		};
 		E351083828FD8089007C85AE /* Sentry */ = {
 			isa = XCSwiftPackageProductDependency;

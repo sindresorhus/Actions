@@ -41,7 +41,6 @@ And for high-quality transcription, see my [Aiko](https://sindresorhus.com/aiko)
 
 - Add to List
 - Apply Capture Date
-- Ask ChatGPT
 - Ask for Text with Timeout
 - Authenticate
 - Blur Images
@@ -110,9 +109,11 @@ And for high-quality transcription, see my [Aiko](https://sindresorhus.com/aiko)
 - Is Audio Playing <sup>(iOS-only)</sup>
 - Is Bluetooth On
 - Is Cellular Data On
+- Is Cellular Low Data Mode On
 - Is Connected to VPN <sup>(iOS-only)</sup>
 - Is Dark Mode On
 - Is Day
+- Is Device Locked
 - Is Device Orientation
 - Is Host Reachable
 - Is Low Power Mode On
@@ -159,6 +160,7 @@ And for high-quality transcription, see my [Aiko](https://sindresorhus.com/aiko)
 
 #### Want more shortcut actions?
 
+- Use the ChatGPT API → [AI Actions](https://sindresorhus.com/ai-actions)
 - High-quality transcription (speech to text) in 100 languages → [Aiko](https://sindresorhus.com/aiko)
 - Trigger shortcuts on your Mac from your iOS device → [Hyperduck](https://sindresorhus.com/hyperduck#shortcuts)
 - Show text in menu bar → [One Thing](https://sindresorhus.com/one-thing)

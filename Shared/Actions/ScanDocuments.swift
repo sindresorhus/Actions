@@ -12,6 +12,8 @@ struct ScanDocuments: AppIntent, CustomIntentMigratedAppIntent {
 Scans one or more documents using the iOS document scanner.
 
 IMPORTANT: The resulting images are copied to the clipboard. Add the “Wait to Return” and “Get Clipboard” actions after this one.
+
+NOTE: In contrast to the built-in “Scan Document” action, this one makes it possible to use the scanned document in the shortcut.
 """,
 		categoryName: "Utility"
 	)

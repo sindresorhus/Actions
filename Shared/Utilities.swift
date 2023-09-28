@@ -3774,6 +3774,8 @@ extension Device {
 
 	/**
 	Whether the silent switch on the device is enabled.
+
+	- Note: This will report true even if silent mode is not enabled if run while Voice Memos is recording.
 	*/
 	@available(macOS, unavailable)
 	static var isSilentModeEnabled: Bool {
@@ -5513,6 +5515,12 @@ extension NWPathMonitor {
 			}
 		}
 	}
+
+	static var currentCellularPath: NWPath? {
+		get async {
+			await NWPathMonitor.changes(requiredInterfaceType: .cellular).first()
+		}
+	}
 }
 
 
@@ -5572,8 +5580,15 @@ extension NWConnection {
 extension Device {
 	static var isCellularDataEnabled: Bool {
 		get async {
-			let path = await NWPathMonitor.changes(requiredInterfaceType: .cellular).first()
+			let path = await NWPathMonitor.currentCellularPath
 			return path?.status == .satisfied
+		}
+	}
+
+	static var isCellularLowDataModeEnabled: Bool {
+		get async {
+			let path = await NWPathMonitor.currentCellularPath
+			return path?.isConstrained ?? false
 		}
 	}
 }

@@ -1,11 +1,11 @@
 import AppIntents
 
-struct IsCellularDataOn: AppIntent {
-	static let title: LocalizedStringResource = "Is Cellular Data On"
+struct IsCellularLowDataModeOn: AppIntent {
+	static let title: LocalizedStringResource = "Is Cellular Low Data Mode On"
 
 	static let description = IntentDescription(
 """
-Returns whether cellular data is enabled on the device.
+Returns whether cellular low data mode is enabled on the device.
 
 On macOS, it always returns false.
 """,
@@ -16,6 +16,6 @@ On macOS, it always returns false.
 		// Give the system time to change the mode when used in an automation.
 		sleep(.milliseconds(30))
 
-		return .result(value: await Device.isCellularDataEnabled)
+		return .result(value: await Device.isCellularLowDataModeEnabled)
 	}
 }

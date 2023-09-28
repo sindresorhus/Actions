@@ -92,8 +92,6 @@ struct AskForTextScreen: View {
 	}
 }
 
-//struct AskForTextScreen_Previews: PreviewProvider {
-//	static var previews: some View {
-//		AskForTextScreen()
-//	}
+//#Preview {
+//	AskForTextScreen()
 //}

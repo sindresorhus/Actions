@@ -1,22 +1,12 @@
 import AppIntents
-import SimpleKeychain
-import OpenAISwift
 
+@available(*, deprecated, message: "This action was moved to a separate app called “AI Actions” by the same author. It's a drop-in replacement.")
 struct AskChatGPT: AppIntent {
 	static let title: LocalizedStringResource = "Ask ChatGPT"
 
 	static let description = IntentDescription(
 """
-Send a prompt to ChatGPT and get a text reply.
-
-It does not remember previous conversations.
-
-IMPORTANT: You must add your open OpenAI API key in the app settings before using this action.
-
-NOTE: Using the GPT-4 model requires access to the beta: https://openai.com/waitlist/gpt-4
-NOTE: The GPT-4 model generally costs 14x more than GPT-3.5.
-
-TIP: If you want a dictionary back, end your prompt with: “Return the result as a JSON object. Don't include any other text than the JSON object.” and then pass the result to the “Get Dictionary from Input” action. For more consistent result, also describe the shape of the JSON and include an example.
+DEPRECATED. WILL BE REMOVED SOON.
 """,
 		categoryName: "AI"
 	)
@@ -29,7 +19,7 @@ TIP: If you want a dictionary back, end your prompt with: “Return the result a
 
 	@Parameter(
 		title: "Max Tokens",
-		description: "The maximum number of tokens allowed for the generated answer. More about tokens: https://platform.openai.com/tokenizer"
+		description: "The maximum number of tokens allowed for the generated answer."
 	)
 	var maxTokens: Int?
 
@@ -52,7 +42,7 @@ TIP: If you want a dictionary back, end your prompt with: “Return the result a
 
 	@Parameter(
 		title: "Presence Penalty",
-		description: "Number between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics. More info: https://platform.openai.com/docs/api-reference/parameter-details Default: 0",
+		description: "Number between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics. Default: 0",
 		default: 0,
 //		controlStyle: .slider,
 		inclusiveRange: (-2, 2)
@@ -61,7 +51,7 @@ TIP: If you want a dictionary back, end your prompt with: “Return the result a
 
 	@Parameter(
 		title: "Frequency Penalty",
-		description: "Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the text so far, decreasing the model's likelihood to repeat the same line verbatim. More info: https://platform.openai.com/docs/api-reference/parameter-details Default: 0",
+		description: "Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the text so far, decreasing the model's likelihood to repeat the same line verbatim. Default: 0",
 		default: 0,
 //		controlStyle: .slider,
 		inclusiveRange: (-2, 2)
@@ -103,68 +93,11 @@ As an example, you can pass {"50256": -100} to prevent the <|endoftext|> token f
 	}
 
 	func perform() async throws -> some IntentResult & ReturnsValue<String> {
-		let keychain = SimpleKeychain(synchronizable: true)
+		#if os(macOS)
+		"https://sindresorhus.com/ai-actions".openUrl()
+		#endif
 
-		guard
-			try keychain.hasItem(forKey: Constants.keychainKey_openAI),
-			let token = try keychain.string(forKey: Constants.keychainKey_openAI).nilIfEmptyOrWhitespace
-		else {
-			throw "Please add your OpenAI API key in the settings of the main Actions app.".toError
-		}
-
-		let openAI = OpenAISwift(authToken: token)
-
-		let logitBiasFinal = try logitBias?
-			.nilIfEmptyOrWhitespace?
-			.toData
-			.jsonToDictionary()
-			.compactMapKeys { Int($0) }
-			.compactMapValues {
-				if let double = $0 as? Double {
-				  return double
-				}
-
-				if let string = $0 as? String {
-				  return Double(string)
-				}
-
-				return nil
-			}
-
-		let response: OpenAI<MessageResult>
-		do {
-			response = try await openAI.sendChat(
-				with: [
-					.init(role: .system, content: "Keep it short."),
-					.init(role: .user, content: prompt)
-				],
-				model: model == .gpt3_5 ? .chat(.chatgpt) : .gpt4(.gpt4),
-				temperature: temperature,
-				topProbabilityMass: topProbabilityMass,
-				maxTokens: maxTokens,
-				presencePenalty: presencePenalty,
-				frequencyPenalty: frequencyPenalty,
-				logitBias: logitBiasFinal
-			)
-		} catch OpenAIError.genericError(let error) {
-			throw error.presentableMessage.toError
-		} catch OpenAIError.decodingError(let error) {
-			throw error.presentableMessage.toError
-		} catch OpenAIError.chatError(let error) {
-			var message = error.message
-
-			if error.code == "model_not_found" {
-				message += ". Make sure you have access to this model. GPT-4 requires special access."
-			}
-
-			throw error.message.toError
-		}
-
-		guard let reply = response.choices?.first?.message.content else {
-			throw "Missing reply.".toError
-		}
-
-		return .result(value: reply)
+		return .result(value: "PLEASE READ: This action was moved to a separate app called “AI Actions” by the same author. It's a drop-in replacement. The action in that app is called “Ask AI”. https://sindresorhus.com/ai-actions")
 	}
 }
 
