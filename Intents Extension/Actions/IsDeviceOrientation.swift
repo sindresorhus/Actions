@@ -72,7 +72,7 @@ enum IsDeviceOrientationAppEnum: String, AppEnum {
 	case anyLandscape
 	case faceUpOrDown
 
-	static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "Is Device Orientation")
+	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Is Device Orientation"
 
 	static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
 		.portrait: "Portrait",

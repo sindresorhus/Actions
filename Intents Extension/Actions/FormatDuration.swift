@@ -114,7 +114,7 @@ enum FormatDurationUnitStyleAppEnum: String, AppEnum {
 	case full
 	case spellOut
 
-	static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "Format Duration Unit Style")
+	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Format Duration Unit Style"
 
 	static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
 		.positional: .init(title: "Positional", subtitle: "9:31:30"),

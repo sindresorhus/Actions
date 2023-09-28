@@ -28,7 +28,7 @@ Use the built-in "Show Result" action to inspect the individual properties.
 }
 
 struct RunningAppAppEntity: TransientAppEntity {
-	static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "Running App")
+	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Running App"
 
 	@Property(title: "Name")
 	var name: String

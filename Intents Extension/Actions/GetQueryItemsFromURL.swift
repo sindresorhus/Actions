@@ -27,7 +27,7 @@ The name and value of the query item can be accessed individually.
 }
 
 struct URLQueryItemAppEntity: TransientAppEntity {
-	static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "URL Query Item")
+	static let typeDisplayRepresentation: TypeDisplayRepresentation = "URL Query Item"
 
 	@Property(title: "Name")
 	var name: String

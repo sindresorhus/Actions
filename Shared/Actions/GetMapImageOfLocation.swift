@@ -137,7 +137,7 @@ enum MapTypeAppEnum: String, AppEnum {
 	case hybridFlyover
 	case mutedStandard
 
-	static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "Map Type")
+	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Map Type"
 
 	static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
 		.standard: .init(
@@ -193,7 +193,7 @@ enum AppearanceAppEnum: String, AppEnum {
 	case light
 	case dark
 
-	static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "Appearance")
+	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Appearance"
 
 	static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
 		.system: "System",

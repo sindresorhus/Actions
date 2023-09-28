@@ -51,7 +51,7 @@ struct CurrencyAppEntity: AppEntity {
 		}
 	}
 
-	static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "Currency")
+	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Currency"
 
 	static let defaultQuery = CurrencyEntityQuery()
 

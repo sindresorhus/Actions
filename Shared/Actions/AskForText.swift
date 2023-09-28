@@ -90,7 +90,7 @@ enum InputTypeAppEnum: String, AppEnum {
 	case email
 	case phoneNumber
 
-	static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "Input Type")
+	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Input Type"
 
 	static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
 		.text: "Text",

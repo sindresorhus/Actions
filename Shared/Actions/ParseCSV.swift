@@ -115,7 +115,7 @@ enum CSVDelimiterAppEnum: String, AppEnum {
 	case tab
 	case custom
 
-	static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "CSV Delimiter")
+	static let typeDisplayRepresentation: TypeDisplayRepresentation = "CSV Delimiter"
 
 	static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
 		.comma: "Comma",

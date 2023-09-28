@@ -34,7 +34,7 @@ Tip: Use the “Format Duration” action to format the “Uptime” and “Dura
 }
 
 struct DeviceDetailsAppEntity: TransientAppEntity {
-	static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "Device Details")
+	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Device Details"
 
 	@Property(title: "Uptime (not including sleep)")
 	var uptime: Measurement<UnitDuration>

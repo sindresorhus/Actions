@@ -50,7 +50,7 @@ struct PrinterAppEntityQuery: EntityQuery {
 }
 
 struct PrinterAppEntity: AppEntity {
-	static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "Printer")
+	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Printer"
 
 	static let defaultQuery = PrinterAppEntityQuery()
 

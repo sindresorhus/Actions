@@ -77,7 +77,7 @@ enum UserDetailsTypeAppEnum: String, AppEnum {
 	case languageCode
 	case idleTime
 
-	static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "User Details Type")
+	static let typeDisplayRepresentation: TypeDisplayRepresentation = "User Details Type"
 
 	static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
 		.username: "Username (macOS-only)",

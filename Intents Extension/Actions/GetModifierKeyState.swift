@@ -39,7 +39,7 @@ Supported modifier keys:
 // `GCKeyboard.coalesced?.keyboardInput?.button(forKeyCode: .leftShift)?.isPressed`s
 
 struct ModifierKeyState_AppEntity: TransientAppEntity {
-	static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "Modifier Key State")
+	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Modifier Key State"
 
 	@Property(title: "Shift")
 	var shift: Bool

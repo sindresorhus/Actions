@@ -60,7 +60,7 @@ struct LocaleAppEntity: AppEntity {
 		}
 	}
 
-	static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "Locale")
+	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Locale"
 
 	static let defaultQuery = LocaleAppEntityQuery()
 

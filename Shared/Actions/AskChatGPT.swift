@@ -105,7 +105,7 @@ enum Model_AppEnum: String, AppEnum {
 	case gpt3_5
 	case gpt4
 
-	static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "Model")
+	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Model"
 
 	static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
 		.gpt3_5: "GPT-3.5",

@@ -36,7 +36,7 @@ enum BatteryStateTypeAppEnum: String, AppEnum {
 	case charging
 	case full
 
-	static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "Battery State Type")
+	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Battery State Type"
 
 	static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
 		.unplugged: "unplugged",

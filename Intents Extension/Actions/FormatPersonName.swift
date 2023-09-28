@@ -53,7 +53,7 @@ enum FormatPersonNameStyleAppEnum: String, AppEnum {
 	case long
 	case abbreviated
 
-	static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "Person Name Components Format Style")
+	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Person Name Components Format Style"
 
 	static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
 		.short: .init(title: "Short", subtitle: "Jenny"),
@@ -89,7 +89,7 @@ extension FormatPersonNameStyleAppEnum {
 //}
 //
 //extension PersonNameComponents.FormatStyle.Style: AppEnum {
-//	public static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "Person Name Components Format Style")
+//	public static let typeDisplayRepresentation: TypeDisplayRepresentation = "Person Name Components Format Style"
 //
 //	public static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
 //		.short: .init(title: "Short", subtitle: "Jenny"),

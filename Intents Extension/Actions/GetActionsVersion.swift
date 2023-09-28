@@ -22,7 +22,7 @@ The build number is an increasing integer and can be used to do version checks.
 }
 
 struct ActionsVersionAppEntity: TransientAppEntity {
-	static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "Actions Version")
+	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Actions Version"
 
 	@Property(title: "Version")
 	var version: String

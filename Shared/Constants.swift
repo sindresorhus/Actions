@@ -30,7 +30,7 @@ Intent categories:
 */
 
 struct ColorAppEntity: TransientAppEntity {
-	static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "Color")
+	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Color"
 
 	@Property(title: "Hex")
 	var hex: String

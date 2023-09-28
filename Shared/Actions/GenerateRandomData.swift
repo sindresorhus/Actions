@@ -60,7 +60,7 @@ enum GenerateRandomDataOutputTypeAppEnum: String, AppEnum {
 	case base64
 	case binary
 
-	static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "Random Data Output Type")
+	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Random Data Output Type"
 
 	static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
 		.hex: "Hex",

@@ -102,7 +102,7 @@ enum TransformationAppEnum: String, AppEnum {
 	case transliterateHiraganaToKatakana
 	case transliterateMandarinToLatin
 
-	static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "Transformation")
+	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Transformation"
 
 	static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
 		.camelCase: "camelCase",

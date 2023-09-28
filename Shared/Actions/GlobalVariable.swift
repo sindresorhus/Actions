@@ -241,7 +241,7 @@ enum GlobalVariableSetNumberAction_AppEnum: String, AppEnum {
 	case increment
 	case decrement
 
-	static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "Global Variable Set Number Action")
+	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Global Variable Set Number Action"
 
 	static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
 		.set: "Set",

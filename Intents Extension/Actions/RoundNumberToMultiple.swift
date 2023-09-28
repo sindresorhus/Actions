@@ -59,7 +59,7 @@ enum NumberRoundingModeAppEnum: String, AppEnum {
 	case alwaysRoundUp
 	case alwaysRoundDown
 
-	static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "Number Rounding Mode")
+	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Number Rounding Mode"
 
 	static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
 		.normal: "Normal",

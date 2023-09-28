@@ -81,7 +81,7 @@ enum OperationTypeAppEnum: String, AppEnum {
 	case intersection
 	case symmetricDifference
 
-	static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "Operation Type")
+	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Operation Type"
 
 	static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
 		.subtraction: "Subtraction",

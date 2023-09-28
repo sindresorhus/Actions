@@ -113,7 +113,7 @@ enum UnsplashImageSizeAppEnum: String, AppEnum {
 	case screenSize
 	case custom
 
-	static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "Unsplash Image Size")
+	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Unsplash Image Size"
 
 	static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
 		.any: "Any",

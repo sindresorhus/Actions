@@ -55,7 +55,7 @@ enum HapticFeedbackTypeAppEnum: String, AppEnum {
 	case heavy
 	case rigid
 
-	static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "Haptic Feedback Type")
+	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Haptic Feedback Type"
 
 	static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
 		.success: "success",

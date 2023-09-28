@@ -67,7 +67,7 @@ struct App_AppEntity: AppEntity {
 		}
 	}
 
-	static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "App")
+	static let typeDisplayRepresentation: TypeDisplayRepresentation = "App"
 
 	static let defaultQuery = App_AppEntityQuery()
 

@@ -109,7 +109,7 @@ enum SymbolImageRenderingAppEnum: String, AppEnum {
 	case palette
 	case multicolor
 
-	static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "Symbol Image Rendering")
+	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Symbol Image Rendering"
 
 	static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
 		.monochrome: "monochrome",

@@ -87,7 +87,7 @@ enum DayType_AppEnum: String, AppEnum {
 	case currentMonth
 	case currentYear
 
-	static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "Day Type")
+	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Day Type"
 
 	static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
 		.monday: "Monday",

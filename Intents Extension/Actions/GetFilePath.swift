@@ -55,7 +55,7 @@ enum FilePathTypeAppEnum: String, AppEnum {
 	case url
 	case tildePath
 
-	static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "File Path Type")
+	static let typeDisplayRepresentation: TypeDisplayRepresentation = "File Path Type"
 
 	static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
 		.path: "Path",

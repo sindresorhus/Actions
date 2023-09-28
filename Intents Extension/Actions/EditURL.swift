@@ -346,7 +346,7 @@ enum EditURLActionAppEnum: String, AppEnum {
 	case setHost
 	case setUsernameAndPassword
 
-	static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "Edit URL Action")
+	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Edit URL Action"
 
 	static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
 		.addQueryItem: "Add query item",

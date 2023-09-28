@@ -85,7 +85,7 @@ enum HexEncodeActionAppEnum: String, AppEnum {
 	case encode
 	case decode
 
-	static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "Hex Encode Action")
+	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Hex Encode Action"
 
 	static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
 		.encode: "Encode",

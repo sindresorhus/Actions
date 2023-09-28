@@ -236,27 +236,6 @@ struct MenuItem: TransientAppEntity {
  A Style for an Icon or it's background
  */
 enum RMStyle: String, AppEnum {
-	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Style"
-
-	static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
-		.default: "default",
-		.red: "red",
-		.orange: "orange",
-		.yellow: "yellow",
-		.green: "green",
-		.mint: "mint",
-		.teal: "teal",
-		.cyan: "cyan",
-		.blue: "blue",
-		.purple: "purple",
-		.pink: "pink",
-		.brown: "brown",
-		.white: "white",
-		.gray: "gray",
-		.black: "black",
-		.clear: "clear"
-	]
-
 	case `default`
 	case red
 	case orange
@@ -273,6 +252,27 @@ enum RMStyle: String, AppEnum {
 	case gray
 	case black
 	case clear
+
+	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Style"
+
+	static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
+		.default: "Default",
+		.red: "Red",
+		.orange: "Orange",
+		.yellow: "Yellow",
+		.green: "Green",
+		.mint: "Mint",
+		.teal: "Teal",
+		.cyan: "Cyan",
+		.blue: "Blue",
+		.purple: "Purple",
+		.pink: "Pink",
+		.brown: "Brown",
+		.white: "White",
+		.gray: "Gray",
+		.black: "Black",
+		.clear: "Clear"
+	]
 
 	/**
 	 Converts to color

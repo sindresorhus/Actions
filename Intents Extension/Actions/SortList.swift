@@ -49,7 +49,7 @@ enum SortTypeAppEnum: String, AppEnum {
 	case localizedCaseInsensitive
 	case number
 
-	static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "Sort Type")
+	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Sort Type"
 
 	static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
 		.natural: "Natural",

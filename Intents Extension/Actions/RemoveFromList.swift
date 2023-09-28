@@ -117,7 +117,7 @@ enum RemoveFromListActionAppEnum: String, AppEnum {
 	case range
 	case randomItems
 
-	static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "Remove from List Action")
+	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Remove from List Action"
 
 	static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
 		.firstItem: "First Item",

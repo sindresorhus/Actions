@@ -68,7 +68,7 @@ struct NLLanguageAppEntity: AppEntity {
 		}
 	}
 
-	static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "Language")
+	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Language"
 
 	static let defaultQuery = NLLanguageEntityQuery()
 

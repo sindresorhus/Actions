@@ -80,7 +80,7 @@ enum SetFileDateTypeAppEnum: String, AppEnum {
 	case modificationDate
 	case both
 
-	static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "Set File Date Type")
+	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Set File Date Type"
 
 	static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
 		.creationDate: "Creation Date",

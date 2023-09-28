@@ -130,7 +130,7 @@ enum ChooseFromListTimeoutValueAppEnum: String, AppEnum {
 	case lastItem
 	case randomItem
 
-	static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "Choose from List Timeout Value")
+	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Choose from List Timeout Value"
 
 	static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
 		.nothing: "Nothing",

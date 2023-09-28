@@ -98,7 +98,7 @@ enum FilterConditionAppEnum: String, AppEnum {
 	case regex
 	case `is`
 
-	static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "Filter Condition")
+	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Filter Condition"
 
 	static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
 		.contains: "contains",
