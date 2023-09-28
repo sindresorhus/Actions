@@ -41,7 +41,7 @@ struct AskForTextScreen: View {
 				.lineLimit(4, reservesSpace: true) // Has no effect. (iOS 16.0)
 				.focused($isFocused)
 				#if canImport(UIKit)
-				.textContentType(data.type.toContentType)
+				.textContentType(data.type.toContentType) // TODO: Enable on macOS when targeting macOS 14.
 				.keyboardType(data.type.toKeyboardType ?? .default)
 				.textInputAutocapitalization(data.type.shouldDisableAutocorrectionAndAutocapitalization ? .never : nil)
 				.autocorrectionDisabled(data.type.shouldDisableAutocorrectionAndAutocapitalization)

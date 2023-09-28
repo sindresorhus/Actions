@@ -1,77 +1,70 @@
-import Foundation
 import AppIntents
 import SwiftUI
 
-// MARK: Action
+// NOTE: It's intentionally in the app and not extension because when it's in the extension it causes the "Intents Extension" icon to show in the Dock. (macOS 14.0)
+
 struct CreateMenuItem: AppIntent {
 	static let title: LocalizedStringResource = "Create Menu Item"
 
 	static let description = IntentDescription(
 """
-Create a menu item with a title, subtitle and icon.
+Create a menu item with a title, subtitle, and icon.
 
-You can later use one or more of these Items in a "Choose from List" action.
+You can later use one or more of these menu items in a “Choose from List” action.
 
-Add an "Add to Variable" action below this to populate a list and then use that variable in the "Choose From List" action.
+Add an "Add to Variable" action below this one to populate a list and then use that variable in the “Choose From List” action.
 """,
-		categoryName: "Rich Menu",
+		categoryName: "Miscellaneous",
 		searchKeywords: [
-			"menu",
-			"menu item",
-			"choose from menu",
-			"rich menu"
+			"choose",
+			"rich",
+			"list"
 		]
 	)
 
 	static var parameterSummary: some ParameterSummary {
 		Switch(\.$iconType) {
-			// MARK: SFSymbol
-			Case(RMIconType.sfSymbol) {
+			Case(.sfSymbol) {
 				When(\.$backgroundShape, .equalTo, .noBackground) {
-					Summary("Create \(\.$menuTitle) with \(\.$systemName) and \(\.$subtitle)") {
+					Summary("Create menu item with title \(\.$menuTitle) and icon \(\.$sfSymbolName)") {
+						\.$subtitle
 						\.$iconType
 						\.$foreground
 						\.$backgroundShape
 						\.$data
 					}
 				} otherwise: {
-					Summary("Create \(\.$menuTitle) with \(\.$systemName) and \(\.$subtitle)") {
+					Summary("Create menu item with title \(\.$menuTitle) and icon \(\.$sfSymbolName)") {
+						\.$subtitle
 						\.$iconType
 						\.$foreground
-						\.$backgroundShape
 						\.$background
+						\.$backgroundShape
 						\.$data
 					}
 				}
 			}
-
-			// MARK: Emoji
-			Case(RMIconType.emoji) {
+			Case(.emoji) {
 				When(\.$backgroundShape, .equalTo, .noBackground) {
-					Summary("Create \(\.$menuTitle) with \(\.$emoji) and \(\.$subtitle)") {
+					Summary("Create menu item with title \(\.$menuTitle) and icon \(\.$emoji)") {
+						\.$subtitle
 						\.$iconType
-						\.$foreground
 						\.$backgroundShape
 						\.$data
 					}
 				} otherwise: {
-					Summary("Create \(\.$menuTitle) with \(\.$emoji) and \(\.$subtitle)") {
+					Summary("Create menu item with title \(\.$menuTitle) and icon \(\.$emoji)") {
+						\.$subtitle
 						\.$iconType
-						\.$foreground
-						\.$backgroundShape
 						\.$background
+						\.$backgroundShape
 						\.$data
 					}
 				}
 			}
-
+			// I don't think this can ever be hit.
 			DefaultCase {
-				Summary("Create Item with \(\.$menuTitle) and \(\.$subtitle)") {
-					\.$iconType
-					\.$backgroundShape
-					\.$background
-					\.$data
-				}
+				Summary("Create menu item with title \(\.$menuTitle)") {}
 			}
 		}
 	}
@@ -79,85 +72,84 @@ Add an "Add to Variable" action below this to populate a list and then use that 
 	@Parameter(title: "Title")
 	var menuTitle: String
 
-	@Parameter(title: "Subtitle")
-	var subtitle: String?
-
-	@Parameter(
-		title: "Icon",
-		default: .sfSymbol
-	)
-	var iconType: RMIconType
-
-	@Parameter(
-		title: "Background",
-		description:
-"""
-A Background for your Icon
-
-Use this in combination with background shape to show a background behind your icon
-""",
-		default: .default
-	)
-	var background: RMStyle
-
-	// SF Symbol
 	@Parameter(
 		title: "SF Symbol",
-		description: """
-  The name of a SF Symbol
-
-  For available symbols see Apple's website (https://developer.apple.com/sf-symbols/)
-  """
+		description: "Find symbol names here: https://developer.apple.com/sf-symbols/",
+		inputOptions: .init(
+			keyboardType: .asciiCapable,
+			capitalizationType: .none,
+			autocorrect: false,
+			smartQuotes: false,
+			smartDashes: false
+		)
 	)
-	var systemName: String
+	var sfSymbolName: String
 
-	@Parameter(
-		title: "Foreground",
-		description: "The color for your SF Symbol",
-		default: .default
-	)
-	var foreground: RMStyle
-
-	// Emoji
 	@Parameter(
 		title: "Emoji",
-		description:
-"""
-Any Emoji 😀.
-
-Tap the Emoji button on your keyboard and select one emoji.
-""",
-		inputOptions: .init(keyboardType: .default)
+		description: "Tap the emoji button on your keyboard and select one emoji."
 	)
 	var emoji: String?
 
+	@Parameter(title: "Subtitle")
+	var subtitle: String?
+
+	@Parameter(title: "Icon Type", default: .sfSymbol)
+	var iconType: MenuItemIconType
+
 	@Parameter(
-		title: "Data"
+		title: "Foreground Color",
+		default: .default
 	)
-	var data: String?
+	var foreground: MenuItemStyle
+
+	@Parameter(
+		title: "Background Color",
+		description: "Use this in combination with the background shape to show a background behind the icon.",
+		default: .default
+	)
+	var background: MenuItemStyle
 
 	@Parameter(
 		title: "Background Style",
-		description:
-"""
-The style of the icon's background.
-""",
+		description: "The style of the icon's background.",
 		default: .circle
 	)
-	var backgroundShape: RMBackgroundShape
+	var backgroundShape: MenuItemBackgroundShape
 
-	func makeIcon() async -> Data? {
+	@Parameter(
+		title: "Data",
+		inputOptions: .init(
+			capitalizationType: .none,
+			autocorrect: false,
+			smartQuotes: false,
+			smartDashes: false
+		)
+	)
+	var data: String?
+
+	func perform() async throws -> some IntentResult & ReturnsValue<MenuItem> {
+		let menuItem = MenuItem(
+			title: menuTitle,
+			subtitle: subtitle,
+			icon: await makeIcon()
+		)
+
+		return .result(value: menuItem)
+	}
+
+	private func makeIcon() async -> Data? {
 		switch iconType {
 		case .sfSymbol:
-			return await RMIconContainer(
-				sfSymbol: systemName,
+			await IconContainerView(
+				sfSymbol: sfSymbolName,
 				foregroundColor: foreground.color(),
 				backgroundColor: background.color(isBackground: true),
 				backgroundShape: backgroundShape
 			)
 			.render()
 		case .emoji:
-			return await RMIconContainer(
+			await IconContainerView(
 				emoji: emoji ?? "",
 				backgroundColor: background.color(isBackground: true),
 				backgroundShape: backgroundShape
@@ -165,47 +157,10 @@ The style of the icon's background.
 			.render()
 		}
 	}
-
-	func perform() async throws -> some IntentResult & ReturnsValue<MenuItem>  {
-		let icon = await makeIcon()
-
-		let item = MenuItem(
-			title: menuTitle,
-			subtitle: subtitle,
-			icon: icon
-		)
-
-		return .result(value: item)
-	}
 }
 
-// MARK: Menu Item
 struct MenuItem: TransientAppEntity {
-	init() {
-		self.init(title: "", subtitle: nil)
-	}
-
 	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Menu Item"
-
-	var displayRepresentation: DisplayRepresentation {
-		let title: LocalizedStringResource = "\(title)"
-		let subtitle: LocalizedStringResource? = if let subtitle  { "\(subtitle)" } else { nil }
-		let image: DisplayRepresentation.Image? = if let icon {
-			if #available(iOS 17.0, macOS 14.0, *) {
-				.init(data: icon.data, displayStyle: .default)
-			} else {
-				.init(data: icon.data)
-			}
-		} else {
-			nil
-		}
-
-		return DisplayRepresentation(
-			title: title,
-			subtitle: subtitle,
-			image: image
-		)
-	}
 
 	@Property(title: "Title")
 	var title: String
@@ -221,21 +176,35 @@ struct MenuItem: TransientAppEntity {
 		subtitle: String? = nil,
 		icon: Data? = nil
 	) {
-		if let icon {
-			self.icon = .init(data: icon, filename: "icon.png", type: .png)
-		} else {
-			self.icon = nil
-		}
+		self.icon = icon.flatMap { .init(data: $0, filename: "icon.png", type: .png) }
 		self.title = title
 		self.subtitle = subtitle
 	}
+
+	init() {
+		self.init(title: "", subtitle: nil)
+	}
+
+	var displayRepresentation: DisplayRepresentation {
+		let image: DisplayRepresentation.Image? = if let icon {
+			if #available(iOS 17.0, macOS 14.0, *) {
+				.init(data: icon.data, displayStyle: .default)
+			} else {
+				.init(data: icon.data)
+			}
+		} else {
+			nil
+		}
+
+		return .init(
+			title: "\(title)",
+			subtitle: subtitle.flatMap { "\($0)" } ?? "", // The `""` is required as otherwise the icon doesn't show. (macOS 14.0)
+			image: image
+		)
+	}
 }
 
-// MARK: Style
-/**
- A Style for an Icon or it's background
- */
-enum RMStyle: String, AppEnum {
+enum MenuItemStyle: String, AppEnum {
 	case `default`
 	case red
 	case orange
@@ -253,7 +222,7 @@ enum RMStyle: String, AppEnum {
 	case black
 	case clear
 
-	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Style"
+	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Menu Item Style"
 
 	static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
 		.default: "Default",
@@ -274,68 +243,56 @@ enum RMStyle: String, AppEnum {
 		.clear: "Clear"
 	]
 
-	/**
-	 Converts to color
-	 - Parameter isBackground: differentiator for default color
-	 - Returns: Color
-	 */
 	func color(isBackground: Bool = false) -> Color {
 		switch self {
 		case .default:
-			return isBackground ? .white : .gray
+			isBackground ? .white : .gray
 		case .red:
-			return .red
+			.red
 		case .orange:
-			return .orange
+			.orange
 		case .yellow:
-			return .yellow
+			.yellow
 		case .green:
-			return .green
+			.green
 		case .mint:
-			return .mint
+			.mint
 		case .teal:
-			return .teal
+			.teal
 		case .cyan:
-			return .cyan
+			.cyan
 		case .blue:
-			return .blue
+			.blue
 		case .purple:
-			return .purple
+			.purple
 		case .pink:
-			return .pink
+			.pink
 		case .brown:
-			return .brown
+			.brown
 		case .white:
-			return .white
+			.white
 		case .gray:
-			return .gray
+			.gray
 		case .black:
-			return .black
+			.black
 		case .clear:
-			return .clear
+			.clear
 		}
 	}
 }
 
-
-// MARK: Background Shape
-/**
- Shape for an Icon's Background
- */
-enum RMBackgroundShape: String, AppEnum {
-	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Background Shape"
-
-
-	static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
-		.circle: "circle",
-		.square: "square",
-		.noBackground: "no background"
-	]
-
+enum MenuItemBackgroundShape: String, AppEnum {
 	case circle
 	case square
 	case noBackground
 
+	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Menu Item Background Shape"
+
+	static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
+		.circle: "Circle",
+		.square: "Square",
+		.noBackground: "No Background"
+	]
 
 	var shape: AnyShape? {
 		switch self {
@@ -349,10 +306,11 @@ enum RMBackgroundShape: String, AppEnum {
 	}
 }
 
+enum MenuItemIconType: String, AppEnum {
+	case sfSymbol
+	case emoji
 
-// MARK: Icon
-enum RMIconType: String, AppEnum {
-	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Icon Type"
+	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Menu Item Icon Type"
 
 	static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
 		.sfSymbol: .init(
@@ -364,76 +322,55 @@ enum RMIconType: String, AppEnum {
 			image: .init(named: "face.smiling")
 		)
 	]
-
-	case sfSymbol
-	case emoji
 }
 
-
-/**
- Container for rendering Icons in Menu Items
- */
-struct RMIconContainer<Icon: View>: View {
-	let icon: Icon
-	var backgroundColor: Color
-	var backgroundShape: RMBackgroundShape
+private struct IconContainerView<Icon: View>: View {
+	private let icon: Icon
+	private let backgroundColor: Color
+	private let backgroundShape: MenuItemBackgroundShape
 
 	/**
-	 Initializes with a custom view as the icon and the specified background color
-	 - Parameters:
-	 - icon: Any view. Will be clipped to 93x93.
-	 - background: a color
-	 - backgroundShape: Shape for the background
-	 */
+	The icon will be clipped to 93x93.
+	*/
 	private init(
-		@ViewBuilder
-		icon: () -> Icon,
+		@ViewBuilder icon: () -> Icon,
 		background: Color,
-		backgroundShape: RMBackgroundShape
+		backgroundShape: MenuItemBackgroundShape
 	) {
 		self.icon = icon()
 		self.backgroundColor = background
 		self.backgroundShape = backgroundShape
 	}
-	/**
-	 Initializes with a an emoji icon with the specified background color
-	 - Parameters:
-	 - emoji: Emoji String :-)
-	 - background: a color
-	 - backgroundShape: Shape for the background
-	 */
+
 	init(
 		emoji: String,
 		backgroundColor: Color,
-		backgroundShape: RMBackgroundShape
-	) where Icon == RMEmojiIconView {
+		backgroundShape: MenuItemBackgroundShape
+	) where Icon == IconView {
 		self.init(
-			icon: { RMEmojiIconView(emoji: emoji) },
-			background: backgroundColor, backgroundShape: backgroundShape
+			icon: { IconView(emoji: emoji) },
+			background: backgroundColor,
+			backgroundShape: backgroundShape
 		)
 	}
 
-	/**
-	 Initializes with a an SFSymbol icon with the specified background color
-	 - Parameters:
-	 - sfSymbol: SF Symbol ,
-	 - background: a color
-	 - backgroundShape: Shape for the background
-	 */
 	init(
 		sfSymbol systemName: String,
 		foregroundColor: Color,
 		backgroundColor: Color,
-		backgroundShape: RMBackgroundShape
-	) where Icon == RMSymbolIconView {
-		self.init(icon: {
-			RMSymbolIconView(
-				systemName: systemName,
-				foregroundColor: foregroundColor == .primary ? .primary : foregroundColor
-			)
-		}, background: backgroundColor, backgroundShape: backgroundShape)
+		backgroundShape: MenuItemBackgroundShape
+	) where Icon == SymbolIconView {
+		self.init(
+			icon: {
+				SymbolIconView(
+					systemName: systemName,
+					foregroundColor: foregroundColor == .primary ? .primary : foregroundColor
+				)
+			},
+			background: backgroundColor,
+			backgroundShape: backgroundShape
+		)
 	}
-
 
 	var body: some View {
 		icon
@@ -447,35 +384,18 @@ struct RMIconContainer<Icon: View>: View {
 			}
 	}
 
-	@MainActor func render() async -> Data? {
+	@MainActor
+	func render() async -> Data? {
 		let renderer = ImageRenderer(content: self)
 
-		// scale doesn't really matter
-		renderer.scale = 1
+		// We cannot fetch the scale here, so we just default to the best resolution.
+		renderer.scale = 3
 
-		let data: Data?
-
-
-#if os(macOS)
-		guard let image = renderer.nsImage else {
-			return nil
-		}
-
-		data = image.tiffRepresentation
-#else
-		guard let image = renderer.uiImage else {
-			return nil
-		}
-
-		data = image.pngData()
-#endif
-
-		return data
+		return renderer.xImage?.pngData()
 	}
 }
 
-
-struct RMEmojiIconView: View {
+private struct IconView: View {
 	var emoji: String
 
 	var body: some View {
@@ -485,8 +405,7 @@ struct RMEmojiIconView: View {
 	}
 }
 
-
-struct RMSymbolIconView: View {
+private struct SymbolIconView: View {
 	let systemName: String
 	let foregroundColor: Color
 
