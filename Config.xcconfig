@@ -1,2 +1,9 @@
 MARKETING_VERSION = 2.9.0
 CURRENT_PROJECT_VERSION = 48
+
+// Source for the base of all bundle IDs
+// -> Intents extensions and app will derive bundleID from here
+PRODUCT_BUNDLE_IDENTIFIER = com.sindresorhus.Actions
+
+// This makes it easier to not commit the dev team
+DEVELOPMENT_TEAM = YG56YK5RN5
