@@ -12,6 +12,7 @@ Intent categories:
 - Text
 - Image
 - Audio
+- Video
 - Device
 - Web
 - Random

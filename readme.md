@@ -49,6 +49,7 @@ And for high-quality transcription, see my [Aiko](https://sindresorhus.com/aiko)
 - Choose from List (Extended)
 - Clamp Number
 - Combine Lists
+- Combine Videos
 - Convert Coordinates to Location
 - Convert Date to Unix Time
 - Convert Location to Geo URI

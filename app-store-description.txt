@@ -21,6 +21,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Choose from List (Extended)
 - Clamp Number
 - Combine Lists
+- Combine Videos
 - Convert Coordinates to Location
 - Convert Date to Unix Time
 - Convert Location to Geo URI

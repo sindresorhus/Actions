@@ -15,6 +15,10 @@ Limitations:
 		categoryName: "Device"
 	)
 
+	static var parameterSummary: some ParameterSummary {
+		Summary("Is device locked? (PLEASE READ THE ACTION DESCRIPTION)")
+	}
+
 	@MainActor
 	func perform() async throws -> some IntentResult & ReturnsValue<Bool> {
 		.result(value: !XApplication.shared.isProtectedDataAvailable)
