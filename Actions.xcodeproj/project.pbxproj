@@ -112,6 +112,7 @@
 		E352420C28F6F6AD00A957A7 /* AskForTextScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E352420B28F6F6AD00A957A7 /* AskForTextScreen.swift */; };
 		E365C11B2A4C683200A902D4 /* WaitMilliseconds.swift in Sources */ = {isa = PBXBuildFile; fileRef = E365C11A2A4C683200A902D4 /* WaitMilliseconds.swift */; };
 		E36A41B32AC605AF00A29195 /* CreateMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD691FCD2A9CCD4C00C55178 /* CreateMenuItem.swift */; };
+		E3722CE82ACDCA2A0007316D /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3722CE72ACDCA2A0007316D /* Debug.swift */; };
 		E376FD8329524B6400C0F81F /* IsDarkMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C33CA928D3A81700386C59 /* IsDarkMode.swift */; };
 		E37A1E222A2D214800E68E92 /* GetDominantColorsOfImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37A1E212A2D214800E68E92 /* GetDominantColorsOfImage.swift */; };
 		E38035CB29278B1700D29A07 /* MergeDictionaries.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CB44A128D794DA0031D55F /* MergeDictionaries.swift */; };
@@ -221,6 +222,7 @@
 		E352420928F6EEDE00A957A7 /* AskForText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AskForText.swift; path = Shared/Actions/AskForText.swift; sourceTree = SOURCE_ROOT; };
 		E352420B28F6F6AD00A957A7 /* AskForTextScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskForTextScreen.swift; sourceTree = "<group>"; };
 		E365C11A2A4C683200A902D4 /* WaitMilliseconds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitMilliseconds.swift; sourceTree = "<group>"; };
+		E3722CE72ACDCA2A0007316D /* Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
 		E376FD84295287E500C0F81F /* GetPrinters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPrinters.swift; sourceTree = "<group>"; };
 		E376FD862952937200C0F81F /* GetDefaultPrinter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDefaultPrinter.swift; sourceTree = "<group>"; };
 		E376FD882952946400C0F81F /* SetDefaultPrinter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDefaultPrinter.swift; sourceTree = "<group>"; };
@@ -355,6 +357,7 @@
 				E3DB885528E727E200FEE8D6 /* ChooseFromListExtended.swift */,
 				E3F64D7528D9F9930009B500 /* CreateColorImage.swift */,
 				FD691FCD2A9CCD4C00C55178 /* CreateMenuItem.swift */,
+				E3722CE72ACDCA2A0007316D /* Debug.swift */,
 				E3CB449D28D791D40031D55F /* GenerateCSV.swift */,
 				E3CF4F9728FDA7EB00BD88D5 /* GenerateRandomData.swift */,
 				E3B8FD1D29F11DCA001249CF /* GetAverageColorOfImage.swift */,
@@ -789,6 +792,7 @@
 				E37A1E222A2D214800E68E92 /* GetDominantColorsOfImage.swift in Sources */,
 				E34AB51628F58B500082AE78 /* Authenticate.swift in Sources */,
 				E3CB449928D78CBE0031D55F /* ParseCSV.swift in Sources */,
+				E3722CE82ACDCA2A0007316D /* Debug.swift in Sources */,
 				E351083628FD79D8007C85AE /* OverwriteFile.swift in Sources */,
 				E352420C28F6F6AD00A957A7 /* AskForTextScreen.swift in Sources */,
 				E337A3E127E850EC0073E865 /* ChooseFromListScreen.swift in Sources */,

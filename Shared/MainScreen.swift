@@ -62,7 +62,7 @@ struct MainScreen: View {
 //				}
 //				.toolbar {
 //					#if os(iOS)
-//					ToolbarItemGroup(placement: .navigationBarTrailing) {
+//					ToolbarItemGroup(placement: .topBarTrailing) {
 //						Button("Settings", systemImage: "gear") {
 //							isSettingsPresented = true
 //						}

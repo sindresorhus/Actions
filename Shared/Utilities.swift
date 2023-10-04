@@ -2598,11 +2598,11 @@ extension Data {
 	By default, the file has no file extension.
 	*/
 	func writeToUniqueTemporaryFile(
-		filename: String = "file",
+		filename: String? = nil,
 		contentType: UTType = .data
 	) throws -> URL {
 		let destinationUrl = try URL.uniqueTemporaryDirectory()
-			.appendingPathComponent(filename, conformingTo: contentType)
+			.appendingPathComponent(filename ?? "file", conformingTo: contentType)
 
 		try write(to: destinationUrl)
 
@@ -2714,7 +2714,7 @@ extension XImage {
 		}
 
 		return try data
-			.writeToUniqueTemporaryFile(filename: filename ?? "file", contentType: .png)
+			.writeToUniqueTemporaryFile(filename: filename, contentType: .png)
 			.toIntentFile
 	}
 }
@@ -6274,5 +6274,12 @@ extension Calendar {
 	func weekday(for date: Date) -> Locale.Weekday {
 		let index = (component(.weekday, from: date) + 5) % 7
 		return .allCases[index]
+	}
+}
+
+
+extension Sequence {
+	func descriptionAsKeyValue<Key, Value>() -> String where Element == (key: Key, value: Value) {
+		Array(self).map { "\($0.key): \($0.value)" }.joined(separator: "\n")
 	}
 }
