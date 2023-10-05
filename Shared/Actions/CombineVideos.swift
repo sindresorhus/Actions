@@ -8,11 +8,26 @@ struct CombineVideosIntent: AppIntent {
 """
 Combine videos into a single video.
 
+IMPORTANT: The videos must have the same size and orientation.
+
 This can be useful for combining Live Photos.
 
-IMPORTANT: The videos must have the same size and orientation.
+It uses passthrough whenever possible to prevent unnecessary transcoding, preserving original video quality.
+
+NOTE: Shortcut actions only get 30 seconds to run, so if the videos are very long, it may not work.
 """,
-		categoryName: "Video"
+		categoryName: "Video",
+		searchKeywords: [
+			"merge",
+			"edit",
+			"live",
+			"photo",
+			"clip",
+			"movie",
+			"mp4",
+			"mov",
+			"quicktime"
+		]
 	)
 
 	@Parameter(

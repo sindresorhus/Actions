@@ -1,4 +1,4 @@
-#if canImport(AppKit)
+#if os(macOS)
 import AppIntents
 import AppKit
 

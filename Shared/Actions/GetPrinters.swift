@@ -1,4 +1,4 @@
-#if canImport(AppKit)
+#if os(macOS)
 import AppIntents
 
 // NOTE: This has to be an in-app intent as extensions seem to not inherit the print entitlement. (macOS 13.1)

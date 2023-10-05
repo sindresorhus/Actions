@@ -28,11 +28,11 @@ struct ChooseFromListScreen: View {
 	var body: some View {
 		NavigationStack {
 			VStack(spacing: 0) {
-				#if canImport(AppKit)
+				#if os(macOS)
 				header
 				#endif
 				list
-					#if canImport(AppKit)
+					#if os(macOS)
 					.listStyle(.inset(alternatesRowBackgrounds: true))
 					#endif
 					.safeAreaInset(edge: .top) {
@@ -114,7 +114,7 @@ struct ChooseFromListScreen: View {
 						}
 					}
 				}
-				#if canImport(AppKit)
+				#if os(macOS)
 				.frame(width: 440, height: 560)
 				.windowLevel(.floating)
 				#else
@@ -148,7 +148,7 @@ struct ChooseFromListScreen: View {
 	@ViewBuilder
 	private var list: some View {
 		if data.selectMultiple {
-			#if canImport(AppKit)
+			#if os(macOS)
 			List(searchResults, id: \.self) {
 				Toggle($0.trimmed.firstLine, isOn: $multipleSelection.contains($0))
 					.lineLimit(1)
@@ -164,7 +164,7 @@ struct ChooseFromListScreen: View {
 			#endif
 		} else {
 			// TODO: Use the iOS solution on macOS too. Use `.formStyle(.grouped)`.
-			#if canImport(AppKit)
+			#if os(macOS)
 			List(searchResults, id: \.self, selection: $singleSelection) {
 				Text($0.trimmed.firstLine)
 					.tag($0)
@@ -201,7 +201,7 @@ struct ChooseFromListScreen: View {
 		}
 	}
 
-	#if canImport(AppKit)
+	#if os(macOS)
 	private var header: some View {
 		// TODO: `.searchable` does not work on macOS when used in a sheet. Open FB about this if not if not fixed in macOS 13.
 		SearchField(text: $searchText, placeholder: "Search")
@@ -259,7 +259,7 @@ struct ChooseFromListScreen: View {
 		ShortcutsApp.open()
 		dismiss()
 
-		#if canImport(AppKit)
+		#if os(macOS)
 		DispatchQueue.main.async {
 			SSApp.quit()
 		}
@@ -311,7 +311,7 @@ private struct AddItemScreen: View {
 	//			.if(!isUsingNavigationLink) {
 	//				$0.embedInNavigationViewIfNotMacOS()
 	//			}
-				#if canImport(AppKit)
+				#if os(macOS)
 				.frame(width: 300, height: 100)
 				#endif
 				.task {

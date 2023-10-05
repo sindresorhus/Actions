@@ -15,7 +15,7 @@ struct FlashScreen: AppIntent {
 	}
 
 	func perform() async throws -> some IntentResult {
-		#if canImport(AppKit)
+		#if os(macOS)
 		await Device.flashScreen()
 		#endif
 

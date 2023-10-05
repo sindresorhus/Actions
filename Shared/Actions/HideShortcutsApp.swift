@@ -25,14 +25,14 @@ This is useful for making cross-platform shortcuts. If you just target iOS, use 
 	}
 
 	func perform() async throws -> some IntentResult {
-		#if canImport(AppKit)
+		#if os(macOS)
 		NSRunningApplication.runningApplications(withBundleIdentifier: "com.apple.shortcuts").first?.hide()
 		#else
 		SSApp.moveToBackground()
 		#endif
 
 		// TODO: This can be removed when we disable the `static let openAppWhenRun = true` for macOS again.
-		#if canImport(AppKit)
+		#if os(macOS)
 		SSApp.quit()
 		#endif
 

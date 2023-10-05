@@ -34,7 +34,7 @@ On macOS, it always returns “unknown”.
 			return .result(value: .unknown)
 		}
 		#else
-		return .result(value: .unknown)
+		.result(value: .unknown)
 		#endif
 	}
 }

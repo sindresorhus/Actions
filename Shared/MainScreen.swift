@@ -12,7 +12,7 @@ struct MainScreen: View {
 				WelcomeScreen()
 			}
 				.alert(error: $error)
-				#if canImport(AppKit)
+				#if os(macOS)
 				.frame(width: 440)
 				.fixedSize()
 				.windowLevel(.floating)

@@ -39,7 +39,7 @@ Known limitation: It will not be able to detect when the output is an AirPlay de
 
 		return .result(value: result)
 		#else
-		return .result(value: "")
+		.result(value: "")
 		#endif
 	}
 }

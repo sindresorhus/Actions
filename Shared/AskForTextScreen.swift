@@ -51,7 +51,7 @@ struct AskForTextScreen: View {
 				isTimeoutCancelled = true
 			}
 			.task {
-				#if canImport(AppKit)
+				#if os(macOS)
 				NSApp.activate(ignoringOtherApps: true)
 				#endif
 
@@ -84,7 +84,7 @@ struct AskForTextScreen: View {
 		dismiss() // TODO: Report to Apple: Dismiss should work inside an alert.
 		AppState.shared.askForTextData = nil
 
-		#if canImport(AppKit)
+		#if os(macOS)
 		DispatchQueue.main.async {
 			SSApp.quit()
 		}

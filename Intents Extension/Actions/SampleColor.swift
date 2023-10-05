@@ -14,14 +14,14 @@ struct SampleColor: AppIntent, CustomIntentMigratedAppIntent {
 
 	// TODO: Is an optional ok as a return value? Test what happens if it's actually `nil`.
 	func perform() async throws -> some IntentResult & ReturnsValue<ColorAppEntity?> {
-		#if canImport(AppKit)
+		#if os(macOS)
 		guard let color = await NSColorSampler().sample() else {
 			return .result(value: nil)
 		}
 
 		return .result(value: .init(color))
 		#else
-		return .result(value: nil)
+		.result(value: nil)
 		#endif
 	}
 }

@@ -41,24 +41,24 @@ struct WelcomeScreen: View {
 				.padding()
 				.dynamicTypeSize(...(Device.hasSmallScreen ? .accessibility3 : .accessibility4))
 			Spacer()
-			#if canImport(AppKit)
+			#if os(macOS)
 			Link("Want even more actions?", destination: "https://github.com/sindresorhus/Actions#looking-for-more")
 				.controlSize(.small)
 			#endif
 			Button("Send Feedback") {
 				SSApp.openSendFeedbackPage()
 			}
-				#if canImport(AppKit)
+				#if os(macOS)
 				.buttonStyle(.link)
 				#endif
 				.controlSize(.small)
 				.dynamicTypeSize(...(.accessibility4))
 		}
 			.padding()
-			#if canImport(AppKit)
+			#if os(macOS)
 			.padding()
 			.padding(.vertical)
-			#elseif canImport(UIKit)
+			#else
 			.frame(maxWidth: dynamicTypeSize.isAccessibilitySize ? .infinity : 540)
 			.if(Device.hasSmallScreen) {
 				$0.embedInScrollView()
@@ -68,12 +68,12 @@ struct WelcomeScreen: View {
 			#endif
 			.task {
 				#if DEBUG
-					#if canImport(AppKit)
+					#if os(macOS)
 					// Don't quit app when using in-app intent.
 					if NSApp.activationPolicy() == .regular {
 						openShortcutsApp()
 					}
-					#elseif canImport(UIKit)
+					#else
 					openShortcutsApp()
 					#endif
 				#endif
@@ -88,7 +88,7 @@ struct WelcomeScreen: View {
 		ShortcutsApp.createShortcut()
 		#endif
 
-		#if canImport(AppKit)
+		#if os(macOS)
 		SSApp.quit()
 		#endif
 	}

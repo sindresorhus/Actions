@@ -51,7 +51,7 @@ struct WriteTextScreen: View {
 						}
 					}
 				}
-				#if canImport(AppKit)
+				#if os(macOS)
 				.frame(minWidth: 600, minHeight: 420)
 				#endif
 				.task {
@@ -65,7 +65,7 @@ struct WriteTextScreen: View {
 		ShortcutsApp.open()
 		dismiss()
 
-		#if canImport(AppKit)
+		#if os(macOS)
 		DispatchQueue.main.async {
 			SSApp.quit()
 		}

@@ -76,14 +76,14 @@ A: The system authentication feature can only be triggered from an app, so the a
 			try await openURL.openAsyncOrOpenShortcutsApp()
 		} else {
 			// This makes the “Wait to Return” action work.
-			#if canImport(AppKit)
+			#if os(macOS)
 			NSRunningApplication.runningApplications(withBundleIdentifier: "com.apple.shortcuts").first?.hide()
 			#endif
 
 			ShortcutsApp.open()
 
 			// TODO: This can be removed when we disable the `static let openAppWhenRun = true` for macOS again.
-			#if canImport(AppKit)
+			#if os(macOS)
 			SSApp.quit()
 			#endif
 		}

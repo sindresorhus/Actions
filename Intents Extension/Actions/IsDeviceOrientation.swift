@@ -10,7 +10,7 @@ struct IsDeviceOrientation: AppIntent, CustomIntentMigratedAppIntent {
 """
 Returns whether the device is in the chosen orientation.
 
-On macOS it always returns “false”.
+On macOS, it always returns false.
 """,
 		categoryName: "Device"
 	)
@@ -56,7 +56,7 @@ On macOS it always returns “false”.
 			return .result(value: false)
 		}
 		#else
-		return .result(value: false)
+		.result(value: false)
 		#endif
 	}
 }

@@ -20,7 +20,7 @@ struct GetFileIcon: AppIntent, CustomIntentMigratedAppIntent {
 	}
 
 	func perform() async throws -> some IntentResult & ReturnsValue<[IntentFile]> {
-		#if canImport(AppKit)
+		#if os(macOS)
 		func icon(_ file: IntentFile) -> XImage {
 			if let url = file.fileURL {
 				return NSWorkspace.shared.icon(forFile: url.path)
@@ -37,7 +37,7 @@ struct GetFileIcon: AppIntent, CustomIntentMigratedAppIntent {
 
 		return .result(value: result)
 		#else
-		return .result(value: [])
+		.result(value: [])
 		#endif
 	}
 }

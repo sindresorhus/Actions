@@ -93,19 +93,19 @@ enum SSApp {
 	#endif
 
 	static var isDarkMode: Bool {
-		#if canImport(AppKit)
+		#if os(macOS)
 			// The `effectiveAppearance` check does not detect dark mode in an intent handler extension.
 			#if APP_EXTENSION
-			return UserDefaults.standard.string(forKey: "AppleInterfaceStyle") == "Dark"
+			UserDefaults.standard.string(forKey: "AppleInterfaceStyle") == "Dark"
 			#else
-			return NSApp?.effectiveAppearance.isDarkMode ?? false
+			NSApp?.effectiveAppearance.isDarkMode ?? false
 			#endif
-		#elseif canImport(UIKit)
-		return UIScreen.main.traitCollection.userInterfaceStyle == .dark
+		#else
+		UIScreen.main.traitCollection.userInterfaceStyle == .dark
 		#endif
 	}
 
-	#if canImport(AppKit)
+	#if os(macOS)
 	static func quit() {
 		Task { @MainActor in
 			NSApp.terminate(nil)
@@ -392,7 +392,7 @@ extension Dictionary {
 }
 
 
-#if canImport(AppKit)
+#if os(macOS)
 extension NSAppearance {
 	var isDarkMode: Bool { bestMatch(from: [.darkAqua, .aqua]) == .darkAqua }
 }
@@ -429,7 +429,7 @@ extension Data {
 
 
 enum Device {
-	#if canImport(AppKit)
+	#if os(macOS)
 	private static func ioPlatformExpertDevice(key: String) -> CFTypeRef? {
 		let service = IOServiceGetMatchingService(kIOMainPortDefault, IOServiceMatching("IOPlatformExpertDevice"))
 		defer {
@@ -452,10 +452,10 @@ enum Device {
 	```
 	*/
 	static let operatingSystemName: String = {
-		#if canImport(AppKit)
-		return "macOS"
-		#elseif canImport(UIKit)
-		return UIDevice.current.systemName
+		#if os(macOS)
+		"macOS"
+		#else
+		UIDevice.current.systemName
 		#endif
 	}()
 
@@ -473,11 +473,11 @@ enum Device {
 	```
 	*/
 	static let operatingSystemVersion: String = {
-		#if canImport(AppKit)
+		#if os(macOS)
 		let os = ProcessInfo.processInfo.operatingSystemVersion
 		return "\(os.majorVersion).\(os.minorVersion).\(os.patchVersion)"
 		#elseif canImport(UIKit)
-		return UIDevice.current.systemVersion
+		UIDevice.current.systemVersion
 		#endif
 	}()
 
@@ -506,7 +506,7 @@ enum Device {
 	```
 	*/
 	static let modelIdentifier: String = {
-		#if canImport(AppKit)
+		#if os(macOS)
 		guard
 			let data = ioPlatformExpertDevice(key: "model") as? Data,
 			let modelIdentifier = data.stringFromNullTerminatedStringData
@@ -518,8 +518,8 @@ enum Device {
 
 		return modelIdentifier
 		#elseif targetEnvironment(simulator)
-		return "Simulator"
-		#elseif canImport(UIKit)
+		"Simulator"
+		#else
 		var systemInfo = utsname()
 		uname(&systemInfo)
 		let machineMirror = Mirror(reflecting: systemInfo.machine)
@@ -570,10 +570,10 @@ enum Device {
 	On macOS, it always returns false.
 	*/
 	static let hasSmallScreen: Bool = {
-		#if canImport(AppKit)
-		return false
-		#elseif canImport(UIKit)
-		return UIScreen.main.bounds.height < 700
+		#if os(macOS)
+		false
+		#else
+		UIScreen.main.bounds.height < 700
 		#endif
 	}()
 
@@ -587,7 +587,7 @@ enum Device {
 		let dictionary = CGSessionCopyCurrentDictionary() as? [String: Any]
 		return dictionary?[key] as? Bool ?? false
 		#else
-		return false
+		false
 		#endif
 	}
 
@@ -599,9 +599,9 @@ enum Device {
 	@available(watchOS, unavailable)
 	static var isWiFiOn: Bool {
 		#if canImport(CoreWLAN)
-		return CWWiFiClient.shared().interface()?.powerOn() ?? false
+		CWWiFiClient.shared().interface()?.powerOn() ?? false
 		#else
-		return false
+		false
 		#endif
 	}
 
@@ -624,7 +624,7 @@ enum Device {
 }
 
 
-#if canImport(AppKit)
+#if os(macOS)
 enum InternalMacBattery {
 	struct State {
 		private static func powerSourceInfo() -> [String: AnyObject] {
@@ -715,7 +715,7 @@ extension Device {
 	The state of the device's battery.
 	*/
 	static var batteryState: BatteryState {
-		#if canImport(AppKit)
+		#if os(macOS)
 		let state = InternalMacBattery.state
 
 		guard state.isPowerAdapterConnected else {
@@ -731,7 +731,7 @@ extension Device {
 		}
 
 		return .unknown
-		#elseif canImport(UIKit)
+		#else
 		UIDevice.current.isBatteryMonitoringEnabled = true
 
 		switch UIDevice.current.batteryState {
@@ -927,7 +927,7 @@ extension URL {
 	Convenience for opening URLs.
 	*/
 	func open() {
-		#if canImport(AppKit)
+		#if os(macOS)
 		NSWorkspace.shared.open(self)
 		#elseif canImport(UIKit) && !APP_EXTENSION
 		Task { @MainActor in
@@ -946,7 +946,7 @@ extension URL {
 	*/
 	@MainActor // It's marked mainactor as `UIApplication.shared.open` requires it, but is not yet annotated. (iOS 16.0)
 	func openAsync() async throws {
-		#if canImport(AppKit)
+		#if os(macOS)
 		try await NSWorkspace.shared.open(self, configuration: .init())
 		#elseif canImport(UIKit) && !APP_EXTENSION
 		guard await UIApplication.shared.open(self) else {
@@ -1009,7 +1009,7 @@ extension URL {
 }
 
 
-#if canImport(AppKit)
+#if os(macOS)
 private struct WindowAccessor: NSViewRepresentable {
 	@MainActor
 	private final class WindowAccessorView: NSView {
@@ -1188,7 +1188,7 @@ extension Numeric {
 //}
 
 
-#if canImport(AppKit)
+#if os(macOS)
 extension NSImage {
 	/**
 	Draw a color as an image.
@@ -1869,7 +1869,7 @@ extension XColor {
 	- Important: Don't forget to convert it to the correct color space first.
 	*/
 	var hex: Int {
-		#if canImport(AppKit)
+		#if os(macOS)
 		guard numberOfComponents == 4 else {
 			assertionFailure()
 			return 0x0
@@ -2493,7 +2493,7 @@ extension CGImage {
 }
 
 
-#if canImport(AppKit)
+#if os(macOS)
 extension NSBitmapImageRep {
 	func pngData() -> Data? {
 		representation(using: .png, properties: [:])
@@ -2532,7 +2532,7 @@ extension XImage {
 	*/
 	var toCIImage: CIImage? {
 		#if os(iOS)
-		return CIImage(image: self, options: [.applyOrientationProperty: true])
+		CIImage(image: self, options: [.applyOrientationProperty: true])
 		#else
 		if let cgImage {
 			return CIImage(cgImage: cgImage, options: [.applyOrientationProperty: true])
@@ -3068,10 +3068,10 @@ extension String {
 	- Parameter currentHostOnly: The pasteboard contents are available only on the current device, and not on any other devices. This parameter is only used on macOS.
 	*/
 	func copyToPasteboard(currentHostOnly: Bool = false) {
-		#if canImport(AppKit)
+		#if os(macOS)
 		NSPasteboard.general.prepareForNewContents(with: currentHostOnly ? .currentHostOnly : [])
 		NSPasteboard.general.setString(self, forType: .string)
-		#elseif canImport(UIKit)
+		#else
 		UIPasteboard.general.string = self
 		#endif
 	}
@@ -3095,7 +3095,7 @@ extension XPasteboard {
 	Universal version.
 	*/
 	func prepareForNewContents(currentHostOnly: Bool) {
-		#if canImport(AppKit)
+		#if os(macOS)
 		prepareForNewContents(with: currentHostOnly ? .currentHostOnly : [])
 		#else
 		string = ""
@@ -3132,16 +3132,16 @@ extension View {
 		onDismiss: (() -> Void)? = nil,
 		@ViewBuilder content: @escaping (Item) -> some View
 	) -> some View {
-		#if canImport(AppKit)
-		return sheet(item: item, onDismiss: onDismiss, content: content)
-		#elseif canImport(UIKit)
-		return fullScreenCover(item: item, onDismiss: onDismiss, content: content)
+		#if os(macOS)
+		sheet(item: item, onDismiss: onDismiss, content: content)
+		#else
+		fullScreenCover(item: item, onDismiss: onDismiss, content: content)
 		#endif
 	}
 }
 
 
-#if canImport(AppKit)
+#if os(macOS)
 extension CGEventType {
 	/**
 	Any event.
@@ -3154,7 +3154,7 @@ extension CGEventType {
 
 
 enum User {
-	#if canImport(AppKit)
+	#if os(macOS)
 	/**
 	Th current user's username.
 
@@ -3163,14 +3163,14 @@ enum User {
 	static let username = ProcessInfo.processInfo.userName
 	#endif
 
-	#if canImport(AppKit)
+	#if os(macOS)
 	/**
 	The current user's name.
 
 	For example: `Sindre Sorhus`
 	*/
 	static let nameString = ProcessInfo.processInfo.fullUserName
-	#elseif canImport(UIKit)
+	#else
 	/**
 	The current user's name.
 
@@ -3222,7 +3222,7 @@ enum User {
 		return String(cString: shell)
 	}()
 
-	#if canImport(AppKit)
+	#if os(macOS)
 	/**
 	The duration since the user was last active on the computer.
 	*/
@@ -3549,9 +3549,9 @@ extension Font {
 		weight: Weight? = nil,
 		design: Design = .default
 	) -> Self {
-		#if canImport(AppKit)
-		return .system(size: size, weight: weight ?? .regular, design: design)
-		#elseif canImport(UIKit)
+		#if os(macOS)
+		.system(size: size, weight: weight ?? .regular, design: design)
+		#else
 		let style = textStyle.toUIFontTextStyle
 
 		return .system(
@@ -3704,7 +3704,7 @@ extension Locale {
 }
 
 
-#if canImport(AppKit)
+#if os(macOS)
 extension NSWorkspace {
 	/**
 	Running GUI apps. Excludes menu bar apps and daemons.
@@ -3843,7 +3843,7 @@ extension Device {
 #endif
 
 
-#if canImport(AppKit)
+#if os(macOS)
 extension Device {
 	/**
 	Flash the screen like when taking a screenshot.
@@ -4065,14 +4065,14 @@ extension CGImage {
 
 extension XImage {
 	func resized(to newSize: CGSize) -> XImage {
-		#if canImport(AppKit)
-		return Self(size: newSize, flipped: false) {
+		#if os(macOS)
+		Self(size: newSize, flipped: false) {
 			self.draw(in: $0)
 			return true
 		}
 			.isTemplate(isTemplate)
-		#elseif canImport(UIKit)
-		return UIGraphicsImageRenderer(size: newSize).image { _ in
+		#else
+		UIGraphicsImageRenderer(size: newSize).image { _ in
 			draw(in: CGRect(origin: .zero, size: newSize))
 		}
 			.withRenderingMode(renderingMode)
@@ -4081,7 +4081,7 @@ extension XImage {
 }
 
 
-#if canImport(AppKit)
+#if os(macOS)
 extension NSImage {
 	/**
 	`UIImage` polyfill.
@@ -4791,9 +4791,9 @@ extension XScreen {
 	The size of the screen multiplied by its scale factor.
 	*/
 	var nativeSize: CGSize {
-		#if canImport(AppKit)
+		#if os(macOS)
 		frame.size * backingScaleFactor
-		#elseif canImport(UIKit)
+		#else
 		nativeBounds.size
 		#endif
 	}
@@ -4850,7 +4850,7 @@ extension URLSession {
 }
 
 
-#if canImport(AppKit)
+#if os(macOS)
 extension NSPasteboard {
 	/**
 	UIKit polyfill.
@@ -4903,7 +4903,7 @@ extension XPasteboard {
 	var stringForCurrentHostOnly: String? {
 		get { string }
 		set {
-			#if canImport(AppKit)
+			#if os(macOS)
 			prepareForNewContents(with: .currentHostOnly)
 
 			guard let newValue else {
@@ -4924,7 +4924,7 @@ extension XPasteboard {
 	var stringsForCurrentHostOnly: [String] {
 		get { strings ?? [] }
 		set {
-			#if canImport(AppKit)
+			#if os(macOS)
 			prepareForNewContents(with: .currentHostOnly)
 
 			guard let strings = newValue.nilIfEmpty else {
@@ -4946,7 +4946,7 @@ extension XPasteboard {
 }
 
 
-#if canImport(AppKit)
+#if os(macOS)
 struct SearchField: NSViewRepresentable {
 	typealias NSViewType = CocoaSearchField
 
@@ -5441,16 +5441,16 @@ extension String {
 
 
 extension Color {
-	#if os(iOS)
-	/**
-	- Important: Prefer `ShapeStyle.background` whenever possible.
-	*/
-	static let legacyBackground = Self(UIColor.systemBackground)
-	#else
+	#if os(macOS)
 	/**
 	- Important: Prefer `ShapeStyle.background` whenever possible.
 	*/
 	static let legacyBackground = Self(NSColor.windowBackgroundColor)
+	#else
+	/**
+	- Important: Prefer `ShapeStyle.background` whenever possible.
+	*/
+	static let legacyBackground = Self(UIColor.systemBackground)
 	#endif
 }
 
@@ -5691,9 +5691,9 @@ extension Image {
 	Create a SwiftUI `Image` from either `NSImage` or `UIImage`.
 	*/
 	init(xImage: XImage) {
-		#if canImport(AppKit)
+		#if os(macOS)
 		self.init(nsImage: xImage)
-		#elseif canImport(UIKit)
+		#else
 		self.init(uiImage: xImage)
 		#endif
 	}
@@ -5708,10 +5708,10 @@ extension XImage {
 extension ImageRenderer {
 	@MainActor
 	var xImage: XImage? {
-		#if canImport(AppKit)
-		return nsImage
+		#if os(macOS)
+		nsImage
 		#else
-		return uiImage
+		uiImage
 		#endif
 	}
 
@@ -5850,7 +5850,7 @@ extension CFArray {
 }
 
 
-#if canImport(AppKit)
+#if os(macOS)
 /**
 - Important: Requires the `com.apple.security.print` entitlement.
 */

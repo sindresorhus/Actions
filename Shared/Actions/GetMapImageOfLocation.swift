@@ -213,7 +213,7 @@ extension MKMapSnapshotter.Options {
 			return false
 		}
 		set {
-			#if canImport(AppKit)
+			#if os(macOS)
 			appearance = .init(appearanceNamed: newValue ? .darkAqua : .aqua, bundle: .main)
 			#else
 			traitCollection = .init(userInterfaceStyle: newValue ? .dark : .light)

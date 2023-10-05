@@ -26,7 +26,7 @@ For example, username, name, language, idle time, etc.
 	}
 
 	func perform() async throws -> some IntentResult & ReturnsValue<String> {
-		#if canImport(AppKit)
+		#if os(macOS)
 		let name = User.name
 		let nameString = User.nameString
 		#else
@@ -34,34 +34,32 @@ For example, username, name, language, idle time, etc.
 		let nameString = name?.formatted()
 		#endif
 
-		let result: String? = {
-			switch type {
-			case .username:
-				#if canImport(AppKit)
-				return User.username
-				#else
-				return nil
-				#endif
-			case .name:
-				return nameString
-			case .givenName:
-				return name?.givenName
-			case .familyName:
-				return name?.familyName
-			case .initials:
-				return name?.formatted(.name(style: .abbreviated))
-			case .shell:
-				return User.shell
-			case .languageCode:
-				return User.languageCode.identifier
-			case .idleTime:
-				#if canImport(AppKit)
-				return Int(User.idleTime.toTimeInterval).formatted()
-				#else
-				return nil
-				#endif
-			}
-		}()
+		let result: String? = switch type {
+		case .username:
+			#if os(macOS)
+			User.username
+			#else
+			nil
+			#endif
+		case .name:
+			nameString
+		case .givenName:
+			name?.givenName
+		case .familyName:
+			name?.familyName
+		case .initials:
+			name?.formatted(.name(style: .abbreviated))
+		case .shell:
+			User.shell
+		case .languageCode:
+			User.languageCode.identifier
+		case .idleTime:
+			#if os(macOS)
+			Int(User.idleTime.toTimeInterval).formatted()
+			#else
+			nil
+			#endif
+		}
 
 		return .result(value: result ?? "")
 	}

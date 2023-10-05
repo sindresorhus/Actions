@@ -92,7 +92,7 @@ Use the SF Symbols app to find the symbol you want.
 
 		image = image.withConfiguration(configuration)
 
-		#if canImport(AppKit)
+		#if os(macOS)
 		// See: https://developer.apple.com/forums/thread/663728
 		image = image.normalizingImage()
 		#endif

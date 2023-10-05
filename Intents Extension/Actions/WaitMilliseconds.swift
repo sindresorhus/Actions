@@ -11,7 +11,11 @@ It is guaranteed to take at least the given amount of milliseconds. Sometimes it
 
 Use the built-in “Wait” action for durations longer than 1 second.
 """,
-		categoryName: "Miscellaneous"
+		categoryName: "Miscellaneous",
+		searchKeywords: [
+			"sleep",
+			"delay"
+		]
 	)
 
 	@Parameter(title: "Duration")
@@ -23,7 +27,7 @@ Use the built-in “Wait” action for durations longer than 1 second.
 
 	@MainActor
 	func perform() async throws -> some IntentResult {
-		let finalDuration = Duration.milliseconds(duration)
+		let finalDuration = Duration.milliseconds(duration > 0 ? duration : 0)
 
 		// The sleep method clamps for anything over an hour, but we only allow a minute as the user should then use the built-in method.
 		guard finalDuration < .seconds(3600) else {

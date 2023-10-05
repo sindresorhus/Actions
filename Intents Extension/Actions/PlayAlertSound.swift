@@ -15,7 +15,7 @@ struct PlayAlertSound: AppIntent {
 	}
 
 	func perform() async throws -> some IntentResult {
-		#if canImport(AppKit)
+		#if os(macOS)
 		NSSound.beep()
 		#endif
 
