@@ -107,6 +107,7 @@ And for high-quality transcription, see my [Aiko](https://sindresorhus.com/aiko)
 - Hex Encode
 - Hide Shortcuts App
 - Invert Images
+- Is Accessibility Feature On
 - Is Audio Playing <sup>(iOS-only)</sup>
 - Is Bluetooth On
 - Is Cellular Data On

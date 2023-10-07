@@ -35,6 +35,7 @@ typealias XApplication = NSApplication
 typealias XApplicationDelegate = NSApplicationDelegate
 typealias XApplicationDelegateAdaptor = NSApplicationDelegateAdaptor
 typealias XScreen = NSScreen
+typealias XAccessibility = NSAccessibility
 typealias WindowIfMacOS = Window
 #elseif canImport(UIKit)
 import VisionKit
@@ -48,6 +49,7 @@ typealias XApplication = UIApplication
 typealias XApplicationDelegate = UIApplicationDelegate
 typealias XApplicationDelegateAdaptor = UIApplicationDelegateAdaptor
 typealias XScreen = UIScreen
+typealias XAccessibility = UIAccessibility
 typealias WindowIfMacOS = WindowGroup
 #endif
 
@@ -6282,4 +6284,60 @@ extension Sequence {
 	func descriptionAsKeyValue<Key, Value>() -> String where Element == (key: Key, value: Value) {
 		Array(self).map { "\($0.key): \($0.value)" }.joined(separator: "\n")
 	}
+}
+
+
+// UIKit polyfills.
+#if os(macOS)
+extension XAccessibility {
+	// Does not exist on macOS.
+	static let isAssistiveTouchRunning = false
+	static let isBoldTextEnabled = false
+	static let isClosedCaptioningEnabled = false
+	static let isGuidedAccessEnabled = false
+	static let isOnOffSwitchLabelsEnabled = false
+	static let isShakeToUndoEnabled = false
+	static let isVideoAutoplayEnabled = false
+	static let buttonShapesEnabled = false
+	static let prefersCrossFadeTransitions = false
+
+	// macOS supports these, but does not expose a way to check.
+	static let isGrayscaleEnabled = false
+	static let isMonoAudioEnabled = false
+	static let isSpeakScreenEnabled = false
+	static let isSpeakSelectionEnabled = false
+
+	static var isReduceMotionEnabled: Bool {
+		NSWorkspace.shared.accessibilityDisplayShouldReduceMotion
+	}
+
+	static var isInvertColorsEnabled: Bool {
+		NSWorkspace.shared.accessibilityDisplayShouldInvertColors
+	}
+
+	static var isReduceTransparencyEnabled: Bool {
+		NSWorkspace.shared.accessibilityDisplayShouldReduceTransparency
+	}
+
+	static var isSwitchControlRunning: Bool {
+		NSWorkspace.shared.isSwitchControlEnabled
+	}
+
+	static var isVoiceOverRunning: Bool {
+		NSWorkspace.shared.isVoiceOverEnabled
+	}
+
+	static var shouldDifferentiateWithoutColor: Bool {
+		NSWorkspace.shared.accessibilityDisplayShouldDifferentiateWithoutColor
+	}
+
+	static var isDarkerSystemColorsEnabled: Bool {
+		NSWorkspace.shared.accessibilityDisplayShouldIncreaseContrast
+	}
+}
+#endif
+
+extension XAccessibility {
+	// Better name for `isDarkerSystemColorsEnabled`.
+	static var isIncreaseContrastEnabled: Bool { isDarkerSystemColorsEnabled }
 }

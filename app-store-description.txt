@@ -79,6 +79,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Hex Encode
 - Hide Shortcuts App
 - Invert Images
+- Is Accessibility Feature On
 - Is Audio Playing (iOS-only)
 - Is Bluetooth On
 - Is Cellular Data On
