@@ -39,7 +39,7 @@ struct CreateColorImage: AppIntent, CustomIntentMigratedAppIntent {
 
 	func perform() async throws -> some IntentResult & ReturnsValue<IntentFile> {
 		guard
-			let color = XColor(hexString: color, alpha: opacity)
+			let color = XColor(hexString: color, opacity: opacity)
 		else {
 			throw "Invalid color.".toError
 		}

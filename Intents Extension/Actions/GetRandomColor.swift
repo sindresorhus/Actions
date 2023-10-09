@@ -6,8 +6,8 @@ struct GetRandomColor: AppIntent, CustomIntentMigratedAppIntent {
 	static let title: LocalizedStringResource = "Get Random Color"
 
 	static let description = IntentDescription(
-		"Returns a random color in Hex format.",
-		categoryName: "Random"
+		"Returns a random color.",
+		categoryName: "Color"
 	)
 
 	func perform() async throws -> some IntentResult & ReturnsValue<ColorAppEntity> {

@@ -4,7 +4,7 @@ struct MainScreen: View {
 	@Environment(\.scenePhase) private var scenePhase
 	@EnvironmentObject private var appState: AppState
 	@State private var error: Error?
-//	@State private var isSettingsPresented = false
+	@State private var isSettingsPresented = false
 
 	var body: some View {
 		NavigationStack {
@@ -57,19 +57,19 @@ struct MainScreen: View {
 				.task {
 					debug()
 				}
-//				.sheet(isPresented: $isSettingsPresented) {
-//					SettingsScreen()
-//				}
-//				.toolbar {
-//					#if os(iOS)
-//					ToolbarItemGroup(placement: .topBarTrailing) {
-//						Button("Settings", systemImage: "gear") {
-//							isSettingsPresented = true
-//						}
-//							.keyboardShortcut(",")
-//					}
-//					#endif
-//				}
+				.sheet(isPresented: $isSettingsPresented) {
+					SettingsScreen()
+				}
+				.toolbar {
+					#if canImport(UIKit)
+					ToolbarItemGroup(placement: .topBarTrailing) {
+						Button("Settings", systemImage: "gear") {
+							isSettingsPresented = true
+						}
+							.keyboardShortcut(",")
+					}
+					#endif
+				}
 		}
 	}
 

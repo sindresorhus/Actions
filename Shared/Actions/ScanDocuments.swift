@@ -26,6 +26,9 @@ NOTE: In contrast to the built-in “Scan Document” action, this one makes it 
 
 	@MainActor
 	func perform() async throws -> some IntentResult {
+		// This tries to fix the document scanner sometimes not opening.
+		try? await Task.sleep(for: .seconds(0.5))
+
 		// TODO: Is there really no better way of handling this?
 		withoutAnimation {
 			AppState.shared.isDocumentScannerPresented = true

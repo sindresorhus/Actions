@@ -104,7 +104,9 @@ For example, use it together with the built-in “Set Wallpaper” action.
 			imageURL = try await URLSession.shared.betterDownload(from: url).url
 		}
 
-		return .result(value: imageURL.toIntentFile)
+		let result = imageURL.toIntentFile.removingOnCompletion()
+
+		return .result(value: result)
 	}
 }
 

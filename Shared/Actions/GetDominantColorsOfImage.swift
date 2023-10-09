@@ -12,7 +12,7 @@ You could use this to make a palette of the main colors in an image.
 
 Dominant color is the most seen color in an image, while average color is all the colors in an image mixed into one.
 """,
-		categoryName: "Image",
+		categoryName: "Color",
 		searchKeywords: [
 			"colour",
 			"primary",

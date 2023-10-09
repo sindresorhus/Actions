@@ -10,7 +10,7 @@ Returns the average color of the image.
 
 Average color is all the colors in an image mixed into one, while dominant color is the most seen color in an image.
 """,
-		categoryName: "Image",
+		categoryName: "Color",
 		searchKeywords: [
 			"colour"
 		]

@@ -28,16 +28,13 @@ On macOS, it does nothing.
 		Summary("Generate \(\.$type) haptic feedback")
 	}
 
+	@MainActor
 	func perform() async throws -> some IntentResult {
 		#if canImport(UIKit)
-		if #available(macOS 14, iOS 17, tvOS 17, watchOS 10, *) {
-			try? await Task.sleep(for: .seconds(0.5))
-			Device.hapticFeedback(type.toNative)
-		} else {
-			Device.hapticFeedback(type.toNative)
-			try? await Task.sleep(for: .seconds(1))
-		}
-		await ShortcutsApp.open()
+		try? await Task.sleep(for: .seconds(0.5)) // This seems to only be required in release builds.
+		Device.hapticFeedback(type.toNative)
+		try? await Task.sleep(for: .seconds(0.5))
+		ShortcutsApp.open()
 		#endif
 
 		return .result()

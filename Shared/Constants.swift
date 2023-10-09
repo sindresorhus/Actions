@@ -1,7 +1,17 @@
-import Foundation
+import SwiftUI
 import AppIntents
 
+enum Constants {
+	static let appGroupID = "group.com.sindresorhus.Actions"
+	static let sharedDefaults = UserDefaults(suiteName: appGroupID)!
+	static let defaultsKey_sendCrashReports = "sendCrashReports"
+}
+
 func initSentry() {
+	guard Constants.sharedDefaults.bool(forKey: Constants.defaultsKey_sendCrashReports) else {
+		return
+	}
+
 	SSApp.initSentry("https://12c8785fd2924c9a9c0f6bb1d91be79e@o844094.ingest.sentry.io/6041555")
 }
 
@@ -17,6 +27,7 @@ Intent categories:
 - Web
 - Random
 = Number
+- Color
 - File
 - Date
 - URL
@@ -50,6 +61,7 @@ struct ColorAppEntity: TransientAppEntity {
 		)
 	}
 
+	// TODO: Use `Color.Resolved` when targeting macOS 14.
 	var color: XColor?
 }
 

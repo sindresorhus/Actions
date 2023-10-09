@@ -21,7 +21,13 @@ On macOS, only the following are available. The rest always return false.
 """,
 		categoryName: "Device",
 		searchKeywords: [
-			"accessibility"
+			"accessibility",
+			"gray",
+			"grey",
+			"grayscale",
+			"greyscale",
+			"reduce",
+			"voiceover"
 		]
 	)
 

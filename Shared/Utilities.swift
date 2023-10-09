@@ -22,7 +22,7 @@ import os
 import MapKit
 import Sentry
 
-#if canImport(AppKit)
+#if os(macOS)
 import IOKit.ps
 import CoreWLAN
 import ApplicationServices
@@ -37,7 +37,7 @@ typealias XApplicationDelegateAdaptor = NSApplicationDelegateAdaptor
 typealias XScreen = NSScreen
 typealias XAccessibility = NSAccessibility
 typealias WindowIfMacOS = Window
-#elseif canImport(UIKit)
+#else
 import VisionKit
 import CoreMotion
 
@@ -478,7 +478,7 @@ enum Device {
 		#if os(macOS)
 		let os = ProcessInfo.processInfo.operatingSystemVersion
 		return "\(os.majorVersion).\(os.minorVersion).\(os.patchVersion)"
-		#elseif canImport(UIKit)
+		#else
 		UIDevice.current.systemVersion
 		#endif
 	}()
@@ -931,7 +931,7 @@ extension URL {
 	func open() {
 		#if os(macOS)
 		NSWorkspace.shared.open(self)
-		#elseif canImport(UIKit) && !APP_EXTENSION
+		#elseif !APP_EXTENSION
 		Task { @MainActor in
 			UIApplication.shared.open(self)
 		}
@@ -950,7 +950,7 @@ extension URL {
 	func openAsync() async throws {
 		#if os(macOS)
 		try await NSWorkspace.shared.open(self, configuration: .init())
-		#elseif canImport(UIKit) && !APP_EXTENSION
+		#elseif !APP_EXTENSION
 		guard await UIApplication.shared.open(self) else {
 			throw "Failed to open the URL “\(absoluteString)”.".toError
 		}
@@ -1239,7 +1239,7 @@ extension NSImage {
 		}
 	}
 }
-#elseif canImport(UIKit)
+#else
 extension UIImage {
 	static func color(
 		_ color: UIColor,
@@ -1836,32 +1836,56 @@ extension UIColor {
 #endif
 
 
-extension XColor {
-	convenience init(hex: Int, alpha: Double = 1) {
-		self.init(
-			red: Double((hex >> 16) & 0xFF) / 255,
-			green: Double((hex >> 8) & 0xFF) / 255,
-			blue: Double(hex & 0xFF) / 255,
-			alpha: alpha
-		)
-	}
+extension String {
+	func parseHexColor() -> (red: Double, green: Double, blue: Double, alpha: Double)? {
+		let hexString = trimmed.removingPrefix("#")
 
-	convenience init?(hexString: String, alpha: Double = 1) {
-		var string = hexString
-
-		if hexString.hasPrefix("#") {
-			string = String(hexString.dropFirst())
-		}
-
-		if string.count == 3 {
-			string = string.map { "\($0)\($0)" }.joined()
-		}
-
-		guard let hex = Int(string, radix: 16) else {
+		guard
+			hexString.count == 3 || hexString.count == 6 || hexString.count == 8,
+			let int = UInt64(hexString, radix: 16)
+		else {
 			return nil
 		}
 
-		self.init(hex: hex, alpha: alpha)
+		let alpha, red, green, blue: UInt64
+		switch hexString.count {
+		case 3: // RGB (12-bit)
+			(alpha, red, green, blue) = (255, (int >> 8) * 17, (int >> 4 & 0xF) * 17, (int & 0xF) * 17)
+		case 6: // RGB (24-bit)
+			(alpha, red, green, blue) = (255, int >> 16, int >> 8 & 0xFF, int & 0xFF)
+		case 8: // ARGB (32-bit)
+			(alpha, red, green, blue) = (int >> 24, int >> 16 & 0xFF, int >> 8 & 0xFF, int & 0xFF)
+		default:
+			return nil
+		}
+
+		return (
+			Double(red) / 255,
+			Double(green) / 255,
+			Double(blue) / 255,
+			Double(alpha) / 255
+		)
+	}
+}
+
+extension XColor {
+	convenience init?(
+		hexString: String,
+		opacity: Double? = nil,
+		respectOpacity: Bool = true
+	) {
+		guard
+			let (red, green, blue, alpha) = hexString.parseHexColor()
+		else {
+			return nil
+		}
+
+		self.init(
+			red: red,
+			green: green,
+			blue: blue,
+			alpha: opacity ?? (respectOpacity ? alpha : 1)
+		)
 	}
 }
 
@@ -1952,6 +1976,25 @@ extension StringProtocol {
 		}
 
 		return dropLast(suffix.count) + replacement
+	}
+}
+
+
+extension String {
+	func removingPrefix(_ prefix: Self, caseSensitive: Bool = true) -> Self {
+		guard caseSensitive else {
+			guard let range = range(of: prefix, options: [.caseInsensitive, .anchored]) else {
+				return self
+			}
+
+			return replacingCharacters(in: range, with: "")
+		}
+
+		guard hasPrefix(prefix) else {
+			return self
+		}
+
+		return Self(dropFirst(prefix.count))
 	}
 }
 
@@ -2533,9 +2576,7 @@ extension XImage {
 	Convert a `UIImage`/`NSImage` to a `CIImage`.
 	*/
 	var toCIImage: CIImage? {
-		#if os(iOS)
-		CIImage(image: self, options: [.applyOrientationProperty: true])
-		#else
+		#if os(macOS)
 		if let cgImage {
 			return CIImage(cgImage: cgImage, options: [.applyOrientationProperty: true])
 		}
@@ -2545,6 +2586,8 @@ extension XImage {
 		}
 
 		return CIImage(data: tiffRepresentation, options: [.applyOrientationProperty: true])
+		#else
+		CIImage(image: self, options: [.applyOrientationProperty: true])
 		#endif
 	}
 }
@@ -2671,6 +2714,15 @@ extension IntentFile {
 
 
 extension IntentFile {
+	func removingOnCompletion() -> Self {
+		var copy = self
+		copy.removedOnCompletion = true
+		return copy
+	}
+}
+
+
+extension IntentFile {
 	/**
 	Gives you a copy of the file written to disk which you can modify as you please.
 
@@ -2686,7 +2738,9 @@ extension IntentFile {
 	We intentionally do not use `.fileURL` as accessing it when the file is, for example, in the `Downloads` directory, causes a permission prompt on macOS, which requires manual interaction.
 	*/
 	func modifyingFileAsURL(_ modify: (URL) throws -> URL) throws -> Self {
-		try modify(writeToUniqueTemporaryFile()).toIntentFile
+		try modify(writeToUniqueTemporaryFile())
+			.toIntentFile
+			.removingOnCompletion()
 	}
 }
 
@@ -2715,9 +2769,7 @@ extension XImage {
 			throw "Failed to generate PNG data from image.".toError
 		}
 
-		return try data
-			.writeToUniqueTemporaryFile(filename: filename, contentType: .png)
-			.toIntentFile
+		return data.toIntentFile(contentType: .png, filename: filename)
 	}
 }
 
@@ -2735,6 +2787,7 @@ extension Data {
 			filename: filename ?? "file",
 			type: contentType
 		)
+			.removingOnCompletion()
 	}
 }
 
@@ -3789,6 +3842,7 @@ extension Device {
 
 			// When silent mode is enabled, the system skips playing the audio file and the function takes less than a millisecond to execute. We check for this to determine whether silent mode is enabled.
 
+			// TODO: Use `ContinuousClock.measure`.
 			let startTime = CACurrentMediaTime()
 			await silentAudio.play()
 			let duration = CACurrentMediaTime() - startTime
@@ -4474,7 +4528,7 @@ extension View {
 	/**
 	Presents the system document scanner.
 
-	When the operation is finished, `isPresented` will be set to `false` before `onCompletion` is called. If the user cancels the operation, `isPresented` will be set to `false` and `onCompletion` will not be called.
+	When the operation is finished, `isPresented` will be set to `false` before `onCompletion` is called. If the user cancels the operation, `isPresented` will be set to `false` and `onCompletion` will be called with an empty array.
 	*/
 	func documentScanner(
 		isPresented: Binding<Bool>,
@@ -4486,6 +4540,7 @@ extension View {
 				onCompletion($0)
 			} onCancel: {
 				isPresented.wrappedValue = false
+				onCompletion(.success([]))
 			}
 				.ignoresSafeArea()
 		}
@@ -5435,6 +5490,7 @@ extension String {
 			.union(.asciiLettersAndNumbers)
 
 		return (applyingTransform(.toLatinASCIILowercase, reverse: false) ?? self)
+			.replacing(/\p{Punct}/, with: "")
 			.components(separatedBy: allowedCharacters.inverted)
 			.filter { !$0.isEmpty }
 			.joined(separator: Self(separator))

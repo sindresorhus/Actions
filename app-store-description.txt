@@ -2,6 +2,20 @@ Supercharge your shortcuts with lots of useful actions.
 
 It provides additional actions for the Shortcuts app.
 
+
+
+IMPORTANT: Because of an iOS bug, to make the actions show up in the Shortcuts app, you need to first launch the app and then restart your device.
+
+重要提示：由于 iOS 错误，要使操作显示在“快捷方式”应用程序中，您需要先启动该应用程序，然后重新启动设备。
+
+WICHTIG: Aufgrund eines iOS-Fehlers müssen Sie, damit die Aktionen in der Shortcuts-App angezeigt werden, zuerst die App starten und dann Ihr Gerät neu starten.
+
+IMPORTANT : en raison d'un bug iOS, pour que les actions s'affichent dans l'application Raccourcis, vous devez d'abord lancer l'application, puis redémarrer votre appareil.
+
+IMPORTANTE: Debido a un error de iOS, para que las acciones aparezcan en la aplicación Atajos, primero debe iniciar la aplicación y luego reiniciar su dispositivo.
+
+
+
 The actions are not able to run on Apple Watch or HomePod.
 
 Restart your device if the actions don't show up in the Shortcuts app.
@@ -123,7 +137,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Spell Out Number
 - Transcribe Audio
 - Transform Lists
-- Transform Text
+- Transform Text (camel case, slugify, transliteration, etc.)
 - Transform Text with JavaScript
 - Trim Whitespace
 - Truncate List

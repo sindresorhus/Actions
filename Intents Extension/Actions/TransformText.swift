@@ -53,6 +53,8 @@ struct TransformText: AppIntent, CustomIntentMigratedAppIntent {
 				text.dashCasing()
 			case .slugify:
 				text.slugified()
+			case .stripPunctation:
+				text.replacing(/\p{Punct}/, with: "")
 			case .stripDiacritics:
 				text.applyingTransform(.stripDiacritics, reverse: false)
 			case .transliterateToLatin:
@@ -90,6 +92,7 @@ enum TransformationAppEnum: String, AppEnum {
 	case constantCase
 	case dashCase
 	case slugify
+	case stripPunctation
 	case stripDiacritics
 	case transliterateToLatin
 	case transliterateLatinToArabic
@@ -112,7 +115,11 @@ enum TransformationAppEnum: String, AppEnum {
 		.dashCase: "dash-case",
 		.slugify: .init(
 			title: "Slugify",
-			subtitle: "“Sør āē 拼” → “sor-ae-pin”"
+			subtitle: "“Sø’r āē 拼!” → “sor-ae-pin”"
+		),
+		.stripPunctation: .init(
+			title: "Strip Punctation",
+			subtitle: "“I’m hungry!” → “Im hungry”"
 		),
 		.stripDiacritics: "Strip Diacritics",
 		.transliterateToLatin: "Transliterate to Latin",

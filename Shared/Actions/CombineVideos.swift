@@ -46,10 +46,18 @@ NOTE: Shortcut actions only get 30 seconds to run, so if the videos are very lon
 
 	func perform() async throws -> some IntentResult & ReturnsValue<IntentFile> {
 		let videoAssets = try videos.map {
-			AVAsset(url: try $0.writeToUniqueTemporaryFile())
+			AVURLAsset(url: try $0.writeToUniqueTemporaryFile())
 		}
 
-		let result = try await combineVideos(videoAssets).toIntentFile
+		defer {
+			for videoAsset in videoAssets {
+				try? FileManager.default.removeItem(at: videoAsset.url)
+			}
+		}
+
+		let result = try await combineVideos(videoAssets)
+			.toIntentFile
+			.removingOnCompletion()
 
 		return .result(value: result)
 	}

@@ -363,7 +363,8 @@ Tip: Use the built-in “Get Dictionary Value” action to access all keys.
 			return (key.withoutKeyPrefix, value)
 		}
 
-		let file = try Dictionary(uniqueKeysWithValues: keyValueTuples).toIntentFile(filename: "global-variables")
+		let file = try Dictionary(uniqueKeysWithValues: keyValueTuples)
+			.toIntentFile(filename: "global-variables")
 
 		return .result(value: file)
 	}

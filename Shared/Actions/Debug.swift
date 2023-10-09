@@ -12,8 +12,10 @@ struct DebugIntent: AppIntent {
 	func perform() async throws -> some IntentResult & ReturnsValue<String> {
 		var debugInfo = [String: Any]()
 
-		#if os(iOS)
+		#if canImport(UIKit)
 		debugInfo["audioOutputPorts"] = AVAudioSession.sharedInstance().currentRoute.outputs.map(\.portName)
+		debugInfo["isAudioPlaying"] = AVAudioSession.sharedInstance().isOtherAudioPlaying
+		debugInfo["isAudioPlaying2"] = AVAudioSession.sharedInstance().secondaryAudioShouldBeSilencedHint
 		#endif
 
 		return .result(value: "Debug Info:\n\n\(debugInfo.descriptionAsKeyValue())")

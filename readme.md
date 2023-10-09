@@ -151,7 +151,7 @@ And for high-quality transcription, see my [Aiko](https://sindresorhus.com/aiko)
 - Spell Out Number
 - Transcribe Audio
 - Transform Lists
-- Transform Text
+- Transform Text *(camel case, slugify, transliteration, etc.)*
 - Transform Text with JavaScript
 - Trim Whitespace
 - Truncate List
