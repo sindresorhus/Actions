@@ -48,6 +48,7 @@ And for high-quality transcription, see my [Aiko](https://sindresorhus.com/aiko)
 - Calculate with Soulver
 - Choose from List (Extended)
 - Clamp Number
+- Color
 - Combine Lists
 - Combine Videos
 - Convert Coordinates to Location
