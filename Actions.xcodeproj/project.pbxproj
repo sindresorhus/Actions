@@ -121,6 +121,7 @@
 		E37A1E222A2D214800E68E92 /* GetDominantColorsOfImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37A1E212A2D214800E68E92 /* GetDominantColorsOfImage.swift */; };
 		E38035CB29278B1700D29A07 /* MergeDictionaries.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CB44A128D794DA0031D55F /* MergeDictionaries.swift */; };
 		E381F3B02AD11ECC00127351 /* IsGrayscaleOn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E381F3AF2AD11ECC00127351 /* IsGrayscaleOn.swift */; };
+		E38663312AE05C840001343A /* GetImageLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38663302AE05C840001343A /* GetImageLocation.swift */; };
 		E3963A5A292CAF9F00210AC2 /* RemoveDuplicatesFromList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC2DC328D215A100A88E25 /* RemoveDuplicatesFromList.swift */; };
 		E39DC11529A5460B004F4FB8 /* IsHostReachable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D0655D29A51E160059A16E /* IsHostReachable.swift */; };
 		E3AB2D8B29F840B900ED2913 /* GetActionsVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AB2D8A29F840B900ED2913 /* GetActionsVersion.swift */; };
@@ -237,6 +238,7 @@
 		E376FD882952946400C0F81F /* SetDefaultPrinter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDefaultPrinter.swift; sourceTree = "<group>"; };
 		E37A1E212A2D214800E68E92 /* GetDominantColorsOfImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDominantColorsOfImage.swift; sourceTree = "<group>"; };
 		E381F3AF2AD11ECC00127351 /* IsGrayscaleOn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsGrayscaleOn.swift; sourceTree = "<group>"; };
+		E38663302AE05C840001343A /* GetImageLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetImageLocation.swift; sourceTree = "<group>"; };
 		E39DC11A29A54E27004F4FB8 /* OpenURLsWithApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OpenURLsWithApp.swift; path = "Intents Extension/Actions/OpenURLsWithApp.swift"; sourceTree = SOURCE_ROOT; };
 		E39F4776272D516E00B99CB0 /* Actions.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Actions.entitlements; sourceTree = "<group>"; };
 		E3A85FE428E94E7300F423F1 /* FormatPersonName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatPersonName.swift; sourceTree = "<group>"; };
@@ -374,6 +376,7 @@
 				E3B8FD1D29F11DCA001249CF /* GetAverageColorOfImage.swift */,
 				E376FD862952937200C0F81F /* GetDefaultPrinter.swift */,
 				E37A1E212A2D214800E68E92 /* GetDominantColorsOfImage.swift */,
+				E38663302AE05C840001343A /* GetImageLocation.swift */,
 				E317489E2913BEAB00F6319E /* GetMapImageOfLocation.swift */,
 				E376FD84295287E500C0F81F /* GetPrinters.swift */,
 				E3C33CDA28D48C3200386C59 /* GetRunningApps.swift */,
@@ -839,6 +842,7 @@
 				E33AE99E2ADF10B800862F55 /* IsAccessibilityFeatureOn.swift in Sources */,
 				E3BFF7B82742A79100B830DE /* AppIcon.swift in Sources */,
 				E376FD8329524B6400C0F81F /* IsDarkMode.swift in Sources */,
+				E38663312AE05C840001343A /* GetImageLocation.swift in Sources */,
 				E33D08142A11679300FBCAD7 /* SettingsScreen.swift in Sources */,
 				E303EED529529D1B007BE918 /* SetDefaultPrinter.swift in Sources */,
 				E3FC71DD271EBE5C00C9D255 /* Utilities.swift in Sources */,

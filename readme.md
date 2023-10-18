@@ -84,6 +84,7 @@ And for high-quality transcription, see my [Aiko](https://sindresorhus.com/aiko)
 - Get File Icon <sup>(macOS-only)</sup>
 - Get File Path
 - Get High-Resolution Timestamp
+- Get Image Location
 - Get Index of List Item
 - Get Map Image of Location
 - Get Modifier Key State <sup>(macOS-only)</sup>

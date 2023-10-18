@@ -2547,6 +2547,125 @@ extension CGImage {
 	}
 }
 
+extension CGImage {
+	/**
+	Writes the metadata to the image by merging it into the existing metadata.
+	*/
+	private static func writeMetadata(_ metadata: [String: Any], to url: URL) throws {
+		guard
+			let source = CGImageSourceCreateWithURL(url as CFURL, nil),
+			let type = CGImageSourceGetType(source),
+			let destination = CGImageDestinationCreateWithURL(url as CFURL, type, 1, nil)
+		else {
+			throw "Failed to read image.".toError
+		}
+
+		let options: [String: Any] = [
+			kCGImageDestinationMetadata as String: metadata,
+			kCGImageDestinationMergeMetadata as String: true
+		]
+
+		var error: Unmanaged<CFError>?
+		CGImageDestinationCopyImageSource(destination, source, options as CFDictionary, &error)
+
+		if let error = error?.takeRetainedValue() {
+			throw error
+		}
+	}
+
+	/**
+	Writes the metadata to the image by merging it into the existing metadata.
+	*/
+	private static func writeMetadata(_ metadata: [String: Any], to data: inout Data) throws {
+		let updatedData = NSMutableData()
+
+		guard
+			let source = CGImageSourceCreateWithData(data as CFData, nil),
+			let type = CGImageSourceGetType(source),
+			let destination = CGImageDestinationCreateWithData(updatedData, type, 1, nil)
+		else {
+			throw "Failed to read image.".toError
+		}
+
+		let options: [String: Any] = [
+			kCGImageDestinationMetadata as String: metadata,
+			kCGImageDestinationMergeMetadata as String: true
+		]
+
+		var error: Unmanaged<CFError>?
+		CGImageDestinationCopyImageSource(destination, source, options as CFDictionary, &error)
+
+		if let error = error?.takeRetainedValue() {
+			throw error
+		}
+
+		data = updatedData as Data
+	}
+}
+
+extension CGImage {
+	private static func locationFromMetadata(_ metadata: [String: Any]) -> CLLocationCoordinate2D? {
+		guard
+			let gpsDictionary = metadata[kCGImagePropertyGPSDictionary as String] as? [String: Any],
+			let latitude = gpsDictionary[kCGImagePropertyGPSLatitude as String] as? Double,
+			let latitudeRef = gpsDictionary[kCGImagePropertyGPSLatitudeRef as String] as? String,
+			let longitude = gpsDictionary[kCGImagePropertyGPSLongitude as String] as? Double,
+			let longitudeRef = gpsDictionary[kCGImagePropertyGPSLongitudeRef as String] as? String
+		else {
+			return nil
+		}
+
+		let finalLatitude = latitudeRef == "N" ? latitude : -latitude
+		let finalLongitude = longitudeRef == "E" ? longitude : -longitude
+
+		return CLLocationCoordinate2D(latitude: finalLatitude, longitude: finalLongitude).nilIfInvalid
+	}
+
+	static func location(ofImageAt url: URL) -> CLLocationCoordinate2D? {
+		locationFromMetadata(metadata(url))
+	}
+
+	static func location(ofImage data: Data) -> CLLocationCoordinate2D? {
+		locationFromMetadata(metadata(data))
+	}
+}
+
+extension CGImage {
+	private static func set(
+		location: CLLocationCoordinate2D,
+		forMetadata metadata: inout [String: Any]
+	) {
+		let latitudeRef = location.latitude >= 0 ? "N" : "S"
+		let longitudeRef = location.longitude >= 0 ? "E" : "W"
+
+		let gpsDictionary: [String: Any] = [
+			kCGImagePropertyGPSLatitude as String: abs(location.latitude),
+			kCGImagePropertyGPSLatitudeRef as String: latitudeRef,
+			kCGImagePropertyGPSLongitude as String: abs(location.longitude),
+			kCGImagePropertyGPSLongitudeRef as String: longitudeRef
+		]
+
+		metadata[kCGImagePropertyGPSDictionary as String] = gpsDictionary
+	}
+
+	static func setLocation(
+		_ location: CLLocationCoordinate2D,
+		forImageAt url: URL
+	) throws {
+		var metadata = [String: Any]()
+		set(location: location, forMetadata: &metadata)
+		try writeMetadata(metadata, to: url)
+	}
+
+	static func setLocation(
+		_ location: CLLocationCoordinate2D,
+		forImageData imageData: inout Data
+	) throws {
+		var metadata = [String: Any]()
+		set(location: location, forMetadata: &metadata)
+		try writeMetadata(metadata, to: &imageData)
+	}
+}
 
 #if os(macOS)
 extension NSBitmapImageRep {
@@ -5791,6 +5910,10 @@ extension ImageRenderer {
 extension CLLocationCoordinate2D {
 	var isValid: Bool {
 		CLLocationCoordinate2DIsValid(self) && !(latitude == 0 && longitude == 0)
+	}
+
+	var nilIfInvalid: Self? {
+		isValid ? self : nil
 	}
 
 	func validate() throws {
