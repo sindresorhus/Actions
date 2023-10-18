@@ -72,6 +72,7 @@ And for high-quality transcription, see my [Aiko](https://sindresorhus.com/aiko)
 - Generate Random Text
 - Generate UUID
 - Get Audio Playback Destination <sup>(iOS-only)</sup>
+- Get Average Color
 - Get Average Color of Image
 - Get Battery State
 - Get Boolean from Input

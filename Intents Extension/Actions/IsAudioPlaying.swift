@@ -11,9 +11,11 @@ struct IsAudioPlaying: AppIntent, CustomIntentMigratedAppIntent {
 """
 Returns whether there is audio currently playing on the device.
 
-Note: It will return “false” if audio is playing through AirPlay. There is unfortunately no way to detect this.
-
 Important: The action simply returns the value that iOS provides, so if there are any false-positives, there is unfortunately no much we can do about it. I recommend trying to restart your device, which sometimes fixues such issues.
+
+Known issues:
+- It will return “false” if audio is playing through AirPlay. There is unfortunately no way to detect this.
+- It returns true for a while after you end a call, even though no audio is playing.
 """,
 		categoryName: "Device"
 	)

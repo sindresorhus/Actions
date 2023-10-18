@@ -1,5 +1,4 @@
 import AppIntents
-import SwiftUI
 
 struct ColorIntent: AppIntent {
 	static let title: LocalizedStringResource = "Color"
@@ -20,13 +19,17 @@ For example, you could get the two most dominant colors of an image using the â€
 """,
 		categoryName: "Color",
 		searchKeywords: [
-			"colours"
+			"colour"
 		]
 	)
 
 	@Parameter(
 		title: "Color (hex format)",
-		description: "Example: #ff69b4",
+		description:
+			"""
+			Example: #ff69b4
+			Example: #80ff69b4 (with 50% opacity)
+			""",
 		inputOptions: String.IntentInputOptions(
 			capitalizationType: .none,
 			autocorrect: false,
@@ -35,6 +38,8 @@ For example, you could get the two most dominant colors of an image using the â€
 		)
 	)
 	var color: String
+
+	// TODO: Add opacity slider.
 
 	static var parameterSummary: some ParameterSummary {
 		Summary("\(\.$color)")

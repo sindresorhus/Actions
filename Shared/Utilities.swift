@@ -65,6 +65,8 @@ extension NSWorkspace.OpenConfiguration: @unchecked Sendable {}
 extension NSImage: @unchecked Sendable {}
 #endif
 
+// TODO: When targeting macOS 14, replace `XColor` usage with `Color.Resolved`.
+
 
 // TODO: Remove this when everything is converted to async/await.
 func delay(_ duration: Duration, closure: @escaping () -> Void) {
@@ -1890,9 +1892,11 @@ extension XColor {
 }
 
 
+// TODO: When targeting macOS 14, put these on `Color.Resolved` instead.
 extension XColor {
 	/**
 	- Important: Don't forget to convert it to the correct color space first.
+	- Note: It respects the opacity of the color.
 	*/
 	var hex: Int {
 		#if os(macOS)
@@ -1905,15 +1909,21 @@ extension XColor {
 		let red = Int((redComponent * 0xFF).rounded())
 		let green = Int((greenComponent * 0xFF).rounded())
 		let blue = Int((blueComponent * 0xFF).rounded())
+		let opacity = Int((alphaComponent * 0xFF).rounded())
 
-		return red << 16 | green << 8 | blue
+		return opacity << 24 | red << 16 | green << 8 | blue
 	}
 
 	/**
 	- Important: Don't forget to convert it to the correct color space first.
+	- Note: It includes the opacity of the color if not `1`.
 	*/
 	var hexString: String {
-		String(format: "#%06x", hex)
+		if alphaComponent < 1 {
+			String(format: "#%08x", hex)
+		} else {
+			String(format: "#%06x", hex & 0xFFFFFF) // Masking to remove the alpha portion for full opacity
+		}
 	}
 }
 
@@ -6396,4 +6406,78 @@ extension XAccessibility {
 extension XAccessibility {
 	// Better name for `isDarkerSystemColorsEnabled`.
 	static var isIncreaseContrastEnabled: Bool { isDarkerSystemColorsEnabled }
+}
+
+
+extension Sequence where Element: BinaryFloatingPoint {
+	func average() -> Element {
+		var count: Element = 0
+		var total: Element = 0
+
+		for value in self {
+			total += value
+			count += 1
+		}
+
+		// swiftlint:disable:next empty_count
+		guard count > 0 else {
+			return 0
+		}
+
+		return total / count
+	}
+}
+
+
+extension XColor {
+	typealias RGBA = (
+		red: Double,
+		green: Double,
+		blue: Double,
+		opacity: Double
+	)
+
+	var rgba: RGBA {
+		#if os(macOS)
+		guard let color = usingColorSpace(.extendedSRGB) else {
+			return RGBA(0, 0, 0, 0)
+		}
+		#else
+		let color = self
+		#endif
+
+		// swiftlint:disable no_cgfloat
+		var red: CGFloat = 0
+		var green: CGFloat = 0
+		var blue: CGFloat = 0
+		var alpha: CGFloat = 0
+		// swiftlint:enable no_cgfloat
+
+		color.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+
+		return RGBA(
+			red: red.toDouble,
+			green: green.toDouble,
+			blue: blue.toDouble,
+			opacity: alpha.toDouble
+		)
+	}
+}
+
+
+extension [XColor] {
+	func averageColor() -> XColor? {
+		guard !isEmpty else {
+			return nil
+		}
+
+		let rgbaValues = map(\.rgba)
+
+		return .init(
+			red: rgbaValues.map(\.red).average(),
+			green: rgbaValues.map(\.green).average(),
+			blue: rgbaValues.map(\.blue).average(),
+			alpha: rgbaValues.map(\.opacity).average()
+		)
+	}
 }

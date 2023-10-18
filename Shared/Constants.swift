@@ -44,11 +44,14 @@ Intent categories:
 struct ColorAppEntity: TransientAppEntity {
 	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Color"
 
+	// TODO: Support opacity in the Hex string.
 	@Property(title: "Hex")
 	var hex: String
 
 	@Property(title: "Hex Number")
 	var hexNumber: Int
+
+	// TODO: When targeting macOS 14, add color components properties too (red, green, etc).
 
 	var displayRepresentation: DisplayRepresentation {
 		.init(

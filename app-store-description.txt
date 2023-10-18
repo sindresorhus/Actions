@@ -58,6 +58,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Generate Random Text
 - Generate UUID
 - Get Audio Playback Destination (iOS-only)
+- Get Average Color
 - Get Average Color of Image
 - Get Battery State
 - Get Boolean from Input
