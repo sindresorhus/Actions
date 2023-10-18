@@ -2551,17 +2551,32 @@ extension CGImage {
 	/**
 	Writes the metadata to the image by merging it into the existing metadata.
 	*/
-	private static func writeMetadata(_ metadata: [String: Any], to url: URL) throws {
+	private static func writeMetadata(
+		_ metadata: [String: Any],
+		to source: CGImageSource,
+		using destinationProvider: (CFString) -> CGImageDestination?
+	) throws {
 		guard
-			let source = CGImageSourceCreateWithURL(url as CFURL, nil),
 			let type = CGImageSourceGetType(source),
-			let destination = CGImageDestinationCreateWithURL(url as CFURL, type, 1, nil)
+			let destination = destinationProvider(type)
 		else {
 			throw "Failed to read image.".toError
 		}
 
+		let mutableMetadata = CGImageMetadataCreateMutable()
+
+		for namespace in metadata {
+			guard let subMetadata = namespace.value as? [String: Any] else {
+				continue
+			}
+
+			for (key, value) in subMetadata {
+				CGImageMetadataSetValueMatchingImageProperty(mutableMetadata, namespace.key as CFString, key as CFString, value as! CFString)
+			}
+		}
+
 		let options: [String: Any] = [
-			kCGImageDestinationMetadata as String: metadata,
+			kCGImageDestinationMetadata as String: mutableMetadata,
 			kCGImageDestinationMergeMetadata as String: true
 		]
 
@@ -2573,38 +2588,34 @@ extension CGImage {
 		}
 	}
 
-	/**
-	Writes the metadata to the image by merging it into the existing metadata.
-	*/
-	private static func writeMetadata(_ metadata: [String: Any], to data: inout Data) throws {
-		let updatedData = NSMutableData()
-
-		guard
-			let source = CGImageSourceCreateWithData(data as CFData, nil),
-			let type = CGImageSourceGetType(source),
-			let destination = CGImageDestinationCreateWithData(updatedData, type, 1, nil)
-		else {
+	private static func writeMetadata(_ metadata: [String: Any], to url: URL) throws {
+		guard let source = CGImageSourceCreateWithURL(url as CFURL, nil) else {
 			throw "Failed to read image.".toError
 		}
 
-		let options: [String: Any] = [
-			kCGImageDestinationMetadata as String: metadata,
-			kCGImageDestinationMergeMetadata as String: true
-		]
+		try writeMetadata(metadata, to: source) { type in
+			CGImageDestinationCreateWithURL(url as CFURL, type, 1, nil)
+		}
+	}
 
-		var error: Unmanaged<CFError>?
-		CGImageDestinationCopyImageSource(destination, source, options as CFDictionary, &error)
+	private static func writeMetadata(_ metadata: [String: Any], to data: inout Data) throws {
+		guard let source = CGImageSourceCreateWithData(data as CFData, nil) else {
+			throw "Failed to read image.".toError
+		}
 
-		if let error = error?.takeRetainedValue() {
-			throw error
+		let updatedData = NSMutableData()
+
+		try writeMetadata(metadata, to: source) { type in
+			CGImageDestinationCreateWithData(updatedData, type, 1, nil)
 		}
 
 		data = updatedData as Data
 	}
 }
 
+
 extension CGImage {
-	private static func locationFromMetadata(_ metadata: [String: Any]) -> CLLocationCoordinate2D? {
+	private static func locationFromMetadata(_ metadata: [String: Any]) -> LocationCoordinate2D? {
 		guard
 			let gpsDictionary = metadata[kCGImagePropertyGPSDictionary as String] as? [String: Any],
 			let latitude = gpsDictionary[kCGImagePropertyGPSLatitude as String] as? Double,
@@ -2618,21 +2629,21 @@ extension CGImage {
 		let finalLatitude = latitudeRef == "N" ? latitude : -latitude
 		let finalLongitude = longitudeRef == "E" ? longitude : -longitude
 
-		return CLLocationCoordinate2D(latitude: finalLatitude, longitude: finalLongitude).nilIfInvalid
+		return LocationCoordinate2D(latitude: finalLatitude, longitude: finalLongitude)
 	}
 
-	static func location(ofImageAt url: URL) -> CLLocationCoordinate2D? {
+	static func location(ofImageAt url: URL) -> LocationCoordinate2D? {
 		locationFromMetadata(metadata(url))
 	}
 
-	static func location(ofImage data: Data) -> CLLocationCoordinate2D? {
+	static func location(ofImage data: Data) -> LocationCoordinate2D? {
 		locationFromMetadata(metadata(data))
 	}
 }
 
 extension CGImage {
 	private static func set(
-		location: CLLocationCoordinate2D,
+		location: LocationCoordinate2D,
 		forMetadata metadata: inout [String: Any]
 	) {
 		let latitudeRef = location.latitude >= 0 ? "N" : "S"
@@ -2649,7 +2660,7 @@ extension CGImage {
 	}
 
 	static func setLocation(
-		_ location: CLLocationCoordinate2D,
+		_ location: LocationCoordinate2D,
 		forImageAt url: URL
 	) throws {
 		var metadata = [String: Any]()
@@ -2658,7 +2669,7 @@ extension CGImage {
 	}
 
 	static func setLocation(
-		_ location: CLLocationCoordinate2D,
+		_ location: LocationCoordinate2D,
 		forImageData imageData: inout Data
 	) throws {
 		var metadata = [String: Any]()
@@ -2873,6 +2884,19 @@ extension IntentFile {
 	}
 }
 
+
+extension IntentFile {
+	func withData(_ modifyData: (inout Data) throws -> Void) rethrows -> Self {
+		var data = data
+		try modifyData(&data)
+
+		return .init(
+			data: data,
+			filename: filename,
+			type: type
+		)
+	}
+}
 
 
 extension URL {
@@ -5904,6 +5928,49 @@ extension ImageRenderer {
 
 	@MainActor
 	var image: Image? { xImage?.toSwiftUIImage }
+}
+
+
+/**
+This exists as `CLLocationCoordinate2D` is an imported C struct and can potentially contain invalid values. This one validates on creation.
+*/
+struct LocationCoordinate2D: Hashable, Codable {
+	let latitude: Double
+	let longitude: Double
+
+	init?(latitude: Double, longitude: Double) {
+		guard
+			CLLocationCoordinate2DIsValid(.init(latitude: latitude, longitude: longitude)),
+			!(latitude == 0 && longitude == 0)
+		else {
+			return nil
+		}
+
+		self.latitude = latitude
+		self.longitude = longitude
+	}
+}
+
+extension LocationCoordinate2D {
+	/**
+	Parse from user input in the format “-77.0364, 38.8951” (latitude, longitude).
+	*/
+	static func parse(_ string: String) -> Self? {
+		let components = string.split(separator: ",", maxSplits: 1)
+
+		guard
+			let latitudeString = components.first?.toString.trimmed,
+			let longitudeString = components.last?.toString.trimmed,
+			let latitude = Double(latitudeString),
+			let longitude = Double(longitudeString)
+		else {
+			return nil
+		}
+
+		return .init(latitude: latitude, longitude: longitude)
+	}
+
+	var formatted: String { "\(latitude), \(longitude)" }
 }
 
 
