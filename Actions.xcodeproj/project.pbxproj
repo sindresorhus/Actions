@@ -123,6 +123,7 @@
 		E38663312AE05C840001343A /* GetImageLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38663302AE05C840001343A /* GetImageLocation.swift */; };
 		E38663332AE063A10001343A /* SetImageLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38663322AE063A10001343A /* SetImageLocation.swift */; };
 		E3963A5A292CAF9F00210AC2 /* RemoveDuplicatesFromList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC2DC328D215A100A88E25 /* RemoveDuplicatesFromList.swift */; };
+		E39692CA2AE130F90030AE56 /* IsShakingDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39692C92AE130F90030AE56 /* IsShakingDevice.swift */; };
 		E39DC11529A5460B004F4FB8 /* IsHostReachable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D0655D29A51E160059A16E /* IsHostReachable.swift */; };
 		E3AB2D8B29F840B900ED2913 /* GetActionsVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AB2D8A29F840B900ED2913 /* GetActionsVersion.swift */; };
 		E3AFA5C32A9B58160044E2F1 /* Boolean.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AFA5C22A9B58160044E2F1 /* Boolean.swift */; };
@@ -239,6 +240,7 @@
 		E37A1E212A2D214800E68E92 /* GetDominantColorsOfImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDominantColorsOfImage.swift; sourceTree = "<group>"; };
 		E38663302AE05C840001343A /* GetImageLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetImageLocation.swift; sourceTree = "<group>"; };
 		E38663322AE063A10001343A /* SetImageLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetImageLocation.swift; sourceTree = "<group>"; };
+		E39692C92AE130F90030AE56 /* IsShakingDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsShakingDevice.swift; sourceTree = "<group>"; };
 		E39DC11A29A54E27004F4FB8 /* OpenURLsWithApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OpenURLsWithApp.swift; path = "Intents Extension/Actions/OpenURLsWithApp.swift"; sourceTree = SOURCE_ROOT; };
 		E39F4776272D516E00B99CB0 /* Actions.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Actions.entitlements; sourceTree = "<group>"; };
 		E3A85FE428E94E7300F423F1 /* FormatPersonName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatPersonName.swift; sourceTree = "<group>"; };
@@ -486,6 +488,7 @@
 				E3D0655D29A51E160059A16E /* IsHostReachable.swift */,
 				E3C33CB728D43FCF00386C59 /* IsLowPowerMode.swift */,
 				E31DE7F128D5E30C00DE79EF /* IsOnline.swift */,
+				E39692C92AE130F90030AE56 /* IsShakingDevice.swift */,
 				E31DE7E928D5DE0C00DE79EF /* IsSilentModeOn.swift */,
 				E31DE7F528D5E50400DE79EF /* IsWebServerReachable.swift */,
 				E31DE7F728D5E94500DE79EF /* IsWiFiOn.swift */,
@@ -710,6 +713,7 @@
 				E31749182916A20C00F6319E /* IsDeviceOrientation.swift in Sources */,
 				E31749552916A20C00F6319E /* CombineLists.swift in Sources */,
 				E34839A32A88DF7D0040DF6E /* GetBooleanFromInput.swift in Sources */,
+				E39692CA2AE130F90030AE56 /* IsShakingDevice.swift in Sources */,
 				E31749202916A20C00F6319E /* GetRandomFloatingPointNumber.swift in Sources */,
 				E317490F2916A20C00F6319E /* ApplyCaptureDate.swift in Sources */,
 				E31749502916A20C00F6319E /* SetFileCreationModificationDate.swift in Sources */,

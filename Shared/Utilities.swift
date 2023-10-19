@@ -625,7 +625,61 @@ enum Device {
 	static var uptimeIncludingSleep: Duration {
 		.nanoseconds(clock_gettime_nsec_np(CLOCK_MONOTONIC_RAW_APPROX))
 	}
+
+	static var isAccelerometerAvailable: Bool {
+		#if os(macOS)
+		false
+		#else
+		CMMotionManager().isAccelerometerAvailable
+		#endif
+	}
 }
+
+
+#if canImport(UIKit)
+extension Device {
+	// TODO: Convert to AsyncSequence when targeting macOS 15. Then do a general, `motionStream` thing. Also use it for the orientation detection code.
+	static var didShake: AnyPublisher<Void, Error> {
+		let threshold = 2.3
+		let motionManager = CMMotionManager()
+		let subject = PassthroughSubject<Void, Error>()
+
+		guard motionManager.isAccelerometerAvailable else {
+			subject.send(completion: .failure("Accelerometer is not available.".toError))
+			return subject.eraseToAnyPublisher()
+		}
+
+		motionManager.accelerometerUpdateInterval = 0.1
+
+		motionManager.startAccelerometerUpdates(to: .main) { data, error in
+			if let error {
+				subject.send(completion: .failure(error))
+				return
+			}
+
+			if
+				let acceleration = data?.acceleration,
+				fabs(acceleration.x) > threshold
+					|| fabs(acceleration.y) > threshold
+					|| fabs(acceleration.z) > threshold
+			{
+				subject.send()
+			}
+		}
+
+		return subject
+			.handleEvents(
+				receiveCompletion: { _ in
+					motionManager.stopAccelerometerUpdates()
+				},
+				receiveCancel: {
+					motionManager.stopAccelerometerUpdates()
+				}
+			)
+			.eraseToAnyPublisher()
+	}
+}
+#endif
 
 
 #if os(macOS)
@@ -6669,5 +6723,33 @@ extension [XColor] {
 			blue: rgbaValues.map(\.blue).average(),
 			alpha: rgbaValues.map(\.opacity).average()
 		)
+	}
+}
+
+
+func firstOf<R>(
+	_ operation1: @Sendable () async throws -> R,
+	or operation2: @Sendable () async throws -> R
+) async throws -> R {
+	// `withoutActuallyEscaping` should be safe as the operation is called before the function returns.
+	try await withoutActuallyEscaping(operation1) { escapableOperation1 in
+		try await withoutActuallyEscaping(operation2) { escapableOperation2 in
+			try await withThrowingTaskGroup(of: R.self) { group in
+				try Task.checkCancellation()
+
+				guard
+					(group.addTaskUnlessCancelled { try await escapableOperation1() }),
+					(group.addTaskUnlessCancelled { try await escapableOperation2() })
+				else {
+					throw CancellationError()
+				}
+
+				defer {
+					group.cancelAll()
+				}
+
+				return try await group.next()!
+			}
+		}
 	}
 }

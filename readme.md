@@ -124,6 +124,7 @@ And for high-quality transcription, see my [Aiko](https://sindresorhus.com/aiko)
 - Is Low Power Mode On
 - Is Online
 - Is Screen Locked <sup>(macOS-only)</sup>
+- Is Shaking Device
 - Is Silent Mode On <sup>(iOS-only)</sup>
 - Is Web Server Reachable
 - Is Wi-Fi On <sup>(macOS-only)</sup>
