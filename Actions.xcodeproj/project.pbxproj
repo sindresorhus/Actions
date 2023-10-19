@@ -1091,6 +1091,7 @@
 				INFOPLIST_KEY_NSContactsUsageDescription = "Required to get the user's name in the “Get User Details” action.";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Required to use the “Authenticate” action.";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © Sindre Sorhus";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Required to use the “Is Host Reachable” and “Is Web Server Reachable” actions with devices on your local network.";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Required to use the “Transcribe Audio” action.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1139,6 +1140,7 @@
 				INFOPLIST_KEY_NSContactsUsageDescription = "Required to get the user's name in the “Get User Details” action.";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Required to use the “Authenticate” action.";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © Sindre Sorhus";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Required to use the “Is Host Reachable” and “Is Web Server Reachable” actions with devices on your local network.";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Required to use the “Transcribe Audio” action.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

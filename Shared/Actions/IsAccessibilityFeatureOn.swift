@@ -10,6 +10,8 @@ struct IsAccessibilityFeatureOn: AppIntent {
 """
 Returns whether a certain accessibility feature is enabled.
 
+NOTE: The “Assistive Touch” check only works when “Guided Access” is enabled.
+
 On macOS, only the following are available. The rest always return false.
 - Reduce Motion
 - Reduce Transparency
