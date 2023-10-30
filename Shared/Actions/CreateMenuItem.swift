@@ -76,14 +76,13 @@ Add an "Add to Variable" action below this one to populate a list and then use t
 		title: "SF Symbol",
 		description: "Find symbol names here: https://developer.apple.com/sf-symbols/",
 		inputOptions: .init(
-			keyboardType: .asciiCapable,
 			capitalizationType: .none,
 			autocorrect: false,
 			smartQuotes: false,
 			smartDashes: false
 		)
 	)
-	var sfSymbolName: String
+	var sfSymbolName: String?
 
 	@Parameter(
 		title: "Emoji",
@@ -142,7 +141,7 @@ Add an "Add to Variable" action below this one to populate a list and then use t
 		switch iconType {
 		case .sfSymbol:
 			await IconContainerView(
-				sfSymbol: sfSymbolName,
+				sfSymbol: sfSymbolName ?? "",
 				foregroundColor: foreground.color(),
 				backgroundColor: background.color(isBackground: true),
 				backgroundShape: backgroundShape

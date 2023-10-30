@@ -40,6 +40,7 @@ typealias WindowIfMacOS = Window
 #else
 import VisionKit
 import CoreMotion
+import CallKit
 
 typealias XColor = UIColor
 typealias XFont = UIFont
@@ -631,6 +632,19 @@ enum Device {
 		false
 		#else
 		CMMotionManager().isAccelerometerAvailable
+		#endif
+	}
+
+	/**
+	Check if the device currently has an active call.
+
+	On macOS, it's always `false`.
+	*/
+	static var hasActiveCall: Bool {
+		#if os(macOS)
+		false
+		#else
+		CXCallObserver().calls.contains { !$0.hasEnded }
 		#endif
 	}
 }

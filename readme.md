@@ -113,6 +113,7 @@ And for high-quality transcription, see my [Aiko](https://sindresorhus.com/aiko)
 - Is Accessibility Feature On
 - Is Audio Playing <sup>(iOS-only)</sup>
 - Is Bluetooth On
+- Is Call Active <sup>(iOS-only)</sup>
 - Is Cellular Data On
 - Is Cellular Low Data Mode On
 - Is Connected to VPN <sup>(iOS-only)</sup>

@@ -155,6 +155,7 @@
 		E3DB885728E727E200FEE8D6 /* ChooseFromListExtended.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DB885528E727E200FEE8D6 /* ChooseFromListExtended.swift */; };
 		E3DB886C28E7549800FEE8D6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DB886B28E7549800FEE8D6 /* Constants.swift */; };
 		E3EA7D7B28EAC2210043F782 /* BlurImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EA7D7A28EAC2210043F782 /* BlurImages.swift */; };
+		E3EF8AE82AEFC431007B0F32 /* IsCallActive.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EF8AE72AEFC431007B0F32 /* IsCallActive.swift */; };
 		E3F64D7628D9F9930009B500 /* CreateColorImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F64D7528D9F9930009B500 /* CreateColorImage.swift */; };
 		E3F64D7928D9FCA20009B500 /* GetSymbolImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F64D7728D9FCA20009B500 /* GetSymbolImage.swift */; };
 		E3FC71DD271EBE5C00C9D255 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FC71DC271EBE5B00C9D255 /* Utilities.swift */; };
@@ -329,6 +330,7 @@
 		E3EC2DE528D25DF900A88E25 /* AddToList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToList.swift; sourceTree = "<group>"; };
 		E3EC2DE728D2DB1000A88E25 /* GenerateRandomText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateRandomText.swift; sourceTree = "<group>"; };
 		E3EC2DE928D2E5B900A88E25 /* RemoveFromList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveFromList.swift; sourceTree = "<group>"; };
+		E3EF8AE72AEFC431007B0F32 /* IsCallActive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsCallActive.swift; sourceTree = "<group>"; };
 		E3F64D6B28D9EDFE0009B500 /* FormatDuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatDuration.swift; sourceTree = "<group>"; };
 		E3F64D7128D9F3810009B500 /* EditURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditURL.swift; sourceTree = "<group>"; };
 		E3F64D7528D9F9930009B500 /* CreateColorImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateColorImage.swift; sourceTree = "<group>"; };
@@ -389,6 +391,7 @@
 				E3DB884F28E6EE7B00FEE8D6 /* HideShortcutsApp.swift */,
 				E34839A02A885DD90040DF6E /* InvertImages.swift */,
 				E375A5CE2ADEE387004BCBFA /* IsAccessibilityFeatureOn.swift */,
+				E3EF8AE72AEFC431007B0F32 /* IsCallActive.swift */,
 				E3C33CA928D3A81700386C59 /* IsDarkMode.swift */,
 				E350B2512AC3005800BFC34D /* IsDeviceLocked.swift */,
 				E3CB448A28D71A180031D55F /* IsScreenLocked.swift */,
@@ -731,6 +734,7 @@
 				E317491A2916A20C00F6319E /* IsConnectedToVPN.swift in Sources */,
 				E31749402916A20C00F6319E /* CreateURL.swift in Sources */,
 				E31749542916A20C00F6319E /* GetUniformTypeIdentifier.swift in Sources */,
+				E3EF8AE82AEFC431007B0F32 /* IsCallActive.swift in Sources */,
 				E317491C2916A20C00F6319E /* GetHighResolutionTimestamp.swift in Sources */,
 				E31748A92916A0B200F6319E /* Main.swift in Sources */,
 				E31749512916A20C00F6319E /* TransformLists.swift in Sources */,
