@@ -10,7 +10,10 @@ struct GetEmojis: AppIntent, CustomIntentMigratedAppIntent {
 		categoryName: "Text"
 	)
 
-	@Parameter(title: "Text")
+	@Parameter(
+		title: "Text",
+		inputOptions: .init(keyboardType: .default)
+	)
 	var text: String
 
 	static var parameterSummary: some ParameterSummary {

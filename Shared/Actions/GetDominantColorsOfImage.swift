@@ -11,6 +11,8 @@ Returns the dominant colors of the image.
 You could use this to make a palette of the main colors in an image.
 
 Dominant color is the most seen color in an image, while average color is all the colors in an image mixed into one.
+
+Note: The Shortcuts output preview is buggy and shows the colors in random order. Switch to the list view for a stable order in the preview.
 """,
 		categoryName: "Color",
 		searchKeywords: [

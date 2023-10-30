@@ -1,5 +1,7 @@
 import AppIntents
 
+// Note: This has to be in the main app target so that it's able to show the prompt to request access to the local network.
+
 struct IsReachable: AppIntent, CustomIntentMigratedAppIntent {
 	static let intentClassName = "IsReachableIntent"
 

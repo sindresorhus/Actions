@@ -33,6 +33,7 @@ This can be useful as a placeholder, token, etc.
 	@Parameter(
 		title: "Custom Characters",
 		inputOptions: String.IntentInputOptions(
+			keyboardType: .default,
 			capitalizationType: .none,
 			autocorrect: false,
 			smartQuotes: false,
@@ -45,6 +46,7 @@ This can be useful as a placeholder, token, etc.
 		title: "Seed",
 		description: "When specified, the returned text will always be the same if the seed is the same.",
 		inputOptions: String.IntentInputOptions(
+			keyboardType: .default,
 			capitalizationType: .none,
 			autocorrect: false,
 			smartQuotes: false,

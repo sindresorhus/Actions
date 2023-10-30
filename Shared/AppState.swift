@@ -10,6 +10,7 @@ final class AppState: ObservableObject {
 	@Published var chooseFromListData: ChooseFromListScreen.Data?
 	@Published var askForTextData: AskForTextScreen.Data?
 	@Published var isFullscreenOverlayPresented = false
+	@Published var fullscreenMessage: String?
 
 	private init() {
 		// TODO: Check if it shows a prompt when we move the action back to being in an extension.

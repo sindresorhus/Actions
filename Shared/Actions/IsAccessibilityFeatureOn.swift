@@ -3,14 +3,14 @@ import SwiftUI
 
 // Note: This is intentionally not in the app extension because when it's in the extension it return outdated values. On macOS, it get stuck forever on the previous value, and on iOS it gets stuck for one time. (iOS 17.0)
 
+// We cannot support `isAssistiveTouchRunning` as it requires “Guided Access” to be enabled and then Actions is not allowed to run.
+
 struct IsAccessibilityFeatureOn: AppIntent {
 	static let title: LocalizedStringResource = "Is Accessibility Feature On"
 
 	static let description = IntentDescription(
 """
 Returns whether a certain accessibility feature is enabled.
-
-NOTE: The “Assistive Touch” check only works when “Guided Access” is enabled.
 
 On macOS, only the following are available. The rest always return false.
 - Reduce Motion
@@ -20,6 +20,8 @@ On macOS, only the following are available. The rest always return false.
 - Differentiate without Color
 - VoiceOver
 - Switch Control
+
+It's unfortunately not possible to check for “Assistive Touch” and “Guided Access”.
 """,
 		categoryName: "Device",
 		searchKeywords: [
@@ -42,8 +44,6 @@ On macOS, only the following are available. The rest always return false.
 
 	func perform() async throws -> some IntentResult & ReturnsValue<Bool> {
 		let result = switch feature {
-		case .assistiveTouch:
-			XAccessibility.isAssistiveTouchRunning
 		case .boldText:
 			XAccessibility.isBoldTextEnabled
 		case .closedCaptioning:
@@ -52,8 +52,6 @@ On macOS, only the following are available. The rest always return false.
 			XAccessibility.isIncreaseContrastEnabled
 		case .grayscale:
 			XAccessibility.isGrayscaleEnabled
-		case .guidedAccess:
-			XAccessibility.isGuidedAccessEnabled
 		case .invertColors:
 			XAccessibility.isInvertColorsEnabled
 		case .monoAudio:
@@ -89,12 +87,10 @@ On macOS, only the following are available. The rest always return false.
 }
 
 enum AccessibilityFeature_AppEnum: String, AppEnum {
-	case assistiveTouch
 	case boldText
 	case closedCaptioning
 	case increaseContrast
 	case grayscale
-	case guidedAccess
 	case invertColors
 	case monoAudio
 	case onOffSwitchLabels
@@ -113,12 +109,10 @@ enum AccessibilityFeature_AppEnum: String, AppEnum {
 	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Accessibility Feature"
 
 	static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
-		.assistiveTouch: "Assistive Touch",
 		.boldText: "Bold Text",
 		.closedCaptioning: "Closed Captioning",
 		.increaseContrast: "Increase Contrast",
 		.grayscale: "Grayscale",
-		.guidedAccess: "Guided Access",
 		.invertColors: "Invert Colors",
 		.monoAudio: "Mono Audio",
 		.onOffSwitchLabels: "On/Off Switch Labels",

@@ -17,7 +17,10 @@ IMPORTANT: The result is copied to the clipboard. Add the “Wait to Return” a
 
 	static let openAppWhenRun = true
 
-	@Parameter(title: "Text")
+	@Parameter(
+		title: "Text",
+		inputOptions: .init(keyboardType: .default)
+	)
 	var text: String?
 
 	@Parameter(
@@ -29,7 +32,10 @@ IMPORTANT: The result is copied to the clipboard. Add the “Wait to Return” a
 
 	@Parameter(
 		title: "Editor Title",
-		inputOptions: String.IntentInputOptions(capitalizationType: .words)
+		inputOptions: String.IntentInputOptions(
+			keyboardType: .default,
+			capitalizationType: .words
+		)
 	)
 	var editorTitle: String?
 

@@ -654,7 +654,7 @@ enum Device {
 extension Device {
 	// TODO: Convert to AsyncSequence when targeting macOS 15. Then do a general, `motionStream` thing. Also use it for the orientation detection code.
 	static var didShake: AnyPublisher<Void, Error> {
-		let threshold = 2.3
+		let threshold = 2.2
 		let motionManager = CMMotionManager()
 		let subject = PassthroughSubject<Void, Error>()
 

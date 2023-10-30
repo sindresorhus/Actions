@@ -69,7 +69,10 @@ Add an "Add to Variable" action below this one to populate a list and then use t
 		}
 	}
 
-	@Parameter(title: "Title")
+	@Parameter(
+		title: "Title",
+		inputOptions: .init(keyboardType: .default)
+	)
 	var menuTitle: String
 
 	@Parameter(
@@ -86,11 +89,21 @@ Add an "Add to Variable" action below this one to populate a list and then use t
 
 	@Parameter(
 		title: "Emoji",
-		description: "Tap the emoji button on your keyboard and select one emoji."
+		description: "Tap the emoji button on your keyboard and select one emoji.",
+		inputOptions: .init(
+			keyboardType: .default,
+			capitalizationType: .none,
+			autocorrect: false,
+			smartQuotes: false,
+			smartDashes: false
+		)
 	)
 	var emoji: String?
 
-	@Parameter(title: "Subtitle")
+	@Parameter(
+		title: "Subtitle",
+		inputOptions: .init(keyboardType: .default)
+	)
 	var subtitle: String?
 
 	@Parameter(title: "Icon Type", default: .sfSymbol)
@@ -127,11 +140,16 @@ Add an "Add to Variable" action below this one to populate a list and then use t
 	)
 	var data: String?
 
+	@MainActor
 	func perform() async throws -> some IntentResult & ReturnsValue<MenuItem> {
+		// Tries to work around some crash: https://github.com/sindresorhus/Actions/issues/180
+		try? await Task.sleep(for: .seconds(0.1))
+
 		let menuItem = MenuItem(
 			title: menuTitle,
 			subtitle: subtitle,
-			icon: await makeIcon()
+			icon: await makeIcon(),
+			data: data
 		)
 
 		return .result(value: menuItem)
@@ -170,14 +188,19 @@ struct MenuItem: TransientAppEntity {
 	@Property(title: "Icon")
 	var icon: IntentFile?
 
+	@Property(title: "Data")
+	var data: String?
+
 	init(
 		title: String,
 		subtitle: String? = nil,
-		icon: Data? = nil
+		icon: Data? = nil,
+		data: String? = nil
 	) {
 		self.icon = icon.flatMap { .init(data: $0, filename: "icon.png", type: .png) }
 		self.title = title
 		self.subtitle = subtitle
+		self.data = data
 	}
 
 	init() {

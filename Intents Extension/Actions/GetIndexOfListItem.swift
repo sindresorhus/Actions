@@ -18,7 +18,10 @@ It uses 1-based indexing.
 	@Parameter(title: "List")
 	var list: [String]
 
-	@Parameter(title: "Item")
+	@Parameter(
+		title: "Item",
+		inputOptions: .init(keyboardType: .default)
+	)
 	var item: String
 
 	static var parameterSummary: some ParameterSummary {

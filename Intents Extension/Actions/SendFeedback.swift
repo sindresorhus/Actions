@@ -10,7 +10,13 @@ struct SendFeedback: AppIntent, CustomIntentMigratedAppIntent {
 		categoryName: "Meta"
 	)
 
-	@Parameter(title: "Message", inputOptions: String.IntentInputOptions(multiline: true))
+	@Parameter(
+		title: "Message",
+		inputOptions: String.IntentInputOptions(
+			keyboardType: .default,
+			multiline: true
+		)
+	)
 	var message: String
 
 	@Parameter(

@@ -18,6 +18,7 @@ struct GetRandomNumberFromSeed: AppIntent {
 		title: "Seed",
 		description: "When specified, the returned number will always be the same if the seed is the same.",
 		inputOptions: String.IntentInputOptions(
+			keyboardType: .default,
 			capitalizationType: .none,
 			autocorrect: false,
 			smartQuotes: false,
