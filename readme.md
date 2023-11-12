@@ -76,6 +76,7 @@ And for high-quality transcription, see my [Aiko](https://sindresorhus.com/aiko)
 - Get Average Color of Image
 - Get Battery State
 - Get Boolean from Input
+- Get Compass Heading <sup>(iOS-only)</sup>
 - Get Default Printer <sup>(macOS-only)</sup>
 - Get Device Details (Extended)
 - Get Device Orientation

@@ -147,6 +147,7 @@
 		E3CF4F9828FDA7EB00BD88D5 /* GenerateRandomData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CF4F9728FDA7EB00BD88D5 /* GenerateRandomData.swift */; };
 		E3D3A30C2A5BECED00F45541 /* GetDeviceDetailsExtended.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D3A30B2A5BECED00F45541 /* GetDeviceDetailsExtended.swift */; };
 		E3D53BF82A9385F5007A1340 /* GetModifierKeyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D53BF72A9385F5007A1340 /* GetModifierKeyState.swift */; };
+		E3D737F72B00274900E9023B /* GetCompassHeading.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D737F52B00230100E9023B /* GetCompassHeading.swift */; };
 		E3DB884D28E6E3AD00FEE8D6 /* HapticFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DB884B28E6E3AD00FEE8D6 /* HapticFeedback.swift */; };
 		E3DB885028E6EE7B00FEE8D6 /* HideShortcutsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DB884F28E6EE7B00FEE8D6 /* HideShortcutsApp.swift */; };
 		E3DB885228E6EFBB00FEE8D6 /* ScanDocuments.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DB885128E6EFBB00FEE8D6 /* ScanDocuments.swift */; };
@@ -298,6 +299,7 @@
 		E3D514C728EEA8F8003F7C2E /* FlashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashScreen.swift; sourceTree = "<group>"; };
 		E3D514C928EEAAEC003F7C2E /* CalculateWithSoulver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateWithSoulver.swift; sourceTree = "<group>"; };
 		E3D53BF72A9385F5007A1340 /* GetModifierKeyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetModifierKeyState.swift; sourceTree = "<group>"; };
+		E3D737F52B00230100E9023B /* GetCompassHeading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCompassHeading.swift; sourceTree = "<group>"; };
 		E3DB884B28E6E3AD00FEE8D6 /* HapticFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedback.swift; sourceTree = "<group>"; };
 		E3DB884F28E6EE7B00FEE8D6 /* HideShortcutsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideShortcutsApp.swift; sourceTree = "<group>"; };
 		E3DB885128E6EFBB00FEE8D6 /* ScanDocuments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanDocuments.swift; sourceTree = "<group>"; };
@@ -381,6 +383,7 @@
 				E3CB449D28D791D40031D55F /* GenerateCSV.swift */,
 				E3CF4F9728FDA7EB00BD88D5 /* GenerateRandomData.swift */,
 				E3B8FD1D29F11DCA001249CF /* GetAverageColorOfImage.swift */,
+				E3D737F52B00230100E9023B /* GetCompassHeading.swift */,
 				E376FD862952937200C0F81F /* GetDefaultPrinter.swift */,
 				E37A1E212A2D214800E68E92 /* GetDominantColorsOfImage.swift */,
 				E38663302AE05C840001343A /* GetImageLocation.swift */,
@@ -848,6 +851,7 @@
 				E343F9B829713AFF00AD82F4 /* GetMapImageOfLocation.swift in Sources */,
 				E303EED429529D14007BE918 /* GetPrinters.swift in Sources */,
 				E3DB885028E6EE7B00FEE8D6 /* HideShortcutsApp.swift in Sources */,
+				E3D737F72B00274900E9023B /* GetCompassHeading.swift in Sources */,
 				E3F64D7928D9FCA20009B500 /* GetSymbolImage.swift in Sources */,
 				E3BFF7B22742616400B830DE /* WriteTextScreen.swift in Sources */,
 				E3DB885728E727E200FEE8D6 /* ChooseFromListExtended.swift in Sources */,
@@ -1100,6 +1104,7 @@
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Required to use the “Authenticate” action.";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © Sindre Sorhus";
 				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Required to use the “Is Host Reachable” and “Is Web Server Reachable” actions with devices on your local network.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Required to use the “Get Compass Heading” action.";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Required to use the “Transcribe Audio” action.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1149,6 +1154,7 @@
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Required to use the “Authenticate” action.";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © Sindre Sorhus";
 				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Required to use the “Is Host Reachable” and “Is Web Server Reachable” actions with devices on your local network.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Required to use the “Get Compass Heading” action.";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Required to use the “Transcribe Audio” action.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

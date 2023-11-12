@@ -6767,3 +6767,66 @@ func firstOf<R>(
 		}
 	}
 }
+
+
+private var CLLocationManager_headingUpdates_delegateKey: UInt8 = 0
+
+extension CLLocationManager {
+	/**
+	Provides an asynchronous stream of compass heading updates.
+
+	- Note: It does not require any authorization by default, but the `.trueHeading` property will only be accurate if you request location access.
+	*/
+	@available(macOS, unavailable)
+	@nonobjc
+	static func headingUpdates() -> AsyncThrowingStream<CLHeading, Error> {
+		let locationManager = CLLocationManager()
+		locationManager.desiredAccuracy = kCLLocationAccuracyBest
+
+		let hasLocationAuthorization = locationManager.authorizationStatus == .authorizedAlways
+			|| locationManager.authorizationStatus == .authorizedWhenInUse
+
+		return .init { continuation in
+			guard CLLocationManager.headingAvailable() else {
+				continuation.finish(throwing: "Device does not support heading updates.".toError)
+				return
+			}
+
+			let delegate = HeadingDelegate(continuation: continuation)
+			locationManager.delegate = delegate
+
+			continuation.onTermination = { _ in
+				locationManager.stopUpdatingHeading()
+
+				if hasLocationAuthorization {
+					locationManager.stopUpdatingLocation()
+				}
+			}
+
+			locationManager.startUpdatingHeading()
+
+			if hasLocationAuthorization {
+				locationManager.startUpdatingLocation()
+			}
+
+			// Retain the delegate to keep it alive as long as needed.
+			objc_setAssociatedObject(locationManager, &CLLocationManager_headingUpdates_delegateKey, delegate, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+		}
+	}
+
+	private final class HeadingDelegate: NSObject, CLLocationManagerDelegate {
+		private let continuation: AsyncThrowingStream<CLHeading, Error>.Continuation
+
+		init(continuation: AsyncThrowingStream<CLHeading, Error>.Continuation) {
+			self.continuation = continuation
+		}
+
+		func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
+			continuation.yield(newHeading)
+		}
+
+		func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+			continuation.finish(throwing: error)
+		}
+	}
+}

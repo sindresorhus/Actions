@@ -1,5 +1,6 @@
 import SwiftUI
 import CoreBluetooth
+import CoreLocation
 
 @MainActor
 final class AppState: ObservableObject {
@@ -17,6 +18,7 @@ final class AppState: ObservableObject {
 		// We have to request the permission in the app as it no longer (with iOS 16.1) a prompt when running the action. The prompt actually shows when we switch back to the app. So it seems it's shown in the incorrect scene.
 		#if canImport(UIKit)
 		askForBluetoothAccessIfNeeded()
+		CLLocationManager().requestWhenInUseAuthorization()
 		#endif
 	}
 
