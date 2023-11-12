@@ -1,9 +1,7 @@
 import AppIntents
 import LinkPresentation
 
-struct GetTitleOfURL: AppIntent, CustomIntentMigratedAppIntent {
-	static let intentClassName = "GetTitleOfURLIntent"
-
+struct GetTitleOfURLIntent: AppIntent {
 	static let title: LocalizedStringResource = "Get Title of URL"
 
 	static let description = IntentDescription(
@@ -18,11 +16,11 @@ struct GetTitleOfURL: AppIntent, CustomIntentMigratedAppIntent {
 		Summary("Get the title of \(\.$url)")
 	}
 
-	func perform() async throws -> some IntentResult & ReturnsValue<String> {
+	func perform() async throws -> some IntentResult & ReturnsValue<String?> {
 		let metadataProvider = LPMetadataProvider()
 		metadataProvider.shouldFetchSubresources = false
 
-		let result: String = await {
+		let result: String? = await {
 			do {
 				return try await metadataProvider.startFetchingMetadata(for: url).title ?? url.host
 			} catch {
@@ -30,7 +28,7 @@ struct GetTitleOfURL: AppIntent, CustomIntentMigratedAppIntent {
 				print(error)
 				return nil // Shortcuts doesn't have any error handling capabilities, so better to just return empty result on failure.
 			}
-		}() ?? ""
+		}()
 
 		return .result(value: result)
 	}

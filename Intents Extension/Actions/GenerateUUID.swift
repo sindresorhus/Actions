@@ -1,8 +1,6 @@
 import AppIntents
 
-struct GenerateUUID: AppIntent, CustomIntentMigratedAppIntent {
-	static let intentClassName = "GenerateUUIDIntent"
-
+struct GenerateUUIDIntent: AppIntent {
 	static let title: LocalizedStringResource = "Generate UUID"
 
 	static let description = IntentDescription(

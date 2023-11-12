@@ -1,19 +1,17 @@
 import SwiftUI
 import AppIntents
 
-struct ApplyCaptureDate: AppIntent, CustomIntentMigratedAppIntent {
-	static let intentClassName = "ApplyCaptureDateIntent"
-
+struct ApplyCaptureDateIntent: AppIntent {
 	static let title: LocalizedStringResource = "Apply Capture Date"
 
 	static let description = IntentDescription(
-"""
-Applies the original capture date and time of the photo (from Exif metadata) to the file's creation and modification date.
+		"""
+		Applies the original capture date and time of the photo (from Exif metadata) to the file's creation and modification date.
 
-If an image does not have a capture date metadata, the file is just passed through.
+		If an image does not have a capture date metadata, the file is just passed through.
 
-This action can be useful to run after the built-in "Convert Image" action (ensure "Preserve Metadata" is checked).
-""",
+		This action can be useful to run after the built-in “Convert Image” action (ensure “Preserve Metadata” is checked).
+		""",
 		categoryName: "File"
 	)
 
@@ -28,11 +26,7 @@ This action can be useful to run after the built-in "Convert Image" action (ensu
 	var setModificationDate: Bool
 
 	static var parameterSummary: some ParameterSummary {
-		// TODO: iOS 16 issue
-//		Summary("Set the \(\.$setModificationDate) of \(\.$images) to the original capture date and time")
-		Summary("Set the creation date of \(\.$images) to the original capture date and time") {
-			\.$setModificationDate
-		}
+		Summary("Set the \(\.$setModificationDate) of \(\.$images) to the original capture date and time")
 	}
 
 	func perform() async throws -> some IntentResult & ReturnsValue<[IntentFile]> {

@@ -7,18 +7,19 @@ struct CreateMenuItem: AppIntent {
 	static let title: LocalizedStringResource = "Create Menu Item"
 
 	static let description = IntentDescription(
-"""
-Create a menu item with a title, subtitle, and icon.
+		"""
+		Create a menu item with a title, subtitle, and icon.
 
-You can later use one or more of these menu items in a “Choose from List” action.
+		You can later use one or more of these menu items in a “Choose from List” action.
 
-Add an "Add to Variable" action below this one to populate a list and then use that variable in the “Choose From List” action.
-""",
+		Add an “Add to Variable” action below this one to populate a list and then use that variable in the “Choose From List” action.
+		""",
 		categoryName: "Miscellaneous",
 		searchKeywords: [
 			"choose",
 			"rich",
-			"list"
+			"list",
+			"menuitem"
 		]
 	)
 

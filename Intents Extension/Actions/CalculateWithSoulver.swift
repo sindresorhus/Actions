@@ -5,56 +5,56 @@ struct CalculateWithSoulver: AppIntent {
 	static let title: LocalizedStringResource = "Calculate with Soulver"
 
 	static let description = IntentDescription(
-"""
-Lets you calculate day-to-day math expressions using natural language, provided by Soulver.
+		"""
+		Lets you calculate day-to-day math expressions using natural language, provided by Soulver.
 
 
-Examples:
+		Examples:
 
-$10 for lunch + 15% tip
-→ $11.50
+		$10 for lunch + 15% tip
+		→ $11.50
 
-65 kg in pounds
-→ 154.32 lb
+		65 kg in pounds
+		→ 154.32 lb
 
-$2 in euro
-→ €2,02
+		$2 in euro
+		→ €2,02
 
-12% of 478
-→ 57.36
+		12% of 478
+		→ 57.36
 
-40 as % of 90
-→ 44.44%
+		40 as % of 90
+		→ 44.44%
 
-$150 is 25% on what
-→ $120.00
+		$150 is 25% on what
+		→ $120.00
 
-$25/hour * 14 hours of work
-→ $350.00
+		$25/hour * 14 hours of work
+		→ $350.00
 
-January 30 2020 + 3 months 2 weeks 5 days
-→ May 19, 2020
+		January 30 2020 + 3 months 2 weeks 5 days
+		→ May 19, 2020
 
-9:35am in New York to Japan
-→ 10:35 pm
+		9:35am in New York to Japan
+		→ 10:35 pm
 
-days until April
-→ 37 days
+		days until April
+		→ 37 days
 
-days left in Feb
-→ 5 days
+		days left in Feb
+		→ 5 days
 
-days remaining in 2023
-→ 311 days
+		days remaining in 2023
+		→ 311 days
 
-$25k over 10 years at 7.5%
-→ $51,525.79 (compound interest)
+		$25k over 10 years at 7.5%
+		→ $51,525.79 (compound interest)
 
 
-The expression can be written in English, German, Russian, or Simplified Chinese.
+		The expression can be written in English, German, Russian, or Simplified Chinese.
 
-If you like this action, you may also like the Soulver macOS app.
-""",
+		If you like this action, you may also like the Soulver macOS app.
+		""",
 		categoryName: "Math"
 	)
 

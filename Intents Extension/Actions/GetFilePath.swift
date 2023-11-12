@@ -1,16 +1,14 @@
 import AppIntents
 
-struct GetFilePath: AppIntent, CustomIntentMigratedAppIntent {
-	static let intentClassName = "GetFilePathIntent"
-
+struct GetFilePathIntent: AppIntent {
 	static let title: LocalizedStringResource = "Get File Path"
 
 	static let description = IntentDescription(
-"""
-Returns the path or URL of the input files.
+		"""
+		Returns the path or URL of the input files.
 
-Folder paths always end with a slash.
-""",
+		Folder paths always end with a slash.
+		""",
 		categoryName: "File"
 	)
 

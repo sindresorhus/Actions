@@ -1,16 +1,14 @@
 import AppIntents
 
-struct ReverseList: AppIntent, CustomIntentMigratedAppIntent {
-	static let intentClassName = "ReverseListIntent"
-
+struct ReverseListIntent: AppIntent {
 	static let title: LocalizedStringResource = "Reverse List"
 
 	static let description = IntentDescription(
-"""
-Reverses the input list.
+		"""
+		Reverses the input list.
 
-Note: If you get the error “The operation failed because Shortcuts couldn't convert from Text to NSString.”, just change the preview to show a list view instead. This is a bug in the Shortcuts app.
-""",
+		Note: If you get the error “The operation failed because Shortcuts couldn't convert from Text to NSString.”, just change the preview to show a list view instead. This is a bug in the Shortcuts app.
+		""",
 		categoryName: "List"
 	)
 

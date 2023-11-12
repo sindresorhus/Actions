@@ -1,8 +1,6 @@
 import AppIntents
 
-struct PrettyPrintDictionaries: AppIntent, CustomIntentMigratedAppIntent {
-	static let intentClassName = "PrettyPrintDictionariesIntent"
-
+struct PrettyPrintDictionariesIntent: AppIntent {
 	static let title: LocalizedStringResource = "Pretty Print Dictionaries"
 
 	static let description = IntentDescription(

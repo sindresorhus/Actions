@@ -1,17 +1,15 @@
 import AppIntents
 import SwiftUI
 
-struct IsDeviceOrientation: AppIntent, CustomIntentMigratedAppIntent {
-	static let intentClassName = "IsDeviceOrientationIntent"
-
+struct IsDeviceOrientationIntent: AppIntent {
 	static let title: LocalizedStringResource = "Is Device Orientation"
 
 	static let description = IntentDescription(
-"""
-Returns whether the device is in the chosen orientation.
+		"""
+		Returns whether the device is in the chosen orientation.
 
-On macOS, it always returns false.
-""",
+		On macOS, it always returns false.
+		""",
 		categoryName: "Device"
 	)
 
@@ -50,7 +48,7 @@ On macOS, it always returns false.
 	func perform() async throws -> some IntentResult & ReturnsValue<Bool> {
 		#if canImport(UIKit)
 		do {
-			let result = check(try await UIDevice.current.orientationBetter)
+			let result = check(try await Device.orientation)
 			return .result(value: result)
 		} catch {
 			return .result(value: false)

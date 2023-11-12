@@ -5,11 +5,11 @@ struct GetAverageColorOfImage: AppIntent {
 	static let title: LocalizedStringResource = "Get Average Color of Image"
 
 	static let description = IntentDescription(
-"""
-Returns the average color of the image.
+		"""
+		Returns the average color of the image.
 
-Average color is all the colors in an image mixed into one, while dominant color is the most seen color in an image.
-""",
+		Average color is all the colors in an image mixed into one, while dominant color is the most seen color in an image.
+		""",
 		categoryName: "Color",
 		searchKeywords: [
 			"colour"

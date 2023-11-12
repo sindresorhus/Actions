@@ -3,19 +3,17 @@ import AVFAudio
 import SwiftUI
 
 @available(macOS, unavailable)
-struct GetAudioPlaybackDestination: AppIntent, CustomIntentMigratedAppIntent {
-	static let intentClassName = "GetAudioPlaybackDestinationIntent"
-
+struct GetAudioPlaybackDestinationIntent: AppIntent {
 	static let title: LocalizedStringResource = "Get Audio Playback Destination (iOS-only) (Does not detect AirPlay devices)"
 
 	static let description = IntentDescription(
-"""
-Returns the audio playback destination of the device.
+		"""
+		Returns the audio playback destination of the device.
 
-Can be useful in combination with the built-in “Set Playback Destination” action.
+		Can be useful in combination with the built-in “Set Playback Destination” action.
 
-Known limitation: It will not be able to detect when the output is an AirPlay device because of a iOS bug.
-""",
+		Known limitation: It will not be able to detect when the output is an AirPlay device because of a iOS bug.
+		""",
 		categoryName: "Device",
 		searchKeywords: [
 			"output"
@@ -26,11 +24,10 @@ Known limitation: It will not be able to detect when the output is an AirPlay de
 		Summary("Get audio playback destination")
 	}
 
-	func perform() async throws -> some IntentResult & ReturnsValue<String> {
+	func perform() async throws -> some IntentResult & ReturnsValue<String?> {
 		#if canImport(UIKit)
 		guard let outputDevice = AVAudioSession.sharedInstance().currentRoute.outputs.first else {
-			// TODO: How to properly handle optionals?
-			return .result(value: "")
+			return .result(value: nil)
 		}
 
 		let result = await outputDevice.portType == .builtInSpeaker
@@ -39,7 +36,7 @@ Known limitation: It will not be able to detect when the output is an AirPlay de
 
 		return .result(value: result)
 		#else
-		.result(value: "")
+		.result(value: nil)
 		#endif
 	}
 }

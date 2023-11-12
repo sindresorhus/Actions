@@ -1,9 +1,7 @@
 import AppIntents
 import TabularData
 
-struct ParseCSV: AppIntent, CustomIntentMigratedAppIntent {
-	static let intentClassName = "ParseCSVIntent"
-
+struct ParseCSVIntent: AppIntent {
 	static let title: LocalizedStringResource = "Parse CSV"
 
 	static let description = IntentDescription(
@@ -39,7 +37,7 @@ struct ParseCSV: AppIntent, CustomIntentMigratedAppIntent {
 	var customDelimiter: String?
 
 	static var parameterSummary: some ParameterSummary {
-		// This fails on Xcode 14.3
+		// This fails on Xcode 15.
 //		When(\.$delimiter, .equalTo, .custom) {
 //			Summary("Parse \(\.$file)") {
 //				\.$delimiter
@@ -78,25 +76,26 @@ struct ParseCSV: AppIntent, CustomIntentMigratedAppIntent {
 			csvData: file.data,
 			options: .init(
 				hasHeaderRow: hasHeader,
-				// We intentionally do not parse booleans as `DataFrame` cannot handle parsing them from JSON in "GenerateCSV". (macOS 12.3)
+				// We intentionally do not parse booleans as `DataFrame` cannot handle parsing them from JSON in "GenerateCSV". (macOS 14.1)
 				// https://github.com/feedback-assistant/reports/issues/299
-//					trueEncodings: ["true", "TRUE", "True"],
-//					falseEncodings: ["false", "FALSE", "False"],
+//				trueEncodings: ["true", "TRUE", "True"],
+//				falseEncodings: ["false", "FALSE", "False"],
 				trueEncodings: [],
 				falseEncodings: [],
 				delimiter: finalDelimiter
 			)
 		)
 
-		// TODO: We cannot return a JSON array as the Shortcuts app crashes. (macOS 12.2)
-//			response.result = try JSONSerialization.data(
-//				withJSONObject: dataFrame.toArray(),
-//				options: .prettyPrinted
+		// TODO: We cannot return a JSON array as the Shortcuts app crashes. (macOS 14.1)
+		// https://github.com/feedback-assistant/reports/issues/377
+//		let result = try JSONSerialization.data(
+//			withJSONObject: dataFrame.toArray(),
+//			options: .prettyPrinted
+//		)
+//			.toIntentFile(
+//				contentType: .json,
+//				filename: file.filenameWithoutExtension
 //			)
-//				.toINFile(
-//					contentType: .json,
-//					filename: file.filenameWithoutExtension
-//				)
 
 		let result = try dataFrame.rows.indexed().map {
 			try JSONSerialization.data(

@@ -1,8 +1,6 @@
 import AppIntents
 
-struct GetRandomFloatingPointNumber: AppIntent, CustomIntentMigratedAppIntent {
-	static let intentClassName = "RandomFloatingPointNumberIntent"
-
+struct RandomFloatingPointNumberIntent: AppIntent {
 	static let title: LocalizedStringResource = "Get Random Floating-Point Number"
 
 	static let description = IntentDescription(

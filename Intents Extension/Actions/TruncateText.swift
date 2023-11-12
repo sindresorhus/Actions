@@ -1,8 +1,6 @@
 import AppIntents
 
-struct TruncateText: AppIntent, CustomIntentMigratedAppIntent {
-	static let intentClassName = "TruncateTextIntent"
-
+struct TruncateTextIntent: AppIntent {
 	static let title: LocalizedStringResource = "Truncate Text"
 
 	static let description = IntentDescription(

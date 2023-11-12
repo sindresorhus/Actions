@@ -7,11 +7,11 @@ struct IsHostReachable: AppIntent {
 	static let title: LocalizedStringResource = "Is Host Reachable"
 
 	static let description = IntentDescription(
-"""
-Returns whether the host at the given domain or IP address is reachable.
+		"""
+		Returns whether the host at the given domain or IP address is reachable.
 
-Use the “Is Web Server Reachable” action if the host is a web server.
-""",
+		Use the “Is Web Server Reachable” action if the host is a web server.
+		""",
 		categoryName: "Device"
 	)
 

@@ -6,14 +6,14 @@ struct Authenticate: AppIntent {
 	static let title: LocalizedStringResource = "Authenticate"
 
 	static let description = IntentDescription(
-"""
-Authenticate the user using Face ID or Touch ID.
+		"""
+		Authenticate the user using Face ID or Touch ID.
 
-IMPORTANT: The result is copied to the clipboard as the text “true” or “false”. Add the “Wait to Return” and “Get Clipboard” actions after this one. Use the “If” action to decide what to do with the result.
+		IMPORTANT: The result is copied to the clipboard as the text “true” or “false”. Add the “Wait to Return” and “Get Clipboard” actions after this one. Use the “If” action to decide what to do with the result.
 
-Q: Why can't it return the value directly?
-A: The system authentication feature can only be triggered from an app, so the action has to send you to the Actions app, which shows it, and then sends you back to the shortcut.
-""",
+		Q: Why can't it return the value directly?
+		A: The system authentication feature can only be triggered from an app, so the action has to send you to the Actions app, which shows it, and then sends you back to the shortcut.
+		""",
 		categoryName: "Device",
 		searchKeywords: [
 			"face id",
@@ -26,11 +26,7 @@ A: The system authentication feature can only be triggered from an app, so the a
 		]
 	)
 
-	// TODO: Try again when targeting iOS 17.
-	// AppIntents cannot handle this conditional. (Xcode 14.1)
-//	#if canImport(UIKit)
 	static let openAppWhenRun = true
-//	#endif
 
 	@Parameter(
 		title: "Open When Finished",
@@ -46,6 +42,9 @@ A: The system authentication feature can only be triggered from an app, so the a
 
 	@MainActor
 	func perform() async throws -> some IntentResult {
+		// Work around issue with it not showing. (iOS 17.1)
+		try await Task.sleep(for: .seconds(0.1))
+
 		AppState.shared.isFullscreenOverlayPresented = true
 
 		#if canImport(UIKit)
@@ -82,7 +81,6 @@ A: The system authentication feature can only be triggered from an app, so the a
 
 			ShortcutsApp.open()
 
-			// TODO: This can be removed when we disable the `static let openAppWhenRun = true` for macOS again.
 			#if os(macOS)
 			SSApp.quit()
 			#endif

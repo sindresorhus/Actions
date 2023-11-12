@@ -1,23 +1,21 @@
 import AppIntents
 import SwiftUI
 
-struct ChooseFromListExtended: AppIntent, CustomIntentMigratedAppIntent {
-	static let intentClassName = "ChooseFromListExtendedIntent"
-
+struct ChooseFromListExtendedIntent: AppIntent {
 	static let title: LocalizedStringResource = "Choose from List (Extended)"
 
 	static let description = IntentDescription(
-"""
-Presents a searchable list where you can select one or multiple items.
+		"""
+		Presents a searchable list where you can select one or multiple items.
 
-It also supports setting a timeout and interactively adding custom items.
+		It also supports setting a timeout and interactively adding custom items.
 
-This is an extended version of the built-in "Choose from List" action.
+		This is an extended version of the built-in “Choose from List” action.
 
-IMPORTANT: Add the “Wait to Return” and “Get Clipboard” actions after this one.
+		IMPORTANT: Add the “Wait to Return” and “Get Clipboard” actions after this one.
 
-Note: If you get the error “The operation failed because Shortcuts couldn't convert from Text to NSString.”, just change the preview to show a list view instead. This is a bug in the Shortcuts app.
-""",
+		Note: If you get the error “The operation failed because Shortcuts couldn't convert from Text to NSString.”, just change the preview to show a list view instead. This is a bug in the Shortcuts app.
+		""",
 		categoryName: "Utility",
 		searchKeywords: [
 			"fuzzy",

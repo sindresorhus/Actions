@@ -1,4 +1,4 @@
-@preconcurrency import SwiftUI
+import SwiftUI
 import Combine
 import StoreKit
 import GameplayKit
@@ -36,6 +36,7 @@ typealias XApplicationDelegate = NSApplicationDelegate
 typealias XApplicationDelegateAdaptor = NSApplicationDelegateAdaptor
 typealias XScreen = NSScreen
 typealias XAccessibility = NSAccessibility
+typealias XTextContentType = NSTextContentType
 typealias WindowIfMacOS = Window
 #else
 import VisionKit
@@ -51,22 +52,17 @@ typealias XApplicationDelegate = UIApplicationDelegate
 typealias XApplicationDelegateAdaptor = UIApplicationDelegateAdaptor
 typealias XScreen = UIScreen
 typealias XAccessibility = UIAccessibility
+typealias XTextContentType = UITextContentType
 typealias WindowIfMacOS = WindowGroup
 #endif
 
-// TODO: See if I can remove any of these when targeting iOS 17.
+// TODO: See if I can remove any of these when targeting macOS 15.
 // TODO: Remove me when it's support it natively.
-extension UnitDuration: @unchecked Sendable {}
-extension UnitLength: @unchecked Sendable {}
-extension XColor: @unchecked Sendable {}
-
 #if os(macOS)
 extension NSRunningApplication: @unchecked Sendable {}
 extension NSWorkspace.OpenConfiguration: @unchecked Sendable {}
 extension NSImage: @unchecked Sendable {}
 #endif
-
-// TODO: When targeting macOS 14, replace `XColor` usage with `Color.Resolved`.
 
 
 // TODO: Remove this when everything is converted to async/await.
@@ -652,45 +648,30 @@ enum Device {
 
 #if canImport(UIKit)
 extension Device {
-	// TODO: Convert to AsyncSequence when targeting macOS 15. Then do a general, `motionStream` thing. Also use it for the orientation detection code.
-	static var didShake: AnyPublisher<Void, Error> {
-		let threshold = 2.2
-		let motionManager = CMMotionManager()
-		let subject = PassthroughSubject<Void, Error>()
+	/**
+	Creates an asynchronous stream that continuously checks if the device is moving.
 
-		guard motionManager.isAccelerometerAvailable else {
-			subject.send(completion: .failure("Accelerometer is not available.".toError))
-			return subject.eraseToAnyPublisher()
-		}
+	This function utilizes the device's accelerometer to determine if the device is in motion. It compares the absolute values of the accelerometer's x, y, and z axis readings against a specified threshold to detect movement.
 
-		motionManager.accelerometerUpdateInterval = 0.1
-
-		motionManager.startAccelerometerUpdates(to: .main) { data, error in
-			if let error {
-				subject.send(completion: .failure(error))
-				return
+	- Parameters:
+	 - minAcceleration: The minimum acceleration on any axis to consider the device as moving, measured in gravitational force units (G's).
+	*/
+	static func isMovingUpdates(minAcceleration threshold: Double) -> AsyncThrowingStream<Bool, Error> {
+		motionUpdates(interval: .seconds(0.1))
+			.map {
+				let acceleration = $0.userAcceleration
+				return abs(acceleration.x) > threshold
+					|| abs(acceleration.y) > threshold
+					|| abs(acceleration.z) > threshold
 			}
+			.eraseToAsyncThrowingStream()
+	}
 
-			if
-				let acceleration = data?.acceleration,
-				fabs(acceleration.x) > threshold
-					|| fabs(acceleration.y) > threshold
-					|| fabs(acceleration.z) > threshold
-			{
-				subject.send()
-			}
-		}
-
-		return subject
-			.handleEvents(
-				receiveCompletion: { _ in
-					motionManager.stopAccelerometerUpdates()
-				},
-				receiveCancel: {
-					motionManager.stopAccelerometerUpdates()
-				}
-			)
-			.eraseToAnyPublisher()
+	static var didShake: AsyncThrowingStream<Void, Error> {
+		isMovingUpdates(minAcceleration: 1.8)
+			.filter { $0 }
+			.map { _ in }
+			.eraseToAsyncThrowingStream()
 	}
 }
 #endif
@@ -702,7 +683,7 @@ enum InternalMacBattery {
 		private static func powerSourceInfo() -> [String: AnyObject] {
 			guard
 				let blob = IOPSCopyPowerSourcesInfo()?.takeRetainedValue(),
-				let sources = IOPSCopyPowerSourcesList(blob)?.takeRetainedValue() as [CFTypeRef]?,
+				let sources = IOPSCopyPowerSourcesList(blob)?.takeRetainedValue() as [CFTypeRef]?, // swiftlint:disable:this discouraged_optional_collection
 				let source = sources.first,
 				let description = IOPSGetPowerSourceDescription(blob, source)?.takeUnretainedValue() as? [String: AnyObject]
 			else {
@@ -1240,33 +1221,13 @@ extension Numeric {
 }
 
 
-// TODO
-//extension SSApp {
-//	private static let key = Defaults.Key("SSApp_requestReview", default: 0)
-//
-//	/**
-//	Requests a review only after this method has been called the given amount of times.
-//	*/
-//	static func requestReviewAfterBeingCalledThisManyTimes(_ counts: [Int]) {
-//		guard
-//			!SSApp.isFirstLaunch,
-//			counts.contains(Defaults[key].increment())
-//		else {
-//			return
-//		}
-//
-//		SKStoreReviewController.requestReview()
-//	}
-//}
-
-
 #if os(macOS)
 extension NSImage {
 	/**
 	Draw a color as an image.
 	*/
 	static func color(
-		_ color: NSColor,
+		_ color: Color,
 		size: CGSize,
 		scale: Double,
 		borderWidth: Double = 0,
@@ -1277,7 +1238,7 @@ extension NSImage {
 			NSGraphicsContext.current?.imageInterpolation = .high
 
 			guard let cornerRadius else {
-				color.set()
+				color.toXColor.set()
 				bounds.fill()
 				return true
 			}
@@ -1293,7 +1254,7 @@ extension NSImage {
 				yRadius: cornerRadius
 			)
 
-			color.set()
+			color.toXColor.set()
 			bezierPath.fill()
 
 			if
@@ -1312,16 +1273,16 @@ extension NSImage {
 #else
 extension UIImage {
 	static func color(
-		_ color: UIColor,
+		_ color: Color,
 		size: CGSize,
 		scale: Double
 	) -> UIImage {
 		let format = UIGraphicsImageRendererFormat()
-		format.opaque = color.alphaComponent == 1
+		format.opaque = color.resolve(in: .init()).opacity == 1
 		format.scale = scale
 
 		return UIGraphicsImageRenderer(size: size, format: format).image { rendererContext in
-			color.setFill()
+			color.toXColor.setFill()
 			rendererContext.fill(CGRect(origin: .zero, size: size))
 		}
 	}
@@ -1604,7 +1565,6 @@ extension Sequence where Element: StringProtocol {
 	*/
 	func localizedRemovingDuplicates(
 		caseInsensitive: Bool = false,
-		// TODO: Need a better name for this parameter.
 		overrideInclusion: ((Element) -> Bool?)? = nil // swiftlint:disable:this discouraged_optional_boolean
 	) -> [Element] {
 		reduce(into: []) { result, element in
@@ -1855,55 +1815,21 @@ extension String {
 }
 
 
-extension XColor {
+extension Color.Resolved {
 	/**
 	Generate a random color, avoiding black and white.
 	*/
 	static func randomAvoidingBlackAndWhite() -> Self {
-		self.init(
+		XColor(
 			hue: .random(in: 0...1),
 			saturation: .random(in: 0.5...1), // 0.5 is to get away from white
 			brightness: .random(in: 0.5...1), // 0.5 is to get away from black
 			alpha: 1
 		)
+		.toColor
+		.resolve(in: .init())
 	}
 }
-
-
-#if canImport(UIKit)
-// swiftlint:disable no_cgfloat
-extension UIColor {
-	/**
-	AppKit polyfill.
-
-	The alpha (opacity) component value of the color.
-	*/
-	var alphaComponent: CGFloat {
-		var alpha: CGFloat = 0
-		getRed(nil, green: nil, blue: nil, alpha: &alpha)
-		return alpha
-	}
-
-	var redComponent: CGFloat {
-		var red: CGFloat = 0
-		getRed(&red, green: nil, blue: nil, alpha: nil)
-		return red
-	}
-
-	var greenComponent: CGFloat {
-		var green: CGFloat = 0
-		getRed(nil, green: &green, blue: nil, alpha: nil)
-		return green
-	}
-
-	var blueComponent: CGFloat {
-		var blue: CGFloat = 0
-		getRed(nil, green: nil, blue: &blue, alpha: nil)
-		return blue
-	}
-}
-// swiftlint:enable no_cgfloat
-#endif
 
 
 extension String {
@@ -1938,8 +1864,8 @@ extension String {
 	}
 }
 
-extension XColor {
-	convenience init?(
+extension Color.Resolved {
+	init?(
 		hexString: String,
 		opacity: Double? = nil,
 		respectOpacity: Bool = true
@@ -1951,48 +1877,57 @@ extension XColor {
 		}
 
 		self.init(
-			red: red,
-			green: green,
-			blue: blue,
-			alpha: opacity ?? (respectOpacity ? alpha : 1)
+			red: red.toFloat,
+			green: green.toFloat,
+			blue: blue.toFloat,
+			opacity: opacity?.toFloat ?? (respectOpacity ? alpha.toFloat : 1)
 		)
 	}
 }
 
 
-// TODO: When targeting macOS 14, put these on `Color.Resolved` instead.
-extension XColor {
+extension Color.Resolved {
 	/**
-	- Important: Don't forget to convert it to the correct color space first.
 	- Note: It respects the opacity of the color.
 	*/
 	var hex: Int {
-		#if os(macOS)
-		guard numberOfComponents == 4 else {
-			assertionFailure()
-			return 0x0
-		}
-		#endif
-
-		let red = Int((redComponent * 0xFF).rounded())
-		let green = Int((greenComponent * 0xFF).rounded())
-		let blue = Int((blueComponent * 0xFF).rounded())
-		let opacity = Int((alphaComponent * 0xFF).rounded())
-
+		let red = Int((red * 0xFF).rounded())
+		let green = Int((green * 0xFF).rounded())
+		let blue = Int((blue * 0xFF).rounded())
+		let opacity = Int((opacity * 0xFF).rounded())
 		return opacity << 24 | red << 16 | green << 8 | blue
 	}
 
 	/**
-	- Important: Don't forget to convert it to the correct color space first.
 	- Note: It includes the opacity of the color if not `1`.
 	*/
 	var hexString: String {
-		if alphaComponent < 1 {
+		if opacity < 1 {
 			String(format: "#%08x", hex)
 		} else {
 			String(format: "#%06x", hex & 0xFFFFFF) // Masking to remove the alpha portion for full opacity
 		}
 	}
+}
+
+
+extension Color.Resolved {
+	var toColor: Color { .init(self) }
+}
+
+
+extension XColor {
+	/**
+	Convert a `NSColor`/`UIColor` to a `Color`.
+	*/
+	var toColor: Color { Color(self) }
+}
+
+extension Color {
+	/**
+	Convert a `Color` to a `NSColor`/`UIColor`.
+	*/
+	var toXColor: XColor { XColor(self) }
 }
 
 
@@ -2169,6 +2104,7 @@ enum OperatingSystem {
 	case iOS
 	case tvOS
 	case watchOS
+	case visionOS
 
 	#if os(macOS)
 	static let current = macOS
@@ -2178,9 +2114,13 @@ enum OperatingSystem {
 	static let current = tvOS
 	#elseif os(watchOS)
 	static let current = watchOS
+	#elseif os(visionOS)
+	static let current = visionOS
 	#else
 	#error("Unsupported platform")
 	#endif
+
+	static let isMacOS = current == .macOS
 }
 
 typealias OS = OperatingSystem
@@ -4063,11 +4003,11 @@ extension Device {
 
 			// When silent mode is enabled, the system skips playing the audio file and the function takes less than a millisecond to execute. We check for this to determine whether silent mode is enabled.
 
-			// TODO: Use `ContinuousClock.measure`.
-			let startTime = CACurrentMediaTime()
-			await silentAudio.play()
-			let duration = CACurrentMediaTime() - startTime
-			return duration < 0.05 // 0.01 works on modern phones, but 0.05 is required for older phones like iPhone 8.
+			let duration = await ContinuousClock().measure {
+				await silentAudio.play()
+			}
+
+			return duration < .milliseconds(50) // 10ms works on modern phones, but 50ms is required for older phones like iPhone 8.
 		}
 	}
 }
@@ -4275,6 +4215,15 @@ extension BinaryFloatingPoint {
 }
 
 
+extension Float {
+	var toDouble: Double { .init(self) }
+}
+
+extension Double {
+	var toFloat: Float { .init(self) }
+}
+
+
 enum Reachability {
 	/**
 	Checks whether we're currently online.
@@ -4336,7 +4285,7 @@ extension CLLocation {
 
 
 extension CGImage {
-	var xImage: XImage { XImage(cgImage: self) }
+	var toXImage: XImage { XImage(cgImage: self) }
 }
 
 
@@ -4393,7 +4342,7 @@ extension NSImage {
 
 extension NSImage {
 	func normalizingImage() -> NSImage {
-		guard let image = cgImage?.xImage else {
+		guard let image = cgImage?.toXImage else {
 			return resized(to: size)
 		}
 
@@ -5421,7 +5370,71 @@ extension Collection {
 
 
 #if canImport(UIKit)
-extension UIDevice {
+extension Device {
+	static func accelerometerUpdates(interval: Duration) -> AsyncThrowingStream<CMAccelerometerData, Error> {
+		.init { continuation in
+			let motionManager = CMMotionManager()
+
+			guard motionManager.isAccelerometerAvailable else {
+				continuation.finish(throwing: "This device does not provide accelerometer data.".toError)
+				return
+			}
+
+			motionManager.accelerometerUpdateInterval = interval.toTimeInterval
+
+			motionManager.startAccelerometerUpdates(to: OperationQueue()) { data, error in
+				if let error {
+					continuation.finish(throwing: error)
+					return
+				}
+
+				guard let data else {
+					return
+				}
+
+				continuation.yield(data)
+			}
+
+			continuation.onTermination = { [motionManager] _ in
+				motionManager.stopAccelerometerUpdates()
+			}
+		}
+	}
+}
+
+extension Device {
+	static func motionUpdates(interval: Duration) -> AsyncThrowingStream<CMDeviceMotion, Error> {
+		.init { continuation in
+			let motionManager = CMMotionManager()
+
+			guard motionManager.isDeviceMotionAvailable else {
+				continuation.finish(throwing: "This device does not provide motion data.".toError)
+				return
+			}
+
+			motionManager.deviceMotionUpdateInterval = interval.toTimeInterval
+
+			motionManager.startDeviceMotionUpdates(to: OperationQueue()) { data, error in
+				if let error {
+					continuation.finish(throwing: error)
+					return
+				}
+
+				guard let data else {
+					return
+				}
+
+				continuation.yield(data)
+			}
+
+			continuation.onTermination = { [motionManager] _ in
+				motionManager.stopDeviceMotionUpdates()
+			}
+		}
+	}
+}
+
+extension Device {
 	private static func getOrientation(for data: CMAccelerometerData) -> UIDeviceOrientation {
 		let absAccelerationX = abs(data.acceleration.x)
 		let absAccelerationY = abs(data.acceleration.y)
@@ -5442,40 +5455,15 @@ extension UIDevice {
 		return .unknown
 	}
 
-	func orientationStream(interval: Duration) -> AsyncThrowingStream<UIDeviceOrientation, Error> {
-		.init { continuation in
-			let motionManager = CMMotionManager()
-
-			guard motionManager.isDeviceMotionAvailable else {
-				continuation.finish(throwing: "This device does not provide orientation info.".toError)
-				return
-			}
-
-			motionManager.accelerometerUpdateInterval = interval.toTimeInterval
-
-			motionManager.startAccelerometerUpdates(to: OperationQueue()) { data, error in
-				if let error {
-					continuation.finish(throwing: error)
-					return
-				}
-
-				guard let data else {
-					continuation.yield(.unknown)
-					return
-				}
-
-				continuation.yield(Self.getOrientation(for: data))
-			}
-
-			continuation.onTermination = { [motionManager] _ in
-				motionManager.stopAccelerometerUpdates()
-			}
-		}
+	static func orientationUpdates(interval: Duration) -> AsyncThrowingStream<UIDeviceOrientation, Error> {
+		accelerometerUpdates(interval: interval)
+			.map { Self.getOrientation(for: $0) }
+			.eraseToAsyncThrowingStream()
 	}
 
-	var orientationBetter: UIDeviceOrientation {
+	static var orientation: UIDeviceOrientation {
 		get async throws {
-			(try await orientationStream(interval: .seconds(0.001)).first { _ in true }) ?? .unknown
+			(try await orientationUpdates(interval: .seconds(0.001)).first { _ in true }) ?? .unknown
 		}
 	}
 }
@@ -5623,8 +5611,11 @@ extension [XImage] {
 		let pdfDocument = PDFDocument()
 
 		for (index, image) in indexed() {
-			let pdfPage = PDFPage(image: image)
-			pdfDocument.insert(pdfPage!, at: index)
+			guard let pdfPage = PDFPage(image: image) else {
+				return nil
+			}
+
+			pdfDocument.insert(pdfPage, at: index)
 		}
 
 		return pdfDocument.dataRepresentation()
@@ -6061,23 +6052,6 @@ extension CLLocationCoordinate2D {
 }
 
 
-private struct StateAccessView<Value, Content: View>: View {
-	private let content: (Binding<Value>) -> Content
-	@State private var state: Value
-
-	init(
-		initialValue: Value,
-		@ViewBuilder content: @escaping (Binding<Value>) -> Content
-	) {
-		self.content = content
-		self._state = .init(wrappedValue: initialValue)
-	}
-
-	var body: some View {
-		content($state)
-	}
-}
-
 /**
 Access a state value inline in a view.
 
@@ -6098,6 +6072,23 @@ func withState<Value>(
 		initialValue: initialValue,
 		content: content
 	)
+}
+
+private struct StateAccessView<Value, Content: View>: View {
+	private let content: (Binding<Value>) -> Content
+	@State private var state: Value
+
+	init(
+		initialValue: Value,
+		@ViewBuilder content: @escaping (Binding<Value>) -> Content
+	) {
+		self.content = content
+		self._state = .init(wrappedValue: initialValue)
+	}
+
+	var body: some View {
+		content($state)
+	}
 }
 
 
@@ -6408,7 +6399,7 @@ extension NSNumber {
 
 
 extension CIImage {
-	func averageColor() throws -> XColor {
+	func averageColor() throws -> Color.Resolved {
 		let inputImage = self
 
 		let filter = CIFilter.areaAverage()
@@ -6427,14 +6418,14 @@ extension CIImage {
 			rowBytes: bitmap.count,
 			bounds: CGRect(x: 0, y: 0, width: 1, height: 1),
 			format: .RGBA8,
-			colorSpace: nil
+			colorSpace: .typed_extendedSRGB
 		)
 
 		return .init(
-			red: bitmap.colorValue(at: 0),
-			green: bitmap.colorValue(at: 1),
-			blue: bitmap.colorValue(at: 2),
-			alpha: bitmap.colorValue(at: 3)
+			red: bitmap.colorValue(at: 0).toFloat,
+			green: bitmap.colorValue(at: 1).toFloat,
+			blue: bitmap.colorValue(at: 2).toFloat,
+			opacity: bitmap.colorValue(at: 3).toFloat
 		)
 	}
 }
@@ -6446,7 +6437,7 @@ extension CIImage {
 
 	- Parameter count: Must be in the range `0...128`.
 	*/
-	func dominantColors(count: Int) throws -> [XColor] {
+	func dominantColors(count: Int) throws -> [Color.Resolved] {
 		assert((0...128).contains(count), "`count` must be in the range 0...128")
 
 		let inputImage = self
@@ -6464,7 +6455,7 @@ extension CIImage {
 
 		outputImage = outputImage.settingAlphaOne(in: outputImage.extent)
 
-		let context = CIContext()
+		let context = CIContext(options: [.workingColorSpace: NSNull()])
 		var bitmap = [UInt8](repeating: 0, count: 4 * count)
 
 		context.render(
@@ -6473,15 +6464,15 @@ extension CIImage {
 			rowBytes: 4 * count,
 			bounds: outputImage.extent,
 			format: .RGBA8,
-			colorSpace: inputImage.colorSpace
+			colorSpace: .typed_extendedSRGB
 		)
 
 		return (0..<count).map { index in
-			XColor(
-				red: bitmap.colorValue(at: index * 4),
-				green: bitmap.colorValue(at: index * 4 + 1),
-				blue: bitmap.colorValue(at: index * 4 + 2),
-				alpha: bitmap.colorValue(at: index * 4 + 3)
+			Color.Resolved(
+				red: bitmap.colorValue(at: index * 4).toFloat,
+				green: bitmap.colorValue(at: index * 4 + 1).toFloat,
+				blue: bitmap.colorValue(at: index * 4 + 2).toFloat,
+				opacity: bitmap.colorValue(at: index * 4 + 3).toFloat
 			)
 		}
 	}
@@ -6687,60 +6678,23 @@ extension Sequence where Element: BinaryFloatingPoint {
 }
 
 
-extension XColor {
-	typealias RGBA = (
-		red: Double,
-		green: Double,
-		blue: Double,
-		opacity: Double
-	)
-
-	var rgba: RGBA {
-		#if os(macOS)
-		guard let color = usingColorSpace(.extendedSRGB) else {
-			return RGBA(0, 0, 0, 0)
-		}
-		#else
-		let color = self
-		#endif
-
-		// swiftlint:disable no_cgfloat
-		var red: CGFloat = 0
-		var green: CGFloat = 0
-		var blue: CGFloat = 0
-		var alpha: CGFloat = 0
-		// swiftlint:enable no_cgfloat
-
-		color.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
-
-		return RGBA(
-			red: red.toDouble,
-			green: green.toDouble,
-			blue: blue.toDouble,
-			opacity: alpha.toDouble
-		)
-	}
-}
-
-
-extension [XColor] {
-	func averageColor() -> XColor? {
+extension [Color.Resolved] {
+	func averageColor() -> Element? {
 		guard !isEmpty else {
 			return nil
 		}
 
-		let rgbaValues = map(\.rgba)
-
 		return .init(
-			red: rgbaValues.map(\.red).average(),
-			green: rgbaValues.map(\.green).average(),
-			blue: rgbaValues.map(\.blue).average(),
-			alpha: rgbaValues.map(\.opacity).average()
+			red: map(\.red).average(),
+			green: map(\.green).average(),
+			blue: map(\.blue).average(),
+			opacity: map(\.opacity).average()
 		)
 	}
 }
 
 
+// TODO: Support unlimited operations when targeting Swift 6.
 func firstOf<R>(
 	_ operation1: @Sendable () async throws -> R,
 	or operation2: @Sendable () async throws -> R
@@ -6827,6 +6781,50 @@ extension CLLocationManager {
 
 		func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
 			continuation.finish(throwing: error)
+		}
+	}
+}
+
+
+// TODO: Remove when targeting Swift 6.
+extension AsyncSequence {
+	func eraseToAsyncStream() -> AsyncStream<Element> {
+		.init { continuation in
+			let task = Task {
+				do {
+					for try await element in self {
+						try Task.checkCancellation()
+						continuation.yield(element)
+					}
+				} catch {}
+
+				continuation.finish()
+			}
+
+			continuation.onTermination = { _ in
+				task.cancel()
+			}
+		}
+	}
+
+	func eraseToAsyncThrowingStream() -> AsyncThrowingStream<Element, Error> {
+		.init { continuation in
+			let task = Task {
+				do {
+					for try await element in self {
+						try Task.checkCancellation()
+						continuation.yield(element)
+					}
+
+					continuation.finish()
+				} catch {
+					continuation.finish(throwing: error)
+				}
+			}
+
+			continuation.onTermination = { _ in
+				task.cancel()
+			}
 		}
 	}
 }

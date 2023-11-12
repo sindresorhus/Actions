@@ -1,8 +1,6 @@
 import AppIntents
 
-struct GetEmojis: AppIntent, CustomIntentMigratedAppIntent {
-	static let intentClassName = "GetEmojisIntent"
-
+struct GetEmojisIntent: AppIntent {
 	static let title: LocalizedStringResource = "Get Emojis"
 
 	static let description = IntentDescription(

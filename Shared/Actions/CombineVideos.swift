@@ -5,17 +5,17 @@ struct CombineVideosIntent: AppIntent {
 	static let title: LocalizedStringResource = "Combine Videos"
 
 	static let description = IntentDescription(
-"""
-Combine videos into a single video.
+		"""
+		Combine videos into a single video.
 
-IMPORTANT: The videos must have the same size and orientation.
+		IMPORTANT: The videos must have the same size and orientation.
 
-This can be useful for combining Live Photos.
+		This can be useful for combining Live Photos.
 
-It uses passthrough whenever possible to prevent unnecessary transcoding, preserving original video quality.
+		It uses passthrough whenever possible to prevent unnecessary transcoding, preserving original video quality.
 
-NOTE: Shortcut actions only get 30 seconds to run, so if the videos are very long, it may not work.
-""",
+		NOTE: On iOS, shortcut actions only get 30 seconds to run, so if the videos are very long, it may not work.
+		""",
 		categoryName: "Video",
 		searchKeywords: [
 			"merge",

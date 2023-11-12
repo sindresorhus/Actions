@@ -5,13 +5,13 @@ struct IsDeviceLocked: AppIntent {
 	static let title: LocalizedStringResource = "Is Device Locked"
 
 	static let description = IntentDescription(
-"""
-Returns whether the device is currently locked.
+		"""
+		Returns whether the device is currently locked.
 
-Limitations:
-- It takes about 10 seconds from when you lock the screen until the device is actually locked.
-- This will not work if you don't have any authentication (passcode, Face ID, or Touch ID) for the device.
-""",
+		Limitations:
+		- It takes about 10 seconds from when you lock the screen until the device is actually locked.
+		- This will not work if you don't have any authentication (passcode, Face ID, or Touch ID) for the device.
+		""",
 		categoryName: "Device"
 	)
 

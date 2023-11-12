@@ -1,16 +1,14 @@
 import AppIntents
 
-struct FormatDateDifference: AppIntent, CustomIntentMigratedAppIntent {
-	static let intentClassName = "FormatDateDifferenceIntent"
-
+struct FormatDateDifferenceIntent: AppIntent {
 	static let title: LocalizedStringResource = "Format Date Difference"
 
 	static let description = IntentDescription(
-"""
-Formats the difference of one date relative to another date.
+		"""
+		Formats the difference of one date relative to another date.
 
-For example, “Yesterday” or “2 weeks ago”.
-""",
+		For example, “Yesterday” or “2 weeks ago”.
+		""",
 		categoryName: "Formatting"
 	)
 

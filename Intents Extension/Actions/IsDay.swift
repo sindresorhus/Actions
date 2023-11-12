@@ -4,9 +4,9 @@ struct IsDay: AppIntent {
 	static let title: LocalizedStringResource = "Is Day"
 
 	static let description = IntentDescription(
-"""
-Check if the input date corresponds to a specific weekday, today, tomorrow, yesterday, or falls on a weekend.
-""",
+		"""
+		Check if the input date corresponds to a specific weekday, today, tomorrow, yesterday, or falls on a weekend.
+		""",
 		categoryName: "Date"
 	)
 

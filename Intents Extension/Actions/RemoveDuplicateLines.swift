@@ -1,8 +1,6 @@
 import AppIntents
 
-struct RemoveDuplicateLines: AppIntent, CustomIntentMigratedAppIntent {
-	static let intentClassName = "RemoveDuplicateLinesIntent"
-
+struct RemoveDuplicateLinesIntent: AppIntent {
 	static let title: LocalizedStringResource = "Remove Duplicate Lines"
 
 	static let description = IntentDescription(

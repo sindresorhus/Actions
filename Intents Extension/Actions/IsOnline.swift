@@ -1,8 +1,6 @@
 import AppIntents
 
-struct IsOnline: AppIntent, CustomIntentMigratedAppIntent {
-	static let intentClassName = "IsOnlineIntent"
-
+struct IsOnlineIntent: AppIntent {
 	static let title: LocalizedStringResource = "Is Online"
 
 	static let description = IntentDescription(

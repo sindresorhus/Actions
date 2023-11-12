@@ -4,11 +4,11 @@ struct OverwriteFile: AppIntent {
 	static let title: LocalizedStringResource = "Overwrite File"
 
 	static let description = IntentDescription(
-"""
-Overwrites the given destination file with the given source file.
+		"""
+		Overwrites the given destination file with the given source file.
 
-Returns the new destination file.
-""",
+		Returns the new destination file.
+		""",
 		categoryName: "File"
 	)
 

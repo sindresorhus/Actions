@@ -1,8 +1,6 @@
 import AppIntents
 
-struct FormatCurrency: AppIntent, CustomIntentMigratedAppIntent {
-	static let intentClassName = "FormatCurrencyIntent"
-
+struct FormatCurrencyIntent: AppIntent {
 	static let title: LocalizedStringResource = "Format Currency"
 
 	static let description = IntentDescription(

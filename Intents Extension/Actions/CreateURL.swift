@@ -1,8 +1,6 @@
 import AppIntents
 
-struct CreateURL: AppIntent, CustomIntentMigratedAppIntent {
-	static let intentClassName = "CreateURLIntent"
-
+struct CreateURLIntent: AppIntent {
 	static let title: LocalizedStringResource = "Create URL"
 
 	static let description = IntentDescription(
@@ -149,8 +147,6 @@ struct CreateURL: AppIntent, CustomIntentMigratedAppIntent {
 
 		guard URL.isValidScheme(scheme) else {
 			throw "Invalid URL scheme.".toError
-				// TOOD: Remove the `.report()` at some point.
-				.report(userInfo: ["scheme": scheme, "originalScheme": originalScheme as Any])
 		}
 
 		// We use this to get some debug info as `.scheme` throws an exception on invalid input.

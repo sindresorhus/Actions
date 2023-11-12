@@ -1,19 +1,17 @@
 import AppIntents
 import CoreImage
 
-struct ScanQRCodesInImage: AppIntent, CustomIntentMigratedAppIntent {
-	static let intentClassName = "ScanQRCodesInImageIntent"
-
+struct ScanQRCodesInImageIntent: AppIntent {
 	static let title: LocalizedStringResource = "Scan QR Codes in Image"
 
 	static let description = IntentDescription(
-"""
-Returns the messages of the QR codes in the input image.
+		"""
+		Returns the messages of the QR codes in the input image.
 
-By default, it only returns the message for the first QR code.
+		By default, it only returns the message for the first QR code.
 
-The messages are sorted by the physical size of their QR code in ascending order (largest first).
-""",
+		The messages are sorted by the physical size of their QR code in ascending order (largest first).
+		""",
 		categoryName: "Image"
 	)
 

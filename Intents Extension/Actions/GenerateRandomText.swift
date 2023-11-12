@@ -1,17 +1,18 @@
 import AppIntents
 
-struct GenerateRandomText: AppIntent, CustomIntentMigratedAppIntent {
-	static let intentClassName = "RandomTextIntent"
-
+struct RandomTextIntent: AppIntent {
 	static let title: LocalizedStringResource = "Generate Random Text"
 
 	static let description = IntentDescription(
-"""
-Generates random text of the given length.
+		"""
+		Generates random text of the given length.
 
-This can be useful as a placeholder, token, etc.
-""",
-		categoryName: "Random"
+		This can be useful as a placeholder, token, etc.
+		""",
+		categoryName: "Random",
+		searchKeywords: [
+			"placeholder"
+		]
 	)
 
 	// We set an upper bound to not exceed allowed memory usage.

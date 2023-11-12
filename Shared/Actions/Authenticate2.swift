@@ -6,13 +6,13 @@ struct Authenticate2: AppIntent {
 	static let title: LocalizedStringResource = "Authenticate (New)"
 
 	static let description = IntentDescription(
-"""
-Authenticate the user using Face ID or Touch ID.
+		"""
+		Authenticate the user using Face ID or Touch ID.
 
-Unlike the old authenticate action, this one directly returns a boolean for whether the authentication succeeded.
+		Unlike the old authenticate action, this one directly returns a boolean for whether the authentication succeeded.
 
-On iOS, it needs to momentarily open the Actions app to be able to present the authentication prompt.
-""",
+		On iOS, it needs to momentarily open the Actions app to be able to present the authentication prompt.
+		""",
 		categoryName: "Device",
 		searchKeywords: [
 			"face id",
@@ -43,6 +43,9 @@ On iOS, it needs to momentarily open the Actions app to be able to present the a
 
 	@MainActor
 	func perform() async throws -> some IntentResult & ReturnsValue<Bool> {
+		// Work around issue with it not showing. (iOS 17.1)
+		try await Task.sleep(for: .seconds(0.1))
+
 		#if canImport(UIKit)
 		AppState.shared.isFullscreenOverlayPresented = true
 

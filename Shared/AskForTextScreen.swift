@@ -28,7 +28,7 @@ struct AskForTextScreen: View {
 				XPasteboard.general.stringForCurrentHostOnly = text
 				openShortcuts()
 			}
-				// TODO: The button disappears if the below is uncommented. (iOS 16.2)
+				// TODO: If we disable the button and then enable it, it loses its action. (iOS 17.1)
 				// TODO: Disable the button if not valid email, URL, etc, when using the types.
 //				.disabled(text.isEmptyOrWhitespace)
 			if data.showCancelButton {
@@ -38,16 +38,16 @@ struct AskForTextScreen: View {
 			}
 			// It's important that this is last as otherwise it shows only two "Done" buttons. (macOS 13.0)
 			TextField("", text: $text)
-				.lineLimit(4, reservesSpace: true) // Has no effect. (iOS 16.0)
+				.lineLimit(4, reservesSpace: true) // Has no effect. (iOS 17.1)
 				.focused($isFocused)
+				.textContentType(data.type.toContentType)
+				.autocorrectionDisabled(data.type.shouldDisableAutocorrectionAndAutocapitalization)
 				#if canImport(UIKit)
-				.textContentType(data.type.toContentType) // TODO: Enable on macOS when targeting macOS 14.
 				.keyboardType(data.type.toKeyboardType ?? .default)
 				.textInputAutocapitalization(data.type.shouldDisableAutocorrectionAndAutocapitalization ? .never : nil)
-				.autocorrectionDisabled(data.type.shouldDisableAutocorrectionAndAutocapitalization)
 				#endif
 		}
-			.onChange(of: text) { _ in
+			.onChange(of: text) {
 				isTimeoutCancelled = true
 			}
 			.task {
@@ -55,7 +55,7 @@ struct AskForTextScreen: View {
 				NSApp.activate(ignoringOtherApps: true)
 				#endif
 
-				// TODO: Does not work. (macoS 13.0)
+				// TODO: Does not work. (macoS 14.1)
 				isFocused = true
 
 				guard let timeout = data.timeout else {
@@ -80,9 +80,8 @@ struct AskForTextScreen: View {
 
 	@MainActor
 	private func openShortcuts() {
+		dismiss()
 		ShortcutsApp.open()
-		dismiss() // TODO: Report to Apple: Dismiss should work inside an alert.
-		AppState.shared.askForTextData = nil
 
 		#if os(macOS)
 		DispatchQueue.main.async {

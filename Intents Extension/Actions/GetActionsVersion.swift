@@ -4,11 +4,11 @@ struct GetActionsVersion: AppIntent {
 	static let title: LocalizedStringResource = "Get Actions Version"
 
 	static let description = IntentDescription(
-"""
-Returns the current version of the Actions app.
+		"""
+		Returns the current version of the Actions app.
 
-The build number is an increasing integer and can be used to do version checks.
-""",
+		The build number is an increasing integer and can be used to do version checks.
+		""",
 		categoryName: "Meta"
 	)
 

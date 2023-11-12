@@ -6,18 +6,18 @@ struct GetModifierKeyState: AppIntent {
 	static let title: LocalizedStringResource = "Get Modifier Key State"
 
 	static let description = IntentDescription(
-"""
-Returns which modifier keys are currently pressed.
+		"""
+		Returns which modifier keys are currently pressed.
 
-This can be useful to have alternative behavior when, for example, the user presses the Option key.
+		This can be useful to have alternative behavior when, for example, the user presses the Option key.
 
-Supported modifier keys:
-- Shift
-- Control
-- Option
-- Command
-- Function
-""",
+		Supported modifier keys:
+		- Shift
+		- Control
+		- Option
+		- Command
+		- Function
+		""",
 		categoryName: "Device",
 		searchKeywords: [
 			"keyboard",

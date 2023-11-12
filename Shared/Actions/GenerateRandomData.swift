@@ -4,19 +4,19 @@ struct GenerateRandomData: AppIntent {
 	static let title: LocalizedStringResource = "Generate Random Data"
 
 	static let description = IntentDescription(
-"""
-Generates cryptographically secure random data as Hex, Base64, or binary.
+		"""
+		Generates cryptographically secure random data as Hex, Base64, or binary.
 
-Example use-cases: Generating keys, secrets, nonces, OTP, passwords, PINs, secure tokens, etc.
-""",
+		Example use-cases: Generating keys, secrets, nonces, OTP, passwords, PINs, secure tokens, etc.
+		""",
 		categoryName: "Random"
 	)
 
 	@Parameter(
 		title: "Size",
 		description: "The size in bytes.",
-		controlStyle: .field
-//		inclusiveRange: (0, 99999999) // Causes the action to not compile (iOS 16.0.3)
+		controlStyle: .field,
+		inclusiveRange: (0, 99_999_999)
 	)
 	var size: Int
 

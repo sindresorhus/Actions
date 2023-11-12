@@ -4,13 +4,13 @@ struct WaitMilliseconds: AppIntent {
 	static let title: LocalizedStringResource = "Wait Milliseconds"
 
 	static let description = IntentDescription(
-"""
-Waits for the specified number of milliseconds before continuing with the next action.
+		"""
+		Waits for the specified number of milliseconds before continuing with the next action.
 
-It is guaranteed to take at least the given amount of milliseconds. Sometimes it may take slightly longer.
+		It is guaranteed to take at least the given amount of milliseconds. Sometimes it may take slightly longer.
 
-Use the built-in “Wait” action for durations longer than 1 second.
-""",
+		Use the built-in “Wait” action for durations longer than 1 second.
+		""",
 		categoryName: "Miscellaneous",
 		searchKeywords: [
 			"sleep",

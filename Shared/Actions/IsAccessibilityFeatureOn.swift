@@ -9,20 +9,20 @@ struct IsAccessibilityFeatureOn: AppIntent {
 	static let title: LocalizedStringResource = "Is Accessibility Feature On"
 
 	static let description = IntentDescription(
-"""
-Returns whether a certain accessibility feature is enabled.
+		"""
+		Returns whether a certain accessibility feature is enabled.
 
-On macOS, only the following are available. The rest always return false.
-- Reduce Motion
-- Reduce Transparency
-- Invert Colors
-- Increase Contrast
-- Differentiate without Color
-- VoiceOver
-- Switch Control
+		On macOS, only the following are available. The rest always return false.
+		- Reduce Motion
+		- Reduce Transparency
+		- Invert Colors
+		- Increase Contrast
+		- Differentiate without Color
+		- VoiceOver
+		- Switch Control
 
-It's unfortunately not possible to check for “Assistive Touch” and “Guided Access”.
-""",
+		It's unfortunately not possible to check for “Assistive Touch” and “Guided Access”.
+		""",
 		categoryName: "Device",
 		searchKeywords: [
 			"accessibility",

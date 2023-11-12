@@ -1,8 +1,6 @@
 import AppIntents
 
-struct GetBatteryState: AppIntent, CustomIntentMigratedAppIntent {
-	static let intentClassName = "GetBatteryStateIntent"
-
+struct GetBatteryStateIntent: AppIntent {
 	static let title: LocalizedStringResource = "Get Battery State"
 
 	static let description = IntentDescription(

@@ -1,8 +1,6 @@
 import AppIntents
 
-struct TrimWhitespace: AppIntent, CustomIntentMigratedAppIntent {
-	static let intentClassName = "TrimWhitespaceIntent"
-
+struct TrimWhitespaceIntent: AppIntent {
 	static let title: LocalizedStringResource = "Trim Whitespace"
 
 	static let description = IntentDescription(

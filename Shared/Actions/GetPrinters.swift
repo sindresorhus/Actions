@@ -8,11 +8,11 @@ struct GetPrinters: AppIntent {
 	static let title: LocalizedStringResource = "Get Printers (macOS-only)"
 
 	static let description = IntentDescription(
-"""
-Returns the available printers.
+		"""
+		Returns the available printers.
 
-Use the built-in "Show Result" action to inspect the individual properties.
-""",
+		Use the built-in “Show Result” action to inspect the individual properties.
+		""",
 		categoryName: "Device",
 		searchKeywords: [
 			"printer",

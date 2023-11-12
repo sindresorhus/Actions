@@ -1,16 +1,14 @@
 import AppIntents
 
-struct GetUnsplashImage: AppIntent, CustomIntentMigratedAppIntent {
-	static let intentClassName = "GetUnsplashImageIntent"
-
+struct GetUnsplashImageIntent: AppIntent {
 	static let title: LocalizedStringResource = "Get Unsplash Image"
 
 	static let description = IntentDescription(
-"""
-Returns a random image from Unsplash.
+		"""
+		Returns a random image from Unsplash.
 
-For example, use it together with the built-in “Set Wallpaper” action.
-""",
+		For example, use it together with the built-in “Set Wallpaper” action.
+		""",
 		categoryName: "Web"
 	)
 
@@ -30,7 +28,7 @@ For example, use it together with the built-in “Set Wallpaper” action.
 	var sizeHeight: Int?
 
 	static var parameterSummary: some ParameterSummary {
-		// This fails on Xcode 14.3
+		// This fails on Xcode 15.
 //		When(\.$size, .equalTo, .custom) {
 //			Summary("Get Unsplash image") {
 //				\.$keywords

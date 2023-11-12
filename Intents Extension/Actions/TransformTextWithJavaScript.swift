@@ -1,19 +1,17 @@
 import AppIntents
 import JavaScriptCore
 
-struct TransformTextWithJavaScript: AppIntent, CustomIntentMigratedAppIntent {
-	static let intentClassName = "TransformTextWithJavaScriptIntent"
-
+struct TransformTextWithJavaScriptIntent: AppIntent {
 	static let title: LocalizedStringResource = "Transform Text with JavaScript"
 
 	static let description = IntentDescription(
-"""
-Transforms the input text with the given JavaScript code.
+		"""
+		Transforms the input text with the given JavaScript code.
 
-The input text is available in a global variable named “$text”.
+		The input text is available in a global variable named “$text”.
 
-The code is excuted with JavaScriptCore (same as used in Safari), not JXA.
-""",
+		The code is excuted with JavaScriptCore (same as used in Safari), not JXA.
+		""",
 		categoryName: "Text"
 	)
 

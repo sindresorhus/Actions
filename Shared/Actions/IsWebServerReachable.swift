@@ -2,19 +2,17 @@ import AppIntents
 
 // Note: This has to be in the main app target so that it's able to show the prompt to request access to the local network.
 
-struct IsReachable: AppIntent, CustomIntentMigratedAppIntent {
-	static let intentClassName = "IsReachableIntent"
-
+struct IsReachableIntent: AppIntent {
 	static let title: LocalizedStringResource = "Is Web Server Reachable"
 
 	static let description = IntentDescription(
-"""
-Returns whether the web server at the given host or URL is reachable.
+		"""
+		Returns whether the web server at the given host or URL is reachable.
 
-Use the “Is Online” action if you just want to check whether your computer is online.
+		Use the “Is Online” action if you just want to check whether your computer is online.
 
-Use the "Is Host Reachable" action if you want to check reachability with a host that is not a web server.
-""",
+		Use the “Is Host Reachable” action if you want to check reachability with a host that is not a web server.
+		""",
 		categoryName: "Device"
 	)
 

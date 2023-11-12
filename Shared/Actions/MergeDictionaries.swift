@@ -1,22 +1,20 @@
 import AppIntents
 
-struct MergeDictionaries: AppIntent, CustomIntentMigratedAppIntent {
-	static let intentClassName = "MergeDictionariesIntent"
-
+struct MergeDictionariesIntent: AppIntent {
 	static let title: LocalizedStringResource = "Merge Dictionaries"
 
 	static let description = IntentDescription(
-"""
-Merges two or more dictionaries into one dictionary.
+		"""
+		Merges two or more dictionaries into one dictionary.
 
-Supports up to 10 dictionaries.
+		Supports up to 10 dictionaries.
 
-It does shallow merging.
+		It does shallow merging.
 
-Tap and hold a dictionary parameter to select a variable to a dictionary. Don't quick tap it.
+		Tap and hold a dictionary parameter to select a variable to a dictionary. Don't quick tap it.
 
-In Shortcuts, dictionaries are just JSON, so you can use this to merge JSON (file or text) too.
-""",
+		In Shortcuts, dictionaries are just JSON, so you can use this to merge JSON (file or text) too.
+		""",
 		categoryName: "Dictionary"
 	)
 

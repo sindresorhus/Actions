@@ -49,7 +49,7 @@ struct MainScreen: View {
 					}
 				}
 				.onChange(of: scenePhase) {
-					if $0 != .active {
+					if scenePhase != .active {
 						appState.isFullscreenOverlayPresented = false
 					}
 				}

@@ -1,19 +1,17 @@
 import AppIntents
 
 @available(iOS, unavailable)
-struct IsWiFiOn: AppIntent, CustomIntentMigratedAppIntent {
-	static let intentClassName = "IsWiFiOnIntent"
-
+struct IsWiFiOnIntent: AppIntent {
 	static let title: LocalizedStringResource = "Is Wi-Fi On (macOS-only)"
 
 	static let description = IntentDescription(
-"""
-Returns whether Wi-Fi is turned on.
+		"""
+		Returns whether Wi-Fi is turned on.
 
-It returns false if the device does not support Wi-Fi.
+		It returns false if the device does not support Wi-Fi.
 
-Use the “Is Online” action if you simply want to check for internet connectivity.
-""",
+		Use the “Is Online” action if you simply want to check for internet connectivity.
+		""",
 		categoryName: "Device"
 	)
 

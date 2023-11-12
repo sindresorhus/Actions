@@ -1,35 +1,33 @@
 import AppIntents
 import SwiftUI
 
-struct GetDeviceOrientation: AppIntent, CustomIntentMigratedAppIntent {
-	static let intentClassName = "GetDeviceOrientationIntent"
-
+struct GetDeviceOrientationIntent: AppIntent {
 	static let title: LocalizedStringResource = "Get Device Orientation"
 
 	static let description = IntentDescription(
-"""
-Returns the orientation of the device.
+		"""
+		Returns the orientation of the device.
 
-For example, whether the device is portrait or facing down.
+		For example, whether the device is portrait or facing down.
 
-Possible values:
-- unknown
-- portrait
-- portraitUpsideDown
-- landscapeLeft
-- landscapeRight
-- faceUp
-- faceDown
+		Possible values:
+		- unknown
+		- portrait
+		- portraitUpsideDown
+		- landscapeLeft
+		- landscapeRight
+		- faceUp
+		- faceDown
 
-On macOS, it always returns “unknown”.
-""",
+		On macOS, it always returns “unknown”.
+		""",
 		categoryName: "Device"
 	)
 
 	func perform() async throws -> some IntentResult & ReturnsValue<DeviceOrientationAppEnum> {
 		#if canImport(UIKit)
 		do {
-			return .result(value: .init(try await UIDevice.current.orientationBetter))
+			return .result(value: .init(try await Device.orientation))
 		} catch {
 			return .result(value: .unknown)
 		}

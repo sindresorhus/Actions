@@ -7,13 +7,13 @@ struct SetImageLocation: AppIntent {
 	static let title: LocalizedStringResource = "Set Image Location"
 
 	static let description = IntentDescription(
-"""
-Sets the capture location (Exif metadata) of the input images.
+		"""
+		Sets the capture location (Exif metadata) of the input images.
 
-Note: It only modifies the image in the workflow, not the original image.
+		Note: It only modifies the image in the workflow, not the original image.
 
-See the “Get Image Location” action for the inverse.
-""",
+		See the “Get Image Location” action for the inverse.
+		""",
 		categoryName: "File"
 	)
 

@@ -1,16 +1,14 @@
 import AppIntents
 
-struct ShuffleList: AppIntent, CustomIntentMigratedAppIntent {
-	static let intentClassName = "ShuffleListIntent"
-
+struct ShuffleListIntent: AppIntent {
 	static let title: LocalizedStringResource = "Shuffle List"
 
 	static let description = IntentDescription(
-"""
-Shuffles the input list.
+		"""
+		Shuffles the input list.
 
-Note: If you get the error “The operation failed because Shortcuts couldn't convert from Text to NSString.”, just change the preview to show a list view instead. This is a bug in the Shortcuts app.
-""",
+		Note: If you get the error “The operation failed because Shortcuts couldn't convert from Text to NSString.”, just change the preview to show a list view instead. This is a bug in the Shortcuts app.
+		""",
 		categoryName: "List"
 	)
 

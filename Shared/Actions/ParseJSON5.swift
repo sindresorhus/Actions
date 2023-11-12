@@ -1,18 +1,16 @@
 import AppIntents
 
-struct ParseJSON5: AppIntent, CustomIntentMigratedAppIntent {
-	static let intentClassName = "ParseJSON5Intent"
-
+struct ParseJSON5Intent: AppIntent {
 	static let title: LocalizedStringResource = "Parse JSON5"
 
 	static let description = IntentDescription(
-"""
-Parses JSON5 into a dictionary.
+		"""
+		Parses JSON5 into a dictionary.
 
-JSON5 is a more human-friendly version of JSON. It can handle comments, single-quotes, and more.
+		JSON5 is a more human-friendly version of JSON. It can handle comments, single-quotes, and more.
 
-The built-in "Get Dictionary from Input" action does not support JSON5.
-""",
+		The built-in “Get Dictionary from Input” action does not support JSON5.
+		""",
 		categoryName: "Parse / Generate"
 	)
 
@@ -30,7 +28,8 @@ The built-in "Get Dictionary from Input" action does not support JSON5.
 	func perform() async throws -> some IntentResult & ReturnsValue<IntentFile> {
 		let json = try JSONSerialization.jsonObject(with: file.data, options: .json5Allowed)
 
-		// TODO: Without this check, the Shortcuts app crashes on top-level array. (macOS 12.2)
+		// TODO: Without this check, the Shortcuts app crashes on top-level array. (macOS 14.1)
+		// https://github.com/feedback-assistant/reports/issues/377
 		guard json is NSDictionary else {
 			throw "The JSON has to be an object. The Shortcuts app cannot currently handle a top-level array.".toError
 		}

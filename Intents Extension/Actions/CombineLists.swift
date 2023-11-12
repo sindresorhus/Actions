@@ -1,20 +1,18 @@
 import AppIntents
 
-struct CombineLists: AppIntent, CustomIntentMigratedAppIntent {
-	static let intentClassName = "CombineListsIntent"
-
+struct CombineListsIntent: AppIntent {
 	static let title: LocalizedStringResource = "Combine Lists"
 
 	static let description = IntentDescription(
-"""
-Combines two or more lists into one list.
+		"""
+		Combines two or more lists into one list.
 
-Supports up to 10 lists.
+		Supports up to 10 lists.
 
-Tap and hold a list parameter to select a variable to a list. Don't quick tap it.
+		Tap and hold a list parameter to select a variable to a list. Don't quick tap it.
 
-Note: If you get the error “The operation failed because Shortcuts couldn't convert from Text to NSString.”, just change the preview to show a list view instead. This is a bug in the Shortcuts app.
-""",
+		Note: If you get the error “The operation failed because Shortcuts couldn't convert from Text to NSString.”, just change the preview to show a list view instead. This is a bug in the Shortcuts app.
+		""",
 		categoryName: "List"
 	)
 

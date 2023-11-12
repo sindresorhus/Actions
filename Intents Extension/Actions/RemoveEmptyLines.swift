@@ -1,8 +1,6 @@
 import AppIntents
 
-struct RemoveEmptyLines: AppIntent, CustomIntentMigratedAppIntent {
-	static let intentClassName = "RemoveEmptyLinesIntent"
-
+struct RemoveEmptyLinesIntent: AppIntent {
 	static let title: LocalizedStringResource = "Remove Empty Lines"
 
 	static let description = IntentDescription(

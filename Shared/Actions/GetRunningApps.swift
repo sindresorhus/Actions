@@ -3,17 +3,17 @@ import AppIntents
 import AppKit
 
 @available(iOS, unavailable)
-struct GetRunningApps: AppIntent, CustomIntentMigratedAppIntent {
-	static let intentClassName = "GetRunningAppsIntent"
-
+struct GetRunningAppsIntent: AppIntent {
 	static let title: LocalizedStringResource = "Get Running Apps (macOS-only)"
 
 	static let description = IntentDescription(
-"""
-Returns the currently running apps, including various metadata about them.
+		"""
+		IMPORTANT: Prefer the built-in “Find Apps” action. This one will be deprecated at some point.
 
-Use the built-in "Show Result" action to inspect the individual properties.
-""",
+		Returns the currently running apps, including various metadata about them.
+
+		Use the built-in “Show Result” action to inspect the individual properties.
+		""",
 		categoryName: "Device"
 	)
 
@@ -42,7 +42,7 @@ struct RunningAppAppEntity: TransientAppEntity {
 	@Property(title: "URL")
 	var url: URL?
 
-	// TODO: This is not shown. (macOS 13.0)
+	// TODO: This is not shown. (macOS 14.1)
 	@Property(title: "Icon")
 	var icon: IntentFile?
 

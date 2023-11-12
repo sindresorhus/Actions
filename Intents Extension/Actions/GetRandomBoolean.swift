@@ -1,8 +1,6 @@
 import AppIntents
 
-struct GetRandomBoolean: AppIntent, CustomIntentMigratedAppIntent {
-	static let intentClassName = "RandomBooleanIntent"
-
+struct RandomBooleanIntent: AppIntent {
 	static let title: LocalizedStringResource = "Get Random Boolean"
 
 	static let description = IntentDescription(

@@ -5,9 +5,9 @@ struct InvertImages: AppIntent {
 	static let title: LocalizedStringResource = "Invert Images"
 
 	static let description = IntentDescription(
-"""
-Invert the colors of the input images.
-""",
+		"""
+		Invert the colors of the input images.
+		""",
 		categoryName: "Image"
 	)
 

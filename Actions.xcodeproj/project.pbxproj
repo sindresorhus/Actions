@@ -98,7 +98,6 @@
 		E33AE99E2ADF10B800862F55 /* IsAccessibilityFeatureOn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E375A5CE2ADEE387004BCBFA /* IsAccessibilityFeatureOn.swift */; };
 		E33AE9A02ADFBB6600862F55 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33AE99F2ADFBB6600862F55 /* Color.swift */; };
 		E33D080D2A11623200FBCAD7 /* SimpleKeychain in Frameworks */ = {isa = PBXBuildFile; productRef = E33D080C2A11623200FBCAD7 /* SimpleKeychain */; };
-		E33D080F2A11629500FBCAD7 /* AskChatGPT.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33D080E2A11629500FBCAD7 /* AskChatGPT.swift */; };
 		E33D08142A11679300FBCAD7 /* SettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33D08132A11679300FBCAD7 /* SettingsScreen.swift */; };
 		E33D4BA62744238300CC7A8A /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33D4BA42744238300CC7A8A /* AppState.swift */; };
 		E343F9B829713AFF00AD82F4 /* GetMapImageOfLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E317489E2913BEAB00F6319E /* GetMapImageOfLocation.swift */; };
@@ -216,7 +215,6 @@
 		E337A3DF27E850EC0073E865 /* ChooseFromListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseFromListScreen.swift; sourceTree = "<group>"; };
 		E337FA3A2ADFCE9700BF9542 /* GetAverageColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAverageColor.swift; sourceTree = "<group>"; };
 		E33AE99F2ADFBB6600862F55 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		E33D080E2A11629500FBCAD7 /* AskChatGPT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskChatGPT.swift; sourceTree = "<group>"; };
 		E33D08132A11679300FBCAD7 /* SettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreen.swift; sourceTree = "<group>"; };
 		E33D4BA42744238300CC7A8A /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		E33DFF662748C6B100C79D78 /* InternetAccessPolicy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = InternetAccessPolicy.json; sourceTree = "<group>"; };
@@ -370,7 +368,6 @@
 		E30FD0D527908D1A00C01D80 /* Actions */ = {
 			isa = PBXGroup;
 			children = (
-				E33D080E2A11629500FBCAD7 /* AskChatGPT.swift */,
 				E352420928F6EEDE00A957A7 /* AskForText.swift */,
 				E34AB51528F58B500082AE78 /* Authenticate.swift */,
 				E3A246842AFEC35100453E9C /* Authenticate2.swift */,
@@ -812,7 +809,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3EA7D7B28EAC2210043F782 /* BlurImages.swift in Sources */,
-				E33D080F2A11629500FBCAD7 /* AskChatGPT.swift in Sources */,
 				E3C33CDC28D48C3200386C59 /* GetRunningApps.swift in Sources */,
 				E3BFF7B527428F5200B830DE /* WelcomeScreen.swift in Sources */,
 				E3F64D7628D9F9930009B500 /* CreateColorImage.swift in Sources */,
@@ -1008,8 +1004,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
-				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1069,8 +1065,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
-				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;

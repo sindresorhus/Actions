@@ -31,10 +31,11 @@ And for high-quality transcription, see my [Aiko](https://sindresorhus.com/aiko)
 
 [![](https://sindresorhus.com/assets/download-on-app-store-badge.svg)](https://apps.apple.com/app/id1586435171)
 
-*Requires at least macOS 13 or iOS 16*
+*Requires at least macOS 14 or iOS 17*
 
 **Older versions (macOS)**
 
+- [2.10.0](https://github.com/sindresorhus/Actions/releases/download/v2.10.0/Actions.2.10.0.zip) for macOS 13+
 - [1.13.1](https://github.com/sindresorhus/Actions/releases/download/v1.13.1/Actions.1.13.1.-.macOS.12.zip) for macOS 12+
 
 ## Included actions

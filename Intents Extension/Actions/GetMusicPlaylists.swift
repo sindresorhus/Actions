@@ -2,9 +2,7 @@ import AppIntents
 import MediaPlayer
 
 @available(macOS, unavailable)
-struct GetMusicPlaylists: AppIntent, CustomIntentMigratedAppIntent {
-	static let intentClassName = "GetMusicPlaylistsIntent"
-
+struct GetMusicPlaylistsIntent: AppIntent {
 	static let title: LocalizedStringResource = "Get Music Playlists (iOS-only)"
 
 	static let description = IntentDescription(

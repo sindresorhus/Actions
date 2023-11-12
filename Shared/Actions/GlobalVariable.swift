@@ -4,14 +4,19 @@ struct GlobalVariableSetText: AppIntent {
 	static let title: LocalizedStringResource = "Global Variable: Set Text"
 
 	static let description = IntentDescription(
-"""
-Sets a global variable with the given text.
+		"""
+		Sets a global variable with the given text.
 
-Tip: You can store a dictionary of string/boolean/number values by passing it in as a variable. To get the persisted dictionary back, pass the output of the “Global Variables: Get Text” action to the “Get Dictionary from Input” action.
+		Tip: You can store a dictionary of string/boolean/number values by passing it in as a variable. To get the persisted dictionary back, pass the output of the “Global Variables: Get Text” action to the “Get Dictionary from Input” action.
 
-Global variables persist across your shortcuts and devices, with a limit of 1000 variables and a total storage capacity of 1 MB. Avoid using this for large amounts of data. For large data, use iCloud Drive, Notes, or Data Jar.
-""",
-		categoryName: "Global Variable"
+		Global variables persist across your shortcuts and devices, with a limit of 1000 variables and a total storage capacity of 1 MB. Avoid using this for large amounts of data. For large data, use iCloud Drive, Notes, or Data Jar.
+		""",
+		categoryName: "Global Variable",
+		searchKeywords: [
+			"sync",
+			"synchronize",
+			"icloud"
+		]
 	)
 
 	@Parameter(
@@ -44,7 +49,12 @@ struct GlobalVariableGetText: AppIntent {
 
 	static let description = IntentDescription(
 		"Returns the global variable with the given key if any.",
-		categoryName: "Global Variable"
+		categoryName: "Global Variable",
+		searchKeywords: [
+			"sync",
+			"synchronize",
+			"icloud"
+		]
 	)
 
 	@Parameter(
@@ -63,13 +73,10 @@ struct GlobalVariableGetText: AppIntent {
 		Summary("Get global text variable \(\.$key)")
 	}
 
-	// NOTE: We return an empty string as the action crashes if we return an optional string. (macOS 13.2)
-	func perform() async throws -> some IntentResult & ReturnsValue<String> {
+	func perform() async throws -> some IntentResult & ReturnsValue<String?> {
 		NSUbiquitousKeyValueStore.default.synchronize()
-
 		let result = NSUbiquitousKeyValueStore.default.string(forKey: "\(keyPrefix)\(key)")
-
-		return .result(value: result ?? "")
+		return .result(value: result)
 	}
 }
 
@@ -77,14 +84,19 @@ struct GlobalVariableSetBoolean: AppIntent {
 	static let title: LocalizedStringResource = "Global Variable: Set Boolean"
 
 	static let description = IntentDescription(
-"""
-Sets a global variable with the given boolean.
+		"""
+		Sets a global variable with the given boolean.
 
-You can also toggle a boolean.
+		You can also toggle a boolean.
 
-Global variables persist across your shortcuts and devices, with a limit of 1000 variables and a total storage capacity of 1 MB. Avoid using this for large amounts of data. For large data, use iCloud Drive, Notes, or Data Jar.
-""",
-		categoryName: "Global Variable"
+		Global variables persist across your shortcuts and devices, with a limit of 1000 variables and a total storage capacity of 1 MB. Avoid using this for large amounts of data. For large data, use iCloud Drive, Notes, or Data Jar.
+		""",
+		categoryName: "Global Variable",
+		searchKeywords: [
+			"sync",
+			"synchronize",
+			"icloud"
+		]
 	)
 
 	@Parameter(
@@ -138,7 +150,12 @@ struct GlobalVariableGetBoolean: AppIntent {
 
 	static let description = IntentDescription(
 		"Returns the global variable with the given key if any.",
-		categoryName: "Global Variable"
+		categoryName: "Global Variable",
+		searchKeywords: [
+			"sync",
+			"synchronize",
+			"icloud"
+		]
 	)
 
 	@Parameter(
@@ -157,17 +174,10 @@ struct GlobalVariableGetBoolean: AppIntent {
 		Summary("Get global boolean variable \(\.$key)")
 	}
 
-	// NOTE: We return an array as the action crashes if we return an optional Bool. (macOS 13.2)
-	func perform() async throws -> some IntentResult & ReturnsValue<[Bool]> {
+	func perform() async throws -> some IntentResult & ReturnsValue<Bool?> { // swiftlint:disable:this discouraged_optional_boolean
 		NSUbiquitousKeyValueStore.default.synchronize()
-
-		guard
-			let result = NSUbiquitousKeyValueStore.default.strictBool(forKey: "\(keyPrefix)\(key)")
-		else {
-			return .result(value: [])
-		}
-
-		return .result(value: [result])
+		let result = NSUbiquitousKeyValueStore.default.strictBool(forKey: "\(keyPrefix)\(key)")
+		return .result(value: result)
 	}
 }
 
@@ -175,14 +185,19 @@ struct GlobalVariableSetNumber: AppIntent {
 	static let title: LocalizedStringResource = "Global Variable: Set Number"
 
 	static let description = IntentDescription(
-"""
-Sets a global variable with the given number.
+		"""
+		Sets a global variable with the given number.
 
-You can also increment or decrement a number.
+		You can also increment or decrement a number.
 
-Global variables persist across your shortcuts and devices, with a limit of 1000 variables and a total storage capacity of 1 MB. Avoid using this for large amounts of data. For large data, use iCloud Drive, Notes, or Data Jar.
-""",
-		categoryName: "Global Variable"
+		Global variables persist across your shortcuts and devices, with a limit of 1000 variables and a total storage capacity of 1 MB. Avoid using this for large amounts of data. For large data, use iCloud Drive, Notes, or Data Jar.
+		""",
+		categoryName: "Global Variable",
+		searchKeywords: [
+			"sync",
+			"synchronize",
+			"icloud"
+		]
 	)
 
 	@Parameter(
@@ -255,7 +270,12 @@ struct GlobalVariableGetNumber: AppIntent {
 
 	static let description = IntentDescription(
 		"Returns the global variable with the given key if any.",
-		categoryName: "Global Variable"
+		categoryName: "Global Variable",
+		searchKeywords: [
+			"sync",
+			"synchronize",
+			"icloud"
+		]
 	)
 
 	@Parameter(
@@ -274,17 +294,10 @@ struct GlobalVariableGetNumber: AppIntent {
 		Summary("Get global number variable \(\.$key)")
 	}
 
-	// NOTE: We return an array as the action crashes if we return an optional Double. (macOS 13.2)
-	func perform() async throws -> some IntentResult & ReturnsValue<[Double]> {
+	func perform() async throws -> some IntentResult & ReturnsValue<Double?> {
 		NSUbiquitousKeyValueStore.default.synchronize()
-
-		guard
-			let result = NSUbiquitousKeyValueStore.default.strictNumber(forKey: "\(keyPrefix)\(key)")
-		else {
-			return .result(value: [])
-		}
-
-		return .result(value: [result])
+		let result = NSUbiquitousKeyValueStore.default.strictNumber(forKey: "\(keyPrefix)\(key)")
+		return .result(value: result)
 	}
 }
 
@@ -293,7 +306,12 @@ struct GlobalVariableDelete: AppIntent {
 
 	static let description = IntentDescription(
 		"Delete global variables.",
-		categoryName: "Global Variable"
+		categoryName: "Global Variable",
+		searchKeywords: [
+			"sync",
+			"synchronize",
+			"icloud"
+		]
 	)
 
 	@Parameter(
@@ -340,19 +358,24 @@ struct GlobalVariableGetAll: AppIntent {
 	static let title: LocalizedStringResource = "Global Variable: Get All"
 
 	static let description = IntentDescription(
-"""
-Returns all the global variables as a dictionary.
+		"""
+		Returns all the global variables as a dictionary.
 
-Tip: Use the built-in “Get Dictionary Value” action to access all keys.
-""",
-		categoryName: "Global Variable"
+		Tip: Use the built-in “Get Dictionary Value” action to access all keys.
+		""",
+		categoryName: "Global Variable",
+		searchKeywords: [
+			"sync",
+			"synchronize",
+			"icloud"
+		]
 	)
 
 	static var parameterSummary: some ParameterSummary {
 		Summary("Get all global variables")
 	}
 
-	// TODO: Open a FB about this if not available in macOS 14.
+	// TODO: Open a FB about this if not available in macOS 15.
 	// NOTE: We have to return a file as dictionary is not yet a valid return type.
 	func perform() async throws -> some IntentResult & ReturnsValue<IntentFile> {
 		let keyValueTuples: [(String, Any)] = NSUbiquitousKeyValueStore.default.allOwnKeys.compactMap { key in

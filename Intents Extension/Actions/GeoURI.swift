@@ -1,9 +1,7 @@
 import AppIntents
 import CoreLocation
 
-struct GeoURI: AppIntent, CustomIntentMigratedAppIntent {
-	static let intentClassName = "GeoURIIntent"
-
+struct GeoURIIntent: AppIntent {
 	static let title: LocalizedStringResource = "Convert Location to Geo URI"
 
 	static let description = IntentDescription(

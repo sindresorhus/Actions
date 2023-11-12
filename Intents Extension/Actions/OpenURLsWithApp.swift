@@ -7,14 +7,14 @@ struct OpenURLsWithApp: AppIntent {
 	static let title: LocalizedStringResource = "Open URLs with App"
 
 	static let description = IntentDescription(
-"""
-Opens URLs in a specific app.
+		"""
+		Opens URLs in a specific app.
 
-This only works for apps that declare they can open URLs. Click the app parameter to see those apps.
+		This only works for apps that declare they can open URLs. Click the app parameter to see those apps.
 
-Tip: Check out the action that comes with my Velja app if you need to open URLs with an app that does not declare support for URLs.
-""",
-		categoryName: "Device" // TODO: Find a better category.
+		Tip: Check out the action that comes with my Velja app if you need to open URLs with an app that does not declare support for URLs.
+		""",
+		categoryName: "URL"
 	)
 
 	@Parameter(title: "URL")

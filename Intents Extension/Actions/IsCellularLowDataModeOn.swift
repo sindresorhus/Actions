@@ -4,11 +4,11 @@ struct IsCellularLowDataModeOn: AppIntent {
 	static let title: LocalizedStringResource = "Is Cellular Low Data Mode On"
 
 	static let description = IntentDescription(
-"""
-Returns whether cellular low data mode is enabled on the device.
+		"""
+		Returns whether cellular low data mode is enabled on the device.
 
-On macOS, it always returns false.
-""",
+		On macOS, it always returns false.
+		""",
 		categoryName: "Device"
 	)
 

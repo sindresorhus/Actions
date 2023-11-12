@@ -1,8 +1,6 @@
 import AppIntents
 
-struct IsDarkMode: AppIntent, CustomIntentMigratedAppIntent {
-    static let intentClassName = "IsDarkModeIntent"
-
+struct IsDarkModeIntent: AppIntent {
     static let title: LocalizedStringResource = "Is Dark Mode On"
 
 	static let description = IntentDescription(

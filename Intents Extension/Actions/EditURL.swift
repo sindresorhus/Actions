@@ -1,16 +1,14 @@
 import AppIntents
 
-struct EditURL: AppIntent, CustomIntentMigratedAppIntent {
-	static let intentClassName = "EditURLIntent"
-
+struct EditURLIntent: AppIntent {
 	static let title: LocalizedStringResource = "Edit URL"
 
 	static let description = IntentDescription(
-"""
-Lets you edit the components of the input URL.
+		"""
+		Lets you edit the components of the input URL.
 
-For example, add a query item, change the path, or remove the fragment.
-""",
+		For example, add a query item, change the path, or remove the fragment.
+		""",
 		categoryName: "URL"
 	)
 
@@ -286,8 +284,6 @@ For example, add a query item, change the path, or remove the fragment.
 
 				guard URL.isValidScheme(scheme) else {
 					throw "Invalid URL scheme.".toError
-						// TOOD: Remove the `.report()` at some point.
-						.report(userInfo: ["scheme": scheme, "originalScheme": setSchemeValue as Any])
 				}
 
 				// We use this to get some debug info as `.scheme` throws an exception on invalid input.

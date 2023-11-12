@@ -4,15 +4,15 @@ struct GetDeviceDetailsExtended: AppIntent {
 	static let title: LocalizedStringResource = "Get Device Details (Extended)"
 
 	static let description = IntentDescription(
-"""
-Get details about the device.
+		"""
+		Get details about the device.
 
-This is an extension to the built-in "Get Device Details" action.
+		This is an extension to the built-in “Get Device Details” action.
 
-You can access the individual values.
+		You can access the individual values.
 
-Tip: Use the “Format Duration” action to format the “Uptime” and “Duration since boot” values.
-""",
+		Tip: Use the “Format Duration” action to format the “Uptime” and “Duration since boot” values.
+		""",
 		categoryName: "Device",
 		searchKeywords: [
 			"system",

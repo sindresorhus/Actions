@@ -1,18 +1,16 @@
 import AppIntents
 
-struct RemoveFromList: AppIntent, CustomIntentMigratedAppIntent {
-	static let intentClassName = "RemoveFromListIntent"
-
+struct RemoveFromListIntent: AppIntent {
 	static let title: LocalizedStringResource = "Remove from List"
 
 	static let description = IntentDescription(
-"""
-Removes items from the input list.
+		"""
+		Removes items from the input list.
 
-It uses 1-based indexing.
+		It uses 1-based indexing.
 
-Note: If you get the error “The operation failed because Shortcuts couldn't convert from Text to NSString.”, just change the preview to show a list view instead. This is a bug in the Shortcuts app.
-""",
+		Note: If you get the error “The operation failed because Shortcuts couldn't convert from Text to NSString.”, just change the preview to show a list view instead. This is a bug in the Shortcuts app.
+		""",
 		categoryName: "List"
 	)
 

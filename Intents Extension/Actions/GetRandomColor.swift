@@ -1,8 +1,6 @@
 import AppIntents
 
-struct GetRandomColor: AppIntent, CustomIntentMigratedAppIntent {
-	static let intentClassName = "RandomColorIntent"
-
+struct RandomColorIntent: AppIntent {
 	static let title: LocalizedStringResource = "Get Random Color"
 
 	static let description = IntentDescription(
