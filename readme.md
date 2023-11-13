@@ -80,6 +80,7 @@ And for high-quality transcription, see my [Aiko](https://sindresorhus.com/aiko)
 - Get Compass Heading <sup>(iOS-only)</sup>
 - Get Default Printer <sup>(macOS-only)</sup>
 - Get Device Details (Extended)
+- Get Device Motion Data <sup>(iOS-only)</sup>
 - Get Device Orientation
 - Get Dominant Colors of Image
 - Get Emojis

@@ -2,7 +2,9 @@ import SwiftUI
 
 struct MainScreen: View {
 	@Environment(\.scenePhase) private var scenePhase
+	@Environment(\.requestReview) private var requestReview
 	@EnvironmentObject private var appState: AppState
+	@AppStorage("hasRequestedReview") private var hasRequestedReview = false
 	@State private var error: Error?
 	@State private var isSettingsPresented = false
 
@@ -70,6 +72,9 @@ struct MainScreen: View {
 					}
 					#endif
 				}
+				.task {
+					requestReviewIfNeeded()
+				}
 		}
 	}
 
@@ -100,6 +105,21 @@ struct MainScreen: View {
 //			timeoutReturnValue: "X"
 //		)
 		#endif
+	}
+
+	private func requestReviewIfNeeded() {
+		let sevenDays = 7.0 * 24.0 * 60.0 * 60.0
+
+		guard
+			!SSApp.isFirstLaunch,
+			hasRequestedReview,
+			SSApp.firstLaunchDate < Date.now.addingTimeInterval(-sevenDays)
+		else {
+			return
+		}
+
+		requestReview()
+		hasRequestedReview = true
 	}
 }
 

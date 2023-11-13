@@ -18,7 +18,8 @@ struct IsDeviceMoving: AppIntent {
 			"movement",
 			"motion",
 			"accelerometer",
-			"still"
+			"still",
+			"gyro"
 		]
 	)
 

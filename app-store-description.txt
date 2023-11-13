@@ -65,6 +65,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Get Compass Heading (iOS-only)
 - Get Default Printer (macOS-only)
 - Get Device Details (Extended)
+- Get Device Motion Data (iOS-only)
 - Get Device Orientation
 - Get Dominant Colors of Image
 - Get Emojis

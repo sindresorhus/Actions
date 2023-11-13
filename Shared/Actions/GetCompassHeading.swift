@@ -21,7 +21,7 @@ struct GetCompassHeading: AppIntent {
 	)
 
 	@Parameter(title: "Heading Type", default: .magnetic)
-	var headingType: HeadingType_AppEnum
+	var headingType: CompassHeadingType_AppEnum
 
 	static var parameterSummary: some ParameterSummary {
 		Summary("Get \(\.$headingType) compass heading")
@@ -36,7 +36,7 @@ struct GetCompassHeading: AppIntent {
 
 			let status = CLLocationManager().authorizationStatus
 			guard status == .authorizedWhenInUse || status == .authorizedAlways else {
-				throw "Location permission not granted.".toError
+				throw "Location permission not granted. You can grant access in “Settings › Actions”.".toError
 			}
 		}
 
@@ -63,11 +63,11 @@ struct GetCompassHeading: AppIntent {
 }
 
 @available(macOS, unavailable)
-enum HeadingType_AppEnum: String, AppEnum {
+enum CompassHeadingType_AppEnum: String, AppEnum {
 	case magnetic
 	case trueNorth
 
-	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Heading Type"
+	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Compass Heading Type"
 
 	static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
 		.magnetic: "Magnetic",

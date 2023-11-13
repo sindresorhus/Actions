@@ -137,6 +137,21 @@ enum SSApp {
 		return true
 	}()
 
+	/**
+	The date and time the app was launched for the first time.
+	*/
+	static let firstLaunchDate: Date = {
+		let key = "SS_firstLaunchDate"
+
+		if let date = UserDefaults.standard.object(forKey: key) as? Date {
+			return date
+		}
+
+		let date = Date()
+		UserDefaults.standard.set(date, forKey: key)
+		return date
+	}()
+
 	private static func getFeedbackMetadata() -> String {
 		"""
 		\(name) \(versionWithBuild) - \(idString)
@@ -5728,6 +5743,18 @@ extension Color {
 extension AsyncSequence {
 	func first() async rethrows -> Element? {
 		try await first { _ in true }
+	}
+}
+
+
+extension AsyncSequence {
+	/**
+	Convert an async sequence to an array.
+
+	This can be useful if you just want to await all the elements in the async sequence instead of iterating over it.
+	*/
+	func toArray() async rethrows -> [Element] {
+		try await reduce(into: [Element]()) { $0.append($1) }
 	}
 }
 

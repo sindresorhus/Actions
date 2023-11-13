@@ -14,6 +14,7 @@ struct AppMain: App {
 
 	init() {
 		initSentry()
+		_ = SSApp.firstLaunchDate
 	}
 
 	var body: some Scene {
