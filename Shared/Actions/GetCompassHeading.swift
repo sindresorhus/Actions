@@ -9,6 +9,8 @@ struct GetCompassHeading: AppIntent {
 		"""
 		Returns the current compass heading, in magnetic or true north format.
 
+		The returned value is in degrees. The value 0 means the device is pointed toward north, 90 means it is pointed due east, 180 means it is pointed due south, and so on.
+
 		Magnetic heading aligns with traditional compasses and maps, while true north is crucial for accurate astronomical alignments and specific surveying tasks.
 		""",
 		categoryName: "Location",
@@ -25,8 +27,10 @@ struct GetCompassHeading: AppIntent {
 		Summary("Get \(\.$headingType) compass heading")
 	}
 
+	// The intent crashes with a that we defined a different `ReturnsValue` type than what we returned if we use `Measurement<UnitAngle>`. (iOS 17.1)
 	@MainActor
-	func perform() async throws -> some IntentResult & ReturnsValue<Measurement<UnitAngle>> {
+//	func perform() async throws -> some IntentResult & ReturnsValue<Measurement<UnitAngle>> {
+	func perform() async throws -> some IntentResult & ReturnsValue<Double> {
 		if headingType == .trueNorth {
 			CLLocationManager().requestWhenInUseAuthorization()
 
@@ -40,11 +44,18 @@ struct GetCompassHeading: AppIntent {
 			throw "Failed to get heading.".toError
 		}
 
-		let headingAngle: Measurement<UnitAngle> = switch headingType {
+//		let headingAngle: Measurement<UnitAngle> = switch headingType {
+//		case .magnetic:
+//			.init(value: heading.magneticHeading, unit: .degrees)
+//		case .trueNorth:
+//			.init(value: heading.trueHeading, unit: .degrees)
+//		}
+
+		let headingAngle = switch headingType {
 		case .magnetic:
-			.init(value: heading.magneticHeading, unit: .degrees)
+			heading.magneticHeading
 		case .trueNorth:
-			.init(value: heading.trueHeading, unit: .degrees)
+			heading.trueHeading
 		}
 
 		return .result(value: headingAngle)

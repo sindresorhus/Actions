@@ -122,6 +122,7 @@ And for high-quality transcription, see my [Aiko](https://sindresorhus.com/aiko)
 - Is Dark Mode On
 - Is Day
 - Is Device Locked
+- Is Device Moving
 - Is Device Orientation
 - Is Host Reachable
 - Is Low Power Mode On
