@@ -61,6 +61,8 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Get Average Color
 - Get Average Color of Image
 - Get Battery State
+- Get Bluetooth Device
+- Get Bluetooth Devices
 - Get Boolean from Input
 - Get Compass Heading (iOS-only)
 - Get Default Printer (macOS-only)

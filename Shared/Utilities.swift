@@ -3220,6 +3220,23 @@ extension String {
 
 
 enum Bluetooth {
+	private static var noAccessError: GeneralError {
+		let recoverySuggestion = OS.current == .macOS
+			? "You can grant access in “System Settings › Privacy & Security › Bluetooth”."
+			: "You can grant access in “Settings › \(SSApp.name)”."
+
+		return GeneralError("No access to Bluetooth.", recoverySuggestion: recoverySuggestion)
+	}
+
+	static func ensureAccess() throws {
+		// Make sure we try to prompt first.
+		_ = CBCentralManager(delegate: nil, queue: nil, options: [CBCentralManagerOptionShowPowerAlertKey: true])
+
+		guard CBCentralManager.authorization == .allowedAlways else {
+			throw noAccessError
+		}
+	}
+
 	private final class BluetoothManager: NSObject, CBCentralManagerDelegate {
 		private let continuation: CheckedContinuation<Bool, Error>
 		private var manager: CBCentralManager?
@@ -3241,12 +3258,7 @@ enum Bluetooth {
 				return
 			}
 
-			let recoverySuggestion = OS.current == .macOS
-				? "You can grant access in “System Settings › Privacy & Security › Bluetooth”."
-				: "You can grant access in “Settings › \(SSApp.name)”."
-
-			let error = GeneralError("No access to Bluetooth.", recoverySuggestion: recoverySuggestion)
-			continuation.resume(throwing: error)
+			continuation.resume(throwing: Bluetooth.noAccessError)
 			hasCalled = true
 		}
 
@@ -6854,4 +6866,12 @@ extension AsyncSequence {
 			}
 		}
 	}
+}
+
+
+extension FloatingPointFormatStyle.Percent {
+	/**
+	Do not show fraction.
+	*/
+	var noFraction: Self { precision(.fractionLength(0)) }
 }

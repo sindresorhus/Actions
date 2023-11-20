@@ -23,7 +23,7 @@ struct HapticFeedbackIntent: AppIntent {
 	var type: HapticFeedbackTypeAppEnum
 
 	static var parameterSummary: some ParameterSummary {
-		Summary("Generate \(\.$type) haptic feedback")
+		Summary("Generate \(\.$type) haptic feedback (PLEASE READ THE ACTION DESCRIPTION)")
 	}
 
 	@MainActor

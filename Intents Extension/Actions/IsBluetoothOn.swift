@@ -7,9 +7,9 @@ struct IsBluetoothOnIntent: AppIntent {
 		"""
 		Returns whether Bluetooth is on or off.
 
-		NOTE: You need to allow Bluetooth permission in the main app before using this action.
+		NOTE: You need to allow the Bluetooth permission in the main app before using this action.
 		""",
-		categoryName: "Device"
+		categoryName: "Bluetooth"
 	)
 
 	func perform() async throws -> some IntentResult & ReturnsValue<Bool> {

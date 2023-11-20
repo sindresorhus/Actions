@@ -97,6 +97,9 @@
 		E337FA3B2ADFCE9700BF9542 /* GetAverageColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E337FA3A2ADFCE9700BF9542 /* GetAverageColor.swift */; };
 		E33AE99E2ADF10B800862F55 /* IsAccessibilityFeatureOn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E375A5CE2ADEE387004BCBFA /* IsAccessibilityFeatureOn.swift */; };
 		E33AE9A02ADFBB6600862F55 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33AE99F2ADFBB6600862F55 /* Color.swift */; };
+		E33D00F52B12DCFE0063524E /* GetBluetoothDevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30ADE952B0B6CA100000F41 /* GetBluetoothDevices.swift */; };
+		E33D00F62B12DD070063524E /* GetBluetoothDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30ADE9E2B0E199500000F41 /* GetBluetoothDevice.swift */; };
+		E33D00F82B12DD3F0063524E /* SwiftBluetooth in Frameworks */ = {isa = PBXBuildFile; productRef = E33D00F72B12DD3F0063524E /* SwiftBluetooth */; };
 		E33D080D2A11623200FBCAD7 /* SimpleKeychain in Frameworks */ = {isa = PBXBuildFile; productRef = E33D080C2A11623200FBCAD7 /* SimpleKeychain */; };
 		E33D08142A11679300FBCAD7 /* SettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33D08132A11679300FBCAD7 /* SettingsScreen.swift */; };
 		E33D4BA62744238300CC7A8A /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33D4BA42744238300CC7A8A /* AppState.swift */; };
@@ -189,6 +192,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E30ADE952B0B6CA100000F41 /* GetBluetoothDevices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBluetoothDevices.swift; sourceTree = "<group>"; };
+		E30ADE9D2B0E01ED00000F41 /* SwiftBluetooth */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SwiftBluetooth; path = ../../forks/SwiftBluetooth; sourceTree = "<group>"; };
+		E30ADE9E2B0E199500000F41 /* GetBluetoothDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBluetoothDevice.swift; sourceTree = "<group>"; };
 		E30E56122922602B00C44823 /* GetRandomNumberFromSeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRandomNumberFromSeed.swift; sourceTree = "<group>"; };
 		E317489E2913BEAB00F6319E /* GetMapImageOfLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMapImageOfLocation.swift; sourceTree = "<group>"; };
 		E31748A0291589B600F6319E /* GetHighResolutionTimestamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHighResolutionTimestamp.swift; sourceTree = "<group>"; };
@@ -363,6 +369,7 @@
 				E337A3E627E8BA6B0073E865 /* FuzzyFind in Frameworks */,
 				E317495F2916A4A300F6319E /* SoulverCore in Frameworks */,
 				E351083928FD8089007C85AE /* Sentry in Frameworks */,
+				E33D00F82B12DD3F0063524E /* SwiftBluetooth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,6 +391,8 @@
 				E3CB449D28D791D40031D55F /* GenerateCSV.swift */,
 				E3CF4F9728FDA7EB00BD88D5 /* GenerateRandomData.swift */,
 				E3B8FD1D29F11DCA001249CF /* GetAverageColorOfImage.swift */,
+				E30ADE9E2B0E199500000F41 /* GetBluetoothDevice.swift */,
+				E30ADE952B0B6CA100000F41 /* GetBluetoothDevices.swift */,
 				E3D737F52B00230100E9023B /* GetCompassHeading.swift */,
 				E376FD862952937200C0F81F /* GetDefaultPrinter.swift */,
 				E37A1E212A2D214800E68E92 /* GetDominantColorsOfImage.swift */,
@@ -537,6 +546,7 @@
 		E324C9E9271E972100E7CA9B = {
 			isa = PBXGroup;
 			children = (
+				E30ADE9D2B0E01ED00000F41 /* SwiftBluetooth */,
 				E324CA29271EA67E00E7CA9B /* Config.xcconfig */,
 				E324C9EE271E972200E7CA9B /* Shared */,
 				E31748A72916A0B200F6319E /* Intents Extension */,
@@ -622,6 +632,7 @@
 				E351083828FD8089007C85AE /* Sentry */,
 				E317495E2916A4A300F6319E /* SoulverCore */,
 				E33D080C2A11623200FBCAD7 /* SimpleKeychain */,
+				E33D00F72B12DD3F0063524E /* SwiftBluetooth */,
 			);
 			productName = "Actions (iOS)";
 			productReference = E324C9F6271E972300E7CA9B /* Actions.app */;
@@ -660,6 +671,7 @@
 				E32B4F3227FD77700057F08D /* XCRemoteSwiftPackageReference "ExceptionCatcher" */,
 				E317495D2916A4A300F6319E /* XCRemoteSwiftPackageReference "SoulverCore" */,
 				E33D080B2A11623200FBCAD7 /* XCRemoteSwiftPackageReference "SimpleKeychain" */,
+				E30ADE972B0B6D2900000F41 /* XCRemoteSwiftPackageReference "SwiftBluetooth" */,
 			);
 			productRefGroup = E324C9F7271E972300E7CA9B /* Products */;
 			projectDirPath = "";
@@ -829,6 +841,7 @@
 				E37A1E222A2D214800E68E92 /* GetDominantColorsOfImage.swift in Sources */,
 				E34AB51628F58B500082AE78 /* Authenticate.swift in Sources */,
 				E3CB449928D78CBE0031D55F /* ParseCSV.swift in Sources */,
+				E33D00F52B12DCFE0063524E /* GetBluetoothDevices.swift in Sources */,
 				E3722CE82ACDCA2A0007316D /* Debug.swift in Sources */,
 				E351083628FD79D8007C85AE /* OverwriteFile.swift in Sources */,
 				E352420C28F6F6AD00A957A7 /* AskForTextScreen.swift in Sources */,
@@ -837,6 +850,7 @@
 				E3DB886C28E7549800FEE8D6 /* Constants.swift in Sources */,
 				E3DB884D28E6E3AD00FEE8D6 /* HapticFeedback.swift in Sources */,
 				E3EF8AEA2AEFCBDB007B0F32 /* IsWebServerReachable.swift in Sources */,
+				E33D00F62B12DD070063524E /* GetBluetoothDevice.swift in Sources */,
 				E3CB448B28D71A180031D55F /* IsScreenLocked.swift in Sources */,
 				E350B2522AC3005800BFC34D /* IsDeviceLocked.swift in Sources */,
 				E36A41B32AC605AF00A29195 /* CreateMenuItem.swift in Sources */,
@@ -1101,8 +1115,8 @@
 				INFOPLIST_FILE = Shared/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Required to use the “Get Music Playlists” action.";
-				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Required to use the “Is Bluetooth On” action.";
-				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Required to use the “Is Bluetooth On” action.";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Required to use the “Is Bluetooth On” and “Get Bluetooth Devices” actions.";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Required to use the “Is Bluetooth On” and “Get Bluetooth Devices” actions.";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Required to use the “Scan Documents” action.";
 				INFOPLIST_KEY_NSContactsUsageDescription = "Required to get the user's name in the “Get User Details” action.";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Required to use the “Authenticate” action.";
@@ -1151,8 +1165,8 @@
 				INFOPLIST_FILE = Shared/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Required to use the “Get Music Playlists” action.";
-				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Required to use the “Is Bluetooth On” action.";
-				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Required to use the “Is Bluetooth On” action.";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Required to use the “Is Bluetooth On” and “Get Bluetooth Devices” actions.";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Required to use the “Is Bluetooth On” and “Get Bluetooth Devices” actions.";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Required to use the “Scan Documents” action.";
 				INFOPLIST_KEY_NSContactsUsageDescription = "Required to get the user's name in the “Get User Details” action.";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Required to use the “Authenticate” action.";
@@ -1217,6 +1231,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		E30ADE972B0B6D2900000F41 /* XCRemoteSwiftPackageReference "SwiftBluetooth" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/exPHAT/SwiftBluetooth";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.0;
+			};
+		};
 		E317495D2916A4A300F6319E /* XCRemoteSwiftPackageReference "SoulverCore" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/soulverteam/SoulverCore";
@@ -1279,6 +1301,10 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E337A3E227E8B66D0073E865 /* XCRemoteSwiftPackageReference "FuzzyFind" */;
 			productName = FuzzyFind;
+		};
+		E33D00F72B12DD3F0063524E /* SwiftBluetooth */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SwiftBluetooth;
 		};
 		E33D080C2A11623200FBCAD7 /* SimpleKeychain */ = {
 			isa = XCSwiftPackageProductDependency;

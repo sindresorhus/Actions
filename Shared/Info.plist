@@ -6,5 +6,9 @@
 	<false/>
 	<key>MDItemKeywords</key>
 	<string>shortcuts,shortcut,actions,action,workflow</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>bluetooth-central</string>
+	</array>
 </dict>
 </plist>

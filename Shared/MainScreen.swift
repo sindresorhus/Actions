@@ -40,6 +40,19 @@ struct MainScreen: View {
 							.ignoresSafeArea()
 					}
 				}
+				.overlay {
+					if let message = appState.fullscreenMessage {
+						// We use this instead of `.fullScreenCover` as there's no way to turn off its animation.
+						Color.legacyBackground
+							.ignoresSafeArea()
+							.overlay {
+								VStack(spacing: 32) {
+									ProgressView()
+									Text(message)
+								}
+							}
+					}
+				}
 				#if canImport(UIKit)
 				.documentScanner(isPresented: $appState.isDocumentScannerPresented) {
 					switch $0 {
@@ -64,11 +77,16 @@ struct MainScreen: View {
 				}
 				.toolbar {
 					#if canImport(UIKit)
-					ToolbarItemGroup(placement: .topBarTrailing) {
-						Button("Settings", systemImage: "gear") {
-							isSettingsPresented = true
-						}
+					if
+						!appState.isFullscreenOverlayPresented,
+						appState.fullscreenMessage == nil
+					{
+						ToolbarItemGroup(placement: .topBarTrailing) {
+							Button("Settings", systemImage: "gear") {
+								isSettingsPresented = true
+							}
 							.keyboardShortcut(",")
+						}
 					}
 					#endif
 				}

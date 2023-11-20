@@ -36,6 +36,7 @@ Intent categories:
 - Parse / Generate
 - Math
 - Location
+- Bluetooth
 - Meta
 - Global Variable
 - Miscellaneous
