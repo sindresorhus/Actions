@@ -9,7 +9,8 @@ struct GetUniformTypeIdentifierIntent: AppIntent {
 
 		For example, a JPEG file would return “public.jpeg”.
 		""",
-		categoryName: "File"
+		categoryName: "File",
+		resultValueName: "Uniform Type Identifier"
 	)
 
 	@Parameter(title: "File", supportedTypeIdentifiers: ["public.item"])

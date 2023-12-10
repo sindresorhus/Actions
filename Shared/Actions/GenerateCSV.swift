@@ -12,7 +12,8 @@ struct GenerateCSVIntent: AppIntent {
 
 		The dictionaries must have the same shape.
 		""",
-		categoryName: "Parse / Generate"
+		categoryName: "Parse / Generate",
+		resultValueName: "CSV File"
 	)
 
 	@Parameter(title: "Dictionaries", supportedTypeIdentifiers: ["public.json"])

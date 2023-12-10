@@ -14,7 +14,8 @@ struct SetImageLocation: AppIntent {
 
 		See the “Get Image Location” action for the inverse.
 		""",
-		categoryName: "File"
+		categoryName: "File",
+		resultValueName: "Images with Updated Location"
 	)
 
 	@Parameter(

@@ -5,7 +5,8 @@ struct RemoveEmojiIntent: AppIntent {
 
 	static let description = IntentDescription(
 		"Removes all emojis in the input text.",
-		categoryName: "Text"
+		categoryName: "Text",
+		resultValueName: "Text without Emojis"
 	)
 
 	@Parameter(title: "Text")

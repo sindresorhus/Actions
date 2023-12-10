@@ -7,7 +7,8 @@ struct GetMusicPlaylistsIntent: AppIntent {
 
 	static let description = IntentDescription(
 		"Returns the names of the playlists in your Music library.",
-		categoryName: "Music"
+		categoryName: "Music",
+		resultValueName: "Music Playlists"
 	)
 
 	func perform() async throws -> some IntentResult & ReturnsValue<[String]> {

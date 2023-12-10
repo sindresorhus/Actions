@@ -20,7 +20,8 @@ struct CreateMenuItem: AppIntent {
 			"rich",
 			"list",
 			"menuitem"
-		]
+		],
+		resultValueName: "Menu Item"
 	)
 
 	static var parameterSummary: some ParameterSummary {

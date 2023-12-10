@@ -55,7 +55,8 @@ struct CalculateWithSoulver: AppIntent {
 
 		If you like this action, you may also like the Soulver macOS app.
 		""",
-		categoryName: "Math"
+		categoryName: "Math",
+		resultValueName: "Soulver Result"
 	)
 
 	@Parameter(

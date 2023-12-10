@@ -12,7 +12,8 @@ struct RandomTextIntent: AppIntent {
 		categoryName: "Random",
 		searchKeywords: [
 			"placeholder"
-		]
+		],
+		resultValueName: "Random Text"
 	)
 
 	// We set an upper bound to not exceed allowed memory usage.

@@ -5,7 +5,8 @@ struct ReverseLines: AppIntent {
 
 	static let description = IntentDescription(
 		"Reverses the lines of the input text.",
-		categoryName: "Text"
+		categoryName: "Text",
+		resultValueName: "Text with Lines Reversed"
 	)
 
 	@Parameter(title: "Text")

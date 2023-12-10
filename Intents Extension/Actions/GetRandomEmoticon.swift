@@ -5,7 +5,8 @@ struct RandomEmojiIntent: AppIntent {
 
 	static let description = IntentDescription(
 		"Returns a random emoticon (also known as smiley).",
-		categoryName: "Random"
+		categoryName: "Random",
+		resultValueName: "Random Emoticon"
 	)
 
 	func perform() async throws -> some IntentResult & ReturnsValue<String> {

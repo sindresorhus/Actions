@@ -15,7 +15,8 @@ struct MergeDictionariesIntent: AppIntent {
 
 		In Shortcuts, dictionaries are just JSON, so you can use this to merge JSON (file or text) too.
 		""",
-		categoryName: "Dictionary"
+		categoryName: "Dictionary",
+		resultValueName: "Merged Dictionary"
 	)
 
 	@Parameter(title: "Dictionary 1", supportedTypeIdentifiers: ["public.item"])

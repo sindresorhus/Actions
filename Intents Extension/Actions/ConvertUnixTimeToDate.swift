@@ -9,7 +9,8 @@ struct UnixTimeToDateIntent: AppIntent {
 
 		Unix time (also known as Epoch time) is a system for describing a point in time — the number of seconds that have elapsed since the Unix epoch.
 		""",
-		categoryName: "Date"
+		categoryName: "Date",
+		resultValueName: "Date"
 	)
 
 	@Parameter(title: "Unix Time", description: "Example: 1663178163", controlStyle: .field)

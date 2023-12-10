@@ -6,7 +6,8 @@ struct RandomDateTimeIntent: AppIntent {
 
 	static let description = IntentDescription(
 		"Returns a random date and time in the given range.",
-		categoryName: "Random"
+		categoryName: "Random",
+		resultValueName: "Random Date and Time"
 	)
 
 	@Parameter(title: "Start")

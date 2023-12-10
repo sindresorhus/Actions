@@ -21,7 +21,8 @@ struct GetDeviceOrientationIntent: AppIntent {
 
 		On macOS, it always returns “unknown”.
 		""",
-		categoryName: "Device"
+		categoryName: "Device",
+		resultValueName: "Device Orientation"
 	)
 
 	func perform() async throws -> some IntentResult & ReturnsValue<DeviceOrientationAppEnum> {

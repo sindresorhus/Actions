@@ -18,7 +18,8 @@ struct TruncateNumber: AppIntent {
 			"strip",
 			"whole",
 			"integer"
-		]
+		],
+		resultValueName: "Truncated Number"
 	)
 
 	@Parameter(title: "Number")

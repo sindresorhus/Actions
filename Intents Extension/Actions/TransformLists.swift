@@ -15,7 +15,8 @@ struct TransformListsIntent: AppIntent {
 
 		Known limitation: It does not work with iTunes Media items.
 		""",
-		categoryName: "List"
+		categoryName: "List",
+		resultValueName: "Transformed Lists"
 	)
 
 	@Parameter(title: "Operation", default: .intersection)

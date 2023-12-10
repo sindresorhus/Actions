@@ -11,7 +11,8 @@ struct ParseJSON5Intent: AppIntent {
 
 		The built-in “Get Dictionary from Input” action does not support JSON5.
 		""",
-		categoryName: "Parse / Generate"
+		categoryName: "Parse / Generate",
+		resultValueName: "Parsed JSON5"
 	)
 
 	@Parameter(

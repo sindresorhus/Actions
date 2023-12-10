@@ -6,7 +6,8 @@ struct DebugIntent: AppIntent {
 
 	static let description = IntentDescription(
 		"This is meant for debugging problems with actions.",
-		categoryName: "Z_Internal"
+		categoryName: "Z_Internal",
+		resultValueName: "Debug Info"
 	)
 
 	func perform() async throws -> some IntentResult & ReturnsValue<String> {

@@ -54,7 +54,8 @@ struct GlobalVariableGetText: AppIntent {
 			"sync",
 			"synchronize",
 			"icloud"
-		]
+		],
+		resultValueName: "Global Variable — Text"
 	)
 
 	@Parameter(
@@ -155,7 +156,8 @@ struct GlobalVariableGetBoolean: AppIntent {
 			"sync",
 			"synchronize",
 			"icloud"
-		]
+		],
+		resultValueName: "Global Variable — Boolean"
 	)
 
 	@Parameter(
@@ -275,7 +277,8 @@ struct GlobalVariableGetNumber: AppIntent {
 			"sync",
 			"synchronize",
 			"icloud"
-		]
+		],
+		resultValueName: "Global Variable — Number"
 	)
 
 	@Parameter(
@@ -368,7 +371,8 @@ struct GlobalVariableGetAll: AppIntent {
 			"sync",
 			"synchronize",
 			"icloud"
-		]
+		],
+		resultValueName: "All Global Variables"
 	)
 
 	static var parameterSummary: some ParameterSummary {

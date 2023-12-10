@@ -5,17 +5,22 @@ struct TruncateTextIntent: AppIntent {
 
 	static let description = IntentDescription(
 		"Truncates the input text from the end to the given maximum length.",
-		categoryName: "Text"
+		categoryName: "Text",
+		resultValueName: "Truncated Text"
 	)
 
 	@Parameter(title: "Text")
 	var text: String
 
-	@Parameter(title: "Maximum Length")
+	@Parameter(
+		title: "Maximum Length",
+		description: "Sets the maximum length for the resulting text, truncation character included."
+	)
 	var maximumLength: Int
 
 	@Parameter(
 		title: "Truncation Indicator",
+		description: "The default indicator “…” is a single character called Horizontal Ellipsis, not three dots.",
 		default: "…",
 		inputOptions: String.IntentInputOptions(
 			capitalizationType: .none,

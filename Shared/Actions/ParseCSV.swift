@@ -6,7 +6,8 @@ struct ParseCSVIntent: AppIntent {
 
 	static let description = IntentDescription(
 		"Parses CSV into a list of dictionaries.",
-		categoryName: "Parse / Generate"
+		categoryName: "Parse / Generate",
+		resultValueName: "Parsed CSV"
 	)
 
 	@Parameter(

@@ -6,7 +6,8 @@ struct BlurImages: AppIntent {
 
 	static let description = IntentDescription(
 		"Apply gaussian blur to the input images.",
-		categoryName: "Image"
+		categoryName: "Image",
+		resultValueName: "Blurred Images"
 	)
 
 	@Parameter(

@@ -14,7 +14,8 @@ struct GetImageLocation: AppIntent {
 
 		See the “Set Image Location” action for the inverse.
 		""",
-		categoryName: "File"
+		categoryName: "File",
+		resultValueName: "Image Location"
 	)
 
 	@Parameter(title: "Image", supportedTypeIdentifiers: ["public.image"])

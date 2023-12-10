@@ -12,7 +12,8 @@ struct ScanQRCodesInImageIntent: AppIntent {
 
 		The messages are sorted by the physical size of their QR code in ascending order (largest first).
 		""",
-		categoryName: "Image"
+		categoryName: "Image",
+		resultValueName: "QR Code Messages"
 	)
 
 	@Parameter(title: "Image", supportedTypeIdentifiers: ["public.image"])

@@ -9,7 +9,8 @@ struct EditURLIntent: AppIntent {
 
 		For example, add a query item, change the path, or remove the fragment.
 		""",
-		categoryName: "URL"
+		categoryName: "URL",
+		resultValueName: "Modified URL"
 	)
 
 	@Parameter(title: "URL")

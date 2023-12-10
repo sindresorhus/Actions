@@ -12,7 +12,8 @@ struct TransformTextWithJavaScriptIntent: AppIntent {
 
 		The code is excuted with JavaScriptCore (same as used in Safari), not JXA.
 		""",
-		categoryName: "Text"
+		categoryName: "Text",
+		resultValueName: "Transformed Text"
 	)
 
 	@Parameter(

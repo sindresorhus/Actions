@@ -9,7 +9,8 @@ struct GetFilePathIntent: AppIntent {
 
 		Folder paths always end with a slash.
 		""",
-		categoryName: "File"
+		categoryName: "File",
+		resultValueName: "File Path"
 	)
 
 	@Parameter(title: "File", supportedTypeIdentifiers: ["public.item"])

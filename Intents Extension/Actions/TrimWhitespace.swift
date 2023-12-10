@@ -5,7 +5,8 @@ struct TrimWhitespaceIntent: AppIntent {
 
 	static let description = IntentDescription(
 		"Removes leading & trailing whitespace and newline characters from the input text.",
-		categoryName: "Text"
+		categoryName: "Text",
+		resultValueName: "Text with Trimmed Whitespace"
 	)
 
 	@Parameter(title: "Text")

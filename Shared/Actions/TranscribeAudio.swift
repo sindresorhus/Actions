@@ -18,7 +18,8 @@ struct TranscribeAudioIntent: AppIntent {
 
 		Important: If you have permission issues even after granting access, try removing the action from your shortcut, force quit Shortcuts and Actions, and then add the action again.
 		""",
-		categoryName: "Audio"
+		categoryName: "Audio",
+		resultValueName: "Transcription"
 	)
 
 	@Parameter(title: "Audio File", supportedTypeIdentifiers: ["public.audio"])

@@ -4,12 +4,13 @@ struct FormatNumberCompactIntent: AppIntent {
 	static let title: LocalizedStringResource = "Format Number — Compact"
 
 	static let description = IntentDescription(
-"""
-Formats the number into text using a compact style.
+		"""
+		Formats the number into text using a compact style.
 
-For example, 3420 becomes “3.4 thousand” or “3.4K”.
-""",
-		categoryName: "Formatting"
+		For example, 3420 becomes “3.4 thousand” or “3.4K”.
+		""",
+		categoryName: "Formatting",
+		resultValueName: "Formatted Number"
 	)
 
 	@Parameter(title: "Number")

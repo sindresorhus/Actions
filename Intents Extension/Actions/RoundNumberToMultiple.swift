@@ -9,7 +9,8 @@ struct RoundNumberToMultipleIntent: AppIntent {
 
 		For example, if the number represents minutes and you want to round it to the nearest half-hour, you could use 30 as the multiple.
 		""",
-		categoryName: "Number"
+		categoryName: "Number",
+		resultValueName: "Rounded Number"
 	)
 
 	@Parameter(title: "Number")

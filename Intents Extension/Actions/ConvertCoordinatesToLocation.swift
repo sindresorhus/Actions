@@ -10,7 +10,8 @@ struct ConvertCoordinatesToLocation: AppIntent {
 
 		Tip: Use the built-in “Get Details of Locations” action to get more details from the location.
 		""",
-		categoryName: "Location"
+		categoryName: "Location",
+		resultValueName: "Location"
 	)
 
 	@Parameter(title: "Latitude", controlStyle: .field)

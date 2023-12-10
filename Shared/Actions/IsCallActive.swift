@@ -13,6 +13,10 @@ struct IsCallActive: AppIntent {
 	)
 
 	func perform() async throws -> some IntentResult & ReturnsValue<Bool> {
-		.result(value: Device.hasActiveCall)
+		guard Locale.current.region != .chinaMainland else {
+			throw "This action is not available in China. The Chinese Ministry of Industry and Information Technology (MIIT) requested that CallKit functionality be deactivated in all apps available on the China App Store.".toError
+		}
+
+		return .result(value: Device.hasActiveCall)
 	}
 }

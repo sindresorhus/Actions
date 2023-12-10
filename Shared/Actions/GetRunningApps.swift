@@ -14,7 +14,8 @@ struct GetRunningAppsIntent: AppIntent {
 
 		Use the built-in “Show Result” action to inspect the individual properties.
 		""",
-		categoryName: "Device"
+		categoryName: "Device",
+		resultValueName: "Running Apps"
 	)
 
 	static var parameterSummary: some ParameterSummary {

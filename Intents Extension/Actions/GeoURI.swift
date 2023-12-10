@@ -6,7 +6,8 @@ struct GeoURIIntent: AppIntent {
 
 	static let description = IntentDescription(
 		"Returns the geo URI for the given location.",
-		categoryName: "Location"
+		categoryName: "Location",
+		resultValueName: "Geo URI"
 	)
 
 	@Parameter(title: "Location")

@@ -11,7 +11,8 @@ struct SpellOutNumberIntent: AppIntent {
 
 		If a locale is not specified, the system locale is used.
 		""",
-		categoryName: "Formatting"
+		categoryName: "Formatting",
+		resultValueName: "Spelled Out Number"
 	)
 
 	@Parameter(title: "Number")

@@ -9,7 +9,8 @@ struct OverwriteFile: AppIntent {
 
 		Returns the new destination file.
 		""",
-		categoryName: "File"
+		categoryName: "File",
+		resultValueName: "New Destination File"
 	)
 
 	@Parameter(

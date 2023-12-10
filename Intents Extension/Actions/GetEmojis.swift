@@ -5,7 +5,8 @@ struct GetEmojisIntent: AppIntent {
 
 	static let description = IntentDescription(
 		"Returns all emojis in the input text.",
-		categoryName: "Text"
+		categoryName: "Text",
+		resultValueName: "Emojis"
 	)
 
 	@Parameter(

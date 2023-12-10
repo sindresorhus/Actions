@@ -13,7 +13,8 @@ struct GetHighResolutionTimestamp: AppIntent {
 
 		The timestamp is not meant to be stored for a long time. It's only unique for the current computer session.
 		""",
-		categoryName: "Date"
+		categoryName: "Date",
+		resultValueName: "High-Resolution Timestamp"
 	)
 
 	static var parameterSummary: some ParameterSummary {

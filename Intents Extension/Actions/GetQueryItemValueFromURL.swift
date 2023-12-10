@@ -5,7 +5,8 @@ struct GetQueryItemValueFromURLIntent: AppIntent {
 
 	static let description = IntentDescription(
 		"Returns the value of the first query item with the given name from the input URL.",
-		categoryName: "URL"
+		categoryName: "URL",
+		resultValueName: "URL Query Item Value"
 	)
 
 	@Parameter(title: "URL")

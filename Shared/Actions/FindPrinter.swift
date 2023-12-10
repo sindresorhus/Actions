@@ -4,7 +4,7 @@ import AppIntents
 // NOTE: This has to be an in-app intent as extensions seem to not inherit the print entitlement. (macOS 13.1)
 
 @available(iOS, unavailable)
-struct GetPrinters: AppIntent {
+struct GetPrinters: AppIntent, DeprecatedAppIntent {
 	static let title: LocalizedStringResource = "Get Printers (macOS-only)"
 
 	static let description = IntentDescription(
@@ -20,6 +20,8 @@ struct GetPrinters: AppIntent {
 		]
 	)
 
+	static var deprecation = IntentDeprecation(message: "Deprecated. Replaced by the “Find Printer” action.")
+
 	static var parameterSummary: some ParameterSummary {
 		Summary("Get printers")
 	}
@@ -33,8 +35,22 @@ struct GetPrinters: AppIntent {
 	}
 }
 
-struct PrinterAppEntityQuery: EntityQuery {
-	private func allEntities() -> [PrinterAppEntity] {
+@available(iOS, unavailable)
+struct PrinterAppEntityQuery: EnumerableEntityQuery {
+	static let findIntentDescription = IntentDescription(
+		"""
+		Returns the available printers.
+
+		Use the built-in “Show Result” action to inspect the individual properties.
+		""",
+		categoryName: "Device",
+		searchKeywords: [
+			"printer",
+			"print"
+		]
+	)
+
+	func allEntities() -> [PrinterAppEntity] {
 		Printer
 			.all()
 			.map(PrinterAppEntity.init)
@@ -49,18 +65,20 @@ struct PrinterAppEntityQuery: EntityQuery {
 	}
 }
 
+@available(iOS, unavailable)
 struct PrinterAppEntity: AppEntity {
 	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Printer"
 
 	static let defaultQuery = PrinterAppEntityQuery()
 
-	private let name: String
-	private let state: String
-
-	let id: String
+	@Property(title: "Name")
+	var name: String
 
 	@Property(title: "Identifier")
-	var identifier: String
+	var id: String
+
+	@Property(title: "State\u{200B}") // We include a zero-width character to prevent the Shortcuts app from translating it to "County".
+	var state: State
 
 	@Property(title: "Is Default")
 	var isDefault: Bool
@@ -78,10 +96,9 @@ struct PrinterAppEntity: AppEntity {
 	var deviceURL: URL?
 
 	init(_ printer: Printer) {
-		self.id = printer.id
 		self.name = printer.name ?? "<Unknown>"
-		self.state = printer.state.title
-		self.identifier = printer.id
+		self.id = printer.id
+		self.state = .init(printer.state)
 		self.isDefault = printer.isDefault
 		self.isRemote = printer.isRemote
 		self.location = printer.location
@@ -92,8 +109,37 @@ struct PrinterAppEntity: AppEntity {
 	var displayRepresentation: DisplayRepresentation {
 		.init(
 			title: "\(name)",
-			subtitle: isDefault ? "\(state), Default" : "\(state)"
+			subtitle: isDefault ? "\(state.localizedStringResource), Default" : "\(state.localizedStringResource)"
 		)
+	}
+}
+
+extension PrinterAppEntity {
+	enum State: String, AppEnum {
+		case idle
+		case processing
+		case stopped
+
+		static let typeDisplayRepresentation: TypeDisplayRepresentation = "Printer State"
+
+		static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
+			.idle: "Idle",
+			.processing: "Processing",
+			.stopped: "Stopped"
+		]
+	}
+}
+
+extension PrinterAppEntity.State {
+	init(_ native: Printer.State) {
+		switch native {
+		case .idle:
+			self = .idle
+		case .processing:
+			self = .processing
+		case .stopped:
+			self = .stopped
+		}
 	}
 }
 #endif

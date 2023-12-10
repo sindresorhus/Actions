@@ -20,7 +20,8 @@ struct GetDominantColorsOfImage: AppIntent {
 			"primary",
 			"palette",
 			"average"
-		]
+		],
+		resultValueName: "Dominant Colors of Image"
 	)
 
 	@Parameter(

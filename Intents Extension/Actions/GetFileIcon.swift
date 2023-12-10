@@ -7,7 +7,8 @@ struct GetFileIconIntent: AppIntent {
 
 	static let description = IntentDescription(
 		"Returns the icon for the input files or directories.",
-		categoryName: "File"
+		categoryName: "File",
+		resultValueName: "File Icon"
 	)
 
 	@Parameter(title: "Files", supportedTypeIdentifiers: ["public.item"])

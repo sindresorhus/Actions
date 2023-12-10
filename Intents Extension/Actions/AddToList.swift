@@ -17,7 +17,8 @@ struct AddToListIntent: AppIntent {
 			"prepend",
 			"push",
 			"shift"
-		]
+		],
+		resultValueName: "Modified List"
 	)
 
 	@Parameter(

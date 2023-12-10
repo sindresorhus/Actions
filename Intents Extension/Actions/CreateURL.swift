@@ -5,7 +5,8 @@ struct CreateURLIntent: AppIntent {
 
 	static let description = IntentDescription(
 		"Creates a URL from components.",
-		categoryName: "URL"
+		categoryName: "URL",
+		resultValueName: "URL"
 	)
 
 	@Parameter(

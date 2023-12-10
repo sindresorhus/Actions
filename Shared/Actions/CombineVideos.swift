@@ -27,7 +27,8 @@ struct CombineVideosIntent: AppIntent {
 			"mp4",
 			"mov",
 			"quicktime"
-		]
+		],
+		resultValueName: "Combined Video"
 	)
 
 	@Parameter(

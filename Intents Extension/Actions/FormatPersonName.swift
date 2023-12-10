@@ -5,7 +5,8 @@ struct FormatPersonName: AppIntent {
 
 	static let description = IntentDescription(
 		"Formats the name of a person.",
-		categoryName: "Formatting"
+		categoryName: "Formatting",
+		resultValueName: "Formatted Person Name"
 	)
 
 	@Parameter(title: "Given Name", inputOptions: String.IntentInputOptions(autocorrect: false))

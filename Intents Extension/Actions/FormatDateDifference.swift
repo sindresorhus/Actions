@@ -9,7 +9,8 @@ struct FormatDateDifferenceIntent: AppIntent {
 
 		For example, “Yesterday” or “2 weeks ago”.
 		""",
-		categoryName: "Formatting"
+		categoryName: "Formatting",
+		resultValueName: "Formatted Date Difference"
 	)
 
 	@Parameter(title: "First Date")

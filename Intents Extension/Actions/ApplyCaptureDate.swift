@@ -12,7 +12,8 @@ struct ApplyCaptureDateIntent: AppIntent {
 
 		This action can be useful to run after the built-in “Convert Image” action (ensure “Preserve Metadata” is checked).
 		""",
-		categoryName: "File"
+		categoryName: "File",
+		resultValueName: "Images with Updated Capture Date"
 	)
 
 	@Parameter(title: "Images", supportedTypeIdentifiers: ["public.image"])

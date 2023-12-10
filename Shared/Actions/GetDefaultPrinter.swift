@@ -11,7 +11,8 @@ struct GetDefaultPrinter: AppIntent {
 		searchKeywords: [
 			"printers",
 			"print"
-		]
+		],
+		resultValueName: "Default Printer"
 	)
 
 	static var parameterSummary: some ParameterSummary {

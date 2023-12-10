@@ -6,7 +6,8 @@ struct CreateColorImageIntent: AppIntent {
 
 	static let description = IntentDescription(
 		"Creates a solid color image.",
-		categoryName: "Image"
+		categoryName: "Image",
+		resultValueName: "Color Image"
 	)
 
 	@Parameter(

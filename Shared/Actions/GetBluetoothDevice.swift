@@ -21,7 +21,8 @@ struct GetBluetoothDevice: AppIntent {
 		searchKeywords: [
 			"ble",
 			"peripheral"
-		]
+		],
+		resultValueName: "Bluetooth Device"
 	)
 
 	@Parameter(

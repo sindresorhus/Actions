@@ -5,7 +5,8 @@ struct GetRandomNumberFromSeed: AppIntent {
 
 	static let description = IntentDescription(
 		"Returns a random number between the given minimum and maximum value.",
-		categoryName: "Random"
+		categoryName: "Random",
+		resultValueName: "Random Number"
 	)
 
 	@Parameter(title: "Minimum", controlStyle: .field)

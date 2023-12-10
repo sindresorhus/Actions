@@ -17,7 +17,8 @@ struct GetCompassHeading: AppIntent {
 		searchKeywords: [
 			"location",
 			"direction"
-		]
+		],
+		resultValueName: "Compass Heading"
 	)
 
 	@Parameter(title: "Heading Type", default: .magnetic)

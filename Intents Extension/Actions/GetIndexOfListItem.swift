@@ -12,7 +12,8 @@ struct GetIndexOfListItem: AppIntent {
 		categoryName: "List",
 		searchKeywords: [
 			"indices"
-		]
+		],
+		resultValueName: "Index of List Item"
 	)
 
 	@Parameter(title: "List")

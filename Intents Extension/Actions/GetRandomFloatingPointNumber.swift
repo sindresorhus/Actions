@@ -5,7 +5,8 @@ struct RandomFloatingPointNumberIntent: AppIntent {
 
 	static let description = IntentDescription(
 		"Returns a random floating-point number between the given minimum and maximum value.",
-		categoryName: "Random"
+		categoryName: "Random",
+		resultValueName: "Random Floating-Point Number"
 	)
 
 	@Parameter(title: "Minimum", controlStyle: .field)

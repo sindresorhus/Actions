@@ -195,7 +195,7 @@ And for high-quality transcription, see my [Aiko](https://sindresorhus.com/aiko)
 
 A special version for users that cannot access the App Store. It won't receive automatic updates. I will update it here once a year.
 
-[Download](https://github.com/sindresorhus/meta/files/13539161/Actions-2.3.1-1678525767.zip) *(2.3.1 · macOS 13+)*
+[Download](https://github.com/sindresorhus/meta/files/13718302/Actions.3.0.0.zip) *(3.0.0 · macOS 14+)*
 
 ## FAQ
 

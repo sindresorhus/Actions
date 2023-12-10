@@ -2,6 +2,8 @@ import AppIntents
 import SwiftBluetooth
 import CoreBluetooth
 
+// TODO: Use ProgressReportingIntent.
+
 struct GetBluetoothDevices: AppIntent {
 	static let title: LocalizedStringResource = "Get Bluetooth Devices"
 
@@ -19,7 +21,8 @@ struct GetBluetoothDevices: AppIntent {
 		searchKeywords: [
 			"ble",
 			"peripheral"
-		]
+		],
+		resultValueName: "Bluetooth Devices"
 	)
 
 	// iOS doesn't support scanning for arbitrary devices in the background.

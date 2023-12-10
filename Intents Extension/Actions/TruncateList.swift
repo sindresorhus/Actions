@@ -9,7 +9,8 @@ struct TruncateListIntent: AppIntent {
 
 		Note: If you get the error “The operation failed because Shortcuts couldn't convert from Text to NSString.”, just change the preview to show a list view instead. This is a bug in the Shortcuts app.
 		""",
-		categoryName: "List"
+		categoryName: "List",
+		resultValueName: "Truncated List"
 	)
 
 	@Parameter(

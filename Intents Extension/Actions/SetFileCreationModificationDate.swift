@@ -11,7 +11,8 @@ struct SetFileCreationModificationDateIntent: AppIntent {
 
 		Note: Setting the modification date of a file/folder in iCloud may not work as iCloud changes the modification date when it syncs.
 		""",
-		categoryName: "File"
+		categoryName: "File",
+		resultValueName: "File with Updated Creation and Modification Date"
 	)
 
 	@Parameter(title: "File", supportedTypeIdentifiers: ["public.item"])

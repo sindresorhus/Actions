@@ -24,7 +24,8 @@ struct GetDeviceDetailsExtended: AppIntent {
 			"cpu",
 			"memory",
 			"hostname"
-		]
+		],
+		resultValueName: "Device Details"
 	)
 
 	@MainActor

@@ -13,7 +13,8 @@ struct GetAverageColorOfImage: AppIntent {
 		categoryName: "Color",
 		searchKeywords: [
 			"colour"
-		]
+		],
+		resultValueName: "Average Color of Image"
 	)
 
 	@Parameter(

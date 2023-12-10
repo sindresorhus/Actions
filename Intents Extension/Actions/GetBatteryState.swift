@@ -5,7 +5,8 @@ struct GetBatteryStateIntent: AppIntent {
 
 	static let description = IntentDescription(
 		"Returns whether the device's battery is unplugged, charging, or full.",
-		categoryName: "Device"
+		categoryName: "Device",
+		resultValueName: "Battery State"
 	)
 
 	@Parameter(title: "State", default: .charging)

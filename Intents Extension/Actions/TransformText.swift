@@ -24,7 +24,8 @@ struct TransformTextIntent: AppIntent {
 			"latin",
 			"ascii",
 			"diacritic"
-		]
+		],
+		resultValueName: "Transformed Text"
 	)
 
 	@Parameter(title: "Text")

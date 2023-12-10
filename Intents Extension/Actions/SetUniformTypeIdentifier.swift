@@ -10,7 +10,8 @@ struct SetUniformTypeIdentifier: AppIntent {
 
 		This can be useful when the previous shortcut action returned some data without a specific type.
 		""",
-		categoryName: "File"
+		categoryName: "File",
+		resultValueName: "File with Updated Uniform Type Identifier"
 	)
 
 	@Parameter(title: "File", supportedTypeIdentifiers: ["public.item"])

@@ -13,7 +13,8 @@ struct GetMapImageOfLocation: AppIntent {
 
 		Known issue: On iOS, it only works the first time. There is some kind of iOS bug that makes it not work the second time it's run. There's unfortunately no workaround and we have to wait for Apple to fix this.
 		""",
-		categoryName: "Location"
+		categoryName: "Location",
+		resultValueName: "Map Image of Location"
 	)
 
 	@Parameter(title: "Location")

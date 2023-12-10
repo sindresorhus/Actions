@@ -6,7 +6,8 @@ struct GetTitleOfURLIntent: AppIntent {
 
 	static let description = IntentDescription(
 		"Returns the title of the given website, or nothing if it failed to get the title.",
-		categoryName: "URL"
+		categoryName: "URL",
+		resultValueName: "Title of URL"
 	)
 
 	@Parameter(title: "URL")

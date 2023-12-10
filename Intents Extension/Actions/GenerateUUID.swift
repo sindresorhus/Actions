@@ -5,7 +5,8 @@ struct GenerateUUIDIntent: AppIntent {
 
 	static let description = IntentDescription(
 		"Generates a universally unique identifier (UUID).",
-		categoryName: "Random"
+		categoryName: "Random",
+		resultValueName: "UUID"
 	)
 
 	func perform() async throws -> some IntentResult & ReturnsValue<String> {

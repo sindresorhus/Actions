@@ -9,7 +9,8 @@ struct ClampNumberIntent: AppIntent {
 
 		For example, if you provide 10 as the number, 4 as minimum, and 8 as maximum, you will get 8 back.
 		""",
-		categoryName: "Number"
+		categoryName: "Number",
+		resultValueName: "Clamped Number"
 	)
 
 	@Parameter(title: "Number", controlStyle: .field)

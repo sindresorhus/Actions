@@ -8,7 +8,8 @@ struct InvertImages: AppIntent {
 		"""
 		Invert the colors of the input images.
 		""",
-		categoryName: "Image"
+		categoryName: "Image",
+		resultValueName: "Inverted Images"
 	)
 
 	@Parameter(

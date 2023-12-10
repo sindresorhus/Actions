@@ -13,7 +13,8 @@ struct GetQueryItemsFromURLAsDictionaryIntent: AppIntent {
 
 		Tip: You could, for example, use this action together with the built-in “Get Dictionary Value” action.
 		""",
-		categoryName: "URL"
+		categoryName: "URL",
+		resultValueName: "URL Query Items Dictionary"
 	)
 
 	@Parameter(title: "URL")

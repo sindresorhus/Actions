@@ -5,7 +5,8 @@ struct PrettyPrintDictionariesIntent: AppIntent {
 
 	static let description = IntentDescription(
 		"Formats dictionaries (JSON) to be prettier and more readable.",
-		categoryName: "Formatting"
+		categoryName: "Formatting",
+		resultValueName: "Pretty Printed Dictionaries"
 	)
 
 	@Parameter(

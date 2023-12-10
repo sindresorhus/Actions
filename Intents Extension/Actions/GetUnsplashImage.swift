@@ -9,7 +9,8 @@ struct GetUnsplashImageIntent: AppIntent {
 
 		For example, use it together with the built-in “Set Wallpaper” action.
 		""",
-		categoryName: "Web"
+		categoryName: "Web",
+		resultValueName: "Unsplash Image"
 	)
 
 	@Parameter(title: "Keywords", default: [])

@@ -10,7 +10,8 @@ struct GetRelatedWordsIntent: AppIntent {
 
 		For example, given the word “horse”, it would return stallion, racehorse, pony, etc.
 		""",
-		categoryName: "Text"
+		categoryName: "Text",
+		resultValueName: "Related Words"
 	)
 
 	@Parameter(

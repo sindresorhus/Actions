@@ -17,7 +17,8 @@ struct GetAudioPlaybackDestinationIntent: AppIntent {
 		categoryName: "Device",
 		searchKeywords: [
 			"output"
-		]
+		],
+		resultValueName: "Audio Playback Destination"
 	)
 
 	static var parameterSummary: some ParameterSummary {

@@ -11,7 +11,8 @@ struct GetBooleanFromInput: AppIntent {
 
 		This can be useful when an action expects a proper boolean type and you only have some boolean-like text value.
 		""",
-		categoryName: "Parse / Generate"
+		categoryName: "Parse / Generate",
+		resultValueName: "Boolean"
 	)
 
 	@Parameter(

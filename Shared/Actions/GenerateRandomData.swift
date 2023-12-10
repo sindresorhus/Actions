@@ -9,7 +9,8 @@ struct GenerateRandomData: AppIntent {
 
 		Example use-cases: Generating keys, secrets, nonces, OTP, passwords, PINs, secure tokens, etc.
 		""",
-		categoryName: "Random"
+		categoryName: "Random",
+		resultValueName: "Random Data"
 	)
 
 	@Parameter(

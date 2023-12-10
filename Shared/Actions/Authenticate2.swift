@@ -22,7 +22,8 @@ struct Authenticate2: AppIntent {
 			"biometry",
 			"password",
 			"passcode"
-		]
+		],
+		resultValueName: "Is Authenticated"
 	)
 
 	#if canImport(UIKit)

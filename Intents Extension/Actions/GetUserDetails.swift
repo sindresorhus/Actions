@@ -13,7 +13,8 @@ struct GetUserDetailsIntent: AppIntent {
 
 		For example, username, name, language, idle time, etc.
 		""",
-		categoryName: "Device"
+		categoryName: "Device",
+		resultValueName: "User Details"
 	)
 
 	@Parameter(title: "Type", default: .name)

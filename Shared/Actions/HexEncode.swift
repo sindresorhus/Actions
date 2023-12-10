@@ -16,7 +16,8 @@ struct HexEncode: AppIntent {
 			"base16",
 			"hexadecimal",
 			"binary"
-		]
+		],
+		resultValueName: "Hex Encoded Data"
 	)
 
 	@Parameter(

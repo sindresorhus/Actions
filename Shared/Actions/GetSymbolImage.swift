@@ -12,7 +12,8 @@ struct SymbolImageIntent: AppIntent {
 
 		Use the SF Symbols app to find the symbol you want.
 		""",
-		categoryName: "Image"
+		categoryName: "Image",
+		resultValueName: "SF Symbol Image"
 	)
 
 	@Parameter(

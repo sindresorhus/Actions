@@ -5,7 +5,8 @@ struct RandomColorIntent: AppIntent {
 
 	static let description = IntentDescription(
 		"Returns a random color.",
-		categoryName: "Color"
+		categoryName: "Color",
+		resultValueName: "Random Color"
 	)
 
 	func perform() async throws -> some IntentResult & ReturnsValue<ColorAppEntity> {

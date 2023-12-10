@@ -5,7 +5,8 @@ struct FormatCurrencyIntent: AppIntent {
 
 	static let description = IntentDescription(
 		"Formats the input amount as currency.",
-		categoryName: "Formatting"
+		categoryName: "Formatting",
+		resultValueName: "Formatted Currency"
 	)
 
 	// We are intentionally not using `IntentCurrencyAmount` as it has bad UX and also doesn't allow not specifying a currency.

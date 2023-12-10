@@ -7,7 +7,8 @@ struct SampleColorIntent: AppIntent {
 
 	static let description = IntentDescription(
 		"Lets you pick a color from the screen.",
-		categoryName: "Utility"
+		categoryName: "Utility",
+		resultValueName: "Sampled Color"
 	)
 
 	func perform() async throws -> some IntentResult & ReturnsValue<ColorAppEntity?> {

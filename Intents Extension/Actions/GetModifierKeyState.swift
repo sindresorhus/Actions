@@ -23,7 +23,8 @@ struct GetModifierKeyState: AppIntent {
 			"keyboard",
 			"shortcut",
 			"hotkey"
-		]
+		],
+		resultValueName: "Modifier Key State"
 	)
 
 	static var parameterSummary: some ParameterSummary {

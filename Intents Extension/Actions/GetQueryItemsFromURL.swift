@@ -9,7 +9,8 @@ struct GetQueryItemsFromURLIntent: AppIntent {
 
 		The name and value of the query item can be accessed individually.
 		""",
-		categoryName: "URL"
+		categoryName: "URL",
+		resultValueName: "URL Query Items"
 	)
 
 	@Parameter(title: "URL")

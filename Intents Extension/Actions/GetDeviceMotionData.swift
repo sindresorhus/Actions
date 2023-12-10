@@ -37,7 +37,8 @@ struct GetDeviceMotionData: AppIntent {
 			"gravity",
 			"rotation",
 			"sensor"
-		]
+		],
+		resultValueName: "Device Motion Data"
 	)
 
 	@Parameter(
