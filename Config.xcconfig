@@ -1,5 +1,5 @@
-MARKETING_VERSION = 2.10.0
-CURRENT_PROJECT_VERSION = 51
+MARKETING_VERSION = 3.0.0
+CURRENT_PROJECT_VERSION = 58
 
 // Source for the base of all bundle IDs
 // -> Intents extensions and app will derive bundleID from here
