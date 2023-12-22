@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E3019BA42B35130600B5BA63 /* GetElevation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3019BA22B35100700B5BA63 /* GetElevation.swift */; };
+		E3019BA52B35141F00B5BA63 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FC71DC271EBE5B00C9D255 /* Utilities.swift */; };
 		E303EED329529D0B007BE918 /* GetDefaultPrinter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E376FD862952937200C0F81F /* GetDefaultPrinter.swift */; };
 		E303EED429529D14007BE918 /* FindPrinter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E376FD84295287E500C0F81F /* FindPrinter.swift */; };
 		E303EED529529D1B007BE918 /* SetDefaultPrinter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E376FD882952946400C0F81F /* SetDefaultPrinter.swift */; };
@@ -164,7 +166,6 @@
 		E3EF8AEA2AEFCBDB007B0F32 /* IsWebServerReachable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31DE7F528D5E50400DE79EF /* IsWebServerReachable.swift */; };
 		E3F64D7628D9F9930009B500 /* CreateColorImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F64D7528D9F9930009B500 /* CreateColorImage.swift */; };
 		E3F64D7928D9FCA20009B500 /* GetSymbolImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F64D7728D9FCA20009B500 /* GetSymbolImage.swift */; };
-		E3FC71DD271EBE5C00C9D255 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FC71DC271EBE5B00C9D255 /* Utilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -192,6 +193,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E3019BA22B35100700B5BA63 /* GetElevation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetElevation.swift; sourceTree = "<group>"; };
 		E30ADE952B0B6CA100000F41 /* GetBluetoothDevices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBluetoothDevices.swift; sourceTree = "<group>"; };
 		E30ADE9E2B0E199500000F41 /* GetBluetoothDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBluetoothDevice.swift; sourceTree = "<group>"; };
 		E30E56122922602B00C44823 /* GetRandomNumberFromSeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRandomNumberFromSeed.swift; sourceTree = "<group>"; };
@@ -396,6 +398,7 @@
 				E3D737F52B00230100E9023B /* GetCompassHeading.swift */,
 				E376FD862952937200C0F81F /* GetDefaultPrinter.swift */,
 				E37A1E212A2D214800E68E92 /* GetDominantColorsOfImage.swift */,
+				E3019BA22B35100700B5BA63 /* GetElevation.swift */,
 				E38663302AE05C840001343A /* GetImageLocation.swift */,
 				E317489E2913BEAB00F6319E /* GetMapImageOfLocation.swift */,
 				E3C33CDA28D48C3200386C59 /* GetRunningApps.swift */,
@@ -842,6 +845,7 @@
 				E33D00F52B12DCFE0063524E /* GetBluetoothDevices.swift in Sources */,
 				E3722CE82ACDCA2A0007316D /* Debug.swift in Sources */,
 				E351083628FD79D8007C85AE /* OverwriteFile.swift in Sources */,
+				E3019BA42B35130600B5BA63 /* GetElevation.swift in Sources */,
 				E352420C28F6F6AD00A957A7 /* AskForTextScreen.swift in Sources */,
 				E337A3E127E850EC0073E865 /* ChooseFromListScreen.swift in Sources */,
 				E351083128FD14A2007C85AE /* HexEncode.swift in Sources */,
@@ -867,6 +871,7 @@
 				E343F9B829713AFF00AD82F4 /* GetMapImageOfLocation.swift in Sources */,
 				E303EED429529D14007BE918 /* FindPrinter.swift in Sources */,
 				E3DB885028E6EE7B00FEE8D6 /* HideShortcutsApp.swift in Sources */,
+				E3019BA52B35141F00B5BA63 /* Utilities.swift in Sources */,
 				E3D737F72B00274900E9023B /* GetCompassHeading.swift in Sources */,
 				E3F64D7928D9FCA20009B500 /* GetSymbolImage.swift in Sources */,
 				E3BFF7B22742616400B830DE /* WriteTextScreen.swift in Sources */,
@@ -877,7 +882,6 @@
 				E38663312AE05C840001343A /* GetImageLocation.swift in Sources */,
 				E33D08142A11679300FBCAD7 /* SettingsScreen.swift in Sources */,
 				E303EED529529D1B007BE918 /* SetDefaultPrinter.swift in Sources */,
-				E3FC71DD271EBE5C00C9D255 /* Utilities.swift in Sources */,
 				E324C9FF271E972300E7CA9B /* App.swift in Sources */,
 				E38663332AE063A10001343A /* SetImageLocation.swift in Sources */,
 				E3CB44AB28D7A10C0031D55F /* TranscribeAudio.swift in Sources */,
@@ -1121,6 +1125,7 @@
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © Sindre Sorhus";
 				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Required to use the “Is Host Reachable” and “Is Web Server Reachable” actions with devices on your local network.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Required to use the “Get Compass Heading” action.";
+				INFOPLIST_KEY_NSMotionUsageDescription = "Required to use the “Get Elevation” action.";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Required to use the “Transcribe Audio” action.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1171,6 +1176,7 @@
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © Sindre Sorhus";
 				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Required to use the “Is Host Reachable” and “Is Web Server Reachable” actions with devices on your local network.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Required to use the “Get Compass Heading” action.";
+				INFOPLIST_KEY_NSMotionUsageDescription = "Required to use the “Get Elevation” action.";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Required to use the “Transcribe Audio” action.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

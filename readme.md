@@ -85,6 +85,7 @@ And for high-quality transcription, see my [Aiko](https://sindresorhus.com/aiko)
 - Get Device Motion Data <sup>(iOS-only)</sup>
 - Get Device Orientation
 - Get Dominant Colors of Image
+- Get Elevation <sup>(iOS-only)</sup>
 - Get Emojis
 - Get File Icon <sup>(macOS-only)</sup>
 - Get File Path

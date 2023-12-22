@@ -5518,6 +5518,51 @@ extension UIDeviceOrientation: CustomStringConvertible {
 		}
 	}
 }
+
+extension Device {
+	/**
+	- Note: Requires `NSMotionUsageDescription` in Info.plist.
+	*/
+	static func absoluteAltimeterUpdates() -> AsyncThrowingStream<CMAbsoluteAltitudeData, Error> {
+		.init { continuation in
+			let altimeter = CMAltimeter()
+
+			guard CMAltimeter.isAbsoluteAltitudeAvailable() else {
+				continuation.finish(throwing: "The device does not provide altimeter data.".toError)
+				return
+			}
+
+			guard CMAltimeter.authorizationStatus() == .authorized else {
+				if CMAltimeter.authorizationStatus() == .notDetermined {
+					// This triggers the permission prompt.
+					altimeter.startAbsoluteAltitudeUpdates(to: OperationQueue()) { _, _ in }
+					continuation.finish(throwing: "Try again after granting access.".toError)
+					return
+				}
+
+				continuation.finish(throwing: "Missing access to altimeter data. You can grant access in “Settings › \(SSApp.name) › Motion & Fitness”.".toError)
+				return
+			}
+
+			altimeter.startAbsoluteAltitudeUpdates(to: OperationQueue()) { data, error in
+				if let error {
+					continuation.finish(throwing: error)
+					return
+				}
+
+				guard let data else {
+					return
+				}
+
+				continuation.yield(data)
+			}
+
+			continuation.onTermination = { [altimeter] _ in
+				altimeter.stopAbsoluteAltitudeUpdates()
+			}
+		}
+	}
+}
 #endif
 
 

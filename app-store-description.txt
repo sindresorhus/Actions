@@ -70,6 +70,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Get Device Motion Data (iOS-only)
 - Get Device Orientation
 - Get Dominant Colors of Image
+- Get Elevation (iOS-only)
 - Get Emojis
 - Get File Icon (macOS-only)
 - Get File Path
