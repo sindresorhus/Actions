@@ -2,8 +2,9 @@ import AppIntents
 import CoreLocation
 
 @available(macOS, unavailable)
+@available(visionOS, unavailable)
 struct GetCompassHeading: AppIntent {
-	static let title: LocalizedStringResource = "Get Compass Heading (iOS-only)"
+	static let title: LocalizedStringResource = "Get Compass Heading"
 
 	static let description = IntentDescription(
 		"""
@@ -12,6 +13,8 @@ struct GetCompassHeading: AppIntent {
 		The returned value is in degrees. The value 0 means the device is pointed toward north, 90 means it is pointed due east, 180 means it is pointed due south, and so on.
 
 		Magnetic heading aligns with traditional compasses and maps, while true north is crucial for accurate astronomical alignments and specific surveying tasks.
+
+		NOTE: Does not work on visionOS.
 		""",
 		categoryName: "Location",
 		searchKeywords: [

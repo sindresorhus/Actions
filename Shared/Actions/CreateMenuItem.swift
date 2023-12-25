@@ -211,11 +211,7 @@ struct MenuItem: TransientAppEntity {
 
 	var displayRepresentation: DisplayRepresentation {
 		let image: DisplayRepresentation.Image? = if let icon {
-			if #available(iOS 17.0, macOS 14.0, *) {
-				.init(data: icon.data, displayStyle: .default)
-			} else {
-				.init(data: icon.data)
-			}
+			.init(data: icon.data, displayStyle: .default)
 		} else {
 			nil
 		}

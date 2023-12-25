@@ -2,6 +2,7 @@ import AppIntents
 import SwiftUI
 
 @available(iOS, unavailable)
+@available(visionOS, unavailable)
 struct GetModifierKeyState: AppIntent {
 	static let title: LocalizedStringResource = "Get Modifier Key State"
 

@@ -4,7 +4,7 @@ import SwiftUI
 
 @available(macOS, unavailable)
 struct GetAudioPlaybackDestinationIntent: AppIntent {
-	static let title: LocalizedStringResource = "Get Audio Playback Destination (iOS-only) (Does not detect AirPlay devices)"
+	static let title: LocalizedStringResource = "Get Audio Playback Destination (Does not detect AirPlay devices)"
 
 	static let description = IntentDescription(
 		"""
@@ -12,7 +12,7 @@ struct GetAudioPlaybackDestinationIntent: AppIntent {
 
 		Can be useful in combination with the built-in “Set Playback Destination” action.
 
-		Known limitation: It will not be able to detect when the output is an AirPlay device because of a iOS bug.
+		Known limitation: It will not be able to detect when the output is an AirPlay device because of a system bug.
 		""",
 		categoryName: "Device",
 		searchKeywords: [

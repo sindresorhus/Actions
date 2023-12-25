@@ -1,4 +1,5 @@
 import AppIntents
+import CoreBluetooth
 
 struct GetBluetoothDevice: AppIntent {
 	static let title: LocalizedStringResource = "Get Bluetooth Device"
@@ -16,6 +17,8 @@ struct GetBluetoothDevice: AppIntent {
 		NOTE: You need to have been connected to the device at least once before.
 
 		NOTE: The `transmitPowerLevel` property is not provided for this action.
+
+		NOTE: The RSSI and signal strength are available for only one of the two AirPods. If it shows RSSI of 0, try the identifier of the other AirPods device.
 		""",
 		categoryName: "Bluetooth",
 		searchKeywords: [
@@ -66,7 +69,22 @@ struct GetBluetoothDevice: AppIntent {
 			return .result(value: nil)
 		}
 
-		let rssi = try await peripheral.readRSSI().doubleValue
+		let services = try await peripheral.discoverServices().map(\.uuid)
+		let knownServices = (services + CBCentralManager.commonServices).removingDuplicates()
+		let connectedDevices = central.retrieveConnectedPeripherals(withServices: knownServices)
+
+		let rssi: Double = try await {
+			do {
+				return try await peripheral.readRSSI().doubleValue
+			} catch {
+				// One of the two AirPods devices fail to retrieve RSSI for some reason.
+				if (error as NSError).code == 13 /* kBluetoothHCIErrorHostRejectedLimitedResources */ {
+					return 0
+				}
+
+				throw error
+			}
+		}()
 
 		if
 			!wasConnected,
@@ -78,7 +96,9 @@ struct GetBluetoothDevice: AppIntent {
 		let entity = BluetoothDevice_AppEntity(
 			peripheral: peripheral,
 			advertisementData: [:],
-			rssi: rssi
+			rssi: Int(rssi),
+			isConnected: connectedDevices.contains { $0.identifier == peripheral.identifier },
+			services: services
 		)
 
 		return .result(value: entity)

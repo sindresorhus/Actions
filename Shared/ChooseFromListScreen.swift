@@ -47,8 +47,8 @@ struct ChooseFromListScreen: View {
 					}
 			}
 				.navigationTitle(title)
+				.toolbarTitleDisplayMode(.inline)
 				#if canImport(UIKit)
-				.navigationBarTitleDisplayMode(.inline)
 				.environment(\.editMode, .constant(data.selectMultiple ? .active : .inactive))
 				// TODO: I can use this for macOS too, but as of macOS 14.1, there's a bug where the alert text field does not get focused when it's shown.
 				.alert2(

@@ -4,8 +4,9 @@ import CoreMotion
 // - Magnetic Field: Three-dimensional magnetometer data measured in microteslas.
 
 @available(macOS, unavailable)
+@available(visionOS, unavailable)
 struct GetDeviceMotionData: AppIntent {
-	static let title: LocalizedStringResource = "Get Device Motion Data (iOS-only)"
+	static let title: LocalizedStringResource = "Get Device Motion Data"
 
 	static let description = IntentDescription(
 		"""
@@ -26,6 +27,8 @@ struct GetDeviceMotionData: AppIntent {
 		Use the built-in “Show Result” action to inspect the individual properties.
 
 		NOTE: On iOS, the action can only run for maximum 30 seconds, so the interval times sample count must be less than that.
+
+		NOTE: Does not work on visionOS.
 		""",
 		categoryName: "Device",
 		searchKeywords: [

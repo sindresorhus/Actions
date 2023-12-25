@@ -19,14 +19,14 @@ struct GetDeviceOrientationIntent: AppIntent {
 		- faceUp
 		- faceDown
 
-		On macOS, it always returns “unknown”.
+		On macOS and visionOS, it always returns “unknown”.
 		""",
 		categoryName: "Device",
 		resultValueName: "Device Orientation"
 	)
 
 	func perform() async throws -> some IntentResult & ReturnsValue<DeviceOrientationAppEnum> {
-		#if canImport(UIKit)
+		#if canImport(UIKit) && !os(visionOS)
 		do {
 			return .result(value: .init(try await Device.orientation))
 		} catch {

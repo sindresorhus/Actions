@@ -120,6 +120,7 @@ enum SSApp {
 	Move the app to the background, which returns the user to their home screen.
 	*/
 	@available(iOSApplicationExtension, unavailable)
+	@available(visionOSApplicationExtension, unavailable)
 	static func moveToBackground() {
 		Task { @MainActor in
 			UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
@@ -188,6 +189,24 @@ enum SSApp {
 		]
 
 		_ = try await URLSession.shared.json(.post, url: endpoint, parameters: parameters as [String: Any])
+	}
+}
+
+
+extension SSApp {
+	// TODO: Need better check when the device is out.
+	static var isiOSOnVision: Bool {
+		modelIdentifier().contains("Reality")
+	}
+
+	private static func modelIdentifier() -> String {
+		if let simulatorModelIdentifier = ProcessInfo().environment["SIMULATOR_MODEL_IDENTIFIER"] {
+			return simulatorModelIdentifier
+		}
+
+		var sysinfo = utsname()
+		uname(&sysinfo)
+		return String(bytes: Data(bytes: &sysinfo.machine, count: Int(_SYS_NAMELEN)), encoding: .ascii)!.trimmingCharacters(in: .controlCharacters)
 	}
 }
 
@@ -597,6 +616,7 @@ enum Device {
 	@available(iOS, unavailable)
 	@available(tvOS, unavailable)
 	@available(watchOS, unavailable)
+	@available(visionOS, unavailable)
 	@available(macOSApplicationExtension, unavailable) // `CGSessionCopyCurrentDictionary()` returns `nil` in an app extension.
 	static var isScreenLocked: Bool {
 		#if canImport(Quartz)
@@ -614,6 +634,7 @@ enum Device {
 	@available(iOS, unavailable)
 	@available(tvOS, unavailable)
 	@available(watchOS, unavailable)
+	@available(visionOS, unavailable)
 	static var isWiFiOn: Bool {
 		#if canImport(CoreWLAN)
 		CWWiFiClient.shared().interface()?.powerOn() ?? false
@@ -1939,11 +1960,21 @@ extension XColor {
 	var toColor: Color { Color(self) }
 }
 
+
 extension Color {
 	/**
 	Convert a `Color` to a `NSColor`/`UIColor`.
 	*/
 	var toXColor: XColor { XColor(self) }
+}
+
+
+extension CGColor {
+	var toColor: Color { Color(self) }
+
+	var toResolvedColor: Color.Resolved {
+		toColor.resolve(in: .init())
+	}
 }
 
 
@@ -2137,6 +2168,10 @@ enum OperatingSystem {
 	#endif
 
 	static let isMacOS = current == .macOS
+	static let isIOS = current == .iOS
+	static let isVisionOS = current == .visionOS
+	static let isMacOrVision = isMacOS || isVisionOS
+	static let isIOSOrVision = isIOS || isVisionOS
 }
 
 typealias OS = OperatingSystem
@@ -3304,6 +3339,92 @@ enum Bluetooth {
 
 		return result
 	}
+}
+
+
+extension CBCentralManager {
+	// Services: https://bitbucket.org/bluetooth-SIG/public/src/main/assigned_numbers/uuids/service_uuids.yaml
+	// At: https://bitbucket.org/bluetooth-SIG/public/commits/8f48594ba44548b293e493a7f456e929b168c3f0
+	/**
+	This can be useful for Bluetooth APIs that require a known set of service APIs.
+	*/
+	static let commonServices: [CBUUID] = [
+		"1800", // Generic Access
+		"1801", // Generic Attribute
+		"180A", // Device Information
+		"180F", // Battery Service
+		"1803", // Link Loss
+		"1805", // Current Time Service (CTS)
+		"1802", // Immediate Alert
+		"180D", // Heart Rate
+		"1810", // Blood Pressure
+		"1812", // Human Interface Device
+		"1809", // Health Thermometer
+		"180E", // Tx Power
+		"1811", // Alert Notification Service
+		"1813", // Scan Parameters
+		"1814", // Running Speed and Cadence
+		"1815", // Automation IO
+		"1816", // Cycling Speed and Cadence
+		"1818", // Cycling Power
+		"1819", // Location and Navigation
+		"181A", // Environmental Sensing
+		"181B", // Body Composition
+		"181C", // User Data
+		"181D", // Weight Scale
+		"181E", // Bond Management
+		"181F", // Continuous Glucose Monitoring
+		"1820", // Internet Protocol Support
+		"1821", // Indoor Positioning
+		"1822", // Pulse Oximeter
+		"1823", // HTTP Proxy
+		"1824", // Transport Discovery
+		"1825", // Object Transfer Service
+		"1826", // Fitness Machine
+		"1827", // Mesh Provisioning
+		"1828", // Mesh Proxy
+		"1829", // Reconnection Configuration
+		"183A", // Insulin Delivery
+		"183B", // Binary Sensor
+		"183C", // Emergency Configuration
+		"183D", // Authorization Control
+		"183E", // Physical Activity Monitor
+		"183F", // Elapsed Time
+		"1840", // Generic Health Sensor
+		"1843", // Audio Input Control
+		"1844", // Volume Control
+		"1845", // Volume Offset Control
+		"1846", // Coordinated Set Identification
+		"1847", // Device Time
+		"1848", // Media Control
+		"1849", // Generic Media Control
+		"184A", // Constant Tone Extension
+		"184B", // Telephone Bearer
+		"184C", // Generic Telephone Bearer
+		"184D", // Microphone Control
+		"184E", // Audio Stream Control
+		"184F", // Broadcast Audio Scan
+		"1850", // Published Audio Capabilities
+		"1851", // Basic Audio Announcement
+		"1852", // Broadcast Audio Announcement
+		"1853", // Common Audio
+		"1854", // Hearing Access
+		"1855", // Telephony and Media Audio
+		"1856", // Public Broadcast Announcement
+		"1857", // Electronic Shelf Label
+		"1858", // Gaming Audio
+		"1859", // Mesh Proxy Solicitation
+		"D0611E78-BBB4-4591-A5F8-487910AE4366", // Apple's Pencil
+		"9FA480E0-4967-4542-9390-D343DC5D04AE", // Apple's Continuity Protocol
+		"FDCE", // Sennheiser
+
+		// User-submitted services.
+		"FFFFD1FD-388D-938B-344A-939D1F6EFEE0",
+		"7DFC8000-7D1C-4951-86AA-8D9728F8D66C",
+		"7DFC7000-7D1C-4951-86AA-8D9728F8D66C",
+		"7DFC6000-7D1C-4951-86AA-8D9728F8D66C",
+		"7DFC9000-7D1C-4951-86AA-8D9728F8D66C"
+	].map { CBUUID(string: $0) }
 }
 
 
@@ -5703,6 +5824,7 @@ extension CGRect {
 
 extension CGColorSpace {
 	static let typed_extendedSRGB = CGColorSpace(name: CGColorSpace.extendedSRGB)!
+	static let typed_extendedLinearSRGB = CGColorSpace(name: CGColorSpace.extendedLinearSRGB)!
 }
 
 
@@ -6496,70 +6618,24 @@ extension CIImage {
 		}
 
 		var bitmap = [UInt8](repeating: 0, count: 4)
-		let context = CIContext(options: [.workingColorSpace: NSNull()])
+		let context = CIContext(options: [.workingColorSpace: CGColorSpace.typed_extendedLinearSRGB])
+
 		context.render(
 			outputImage,
 			toBitmap: &bitmap,
 			rowBytes: bitmap.count,
 			bounds: CGRect(x: 0, y: 0, width: 1, height: 1),
 			format: .RGBA8,
-			colorSpace: .typed_extendedSRGB
+			colorSpace: .typed_extendedLinearSRGB
 		)
 
 		return .init(
+			colorSpace: .sRGBLinear,
 			red: bitmap.colorValue(at: 0).toFloat,
 			green: bitmap.colorValue(at: 1).toFloat,
 			blue: bitmap.colorValue(at: 2).toFloat,
 			opacity: bitmap.colorValue(at: 3).toFloat
 		)
-	}
-}
-
-
-extension CIImage {
-	/**
-	Extracts the dominant colors from the image.
-
-	- Parameter count: Must be in the range `0...128`.
-	*/
-	func dominantColors(count: Int) throws -> [Color.Resolved] {
-		assert((0...128).contains(count), "`count` must be in the range 0...128")
-
-		let inputImage = self
-
-		let filter = CIFilter.kMeans()
-		filter.inputImage = inputImage
-		filter.extent = inputImage.extent
-		filter.count = count
-		filter.passes = 20 // This is the max.
-		filter.perceptual = true
-
-		guard var outputImage = filter.outputImage else {
-			throw "Failed to get dominant color from the image.".toError
-		}
-
-		outputImage = outputImage.settingAlphaOne(in: outputImage.extent)
-
-		let context = CIContext(options: [.workingColorSpace: NSNull()])
-		var bitmap = [UInt8](repeating: 0, count: 4 * count)
-
-		context.render(
-			outputImage,
-			toBitmap: &bitmap,
-			rowBytes: 4 * count,
-			bounds: outputImage.extent,
-			format: .RGBA8,
-			colorSpace: .typed_extendedSRGB
-		)
-
-		return (0..<count).map { index in
-			Color.Resolved(
-				red: bitmap.colorValue(at: index * 4).toFloat,
-				green: bitmap.colorValue(at: index * 4 + 1).toFloat,
-				blue: bitmap.colorValue(at: index * 4 + 2).toFloat,
-				opacity: bitmap.colorValue(at: index * 4 + 3).toFloat
-			)
-		}
 	}
 }
 

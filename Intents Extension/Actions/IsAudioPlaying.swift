@@ -5,13 +5,13 @@ import AVFAudio
 
 @available(macOS, unavailable)
 struct IsAudioPlayingIntent: AppIntent {
-	static let title: LocalizedStringResource = "Is Audio Playing (iOS-only)"
+	static let title: LocalizedStringResource = "Is Audio Playing"
 
 	static let description = IntentDescription(
 		"""
 		Returns whether there is audio currently playing on the device.
 
-		Important: The action simply returns the value that iOS provides, so if there are any false-positives, there is unfortunately not much we can do about it. I recommend trying to restart your device, which sometimes fixes such issues.
+		Important: The action simply returns the value that the system provides, so if there are any false-positives, there is unfortunately not much we can do about it. I recommend trying to restart your device, which sometimes fixes such issues.
 
 		Known issues
 		- It incorrectly returns “true” if the microphone is active.

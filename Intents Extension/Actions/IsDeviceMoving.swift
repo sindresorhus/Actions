@@ -11,7 +11,7 @@ struct IsDeviceMoving: AppIntent {
 
 		This can be useful to detect whether the device is in use or not.
 
-		On macOS, it always returns “false”.
+		NOTE: On macOS and visionOS, it always returns “false”.
 		""",
 		categoryName: "Device",
 		searchKeywords: [
@@ -25,10 +25,10 @@ struct IsDeviceMoving: AppIntent {
 
 	@Parameter(
 		title: "Timeout (seconds)",
-		description: "How long it should wait before giving up waiting for the device to move. The maximum is 30.",
+		description: "How long it should wait before giving up waiting for the device to move. The maximum is 28.",
 		default: 1,
 		controlStyle: .field,
-		inclusiveRange: (0, 30)
+		inclusiveRange: (0, 28)
 	)
 	var timeout: Double
 
@@ -49,9 +49,13 @@ struct IsDeviceMoving: AppIntent {
 	}
 
 	func perform() async throws -> some IntentResult & ReturnsValue<Bool> {
-		#if os(macOS)
+		#if os(macOS) || os(visionOS)
 		.result(value: false)
 		#else
+		if SSApp.isiOSOnVision {
+			return .result(value: false)
+		}
+
 		let result = try await firstOf {
 			_ = try await Device.isMovingUpdates(minAcceleration: minAcceleration).first { $0 }
 			return true

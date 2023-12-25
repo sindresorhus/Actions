@@ -2,8 +2,9 @@ import AppIntents
 import SwiftUI
 
 @available(iOS, unavailable)
+@available(visionOS, unavailable)
 struct SampleColorIntent: AppIntent {
-	static let title: LocalizedStringResource = "Sample Color from Screen (macOS-only)"
+	static let title: LocalizedStringResource = "Sample Color from Screen"
 
 	static let description = IntentDescription(
 		"Lets you pick a color from the screen.",

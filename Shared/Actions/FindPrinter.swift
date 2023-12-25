@@ -4,8 +4,9 @@ import AppIntents
 // NOTE: This has to be an in-app intent as extensions seem to not inherit the print entitlement. (macOS 13.1)
 
 @available(iOS, unavailable)
-struct GetPrinters: AppIntent, DeprecatedAppIntent {
-	static let title: LocalizedStringResource = "Get Printers (macOS-only)"
+@available(visionOS, unavailable)
+struct GetPrinters: DeprecatedAppIntent {
+	static let title: LocalizedStringResource = "Get Printers"
 
 	static let description = IntentDescription(
 		"""
@@ -36,6 +37,7 @@ struct GetPrinters: AppIntent, DeprecatedAppIntent {
 }
 
 @available(iOS, unavailable)
+@available(visionOS, unavailable)
 struct PrinterAppEntityQuery: EnumerableEntityQuery {
 	static let findIntentDescription = IntentDescription(
 		"""
@@ -47,7 +49,8 @@ struct PrinterAppEntityQuery: EnumerableEntityQuery {
 		searchKeywords: [
 			"printer",
 			"print"
-		]
+		],
+		resultValueName: "Printers"
 	)
 
 	func allEntities() -> [PrinterAppEntity] {
@@ -66,6 +69,7 @@ struct PrinterAppEntityQuery: EnumerableEntityQuery {
 }
 
 @available(iOS, unavailable)
+@available(visionOS, unavailable)
 struct PrinterAppEntity: AppEntity {
 	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Printer"
 

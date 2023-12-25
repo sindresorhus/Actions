@@ -11,11 +11,15 @@ struct GetBluetoothDevices: AppIntent {
 		"""
 		Returns the Bluetooth devices in range.
 
-		On iOS, it has to open the main app while scanning because iOS does not allow scanning for arbitrary devices in the background.
+		On iOS & visionOS, it has to open the main app while scanning because they do not allow scanning for arbitrary devices in the background.
 
 		Use the “Get Bluetooth Device” action to check for a specific device.
 
 		NOTE: You need to allow the Bluetooth permission in the main app before using this action.
+
+		NOTE: The “connected” status may not be correct. For a correct connection status, use the “Get Bluetooth Device” action.
+
+		NOTE: The “Services” field is only available in the “Get Bluetooth Device” action.
 		""",
 		categoryName: "Bluetooth",
 		searchKeywords: [
@@ -25,7 +29,7 @@ struct GetBluetoothDevices: AppIntent {
 		resultValueName: "Bluetooth Devices"
 	)
 
-	// iOS doesn't support scanning for arbitrary devices in the background.
+	// iOS & visionOS do not support scanning for arbitrary devices in the background.
 	#if canImport(UIKit)
 	static let openAppWhenRun = true
 	#endif
@@ -68,6 +72,9 @@ struct GetBluetoothDevices: AppIntent {
 			central.stopScan()
 		}
 
+		// We have to pass in a list of known services because the API does not support getting all devices.
+		let connectedDevices = central.retrieveConnectedPeripherals(withServices: CBCentralManager.commonServices)
+
 		for await (peripheral, advertisementData, rssi) in await central.scanForPeripherals() {
 			let name = peripheral.name ?? advertisementData[CBAdvertisementDataLocalNameKey] as? String
 
@@ -78,12 +85,13 @@ struct GetBluetoothDevices: AppIntent {
 				continue
 			}
 
-			print("Discovered:", peripheral.name ?? "Unknown")
+			print("Discovered:", peripheral.name ?? "Unknown", peripheral.identifier)
 
 			devices[peripheral.identifier] = BluetoothDevice_AppEntity(
 				peripheral: peripheral,
 				advertisementData: advertisementData,
-				rssi: rssi
+				rssi: Int(rssi),
+				isConnected: connectedDevices.contains { $0.identifier == peripheral.identifier }
 			)
 		}
 
@@ -120,13 +128,13 @@ struct BluetoothDevice_AppEntity: TransientAppEntity {
 	var signalStrength: Double
 
 	@Property(title: "Received Signal Strength Indicator (RSSI)")
-	var rssi: Double
+	var rssi: Int
 
 	@Property(title: "Transmit Power Level (Tx)")
 	var transmitPowerLevel: Int?
 
-//	@Property(title: "Services (UUIDs)")
-//	var services: [String]
+	@Property(title: "Services (UUIDs)")
+	var services: [String]
 
 	var displayRepresentation: DisplayRepresentation {
 		.init(
@@ -137,33 +145,42 @@ struct BluetoothDevice_AppEntity: TransientAppEntity {
 				Connected: \(isConnected ? "true" : "false")
 				Signal: \(signalStrength.formatted(.percent.noFraction))
 				RSSI: \(rssi)
+				Unique Services: \(services.filter { !CBCentralManager.commonServices.map(\.uuidString).contains($0) }.joined(separator: ", "))
+				Services: \(services.joined(separator: ", "))
 				"""
 		)
 	}
 }
 
 extension BluetoothDevice_AppEntity {
-	init(peripheral: Peripheral, advertisementData: [String: Any], rssi: Double) {
+	init(
+		peripheral: Peripheral,
+		advertisementData: [String: Any],
+		rssi: Int,
+		isConnected: Bool,
+		services: [CBUUID] = []
+	) {
 		let name = peripheral.name ?? advertisementData[CBAdvertisementDataLocalNameKey] as? String
 		let txPowerLevel = advertisementData[CBAdvertisementDataTxPowerLevelKey] as? Int
 
 		self.identifier = peripheral.identifier.uuidString
 		self.name = name
-		self.isConnected = peripheral.state == .connected
+		self.isConnected = isConnected // `peripheral.state == .connected` only returns whether this app is connected to a device, not whether the system is.
 		self.signalStrength = signalStrengthPercentage(rssi: rssi)
 		self.rssi = rssi
 		self.transmitPowerLevel = txPowerLevel
+		self.services = services.map(\.uuidString)
 	}
 }
 
-func signalStrengthPercentage(rssi: Double) -> Double {
+func signalStrengthPercentage(rssi: Int) -> Double {
 	// Define the typical RSSI range for Bluetooth connections
 	// Example: -100 dBm (weak) to -40 dBm (strong)
 	let minRSSI = -100.0
 	let maxRSSI = -40.0
 
 	// Normalize the RSSI value within this range
-	let percentage = (rssi - minRSSI) / (maxRSSI - minRSSI)
+	let percentage = (Double(rssi) - minRSSI) / (maxRSSI - minRSSI)
 
 	return percentage.clamped(to: 0...1)
 }

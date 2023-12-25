@@ -12,7 +12,7 @@
 	<br>
 </div>
 
-The app provides lots of powerful extra actions for the Shortcuts app on macOS and iOS. These actions make it significantly easier to create shortcuts.
+The app provides lots of powerful extra actions for the Shortcuts app on macOS, iOS, and visionOS. These actions make it significantly easier to create shortcuts.
 
 [**Submit action idea**](https://github.com/sindresorhus/Actions/issues/new/choose)\
 <sub>*(Submit an issue before [submitting a pull request](.github/contributing.md))*</sub>
@@ -31,7 +31,7 @@ And for high-quality transcription, see my [Aiko](https://sindresorhus.com/aiko)
 
 [![](https://sindresorhus.com/assets/download-on-app-store-badge.svg)](https://apps.apple.com/app/id1586435171)
 
-*Requires at least macOS 14 or iOS 17*
+*Requires minimum macOS 14, iOS 17, or visionOS 1*
 
 **Older versions (macOS)**
 
@@ -180,8 +180,8 @@ And for high-quality transcription, see my [Aiko](https://sindresorhus.com/aiko)
 - Trigger shortcuts on your Mac from your iOS device → [Hyperduck](https://sindresorhus.com/hyperduck#shortcuts)
 - Show text in menu bar → [One Thing](https://sindresorhus.com/one-thing)
 - Open URLs in a specific browser → [Velja](https://sindresorhus.com/velja)
-- Remove tracking parameters from URLs → [Velja](https://sindresorhus.com/velja)
-- Generate images from text with AI → [Amazing AI](https://sindresorhus.com/amazing-ai)
+- Remove tracking parameters from URLs → [Velja](https://sindresorhus.com/velja) & [Pure Paste](https://sindresorhus.com/pure-paste)
+- Generate images from text with AI locally → [Amazing AI](https://sindresorhus.com/amazing-ai)
 - Clear clipboard formatting → [Pure Paste](https://sindresorhus.com/pure-paste)
 - Get internet speed → [Speediness](https://sindresorhus.com/speediness)
 - Join video calls → [Dato](https://sindresorhus.com/dato)

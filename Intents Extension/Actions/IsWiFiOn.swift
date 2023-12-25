@@ -1,8 +1,9 @@
 import AppIntents
 
 @available(iOS, unavailable)
+@available(visionOS, unavailable)
 struct IsWiFiOnIntent: AppIntent {
-	static let title: LocalizedStringResource = "Is Wi-Fi On (macOS-only)"
+	static let title: LocalizedStringResource = "Is Wi-Fi On"
 
 	static let description = IntentDescription(
 		"""

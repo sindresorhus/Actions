@@ -8,7 +8,7 @@ struct IsDeviceOrientationIntent: AppIntent {
 		"""
 		Returns whether the device is in the chosen orientation.
 
-		On macOS, it always returns false.
+		On macOS and visionOS, it always returns “false”.
 		""",
 		categoryName: "Device"
 	)

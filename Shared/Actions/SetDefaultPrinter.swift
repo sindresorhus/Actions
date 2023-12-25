@@ -2,8 +2,9 @@
 import AppIntents
 
 @available(iOS, unavailable)
+@available(visionOS, unavailable)
 struct SetDefaultPrinter: AppIntent {
-	static let title: LocalizedStringResource = "Set Default Printer (macOS-only)"
+	static let title: LocalizedStringResource = "Set Default Printer"
 
 	static let description = IntentDescription(
 		"Sets the default printer.",

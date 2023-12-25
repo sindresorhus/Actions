@@ -11,7 +11,7 @@ struct Authenticate2: AppIntent {
 
 		Unlike the old authenticate action, this one directly returns a boolean for whether the authentication succeeded.
 
-		On iOS, it needs to momentarily open the Actions app to be able to present the authentication prompt.
+		On iOS & visionOS, it needs to momentarily open the Actions app to be able to present the authentication prompt.
 		""",
 		categoryName: "Device",
 		searchKeywords: [
@@ -38,7 +38,7 @@ struct Authenticate2: AppIntent {
 
 	@Parameter(
 		title: "Timeout (seconds)",
-		description: "When it times out, it returns “false” as if the authentication failed. On iOS, the max timeout is 25 seconds, and it will always timeout after that even if this settings is not specified."
+		description: "When it times out, it returns “false” as if the authentication failed. On iOS & visionOS, the max timeout is 25 seconds, and it will always timeout after that even if this settings is not specified."
 	)
 	var timeout: Double?
 

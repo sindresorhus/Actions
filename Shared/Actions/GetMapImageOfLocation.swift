@@ -11,7 +11,7 @@ struct GetMapImageOfLocation: AppIntent {
 		"""
 		Returns an image with the given location marked and centered on a map.
 
-		Known issue: On iOS, it only works the first time. There is some kind of iOS bug that makes it not work the second time it's run. There's unfortunately no workaround and we have to wait for Apple to fix this.
+		Known issue: On iOS & visionOS, it only works the first time. There is some kind of system bug that makes it not work the second time it's run. There's unfortunately no workaround and we have to wait for Apple to fix this.
 		""",
 		categoryName: "Location",
 		resultValueName: "Map Image of Location"
@@ -59,7 +59,7 @@ struct GetMapImageOfLocation: AppIntent {
 	var appearance: AppearanceAppEnum
 
 	static var parameterSummary: some ParameterSummary {
-		Summary("Get map image of \(\.$location) with \(\.$radius) radius") {
+		Summary("Get map image of \(\.$location) with \(\.$radius) radius (PLEASE READ THE ACTION DESCRIPTION)") {
 			\.$width
 			\.$height
 			\.$showPlacemark
@@ -88,7 +88,13 @@ struct GetMapImageOfLocation: AppIntent {
 			options.useDarkMode = appearance == .dark
 		}
 
-		let snapshot = try await MKMapSnapshotter(options: options).start()
+		let snapshotter = MKMapSnapshotter(options: options)
+
+		let snapshot = try await withTaskCancellationHandler {
+			try await snapshotter.start()
+		} onCancel: {
+			snapshotter.cancel()
+		}
 
 		let image = showPlacemark
 			? try await drawPlacemark(on: snapshot.image, at: snapshot.point(for: coordinates))

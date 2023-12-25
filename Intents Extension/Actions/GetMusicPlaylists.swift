@@ -5,7 +5,7 @@ import MediaPlayer
 
 @available(macOS, unavailable)
 struct GetMusicPlaylistsIntent: AppIntent {
-	static let title: LocalizedStringResource = "Get Music Playlists (iOS-only)"
+	static let title: LocalizedStringResource = "Get Music Playlists"
 
 	static let description = IntentDescription(
 		"""

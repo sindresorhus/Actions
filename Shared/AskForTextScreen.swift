@@ -80,7 +80,8 @@ struct AskForTextScreen: View {
 
 	@MainActor
 	private func openShortcuts() {
-		dismiss()
+		dismiss() // This does not currently do anything. (iOS 17.2)
+		AppState.shared.askForTextData = nil
 		ShortcutsApp.open()
 
 		#if os(macOS)

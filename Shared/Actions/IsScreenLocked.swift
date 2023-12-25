@@ -1,8 +1,9 @@
 import AppIntents
 
 @available(iOS, unavailable)
+@available(visionOS, unavailable)
 struct IsScreenLockedIntent: AppIntent {
-	static let title: LocalizedStringResource = "Is Screen Locked (macOS-only)"
+	static let title: LocalizedStringResource = "Is Screen Locked"
 
 	static let description = IntentDescription(
 		"Returns whether the screen is locked.",

@@ -2,7 +2,7 @@ import AppIntents
 
 @available(macOS, unavailable)
 struct IsSilentModeOnIntent: AppIntent {
-	static let title: LocalizedStringResource = "Is Silent Mode On (iOS-only)"
+	static let title: LocalizedStringResource = "Is Silent Mode On"
 
 	static let description = IntentDescription(
 		"""

@@ -14,7 +14,7 @@ struct CombineVideosIntent: AppIntent {
 
 		It uses passthrough whenever possible to prevent unnecessary transcoding, preserving original video quality.
 
-		NOTE: On iOS, shortcut actions only get 30 seconds to run, so if the videos are very long, it may not work.
+		NOTE: On iOS & visionOS, shortcut actions only get 30 seconds to run, so if the videos are very long, it may not work.
 		""",
 		categoryName: "Video",
 		searchKeywords: [

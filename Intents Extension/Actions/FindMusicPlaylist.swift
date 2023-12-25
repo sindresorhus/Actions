@@ -46,7 +46,11 @@ extension MusicPlaylist_AppEntity {
 			"""
 			Returns the playlists in your Music library.
 
-			iOS-only
+			Only for iOS and visionOS.
+
+			IMPORTANT: Pass the result of this action to the built-in “Get Playlist” action before using it with any of the other music actions.
+
+			NOTE: The created and modified date sometimes resets when syncing with iTunes. There is nothing we can do about that.
 
 			Use the built-in “Show Result” action to inspect the individual properties.
 			""",

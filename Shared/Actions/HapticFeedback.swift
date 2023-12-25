@@ -1,8 +1,7 @@
 import AppIntents
 
-@available(macOS, unavailable)
 struct HapticFeedbackIntent: AppIntent {
-	static let title: LocalizedStringResource = "Generate Haptic Feedback (iOS-only)"
+	static let title: LocalizedStringResource = "Generate Haptic Feedback"
 
 	static let description = IntentDescription(
 		"""
@@ -12,7 +11,7 @@ struct HapticFeedbackIntent: AppIntent {
 
 		Not supported on iPad. Requires iPhone 8 or later.
 
-		On macOS, it does nothing.
+		On macOS and visionOS, it does nothing.
 		""",
 		categoryName: "Device"
 	)

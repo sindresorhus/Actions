@@ -4,7 +4,11 @@ struct IsDarkModeIntent: AppIntent {
     static let title: LocalizedStringResource = "Is Dark Mode On"
 
 	static let description = IntentDescription(
-		"Returns whether dark mode is enabled on the device.",
+		"""
+		Returns whether dark mode is enabled on the device.
+
+		NOTE: This always returns "“false” on visionOS.
+		""",
 		categoryName: "Device"
 	)
 

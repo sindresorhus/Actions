@@ -10,7 +10,7 @@ struct TranscribeAudioIntent: AppIntent {
 
 		Note: Prefer the built-in “Transcribe Audio” action.
 
-		Note: On iOS, the transcription only works if the audio takes less than 30 seconds to process. This usually means about 1 minute of transcription. This is because third-party actions only get 30 seconds to execute.
+		Note: On iOS & visionOS, the transcription only works if the audio takes less than 30 seconds to process. This usually means about 1 minute of transcription. This is because third-party actions only get 30 seconds to execute.
 
 		Tip: Check out my app Aiko on the App Store. It has higher quality transcription, unlimited duration, and supports 100 languages.
 
@@ -25,7 +25,7 @@ struct TranscribeAudioIntent: AppIntent {
 	@Parameter(title: "Audio File", supportedTypeIdentifiers: ["public.audio"])
 	var file: IntentFile
 
-	@Parameter(title: "Custom Locale (Many of the locales do not work because of a macOS/iOS bug)")
+	@Parameter(title: "Custom Locale (Many of the locales do not work because of a system bug)")
 	var locale: SFLocaleAppEntity
 
 	@Parameter(title: "Perform Offline (Buggy, don't use)", default: false)

@@ -1,5 +1,5 @@
 import AppIntents
-import CoreImage
+import DominantColors
 
 struct GetDominantColorsOfImage: AppIntent {
 	static let title: LocalizedStringResource = "Get Dominant Colors of Image"
@@ -38,14 +38,46 @@ struct GetDominantColorsOfImage: AppIntent {
 	)
 	var count: Int
 
+	@Parameter(
+		title: "Exclude White",
+		description: "Exclude white colors.",
+		default: false
+	)
+	var excludeWhite: Bool
+
+	@Parameter(
+		title: "Exclude Black",
+		description: "Exclude black colors.",
+		default: false
+	)
+	var excludeBlack: Bool
+
 	static var parameterSummary: some ParameterSummary {
-		Summary("Get \(\.$count) dominant colors of \(\.$image)")
+		Summary("Get \(\.$count) dominant colors of \(\.$image)") {
+			\.$excludeWhite
+			\.$excludeBlack
+		}
 	}
 
 	func perform() async throws -> some IntentResult & ReturnsValue<[ColorAppEntity]> {
-		let colors = try CIImage.from(image.data)
-			.dominantColors(count: count)
-			.map { ColorAppEntity($0) }
+		guard let image = XImage(data: image.data)?.cgImage else {
+			throw "Failed to load image.".toError
+		}
+
+		let colors = try DominantColors
+			.dominantColors(
+				image: image,
+				with: .high,
+				algorithm: .iterative(formula: .CIEDE2000),
+				dominationColors: count,
+				flags: [
+					excludeWhite ? .excludeWhite : nil,
+					excludeBlack ? .excludeBlack : nil
+				].compact()
+			)
+			.map {
+				ColorAppEntity($0.toResolvedColor)
+			}
 
 		return .result(value: colors)
 	}

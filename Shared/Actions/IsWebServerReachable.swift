@@ -29,7 +29,12 @@ struct IsReachableIntent: AppIntent {
 	)
 	var host: String
 
-	@Parameter(title: "Timeout (seconds)", default: 10)
+	@Parameter(
+		title: "Timeout (seconds)",
+		description: "Max 25 seconds.",
+		default: 10,
+		inclusiveRange: (0, 25)
+	)
 	var timeout: Double // TODO: Would be nice if this could be the `Duration` type.
 
 	@Parameter(

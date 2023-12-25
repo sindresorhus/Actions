@@ -7,7 +7,7 @@ struct IsCellularLowDataModeOn: AppIntent {
 		"""
 		Returns whether cellular low data mode is enabled on the device.
 
-		On macOS, it always returns false.
+		On macOS and visionOS, it always returns false.
 		""",
 		categoryName: "Device"
 	)

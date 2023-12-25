@@ -9,7 +9,7 @@ struct IsShakingDevice: AppIntent {
 
 		If no shaking is detect within 2 seconds, it returns “false”.
 
-		On macOS, it always returns “false”.
+		On macOS and visionOS, it always returns “false”.
 		""",
 		categoryName: "Device",
 		searchKeywords: [
@@ -22,10 +22,10 @@ struct IsShakingDevice: AppIntent {
 
 	@Parameter(
 		title: "Timeout (seconds)",
-		description: "How long it should wait before giving up detecting a shake gesture. The maximum is 30.",
+		description: "How long it should wait before giving up detecting a shake gesture. The maximum is 28.",
 		default: 2,
 		controlStyle: .field,
-		inclusiveRange: (0, 30)
+		inclusiveRange: (0, 28)
 	)
 	var timeout: Double
 
@@ -36,9 +36,13 @@ struct IsShakingDevice: AppIntent {
 	}
 
 	func perform() async throws -> some IntentResult & ReturnsValue<Bool> {
-		#if os(macOS)
+		#if os(macOS) || os(visionOS)
 		.result(value: false)
 		#else
+		if SSApp.isiOSOnVision {
+			return .result(value: false)
+		}
+
 		guard Device.isAccelerometerAvailable else {
 			return .result(value: false)
 		}

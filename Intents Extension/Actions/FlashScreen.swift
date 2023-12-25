@@ -2,8 +2,9 @@ import AppIntents
 import SwiftUI
 
 @available(iOS, unavailable)
+@available(visionOS, unavailable)
 struct FlashScreen: AppIntent {
-	static let title: LocalizedStringResource = "Flash Screen (macOS-only)"
+	static let title: LocalizedStringResource = "Flash Screen"
 
 	static let description = IntentDescription(
 		"Flashes the screen momentarily.",

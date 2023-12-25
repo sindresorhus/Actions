@@ -2,8 +2,9 @@ import AppIntents
 import SwiftUI
 
 @available(iOS, unavailable)
+@available(visionOS, unavailable)
 struct GetFileIconIntent: AppIntent {
-	static let title: LocalizedStringResource = "Get File Icon (macOS-only)"
+	static let title: LocalizedStringResource = "Get File Icon"
 
 	static let description = IntentDescription(
 		"Returns the icon for the input files or directories.",

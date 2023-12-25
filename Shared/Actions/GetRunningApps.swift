@@ -3,8 +3,9 @@ import AppIntents
 import AppKit
 
 @available(iOS, unavailable)
+@available(visionOS, unavailable)
 struct GetRunningAppsIntent: AppIntent {
-	static let title: LocalizedStringResource = "Get Running Apps (macOS-only)"
+	static let title: LocalizedStringResource = "Get Running Apps"
 
 	static let description = IntentDescription(
 		"""

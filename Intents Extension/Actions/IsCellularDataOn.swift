@@ -7,7 +7,7 @@ struct IsCellularDataOn: AppIntent {
 		"""
 		Returns whether cellular data is enabled on the device.
 
-		On macOS, it always returns false.
+		On macOS and visionOS, it always returns false.
 		""",
 		categoryName: "Device"
 	)

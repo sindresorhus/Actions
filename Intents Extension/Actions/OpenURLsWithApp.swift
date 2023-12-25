@@ -3,6 +3,7 @@ import AppIntents
 import AppKit
 
 @available(iOS, unavailable)
+@available(visionOS, unavailable)
 struct OpenURLsWithApp: AppIntent {
 	static let title: LocalizedStringResource = "Open URLs with App"
 

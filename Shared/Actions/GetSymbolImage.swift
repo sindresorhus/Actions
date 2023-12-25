@@ -115,6 +115,6 @@ enum SymbolImageRenderingAppEnum: String, AppEnum {
 		.monochrome: "monochrome",
 		.hierarchical: "hierarchical",
 		.palette: "palette",
-		.multicolor: "multicolor (iOS-only)"
+		.multicolor: "multicolor (iOS & visionOS-only)"
 	]
 }

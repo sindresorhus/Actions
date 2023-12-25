@@ -22,7 +22,7 @@ struct AskForText: AppIntent {
 
 	@Parameter(
 		title: "Type",
-		description: "This helps iOS pick the optimal keyboard.",
+		description: "This helps the system pick the optimal keyboard.",
 		default: .text
 	)
 	var type: InputTypeAppEnum

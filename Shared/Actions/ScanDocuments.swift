@@ -3,11 +3,11 @@ import SwiftUI
 
 @available(macOS, unavailable)
 struct ScanDocumentsIntent: AppIntent {
-	static let title: LocalizedStringResource = "Scan Documents (iOS-only)"
+	static let title: LocalizedStringResource = "Scan Documents"
 
 	static let description = IntentDescription(
 		"""
-		Scans one or more documents using the iOS document scanner.
+		Scans one or more documents using the system document scanner.
 
 		IMPORTANT: The resulting images are copied to the clipboard. Add the “Wait to Return” and “Get Clipboard” actions after this one.
 

@@ -2,7 +2,7 @@ import AppIntents
 
 @available(macOS, unavailable)
 struct IsConnectedToVPNIntent: AppIntent {
-	static let title: LocalizedStringResource = "Is Connected to VPN (iOS-only)"
+	static let title: LocalizedStringResource = "Is Connected to VPN"
 
 	static let description = IntentDescription(
 		"""
