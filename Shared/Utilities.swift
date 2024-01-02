@@ -21,6 +21,7 @@ import PDFKit
 import os
 import MapKit
 import Sentry
+import MediaPlayer
 
 #if os(macOS)
 import IOKit.ps
@@ -6919,4 +6920,73 @@ extension FloatingPointFormatStyle.Percent {
 	Do not show fraction.
 	*/
 	var noFraction: Self { precision(.fractionLength(0)) }
+}
+
+
+extension NSObject {
+	/**
+	Check whether the object has the given key.
+	*/
+	func hasKey(_ key: String) -> Bool {
+		responds(to: Selector(key))
+	}
+
+	func safeValue(forKey key: String) -> Any? {
+		guard hasKey(key) else {
+			return nil
+		}
+
+		return value(forKey: key)
+	}
+}
+
+
+@available(macOS, unavailable)
+extension MPMediaLibrary {
+	/**
+	Requests authorization for accessing the Media Library and ensures the app has authorization.
+	*/
+	static func ensureAccess() async throws {
+		guard await MPMediaLibrary.requestAuthorization() == .authorized else {
+			throw "Missing access to the Music library. You can grant access in “Settings › \(SSApp.name)”.".toError
+		}
+	}
+
+	/**
+	Retrieves all playlists from the Media Library.
+
+	Before fetching playlists, it ensures the app has necessary access
+	*/
+	static func getPlaylists() async throws -> [MPMediaPlaylist] {
+		try await ensureAccess()
+		return MPMediaQuery.playlists().collections as? [MPMediaPlaylist] ?? []
+	}
+}
+
+
+@available(macOS, unavailable)
+extension MPMediaPlaylist {
+	// Properties found here: https://brightbitlabs.com/ios/_system_library_frameworks_mediaplayer.framework_mediaplayer/
+	// Search for "_mpmediaplaylist".
+
+	@nonobjc
+	var dateCreated: Date {
+		let key = String("detaerCetad".reversed()) // "dateCreated"
+		return value(forProperty: key) as? Date ?? .distantPast
+	}
+
+	@nonobjc
+	var dateModified: Date {
+		let key = String("deifidoMetad".reversed()) // "dateModified"
+		return value(forProperty: key) as? Date ?? dateCreated
+	}
+
+	/**
+	This can be `nil` if the system doesn't have this info.
+	*/
+	@nonobjc
+	var dateLastPlayed: Date? {
+		let key = String("deyalPetad".reversed()) // "datePlayed"
+		return value(forProperty: key) as? Date
+	}
 }

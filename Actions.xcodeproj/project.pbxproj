@@ -36,7 +36,6 @@
 		E317491A2916A20C00F6319E /* IsConnectedToVPN.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C33CAF28D3B3EF00386C59 /* IsConnectedToVPN.swift */; };
 		E317491B2916A20C00F6319E /* RemoveNonPrintableCharacters.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C33CB928D4406500386C59 /* RemoveNonPrintableCharacters.swift */; };
 		E317491C2916A20C00F6319E /* GetHighResolutionTimestamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31748A0291589B600F6319E /* GetHighResolutionTimestamp.swift */; };
-		E317491D2916A20C00F6319E /* GetMusicPlaylists.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C33C9928D35F3D00386C59 /* GetMusicPlaylists.swift */; };
 		E317491E2916A20C00F6319E /* SpellOutNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CB44AD28D7A6BA0031D55F /* SpellOutNumber.swift */; };
 		E317491F2916A20C00F6319E /* GenerateRandomText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC2DE728D2DB1000A88E25 /* GenerateRandomText.swift */; };
 		E31749202916A20C00F6319E /* GetRandomFloatingPointNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC2DBB28D2008000A88E25 /* GetRandomFloatingPointNumber.swift */; };
@@ -94,6 +93,8 @@
 		E324C9FF271E972300E7CA9B /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = E324C9EF271E972200E7CA9B /* App.swift */; };
 		E324CA01271E972300E7CA9B /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E324C9F0271E972200E7CA9B /* MainScreen.swift */; };
 		E324CA03271E972300E7CA9B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E324C9F1271E972300E7CA9B /* Assets.xcassets */; };
+		E333DBF12B442A2900FC4745 /* GetMusicPlaylists.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C33C9928D35F3D00386C59 /* GetMusicPlaylists.swift */; };
+		E333DBF22B44320100FC4745 /* FindMusicPlaylist.swift in Sources */ = {isa = PBXBuildFile; fileRef = E333DBEF2B44248500FC4745 /* FindMusicPlaylist.swift */; };
 		E337A3E127E850EC0073E865 /* ChooseFromListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E337A3DF27E850EC0073E865 /* ChooseFromListScreen.swift */; };
 		E337A3E627E8BA6B0073E865 /* FuzzyFind in Frameworks */ = {isa = PBXBuildFile; productRef = E337A3E527E8BA6B0073E865 /* FuzzyFind */; };
 		E337FA3B2ADFCE9700BF9542 /* GetAverageColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E337FA3A2ADFCE9700BF9542 /* GetAverageColor.swift */; };
@@ -221,6 +222,7 @@
 		E324CA24271E996800E7CA9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E324CA29271EA67E00E7CA9B /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		E324D75E2AB1A79500BBE6BA /* Intents Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Intents Extension.entitlements"; sourceTree = "<group>"; };
+		E333DBEF2B44248500FC4745 /* FindMusicPlaylist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindMusicPlaylist.swift; sourceTree = "<group>"; };
 		E337A3DF27E850EC0073E865 /* ChooseFromListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseFromListScreen.swift; sourceTree = "<group>"; };
 		E337FA3A2ADFCE9700BF9542 /* GetAverageColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAverageColor.swift; sourceTree = "<group>"; };
 		E33AE99F2ADFBB6600862F55 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -464,6 +466,7 @@
 				E3EC2DE128D2588800A88E25 /* CreateURL.swift */,
 				E3F64D7128D9F3810009B500 /* EditURL.swift */,
 				E3C33C9B28D376C400386C59 /* FilterList.swift */,
+				E333DBEF2B44248500FC4745 /* FindMusicPlaylist.swift */,
 				E3D514C728EEA8F8003F7C2E /* FlashScreen.swift */,
 				E3C33CBB28D4413E00386C59 /* FormatCurrency.swift */,
 				E3EC2DD728D244B200A88E25 /* FormatDateDifference.swift */,
@@ -782,10 +785,12 @@
 				E30E56132922602B00C44823 /* GetRandomNumberFromSeed.swift in Sources */,
 				E317492B2916A20C00F6319E /* GetRelatedWords.swift in Sources */,
 				E317492C2916A20C00F6319E /* GetRandomColor.swift in Sources */,
+				E333DBF22B44320100FC4745 /* FindMusicPlaylist.swift in Sources */,
 				E317493D2916A20C00F6319E /* TransformText.swift in Sources */,
 				E31749192916A20C00F6319E /* ConvertCoordinatesToLocation.swift in Sources */,
 				E31749262916A20C00F6319E /* ConvertDateToUnixTime.swift in Sources */,
 				E317494E2916A20C00F6319E /* GenerateUUID.swift in Sources */,
+				E333DBF12B442A2900FC4745 /* GetMusicPlaylists.swift in Sources */,
 				E31749392916A20C00F6319E /* TransformTextWithJavaScript.swift in Sources */,
 				E317492F2916A20C00F6319E /* IsWiFiOn.swift in Sources */,
 				E317490D2916A20C00F6319E /* RemoveDuplicateLines.swift in Sources */,
@@ -817,7 +822,6 @@
 				E31749412916A20C00F6319E /* FormatNumberCompact.swift in Sources */,
 				E3759BF02B025EC700AA26C2 /* IsDeviceMoving.swift in Sources */,
 				E317492D2916A20C00F6319E /* ClampNumber.swift in Sources */,
-				E317491D2916A20C00F6319E /* GetMusicPlaylists.swift in Sources */,
 				E31749352916A20C00F6319E /* GeoURI.swift in Sources */,
 				E317494C2916A20C00F6319E /* RoundNumberToMultiple.swift in Sources */,
 				E31749222916A20C00F6319E /* GetAudioPlaybackDestination.swift in Sources */,

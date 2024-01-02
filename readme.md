@@ -61,6 +61,7 @@ And for high-quality transcription, see my [Aiko](https://sindresorhus.com/aiko)
 - Create URL
 - Edit URL
 - Filter List
+- Find Music Playlist <sup>(iOS-only)</sup>
 - Flash Screen <sup>(macOS-only)</sup>
 - Format Currency
 - Format Date Difference
@@ -94,7 +95,6 @@ And for high-quality transcription, see my [Aiko](https://sindresorhus.com/aiko)
 - Get Index of List Item
 - Get Map Image of Location
 - Get Modifier Key State <sup>(macOS-only)</sup>
-- Get Music Playlists <sup>(iOS-only)</sup>
 - Get Printers <sup>(macOS-only)</sup>
 - Get Query Item Value from URL
 - Get Query Items from URL

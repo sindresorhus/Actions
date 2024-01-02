@@ -46,6 +46,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Create URL
 - Edit URL
 - Filter List
+- Find Music Playlist (iOS-only)
 - Flash Screen (macOS-only)
 - Format Currency
 - Format Date Difference
@@ -79,7 +80,6 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Get Index of List Item
 - Get Map Image of Location
 - Get Modifier Key State (macOS-only)
-- Get Music Playlists (iOS-only)
 - Get Printers (macOS-only)
 - Get Query Item Value from URL
 - Get Query Items from URL
