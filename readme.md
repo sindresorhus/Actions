@@ -202,15 +202,21 @@ A special version for users that cannot access the App Store. It won't receive a
 
 #### The actions don't show up in the Shortcuts app
 
-Restart your device.
+Restart your device. This is caused by a iOS/macOS bug.
+
+#### I get a “errorDomain error 2” error when running an action
+
+Restart your device. This is caused by a iOS/macOS bug.
 
 #### Why is this free without ads?
 
-I just enjoy making apps. I earn money on other apps. Consider leaving a nice review on the App Store.
+I just enjoy making apps. Consider leaving a nice review on the App Store.
 
 #### Can I contribute localizations?
 
-I don't have any immediate plans to localize the app.
+I plan to localize the app.
+
+#### [More FAQs…](https://sindresorhus.com/apps/faq)
 
 ## Other apps
 

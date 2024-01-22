@@ -59,11 +59,8 @@ struct WelcomeScreen: View {
 			.padding(.vertical)
 			#else
 			.frame(maxWidth: dynamicTypeSize.isAccessibilitySize ? .infinity : 540)
-			.if(Device.hasSmallScreen) {
-				$0.embedInScrollView()
-			} else: {
-				$0.embedInScrollViewIfAccessibilitySize()
-			}
+			.embedInScrollView()
+			.scrollBounceBehavior(.basedOnSize)
 			#endif
 			.task {
 				#if DEBUG

@@ -7066,3 +7066,87 @@ extension MPMediaPlaylist {
 		return value(forProperty: key) as? Date
 	}
 }
+
+
+enum SSNetwork {
+	// From: https://developer.apple.com/forums/thread/663768
+	static func triggerLocalNetworkPrivacyAlert() {
+		let ipv4Socket = socket(AF_INET, SOCK_DGRAM, 0)
+		guard ipv4Socket >= 0 else {
+			return
+		}
+
+		defer {
+			close(ipv4Socket)
+		}
+
+		let ipv6Socket = socket(AF_INET6, SOCK_DGRAM, 0)
+		guard ipv6Socket >= 0 else {
+			return
+		}
+
+		defer {
+			close(ipv6Socket)
+		}
+
+		let broadcastAddresses = addressesOfDiscardServiceOnBroadcastCapableInterfaces()
+		var message = [UInt8]("!".utf8)
+		for address in broadcastAddresses {
+			address.withUnsafeBytes { buffer in
+				let sockaddrPointer = buffer.baseAddress!.assumingMemoryBound(to: sockaddr.self)
+				let sockaddrLength = socklen_t(buffer.count)
+				let socketForAddress = sockaddrPointer.pointee.sa_family == AF_INET ? ipv4Socket : ipv6Socket
+				_ = sendto(socketForAddress, &message, message.count, MSG_DONTWAIT, sockaddrPointer, sockaddrLength)
+			}
+		}
+	}
+
+	/**
+	Returns the addresses of the discard service (port 9) on every broadcast-capable interface.
+	
+	Each array entry is contains either a `sockaddr_in` or `sockaddr_in6`.
+	*/
+	private static func addressesOfDiscardServiceOnBroadcastCapableInterfaces() -> [Data] {
+		var interfaceAddressList: UnsafeMutablePointer<ifaddrs>?
+		let getAddressesError = getifaddrs(&interfaceAddressList)
+
+		guard
+			getAddressesError == 0,
+			let interfaceListStart = interfaceAddressList
+		else {
+			return []
+		}
+
+		defer {
+			freeifaddrs(interfaceListStart)
+		}
+
+		return sequence(first: interfaceListStart, next: \.pointee.ifa_next)
+			.compactMap { interface -> Data? in
+				guard
+					(interface.pointee.ifa_flags & UInt32(bitPattern: IFF_BROADCAST)) != 0,
+					let sockaddr = interface.pointee.ifa_addr
+				else {
+					return nil
+				}
+
+				var addressData = Data(UnsafeRawBufferPointer(start: sockaddr, count: Int(sockaddr.pointee.sa_len)))
+				switch CInt(sockaddr.pointee.sa_family) {
+				case AF_INET:
+					addressData.withUnsafeMutableBytes { buffer in
+						let sockaddrIn = buffer.baseAddress!.assumingMemoryBound(to: sockaddr_in.self)
+						sockaddrIn.pointee.sin_port = UInt16(9).bigEndian
+					}
+				case AF_INET6:
+					addressData.withUnsafeMutableBytes { buffer in
+						let sockaddrIn6 = buffer.baseAddress!.assumingMemoryBound(to: sockaddr_in6.self)
+						sockaddrIn6.pointee.sin6_port = UInt16(9).bigEndian
+					}
+				default:
+					return nil
+				}
+
+				return addressData
+			}
+	}
+}

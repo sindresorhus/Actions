@@ -11,6 +11,8 @@ struct GetDeviceDetailsExtended: AppIntent {
 
 		You can access the individual values.
 
+		Possible values for thermal state: Nominal, Fair, Serious, Critical
+
 		Tip: Use the “Format Duration” action to format the “Uptime” and “Duration since boot” values.
 		""",
 		categoryName: "Device",
@@ -23,7 +25,11 @@ struct GetDeviceDetailsExtended: AppIntent {
 			"processor",
 			"cpu",
 			"memory",
-			"hostname"
+			"hostname",
+			"thermal",
+			"state",
+			"temperature",
+			"heat"
 		],
 		resultValueName: "Device Details"
 	)
@@ -52,6 +58,9 @@ struct DeviceDetailsAppEntity: TransientAppEntity {
 	@Property(title: "Hostname")
 	var hostname: String
 
+	@Property(title: "Thermal state")
+	var thermalState: ThermalState_AppEnum
+
 	var displayRepresentation: DisplayRepresentation {
 		.init(
 			title:
@@ -61,6 +70,7 @@ struct DeviceDetailsAppEntity: TransientAppEntity {
 				Active processor count: \(activeProcessorCount)
 				Physical memory: \(physicalMemory.formatted(.byteCount(style: .memory)))
 				Hostname: \(hostname)
+				Thermal state: \(thermalState.localizedStringResource)
 				"""
 		)
 	}
@@ -71,5 +81,37 @@ struct DeviceDetailsAppEntity: TransientAppEntity {
 		self.activeProcessorCount = ProcessInfo.processInfo.activeProcessorCount
 		self.physicalMemory = Int(ProcessInfo.processInfo.physicalMemory)
 		self.hostname = ProcessInfo.processInfo.hostName
+		self.thermalState = .init(ProcessInfo.processInfo.thermalState)
+	}
+}
+
+enum ThermalState_AppEnum: String, AppEnum {
+	case nominal
+	case fair
+	case serious
+	case critical
+
+	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Thermal State"
+
+	static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
+		.nominal: "Nominal",
+		.fair: "Fair",
+		.serious: "Serious",
+		.critical: "Critical"
+	]
+
+	init(_ thermalState: ProcessInfo.ThermalState) {
+		switch thermalState {
+		case .nominal:
+			self = .nominal
+		case .fair:
+			self = .fair
+		case .serious:
+			self = .serious
+		case .critical:
+			self = .critical
+		@unknown default:
+			self = .nominal
+		}
 	}
 }

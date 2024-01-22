@@ -11,6 +11,7 @@ NOTES:
 @main
 struct AppMain: App {
 	@StateObject private var appState = AppState.shared
+	@AppStorage(Constants.defaultsKey_sendCrashReports, store: Constants.sharedDefaults) private var sendCrashReports = true
 
 	init() {
 		initSentry()
@@ -21,6 +22,15 @@ struct AppMain: App {
 		WindowIfMacOS(Text(SSApp.name), id: "main") {
 			MainScreen()
 				.environmentObject(appState)
+				.task {
+					if SSApp.isFirstLaunch {
+						sendCrashReports = false
+					} else {
+						SSApp.runOnce(identifier: "fsdf3432") {
+							sendCrashReports = sendCrashReports
+						}
+					}
+				}
 		}
 			#if os(macOS)
 			.windowStyle(.hiddenTitleBar)

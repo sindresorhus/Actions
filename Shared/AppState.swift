@@ -19,6 +19,10 @@ final class AppState: ObservableObject {
 		#if canImport(UIKit)
 		askForBluetoothAccessIfNeeded()
 		CLLocationManager().requestWhenInUseAuthorization()
+
+		SSApp.runOnce(identifier: "gdfgsdfgfsdg3242342") {
+			SSNetwork.triggerLocalNetworkPrivacyAlert()
+		}
 		#endif
 	}
 
