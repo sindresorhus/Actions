@@ -61,6 +61,7 @@ And for high-quality transcription, see my [Aiko](https://sindresorhus.com/aiko)
 - Create URL
 - Edit URL
 - Encrypt File
+- Encrypt Text
 - Filter List
 - Find Music Playlist <sup>(iOS-only)</sup>
 - Flash Screen <sup>(macOS-only)</sup>

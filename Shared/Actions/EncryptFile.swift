@@ -1,5 +1,6 @@
 import AppIntents
 import CryptoKit
+import UniformTypeIdentifiers
 
 struct EncryptFile: AppIntent {
 	static let title: LocalizedStringResource = "Encrypt File"
@@ -53,8 +54,19 @@ struct EncryptFile: AppIntent {
 	)
 	var key: String
 
+	@Parameter(
+		title: "Decrypted Type",
+		description: "The type of the decrypted file in Uniform Type Identifier format. For example, “public.png” for PNG image or “public.zip-archive” for ZIP archive.",
+		default: "public.data"
+	)
+	var decryptedType: String
+
 	static var parameterSummary: some ParameterSummary {
-		Summary("\(\.$shouldEncrypt) \(\.$file) using key \(\.$key)")
+		When(\.$shouldEncrypt, .equalTo, true) {
+			Summary("\(\.$shouldEncrypt) \(\.$file) using key \(\.$key)")
+		} otherwise: {
+			Summary("\(\.$shouldEncrypt) \(\.$file) using key \(\.$key) as type \(\.$decryptedType)")
+		}
 	}
 
 	func perform() async throws -> some IntentResult & ReturnsValue<IntentFile> {
@@ -69,11 +81,15 @@ struct EncryptFile: AppIntent {
 			return .result(value: result)
 		}
 
+		guard let type = UTType(decryptedType) else {
+			throw "Invalid or unknown Uniform Type Identifier.".toError
+		}
+
 		let sealedBox = try AES.GCM.SealedBox(combined: file.data)
 
 		let result = try AES.GCM
 			.open(sealedBox, using: key)
-			.toIntentFile(contentType: .data, filename: "Decrypted Data")
+			.toIntentFile(contentType: type, filename: "Decrypted Data")
 
 		return .result(value: result)
 	}

@@ -46,6 +46,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Create URL
 - Edit URL
 - Encrypt File
+- Encrypt Text
 - Filter List
 - Find Music Playlist (iOS-only)
 - Flash Screen (macOS-only)
