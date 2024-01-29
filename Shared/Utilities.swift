@@ -1498,6 +1498,11 @@ extension String {
 }
 
 
+extension String {
+	var isASCII: Bool { allSatisfy(\.isASCII) }
+}
+
+
 extension Date {
 	/**
 	Returns a random `Date` within the given range.

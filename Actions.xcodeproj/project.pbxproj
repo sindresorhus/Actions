@@ -161,6 +161,8 @@
 		E3DB885428E7057100FEE8D6 /* WriteText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DB885328E7057100FEE8D6 /* WriteText.swift */; };
 		E3DB885728E727E200FEE8D6 /* ChooseFromListExtended.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DB885528E727E200FEE8D6 /* ChooseFromListExtended.swift */; };
 		E3DB886C28E7549800FEE8D6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DB886B28E7549800FEE8D6 /* Constants.swift */; };
+		E3E9548B2B68391800BCDAF8 /* EncryptFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E9548A2B68391800BCDAF8 /* EncryptFile.swift */; };
+		E3E9548D2B68528A00BCDAF8 /* EncryptText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E9548C2B68528A00BCDAF8 /* EncryptText.swift */; };
 		E3EA7D7B28EAC2210043F782 /* BlurImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EA7D7A28EAC2210043F782 /* BlurImages.swift */; };
 		E3EF8AE82AEFC431007B0F32 /* IsCallActive.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EF8AE72AEFC431007B0F32 /* IsCallActive.swift */; };
 		E3EF8AE92AEFCAD3007B0F32 /* IsHostReachable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D0655D29A51E160059A16E /* IsHostReachable.swift */; };
@@ -318,6 +320,8 @@
 		E3DB885328E7057100FEE8D6 /* WriteText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteText.swift; sourceTree = "<group>"; };
 		E3DB885528E727E200FEE8D6 /* ChooseFromListExtended.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseFromListExtended.swift; sourceTree = "<group>"; };
 		E3DB886B28E7549800FEE8D6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		E3E9548A2B68391800BCDAF8 /* EncryptFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncryptFile.swift; sourceTree = "<group>"; };
+		E3E9548C2B68528A00BCDAF8 /* EncryptText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncryptText.swift; sourceTree = "<group>"; };
 		E3EA7D7A28EAC2210043F782 /* BlurImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurImages.swift; sourceTree = "<group>"; };
 		E3EC2DAA28D1E33B00A88E25 /* TransformText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformText.swift; sourceTree = "<group>"; };
 		E3EC2DAF28D1EA6B00A88E25 /* GenerateUUID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateUUID.swift; sourceTree = "<group>"; };
@@ -393,6 +397,8 @@
 				E3F64D7528D9F9930009B500 /* CreateColorImage.swift */,
 				FD691FCD2A9CCD4C00C55178 /* CreateMenuItem.swift */,
 				E3722CE72ACDCA2A0007316D /* Debug.swift */,
+				E3E9548A2B68391800BCDAF8 /* EncryptFile.swift */,
+				E3E9548C2B68528A00BCDAF8 /* EncryptText.swift */,
 				E376FD84295287E500C0F81F /* FindPrinter.swift */,
 				E3CB449D28D791D40031D55F /* GenerateCSV.swift */,
 				E3CF4F9728FDA7EB00BD88D5 /* GenerateRandomData.swift */,
@@ -879,6 +885,7 @@
 				E343F9B829713AFF00AD82F4 /* GetMapImageOfLocation.swift in Sources */,
 				E303EED429529D14007BE918 /* FindPrinter.swift in Sources */,
 				E3DB885028E6EE7B00FEE8D6 /* HideShortcutsApp.swift in Sources */,
+				E3E9548D2B68528A00BCDAF8 /* EncryptText.swift in Sources */,
 				E3019BA52B35141F00B5BA63 /* Utilities.swift in Sources */,
 				E3D737F72B00274900E9023B /* GetCompassHeading.swift in Sources */,
 				E3F64D7928D9FCA20009B500 /* GetSymbolImage.swift in Sources */,
@@ -894,6 +901,7 @@
 				E38663332AE063A10001343A /* SetImageLocation.swift in Sources */,
 				E3CB44AB28D7A10C0031D55F /* TranscribeAudio.swift in Sources */,
 				E352420A28F6EEDE00A957A7 /* AskForText.swift in Sources */,
+				E3E9548B2B68391800BCDAF8 /* EncryptFile.swift in Sources */,
 				E3EF8AE92AEFCAD3007B0F32 /* IsHostReachable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
