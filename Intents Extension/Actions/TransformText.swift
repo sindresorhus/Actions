@@ -23,7 +23,19 @@ struct TransformTextIntent: AppIntent {
 			"transliterate",
 			"latin",
 			"ascii",
-			"diacritic"
+			"strip",
+			"stripping",
+			"remove",
+			"removing",
+			"clean",
+			"cleaning",
+			"diacritic",
+			"quote",
+			"quotation",
+			"marks",
+			"punctuation",
+			"html",
+			"tag"
 		],
 		resultValueName: "Transformed Text"
 	)
@@ -53,7 +65,11 @@ struct TransformTextIntent: AppIntent {
 			case .slugify:
 				text.slugified()
 			case .stripPunctation:
-				text.replacing(/\p{Punct}/, with: "")
+				text.removingPunctuation()
+			case .stripQuotationMarks:
+				text.removingQuotationMarks()
+			case .stripHTML:
+				try await text.removingHTML()
 			case .stripDiacritics:
 				text.applyingTransform(.stripDiacritics, reverse: false)
 			case .transliterateToLatin:
@@ -91,7 +107,9 @@ enum TransformationAppEnum: String, AppEnum {
 	case constantCase
 	case dashCase
 	case slugify
-	case stripPunctation
+	case stripPunctation // Typo. Should be `stripPunctuation`, but too late to change it now.
+	case stripQuotationMarks
+	case stripHTML
 	case stripDiacritics
 	case transliterateToLatin
 	case transliterateLatinToArabic
@@ -117,8 +135,16 @@ enum TransformationAppEnum: String, AppEnum {
 			subtitle: "“Sø’r āē 拼!” → “sor-ae-pin”"
 		),
 		.stripPunctation: .init(
-			title: "Strip Punctation",
+			title: "Strip Punctuation",
 			subtitle: "“I’m hungry!” → “Im hungry”"
+		),
+		.stripQuotationMarks: .init(
+			title: "Strip Quotation Marks",
+			subtitle: "“I’m «very» hungry!” → “Im very hungry!”"
+		),
+		.stripHTML: .init(
+			title: "Strip HTML",
+			subtitle: "“<b>Hello</b>” → “Hello”"
 		),
 		.stripDiacritics: "Strip Diacritics",
 		.transliterateToLatin: "Transliterate to Latin",

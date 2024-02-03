@@ -27,6 +27,9 @@ struct GetElevation: AppIntent {
 	)
 
 	func perform() async throws -> some IntentResult & ReturnsValue<Measurement<UnitLength>> {
+		// Tries to work around some problems with it timing out. Unclear if it has any effect.
+		try? await Task.sleep(for: .seconds(0.1))
+
 		let result = try await Device.absoluteAltimeterUpdates().first()?.altitude ?? 0
 		return .result(value: .init(value: result, unit: .meters))
 	}

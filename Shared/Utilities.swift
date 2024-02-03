@@ -22,11 +22,13 @@ import os
 import MapKit
 import Sentry
 import MediaPlayer
+import WebKit
 
 #if os(macOS)
 import IOKit.ps
 import CoreWLAN
 import ApplicationServices
+import CoreMediaIO
 
 typealias XColor = NSColor
 typealias XFont = NSFont
@@ -61,6 +63,7 @@ typealias WindowIfMacOS = WindowGroup
 // TODO: Remove me when it's support it natively.
 #if os(macOS)
 extension NSRunningApplication: @unchecked Sendable {}
+extension NSWorkspace: @unchecked Sendable {}
 extension NSWorkspace.OpenConfiguration: @unchecked Sendable {}
 extension NSImage: @unchecked Sendable {}
 #endif
@@ -106,6 +109,8 @@ enum SSApp {
 		UIScreen.main.traitCollection.userInterfaceStyle == .dark
 		#endif
 	}
+
+	static let isAppExtension = Bundle.main.bundleURL.pathExtension == "appex"
 
 	#if os(macOS)
 	static func quit() {
@@ -194,10 +199,29 @@ enum SSApp {
 
 
 extension SSApp {
+	/**
+	The bundle URL of the main app regardless of whether it's called from the main app or an app extension.
+	*/
+	static let mainAppBundleURL: URL = isAppExtension
+		? Bundle.main.bundleURL.findUp { $0.lastPathComponent.hasSuffix(".app") } ?? Bundle.main.bundleURL
+		: Bundle.main.bundleURL
+
+	/**
+	The name of the main app regardless of whether it's called from the main app or an app extension.
+	*/
+	static let mainAppName = mainAppBundleURL.lastPathComponent.replacingSuffix(".app", with: "")
+}
+
+
+extension SSApp {
 	// TODO: Need better check when the device is out.
-	static var isiOSOnVision: Bool {
+	static let isiOSOnVision: Bool = {
+		#if os(visionOS)
+		false
+		#else
 		modelIdentifier().contains("Reality")
-	}
+		#endif
+	}()
 
 	private static func modelIdentifier() -> String {
 		if let simulatorModelIdentifier = ProcessInfo().environment["SIMULATOR_MODEL_IDENTIFIER"] {
@@ -1095,6 +1119,35 @@ extension URL {
 	*/
 	init(_ staticString: StaticString) {
 		self.init(string: "\(staticString)")!
+	}
+}
+
+
+extension URL {
+	static let rootDirectory = Self(fileURLWithPath: "/", isDirectory: true)
+
+	var isRoot: Bool { self == Self.rootDirectory }
+}
+
+extension URL {
+	func findUp(_ condition: (URL) -> Bool) -> URL? {
+		var currentURL = self
+
+		while !currentURL.isRoot {
+			if condition(currentURL) {
+				return currentURL
+			}
+
+			let parentURL = currentURL.deletingLastPathComponent()
+
+			guard parentURL != currentURL else {
+				break
+			}
+
+			currentURL = parentURL
+		}
+
+		return nil
 	}
 }
 
@@ -3266,7 +3319,7 @@ enum Bluetooth {
 	private static var noAccessError: GeneralError {
 		let recoverySuggestion = OS.current == .macOS
 			? "You can grant access in “System Settings › Privacy & Security › Bluetooth”."
-			: "You can grant access in “Settings › \(SSApp.name)”."
+			: "You can grant access in “Settings › \(SSApp.mainAppName)”."
 
 		return GeneralError("No access to Bluetooth.", recoverySuggestion: recoverySuggestion)
 	}
@@ -3275,8 +3328,15 @@ enum Bluetooth {
 		// Make sure we try to prompt first.
 		_ = CBCentralManager(delegate: nil, queue: nil, options: [CBCentralManagerOptionShowPowerAlertKey: true])
 
-		guard CBCentralManager.authorization == .allowedAlways else {
+		switch CBCentralManager.authorization {
+		case .notDetermined, .allowedAlways:
+			return
+		case .restricted:
+			throw "Bluetooth access is restricted. For example, from parental controls or MDM.".toError
+		case .denied:
 			throw noAccessError
+		@unknown default:
+			return
 		}
 	}
 
@@ -3947,12 +4007,33 @@ extension Font {
 
 extension String {
 	/**
-	Removes characters without a display width, often referred to as invisible or non-printable characters.
+	Removes all characters without a display width, often referred to as invisible or non-printable characters.
 
 	This does not include normal whitespace characters.
 	*/
 	func removingCharactersWithoutDisplayWidth() -> Self {
 		replacing(/[\p{Control}\p{Format}\p{Nonspacing_Mark}\p{Enclosing_Mark}\p{Line_Separator}\p{Paragraph_Separator}\p{Private_Use}\p{Unassigned}]/.matchingSemantics(.unicodeScalar), with: "") // swiftlint:disable:this opening_brace
+	}
+
+	/**
+	Removes all punctuation marks from the string
+	*/
+	func removingPunctuation() -> Self {
+		replacing(/\p{Punct}/, with: "")
+	}
+
+	/**
+	Removes all quotation marks (even Unicode ones) from the string.
+	*/
+	func removingQuotationMarks() -> Self {
+		replacing(/["'\p{Initial_Punctuation}\p{Final_Punctuation}\u{201A}\u{201E}\u{300C}\u{300D}\u{300E}\u{300F}\u{301D}\u{301E}\u{301F}\u{FF02}\u{FF07}\u{2032}\u{2033}]/, with: "")
+	}
+
+	/**
+	Removes all HTML tags from the string.
+	*/
+	func removingHTML() async throws -> Self {
+		try await NSAttributedString.fromHTMLString(self).string
 	}
 }
 
@@ -5686,7 +5767,7 @@ extension Device {
 					return
 				}
 
-				continuation.finish(throwing: "Missing access to altimeter data. You can grant access in “Settings › \(SSApp.name) › Motion & Fitness”.".toError)
+				continuation.finish(throwing: "Missing access to altimeter data. You can grant access in “Settings › \(SSApp.mainAppName) › Motion & Fitness”.".toError)
 				return
 			}
 
@@ -6494,8 +6575,9 @@ extension Printer {
 		var unmanagedArray: Unmanaged<CFArray>?
 		PMServerCreatePrinterList(nil, &unmanagedArray)
 
-		// `return unmanagedArray?.takeUnretainedValue() as NSArray? as? [PMPrinter]` crashes Swift.
+		// `return unmanagedArray?.takeUnretainedValue() as NSArray? as? [PMPrinter] ?? []` crashes Swift.
 
+		// According to the Core Foundation memory rules, this should have been a `takeRetainedValue()`, but that crashes.
 		return unmanagedArray?.takeUnretainedValue().toArray(ofType: PMPrinter.self) ?? []
 	}
 }
@@ -7048,7 +7130,7 @@ extension MPMediaLibrary {
 	*/
 	static func ensureAccess() async throws {
 		guard await MPMediaLibrary.requestAuthorization() == .authorized else {
-			throw "Missing access to the Music library. You can grant access in “Settings › \(SSApp.name)”.".toError
+			throw "Missing access to the Music library. You can grant access in “Settings › \(SSApp.mainAppName)”.".toError
 		}
 	}
 
@@ -7253,3 +7335,22 @@ extension SSCamera {
 	}
 }
 #endif
+
+
+extension NSAttributedString {
+	@nonobjc
+	static func fromHTMLString(_ htmlString: String) async throws -> NSAttributedString {
+		#if os(macOS)
+		let options: [NSAttributedString.DocumentReadingOptionKey: Any] = [
+			.documentType: DocumentType.html,
+			.timeout: 2
+		]
+		#else
+		let options: [NSAttributedString.DocumentReadingOptionKey: Any] = [
+			.documentType: DocumentType.html
+		]
+		#endif
+
+		return try await fromHTML(htmlString, options: options).0
+	}
+}

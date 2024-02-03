@@ -953,7 +953,7 @@
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Intents Extension/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Intents Extension";
+				INFOPLIST_KEY_CFBundleDisplayName = "Actions Intents Extension";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -988,7 +988,7 @@
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Intents Extension/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Intents Extension";
+				INFOPLIST_KEY_CFBundleDisplayName = "Actions Intents Extension";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1280,7 +1280,7 @@
 			repositoryURL = "https://github.com/soulverteam/SoulverCore";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.3.2;
+				minimumVersion = 2.5.0;
 			};
 		};
 		E32B4F3227FD77700057F08D /* XCRemoteSwiftPackageReference "ExceptionCatcher" */ = {

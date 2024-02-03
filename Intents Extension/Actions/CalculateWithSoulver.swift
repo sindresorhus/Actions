@@ -106,7 +106,7 @@ struct CalculateWithSoulver: AppIntent {
 
 	private func calculate(liveCurrencyRates: Bool) async -> String {
 		var customization = EngineCustomization.standard
-		customization.featureFlags.allowMisplacedThousandsSeparators = false
+		customization.featureFlags.misplacedThousandsSeparatorBehavior = .disallow
 
 		let ecbCurrencyRateProvider = ECBCurrencyRateProvider()
 

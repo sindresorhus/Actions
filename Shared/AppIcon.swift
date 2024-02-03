@@ -6,13 +6,14 @@ struct AppIcon: View {
 	@State private var isFlipping = false
 
 	var body: some View {
-		if accessibilityReduceMotion || SSApp.isDebug {
+		// The animation is disabled for now as it can cause visual issues in certain cases where the app is opened from an action.
+//		if accessibilityReduceMotion || SSApp.isDebug {
 			Image("AppIconForView")
 				.resizable()
 				.aspectRatio(contentMode: .fit)
-		} else {
-			animatedIcon
-		}
+//		} else {
+//			animatedIcon
+//		}
 	}
 
 	private var animatedIcon: some View {

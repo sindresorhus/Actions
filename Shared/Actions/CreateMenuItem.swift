@@ -145,7 +145,8 @@ struct CreateMenuItem: AppIntent {
 	@MainActor
 	func perform() async throws -> some IntentResult & ReturnsValue<MenuItem> {
 		// Tries to work around some crash: https://github.com/sindresorhus/Actions/issues/180
-		try? await Task.sleep(for: .seconds(0.1))
+		// 0.1 seconds was not enough.
+		try? await Task.sleep(for: .seconds(0.3))
 
 		let menuItem = MenuItem(
 			title: menuTitle,
@@ -244,23 +245,24 @@ enum MenuItemStyle: String, AppEnum {
 
 	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Menu Item Style"
 
+	// TODO: Make them uppercase again when the bug is fixed.
 	static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
-		.default: "Default",
-		.red: "Red",
-		.orange: "Orange",
-		.yellow: "Yellow",
-		.green: "Green",
-		.mint: "Mint",
-		.teal: "Teal",
-		.cyan: "Cyan",
-		.blue: "Blue",
-		.purple: "Purple",
-		.pink: "Pink",
-		.brown: "Brown",
-		.white: "White",
-		.gray: "Gray",
-		.black: "Black",
-		.clear: "Clear"
+		.default: "default", // It's lowercase so users would use that in variables as the variable text has to match the enum case for it to work.
+		.red: "red",
+		.orange: "orange",
+		.yellow: "yellow",
+		.green: "green",
+		.mint: "mint",
+		.teal: "teal",
+		.cyan: "cyan",
+		.blue: "blue",
+		.purple: "purple",
+		.pink: "pink",
+		.brown: "brown",
+		.white: "white",
+		.gray: "gray",
+		.black: "black",
+		.clear: "clear"
 	]
 
 	func color(isBackground: Bool = false) -> Color {

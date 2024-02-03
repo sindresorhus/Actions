@@ -7,9 +7,9 @@ struct GetDeviceDetailsExtended: AppIntent {
 		"""
 		Get details about the device.
 
-		This is an extension to the built-in “Get Device Details” action.
+		This is an extension to the built-in “Get Device Details” action. Unlike the built-in action, this one returns all the values at once instead of making you pick a single value in the action.
 
-		You can access the individual values.
+		You can access the individual values. For example, with the built-in “Show Result” action.
 
 		Possible values for thermal state: Nominal, Fair, Serious, Critical
 
@@ -65,6 +65,8 @@ struct DeviceDetailsAppEntity: TransientAppEntity {
 		.init(
 			title:
 				"""
+				PREVIEW
+
 				Uptime: \(uptime.toDuration.formatted(.units(allowed: [.days, .hours, .minutes], width: .wide)))
 				Duration since boot: \(durationSinceBoot.toDuration.formatted(.units(allowed: [.days, .hours, .minutes], width: .wide)))
 				Active processor count: \(activeProcessorCount)

@@ -9,6 +9,8 @@ struct Authenticate: AppIntent {
 		"""
 		Authenticate the user using Face ID or Touch ID.
 
+		IMPORTANT: Use the “Authenticate (New)” action instead.
+
 		IMPORTANT: The result is copied to the clipboard as the text “true” or “false”. Add the “Wait to Return” and “Get Clipboard” actions after this one. Use the “If” action to decide what to do with the result.
 
 		Q: Why can't it return the value directly?

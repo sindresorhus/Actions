@@ -11,7 +11,7 @@ struct Authenticate2: AppIntent {
 
 		Unlike the old authenticate action, this one directly returns a boolean for whether the authentication succeeded.
 
-		On iOS & visionOS, it needs to momentarily open the Actions app to be able to present the authentication prompt.
+		On iOS & visionOS, it needs to momentarily open the Actions app to be able to present the authentication prompt. Afterwards, it goes back to the Shortcuts app. If you were running the shortcut in the background, there is unfortunately no way to go back to the previous app you were in, other than opening the app again from the shortcut.
 		""",
 		categoryName: "Device",
 		searchKeywords: [

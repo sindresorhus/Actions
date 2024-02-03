@@ -57,25 +57,28 @@ struct AskForTextScreen: View {
 
 				// TODO: Does not work. (macoS 14.1)
 				isFocused = true
-
-				guard let timeout = data.timeout else {
-					return
-				}
-
-				try? await Task.sleep(for: .seconds(timeout))
-
-				guard !isTimeoutCancelled else {
-					return
-				}
-
-				timeoutAction()
+			}
+			.task {
+				await handleTimeout()
 			}
 	}
 
 	@MainActor
-	private func timeoutAction() {
-		XPasteboard.general.stringForCurrentHostOnly = data.timeoutReturnValue
-		openShortcuts()
+	private func handleTimeout() async {
+		guard let timeout = data.timeout else {
+			return
+		}
+
+		do {
+			try await Task.sleep(for: .seconds(timeout))
+
+			guard !isTimeoutCancelled else {
+				return
+			}
+
+			XPasteboard.general.stringForCurrentHostOnly = data.timeoutReturnValue
+			openShortcuts()
+		} catch {}
 	}
 
 	@MainActor

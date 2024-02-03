@@ -10,7 +10,7 @@ struct GetBluetoothDevice: AppIntent {
 
 		This can be useful to check if a certain Bluetooth device is connected or in range and perform a specific action based on that.
 
-		Use the “Get Bluetooth Devices” to discover devices and their identifiers.
+		Use the “Get Bluetooth Devices” action to discover devices and their identifiers.
 
 		NOTE: You need to allow the Bluetooth permission in the main app before using this action.
 
@@ -43,7 +43,7 @@ struct GetBluetoothDevice: AppIntent {
 	var timeout: Double
 
 	static var parameterSummary: some ParameterSummary {
-		Summary("Get Bluetooth Device with Identifier \(\.$deviceIdentifier)") {
+		Summary("Get Bluetooth Device with Identifier \(\.$deviceIdentifier) (PLEASE READ THE ACTION DESCRIPTION)") {
 			\.$timeout
 		}
 	}
