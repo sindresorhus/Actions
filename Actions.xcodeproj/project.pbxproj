@@ -117,6 +117,7 @@
 		E351083928FD8089007C85AE /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = E351083828FD8089007C85AE /* Sentry */; };
 		E352420A28F6EEDE00A957A7 /* AskForText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E352420928F6EEDE00A957A7 /* AskForText.swift */; };
 		E352420C28F6F6AD00A957A7 /* AskForTextScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E352420B28F6F6AD00A957A7 /* AskForTextScreen.swift */; };
+		E354F9EC2B7694690040BADF /* IsCameraOn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E354F9EB2B7694690040BADF /* IsCameraOn.swift */; };
 		E365C11B2A4C683200A902D4 /* WaitMilliseconds.swift in Sources */ = {isa = PBXBuildFile; fileRef = E365C11A2A4C683200A902D4 /* WaitMilliseconds.swift */; };
 		E36A41B32AC605AF00A29195 /* CreateMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD691FCD2A9CCD4C00C55178 /* CreateMenuItem.swift */; };
 		E3722CE82ACDCA2A0007316D /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3722CE72ACDCA2A0007316D /* Debug.swift */; };
@@ -245,6 +246,7 @@
 		E352420528F6CAAD00A957A7 /* ReverseLines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseLines.swift; sourceTree = "<group>"; };
 		E352420928F6EEDE00A957A7 /* AskForText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AskForText.swift; path = Shared/Actions/AskForText.swift; sourceTree = SOURCE_ROOT; };
 		E352420B28F6F6AD00A957A7 /* AskForTextScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskForTextScreen.swift; sourceTree = "<group>"; };
+		E354F9EB2B7694690040BADF /* IsCameraOn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsCameraOn.swift; sourceTree = "<group>"; };
 		E365C11A2A4C683200A902D4 /* WaitMilliseconds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitMilliseconds.swift; sourceTree = "<group>"; };
 		E3722CE72ACDCA2A0007316D /* Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
 		E3722CEC2ACDE28D0007316D /* CombineVideos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineVideos.swift; sourceTree = "<group>"; };
@@ -515,6 +517,7 @@
 				E3C33CAB28D3A96700386C59 /* GetUserDetails.swift */,
 				E3C33CA528D3A52300386C59 /* IsAudioPlaying.swift */,
 				E3C33CA728D3A6CB00386C59 /* IsBluetoothOn.swift */,
+				E354F9EB2B7694690040BADF /* IsCameraOn.swift */,
 				E351082E28FD099B007C85AE /* IsCellularDataOn.swift */,
 				E350B24E2AC2AF7D00BFC34D /* IsCellularLowDataModeOn.swift */,
 				E3C33CAF28D3B3EF00386C59 /* IsConnectedToVPN.swift */,
@@ -798,6 +801,7 @@
 				E333DBF22B44320100FC4745 /* FindMusicPlaylist.swift in Sources */,
 				E317493D2916A20C00F6319E /* TransformText.swift in Sources */,
 				E31749192916A20C00F6319E /* ConvertCoordinatesToLocation.swift in Sources */,
+				E354F9EC2B7694690040BADF /* IsCameraOn.swift in Sources */,
 				E31749262916A20C00F6319E /* ConvertDateToUnixTime.swift in Sources */,
 				E317494E2916A20C00F6319E /* GenerateUUID.swift in Sources */,
 				E333DBF12B442A2900FC4745 /* GetMusicPlaylists.swift in Sources */,

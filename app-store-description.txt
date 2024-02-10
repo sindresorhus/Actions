@@ -107,6 +107,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Is Audio Playing (iOS-only)
 - Is Bluetooth On
 - Is Call Active (iOS-only)
+- Is Camera On (macOS-only)
 - Is Cellular Data On
 - Is Cellular Low Data Mode On
 - Is Connected to VPN (iOS-only)

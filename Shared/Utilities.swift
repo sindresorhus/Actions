@@ -7155,3 +7155,82 @@ enum SSNetwork {
 			}
 	}
 }
+
+
+#if os(macOS)
+extension Device {
+	static var isAnyCameraOn: Bool { SSCamera.all.contains(where: \.isOn) }
+}
+
+struct SSCamera {
+	let id: CMIOObjectID
+
+	var name: String? {
+		var descriptor = CMIOObjectPropertyAddress(
+			mSelector: CMIOObjectPropertySelector(kCMIOObjectPropertyName),
+			mScope: CMIOObjectPropertyScope(kCMIOObjectPropertyScopeGlobal),
+			mElement: CMIOObjectPropertyElement(kCMIOObjectPropertyElementMain)
+		)
+
+		var name: CFString?
+		let propertySize = UInt32(MemoryLayout<UnsafeMutablePointer<CFString?>>.size)
+		var dataUsed: UInt32 = 0
+
+		let result = withUnsafeMutablePointer(to: &name) {
+			CMIOObjectGetPropertyData(id, &descriptor, 0, nil, propertySize, &dataUsed, $0)
+		}
+
+		guard result == kCMIOHardwareNoError else {
+			return nil
+		}
+
+		return name as String?
+	}
+
+	var isOn: Bool {
+		var descriptor = CMIOObjectPropertyAddress(
+			mSelector: CMIOObjectPropertySelector(kCMIODevicePropertyDeviceIsRunningSomewhere),
+			mScope: CMIOObjectPropertyScope(kCMIOObjectPropertyScopeWildcard),
+			mElement: CMIOObjectPropertyElement(kCMIOObjectPropertyElementWildcard)
+		)
+
+		var isRunning: UInt32 = 0
+		let propertySize = UInt32(MemoryLayout<UInt32>.size)
+		var dataUsed: UInt32 = 0
+		let result = CMIOObjectGetPropertyData(id, &descriptor, 0, nil, propertySize, &dataUsed, &isRunning)
+
+		return result == kCMIOHardwareNoError && isRunning != 0
+	}
+}
+
+extension SSCamera {
+	static var all: [Self] {
+		var descriptor = CMIOObjectPropertyAddress(
+			mSelector: CMIOObjectPropertySelector(kCMIOHardwarePropertyDevices),
+			mScope: CMIOObjectPropertyScope(kCMIOObjectPropertyScopeGlobal),
+			mElement: CMIOObjectPropertyElement(kCMIOObjectPropertyElementMain)
+		)
+
+		var dataSize: UInt32 = 0
+
+		guard
+			CMIOObjectGetPropertyDataSize(CMIOObjectID(kCMIOObjectSystemObject), &descriptor, 0, nil, &dataSize) == kCMIOHardwareNoError,
+			dataSize > 0
+		else {
+			return []
+		}
+
+		let deviceCount = Int(dataSize) / MemoryLayout<CMIOObjectID>.size
+		var deviceIDs = [CMIOObjectID](repeating: 0, count: deviceCount)
+		var dataUsed: UInt32 = 0
+
+		guard
+			CMIOObjectGetPropertyData(CMIOObjectID(kCMIOObjectSystemObject), &descriptor, 0, nil, dataSize, &dataUsed, &deviceIDs) == kCMIOHardwareNoError
+		else {
+			return []
+		}
+
+		return deviceIDs.map { Self(id: $0) }
+	}
+}
+#endif
