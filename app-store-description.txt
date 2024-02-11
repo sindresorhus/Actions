@@ -125,6 +125,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Is Silent Mode On (iOS-only)
 - Is Web Server Reachable
 - Is Wi-Fi On (macOS-only)
+- Join Wi-Fi (iOS-only)
 - Merge Dictionaries
 - Open URLs with App (macOS-only)
 - Overwrite File

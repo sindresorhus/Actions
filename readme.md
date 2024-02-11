@@ -140,6 +140,7 @@ And for high-quality transcription, see my [Aiko](https://sindresorhus.com/aiko)
 - Is Silent Mode On <sup>(iOS-only)</sup>
 - Is Web Server Reachable
 - Is Wi-Fi On <sup>(macOS-only)</sup>
+- Join Wi-Fi <sup>(iOS-only)</sup>
 - Merge Dictionaries
 - Open URLs with App <sup>(macOS-only)</sup>
 - Overwrite File

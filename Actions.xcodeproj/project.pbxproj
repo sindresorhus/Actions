@@ -170,6 +170,7 @@
 		E3EF8AE92AEFCAD3007B0F32 /* IsHostReachable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D0655D29A51E160059A16E /* IsHostReachable.swift */; };
 		E3EF8AEA2AEFCBDB007B0F32 /* IsWebServerReachable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31DE7F528D5E50400DE79EF /* IsWebServerReachable.swift */; };
 		E3F4E7D22B4E9BFC0007D82C /* DominantColors in Frameworks */ = {isa = PBXBuildFile; productRef = E3F4E7D12B4E9BFC0007D82C /* DominantColors */; };
+		E3F5DD0D2B790AE4006EF915 /* JoinWiFi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F5DD0C2B790AE4006EF915 /* JoinWiFi.swift */; };
 		E3F64D7628D9F9930009B500 /* CreateColorImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F64D7528D9F9930009B500 /* CreateColorImage.swift */; };
 		E3F64D7928D9FCA20009B500 /* GetSymbolImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F64D7728D9FCA20009B500 /* GetSymbolImage.swift */; };
 /* End PBXBuildFile section */
@@ -355,6 +356,7 @@
 		E3EC2DE728D2DB1000A88E25 /* GenerateRandomText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateRandomText.swift; sourceTree = "<group>"; };
 		E3EC2DE928D2E5B900A88E25 /* RemoveFromList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveFromList.swift; sourceTree = "<group>"; };
 		E3EF8AE72AEFC431007B0F32 /* IsCallActive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsCallActive.swift; sourceTree = "<group>"; };
+		E3F5DD0C2B790AE4006EF915 /* JoinWiFi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinWiFi.swift; sourceTree = "<group>"; };
 		E3F64D6B28D9EDFE0009B500 /* FormatDuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatDuration.swift; sourceTree = "<group>"; };
 		E3F64D7128D9F3810009B500 /* EditURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditURL.swift; sourceTree = "<group>"; };
 		E3F64D7528D9F9930009B500 /* CreateColorImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateColorImage.swift; sourceTree = "<group>"; };
@@ -429,6 +431,7 @@
 				E3D0655D29A51E160059A16E /* IsHostReachable.swift */,
 				E3CB448A28D71A180031D55F /* IsScreenLocked.swift */,
 				E31DE7F528D5E50400DE79EF /* IsWebServerReachable.swift */,
+				E3F5DD0C2B790AE4006EF915 /* JoinWiFi.swift */,
 				E3CB44A128D794DA0031D55F /* MergeDictionaries.swift */,
 				E351083528FD79D8007C85AE /* OverwriteFile.swift */,
 				E3CB449728D78CBE0031D55F /* ParseCSV.swift */,
@@ -854,6 +857,7 @@
 				E3EA7D7B28EAC2210043F782 /* BlurImages.swift in Sources */,
 				E3C33CDC28D48C3200386C59 /* GetRunningApps.swift in Sources */,
 				E3BFF7B527428F5200B830DE /* WelcomeScreen.swift in Sources */,
+				E3F5DD0D2B790AE4006EF915 /* JoinWiFi.swift in Sources */,
 				E3F64D7628D9F9930009B500 /* CreateColorImage.swift in Sources */,
 				E3CB449228D7803C0031D55F /* ParseJSON5.swift in Sources */,
 				E3963A5A292CAF9F00210AC2 /* RemoveDuplicatesFromList.swift in Sources */,
