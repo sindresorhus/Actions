@@ -8,6 +8,11 @@ struct GetUniformTypeIdentifierIntent: AppIntent {
 		Returns the Uniform Type Identifier (UTI) of the input file.
 
 		For example, a JPEG file would return “public.jpeg”.
+
+
+		Related actions:
+		- Set Uniform Type Identifier
+		- Is Conforming to Uniform Type Identifier
 		""",
 		categoryName: "File",
 		resultValueName: "Uniform Type Identifier"

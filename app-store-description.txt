@@ -110,6 +110,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Is Camera On (macOS-only)
 - Is Cellular Data On
 - Is Cellular Low Data Mode On
+- Is Conforming to Uniform Type Identifier
 - Is Connected to VPN (iOS-only)
 - Is Dark Mode On
 - Is Day

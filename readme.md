@@ -125,6 +125,7 @@ And for high-quality transcription, see my [Aiko](https://sindresorhus.com/aiko)
 - Is Camera On <sup>(macOS-only)</sup>
 - Is Cellular Data On
 - Is Cellular Low Data Mode On
+- Is Conforming to Uniform Type Identifier
 - Is Connected to VPN <sup>(iOS-only)</sup>
 - Is Dark Mode On
 - Is Day
