@@ -142,6 +142,7 @@ And for high-quality transcription, see my [Aiko](https://sindresorhus.com/aiko)
 - Is Wi-Fi On <sup>(macOS-only)</sup>
 - Join Wi-Fi <sup>(iOS-only)</sup>
 - Merge Dictionaries
+- Named Clipboard <sup>(macOS-only)</sup>
 - Open URLs with App <sup>(macOS-only)</sup>
 - Overwrite File
 - Parse CSV

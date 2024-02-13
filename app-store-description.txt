@@ -127,6 +127,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Is Wi-Fi On (macOS-only)
 - Join Wi-Fi (iOS-only)
 - Merge Dictionaries
+- Named Clipboard (macOS-only)
 - Open URLs with App (macOS-only)
 - Overwrite File
 - Parse CSV

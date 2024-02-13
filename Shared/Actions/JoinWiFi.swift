@@ -68,7 +68,7 @@ struct JoinWiFiIntent: AppIntent {
 	var isHidden: Bool
 
 	static var parameterSummary: some ParameterSummary {
-		Summary("Join Wi-Fi named \(\.$ssid)") {
+		Summary("Join Wi-Fi named \(\.$ssid)  (PLEASE READ THE ACTION DESCRIPTION)") {
 			\.$password
 			\.$waitForConnection
 			\.$isWEP
@@ -100,7 +100,6 @@ struct JoinWiFiIntent: AppIntent {
 			passphrase: password,
 			isWEP: isWEP
 		)
-		configuration.joinOnce = true
 		configuration.hidden = isHidden
 
 		try await NEHotspotConfigurationManager.shared.apply(configuration)

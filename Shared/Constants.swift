@@ -39,6 +39,7 @@ Intent categories:
 - Bluetooth
 - Meta
 - Global Variable
+- Named Clipboard
 - Miscellaneous
 */
 
