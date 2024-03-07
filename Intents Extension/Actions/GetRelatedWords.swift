@@ -11,6 +11,11 @@ struct GetRelatedWordsIntent: AppIntent {
 		For example, given the word “horse”, it would return stallion, racehorse, pony, etc.
 		""",
 		categoryName: "Text",
+		searchKeywords: [
+			"natural",
+			"language",
+			"embedding"
+		],
 		resultValueName: "Related Words"
 	)
 
@@ -40,10 +45,8 @@ struct GetRelatedWordsIntent: AppIntent {
 	}
 
 	func perform() async throws -> some IntentResult & ReturnsValue<[String]> {
-		let nlLanguage = language.flatMap { NLLanguage($0.id) } ?? .english
-
 		let result = NLEmbedding
-			.wordEmbedding(for: nlLanguage)?
+			.wordEmbedding(for: language?.toNative ?? .english)?
 			.neighbors(for: word.lowercased(), maximumCount: maximumCount)
 			.map(\.0)
 				?? []
@@ -88,4 +91,8 @@ struct NLLanguageAppEntity: AppEntity {
 			subtitle: isDefault ? "(Default)" : nil
 		)
 	}
+}
+
+extension NLLanguageAppEntity {
+	var toNative: NLLanguage { .init(id) }
 }

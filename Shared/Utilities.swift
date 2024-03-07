@@ -1726,6 +1726,8 @@ extension Sequence {
 
 
 extension String {
+	var range: Range<Index> { startIndex..<endIndex }
+
 	/**
 	Returns a version of the string with the first character lowercased.
 	*/
@@ -5496,6 +5498,23 @@ extension NLLanguage {
 extension NLEmbedding {
 	static var supportedLanguage = NLLanguage.allCases
 		.filter { !supportedRevisions(for: $0).isEmpty }
+}
+
+
+extension String {
+	func segments(_ unit: NLTokenUnit, language: NLLanguage? = nil) -> [Self] {
+		let tokenizer = NLTokenizer(unit: unit)
+
+		if let language {
+			tokenizer.setLanguage(language)
+		}
+
+		tokenizer.string = self
+
+		return tokenizer.tokens(for: range)
+			.map { self[$0].toString.trimmed }
+			.filter { !$0.isEmpty }
+	}
 }
 
 

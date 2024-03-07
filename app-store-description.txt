@@ -95,6 +95,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Get Related Words
 - Get Running Apps (macOS-only)
 - Get SF Symbol Image
+- Get Sentences from Text
 - Get Title of URL
 - Get Uniform Type Identifier
 - Get Unsplash Image

@@ -109,6 +109,7 @@ And for high-quality transcription, see my [Aiko](https://sindresorhus.com/aiko)
 - Get Random Number from Seed
 - Get Related Words
 - Get Running Apps <sup>(macOS-only)</sup>
+- Get Sentences from Text
 - Get SF Symbol Image
 - Get Title of URL
 - Get Uniform Type Identifier
