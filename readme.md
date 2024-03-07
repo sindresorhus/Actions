@@ -97,6 +97,7 @@ And for high-quality transcription, see my [Aiko](https://sindresorhus.com/aiko)
 - Get Index of List Item
 - Get Map Image of Location
 - Get Modifier Key State <sup>(macOS-only)</sup>
+- Get Paragraphs from Text
 - Get Printers <sup>(macOS-only)</sup>
 - Get Query Item Value from URL
 - Get Query Items from URL

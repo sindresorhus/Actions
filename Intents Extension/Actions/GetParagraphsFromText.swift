@@ -1,14 +1,14 @@
 import AppIntents
 import NaturalLanguage
 
-struct GetSentencesFromTextIntent: AppIntent {
-	static let title: LocalizedStringResource = "Get Sentences from Text"
+struct GetParagraphsFromTextIntent: AppIntent {
+	static let title: LocalizedStringResource = "Get Paragraphs from Text"
 
 	static let description = IntentDescription(
 		"""
-		Returns the text split into sentences.
+		Returns the text split into paragraphs.
 
-		Related action: Get Paragraphs from Text
+		Related action: Get Sentences from Text
 		""",
 		categoryName: "Text",
 		searchKeywords: [
@@ -17,7 +17,7 @@ struct GetSentencesFromTextIntent: AppIntent {
 			"tokenize",
 			"tokenizer"
 		],
-		resultValueName: "Sentences"
+		resultValueName: "Paragraphs"
 	)
 
 	@Parameter(title: "Text", inputOptions: .init(multiline: true))
@@ -30,13 +30,13 @@ struct GetSentencesFromTextIntent: AppIntent {
 	var language: NLLanguageAppEntity?
 
 	static var parameterSummary: some ParameterSummary {
-		Summary("Get sentences from \(\.$text)") {
+		Summary("Get paragraphs from \(\.$text)") {
 			\.$language
 		}
 	}
 
 	func perform() async throws -> some IntentResult & ReturnsValue<[String]> {
-		let result = text.segments(.sentence, language: language?.toNative)
+		let result = text.segments(.paragraph, language: language?.toNative)
 		return .result(value: result)
 	}
 }

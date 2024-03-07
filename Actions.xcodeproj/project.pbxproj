@@ -14,6 +14,7 @@
 		E303EED529529D1B007BE918 /* SetDefaultPrinter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E376FD882952946400C0F81F /* SetDefaultPrinter.swift */; };
 		E30E56132922602B00C44823 /* GetRandomNumberFromSeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30E56122922602B00C44823 /* GetRandomNumberFromSeed.swift */; };
 		E30F58252B9A0D6800C3C98A /* GetSentencesFromText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30F58242B9A0D6800C3C98A /* GetSentencesFromText.swift */; };
+		E30F58272B9A11FE00C3C98A /* GetParagraphsFromText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30F58262B9A11FE00C3C98A /* GetParagraphsFromText.swift */; };
 		E3164E692B78FB55005AFA14 /* IsConformingToUTI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3164E682B78FB55005AFA14 /* IsConformingToUTI.swift */; };
 		E31748A92916A0B200F6319E /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31748A82916A0B200F6319E /* Main.swift */; };
 		E31748AF2916A0B200F6319E /* Intents Extension.appex in Embed ExtensionKit Extensions */ = {isa = PBXBuildFile; fileRef = E31748A62916A0B100F6319E /* Intents Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -207,6 +208,7 @@
 		E30ADE9E2B0E199500000F41 /* GetBluetoothDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBluetoothDevice.swift; sourceTree = "<group>"; };
 		E30E56122922602B00C44823 /* GetRandomNumberFromSeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRandomNumberFromSeed.swift; sourceTree = "<group>"; };
 		E30F58242B9A0D6800C3C98A /* GetSentencesFromText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSentencesFromText.swift; sourceTree = "<group>"; };
+		E30F58262B9A11FE00C3C98A /* GetParagraphsFromText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetParagraphsFromText.swift; sourceTree = "<group>"; };
 		E3164E682B78FB55005AFA14 /* IsConformingToUTI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsConformingToUTI.swift; sourceTree = "<group>"; };
 		E317489E2913BEAB00F6319E /* GetMapImageOfLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMapImageOfLocation.swift; sourceTree = "<group>"; };
 		E31748A0291589B600F6319E /* GetHighResolutionTimestamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHighResolutionTimestamp.swift; sourceTree = "<group>"; };
@@ -511,6 +513,7 @@
 				E3B1C3C328F5D68D009BE0B7 /* GetIndexOfListItem.swift */,
 				E3D53BF72A9385F5007A1340 /* GetModifierKeyState.swift */,
 				E3C33C9928D35F3D00386C59 /* GetMusicPlaylists.swift */,
+				E30F58262B9A11FE00C3C98A /* GetParagraphsFromText.swift */,
 				E31DE80728D61FE800DE79EF /* GetQueryItemsFromURL.swift */,
 				E31DE80B28D62ACC00DE79EF /* GetQueryItemsFromURLAsDictionary.swift */,
 				E31DE80528D61E4500DE79EF /* GetQueryItemValueFromURL.swift */,
@@ -841,6 +844,7 @@
 				E31749312916A20C00F6319E /* FormatDateDifference.swift in Sources */,
 				E31749462916A20C00F6319E /* FlashScreen.swift in Sources */,
 				E3AB2D8B29F840B900ED2913 /* GetActionsVersion.swift in Sources */,
+				E30F58272B9A11FE00C3C98A /* GetParagraphsFromText.swift in Sources */,
 				E31749082916A20C00F6319E /* TruncateList.swift in Sources */,
 				E31749532916A20C00F6319E /* SortList.swift in Sources */,
 				E31749292916A20C00F6319E /* ReverseLines.swift in Sources */,
