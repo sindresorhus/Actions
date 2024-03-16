@@ -16,6 +16,10 @@ struct GetBluetoothDevice: AppIntent {
 
 		NOTE: You need to have been connected to the device at least once before.
 
+		NOTE: It only works for BLE (Bluetooth Low Energy) peripherals, not legacy Bluetooth peripherals.
+
+		NOTE: Bluetooth has a lot of limitations on iOS and if this action doesn't work for you, it's unfortunately unlikely there is anything I can do about it.
+
 		NOTE: The `transmitPowerLevel` property is not provided for this action.
 
 		NOTE: The RSSI and signal strength are available for only one of the two AirPods. If it shows RSSI of 0, try the identifier of the other AirPods device.

@@ -13,6 +13,8 @@ struct CreateMenuItem: AppIntent {
 		You can later use one or more of these menu items in a “Choose from List” action.
 
 		Add an “Add to Variable” action below this one to populate a list and then use that variable in the “Choose From List” action.
+
+		NOTE: If you pass in the color as a variable, you may have to write it in lowercase, “red” instead of “Red”, because of a iOS bug.
 		""",
 		categoryName: "Miscellaneous",
 		searchKeywords: [
@@ -245,24 +247,23 @@ enum MenuItemStyle: String, AppEnum {
 
 	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Menu Item Style"
 
-	// TODO: Make them uppercase again when the bug is fixed.
 	static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
-		.default: "default", // It's lowercase so users would use that in variables as the variable text has to match the enum case for it to work.
-		.red: "red",
-		.orange: "orange",
-		.yellow: "yellow",
-		.green: "green",
-		.mint: "mint",
-		.teal: "teal",
-		.cyan: "cyan",
-		.blue: "blue",
-		.purple: "purple",
-		.pink: "pink",
-		.brown: "brown",
-		.white: "white",
-		.gray: "gray",
-		.black: "black",
-		.clear: "clear"
+		.default: "Default",
+		.red: "Red",
+		.orange: "Orange",
+		.yellow: "Yellow",
+		.green: "Green",
+		.mint: "Mint",
+		.teal: "Teal",
+		.cyan: "Cyan",
+		.blue: "Blue",
+		.purple: "{urple",
+		.pink: "{ink",
+		.brown: "Brown",
+		.white: "White",
+		.gray: "Gray",
+		.black: "Black",
+		.clear: "Clear"
 	]
 
 	func color(isBackground: Bool = false) -> Color {

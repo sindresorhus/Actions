@@ -135,7 +135,6 @@
 		E38BB1BF2B31CCED000C9B32 /* SwiftBluetooth in Frameworks */ = {isa = PBXBuildFile; productRef = E38BB1BE2B31CCED000C9B32 /* SwiftBluetooth */; };
 		E3963A5A292CAF9F00210AC2 /* RemoveDuplicatesFromList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC2DC328D215A100A88E25 /* RemoveDuplicatesFromList.swift */; };
 		E39692CA2AE130F90030AE56 /* IsShakingDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39692C92AE130F90030AE56 /* IsShakingDevice.swift */; };
-		E3A246852AFEC35100453E9C /* Authenticate2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A246842AFEC35100453E9C /* Authenticate2.swift */; };
 		E3AB2D8B29F840B900ED2913 /* GetActionsVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AB2D8A29F840B900ED2913 /* GetActionsVersion.swift */; };
 		E3AFA5C32A9B58160044E2F1 /* Boolean.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AFA5C22A9B58160044E2F1 /* Boolean.swift */; };
 		E3B8FD1629ED376F001249CF /* TruncateNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B8FD1529ED376F001249CF /* TruncateNumber.swift */; };
@@ -272,7 +271,6 @@
 		E39692C92AE130F90030AE56 /* IsShakingDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsShakingDevice.swift; sourceTree = "<group>"; };
 		E39DC11A29A54E27004F4FB8 /* OpenURLsWithApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OpenURLsWithApp.swift; path = "Intents Extension/Actions/OpenURLsWithApp.swift"; sourceTree = SOURCE_ROOT; };
 		E39F4776272D516E00B99CB0 /* Actions.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Actions.entitlements; sourceTree = "<group>"; };
-		E3A246842AFEC35100453E9C /* Authenticate2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticate2.swift; sourceTree = "<group>"; };
 		E3A85FE428E94E7300F423F1 /* FormatPersonName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatPersonName.swift; sourceTree = "<group>"; };
 		E3AB2D8A29F840B900ED2913 /* GetActionsVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetActionsVersion.swift; sourceTree = "<group>"; };
 		E3AFA5C22A9B58160044E2F1 /* Boolean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Boolean.swift; sourceTree = "<group>"; };
@@ -404,7 +402,6 @@
 			children = (
 				E352420928F6EEDE00A957A7 /* AskForText.swift */,
 				E34AB51528F58B500082AE78 /* Authenticate.swift */,
-				E3A246842AFEC35100453E9C /* Authenticate2.swift */,
 				E3EA7D7A28EAC2210043F782 /* BlurImages.swift */,
 				E3DB885528E727E200FEE8D6 /* ChooseFromListExtended.swift */,
 				E3722CEC2ACDE28D0007316D /* CombineVideos.swift */,
@@ -903,7 +900,6 @@
 				E33D4BA62744238300CC7A8A /* AppState.swift in Sources */,
 				E3CF4F9828FDA7EB00BD88D5 /* GenerateRandomData.swift in Sources */,
 				E3CB44A828D79EF90031D55F /* ScanQRCodesInImage.swift in Sources */,
-				E3A246852AFEC35100453E9C /* Authenticate2.swift in Sources */,
 				E303EED329529D0B007BE918 /* GetDefaultPrinter.swift in Sources */,
 				E3DB885228E6EFBB00FEE8D6 /* ScanDocuments.swift in Sources */,
 				E3B8FD1929ED4305001249CF /* GetTitleOfURL.swift in Sources */,
@@ -1072,8 +1068,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1133,8 +1129,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;

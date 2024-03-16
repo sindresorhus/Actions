@@ -184,7 +184,6 @@ And for high-quality transcription, see my [Aiko](https://sindresorhus.com/aiko)
 
 #### Want more shortcut actions?
 
-- Use the ChatGPT API → [AI Actions](https://sindresorhus.com/ai-actions)
 - High-quality transcription (speech to text) in 100 languages → [Aiko](https://sindresorhus.com/aiko)
 - Trigger shortcuts on your Mac from your iOS device → [Hyperduck](https://sindresorhus.com/hyperduck#shortcuts)
 - Show text in menu bar → [One Thing](https://sindresorhus.com/one-thing)
@@ -196,6 +195,8 @@ And for high-quality transcription, see my [Aiko](https://sindresorhus.com/aiko)
 - Join video calls → [Dato](https://sindresorhus.com/dato)
 - Put text on the iOS Lock Screen → [Any Text](https://sindresorhus.com/any-text)
 - Get random animated GIF → [Jiffy](https://sindresorhus.com/jiffy)
+- Get clipboard items → [Pasteboard Viewer](https://sindresorhus.com/pasteboard-viewer)
+<!-- - Use the ChatGPT API → [AI Actions](https://sindresorhus.com/ai-actions) -->
 
 ## Screenshot
 
@@ -223,7 +224,7 @@ I just enjoy making apps. Consider leaving a nice review on the App Store.
 
 #### Can I contribute localizations?
 
-I plan to localize the app.
+I don't plan to localize the app.
 
 #### [More FAQs…](https://sindresorhus.com/apps/faq)
 

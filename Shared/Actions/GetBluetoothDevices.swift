@@ -11,6 +11,8 @@ struct GetBluetoothDevices: AppIntent {
 		"""
 		Returns the Bluetooth devices in range.
 
+		DO NOT COPY THE IDENTIFIER FROM THE PREVIEW. Shortcuts sometimes adds an extra dash. Instead, fetch the "identifier" property.
+
 		On iOS & visionOS, it has to open the main app while scanning because they do not allow scanning for arbitrary devices in the background.
 
 		Use the “Get Bluetooth Device” action to check for a specific device.

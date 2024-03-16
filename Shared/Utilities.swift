@@ -4465,32 +4465,60 @@ enum Reachability {
 	/**
 	Checks whether we're currently online.
 	*/
-	static func isOnline(host: String = "apple.com") -> Bool {
-		guard let ref = SCNetworkReachabilityCreateWithName(nil, host) else {
-			return false
-		}
-
-		var flags = SCNetworkReachabilityFlags.connectionAutomatic
-		if !SCNetworkReachabilityGetFlags(ref, &flags) {
-			return false
-		}
-
-		return flags.contains(.reachable) && !flags.contains(.connectionRequired)
-	}
-
-	/**
-	Checks multiple sources of whether we're currently online.
-	*/
-	static func isOnlineExtensive() -> Bool {
-		let hosts = [
-			"apple.com",
-			"google.com",
-			"cloudflare.com",
-			"baidu.com",
-			"yandex.ru"
+	static func isOnline(timeout: Duration = .seconds(10)) async -> Bool {
+		let hosts: [URL] = [
+			"https://apple.com",
+			"https://google.com",
+			"https://cloudflare.com",
+			"https://baidu.com",
+			"https://yandex.ru"
 		]
 
-		return hosts.contains { isOnline(host: $0) }
+		return await hosts.concurrentContains {
+			await URLSession.shared.isReachable(
+				$0,
+				method: .head,
+				timeout: timeout,
+				requireSuccessStatusCode: true
+			)
+		}
+	}
+}
+
+
+extension Sequence {
+	func concurrentFirst(
+		withPriority priority: TaskPriority? = nil,
+		where predicate: @escaping @Sendable (Element) async throws -> Bool
+	) async rethrows -> Element? {
+		try await withoutActuallyEscaping(predicate) { escapingPredicate in
+			try await withThrowingTaskGroup(of: Element?.self) { group in
+				for element in self {
+					group.addTask(priority: priority) {
+						try await escapingPredicate(element) ? element : nil
+					}
+				}
+
+				while let next = try await group.next() {
+					if let next {
+						group.cancelAll()
+						return next
+					}
+				}
+
+				return nil
+			}
+		}
+	}
+}
+
+
+extension Sequence {
+	func concurrentContains(
+		withPriority priority: TaskPriority? = nil,
+		where predicate: @escaping @Sendable (Element) async throws -> Bool
+	) async rethrows -> Bool {
+		try await concurrentFirst(withPriority: priority, where: predicate) != nil
 	}
 }
 

@@ -14,6 +14,8 @@ struct ChooseFromListExtendedIntent: AppIntent {
 
 		IMPORTANT: Add the “Wait to Return” and “Get Clipboard” actions after this one.
 
+		NOTE: It will convert each input into a string, so some types may not work properly.
+
 		Note: If you get the error “The operation failed because Shortcuts couldn't convert from Text to NSString.”, just change the preview to show a list view instead. This is a bug in the Shortcuts app.
 		""",
 		categoryName: "Utility",

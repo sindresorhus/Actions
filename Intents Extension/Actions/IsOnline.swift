@@ -13,6 +13,6 @@ struct IsOnlineIntent: AppIntent {
 	}
 
 	func perform() async throws -> some IntentResult & ReturnsValue<Bool> {
-		.result(value: Reachability.isOnlineExtensive())
+		.result(value: await Reachability.isOnline())
 	}
 }
