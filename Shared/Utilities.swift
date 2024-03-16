@@ -7337,6 +7337,235 @@ extension SSCamera {
 #endif
 
 
+#if os(macOS)
+extension Device {
+	static var isAnyMicrophoneOn: Bool {
+		AudioDevice.inputDevices.contains(where: \.isRunningSomewhere)
+	}
+}
+
+struct AudioDevice: Hashable, Identifiable {
+	enum Error: Swift.Error {
+		case invalidDevice
+		case volumeNotSupported
+		case invalidVolumeValue
+	}
+
+	let id: String
+	let localizedName: String
+	let deviceID: AudioDeviceID
+	let isInput: Bool
+	let isOutput: Bool
+
+	init(withDeviceID deviceID: AudioDeviceID) throws {
+		self.deviceID = deviceID
+
+		var deviceName = "" as CFString
+		try CoreAudioData.get(
+			id: deviceID,
+			selector: kAudioObjectPropertyName,
+			value: &deviceName
+		)
+		self.localizedName = (deviceName as String)
+			.replacingOccurrences(of: "BlackHole 16ch", with: "BlackHole")
+
+		var deviceUID = "" as CFString
+		try CoreAudioData.get(
+			id: deviceID,
+			selector: kAudioDevicePropertyDeviceUID,
+			value: &deviceUID
+		)
+		self.id = deviceUID as String
+
+		let inputStreamCount = try CoreAudioData.size(
+			id: deviceID,
+			selector: kAudioDevicePropertyStreams,
+			scope: kAudioDevicePropertyScopeInput
+		)
+		self.isInput = inputStreamCount > 0
+
+		let outputStreamCount = try CoreAudioData.size(
+			id: deviceID,
+			selector: kAudioDevicePropertyStreams,
+			scope: kAudioDevicePropertyScopeOutput
+		)
+		self.isOutput = outputStreamCount > 0
+	}
+}
+
+extension AudioDevice {
+	var isRunningSomewhere: Bool {
+		var isUsed: UInt32 = 0
+		do {
+			try CoreAudioData.get(
+				id: deviceID,
+				selector: kAudioDevicePropertyDeviceIsRunningSomewhere,
+				value: &isUsed
+			)
+
+			return isUsed != 0
+		} catch {
+			assertionFailure(error.localizedDescription)
+			return false
+		}
+	}
+}
+
+extension AudioDevice {
+	struct DeviceType {
+		let selector: AudioObjectPropertySelector
+		let isInput: Bool
+		let isOutput: Bool
+
+		static let input = Self(
+			selector: kAudioHardwarePropertyDefaultInputDevice,
+			isInput: true,
+			isOutput: false
+		)
+
+		static let output = Self(
+			selector: kAudioHardwarePropertyDefaultOutputDevice,
+			isInput: false,
+			isOutput: true
+		)
+
+		static let system = Self(
+			selector: kAudioHardwarePropertyDefaultSystemOutputDevice,
+			isInput: false,
+			isOutput: true
+		)
+	}
+}
+
+extension AudioDevice {
+	static var allDevices: [Self] {
+		do {
+			let dataSize = try CoreAudioData.size(selector: kAudioHardwarePropertyDevices)
+			let deviceCount = Int(dataSize) / MemoryLayout<AudioDeviceID>.size
+			var deviceIDs = [AudioDeviceID](repeating: 0, count: deviceCount)
+
+			try CoreAudioData.get(
+				selector: kAudioHardwarePropertyDevices,
+				initialSize: dataSize,
+				value: &deviceIDs
+			)
+
+			return deviceIDs
+				.compactMap { try? self.init(withDeviceID: $0) }
+				// When you use AVAudioEngine, this one shows up and it's not useful for users.
+				.filter { !$0.id.hasPrefix("CADefaultDeviceAggregate-") }
+		} catch {
+			return []
+		}
+	}
+
+	static var inputDevices: [Self] { allDevices.filter(\.isInput) }
+	static var outputDevices: [Self] { allDevices.filter(\.isOutput) }
+}
+
+private enum CoreAudioData {
+	static func get<T>(
+		id: AudioObjectID = .init(kAudioObjectSystemObject),
+		selector: AudioObjectPropertySelector,
+		scope: AudioObjectPropertyScope = kAudioObjectPropertyScopeGlobal,
+		element: AudioObjectPropertyElement = kAudioObjectPropertyElementMain,
+		initialSize: UInt32 = .init(MemoryLayout<T>.size),
+		value: UnsafeMutablePointer<T>
+	) throws {
+		var size = initialSize
+		var address = AudioObjectPropertyAddress(
+			mSelector: selector,
+			mScope: scope,
+			mElement: element
+		)
+
+		try NSError.checkOSStatus {
+			AudioObjectGetPropertyData(id, &address, 0, nil, &size, value)
+		}
+	}
+
+	static func set<T>(
+		id: AudioObjectID = AudioObjectID(kAudioObjectSystemObject),
+		selector: AudioObjectPropertySelector,
+		scope: AudioObjectPropertyScope = kAudioObjectPropertyScopeGlobal,
+		element: AudioObjectPropertyElement = kAudioObjectPropertyElementMain,
+		value: UnsafeMutablePointer<T>
+	) throws {
+		let size = UInt32(MemoryLayout<T>.size)
+		var address = AudioObjectPropertyAddress(
+			mSelector: selector,
+			mScope: scope,
+			mElement: element
+		)
+
+		try NSError.checkOSStatus {
+			AudioObjectSetPropertyData(id, &address, 0, nil, size, value)
+		}
+	}
+
+	static func has(
+		id: AudioObjectID = AudioObjectID(kAudioObjectSystemObject),
+		selector: AudioObjectPropertySelector,
+		scope: AudioObjectPropertyScope = kAudioObjectPropertyScopeGlobal,
+		element: AudioObjectPropertyElement = kAudioObjectPropertyElementMain
+	) -> Bool {
+		var address = AudioObjectPropertyAddress(
+			mSelector: selector,
+			mScope: scope,
+			mElement: element
+		)
+
+		return AudioObjectHasProperty(id, &address)
+	}
+
+	static func size(
+		id: AudioObjectID = AudioObjectID(kAudioObjectSystemObject),
+		selector: AudioObjectPropertySelector,
+		scope: AudioObjectPropertyScope = kAudioObjectPropertyScopeGlobal,
+		element: AudioObjectPropertyElement = kAudioObjectPropertyElementMain
+	) throws -> UInt32 {
+		var size: UInt32 = 0
+
+		var address = AudioObjectPropertyAddress(
+			mSelector: selector,
+			mScope: scope,
+			mElement: element
+		)
+
+		try NSError.checkOSStatus {
+			AudioObjectGetPropertyDataSize(id, &address, 0, nil, &size)
+		}
+
+		return size
+	}
+}
+
+extension NSError {
+	/**
+	Execute the given closure and throw an error if the status code is non-zero.
+	*/
+	static func checkOSStatus(_ closure: () -> OSStatus) throws {
+		guard let error = NSError(osstatus: closure()) else {
+			return
+		}
+
+		throw error
+	}
+
+	/**
+	Create an `NSError` from a `OSStatus`.
+	*/
+	convenience init?(osstatus: OSStatus) {
+		guard osstatus != 0 else {
+			return nil
+		}
+
+		self.init(domain: NSOSStatusErrorDomain, code: Int(osstatus), userInfo: nil)
+	}
+}
+#endif
+
+
 extension NSAttributedString {
 	@nonobjc
 	static func fromHTMLString(_ htmlString: String) async throws -> NSAttributedString {

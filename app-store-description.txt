@@ -121,6 +121,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Is Device Orientation
 - Is Host Reachable
 - Is Low Power Mode On
+- Is Microphone On (macOS-only)
 - Is Online
 - Is Screen Locked (macOS-only)
 - Is Shaking Device

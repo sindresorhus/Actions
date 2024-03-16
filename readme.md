@@ -136,6 +136,7 @@ And for high-quality transcription, see my [Aiko](https://sindresorhus.com/aiko)
 - Is Device Orientation
 - Is Host Reachable
 - Is Low Power Mode On
+- Is Microphone On <sup>(macOS-only)</sup>
 - Is Online
 - Is Screen Locked <sup>(macOS-only)</sup>
 - Is Shaking Device

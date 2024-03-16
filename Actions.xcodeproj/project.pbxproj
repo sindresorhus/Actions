@@ -18,7 +18,6 @@
 		E3164E692B78FB55005AFA14 /* IsConformingToUTI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3164E682B78FB55005AFA14 /* IsConformingToUTI.swift */; };
 		E31748A92916A0B200F6319E /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31748A82916A0B200F6319E /* Main.swift */; };
 		E31748AF2916A0B200F6319E /* Intents Extension.appex in Embed ExtensionKit Extensions */ = {isa = PBXBuildFile; fileRef = E31748A62916A0B100F6319E /* Intents Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		E31748B52916A12800F6319E /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FC71DC271EBE5B00C9D255 /* Utilities.swift */; };
 		E31748B82916A15100F6319E /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = E31748B72916A15100F6319E /* Sentry */; };
 		E31749082916A20C00F6319E /* TruncateList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C33C9F28D37C7E00386C59 /* TruncateList.swift */; };
 		E31749092916A20C00F6319E /* IsOnline.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31DE7F128D5E30C00DE79EF /* IsOnline.swift */; };
@@ -176,6 +175,8 @@
 		E3F5DD0D2B790AE4006EF915 /* JoinWiFi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F5DD0C2B790AE4006EF915 /* JoinWiFi.swift */; };
 		E3F64D7628D9F9930009B500 /* CreateColorImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F64D7528D9F9930009B500 /* CreateColorImage.swift */; };
 		E3F64D7928D9FCA20009B500 /* GetSymbolImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F64D7728D9FCA20009B500 /* GetSymbolImage.swift */; };
+		E3FAAA912BA58CAE0007D50C /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FC71DC271EBE5B00C9D255 /* Utilities.swift */; };
+		E3FAAA942BA5905A0007D50C /* IsMicrophoneOn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FAAA8F2BA589C80007D50C /* IsMicrophoneOn.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -367,6 +368,7 @@
 		E3F64D7128D9F3810009B500 /* EditURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditURL.swift; sourceTree = "<group>"; };
 		E3F64D7528D9F9930009B500 /* CreateColorImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateColorImage.swift; sourceTree = "<group>"; };
 		E3F64D7728D9FCA20009B500 /* GetSymbolImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSymbolImage.swift; sourceTree = "<group>"; };
+		E3FAAA8F2BA589C80007D50C /* IsMicrophoneOn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsMicrophoneOn.swift; sourceTree = "<group>"; };
 		E3FC71DC271EBE5B00C9D255 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		FD691FCD2A9CCD4C00C55178 /* CreateMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateMenuItem.swift; path = Shared/Actions/CreateMenuItem.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -435,6 +437,7 @@
 				E3C33CA928D3A81700386C59 /* IsDarkMode.swift */,
 				E350B2512AC3005800BFC34D /* IsDeviceLocked.swift */,
 				E3D0655D29A51E160059A16E /* IsHostReachable.swift */,
+				E3FAAA8F2BA589C80007D50C /* IsMicrophoneOn.swift */,
 				E3CB448A28D71A180031D55F /* IsScreenLocked.swift */,
 				E31DE7F528D5E50400DE79EF /* IsWebServerReachable.swift */,
 				E3F5DD0C2B790AE4006EF915 /* JoinWiFi.swift */,
@@ -457,10 +460,10 @@
 		E31748A72916A0B200F6319E /* Intents Extension */ = {
 			isa = PBXGroup;
 			children = (
-				E31748A82916A0B200F6319E /* Main.swift */,
 				E31749562916A25B00F6319E /* Actions */,
 				E31748AC2916A0B200F6319E /* Info.plist */,
 				E324D75E2AB1A79500BBE6BA /* Intents Extension.entitlements */,
+				E31748A82916A0B200F6319E /* Main.swift */,
 			);
 			path = "Intents Extension";
 			sourceTree = "<group>";
@@ -799,12 +802,12 @@
 				E317493B2916A20C00F6319E /* TruncateText.swift in Sources */,
 				E3B8FD1629ED376F001249CF /* TruncateNumber.swift in Sources */,
 				E317494B2916A20C00F6319E /* IsBluetoothOn.swift in Sources */,
-				E31748B52916A12800F6319E /* Utilities.swift in Sources */,
 				E31749252916A20C00F6319E /* ConvertUnixTimeToDate.swift in Sources */,
 				E317492A2916A20C00F6319E /* GetQueryItemValueFromURL.swift in Sources */,
 				E31749342916A20C00F6319E /* EditURL.swift in Sources */,
 				E317494F2916A20C00F6319E /* ReverseList.swift in Sources */,
 				E31749132916A20C00F6319E /* TrimWhitespace.swift in Sources */,
+				E3FAAA912BA58CAE0007D50C /* Utilities.swift in Sources */,
 				E31749242916A20C00F6319E /* CalculateWithSoulver.swift in Sources */,
 				E317491B2916A20C00F6319E /* RemoveNonPrintableCharacters.swift in Sources */,
 				E3164E692B78FB55005AFA14 /* IsConformingToUTI.swift in Sources */,
@@ -871,6 +874,7 @@
 				E3F5DD0D2B790AE4006EF915 /* JoinWiFi.swift in Sources */,
 				E3F64D7628D9F9930009B500 /* CreateColorImage.swift in Sources */,
 				E3CB449228D7803C0031D55F /* ParseJSON5.swift in Sources */,
+				E3FAAA942BA5905A0007D50C /* IsMicrophoneOn.swift in Sources */,
 				E3963A5A292CAF9F00210AC2 /* RemoveDuplicatesFromList.swift in Sources */,
 				E3722CED2ACDE28D0007316D /* CombineVideos.swift in Sources */,
 				E34839A12A885DD90040DF6E /* InvertImages.swift in Sources */,
