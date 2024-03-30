@@ -39,19 +39,30 @@ struct SymbolImageIntent: AppIntent {
 	@Parameter(title: "Hex Color", default: ["#ff69b4"])
 	var paletteColors: [String]
 
+	@Parameter(title: "Weight", default: .regular)
+	var weight: SymbolWeightAppEnum
+
 	static var parameterSummary: some ParameterSummary {
 		Switch(\.$rendering) {
 			Case(.monochrome) {
-				Summary("Get symbol \(\.$symbolName) of size \(\.$size) as \(\.$rendering) \(\.$color)")
+				Summary("Get symbol \(\.$symbolName) of size \(\.$size) as \(\.$rendering) \(\.$color)") {
+					\.$weight
+				}
 			}
 			Case(.hierarchical) {
-				Summary("Get symbol \(\.$symbolName) of size \(\.$size) as \(\.$rendering) \(\.$color)")
+				Summary("Get symbol \(\.$symbolName) of size \(\.$size) as \(\.$rendering) \(\.$color)") {
+					\.$weight
+				}
 			}
 			Case(.palette) {
-				Summary("Get symbol \(\.$symbolName) of size \(\.$size) as \(\.$rendering) \(\.$paletteColors)")
+				Summary("Get symbol \(\.$symbolName) of size \(\.$size) as \(\.$rendering) \(\.$paletteColors)") {
+					\.$weight
+				}
 			}
 			DefaultCase {
-				Summary("Get symbol \(\.$symbolName) of size \(\.$size) as \(\.$rendering)")
+				Summary("Get symbol \(\.$symbolName) of size \(\.$size) as \(\.$rendering)") {
+					\.$weight
+				}
 			}
 		}
 	}
@@ -61,7 +72,7 @@ struct SymbolImageIntent: AppIntent {
 			throw "The maximum size is 2000.".toError
 		}
 
-		var configuration = XImage.SymbolConfiguration(pointSize: Double(size), weight: .regular)
+		var configuration = XImage.SymbolConfiguration(pointSize: Double(size), weight: weight.toNative)
 
 		switch rendering {
 		case .monochrome:
@@ -97,7 +108,8 @@ struct SymbolImageIntent: AppIntent {
 		image = image.normalizingImage()
 		#endif
 
-		let result = try image.toIntentFile(filename: symbolName)
+		// Note: `UUID().uuidString` works around a Shortcuts bug where the filename cannot be reused. (macOS 14.5)
+		let result = try image.toIntentFile(filename: symbolName + UUID().uuidString)
 
 		return .result(value: result)
 	}
@@ -117,4 +129,61 @@ enum SymbolImageRenderingAppEnum: String, AppEnum {
 		.palette: "palette",
 		.multicolor: "multicolor (iOS & visionOS-only)"
 	]
+}
+
+enum SymbolWeightAppEnum: String, AppEnum {
+	case ultraLight
+	case thin
+	case light
+	case regular
+	case medium
+	case semibold
+	case bold
+	case heavy
+	case black
+
+	static let typeDisplayRepresentation: TypeDisplayRepresentation = "Symbol Weight"
+
+	static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
+		.ultraLight: "Ultra Light",
+		.thin: "Thin",
+		.light: "Light",
+		.regular: "Regular",
+		.medium: "Medium",
+		.semibold: "Semibold",
+		.bold: "Bold",
+		.heavy: "Heavy",
+		.black: "Black"
+	]
+}
+
+#if os(macOS)
+private typealias Weight = NSFont.Weight
+#else
+private typealias Weight = UIImage.SymbolWeight
+#endif
+
+extension SymbolWeightAppEnum {
+	fileprivate var toNative: Weight {
+		switch self {
+		case .ultraLight:
+			.ultraLight
+		case .thin:
+			.thin
+		case .light:
+			.light
+		case .regular:
+			.regular
+		case .medium:
+			.medium
+		case .semibold:
+			.semibold
+		case .bold:
+			.bold
+		case .heavy:
+			.heavy
+		case .black:
+			.black
+		}
+	}
 }

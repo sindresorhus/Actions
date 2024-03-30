@@ -13,8 +13,6 @@ struct CreateMenuItem: AppIntent {
 		You can later use one or more of these menu items in a “Choose from List” action.
 
 		Add an “Add to Variable” action below this one to populate a list and then use that variable in the “Choose From List” action.
-
-		NOTE: If you pass in the color as a variable, you may have to write it in lowercase, “red” instead of “Red”, because of a iOS bug.
 		""",
 		categoryName: "Miscellaneous",
 		searchKeywords: [
@@ -257,8 +255,8 @@ enum MenuItemStyle: String, AppEnum {
 		.teal: "Teal",
 		.cyan: "Cyan",
 		.blue: "Blue",
-		.purple: "{urple",
-		.pink: "{ink",
+		.purple: "Purple",
+		.pink: "Pink",
 		.brown: "Brown",
 		.white: "White",
 		.gray: "Gray",

@@ -9,7 +9,7 @@ struct HapticFeedbackIntent: AppIntent {
 
 		The action has to momentarily open the main app as haptic feedback can only be generated from the app.
 
-		Not supported on iPad. Requires iPhone 8 or later.
+		Not supported on i​Pad. Requires i​Phone 8 or later.
 
 		On macOS and visionOS, it does nothing.
 		""",

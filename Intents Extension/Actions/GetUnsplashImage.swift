@@ -1,6 +1,6 @@
 import AppIntents
 
-struct GetUnsplashImageIntent: AppIntent {
+struct GetUnsplashImageIntent: DeprecatedAppIntent {
 	static let title: LocalizedStringResource = "Get Unsplash Image"
 
 	static let description = IntentDescription(
@@ -12,6 +12,8 @@ struct GetUnsplashImageIntent: AppIntent {
 		categoryName: "Web",
 		resultValueName: "Unsplash Image"
 	)
+
+	static var deprecation = IntentDeprecation(message: "Deprecated because Unsplash took down the service used by this action. There is unfortunately no alternative. Unsplash does provide an API, but it won't work for this action.")
 
 	@Parameter(title: "Keywords", default: [])
 	var keywords: [String]

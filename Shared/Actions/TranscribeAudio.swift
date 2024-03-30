@@ -2,13 +2,13 @@ import AppIntents
 import Speech
 
 struct TranscribeAudioIntent: AppIntent {
-	static let title: LocalizedStringResource = "Transcribe Audio"
+	static let title: LocalizedStringResource = "Transcribe Audio (Legacy)"
 
 	static let description = IntentDescription(
 		"""
 		Converts the speech in the input audio file to text.
 
-		Note: Prefer the built-in “Transcribe Audio” action.
+		Note: Prefer the built-in “Transcribe Audio” action. This action will be deprecated at some point.
 
 		Note: On iOS & visionOS, the transcription only works if the audio takes less than 30 seconds to process. This usually means about 1 minute of transcription. This is because third-party actions only get 30 seconds to execute.
 

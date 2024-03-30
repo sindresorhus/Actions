@@ -114,7 +114,6 @@ And for high-quality transcription, see my [Aiko](https://sindresorhus.com/aiko)
 - Get SF Symbol Image
 - Get Title of URL
 - Get Uniform Type Identifier
-- Get Unsplash Image
 - Get User Details
 - Global Variable
 - Hex Encode
@@ -172,7 +171,6 @@ And for high-quality transcription, see my [Aiko](https://sindresorhus.com/aiko)
 - Shuffle List
 - Sort List
 - Spell Out Number
-- Transcribe Audio
 - Transform Lists
 - Transform Text *(camel case, slugify, transliteration, etc.)*
 - Transform Text with JavaScript
@@ -197,6 +195,7 @@ And for high-quality transcription, see my [Aiko](https://sindresorhus.com/aiko)
 - Put text on the iOS Lock Screen → [Any Text](https://sindresorhus.com/any-text)
 - Get random animated GIF → [Jiffy](https://sindresorhus.com/jiffy)
 - Get clipboard items → [Pasteboard Viewer](https://sindresorhus.com/pasteboard-viewer)
+- Preview app icons → [Icon Preview](https://sindresorhus.com/icon-preview)
 <!-- - Use the ChatGPT API → [AI Actions](https://sindresorhus.com/ai-actions) -->
 
 ## Screenshot
@@ -236,3 +235,9 @@ I don't plan to localize the app.
 - [Plash](https://github.com/sindresorhus/Plash) - Make any website your Mac desktop wallpaper
 - [Dato](https://sindresorhus.com/dato) - Better menu bar clock with calendar and time zones
 - [More apps…](https://sindresorhus.com/apps)
+
+## License
+
+The code is MIT licensed.
+
+You do not have the right to take the whole app or individual actions and publish it as your own on the App Store.

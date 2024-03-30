@@ -8,6 +8,10 @@ struct SortListIntent: AppIntent {
 		Sorts the input list.
 
 		Note: If you get the error “The operation failed because Shortcuts couldn't convert from Text to NSString.”, just change the preview to show a list view instead. This is a bug in the Shortcuts app.
+
+		Note: The number sort type expects a list of just numbers, not strings with both text and numbers in them.
+
+		Tip: Use the natural sort type to correctly sort things like filenames (for example, `011 Foo` and `006 Bar`).
 		""",
 		categoryName: "List",
 		resultValueName: "Sorted List"

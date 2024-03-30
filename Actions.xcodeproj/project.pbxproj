@@ -12,6 +12,7 @@
 		E303EED329529D0B007BE918 /* GetDefaultPrinter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E376FD862952937200C0F81F /* GetDefaultPrinter.swift */; };
 		E303EED429529D14007BE918 /* FindPrinter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E376FD84295287E500C0F81F /* FindPrinter.swift */; };
 		E303EED529529D1B007BE918 /* SetDefaultPrinter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E376FD882952946400C0F81F /* SetDefaultPrinter.swift */; };
+		E30A15402BCF6C5C00E6E0FC /* SwiftBluetooth in Frameworks */ = {isa = PBXBuildFile; productRef = E30A153F2BCF6C5C00E6E0FC /* SwiftBluetooth */; };
 		E30E56132922602B00C44823 /* GetRandomNumberFromSeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30E56122922602B00C44823 /* GetRandomNumberFromSeed.swift */; };
 		E30F58252B9A0D6800C3C98A /* GetSentencesFromText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30F58242B9A0D6800C3C98A /* GetSentencesFromText.swift */; };
 		E30F58272B9A11FE00C3C98A /* GetParagraphsFromText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30F58262B9A11FE00C3C98A /* GetParagraphsFromText.swift */; };
@@ -132,7 +133,6 @@
 		E38035CB29278B1700D29A07 /* MergeDictionaries.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CB44A128D794DA0031D55F /* MergeDictionaries.swift */; };
 		E38663312AE05C840001343A /* GetImageLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38663302AE05C840001343A /* GetImageLocation.swift */; };
 		E38663332AE063A10001343A /* SetImageLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38663322AE063A10001343A /* SetImageLocation.swift */; };
-		E38BB1BF2B31CCED000C9B32 /* SwiftBluetooth in Frameworks */ = {isa = PBXBuildFile; productRef = E38BB1BE2B31CCED000C9B32 /* SwiftBluetooth */; };
 		E3963A5A292CAF9F00210AC2 /* RemoveDuplicatesFromList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC2DC328D215A100A88E25 /* RemoveDuplicatesFromList.swift */; };
 		E39692CA2AE130F90030AE56 /* IsShakingDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39692C92AE130F90030AE56 /* IsShakingDevice.swift */; };
 		E3AB2D8B29F840B900ED2913 /* GetActionsVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AB2D8A29F840B900ED2913 /* GetActionsVersion.swift */; };
@@ -228,6 +228,7 @@
 		E31DE80728D61FE800DE79EF /* GetQueryItemsFromURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetQueryItemsFromURL.swift; sourceTree = "<group>"; };
 		E31DE80B28D62ACC00DE79EF /* GetQueryItemsFromURLAsDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetQueryItemsFromURLAsDictionary.swift; sourceTree = "<group>"; };
 		E31DE80D28D62CE200DE79EF /* FormatNumberCompact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatNumberCompact.swift; sourceTree = "<group>"; };
+		E3214F0B2C022176009B4614 /* Licenses.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Licenses.txt; sourceTree = "<group>"; };
 		E324C9EF271E972200E7CA9B /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		E324C9F0271E972200E7CA9B /* MainScreen.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; tabWidth = 4; };
 		E324C9F1271E972300E7CA9B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -390,9 +391,9 @@
 				E3F4E7D22B4E9BFC0007D82C /* DominantColors in Frameworks */,
 				E33D080D2A11623200FBCAD7 /* SimpleKeychain in Frameworks */,
 				E337A3E627E8BA6B0073E865 /* FuzzyFind in Frameworks */,
+				E30A15402BCF6C5C00E6E0FC /* SwiftBluetooth in Frameworks */,
 				E317495F2916A4A300F6319E /* SoulverCore in Frameworks */,
 				E351083928FD8089007C85AE /* Sentry in Frameworks */,
-				E38BB1BF2B31CCED000C9B32 /* SwiftBluetooth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -607,6 +608,7 @@
 				E324CA24271E996800E7CA9B /* Info.plist */,
 				E39F4776272D516E00B99CB0 /* Actions.entitlements */,
 				E33DFF662748C6B100C79D78 /* InternetAccessPolicy.json */,
+				E3214F0B2C022176009B4614 /* Licenses.txt */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -665,8 +667,8 @@
 				E351083828FD8089007C85AE /* Sentry */,
 				E317495E2916A4A300F6319E /* SoulverCore */,
 				E33D080C2A11623200FBCAD7 /* SimpleKeychain */,
-				E38BB1BE2B31CCED000C9B32 /* SwiftBluetooth */,
 				E3F4E7D12B4E9BFC0007D82C /* DominantColors */,
+				E30A153F2BCF6C5C00E6E0FC /* SwiftBluetooth */,
 			);
 			productName = "Actions (iOS)";
 			productReference = E324C9F6271E972300E7CA9B /* Actions.app */;
@@ -705,8 +707,8 @@
 				E32B4F3227FD77700057F08D /* XCRemoteSwiftPackageReference "ExceptionCatcher" */,
 				E317495D2916A4A300F6319E /* XCRemoteSwiftPackageReference "SoulverCore" */,
 				E33D080B2A11623200FBCAD7 /* XCRemoteSwiftPackageReference "SimpleKeychain" */,
-				E38BB1BD2B31CCED000C9B32 /* XCRemoteSwiftPackageReference "SwiftBluetooth" */,
 				E3F4E7D02B4E9BFC0007D82C /* XCRemoteSwiftPackageReference "DominantColors" */,
+				E30A153E2BCF6C5C00E6E0FC /* XCRemoteSwiftPackageReference "SwiftBluetooth" */,
 			);
 			productRefGroup = E324C9F7271E972300E7CA9B /* Products */;
 			projectDirPath = "";
@@ -1279,6 +1281,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		E30A153E2BCF6C5C00E6E0FC /* XCRemoteSwiftPackageReference "SwiftBluetooth" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/exPHAT/SwiftBluetooth";
+			requirement = {
+				kind = revision;
+				revision = 82395b9717df77621e080d8e38b74464ad02826d;
+			};
+		};
 		E317495D2916A4A300F6319E /* XCRemoteSwiftPackageReference "SoulverCore" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/soulverteam/SoulverCore";
@@ -1300,7 +1310,7 @@
 			repositoryURL = "https://github.com/getsentry/sentry-cocoa";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 8.7.2;
+				minimumVersion = 8.24.0;
 			};
 		};
 		E337A3E227E8B66D0073E865 /* XCRemoteSwiftPackageReference "FuzzyFind" */ = {
@@ -1319,25 +1329,22 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		E38BB1BD2B31CCED000C9B32 /* XCRemoteSwiftPackageReference "SwiftBluetooth" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/sindresorhus/SwiftBluetooth";
-			requirement = {
-				kind = revision;
-				revision = 0f2f38b05e983ce8351b1f3e155fd9fe7f279167;
-			};
-		};
 		E3F4E7D02B4E9BFC0007D82C /* XCRemoteSwiftPackageReference "DominantColors" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/DenDmitriev/DominantColors";
 			requirement = {
-				kind = revision;
-				revision = ed8587f079977ed679b0b90cd9d0698d3acdf8f9;
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.5;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		E30A153F2BCF6C5C00E6E0FC /* SwiftBluetooth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E30A153E2BCF6C5C00E6E0FC /* XCRemoteSwiftPackageReference "SwiftBluetooth" */;
+			productName = SwiftBluetooth;
+		};
 		E31748B72916A15100F6319E /* Sentry */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E3327E95272C68DE00AD5CC7 /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
@@ -1367,11 +1374,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E3327E95272C68DE00AD5CC7 /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
 			productName = Sentry;
-		};
-		E38BB1BE2B31CCED000C9B32 /* SwiftBluetooth */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E38BB1BD2B31CCED000C9B32 /* XCRemoteSwiftPackageReference "SwiftBluetooth" */;
-			productName = SwiftBluetooth;
 		};
 		E3F4E7D12B4E9BFC0007D82C /* DominantColors */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -67,10 +67,10 @@ struct GetDominantColorsOfImage: AppIntent {
 		let colors = try DominantColors
 			.dominantColors(
 				image: image,
-				with: .high,
-				algorithm: .iterative(formula: .CIEDE2000),
-				dominationColors: count,
-				flags: [
+				quality: .high,
+				algorithm: .CIEDE2000,
+				maxCount: count,
+				options: [
 					excludeWhite ? .excludeWhite : nil,
 					excludeBlack ? .excludeBlack : nil
 				].compact()

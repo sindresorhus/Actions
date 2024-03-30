@@ -23,6 +23,10 @@ struct GetBluetoothDevice: AppIntent {
 		NOTE: The `transmitPowerLevel` property is not provided for this action.
 
 		NOTE: The RSSI and signal strength are available for only one of the two AirPods. If it shows RSSI of 0, try the identifier of the other AirPods device.
+
+
+		> Can you support diconnecting from a device?
+		  Third-party apps like Actions cannot disconnect Bluetooth devices. This is an iOS limitation.
 		""",
 		categoryName: "Bluetooth",
 		searchKeywords: [
@@ -66,10 +70,8 @@ struct GetBluetoothDevice: AppIntent {
 		let wasConnected = peripheral.state == .connected
 
 		do {
-			try await withTimeout(.seconds(timeout)) {
-				_ = try await central.connect(peripheral)
-			}
-		} catch is TimeoutError {
+			_ = try await central.connect(peripheral, timeout: timeout)
+		} catch CBError.connectionTimeout {
 			return .result(value: nil)
 		}
 
@@ -99,7 +101,6 @@ struct GetBluetoothDevice: AppIntent {
 
 		let entity = BluetoothDevice_AppEntity(
 			peripheral: peripheral,
-			advertisementData: [:],
 			rssi: Int(rssi),
 			isConnected: connectedDevices.contains { $0.identifier == peripheral.identifier },
 			services: services

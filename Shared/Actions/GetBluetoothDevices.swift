@@ -69,16 +69,11 @@ struct GetBluetoothDevices: AppIntent {
 
 		var devices = [UUID: BluetoothDevice_AppEntity]()
 
-		Task {
-			try? await Task.sleep(for: .seconds(scanDuration))
-			central.stopScan()
-		}
-
 		// We have to pass in a list of known services because the API does not support getting all devices.
 		let connectedDevices = central.retrieveConnectedPeripherals(withServices: CBCentralManager.commonServices)
 
-		for await (peripheral, advertisementData, rssi) in await central.scanForPeripherals() {
-			let name = peripheral.name ?? advertisementData[CBAdvertisementDataLocalNameKey] as? String
+		for await peripheral in await central.scanForPeripherals(timeout: scanDuration) {
+			let name = peripheral.name ?? peripheral.discovery.advertisementData.localName
 
 			if
 				!includeUnnamedDevices,
@@ -91,8 +86,7 @@ struct GetBluetoothDevices: AppIntent {
 
 			devices[peripheral.identifier] = BluetoothDevice_AppEntity(
 				peripheral: peripheral,
-				advertisementData: advertisementData,
-				rssi: Int(rssi),
+				rssi: peripheral.discovery.rssi,
 				isConnected: connectedDevices.contains { $0.identifier == peripheral.identifier }
 			)
 		}
@@ -108,9 +102,8 @@ struct GetBluetoothDevices: AppIntent {
 @MainActor
 func getBluetoothCentral() async throws -> CentralManager {
 	try Bluetooth.ensureAccess()
-
 	let central = CentralManager()
-	await central.waitUntilReady()
+	try await central.waitUntilReady()
 	return central
 }
 
@@ -157,13 +150,13 @@ struct BluetoothDevice_AppEntity: TransientAppEntity {
 extension BluetoothDevice_AppEntity {
 	init(
 		peripheral: Peripheral,
-		advertisementData: [String: Any],
 		rssi: Int,
 		isConnected: Bool,
 		services: [CBUUID] = []
 	) {
-		let name = peripheral.name ?? advertisementData[CBAdvertisementDataLocalNameKey] as? String
-		let txPowerLevel = advertisementData[CBAdvertisementDataTxPowerLevelKey] as? Int
+		let advertisementData = peripheral.discovery?.advertisementData
+		let name = peripheral.name ?? advertisementData?.localName
+		let txPowerLevel = advertisementData?.txPowerLevel
 
 		self.identifier = peripheral.identifier.uuidString
 		self.name = name

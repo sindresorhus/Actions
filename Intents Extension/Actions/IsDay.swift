@@ -5,7 +5,7 @@ struct IsDay: AppIntent {
 
 	static let description = IntentDescription(
 		"""
-		Check if the input date corresponds to a specific weekday, today, tomorrow, yesterday, or falls on a weekend.
+		Checks if the input date corresponds to a specific weekday, today, tomorrow, yesterday, or falls on a weekend.
 		""",
 		categoryName: "Date"
 	)

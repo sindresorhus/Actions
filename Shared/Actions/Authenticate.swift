@@ -31,8 +31,8 @@ struct Authenticate2: AppIntent {
 	#endif
 
 	@Parameter(
-		title: "Open When Finished",
-		description: "If provided, opens the URL instead of the Shortcuts app when finished."
+		title: "Open When Authenticated",
+		description: "If provided, opens the URL instead of the Shortcuts app when it successfully authenticated."
 	)
 	var openURL: URL?
 
@@ -79,7 +79,10 @@ struct Authenticate2: AppIntent {
 			}
 		}()
 
-		if let openURL {
+		if
+			result,
+			let openURL
+		{
 			try await openURL.openAsyncOrOpenShortcutsApp()
 		} else {
 			#if canImport(UIKit)

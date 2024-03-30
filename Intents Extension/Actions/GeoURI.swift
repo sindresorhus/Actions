@@ -13,7 +13,11 @@ struct GeoURIIntent: AppIntent {
 	@Parameter(title: "Location")
 	var location: CLPlacemark
 
-	@Parameter(title: "Include Accuracy", default: true)
+	@Parameter(
+		title: "Include Accuracy",
+		description: "Even when enabled, it may be left out if accuracy cannot be determined.",
+		default: true
+	)
 	var includeAccuracy: Bool
 
 	static var parameterSummary: some ParameterSummary {

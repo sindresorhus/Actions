@@ -4469,9 +4469,7 @@ enum Reachability {
 		let hosts: [URL] = [
 			"https://apple.com",
 			"https://google.com",
-			"https://cloudflare.com",
-			"https://baidu.com",
-			"https://yandex.ru"
+			"https://cloudflare.com"
 		]
 
 		return await hosts.concurrentContains {
@@ -4525,26 +4523,91 @@ extension Sequence {
 
 extension CLLocationCoordinate2D {
 	/**
+	The maximum number of decimal places needed to represent GPS accuracy for latitude and longitude effectively.
+	*/
+	static let maxDecimalPlacesForGPS = 7
+}
+
+
+extension CLLocationCoordinate2D {
+	/**
 	Get the [geo URI](https://en.wikipedia.org/wiki/Geo_URI_scheme) for the coordiate.
 	*/
-	var geoURI: URL { URL(string: "geo:\(latitude),\(longitude)")! }
+	var geoURI: URL {
+		// Rounding to 7 decimal places as it reflects the practical accuracy limit of GPS.
+		let latitude = latitude.rounded(toDecimalPlaces: Self.maxDecimalPlacesForGPS)
+		let longitude = longitude.rounded(toDecimalPlaces: Self.maxDecimalPlacesForGPS)
+		return URL(string: "geo:\(latitude),\(longitude)")!
+	}
 }
+
 
 extension CLLocation {
 	/**
 	Get the [geo URI](https://en.wikipedia.org/wiki/Geo_URI_scheme) for the location, including accuracy.
+
+	Even with `includeAccuracy: true`, it may be left out if the accuracy is not available.
 	*/
 	func geoURI(includeAccuracy: Bool) -> URL {
-		let geoURI = coordinate.geoURI
+		let hasAccuracy = verticalAccuracy > 0 && horizontalAccuracy > 0
 
+		let decimals = hasAccuracy
+			? {
+				let decimals = coordinate.requiredDecimalPlaces(
+					verticalAccuracy: verticalAccuracy,
+					horizontalAccuracy: horizontalAccuracy
+				)
+
+				// We want the latitude and longitude to be as short as possible and the same length.
+				// Rounding to 7 decimal places as it reflects the practical accuracy limit of GPS.
+				return max(decimals.latitudeDecimals, decimals.longitudeDecimals).clamped(to: 1...CLLocationCoordinate2D.maxDecimalPlacesForGPS)
+			}()
+			: CLLocationCoordinate2D.maxDecimalPlacesForGPS
+
+		let formattedLatitude = coordinate.latitude.rounded(toDecimalPlaces: decimals)
+		let formattedLongitude = coordinate.longitude.rounded(toDecimalPlaces: decimals)
+		let geoURLString = "geo:\(formattedLatitude),\(formattedLongitude)"
+		let finalGeoURLString = includeAccuracy && hasAccuracy ? "\(geoURLString);u=\(Int(horizontalAccuracy))" : geoURLString
+		return URL(string: finalGeoURLString)!
+	}
+}
+
+
+extension CLLocationCoordinate2D {
+	/**
+	Calculate the number of decimal places needed for latitude and longitude to maintain specific accuracies.
+
+	- Parameters:
+		- verticalAccuracy: The desired vertical accuracy in meters (affects latitude).
+		- horizontalAccuracy: The desired horizontal accuracy in meters (affects longitude).
+	- Returns: A tuple containing the required decimal places for latitude and longitude.
+	*/
+	func requiredDecimalPlaces(
+		verticalAccuracy: CLLocationAccuracy,
+		horizontalAccuracy: CLLocationAccuracy
+	) -> (latitudeDecimals: Int, longitudeDecimals: Int) {
 		guard
-			includeAccuracy,
-			horizontalAccuracy >= 0
+			verticalAccuracy > 0,
+			horizontalAccuracy > 0
 		else {
-			return geoURI
+			// 7 decimal places reflects the practical accuracy limit of GPS.
+			return (Self.maxDecimalPlacesForGPS, Self.maxDecimalPlacesForGPS)
 		}
 
-		return URL(string: "\(geoURI);u=\(Int(horizontalAccuracy))")!
+		// Approximate meters per degree of latitude.
+		let metersPerDegreeLatitude = 111_000.0
+
+		// Calculate meters per degree of longitude at the current latitude.
+		// It decreases as the latitude moves away from the equator.
+		let metersPerDegreeLongitude = cos(latitude * .pi / 180.0) * metersPerDegreeLatitude
+
+		// Calculate required decimal places for latitude using logarithmic scaling based on the vertical accuracy.
+		let latitudeDecimals = max(0, Int(ceil(-log10(verticalAccuracy / metersPerDegreeLatitude))))
+
+		// Calculate required decimal places for longitude similarly, taking into account the cosine adjustment for latitude.
+		let longitudeDecimals = max(0, Int(ceil(-log10(horizontalAccuracy / metersPerDegreeLongitude))))
+
+		return (latitudeDecimals, longitudeDecimals)
 	}
 }
 
@@ -5052,12 +5115,11 @@ extension View {
 		isPresented: Binding<Bool>,
 		@ViewBuilder actions: () -> some View
 	) -> some View {
-		// swiftlint:disable:next trailing_closure
 		alert2(
 			title,
 			isPresented: isPresented,
 			actions: actions,
-			message: {
+			message: { // swiftlint:disable:this trailing_closure
 				if let message {
 					Text(message)
 				}
@@ -5071,12 +5133,11 @@ extension View {
 		isPresented: Binding<Bool>,
 		@ViewBuilder actions: () -> some View
 	) -> some View {
-		// swiftlint:disable:next trailing_closure
 		alert2(
 			title,
 			isPresented: isPresented,
 			actions: actions,
-			message: {
+			message: { // swiftlint:disable:this trailing_closure
 				if let message {
 					Text(message)
 				}
@@ -5089,12 +5150,11 @@ extension View {
 		message: String? = nil,
 		isPresented: Binding<Bool>
 	) -> some View {
-		// swiftlint:disable:next trailing_closure
 		alert2(
 			title,
 			message: message,
 			isPresented: isPresented,
-			actions: {}
+			actions: {} // swiftlint:disable:this trailing_closure
 		)
 	}
 
@@ -5103,12 +5163,11 @@ extension View {
 		message: String? = nil,
 		isPresented: Binding<Bool>
 	) -> some View {
-		// swiftlint:disable:next trailing_closure
 		alert2(
 			title,
 			message: message,
 			isPresented: isPresented,
-			actions: {}
+			actions: {} // swiftlint:disable:this trailing_closure
 		)
 	}
 }
@@ -5143,7 +5202,7 @@ extension View {
 			title: { title($0) },
 			presenting: data,
 			actions: actions,
-			message: {
+			message: { // swiftlint:disable:this trailing_closure
 				if let message = message?($0) {
 					Text(message)
 				}
@@ -5170,12 +5229,11 @@ extension View {
 		message: ((T) -> String?)? = nil,
 		presenting data: Binding<T?>
 	) -> some View {
-		// swiftlint:disable:next trailing_closure
 		alert2(
 			title: title,
 			message: message,
 			presenting: data,
-			actions: { _ in }
+			actions: { _ in } // swiftlint:disable:this trailing_closure
 		)
 	}
 
@@ -7627,5 +7685,24 @@ extension NSAttributedString {
 		#endif
 
 		return try await fromHTML(htmlString, options: options).0
+	}
+}
+
+
+extension BinaryFloatingPoint {
+	func rounded(
+		toDecimalPlaces decimalPlaces: Int,
+		rule: FloatingPointRoundingRule = .toNearestOrAwayFromZero
+	) -> Self {
+		guard decimalPlaces >= 0 else {
+			return self
+		}
+
+		var divisor: Self = 1
+		for _ in 0..<decimalPlaces {
+			divisor *= 10
+		}
+
+		return (self * divisor).rounded(rule) / divisor
 	}
 }

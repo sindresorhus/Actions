@@ -33,6 +33,10 @@ struct RoundNumberToMultipleIntent: AppIntent {
 			throw "Cannot handle infinite number".toError
 		}
 
+		guard multiple != 0 else {
+			return .result(value: 0)
+		}
+
 		let result = number.roundedToMultiple(
 			of: multiple,
 			roundingRule: .init(mode)

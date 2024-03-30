@@ -14,6 +14,9 @@ struct MergeDictionariesIntent: AppIntent {
 		Tap and hold a dictionary parameter to select a variable to a dictionary. Don't quick tap it.
 
 		In Shortcuts, dictionaries are just JSON, so you can use this to merge JSON (file or text) too.
+
+
+		Implementation note: It uses 10 parameters instead of simply a list of dictionaries because the Shortcuts app crashes if the latter is used.
 		""",
 		categoryName: "Dictionary",
 		resultValueName: "Merged Dictionary"
