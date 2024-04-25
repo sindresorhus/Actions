@@ -6890,6 +6890,24 @@ extension Calendar {
 }
 
 
+extension Calendar {
+	/**
+	Checks if the hour and minute of one date match those of another date.
+
+	- Parameters:
+		- sourceDate: The date whose hour and minute are to be compared.
+		- comparisonDate: The date to compare against. Defaults to the current date and time.
+	- Returns: A Boolean indicating whether the hour and minute of the source date match those of the comparison date.
+	*/
+	func matchesHourAndMinute(of sourceDate: Date, with comparisonDate: Date? = nil) -> Bool {
+		let sourceComponents = dateComponents([.hour, .minute], from: sourceDate)
+		let comparisonComponents = dateComponents([.hour, .minute], from: comparisonDate ?? .now)
+		return sourceComponents.hour == comparisonComponents.hour
+			&& sourceComponents.minute == comparisonComponents.minute
+	}
+}
+
+
 extension Sequence {
 	func descriptionAsKeyValue<Key, Value>() -> String where Element == (key: Key, value: Value) {
 		Array(self).map { "\($0.key): \($0.value)" }.joined(separator: "\n")

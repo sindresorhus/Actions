@@ -126,6 +126,7 @@ The app is free without ads because I love making apps. Consider leaving a nice 
 - Is Screen Locked (macOS-only)
 - Is Shaking Device
 - Is Silent Mode On (iOS-only)
+- Is Time
 - Is Web Server Reachable
 - Is Wi-Fi On (macOS-only)
 - Join Wi-Fi (iOS-only)

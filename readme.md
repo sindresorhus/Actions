@@ -141,6 +141,7 @@ And for high-quality transcription, see my [Aiko](https://sindresorhus.com/aiko)
 - Is Screen Locked <sup>(macOS-only)</sup>
 - Is Shaking Device
 - Is Silent Mode On <sup>(iOS-only)</sup>
+- Is Time
 - Is Web Server Reachable
 - Is Wi-Fi On <sup>(macOS-only)</sup>
 - Join Wi-Fi <sup>(iOS-only)</sup>

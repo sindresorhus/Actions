@@ -170,6 +170,7 @@
 		E3EF8AE82AEFC431007B0F32 /* IsCallActive.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EF8AE72AEFC431007B0F32 /* IsCallActive.swift */; };
 		E3EF8AE92AEFCAD3007B0F32 /* IsHostReachable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D0655D29A51E160059A16E /* IsHostReachable.swift */; };
 		E3EF8AEA2AEFCBDB007B0F32 /* IsWebServerReachable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31DE7F528D5E50400DE79EF /* IsWebServerReachable.swift */; };
+		E3F047E72BDAAAEC0056CA56 /* IsTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F047E62BDAAAEC0056CA56 /* IsTime.swift */; };
 		E3F4E7D22B4E9BFC0007D82C /* DominantColors in Frameworks */ = {isa = PBXBuildFile; productRef = E3F4E7D12B4E9BFC0007D82C /* DominantColors */; };
 		E3F5DD0D2B790AE4006EF915 /* JoinWiFi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F5DD0C2B790AE4006EF915 /* JoinWiFi.swift */; };
 		E3F64D7628D9F9930009B500 /* CreateColorImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F64D7528D9F9930009B500 /* CreateColorImage.swift */; };
@@ -361,6 +362,7 @@
 		E3EC2DE728D2DB1000A88E25 /* GenerateRandomText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateRandomText.swift; sourceTree = "<group>"; };
 		E3EC2DE928D2E5B900A88E25 /* RemoveFromList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveFromList.swift; sourceTree = "<group>"; };
 		E3EF8AE72AEFC431007B0F32 /* IsCallActive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsCallActive.swift; sourceTree = "<group>"; };
+		E3F047E62BDAAAEC0056CA56 /* IsTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsTime.swift; sourceTree = "<group>"; };
 		E3F5DD0C2B790AE4006EF915 /* JoinWiFi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinWiFi.swift; sourceTree = "<group>"; };
 		E3F64D6B28D9EDFE0009B500 /* FormatDuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatDuration.swift; sourceTree = "<group>"; };
 		E3F64D7128D9F3810009B500 /* EditURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditURL.swift; sourceTree = "<group>"; };
@@ -543,6 +545,7 @@
 				E31DE7F128D5E30C00DE79EF /* IsOnline.swift */,
 				E39692C92AE130F90030AE56 /* IsShakingDevice.swift */,
 				E31DE7E928D5DE0C00DE79EF /* IsSilentModeOn.swift */,
+				E3F047E62BDAAAEC0056CA56 /* IsTime.swift */,
 				E31DE7F728D5E94500DE79EF /* IsWiFiOn.swift */,
 				E39DC11A29A54E27004F4FB8 /* OpenURLsWithApp.swift */,
 				E3D514C528EEA6B9003F7C2E /* PlayAlertSound.swift */,
@@ -787,6 +790,7 @@
 				E31749402916A20C00F6319E /* CreateURL.swift in Sources */,
 				E31749542916A20C00F6319E /* GetUniformTypeIdentifier.swift in Sources */,
 				E3EF8AE82AEFC431007B0F32 /* IsCallActive.swift in Sources */,
+				E3F047E72BDAAAEC0056CA56 /* IsTime.swift in Sources */,
 				E317491C2916A20C00F6319E /* GetHighResolutionTimestamp.swift in Sources */,
 				E31748A92916A0B200F6319E /* Main.swift in Sources */,
 				E31749512916A20C00F6319E /* TransformLists.swift in Sources */,
