@@ -41,7 +41,7 @@ struct WelcomeScreen: View {
 				.dynamicTypeSize(...(Device.hasSmallScreen ? .accessibility3 : .accessibility4))
 			Spacer()
 			#if os(macOS)
-			Link("Want even more actions?", destination: "https://github.com/sindresorhus/Actions#looking-for-more")
+			Link("Want even more actions?", destination: "https://github.com/sindresorhus/Actions#want-more-shortcut-actions")
 				.controlSize(.small)
 			#endif
 			Button("Send Feedback") {
